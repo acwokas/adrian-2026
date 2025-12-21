@@ -53,9 +53,10 @@ export default function Contact() {
   return (
     <Layout>
       <SEO 
-        title="Contact"
-        description="Get in touch for advisory, fractional leadership, or a first conversation. Book a clarity call or send a message."
+        title="Contact - Book a Clarity Call"
+        description="Get in touch with Adrian Watkins for executive advisory, fractional leadership, or strategic consultation. Book a 30-minute clarity call to discuss your organisation's challenges."
         canonical="/contact"
+        keywords="book executive advisor, fractional leadership consultation, strategic advisory call, executive coaching inquiry, business consultation"
       />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">

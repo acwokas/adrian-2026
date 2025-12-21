@@ -82,9 +82,10 @@ export default function Resume() {
   return (
     <Layout>
       <SEO 
-        title="Resume"
-        description="Professional background, capabilities, and career highlights. Senior commercial and operational leadership across technology, media, and professional services."
+        title="Resume - Senior Commercial & Operational Leader"
+        description="Professional CV of Adrian Watkins. Senior executive with expertise in commercial strategy, operational transformation, AI implementation, and executive advisory across Asia Pacific markets."
         canonical="/resume"
+        keywords="executive resume, senior leader CV, commercial director resume, COO resume, fractional executive, Asia Pacific executive, AI leadership"
       />
       {/* Header with Executive Summary */}
       <section className="section-spacing lg:pb-16">

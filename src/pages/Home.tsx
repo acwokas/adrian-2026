@@ -41,7 +41,11 @@ const broughtInFor = [
 export default function Home() {
   return (
     <Layout>
-      <SEO canonical="/" />
+      <SEO 
+        canonical="/" 
+        description="Adrian Watkins helps organisations and leaders make better decisions in complex environments. Executive advisory, fractional COO/CCO roles, mentoring, and capability building across Asia Pacific."
+        keywords="executive advisor Singapore, fractional COO, fractional CCO, business strategy consultant, operational leadership, AI advisory, Asia Pacific executive coach"
+      />
       
       {/* Hero Section - Desktop: Three column layout */}
       <section className="pt-24 md:pt-28 lg:pt-12 pb-16 md:pb-20 lg:pb-10 lg:min-h-[70vh] lg:max-h-[70vh] lg:flex lg:items-center">

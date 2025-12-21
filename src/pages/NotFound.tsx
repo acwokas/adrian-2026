@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,6 +14,11 @@ const NotFound = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Page Not Found"
+        description="The page you are looking for does not exist. Return to Adrian Watkins' homepage for executive advisory and fractional leadership services."
+        canonical="/404"
+      />
       <section className="section-spacing">
         <div className="container-narrow text-center">
           <div className="space-y-6">
