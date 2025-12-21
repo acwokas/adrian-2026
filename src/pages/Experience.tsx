@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 
 const experienceCategories = [
   {
@@ -72,12 +73,14 @@ export default function Experience() {
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
-          <div className="space-y-6 animate-fade-in-up">
-            <h1>Experience</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              My experience spans commercial and operational leadership, advisory, platform building, and ecosystem development. Here is how it groups by responsibility and scope.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h1>Experience</h1>
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                My experience spans commercial and operational leadership, advisory, platform building, and ecosystem development. Here is how it groups by responsibility and scope.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -88,27 +91,28 @@ export default function Experience() {
           className="section-spacing border-b border-border/50"
         >
           <div className="container-narrow">
-            <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="space-y-3">
-                <h2>{category.title}</h2>
-                <p className="text-lg text-muted-foreground">
-                  {category.description}
-                </p>
-              </div>
+            <AnimatedSection delay={index * 0.05}>
+              <div className="space-y-8">
+                <div className="space-y-3">
+                  <h2>{category.title}</h2>
+                  <p className="text-lg text-muted-foreground">
+                    {category.description}
+                  </p>
+                </div>
 
-              <div className="space-y-6 pt-4">
-                {category.items.map((item, i) => (
-                  <div 
-                    key={i}
-                    className="pl-6 border-l border-border/50"
-                  >
-                    <p className="text-muted-foreground">
-                      {item.role}
-                    </p>
-                  </div>
-                ))}
+                <StaggeredChildren className="space-y-6 pt-4">
+                  {category.items.map((item, i) => (
+                    <StaggeredItem key={i}>
+                      <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
+                        <p className="text-muted-foreground">
+                          {item.role}
+                        </p>
+                      </div>
+                    </StaggeredItem>
+                  ))}
+                </StaggeredChildren>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
       ))}
@@ -116,25 +120,27 @@ export default function Experience() {
       {/* CTA */}
       <section className="section-spacing">
         <div className="container-narrow text-center">
-          <div className="space-y-6">
-            <h2>Want the full picture?</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              View my complete resume or get in touch to discuss how my experience might be relevant to your context.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/resume">
-                  View resume
-                  <ArrowRight size={16} />
-                </Link>
-              </Button>
-              <Button variant="heroOutline" size="lg" asChild>
-                <Link to="/contact">
-                  Get in touch
-                </Link>
-              </Button>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2>Want the full picture?</h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                View my complete resume or get in touch to discuss how my experience might be relevant to your context.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="hero" size="lg" asChild>
+                  <Link to="/resume">
+                    View resume
+                    <ArrowRight size={16} />
+                  </Link>
+                </Button>
+                <Button variant="heroOutline" size="lg" asChild>
+                  <Link to="/contact">
+                    Get in touch
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </Layout>

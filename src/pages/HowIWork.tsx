@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const sections = [
   {
@@ -47,12 +48,14 @@ export default function HowIWork() {
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
-          <div className="space-y-6 animate-fade-in-up">
-            <h1>How I work</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              Clarity, directness, and a focus on outcomes over activities.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h1>How I work</h1>
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                Clarity, directness, and a focus on outcomes over activities.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -63,16 +66,18 @@ export default function HowIWork() {
           className="py-12 md:py-16 border-b border-border/50"
         >
           <div className="container-narrow">
-            <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
-              <h2 className="text-2xl">{section.title}</h2>
-              <div className="space-y-4">
-                {section.content.map((paragraph, i) => (
-                  <p key={i} className="text-muted-foreground">
-                    {paragraph}
-                  </p>
-                ))}
+            <AnimatedSection delay={index * 0.03}>
+              <div className="space-y-6">
+                <h2 className="text-2xl">{section.title}</h2>
+                <div className="space-y-4">
+                  {section.content.map((paragraph, i) => (
+                    <p key={i} className="text-muted-foreground">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
       ))}
@@ -80,33 +85,37 @@ export default function HowIWork() {
       {/* Different from Consulting */}
       <section className="section-spacing bg-card border-y border-border/50">
         <div className="container-narrow">
-          <div className="space-y-6">
-            <h2>How my work differs from traditional consulting</h2>
-            <p className="text-lg text-muted-foreground">
-              I do not run large consulting programmes or deliver long decks that sit on shelves. My work focuses on helping leaders make decisions, act on them, and move forward with clarity and accountability.
-            </p>
-            <p className="text-lg border-l-2 border-accent pl-6 py-2">
-              I remain close to execution and am comfortable owning outcomes, not just advising on them.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2>How my work differs from traditional consulting</h2>
+              <p className="text-lg text-muted-foreground">
+                I do not run large consulting programmes or deliver long decks that sit on shelves. My work focuses on helping leaders make decisions, act on them, and move forward with clarity and accountability.
+              </p>
+              <p className="text-lg border-l-2 border-accent pl-6 py-2">
+                I remain close to execution and am comfortable owning outcomes, not just advising on them.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* CTA */}
       <section className="section-spacing">
         <div className="container-narrow text-center">
-          <div className="space-y-6">
-            <h2>Want to understand more?</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              The best way to understand how I work is to have a conversation.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">
-                Get in touch
-                <ArrowRight size={16} />
-              </Link>
-            </Button>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2>Want to understand more?</h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                The best way to understand how I work is to have a conversation.
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact">
+                  Get in touch
+                  <ArrowRight size={16} />
+                </Link>
+              </Button>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </Layout>
