@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 
 const experienceCategories = [
   {
@@ -70,6 +71,11 @@ const experienceCategories = [
 export default function Experience() {
   return (
     <Layout>
+      <SEO 
+        title="Experience"
+        description="Commercial and operational leadership, advisory, platform building, and ecosystem development across Asia Pacific and beyond."
+        canonical="/experience"
+      />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">

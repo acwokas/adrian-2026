@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 import adrianPortrait from "@/assets/adrian-portrait.jpg";
 
 const serviceCards = [
@@ -36,6 +37,7 @@ const broughtInFor = [
 export default function Home() {
   return (
     <Layout>
+      <SEO canonical="/" />
       {/* Hero Section */}
       <section className="section-spacing">
         <div className="container-wide">

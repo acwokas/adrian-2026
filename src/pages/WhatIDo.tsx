@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 
 const services = [
   {
@@ -42,6 +43,11 @@ const services = [
 export default function WhatIDo() {
   return (
     <Layout>
+      <SEO 
+        title="What I Do"
+        description="Advisory sprints, fractional leadership, mentoring, and workshops. Senior commercial and operational support for organisations navigating complexity."
+        canonical="/what-i-do"
+      />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">

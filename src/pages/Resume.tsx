@@ -3,6 +3,7 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 
 const capabilities = [
@@ -62,6 +63,11 @@ export default function Resume() {
 
   return (
     <Layout>
+      <SEO 
+        title="Resume"
+        description="Professional background, capabilities, and career highlights. Senior commercial and operational leadership across technology, media, and professional services."
+        canonical="/resume"
+      />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
