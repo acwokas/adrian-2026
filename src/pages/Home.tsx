@@ -125,9 +125,11 @@ export default function Home() {
       <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide">
           <AnimatedSection>
-            <div className="space-y-12">
-              <h2>How I help</h2>
-              
+            <div className="space-y-10">
+              <div className="space-y-3">
+                <h2>How I help</h2>
+                <p className="text-muted-foreground">Engagement models I am typically brought in under.</p>
+              </div>
               <StaggeredChildren className="grid md:grid-cols-2 gap-6">
                 {serviceCards.map((card) => (
                   <StaggeredItem key={card.title}>
