@@ -23,6 +23,7 @@ export type Database = {
           id: string
           page_path: string | null
           referrer: string | null
+          session_id: string | null
           user_agent: string | null
         }
         Insert: {
@@ -33,6 +34,7 @@ export type Database = {
           id?: string
           page_path?: string | null
           referrer?: string | null
+          session_id?: string | null
           user_agent?: string | null
         }
         Update: {
@@ -43,6 +45,7 @@ export type Database = {
           id?: string
           page_path?: string | null
           referrer?: string | null
+          session_id?: string | null
           user_agent?: string | null
         }
         Relationships: []

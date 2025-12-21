@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users } from "lucide-react";
 import { format } from "date-fns";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -13,17 +14,21 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 
-type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'];
+type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'] & { session_id?: string | null };
 
 interface EventStats {
   totalEvents: number;
   ctaClicks: number;
   externalLinks: number;
   pageViews: number;
+  uniqueSessions: number;
   topEvents: { name: string; count: number }[];
   topPages: { path: string; count: number }[];
   recentEvents: AnalyticsEvent[];
   allEvents: AnalyticsEvent[];
+  eventsOverTime: { date: string; events: number; pageViews: number; clicks: number }[];
+  eventTypeDistribution: { name: string; value: number }[];
+  sessionJourneys: { sessionId: string; events: AnalyticsEvent[] }[];
 }
 
 export default function AdminDashboard() {
@@ -100,6 +105,11 @@ export default function AdminDashboard() {
       const ctaClicks = events.filter(e => e.event_type === 'cta_click').length;
       const externalLinks = events.filter(e => e.event_type === 'external_link').length;
       const pageViews = events.filter(e => e.event_type === 'page_view').length;
+      const clicks = events.filter(e => e.event_type === 'click').length;
+
+      // Unique sessions
+      const sessionIds = new Set(events.map(e => (e as AnalyticsEvent).session_id).filter(Boolean));
+      const uniqueSessions = sessionIds.size;
 
       // Top events by name
       const eventCounts: Record<string, number> = {};
@@ -123,15 +133,56 @@ export default function AdminDashboard() {
         .sort((a, b) => b.count - a.count)
         .slice(0, 10);
 
+      // Events over time (grouped by day)
+      const eventsByDay: Record<string, { events: number; pageViews: number; clicks: number }> = {};
+      events.forEach(e => {
+        const day = format(new Date(e.created_at), 'MMM dd');
+        if (!eventsByDay[day]) {
+          eventsByDay[day] = { events: 0, pageViews: 0, clicks: 0 };
+        }
+        eventsByDay[day].events++;
+        if (e.event_type === 'page_view') eventsByDay[day].pageViews++;
+        if (e.event_type === 'click' || e.event_type === 'cta_click') eventsByDay[day].clicks++;
+      });
+      const eventsOverTime = Object.entries(eventsByDay)
+        .map(([date, data]) => ({ date, ...data }))
+        .reverse();
+
+      // Event type distribution
+      const eventTypeDistribution = [
+        { name: 'Page Views', value: pageViews },
+        { name: 'CTA Clicks', value: ctaClicks },
+        { name: 'External Links', value: externalLinks },
+        { name: 'Clicks', value: clicks },
+      ].filter(item => item.value > 0);
+
+      // Session journeys (top 5 sessions with most events)
+      const sessionMap: Record<string, AnalyticsEvent[]> = {};
+      events.forEach(e => {
+        const sessionId = (e as AnalyticsEvent).session_id;
+        if (sessionId) {
+          if (!sessionMap[sessionId]) sessionMap[sessionId] = [];
+          sessionMap[sessionId].push(e as AnalyticsEvent);
+        }
+      });
+      const sessionJourneys = Object.entries(sessionMap)
+        .map(([sessionId, events]) => ({ sessionId, events: events.reverse() }))
+        .sort((a, b) => b.events.length - a.events.length)
+        .slice(0, 5);
+
       setStats({
         totalEvents: events.length,
         ctaClicks,
         externalLinks,
         pageViews,
+        uniqueSessions,
         topEvents,
         topPages,
         recentEvents: events.slice(0, 20),
-        allEvents: events,
+        allEvents: events as AnalyticsEvent[],
+        eventsOverTime,
+        eventTypeDistribution,
+        sessionJourneys,
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -155,11 +206,12 @@ export default function AdminDashboard() {
       return;
     }
 
-    const headers = ['Event Name', 'Event Type', 'Page Path', 'Referrer', 'User Agent', 'Event Data', 'Created At'];
+    const headers = ['Event Name', 'Event Type', 'Page Path', 'Session ID', 'Referrer', 'User Agent', 'Event Data', 'Created At'];
     const rows = stats.allEvents.map(event => [
       event.event_name,
       event.event_type,
       event.page_path || '',
+      event.session_id || '',
       event.referrer || '',
       event.user_agent || '',
       JSON.stringify(event.event_data || {}),
@@ -287,7 +339,7 @@ export default function AdminDashboard() {
             ) : stats ? (
               <>
                 {/* Stats Cards */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                   <Card>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
@@ -297,6 +349,17 @@ export default function AdminDashboard() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-3xl font-bold">{stats.totalEvents}</p>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                        <Users size={16} />
+                        Sessions
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-3xl font-bold">{stats.uniqueSessions}</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -333,6 +396,160 @@ export default function AdminDashboard() {
                     </CardContent>
                   </Card>
                 </div>
+
+                {/* Charts */}
+                <div className="grid lg:grid-cols-3 gap-6">
+                  {/* Events Over Time Chart */}
+                  <Card className="lg:col-span-2">
+                    <CardHeader>
+                      <CardTitle>Events Over Time</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {stats.eventsOverTime.length > 0 ? (
+                        <ResponsiveContainer width="100%" height={250}>
+                          <AreaChart data={stats.eventsOverTime}>
+                            <defs>
+                              <linearGradient id="colorEvents" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
+                                <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
+                              </linearGradient>
+                              <linearGradient id="colorPageViews" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3}/>
+                                <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0}/>
+                              </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                            <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                            <Tooltip 
+                              contentStyle={{ 
+                                backgroundColor: 'hsl(var(--card))', 
+                                border: '1px solid hsl(var(--border))',
+                                borderRadius: '8px'
+                              }} 
+                            />
+                            <Area 
+                              type="monotone" 
+                              dataKey="events" 
+                              stroke="hsl(var(--primary))" 
+                              fillOpacity={1} 
+                              fill="url(#colorEvents)" 
+                              name="Total Events"
+                            />
+                            <Area 
+                              type="monotone" 
+                              dataKey="pageViews" 
+                              stroke="hsl(var(--accent))" 
+                              fillOpacity={1} 
+                              fill="url(#colorPageViews)" 
+                              name="Page Views"
+                            />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      ) : (
+                        <p className="text-muted-foreground text-sm text-center py-12">No data to display</p>
+                      )}
+                    </CardContent>
+                  </Card>
+
+                  {/* Event Type Distribution */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Event Distribution</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {stats.eventTypeDistribution.length > 0 ? (
+                        <ResponsiveContainer width="100%" height={250}>
+                          <PieChart>
+                            <Pie
+                              data={stats.eventTypeDistribution}
+                              cx="50%"
+                              cy="50%"
+                              innerRadius={50}
+                              outerRadius={80}
+                              paddingAngle={5}
+                              dataKey="value"
+                            >
+                              {stats.eventTypeDistribution.map((_, index) => (
+                                <Cell 
+                                  key={`cell-${index}`} 
+                                  fill={[
+                                    'hsl(var(--primary))', 
+                                    'hsl(var(--accent))', 
+                                    'hsl(var(--secondary))',
+                                    'hsl(var(--muted))'
+                                  ][index % 4]} 
+                                />
+                              ))}
+                            </Pie>
+                            <Tooltip 
+                              contentStyle={{ 
+                                backgroundColor: 'hsl(var(--card))', 
+                                border: '1px solid hsl(var(--border))',
+                                borderRadius: '8px'
+                              }} 
+                            />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      ) : (
+                        <p className="text-muted-foreground text-sm text-center py-12">No data to display</p>
+                      )}
+                      <div className="flex flex-wrap gap-3 justify-center mt-2">
+                        {stats.eventTypeDistribution.map((item, i) => (
+                          <div key={item.name} className="flex items-center gap-2 text-xs">
+                            <div 
+                              className="w-3 h-3 rounded-full" 
+                              style={{ 
+                                backgroundColor: [
+                                  'hsl(var(--primary))', 
+                                  'hsl(var(--accent))', 
+                                  'hsl(var(--secondary))',
+                                  'hsl(var(--muted))'
+                                ][i % 4] 
+                              }} 
+                            />
+                            <span className="text-muted-foreground">{item.name}: {item.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Session Journeys */}
+                {stats.sessionJourneys.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Recent User Journeys</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-6">
+                        {stats.sessionJourneys.map((session) => (
+                          <div key={session.sessionId} className="space-y-2">
+                            <div className="flex items-center gap-2 text-sm">
+                              <Users size={14} className="text-muted-foreground" />
+                              <span className="font-medium">Session</span>
+                              <span className="text-xs text-muted-foreground font-mono">{session.sessionId.slice(0, 12)}...</span>
+                              <span className="text-xs text-muted-foreground">({session.events.length} events)</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2 pl-6">
+                              {session.events.map((event, i) => (
+                                <div key={i} className="flex items-center gap-1">
+                                  <span className="px-2 py-1 bg-secondary rounded text-xs">
+                                    {event.page_path || event.event_name}
+                                  </span>
+                                  {i < session.events.length - 1 && (
+                                    <span className="text-muted-foreground">→</span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Top Events & Pages */}
                 <div className="grid lg:grid-cols-2 gap-6">
