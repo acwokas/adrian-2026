@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2, Video, Play } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2, Video, Play, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, FunnelChart, Funnel, LabelList } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -554,10 +554,16 @@ export default function AdminDashboard() {
                   Logged in as {user.email}
                 </p>
               </div>
-              <Button variant="outline" onClick={handleSignOut}>
-                <LogOut size={16} />
-                Sign Out
-              </Button>
+              <div className="flex gap-2">
+                <Button variant="outline" onClick={fetchStats} disabled={loadingStats}>
+                  <RefreshCw size={16} className={loadingStats ? "animate-spin" : ""} />
+                  Refresh
+                </Button>
+                <Button variant="outline" onClick={handleSignOut}>
+                  <LogOut size={16} />
+                  Sign Out
+                </Button>
+              </div>
             </div>
 
             {/* Date Range Filter */}
