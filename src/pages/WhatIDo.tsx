@@ -110,9 +110,9 @@ export default function WhatIDo() {
                 Mentoring and capability building form part of how I work with leaders and teams, particularly where long-term strength matters more than short-term fixes.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-10">
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
+              <div className="grid md:grid-cols-2 gap-12 md:gap-10">
+                <div className="space-y-5">
+                  <h4 className="text-sm font-semibold text-accent uppercase tracking-wider">
                     Who this is for
                   </h4>
                   <ul className="space-y-2 text-muted-foreground">
@@ -122,8 +122,8 @@ export default function WhatIDo() {
                   </ul>
                 </div>
 
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
+                <div className="space-y-5">
+                  <h4 className="text-sm font-semibold text-accent uppercase tracking-wider">
                     Why it matters
                   </h4>
                   <p className="text-muted-foreground">
