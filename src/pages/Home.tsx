@@ -90,7 +90,7 @@ export default function Home() {
           </div>
 
           {/* Desktop: Three column grid */}
-          <div className="hidden lg:grid lg:grid-cols-[40%_35%_25%] lg:gap-8 lg:items-center">
+          <div className="hidden lg:grid lg:grid-cols-[42%_28%_30%] lg:gap-6 lg:items-center">
             
             {/* Column 1: Headline, sub-line, CTA */}
             <motion.div 
@@ -116,41 +116,41 @@ export default function Home() {
 
             {/* Column 2: When I am usually brought in */}
             <motion.div 
-              className="border-l border-border/30 pl-12 pr-4"
+              className="border-l border-border/30 pl-8 pr-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <p className="text-sm uppercase tracking-wider text-foreground/80 font-medium mb-5">
+              <p className="text-sm uppercase tracking-wider text-foreground/80 font-medium mb-4">
                 When I am usually brought in
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-2.5 mb-5">
                 {broughtInFor.map((item) => (
                   <li 
                     key={item.bold}
-                    className="text-base leading-relaxed text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-px before:bg-accent"
+                    className="text-[0.9375rem] leading-snug text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent"
                   >
                     <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
                   </li>
                 ))}
               </ul>
-              <p className="text-base text-foreground font-medium leading-relaxed">
-                I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
+              <p className="text-[0.9375rem] text-foreground font-medium leading-snug">
+                I challenge assumptions and refocus teams on what matters.
               </p>
             </motion.div>
 
             {/* Column 3: Portrait */}
             <motion.div 
-              className="flex items-center justify-end"
+              className="flex items-center justify-center h-full"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="w-full max-w-[200px] aspect-[3/4] overflow-hidden">
+              <div className="w-full max-w-[260px] aspect-[3/4] overflow-hidden">
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover object-top grayscale scale-110"
                 />
               </div>
             </motion.div>
