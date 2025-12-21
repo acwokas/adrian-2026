@@ -47,7 +47,7 @@ export default function Home() {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div 
-              className="space-y-6 md:space-y-8"
+              className="space-y-8 md:space-y-10"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
@@ -55,10 +55,10 @@ export default function Home() {
               <h1>
                 I help organisations and leaders make better decisions in complex environments.
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl pb-2">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
                 Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
               </p>
-              <div className="flex flex-col items-start gap-4 pt-2">
+              <div className="flex flex-col items-start gap-4 pt-4">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call
