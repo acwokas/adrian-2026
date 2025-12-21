@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet } from "lucide-react";
 import { format } from "date-fns";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,8 @@ interface EventStats {
   externalLinks: number;
   pageViews: number;
   uniqueSessions: number;
+  bounceRate: number;
+  avgSessionDuration: number;
   topEvents: { name: string; count: number }[];
   topPages: { path: string; count: number }[];
   recentEvents: AnalyticsEvent[];
@@ -29,6 +31,8 @@ interface EventStats {
   eventsOverTime: { date: string; events: number; pageViews: number; clicks: number }[];
   eventTypeDistribution: { name: string; value: number }[];
   sessionJourneys: { sessionId: string; events: AnalyticsEvent[] }[];
+  deviceBreakdown: { name: string; value: number }[];
+  browserBreakdown: { name: string; value: number }[];
 }
 
 export default function AdminDashboard() {
@@ -170,12 +174,92 @@ export default function AdminDashboard() {
         .sort((a, b) => b.events.length - a.events.length)
         .slice(0, 5);
 
+      // Calculate bounce rate (sessions with only 1 page view)
+      let bouncedSessions = 0;
+      let totalSessionsWithPageViews = 0;
+      Object.values(sessionMap).forEach(sessionEvents => {
+        const sessionPageViews = sessionEvents.filter(e => e.event_type === 'page_view').length;
+        if (sessionPageViews > 0) {
+          totalSessionsWithPageViews++;
+          if (sessionPageViews === 1) {
+            bouncedSessions++;
+          }
+        }
+      });
+      const bounceRate = totalSessionsWithPageViews > 0 
+        ? Math.round((bouncedSessions / totalSessionsWithPageViews) * 100) 
+        : 0;
+
+      // Calculate average session duration
+      let totalDuration = 0;
+      let sessionsWithDuration = 0;
+      Object.values(sessionMap).forEach(sessionEvents => {
+        if (sessionEvents.length > 1) {
+          const sortedEvents = [...sessionEvents].sort(
+            (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          );
+          const firstEvent = new Date(sortedEvents[0].created_at).getTime();
+          const lastEvent = new Date(sortedEvents[sortedEvents.length - 1].created_at).getTime();
+          const duration = lastEvent - firstEvent;
+          if (duration > 0) {
+            totalDuration += duration;
+            sessionsWithDuration++;
+          }
+        }
+      });
+      const avgSessionDuration = sessionsWithDuration > 0 
+        ? Math.round(totalDuration / sessionsWithDuration / 1000) // in seconds
+        : 0;
+
+      // Parse device type from user agent
+      const parseDevice = (userAgent: string | null): string => {
+        if (!userAgent) return 'Unknown';
+        const ua = userAgent.toLowerCase();
+        if (ua.includes('mobile') || ua.includes('android') && !ua.includes('tablet')) return 'Mobile';
+        if (ua.includes('tablet') || ua.includes('ipad')) return 'Tablet';
+        return 'Desktop';
+      };
+
+      // Parse browser from user agent
+      const parseBrowser = (userAgent: string | null): string => {
+        if (!userAgent) return 'Unknown';
+        const ua = userAgent.toLowerCase();
+        if (ua.includes('edg/')) return 'Edge';
+        if (ua.includes('chrome') && !ua.includes('edg')) return 'Chrome';
+        if (ua.includes('firefox')) return 'Firefox';
+        if (ua.includes('safari') && !ua.includes('chrome')) return 'Safari';
+        if (ua.includes('opera') || ua.includes('opr')) return 'Opera';
+        return 'Other';
+      };
+
+      // Device breakdown
+      const deviceCounts: Record<string, number> = {};
+      events.forEach(e => {
+        const device = parseDevice(e.user_agent);
+        deviceCounts[device] = (deviceCounts[device] || 0) + 1;
+      });
+      const deviceBreakdown = Object.entries(deviceCounts)
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => b.value - a.value);
+
+      // Browser breakdown
+      const browserCounts: Record<string, number> = {};
+      events.forEach(e => {
+        const browser = parseBrowser(e.user_agent);
+        browserCounts[browser] = (browserCounts[browser] || 0) + 1;
+      });
+      const browserBreakdown = Object.entries(browserCounts)
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => b.value - a.value);
+
       setStats({
         totalEvents: events.length,
         ctaClicks,
         externalLinks,
         pageViews,
         uniqueSessions,
+        bounceRate,
+        avgSessionDuration,
         topEvents,
         topPages,
         recentEvents: events.slice(0, 20),
@@ -183,6 +267,8 @@ export default function AdminDashboard() {
         eventsOverTime,
         eventTypeDistribution,
         sessionJourneys,
+        deviceBreakdown,
+        browserBreakdown,
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -338,7 +424,7 @@ export default function AdminDashboard() {
               </div>
             ) : stats ? (
               <>
-                {/* Stats Cards */}
+                {/* Stats Cards - Row 1 */}
                 <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                   <Card>
                     <CardHeader className="pb-2">
@@ -365,6 +451,48 @@ export default function AdminDashboard() {
                   <Card>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                        <Eye size={16} />
+                        Page Views
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-3xl font-bold">{stats.pageViews}</p>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                        <TrendingDown size={16} />
+                        Bounce Rate
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-3xl font-bold">{stats.bounceRate}%</p>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                        <Clock size={16} />
+                        Avg. Duration
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-3xl font-bold">
+                        {stats.avgSessionDuration >= 60 
+                          ? `${Math.floor(stats.avgSessionDuration / 60)}m ${stats.avgSessionDuration % 60}s`
+                          : `${stats.avgSessionDuration}s`
+                        }
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Stats Cards - Row 2 */}
+                <div className="grid grid-cols-3 lg:grid-cols-3 gap-4">
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                         <MousePointerClick size={16} />
                         CTA Clicks
                       </CardTitle>
@@ -387,12 +515,14 @@ export default function AdminDashboard() {
                   <Card>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                        <Eye size={16} />
-                        Page Views
+                        <Monitor size={16} />
+                        Desktop
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-3xl font-bold">{stats.pageViews}</p>
+                      <p className="text-3xl font-bold">
+                        {stats.deviceBreakdown.find(d => d.name === 'Desktop')?.value || 0}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>
@@ -516,7 +646,91 @@ export default function AdminDashboard() {
                   </Card>
                 </div>
 
-                {/* Session Journeys */}
+                {/* Device and Browser Charts */}
+                <div className="grid lg:grid-cols-2 gap-6">
+                  {/* Device Breakdown */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Monitor size={18} />
+                        Device Breakdown
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {stats.deviceBreakdown.length > 0 ? (
+                        <>
+                          <ResponsiveContainer width="100%" height={200}>
+                            <BarChart data={stats.deviceBreakdown} layout="vertical">
+                              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                              <XAxis type="number" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                              <YAxis dataKey="name" type="category" stroke="hsl(var(--muted-foreground))" fontSize={12} width={80} />
+                              <Tooltip 
+                                contentStyle={{ 
+                                  backgroundColor: 'hsl(var(--card))', 
+                                  border: '1px solid hsl(var(--border))',
+                                  borderRadius: '8px'
+                                }} 
+                              />
+                              <Bar dataKey="value" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                            </BarChart>
+                          </ResponsiveContainer>
+                          <div className="flex justify-center gap-6 mt-4">
+                            {stats.deviceBreakdown.map((device) => (
+                              <div key={device.name} className="flex items-center gap-2 text-sm">
+                                {device.name === 'Desktop' && <Monitor size={16} className="text-muted-foreground" />}
+                                {device.name === 'Mobile' && <Smartphone size={16} className="text-muted-foreground" />}
+                                {device.name === 'Tablet' && <Tablet size={16} className="text-muted-foreground" />}
+                                <span className="text-muted-foreground">{device.name}:</span>
+                                <span className="font-medium">{device.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <p className="text-muted-foreground text-sm text-center py-12">No data to display</p>
+                      )}
+                    </CardContent>
+                  </Card>
+
+                  {/* Browser Breakdown */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Browser Breakdown</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {stats.browserBreakdown.length > 0 ? (
+                        <>
+                          <ResponsiveContainer width="100%" height={200}>
+                            <BarChart data={stats.browserBreakdown} layout="vertical">
+                              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                              <XAxis type="number" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                              <YAxis dataKey="name" type="category" stroke="hsl(var(--muted-foreground))" fontSize={12} width={80} />
+                              <Tooltip 
+                                contentStyle={{ 
+                                  backgroundColor: 'hsl(var(--card))', 
+                                  border: '1px solid hsl(var(--border))',
+                                  borderRadius: '8px'
+                                }} 
+                              />
+                              <Bar dataKey="value" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
+                            </BarChart>
+                          </ResponsiveContainer>
+                          <div className="flex flex-wrap justify-center gap-4 mt-4">
+                            {stats.browserBreakdown.slice(0, 5).map((browser) => (
+                              <div key={browser.name} className="flex items-center gap-2 text-sm">
+                                <span className="text-muted-foreground">{browser.name}:</span>
+                                <span className="font-medium">{browser.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <p className="text-muted-foreground text-sm text-center py-12">No data to display</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+
                 {stats.sessionJourneys.length > 0 && (
                   <Card>
                     <CardHeader>
