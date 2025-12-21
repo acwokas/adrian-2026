@@ -83,7 +83,7 @@ export default function Home() {
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover object-[center_15%] grayscale"
                 />
               </div>
             </motion.div>
@@ -150,7 +150,7 @@ export default function Home() {
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
-                  className="w-full h-full object-cover object-top grayscale scale-110"
+                  className="w-full h-full object-cover object-[center_15%] grayscale"
                 />
               </div>
             </motion.div>
