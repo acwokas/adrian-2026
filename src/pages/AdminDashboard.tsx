@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar } from "lucide-react";
+import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { useAuth } from "@/hooks/useAuth";
@@ -20,6 +23,7 @@ interface EventStats {
   topEvents: { name: string; count: number }[];
   topPages: { path: string; count: number }[];
   recentEvents: AnalyticsEvent[];
+  allEvents: AnalyticsEvent[];
 }
 
 export default function AdminDashboard() {
@@ -28,7 +32,9 @@ export default function AdminDashboard() {
   const { user, isAdmin, loading, signOut } = useAuth();
   const [stats, setStats] = useState<EventStats | null>(null);
   const [loadingStats, setLoadingStats] = useState(true);
-  const [dateRange, setDateRange] = useState<'today' | 'week' | 'month' | 'all'>('week');
+  const [dateRange, setDateRange] = useState<'today' | 'week' | 'month' | 'custom' | 'all'>('week');
+  const [customStartDate, setCustomStartDate] = useState<string>(format(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'));
+  const [customEndDate, setCustomEndDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'));
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
@@ -42,28 +48,43 @@ export default function AdminDashboard() {
     }
   }, [user, isAdmin, dateRange]);
 
-  const getDateFilter = () => {
+  const getDateFilter = (): { start: string | null; end: string | null } => {
     const now = new Date();
     switch (dateRange) {
       case 'today':
-        return new Date(now.setHours(0, 0, 0, 0)).toISOString();
+        const todayStart = new Date(now);
+        todayStart.setHours(0, 0, 0, 0);
+        return { start: todayStart.toISOString(), end: null };
       case 'week':
-        return new Date(now.setDate(now.getDate() - 7)).toISOString();
+        const weekAgo = new Date(now);
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        return { start: weekAgo.toISOString(), end: null };
       case 'month':
-        return new Date(now.setDate(now.getDate() - 30)).toISOString();
+        const monthAgo = new Date(now);
+        monthAgo.setDate(monthAgo.getDate() - 30);
+        return { start: monthAgo.toISOString(), end: null };
+      case 'custom':
+        const startDate = new Date(customStartDate);
+        startDate.setHours(0, 0, 0, 0);
+        const endDate = new Date(customEndDate);
+        endDate.setHours(23, 59, 59, 999);
+        return { start: startDate.toISOString(), end: endDate.toISOString() };
       default:
-        return null;
+        return { start: null, end: null };
     }
   };
 
   const fetchStats = async () => {
     setLoadingStats(true);
     try {
-      const dateFilter = getDateFilter();
+      const { start, end } = getDateFilter();
       
       let query = supabase.from('analytics_events').select('*');
-      if (dateFilter) {
-        query = query.gte('created_at', dateFilter);
+      if (start) {
+        query = query.gte('created_at', start);
+      }
+      if (end) {
+        query = query.lte('created_at', end);
       }
       
       const { data: events, error } = await query.order('created_at', { ascending: false });
@@ -110,6 +131,7 @@ export default function AdminDashboard() {
         topEvents,
         topPages,
         recentEvents: events.slice(0, 20),
+        allEvents: events,
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -121,6 +143,48 @@ export default function AdminDashboard() {
     } finally {
       setLoadingStats(false);
     }
+  };
+
+  const exportToCSV = () => {
+    if (!stats || stats.allEvents.length === 0) {
+      toast({
+        title: "No data to export",
+        description: "There are no events to export for the selected date range.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const headers = ['Event Name', 'Event Type', 'Page Path', 'Referrer', 'User Agent', 'Event Data', 'Created At'];
+    const rows = stats.allEvents.map(event => [
+      event.event_name,
+      event.event_type,
+      event.page_path || '',
+      event.referrer || '',
+      event.user_agent || '',
+      JSON.stringify(event.event_data || {}),
+      event.created_at,
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `analytics-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "Export complete",
+      description: `Exported ${stats.allEvents.length} events to CSV.`,
+    });
   };
 
   const handleSignOut = async () => {
@@ -167,17 +231,53 @@ export default function AdminDashboard() {
             </div>
 
             {/* Date Range Filter */}
-            <div className="flex gap-2 flex-wrap">
-              {(['today', 'week', 'month', 'all'] as const).map((range) => (
-                <Button
-                  key={range}
-                  variant={dateRange === range ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setDateRange(range)}
-                >
-                  {range === 'today' ? 'Today' : range === 'week' ? 'Last 7 Days' : range === 'month' ? 'Last 30 Days' : 'All Time'}
-                </Button>
-              ))}
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-end">
+              <div className="flex gap-2 flex-wrap">
+                {(['today', 'week', 'month', 'custom', 'all'] as const).map((range) => (
+                  <Button
+                    key={range}
+                    variant={dateRange === range ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setDateRange(range)}
+                  >
+                    {range === 'today' ? 'Today' : range === 'week' ? 'Last 7 Days' : range === 'month' ? 'Last 30 Days' : range === 'custom' ? 'Custom' : 'All Time'}
+                  </Button>
+                ))}
+              </div>
+              
+              {dateRange === 'custom' && (
+                <div className="flex gap-3 items-end">
+                  <div className="space-y-1">
+                    <Label htmlFor="start-date" className="text-xs">Start Date</Label>
+                    <Input
+                      id="start-date"
+                      type="date"
+                      value={customStartDate}
+                      onChange={(e) => setCustomStartDate(e.target.value)}
+                      className="w-36"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="end-date" className="text-xs">End Date</Label>
+                    <Input
+                      id="end-date"
+                      type="date"
+                      value={customEndDate}
+                      onChange={(e) => setCustomEndDate(e.target.value)}
+                      className="w-36"
+                    />
+                  </div>
+                  <Button size="sm" onClick={fetchStats}>
+                    <Calendar size={14} />
+                    Apply
+                  </Button>
+                </div>
+              )}
+              
+              <Button variant="outline" size="sm" onClick={exportToCSV} className="ml-auto">
+                <Download size={14} />
+                Export CSV
+              </Button>
             </div>
 
             {loadingStats ? (
