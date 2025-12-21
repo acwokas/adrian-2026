@@ -50,6 +50,9 @@
     --text-secondary: 35 15% 70%;
     --text-muted: 35 10% 50%;
     
+    /* Section backgrounds */
+    --section-light: 0 0% 12%;
+    
     /* Sidebar defaults */
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 35 25% 95%;

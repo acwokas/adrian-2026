@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* When I'm Brought In */}
-      <section className="section-spacing border-t border-border/50">
+      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-10">
@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* How I Help */}
-      <section className="section-spacing border-t border-border/50">
+      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide">
           <AnimatedSection>
             <div className="space-y-12">
@@ -148,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* Shaping the Conversation */}
-      <section className="section-spacing border-t border-border/50">
+      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <div className="space-y-12">
             <AnimatedSection>
