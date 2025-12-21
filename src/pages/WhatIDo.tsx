@@ -187,7 +187,7 @@ export default function WhatIDo() {
               </div>
               <div className="space-y-4">
                 <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
-                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. These are not training programmes—they are designed to create clarity, surface assumptions, and agree decisive next steps.
+                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps.
                 </p>
                 <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
                   Delivered through direct engagements and selected partners, including Blackstorm Asia.
