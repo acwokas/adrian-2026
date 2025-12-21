@@ -78,6 +78,23 @@ export const useAnalytics = () => {
     trackEvent({ eventType: 'click', eventName, eventData });
   };
 
+  const trackClickWithPosition = (eventName: string, event: MouseEvent | React.MouseEvent, eventData?: Record<string, unknown>) => {
+    const x = Math.round((event.clientX / window.innerWidth) * 100);
+    const y = Math.round((event.clientY / window.innerHeight) * 100);
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    trackEvent({ 
+      eventType: 'click', 
+      eventName, 
+      eventData: { 
+        ...eventData, 
+        clickPosition: { x, y, viewportWidth, viewportHeight },
+        elementTag: (event.target as HTMLElement)?.tagName?.toLowerCase(),
+        elementText: (event.target as HTMLElement)?.textContent?.slice(0, 50),
+      } 
+    });
+  };
+
   const trackCTAClick = (eventName: string, eventData?: Record<string, unknown>) => {
     trackEvent({ eventType: 'cta_click', eventName, eventData });
   };
@@ -98,5 +115,5 @@ export const useAnalytics = () => {
     trackEvent({ eventType: 'form_submit', eventName: `${formName}_submit`, eventData: { success } });
   };
 
-  return { trackClick, trackCTAClick, trackExternalLink, trackPageView, trackFormStart, trackFormSubmit };
+  return { trackClick, trackClickWithPosition, trackCTAClick, trackExternalLink, trackPageView, trackFormStart, trackFormSubmit };
 };
