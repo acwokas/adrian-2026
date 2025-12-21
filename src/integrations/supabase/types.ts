@@ -107,7 +107,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
-      event_type: "click" | "page_view" | "cta_click" | "external_link"
+      event_type:
+        | "click"
+        | "page_view"
+        | "cta_click"
+        | "external_link"
+        | "form_start"
+        | "form_submit"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -236,7 +242,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
-      event_type: ["click", "page_view", "cta_click", "external_link"],
+      event_type: [
+        "click",
+        "page_view",
+        "cta_click",
+        "external_link",
+        "form_start",
+        "form_submit",
+      ],
     },
   },
 } as const
