@@ -10,6 +10,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { TrackedExternalLink } from "@/components/TrackedLink";
+import { TrackedButton } from "@/components/TrackedButton";
+import { trackEvent } from "@/hooks/useAnalytics";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -94,12 +97,17 @@ export default function Contact() {
                   <p className="hidden lg:block text-muted-foreground">
                     This is a short, structured conversation to assess the situation, clarify scope, and determine whether engagement makes sense.
                   </p>
-                  <Button variant="hero" size="lg" asChild>
-                    <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
+                  <TrackedButton variant="hero" size="lg" asChild eventName="book_call" eventData={{ page: "contact" }} isCTA>
+                    <TrackedExternalLink 
+                      href="https://calendly.com/adrian-watkins1/new-meeting" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      eventName="calendly_link"
+                    >
                       <Calendar size={16} />
                       Book a 30-minute call
-                    </a>
-                  </Button>
+                    </TrackedExternalLink>
+                  </TrackedButton>
                 </div>
 
                 <div className="space-y-4 pt-6 border-t border-border/50">
@@ -194,7 +202,15 @@ export default function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                  <TrackedButton 
+                    type="submit" 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full" 
+                    disabled={isSubmitting}
+                    eventName="contact_form_submit"
+                    isCTA
+                  >
                     {isSubmitting ? (
                       <>
                         <Loader2 size={16} className="animate-spin" />
@@ -206,7 +222,7 @@ export default function Contact() {
                         Send message
                       </>
                     )}
-                  </Button>
+                  </TrackedButton>
                 </form>
               </div>
             </AnimatedSection>

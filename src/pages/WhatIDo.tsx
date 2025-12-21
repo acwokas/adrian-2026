@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
+import { TrackedExternalLink } from "@/components/TrackedLink";
+import { TrackedButton } from "@/components/TrackedButton";
 
 export default function WhatIDo() {
   return (
@@ -207,12 +208,17 @@ export default function WhatIDo() {
               <p className="text-muted-foreground max-w-lg mx-auto">
                 If this sounds relevant, the best next step is a short conversation to assess fit and scope.
               </p>
-              <Button variant="hero" size="lg" asChild>
-                <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
+              <TrackedButton variant="hero" size="lg" asChild eventName="book_clarity_call" eventData={{ page: "what-i-do" }} isCTA>
+                <TrackedExternalLink 
+                  href="https://calendly.com/adrian-watkins1/new-meeting" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  eventName="calendly_link"
+                >
                   Book a 30-minute clarity call
                   <ArrowRight size={16} />
-                </a>
-              </Button>
+                </TrackedExternalLink>
+              </TrackedButton>
             </div>
           </AnimatedSection>
         </div>

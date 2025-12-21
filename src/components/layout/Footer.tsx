@@ -1,4 +1,5 @@
 import { Linkedin } from "lucide-react";
+import { TrackedExternalLink } from "@/components/TrackedLink";
 
 export function Footer() {
   return (
@@ -7,15 +8,16 @@ export function Footer() {
         <div className="space-y-1 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2">
             <p className="text-sm font-medium text-foreground">Adrian Watkins</p>
-            <a
+            <TrackedExternalLink
               href="https://www.linkedin.com/in/adrianwatkins"
               target="_blank"
               rel="noopener noreferrer"
+              eventName="linkedin_footer"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={16} />
-            </a>
+            </TrackedExternalLink>
           </div>
           <p className="text-sm text-muted-foreground">Senior Commercial, Strategic and Operational Leader</p>
           <p className="text-xs text-muted-foreground">

@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -23,19 +24,21 @@ export function Header() {
       <nav className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link 
+          <TrackedLink 
             to="/" 
+            eventName="nav_logo"
             className="text-lg font-medium text-foreground hover:text-accent transition-colors"
           >
             Adrian Watkins
-          </Link>
+          </TrackedLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link
+              <TrackedLink
                 key={item.path}
                 to={item.path}
+                eventName={`nav_${item.label.toLowerCase().replace(/\s/g, '_')}`}
                 className={cn(
                   "text-sm transition-colors",
                   location.pathname === item.path
@@ -44,7 +47,7 @@ export function Header() {
                 )}
               >
                 {item.label}
-              </Link>
+              </TrackedLink>
             ))}
             <ThemeToggle />
           </div>
@@ -66,9 +69,10 @@ export function Header() {
           <div className="md:hidden py-4 border-t border-border/50">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
-                <Link
+                <TrackedLink
                   key={item.path}
                   to={item.path}
+                  eventName={`nav_mobile_${item.label.toLowerCase().replace(/\s/g, '_')}`}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "text-sm py-2 transition-colors",
@@ -78,7 +82,7 @@ export function Header() {
                   )}
                 >
                   {item.label}
-                </Link>
+                </TrackedLink>
               ))}
               <div className="pt-2 border-t border-border/50">
                 <ThemeToggle />
