@@ -93,7 +93,7 @@ export default function Contact() {
                     This is a short, structured conversation to assess the situation, clarify scope, and determine whether engagement makes sense.
                   </p>
                   <Button variant="hero" size="lg" asChild>
-                    <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
+                    <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                       <Calendar size={16} />
                       Book a 30-minute call
                     </a>

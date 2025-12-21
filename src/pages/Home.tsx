@@ -66,7 +66,7 @@ export default function Home() {
               
               <div className="pt-2">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
                 </Button>
@@ -107,7 +107,7 @@ export default function Home() {
               </p>
               <div className="pt-3">
                 <Button variant="hero" size="lg" asChild>
-                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
                 </Button>
@@ -278,7 +278,7 @@ export default function Home() {
               </p>
               <div className="pt-2 lg:pt-4">
                 <Button variant="hero" size="lg" asChild>
-                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
                 </Button>
