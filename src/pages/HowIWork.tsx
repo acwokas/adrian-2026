@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 
 const sections = [
   {
@@ -45,6 +46,11 @@ const sections = [
 export default function HowIWork() {
   return (
     <Layout>
+      <SEO 
+        title="How I Work"
+        description="Clarity, directness, and a focus on outcomes. How I approach problems, work with leadership teams, and build capability without dependency."
+        canonical="/how-i-work"
+      />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">

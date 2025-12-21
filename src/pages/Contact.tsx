@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -51,6 +52,11 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact"
+        description="Get in touch for advisory, fractional leadership, or a first conversation. Book a clarity call or send a message."
+        canonical="/contact"
+      />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
