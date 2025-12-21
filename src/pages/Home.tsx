@@ -116,25 +116,25 @@ export default function Home() {
 
             {/* Column 2: When I am usually brought in */}
             <motion.div 
-              className="border-l border-border/30 pl-8"
+              className="border-l border-border/30 pl-12 pr-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-medium mb-5">
                 When I am usually brought in
               </p>
-              <ul className="space-y-2.5 mb-5">
+              <ul className="space-y-3 mb-6">
                 {broughtInFor.map((item) => (
                   <li 
                     key={item.bold}
-                    className="text-[0.875rem] text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1 before:h-px before:bg-accent"
+                    className="text-base leading-relaxed text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-px before:bg-accent"
                   >
                     <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
                   </li>
                 ))}
               </ul>
-              <p className="text-[0.875rem] text-foreground font-medium leading-snug">
+              <p className="text-base text-foreground font-medium leading-relaxed">
                 I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
               </p>
             </motion.div>
