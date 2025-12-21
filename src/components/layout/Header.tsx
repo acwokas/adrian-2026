@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -54,6 +55,7 @@ export function Header() {
             >
               <Linkedin size={18} />
             </a>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,6 +99,9 @@ export function Header() {
                 <Linkedin size={18} />
                 LinkedIn
               </a>
+              <div className="pt-2 border-t border-border/50">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}
