@@ -107,7 +107,7 @@ export default function Resume() {
               </div>
 
               <p className="text-lg border-l-2 border-accent pl-6 py-2">
-                My work is measured by improved focus, stronger execution, and better commercial outcomes.
+                Measured by improved focus, stronger execution, and better commercial outcomes.
               </p>
             </div>
           </AnimatedSection>
