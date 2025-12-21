@@ -1,6 +1,6 @@
 import { Link, LinkProps } from "react-router-dom";
 import { trackEvent } from "@/hooks/useAnalytics";
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 
 interface TrackedLinkProps extends LinkProps {
   eventName: string;
@@ -25,15 +25,19 @@ interface TrackedExternalLinkProps extends React.AnchorHTMLAttributes<HTMLAnchor
   children: ReactNode;
 }
 
-export function TrackedExternalLink({ eventName, children, onClick, href, ...props }: TrackedExternalLinkProps) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    trackEvent({ eventType: 'external_link', eventName, eventData: { url: href } });
-    onClick?.(e);
-  };
+export const TrackedExternalLink = forwardRef<HTMLAnchorElement, TrackedExternalLinkProps>(
+  ({ eventName, children, onClick, href, ...props }, ref) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      trackEvent({ eventType: 'external_link', eventName, eventData: { url: href } });
+      onClick?.(e);
+    };
 
-  return (
-    <a {...props} href={href} onClick={handleClick}>
-      {children}
-    </a>
-  );
-}
+    return (
+      <a ref={ref} {...props} href={href} onClick={handleClick}>
+        {children}
+      </a>
+    );
+  }
+);
+
+TrackedExternalLink.displayName = "TrackedExternalLink";
