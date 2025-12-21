@@ -242,7 +242,7 @@ export default function HowIWork() {
                 A short conversation is often the best way to assess fit and scope.
               </p>
               <Button variant="hero" size="lg" asChild>
-                <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
+                <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                   Book a 30-minute clarity call
                   <ArrowRight size={16} />
                 </a>
