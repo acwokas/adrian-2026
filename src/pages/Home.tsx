@@ -43,22 +43,22 @@ export default function Home() {
     <Layout>
       <SEO canonical="/" />
       {/* Hero Section */}
-      <section className="section-spacing">
+      <section className="pt-24 md:pt-28 pb-20 md:pb-28">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div 
-              className="space-y-8"
+              className="space-y-6 md:space-y-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <h1 className="text-balance">
+              <h1>
                 I help organisations and leaders make better decisions in complex environments.
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl pb-2">
                 Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button variant="hero" size="lg" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call

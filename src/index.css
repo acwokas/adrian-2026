@@ -80,7 +80,7 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl leading-snug md:leading-tight;
   }
 
   h2 {
