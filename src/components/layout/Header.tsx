@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Linkedin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -46,15 +46,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://www.linkedin.com/in/adrianwatkins"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={18} />
-            </a>
             <ThemeToggle />
           </div>
 
@@ -89,16 +80,6 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href="https://www.linkedin.com/in/adrianwatkins"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center gap-2 text-sm py-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Linkedin size={18} />
-                LinkedIn
-              </a>
               <div className="pt-2 border-t border-border/50">
                 <ThemeToggle />
               </div>
