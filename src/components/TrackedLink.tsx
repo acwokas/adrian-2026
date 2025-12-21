@@ -1,20 +1,25 @@
-import { Link, LinkProps } from "react-router-dom";
+import { Link, LinkProps, useNavigate } from "react-router-dom";
 import { trackEvent } from "@/hooks/useAnalytics";
-import { ReactNode, forwardRef } from "react";
+import { ReactNode, forwardRef, useCallback } from "react";
 
 interface TrackedLinkProps extends LinkProps {
   eventName: string;
   children: ReactNode;
 }
 
-export function TrackedLink({ eventName, children, onClick, ...props }: TrackedLinkProps) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    trackEvent({ eventType: 'click', eventName, eventData: { to: props.to.toString() } });
+export function TrackedLink({ eventName, children, onClick, to, ...props }: TrackedLinkProps) {
+  const navigate = useNavigate();
+  
+  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    trackEvent({ eventType: 'click', eventName, eventData: { to: to.toString() } });
     onClick?.(e);
-  };
+    navigate(to);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [eventName, onClick, navigate, to]);
 
   return (
-    <Link {...props} onClick={handleClick}>
+    <Link {...props} to={to} onClick={handleClick}>
       {children}
     </Link>
   );

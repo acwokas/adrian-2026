@@ -291,7 +291,7 @@ export default function Resume() {
                   Over two decades across multiple geographies, with particular depth in Asia Pacific markets. Progression from commercial leadership to executive and board-level responsibility.
                 </p>
                 <p>
-                  Strategic perspective combined with operational pragmatism—comfortable in both large organisations and high-growth environments.
+                  Strategic perspective combined with operational pragmatism, comfortable in both large organisations and high-growth environments.
                 </p>
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function Resume() {
                   Over two decades across multiple geographies, with particular depth in Asia Pacific markets. Progression from commercial leadership to executive and board-level responsibility.
                 </p>
                 <p className="text-[0.875rem] leading-[1.85] text-muted-foreground">
-                  Strategic perspective combined with operational pragmatism—comfortable in both large organisations and high-growth environments.
+                  Strategic perspective combined with operational pragmatism, comfortable in both large organisations and high-growth environments.
                 </p>
               </div>
             </div>
