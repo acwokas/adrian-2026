@@ -121,7 +121,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <p className="text-sm uppercase tracking-wider text-foreground/70 font-medium mb-5">
+              <p className="text-sm uppercase tracking-wider text-primary-foreground/80 font-medium mb-5">
                 When I am usually brought in
               </p>
               <ul className="space-y-3 mb-6">
@@ -130,11 +130,11 @@ export default function Home() {
                     key={item.bold}
                     className="text-base leading-relaxed text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-px before:bg-accent"
                   >
-                    <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
+                    <span className="font-semibold text-primary-foreground">{item.bold}</span> {item.rest}
                   </li>
                 ))}
               </ul>
-              <p className="text-base text-foreground font-medium leading-relaxed">
+              <p className="text-base text-primary-foreground font-medium leading-relaxed">
                 I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
               </p>
             </motion.div>
@@ -163,14 +163,14 @@ export default function Home() {
         <div className="container-wide px-6 md:px-8">
           <AnimatedSection>
             <div className="space-y-8">
-              <h2>When I am usually brought in</h2>
+              <h2 className="text-primary-foreground">When I am usually brought in</h2>
               
               <StaggeredChildren>
                 <ul className="space-y-5 md:space-y-6">
                   {broughtInFor.map((item) => (
                     <StaggeredItem key={item.bold}>
                       <li className="text-lg text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
-                        <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
+                        <span className="font-semibold text-primary-foreground">{item.bold}</span> {item.rest}
                       </li>
                     </StaggeredItem>
                   ))}
@@ -178,7 +178,7 @@ export default function Home() {
               </StaggeredChildren>
 
               <div className="pt-10 mt-8 border-t border-accent/20">
-                <p className="text-xl md:text-2xl leading-snug text-foreground font-semibold max-w-3xl">
+                <p className="text-xl md:text-2xl leading-snug text-primary-foreground font-semibold max-w-3xl">
                   I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
                 </p>
               </div>
