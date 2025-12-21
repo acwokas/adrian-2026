@@ -79,7 +79,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl">
+              <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/30 shadow-lg shadow-black/10">
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
@@ -146,7 +146,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="w-full max-w-[260px] aspect-[3/4] overflow-hidden rounded-2xl">
+              <div className="w-full max-w-[260px] aspect-[3/4] overflow-hidden rounded-2xl border border-border/30 shadow-lg shadow-black/10">
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
