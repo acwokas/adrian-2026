@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
+import { trackEvent } from "@/hooks/useAnalytics";
 import adrianPortrait from "@/assets/adrian-portrait.jpg";
 
 const serviceCards = [
@@ -39,6 +40,30 @@ const broughtInFor = [
 ];
 
 export default function Home() {
+  const handleCTAClick = (location: string) => {
+    trackEvent({ 
+      eventType: 'cta_click', 
+      eventName: 'Book Clarity Call', 
+      eventData: { location } 
+    });
+  };
+
+  const handleServiceCardClick = (service: string) => {
+    trackEvent({ 
+      eventType: 'click', 
+      eventName: 'Service Card Click', 
+      eventData: { service } 
+    });
+  };
+
+  const handleExternalLinkClick = (name: string, url: string) => {
+    trackEvent({ 
+      eventType: 'external_link', 
+      eventName: name, 
+      eventData: { url } 
+    });
+  };
+
   return (
     <Layout>
       <SEO 
@@ -69,7 +94,13 @@ export default function Home() {
               </div>
               
               <div className="pt-2">
-                <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full sm:w-auto" 
+                  asChild
+                  onClick={() => handleCTAClick('hero-mobile')}
+                >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
@@ -110,7 +141,12 @@ export default function Home() {
                 Advisory, fractional leadership, mentoring, and capability building.
               </p>
               <div className="pt-3">
-                <Button variant="hero" size="lg" asChild>
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  asChild
+                  onClick={() => handleCTAClick('hero-desktop')}
+                >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
@@ -207,6 +243,7 @@ export default function Home() {
                   <StaggeredItem key={card.title}>
                     <Link
                       to={`/what-i-do#${card.anchor}`}
+                      onClick={() => handleServiceCardClick(card.title)}
                       className="group block p-6 md:p-8 lg:p-10 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full"
                     >
                       <h3 className="mb-3 group-hover:text-accent transition-colors">
@@ -242,6 +279,7 @@ export default function Home() {
                     href="https://aiinasia.com"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => handleExternalLinkClick('AIinASIA', 'https://aiinasia.com')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
                     Visit AIinASIA
@@ -259,6 +297,7 @@ export default function Home() {
                     href="https://you.withthepowerof.ai"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => handleExternalLinkClick('you.withthepowerof.ai', 'https://you.withthepowerof.ai')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
                     Explore the ecosystem
@@ -281,7 +320,12 @@ export default function Home() {
                 I am selective about what I take on, but always happy to have a first conversation.
               </p>
               <div className="pt-2 lg:pt-4">
-                <Button variant="hero" size="lg" asChild>
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  asChild
+                  onClick={() => handleCTAClick('footer-cta')}
+                >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
                   </a>
