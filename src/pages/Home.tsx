@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
@@ -43,12 +43,12 @@ export default function Home() {
     <Layout>
       <SEO canonical="/" />
       
-      {/* Hero Section - Desktop: Two column with integrated "When brought in" */}
-      <section className="pt-24 md:pt-28 lg:pt-16 pb-16 md:pb-20 lg:pb-12">
-        <div className="container-wide max-w-[1100px] mx-auto">
-          <div className="grid lg:grid-cols-[60%_40%] gap-10 lg:gap-8 items-center">
-            
-            {/* Left Column */}
+      {/* Hero Section - Desktop: Three column layout */}
+      <section className="pt-24 md:pt-28 lg:pt-12 pb-16 md:pb-20 lg:pb-10 lg:min-h-[70vh] lg:max-h-[70vh] lg:flex lg:items-center">
+        <div className="container-wide max-w-[1200px] mx-auto w-full">
+          
+          {/* Mobile/Tablet: Original stacked layout */}
+          <div className="lg:hidden">
             <motion.div 
               className="space-y-6"
               initial={{ opacity: 0, y: 30 }}
@@ -56,7 +56,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
               <div className="space-y-4">
-                <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.15]">
+                <h1 className="text-3xl md:text-4xl">
                   I help organisations and leaders make better decisions in complex environments.
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground">
@@ -71,36 +71,82 @@ export default function Home() {
                   </Link>
                 </Button>
               </div>
-
-              {/* When I'm brought in - Desktop only, integrated into hero */}
-              <div className="hidden lg:block pt-6 mt-6 border-t border-border/30">
-                <p className="text-sm uppercase tracking-wider text-muted-foreground mb-5">
-                  When I am usually brought in
-                </p>
-                <ul className="space-y-3 mb-6">
-                  {broughtInFor.map((item) => (
-                    <li 
-                      key={item.bold}
-                      className="text-[0.95rem] text-muted-foreground pl-5 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent"
-                    >
-                      <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-base text-foreground font-medium leading-snug max-w-lg">
-                  I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
-                </p>
-              </div>
             </motion.div>
 
-            {/* Right Column - Portrait */}
             <motion.div 
-              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
+              className="mt-10 mx-auto w-full max-w-sm sm:max-w-md"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden">
+              <div className="aspect-[4/5] overflow-hidden">
+                <img
+                  src={adrianPortrait}
+                  alt="Adrian Watkins"
+                  className="w-full h-full object-cover grayscale"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Desktop: Three column grid */}
+          <div className="hidden lg:grid lg:grid-cols-[40%_35%_25%] lg:gap-8 lg:items-center">
+            
+            {/* Column 1: Headline, sub-line, CTA */}
+            <motion.div 
+              className="space-y-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <h1 className="text-[2.25rem] leading-[1.15]">
+                I help organisations and leaders make better decisions in complex environments.
+              </h1>
+              <p className="text-base text-muted-foreground">
+                Advisory, fractional leadership, mentoring, and capability building.
+              </p>
+              <div className="pt-3">
+                <Button variant="hero" size="lg" asChild>
+                  <Link to="/contact">
+                    Book a 30-minute clarity call
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Column 2: When I am usually brought in */}
+            <motion.div 
+              className="border-l border-border/30 pl-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+                When I am usually brought in
+              </p>
+              <ul className="space-y-2.5 mb-5">
+                {broughtInFor.map((item) => (
+                  <li 
+                    key={item.bold}
+                    className="text-[0.875rem] text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1 before:h-px before:bg-accent"
+                  >
+                    <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-[0.875rem] text-foreground font-medium leading-snug">
+                I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
+              </p>
+            </motion.div>
+
+            {/* Column 3: Portrait */}
+            <motion.div 
+              className="flex items-center justify-end"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <div className="w-full max-w-[200px] aspect-[3/4] overflow-hidden">
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
