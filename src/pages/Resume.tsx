@@ -6,40 +6,58 @@ import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 
-const capabilities = [
+const capabilityGroups = [
   {
-    title: "Commercial leadership",
-    description: "Leading revenue strategy, partnership development, and market expansion with direct accountability for commercial performance.",
+    title: "Leadership & Execution",
+    items: [
+      "Executive decision support",
+      "Operational leadership",
+      "Cross-functional alignment",
+    ],
   },
   {
-    title: "Operational excellence",
-    description: "Driving operational transformation, process improvement, and execution discipline across complex organisations.",
+    title: "Commercial & Strategy",
+    items: [
+      "Commercial model design",
+      "Go-to-market strategy",
+      "Productisation",
+    ],
   },
   {
-    title: "Strategic advisory",
-    description: "Providing guidance to CEOs and boards on direction, priorities, and critical decisions.",
-  },
-  {
-    title: "Leadership development",
-    description: "Building capability in individuals and teams, with a focus on decision-making, accountability, and execution.",
-  },
-  {
-    title: "Governance and accountability",
-    description: "Designing decision structures and accountability frameworks that enable action rather than delay.",
-  },
-  {
-    title: "Emerging technology",
-    description: "Helping organisations navigate AI and emerging technology with commercial grounding and practical application.",
+    title: "Governance & Risk",
+    items: [
+      "Board-level governance",
+      "Responsible AI and data use",
+      "Regulated environments",
+    ],
   },
 ];
 
 const highlights = [
-  { emphasis: "Leading commercial strategy", text: "for technology and media businesses across Asia Pacific, responsible for revenue growth, strategic partnerships, and market expansion." },
-  { emphasis: "Driving operational transformation", text: "programmes including team restructuring, go-to-market redesign, and performance improvement initiatives." },
-  { emphasis: "Advising CEOs and boards", text: "on strategic direction, organisational design, and commercial priorities across multiple sectors." },
-  { emphasis: "Founding and leading AIinASIA.com", text: ", a platform focused on practical insight and responsible use of emerging technology." },
-  { emphasis: "Building you.withthepowerof.ai", text: ", an ecosystem democratising access to capability and tools often locked behind large organisations." },
-  { emphasis: "Mentoring senior leaders and founders", text: "through critical transitions and growth challenges." },
+  { 
+    outcome: "Led commercial and operational alignment across multi-market AI business", 
+    context: "Responsible for revenue strategy, partnerships, and market expansion across Asia Pacific." 
+  },
+  { 
+    outcome: "Drove operational transformation resulting in measurable performance improvement", 
+    context: "Led team restructuring, go-to-market redesign, and execution discipline initiatives." 
+  },
+  { 
+    outcome: "Advised CEOs and boards on strategic direction and commercial priorities", 
+    context: "Provided executive decision support across multiple sectors and geographies." 
+  },
+  { 
+    outcome: "Founded and lead AIinASIA.com as a platform for practical AI insight", 
+    context: "Building ecosystem focused on responsible use of emerging technology." 
+  },
+  { 
+    outcome: "Created you.withthepowerof.ai to democratise access to capability", 
+    context: "Unlocking tools and resources often locked behind large organisations." 
+  },
+  { 
+    outcome: "Mentored senior leaders and founders through critical transitions", 
+    context: "Supporting growth challenges and strategic decision-making." 
+  },
 ];
 
 export default function Resume() {
@@ -72,11 +90,22 @@ export default function Resume() {
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <h1>Resume</h1>
-              <p className="text-xl text-muted-foreground max-w-2xl">
-                A summary of my professional background, capabilities, and the scope of work I have led.
-              </p>
+              
+              {/* Executive Summary Block - Critical for instant classification */}
+              <div className="space-y-4 py-6 border-y border-border/30">
+                <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
+                  Senior Commercial and Operational Leader
+                </p>
+                <ul className="space-y-2 text-base md:text-lg text-muted-foreground leading-relaxed">
+                  <li>Operates at CEO and executive team level</li>
+                  <li>Advisory, fractional, and permanent leadership roles</li>
+                  <li>Strategy, operations, governance, and execution</li>
+                  <li>Experience across AI, data, media, platforms, and regulated environments</li>
+                </ul>
+              </div>
+
               <p className="text-lg border-l-2 border-accent pl-6 py-2">
                 My work is measured by improved focus, stronger execution, and better commercial outcomes.
               </p>
@@ -85,21 +114,24 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Profile */}
-      <section className="py-12 md:py-16 border-b border-border/50">
+      {/* Profile - Reformatted for mobile scanning */}
+      <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <h2 className="text-2xl">Profile</h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Senior Commercial and Operational Leader with extensive experience across technology, media, and professional services. I work with organisations and leadership teams to drive clarity, improve execution, and deliver commercial outcomes in complex environments.
+                  <span className="text-foreground font-medium">Decision-making under pressure.</span>{" "}
+                  I work with organisations and leadership teams to drive clarity and deliver commercial outcomes in complex environments.
                 </p>
                 <p>
-                  My career has spanned commercial leadership, operational transformation, advisory, and ecosystem building. I have led teams, managed P&L responsibility, and operated at board level across multiple sectors and geographies.
+                  <span className="text-foreground font-medium">Alignment between strategy and execution.</span>{" "}
+                  My career spans commercial leadership, operational transformation, advisory, and ecosystem building.
                 </p>
                 <p>
-                  I am known for asking the right questions, challenging assumptions, and focusing attention on what will actually move the business forward. I remain close to execution and am comfortable owning outcomes, not just advising on them.
+                  <span className="text-foreground font-medium">Comfortable owning outcomes.</span>{" "}
+                  I challenge assumptions and focus attention on what will actually move the business forward.
                 </p>
               </div>
             </div>
@@ -107,20 +139,26 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Core Capabilities */}
-      <section className="py-12 md:py-16 border-b border-border/50">
+      {/* Core Capabilities - Grouped sections */}
+      <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <h2 className="text-2xl">Core capabilities</h2>
-              <StaggeredChildren className="grid md:grid-cols-2 gap-8">
-                {capabilities.map((cap) => (
-                  <StaggeredItem key={cap.title}>
-                    <div className="space-y-3">
-                      <h4 className="font-medium">{cap.title}</h4>
-                      <p className="text-muted-foreground text-sm">
-                        {cap.description}
-                      </p>
+              <StaggeredChildren className="space-y-10">
+                {capabilityGroups.map((group) => (
+                  <StaggeredItem key={group.title}>
+                    <div className="space-y-4">
+                      <h4 className="text-sm font-medium uppercase tracking-wide text-foreground/70">
+                        {group.title}
+                      </h4>
+                      <ul className="space-y-2">
+                        {group.items.map((item) => (
+                          <li key={item} className="text-muted-foreground">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </StaggeredItem>
                 ))}
@@ -130,18 +168,21 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Career Highlights */}
-      <section className="py-12 md:py-16 border-b border-border/50">
+      {/* Career Highlights - Outcome-first framing */}
+      <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <h2 className="text-2xl">Career highlights</h2>
-              <StaggeredChildren className="space-y-6">
+              <StaggeredChildren className="space-y-8">
                 {highlights.map((item, i) => (
                   <StaggeredItem key={i}>
-                    <div className="space-y-3">
-                      <p className="text-muted-foreground">
-                        <span className="text-foreground font-medium">{item.emphasis}</span>{item.text}
+                    <div className="space-y-1">
+                      <p className="text-foreground font-medium leading-relaxed">
+                        {item.outcome}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {item.context}
                       </p>
                     </div>
                   </StaggeredItem>
@@ -152,33 +193,41 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Education and Credentials */}
-      <section className="py-12 md:py-16 border-b border-border/50">
+      {/* Background - Reduced narrative density */}
+      <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <h2 className="text-2xl">Background</h2>
-              <p className="text-muted-foreground">
-                My background spans over two decades across multiple geographies, with particular depth in Asia Pacific markets. I combine strategic perspective with operational pragmatism, having operated at senior levels in both large organisations and high-growth environments.
-              </p>
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p>
+                  Over two decades across multiple geographies, with particular depth in Asia Pacific markets.
+                </p>
+                <p>
+                  Progression from commercial leadership to executive and board-level responsibility.
+                </p>
+                <p>
+                  Strategic perspective combined with operational pragmatism—comfortable in both large organisations and high-growth environments.
+                </p>
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Download CTA */}
-      <section className="section-spacing">
+      {/* Download CTA - Impossible to miss */}
+      <section className="py-20 md:py-28">
         <div className="container-narrow text-center">
           <AnimatedSection>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <h2>Full CV</h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                For a complete overview of my career history and credentials, download my full CV.
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Complete career history and credentials.
               </p>
               {cvUrl ? (
-                <Button variant="hero" size="lg" asChild>
+                <Button variant="hero" size="xl" asChild className="min-w-[280px]">
                   <a href={cvUrl} target="_blank" rel="noopener noreferrer" download>
-                    <Download size={16} />
+                    <Download size={18} />
                     Download full CV (PDF)
                   </a>
                 </Button>
