@@ -31,11 +31,11 @@ const serviceCards = [
 ];
 
 const broughtInFor = [
-  "AI initiatives stalled after pilots",
-  "Leadership pressure without clarity",
-  "Misalignment between strategy and execution",
-  "Products or platforms lacking commercial grounding",
-  "Teams drifting without direction",
+  { bold: "AI initiatives stalled", rest: "after pilots" },
+  { bold: "Leadership pressure", rest: "without clarity" },
+  { bold: "Misalignment between", rest: "strategy and execution" },
+  { bold: "Products or platforms", rest: "lacking commercial grounding" },
+  { bold: "Teams drifting", rest: "without direction" },
 ];
 
 export default function Home() {
@@ -100,20 +100,22 @@ export default function Home() {
               <h2>When I am usually brought in</h2>
               
               <StaggeredChildren>
-                <ul className="space-y-4">
+                <ul className="space-y-5 md:space-y-6">
                   {broughtInFor.map((item) => (
-                    <StaggeredItem key={item}>
+                    <StaggeredItem key={item.bold}>
                       <li className="text-lg text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
-                        {item}
+                        <span className="font-medium text-foreground">{item.bold}</span> {item.rest}
                       </li>
                     </StaggeredItem>
                   ))}
                 </ul>
               </StaggeredChildren>
 
-              <p className="text-lg border-l-2 border-accent pl-6 py-2">
-                I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
-              </p>
+              <div className="pt-6 mt-8 border-t border-accent/40">
+                <p className="text-xl md:text-2xl leading-relaxed text-foreground">
+                  I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
+                </p>
+              </div>
             </div>
           </AnimatedSection>
         </div>
