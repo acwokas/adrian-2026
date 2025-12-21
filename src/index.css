@@ -92,7 +92,14 @@
   }
 
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed md:leading-relaxed;
+    line-height: 1.8;
+  }
+
+  @media (min-width: 768px) {
+    p {
+      line-height: 1.7;
+    }
   }
 }
 
@@ -106,7 +113,7 @@
   }
 
   .section-spacing {
-    @apply py-20 md:py-28;
+    @apply py-24 md:py-28;
   }
 
   .text-balance {
