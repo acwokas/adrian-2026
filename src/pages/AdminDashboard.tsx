@@ -59,6 +59,31 @@ export default function AdminDashboard() {
     }
   }, [user, isAdmin, dateRange]);
 
+  // Real-time subscription for live updates
+  useEffect(() => {
+    if (!user || !isAdmin) return;
+
+    const channel = supabase
+      .channel('analytics-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'analytics_events'
+        },
+        () => {
+          // Refetch stats when new events arrive
+          fetchStats();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [user, isAdmin, dateRange]);
+
   const getDateFilter = (): { start: string | null; end: string | null } => {
     const now = new Date();
     switch (dateRange) {
@@ -371,6 +396,80 @@ export default function AdminDashboard() {
     });
   };
 
+  const exportFunnelToCSV = () => {
+    if (!stats || stats.conversionFunnel.length === 0) {
+      toast({
+        title: "No funnel data",
+        description: "No conversion funnel data to export.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const headers = ['Stage', 'Sessions', 'Conversion Rate', 'Drop-off'];
+    const rows = stats.conversionFunnel.map((step, index) => {
+      const maxValue = stats.conversionFunnel[0].value || 1;
+      const conversionRate = Math.round((step.value / maxValue) * 100);
+      const prevValue = index > 0 ? stats.conversionFunnel[index - 1].value : step.value;
+      const dropoff = prevValue > 0 ? Math.round(((prevValue - step.value) / prevValue) * 100) : 0;
+      return [step.name, step.value, `${conversionRate}%`, index > 0 ? `${dropoff}%` : 'N/A'];
+    });
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${String(cell)}"`).join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `conversion-funnel-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "Export complete",
+      description: "Conversion funnel data exported.",
+    });
+  };
+
+  const exportGeoToCSV = () => {
+    if (!stats || stats.geoBreakdown.length === 0) {
+      toast({
+        title: "No geographic data",
+        description: "No geographic data to export.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const headers = ['Country', 'Country Code', 'Events'];
+    const rows = stats.geoBreakdown.map(geo => [geo.country, geo.countryCode, geo.count]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${String(cell)}"`).join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `geographic-data-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "Export complete",
+      description: "Geographic data exported.",
+    });
+  };
+
   const handleSignOut = async () => {
     await signOut();
     navigate("/");
@@ -403,7 +502,13 @@ export default function AdminDashboard() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h1 className="text-2xl md:text-3xl">Analytics Dashboard</h1>
+                <div className="flex items-center gap-3">
+                  <h1 className="text-2xl md:text-3xl">Analytics Dashboard</h1>
+                  <span className="flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2 py-1 rounded-full">
+                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    Live
+                  </span>
+                </div>
                 <p className="text-muted-foreground mt-1">
                   Logged in as {user.email}
                 </p>
@@ -781,11 +886,14 @@ export default function AdminDashboard() {
                 <div className="grid lg:grid-cols-2 gap-6">
                   {/* Conversion Funnel */}
                   <Card>
-                    <CardHeader>
+                    <CardHeader className="flex flex-row items-center justify-between">
                       <CardTitle className="flex items-center gap-2">
                         <ArrowRight size={18} />
                         Conversion Funnel
                       </CardTitle>
+                      <Button variant="ghost" size="sm" onClick={exportFunnelToCSV}>
+                        <Download size={14} />
+                      </Button>
                     </CardHeader>
                     <CardContent>
                       {stats.conversionFunnel.some(f => f.value > 0) ? (
@@ -838,11 +946,14 @@ export default function AdminDashboard() {
 
                   {/* Geographic Breakdown */}
                   <Card>
-                    <CardHeader>
+                    <CardHeader className="flex flex-row items-center justify-between">
                       <CardTitle className="flex items-center gap-2">
                         <Globe size={18} />
                         Visitor Locations
                       </CardTitle>
+                      <Button variant="ghost" size="sm" onClick={exportGeoToCSV}>
+                        <Download size={14} />
+                      </Button>
                     </CardHeader>
                     <CardContent>
                       {stats.geoBreakdown.length > 0 ? (
