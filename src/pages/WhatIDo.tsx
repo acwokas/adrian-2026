@@ -90,9 +90,8 @@ export default function WhatIDo() {
                   Typical focus areas
                 </h4>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>Strategic alignment</li>
-                  <li>Commercial and operating models</li>
-                  <li>Governance and execution</li>
+                  <li>Strategic alignment and governance</li>
+                  <li>Commercial and operating model execution</li>
                 </ul>
               </div>
             </div>
