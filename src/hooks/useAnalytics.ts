@@ -1,13 +1,45 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Json } from "@/integrations/supabase/types";
 
-type EventType = 'click' | 'page_view' | 'cta_click' | 'external_link';
+type EventType = 'click' | 'page_view' | 'cta_click' | 'external_link' | 'form_start' | 'form_submit';
 
 interface TrackEventOptions {
   eventType: EventType;
   eventName: string;
   eventData?: Record<string, unknown>;
 }
+
+interface LocationData {
+  country: string;
+  countryCode: string;
+  region: string | null;
+  city: string | null;
+}
+
+// Cache location data to avoid repeated API calls
+let cachedLocation: LocationData | null = null;
+let locationFetchPromise: Promise<LocationData> | null = null;
+
+const getVisitorLocation = async (): Promise<LocationData> => {
+  if (cachedLocation) return cachedLocation;
+  
+  if (locationFetchPromise) return locationFetchPromise;
+  
+  locationFetchPromise = (async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-visitor-location');
+      if (error) throw error;
+      cachedLocation = data as LocationData;
+      return cachedLocation;
+    } catch (error) {
+      console.error('Failed to get location:', error);
+      cachedLocation = { country: 'Unknown', countryCode: 'XX', region: null, city: null };
+      return cachedLocation;
+    }
+  })();
+  
+  return locationFetchPromise;
+};
 
 // Generate or retrieve session ID
 const getSessionId = (): string => {
@@ -24,11 +56,12 @@ const getSessionId = (): string => {
 export const trackEvent = async ({ eventType, eventName, eventData = {} }: TrackEventOptions) => {
   try {
     const sessionId = getSessionId();
+    const location = await getVisitorLocation();
     
     await supabase.from('analytics_events').insert({
-      event_type: eventType,
+      event_type: eventType as 'click' | 'page_view' | 'cta_click' | 'external_link',
       event_name: eventName,
-      event_data: eventData as Json,
+      event_data: { ...eventData, location } as unknown as Json,
       page_path: window.location.pathname,
       referrer: document.referrer || null,
       user_agent: navigator.userAgent,
@@ -57,5 +90,13 @@ export const useAnalytics = () => {
     trackEvent({ eventType: 'page_view', eventName: pageName });
   };
 
-  return { trackClick, trackCTAClick, trackExternalLink, trackPageView };
+  const trackFormStart = (formName: string) => {
+    trackEvent({ eventType: 'form_start', eventName: `${formName}_start` });
+  };
+
+  const trackFormSubmit = (formName: string, success: boolean) => {
+    trackEvent({ eventType: 'form_submit', eventName: `${formName}_submit`, eventData: { success } });
+  };
+
+  return { trackClick, trackCTAClick, trackExternalLink, trackPageView, trackFormStart, trackFormSubmit };
 };

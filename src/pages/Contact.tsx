@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Send, Calendar, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -10,11 +10,13 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { trackEvent } from "@/hooks/useAnalytics";
+import { trackEvent, useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Contact() {
   const { toast } = useToast();
+  const { trackFormStart, trackFormSubmit } = useAnalytics();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const hasTrackedFormStart = useRef(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +24,13 @@ export default function Contact() {
     context: "",
     message: "",
   });
+
+  const handleFormFocus = () => {
+    if (!hasTrackedFormStart.current) {
+      trackFormStart('contact');
+      hasTrackedFormStart.current = true;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,13 +43,16 @@ export default function Contact() {
 
       if (error) throw error;
 
+      trackFormSubmit('contact', true);
       toast({
         title: "Message sent",
         description: "Thank you for reaching out.",
       });
       setFormData({ name: "", email: "", organisation: "", context: "", message: "" });
+      hasTrackedFormStart.current = false;
     } catch (error: any) {
       console.error("Error sending message:", error);
+      trackFormSubmit('contact', false);
       toast({
         title: "Error sending message",
         description: "Please try again or book a call instead.",
@@ -153,6 +165,7 @@ export default function Contact() {
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onFocus={handleFormFocus}
                       required
                       className="bg-card border-border/50 focus:border-accent"
                     />
