@@ -42,23 +42,28 @@ export default function Home() {
   return (
     <Layout>
       <SEO canonical="/" />
-      {/* Hero Section */}
-      <section className="pt-28 md:pt-36 pb-24 md:pb-32">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* Hero Section - Two column on desktop */}
+      <section className="pt-24 md:pt-28 lg:pt-20 pb-16 md:pb-20 lg:pb-16">
+        <div className="container-wide max-w-[1100px] mx-auto">
+          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-12 items-center">
             <motion.div 
-              className="space-y-10 md:space-y-12"
+              className="space-y-6 md:space-y-8 lg:space-y-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <h1>
-                I help organisations and leaders make better decisions in complex environments.
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
+              <div className="space-y-3">
+                <p className="hidden lg:block text-sm uppercase tracking-wider text-muted-foreground">
+                  Senior Commercial and Operational Leader
+                </p>
+                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+                  I help organisations and leaders make better decisions in complex environments.
+                </h1>
+              </div>
+              <p className="text-base md:text-lg text-muted-foreground max-w-xl">
                 Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
               </p>
-              <div className="flex flex-col items-start gap-5 pt-6">
+              <div className="flex flex-col items-start gap-4 pt-2">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call
@@ -75,12 +80,12 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none py-8 lg:py-12 lg:pl-8"
+              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none lg:pl-4"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden">
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
@@ -92,27 +97,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* When I'm Brought In */}
-      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
-        <div className="container-narrow">
+      {/* When I'm Brought In - Wider container on desktop */}
+      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-wide max-w-[900px] mx-auto px-6 md:px-8 lg:px-4">
           <AnimatedSection>
-            <div className="space-y-10">
+            <div className="space-y-8 lg:space-y-10">
               <h2>When I am usually brought in</h2>
               
               <StaggeredChildren>
-                <ul className="space-y-5 md:space-y-6">
+                <ul className="space-y-5 md:space-y-6 lg:space-y-8">
                   {broughtInFor.map((item) => (
                     <StaggeredItem key={item.bold}>
-                      <li className="text-lg text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
-                        <span className="font-medium text-foreground">{item.bold}</span> {item.rest}
+                      <li className="text-lg lg:text-xl text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
+                        <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
                       </li>
                     </StaggeredItem>
                   ))}
                 </ul>
               </StaggeredChildren>
 
-              <div className="pt-12 mt-12 border-t border-accent/30">
-                <p className="text-2xl md:text-3xl leading-snug text-foreground font-semibold max-w-3xl">
+              <div className="pt-10 lg:pt-14 mt-8 lg:mt-10 border-t border-accent/20">
+                <p className="text-xl md:text-2xl lg:text-[1.75rem] leading-snug text-foreground font-semibold max-w-3xl">
                   I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
                 </p>
               </div>
@@ -121,21 +126,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How I Help */}
-      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
-        <div className="container-wide">
+      {/* How I Help - 2x2 grid on desktop */}
+      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
-            <div className="space-y-10">
-              <div className="space-y-3 mb-8">
+            <div className="space-y-8 lg:space-y-10">
+              <div className="space-y-3 mb-6 lg:mb-10">
                 <h2>How I help</h2>
-                <p className="text-xl md:text-2xl text-foreground font-semibold max-w-2xl">Engagement models I am typically brought in under.</p>
+                <p className="text-lg md:text-xl lg:text-2xl text-foreground font-semibold max-w-2xl">
+                  Engagement models I am typically brought in under.
+                </p>
               </div>
-              <StaggeredChildren className="grid md:grid-cols-2 gap-6 pt-2">
+              <StaggeredChildren className="grid md:grid-cols-2 gap-5 lg:gap-8">
                 {serviceCards.map((card) => (
                   <StaggeredItem key={card.title}>
                     <Link
                       to={`/what-i-do#${card.anchor}`}
-                      className="group block p-8 bg-card border border-border/50 hover:border-accent/50 transition-all duration-300 h-full"
+                      className="group block p-6 md:p-8 lg:p-10 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full"
                     >
                       <h3 className="mb-3 group-hover:text-accent transition-colors">
                         {card.title}
@@ -152,64 +159,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Shaping the Conversation */}
-      <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
-        <div className="container-narrow">
-          <div className="space-y-16 md:space-y-14">
-            <AnimatedSection>
-              <div className="space-y-8">
-                <h2>Shaping the conversation</h2>
-                <p className="text-lg text-muted-foreground/80 leading-relaxed">
-                  I founded AIinASIA.com—a platform for practical insight on emerging technology across the region.
-                </p>
-                <a
-                  href="https://aiinasia.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                >
-                  Visit AIinASIA
-                  <ArrowUpRight size={14} />
-                </a>
-              </div>
-            </AnimatedSection>
+      {/* Signals of Depth - Combined ecosystem section */}
+      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-wide max-w-[1000px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-10 lg:space-y-12">
+              <h2>Signals of depth</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                {/* AIinASIA Block */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold">AIinASIA</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    A platform for practical insight on emerging technology across Asia.
+                  </p>
+                  <a
+                    href="https://aiinasia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                  >
+                    Visit AIinASIA
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
 
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-8 pt-12 border-t border-border/30">
-                <h2>A broader mission</h2>
-                <p className="text-lg text-muted-foreground/80 leading-relaxed">
-                  I am building you.withthepowerof.ai—an ecosystem democratising access to capability often locked behind large organisations.
-                </p>
-                <a
-                  href="https://you.withthepowerof.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                >
-                  Explore the ecosystem
-                  <ArrowUpRight size={14} />
-                </a>
+                {/* you.withthepowerof.ai Block */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold">you.withthepowerof.ai</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    An ecosystem democratising access to capability often locked behind large organisations.
+                  </p>
+                  <a
+                    href="https://you.withthepowerof.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                  >
+                    Explore the ecosystem
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
               </div>
-            </AnimatedSection>
-          </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-spacing border-t border-border/50">
-        <div className="container-narrow text-center">
+      {/* Final CTA Section - Enhanced presence */}
+      <section className="py-20 md:py-24 lg:py-28 border-t border-border/50">
+        <div className="container-wide max-w-[800px] mx-auto text-center">
           <AnimatedSection>
-            <div className="space-y-6">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground">If you are navigating complexity, change, or pressure to act</p>
-              <h2>Ready to have a conversation?</h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            <div className="space-y-6 lg:space-y-8">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl">Ready to have a conversation?</h2>
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto">
                 I am selective about what I take on, but always happy to have a first conversation.
               </p>
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">
-                  Get in touch
-                </Link>
-              </Button>
+              <div className="pt-2 lg:pt-4">
+                <Button variant="hero" size="lg" asChild>
+                  <Link to="/contact">
+                    Book a 30-minute clarity call
+                  </Link>
+                </Button>
+              </div>
             </div>
           </AnimatedSection>
         </div>
