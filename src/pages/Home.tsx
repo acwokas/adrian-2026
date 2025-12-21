@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
-import adrianPortrait from "@/assets/adrian-portrait.png";
+import adrianPortrait from "@/assets/adrian-portrait.jpg";
 
 const serviceCards = [
   {
