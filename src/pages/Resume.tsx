@@ -35,28 +35,28 @@ const capabilityGroups = [
 
 const highlights = [
   { 
-    outcome: "Led commercial and operational alignment across multi-market AI business", 
-    context: "Responsible for revenue strategy, partnerships, and market expansion across Asia Pacific." 
+    outcome: "Led commercial and operational alignment across a multi-market AI business", 
+    context: "Responsible for commercial strategy, operational execution, and governance across regions." 
   },
   { 
-    outcome: "Drove operational transformation resulting in measurable performance improvement", 
-    context: "Led team restructuring, go-to-market redesign, and execution discipline initiatives." 
+    outcome: "Drove operational transformation delivering measurable performance improvement", 
+    context: "Responsible for team restructuring, go-to-market redesign, and execution discipline." 
   },
   { 
-    outcome: "Advised CEOs and boards on strategic direction and commercial priorities", 
+    outcome: "Shaped strategic direction and commercial priorities at CEO and board level", 
     context: "Provided executive decision support across multiple sectors and geographies." 
   },
   { 
-    outcome: "Founded and lead AIinASIA.com as a platform for practical AI insight", 
-    context: "Building ecosystem focused on responsible use of emerging technology." 
+    outcome: "Founded AIinASIA.com as a leading platform for practical AI insight", 
+    context: "Responsible for content, ecosystem development, and responsible technology advocacy." 
   },
   { 
     outcome: "Created you.withthepowerof.ai to democratise access to capability", 
-    context: "Unlocking tools and resources often locked behind large organisations." 
+    context: "Responsible for unlocking tools and resources often locked behind large organisations." 
   },
   { 
-    outcome: "Mentored senior leaders and founders through critical transitions", 
-    context: "Supporting growth challenges and strategic decision-making." 
+    outcome: "Guided senior leaders and founders through critical transitions", 
+    context: "Responsible for supporting growth challenges and strategic decision-making." 
   },
 ];
 
@@ -93,7 +93,7 @@ export default function Resume() {
             <div className="space-y-8">
               <h1>Resume</h1>
               
-              {/* Executive Summary Block - Critical for instant classification */}
+              {/* Executive Summary Block */}
               <div className="space-y-4 py-6 border-y border-border/30">
                 <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
                   Senior Commercial and Operational Leader
@@ -114,7 +114,7 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Profile - Reformatted for mobile scanning */}
+      {/* Profile - With operating stance block */}
       <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
@@ -125,6 +125,14 @@ export default function Resume() {
                   <span className="text-foreground font-medium">Decision-making under pressure.</span>{" "}
                   I work with organisations and leadership teams to drive clarity and deliver commercial outcomes in complex environments.
                 </p>
+
+                {/* Operating stance block */}
+                <ul className="space-y-2 py-4 text-foreground/90 font-medium">
+                  <li>Comfortable owning decisions with commercial and reputational impact</li>
+                  <li>Operates effectively in ambiguity and under pressure</li>
+                  <li>Trusted advisor to CEOs and executive teams</li>
+                </ul>
+
                 <p>
                   <span className="text-foreground font-medium">Alignment between strategy and execution.</span>{" "}
                   My career spans commercial leadership, operational transformation, advisory, and ecosystem building.
@@ -139,17 +147,17 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Core Capabilities - Grouped sections */}
+      {/* Core Capabilities - Increased visual separation */}
       <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-10">
               <h2 className="text-2xl">Core capabilities</h2>
-              <StaggeredChildren className="space-y-10">
+              <StaggeredChildren className="space-y-12">
                 {capabilityGroups.map((group) => (
                   <StaggeredItem key={group.title}>
                     <div className="space-y-4">
-                      <h4 className="text-sm font-medium uppercase tracking-wide text-foreground/70">
+                      <h4 className="text-base font-semibold uppercase tracking-wide text-foreground">
                         {group.title}
                       </h4>
                       <ul className="space-y-2">
@@ -168,7 +176,7 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Career Highlights - Outcome-first framing */}
+      {/* Career Highlights - Outcome-first framing enforced */}
       <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
@@ -178,7 +186,7 @@ export default function Resume() {
                 {highlights.map((item, i) => (
                   <StaggeredItem key={i}>
                     <div className="space-y-1">
-                      <p className="text-foreground font-medium leading-relaxed">
+                      <p className="text-foreground font-semibold leading-relaxed">
                         {item.outcome}
                       </p>
                       <p className="text-sm text-muted-foreground">
@@ -193,7 +201,7 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Background - Reduced narrative density */}
+      {/* Background - Reduced to essential */}
       <section className="py-16 md:py-20 border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection>
@@ -201,10 +209,7 @@ export default function Resume() {
               <h2 className="text-2xl">Background</h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Over two decades across multiple geographies, with particular depth in Asia Pacific markets.
-                </p>
-                <p>
-                  Progression from commercial leadership to executive and board-level responsibility.
+                  Over two decades across multiple geographies, with particular depth in Asia Pacific markets. Progression from commercial leadership to executive and board-level responsibility.
                 </p>
                 <p>
                   Strategic perspective combined with operational pragmatism—comfortable in both large organisations and high-growth environments.
@@ -215,19 +220,16 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Download CTA - Impossible to miss */}
-      <section className="py-20 md:py-28">
+      {/* Download CTA - Assertive and obvious */}
+      <section className="py-24 md:py-32">
         <div className="container-narrow text-center">
           <AnimatedSection>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <h2>Full CV</h2>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Complete career history and credentials.
-              </p>
               {cvUrl ? (
-                <Button variant="hero" size="xl" asChild className="min-w-[280px]">
+                <Button variant="hero" size="xl" asChild className="min-w-[300px]">
                   <a href={cvUrl} target="_blank" rel="noopener noreferrer" download>
-                    <Download size={18} />
+                    <Download size={20} />
                     Download full CV (PDF)
                   </a>
                 </Button>
