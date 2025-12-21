@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -6,6 +8,21 @@ import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/hooks/useAnalytics";
 
 export default function WhatIDo() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to ensure DOM is ready after navigation
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [location.hash]);
   return (
     <Layout>
       <SEO 
