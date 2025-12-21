@@ -50,6 +50,45 @@ export type Database = {
         }
         Relationships: []
       }
+      session_recordings: {
+        Row: {
+          created_at: string
+          ended_at: string | null
+          events: Json
+          id: string
+          page_path: string
+          session_id: string
+          started_at: string
+          user_agent: string | null
+          viewport_height: number | null
+          viewport_width: number | null
+        }
+        Insert: {
+          created_at?: string
+          ended_at?: string | null
+          events?: Json
+          id?: string
+          page_path: string
+          session_id: string
+          started_at?: string
+          user_agent?: string | null
+          viewport_height?: number | null
+          viewport_width?: number | null
+        }
+        Update: {
+          created_at?: string
+          ended_at?: string | null
+          events?: Json
+          id?: string
+          page_path?: string
+          session_id?: string
+          started_at?: string
+          user_agent?: string | null
+          viewport_height?: number | null
+          viewport_width?: number | null
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           admin_password_hash: string
