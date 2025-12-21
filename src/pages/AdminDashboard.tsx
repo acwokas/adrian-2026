@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2 } from "lucide-react";
 import { format } from "date-fns";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, FunnelChart, Funnel, LabelList } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
+import { ClickHeatmap } from "@/components/ClickHeatmap";
 
 type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'] & { session_id?: string | null };
 
@@ -35,6 +36,7 @@ interface EventStats {
   browserBreakdown: { name: string; value: number }[];
   conversionFunnel: { name: string; value: number; fill: string }[];
   geoBreakdown: { country: string; countryCode: string; count: number }[];
+  clickHeatmapData: { page: string; clicks: { x: number; y: number; intensity: number }[] }[];
 }
 
 export default function AdminDashboard() {
@@ -321,6 +323,24 @@ export default function AdminDashboard() {
         .sort((a, b) => b.count - a.count)
         .slice(0, 10);
 
+      // Click heatmap data - extract click positions from event_data
+      const clicksByPage: Record<string, { x: number; y: number; intensity: number }[]> = {};
+      events.forEach(e => {
+        if (e.event_type === 'click' || e.event_type === 'cta_click') {
+          const eventData = e.event_data as { clickPosition?: { x: number; y: number } } | null;
+          const clickPos = eventData?.clickPosition;
+          if (clickPos && typeof clickPos.x === 'number' && typeof clickPos.y === 'number') {
+            const page = e.page_path || '/';
+            if (!clicksByPage[page]) clicksByPage[page] = [];
+            clicksByPage[page].push({ x: clickPos.x, y: clickPos.y, intensity: 1 });
+          }
+        }
+      });
+      const clickHeatmapData = Object.entries(clicksByPage)
+        .map(([page, clicks]) => ({ page, clicks }))
+        .sort((a, b) => b.clicks.length - a.clicks.length)
+        .slice(0, 6);
+
       setStats({
         totalEvents: events.length,
         ctaClicks,
@@ -340,6 +360,7 @@ export default function AdminDashboard() {
         browserBreakdown,
         conversionFunnel,
         geoBreakdown,
+        clickHeatmapData,
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -988,6 +1009,36 @@ export default function AdminDashboard() {
                     </CardContent>
                   </Card>
                 </div>
+
+                {/* Click Heatmaps */}
+                {stats.clickHeatmapData.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <MousePointer2 size={18} />
+                        Click Heatmaps by Page
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {stats.clickHeatmapData.map((pageData) => (
+                          <div key={pageData.page} className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium truncate">{pageData.page}</span>
+                              <span className="text-xs text-muted-foreground">{pageData.clicks.length} clicks</span>
+                            </div>
+                            <ClickHeatmap clicks={pageData.clicks} width={280} height={180} />
+                          </div>
+                        ))}
+                      </div>
+                      {stats.clickHeatmapData.length === 0 && (
+                        <p className="text-muted-foreground text-sm text-center py-8">
+                          No click position data yet. Clicks with position tracking will appear here.
+                        </p>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
 
                 {stats.sessionJourneys.length > 0 && (
                   <Card>
