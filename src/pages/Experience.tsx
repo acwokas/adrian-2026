@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
@@ -21,7 +19,7 @@ export default function Experience() {
             <div className="space-y-6">
               <h1>Experience</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                My experience spans senior commercial and operational leadership, advisory and fractional roles, and building platforms and ecosystems. I have worked across different growth stages and complex environments, often where clarity, governance, and execution were critical.
+                My experience spans senior commercial and operational leadership, advisory and fractional roles, and building platforms and ecosystems. I have operated across different growth stages and complex environments, often where clarity, governance, and execution were critical.
               </p>
               <p className="text-lg text-muted-foreground">
                 The examples below are grouped by responsibility rather than chronology.
@@ -39,7 +37,7 @@ export default function Experience() {
               <div className="space-y-4">
                 <h2>Commercial and Operational Leadership</h2>
                 <p className="text-lg text-muted-foreground">
-                  Senior leadership roles with responsibility for commercial strategy, operations, governance, and execution across multi-market environments.
+                  Senior commercial and operational leadership roles with direct responsibility for commercial outcomes, operating models, and execution across complex and multi-market environments.
                 </p>
               </div>
 
@@ -47,28 +45,21 @@ export default function Experience() {
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      P&L and commercial accountability across technology and media businesses in Asia Pacific
+                      Ownership of commercial outcomes, operating performance, and delivery accountability
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Operating model design and oversight during restructuring and growth phases
+                      Design and oversight of operating models across growth and transformation phases
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Cross-functional leadership spanning commercial, product, and operations teams
-                    </p>
-                  </div>
-                </StaggeredItem>
-                <StaggeredItem>
-                  <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
-                    <p className="text-muted-foreground">
-                      Working directly with executive teams and boards on strategic and operational priorities
+                      Leadership across cross-functional teams and senior stakeholders
                     </p>
                   </div>
                 </StaggeredItem>
@@ -86,7 +77,7 @@ export default function Experience() {
               <div className="space-y-4">
                 <h2>Advisory and Fractional Leadership</h2>
                 <p className="text-lg text-muted-foreground">
-                  Advisory and fractional leadership roles supporting CEOs, founders, and executive teams during periods of change, ambiguity, or growth.
+                  These engagements involve shared accountability for outcomes, not advisory input alone.
                 </p>
               </div>
 
@@ -94,21 +85,21 @@ export default function Experience() {
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Decision support at senior level on strategic direction and commercial priorities
+                      Decision support and leadership at CEO and executive team level
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Bridging strategy to execution, particularly during transitions and complex initiatives
+                      Alignment of strategy, operations, and execution during periods of change
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Temporary but accountable leadership roles as fractional COO and commercial lead
+                      Time-bound leadership roles with clear ownership and mandate
                     </p>
                   </div>
                 </StaggeredItem>
@@ -118,13 +109,13 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Section 3: Platforms, Ecosystems, and Thought Leadership */}
+      {/* Section 3: Platforms and Ecosystems */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
             <div className="space-y-8">
               <div className="space-y-4">
-                <h2>Platforms, Ecosystems, and Thought Leadership</h2>
+                <h2>Platforms and Ecosystems</h2>
                 <p className="text-lg text-muted-foreground">
                   Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making—including AIinASIA and the broader you.withthepowerof.ai ecosystem.
                 </p>
@@ -150,21 +141,21 @@ export default function Experience() {
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Mentoring founders on commercial strategy, leadership, and operational discipline
+                      Mentoring founders and early leadership teams through growth and transition
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Advising early-stage leadership teams navigating growth, fundraising, and market expansion
+                      Advising on decision-making, structure, and operating focus in early stages
                     </p>
                   </div>
                 </StaggeredItem>
                 <StaggeredItem>
                   <div className="pl-6 border-l border-border/50 hover:border-accent/50 transition-colors">
                     <p className="text-muted-foreground">
-                      Selective long-term advisory relationships with high-potential ventures
+                      Selective long-term advisory and investment relationships
                     </p>
                   </div>
                 </StaggeredItem>
@@ -183,7 +174,7 @@ export default function Experience() {
         <div className="container-narrow">
           <AnimatedSection>
             <p className="text-lg text-muted-foreground">
-              For a detailed role history, see my{" "}
+              For a detailed role history and responsibilities, see my{" "}
               <Link to="/resume" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
                 Resume
               </Link>.
