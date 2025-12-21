@@ -150,7 +150,7 @@
   }
 
   p {
-    @apply leading-relaxed md:leading-relaxed;
+    @apply leading-relaxed md:leading-relaxed text-[1.0625rem] md:text-lg;
     line-height: 1.8;
   }
 
