@@ -188,44 +188,27 @@ export default function Resume() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="container-narrow">
           <AnimatedSection>
-            {/* Mobile: stacked layout */}
-            <div className="lg:hidden space-y-10">
+            <div className="space-y-10 lg:space-y-12">
               <h2>Core Capabilities</h2>
-              <div className="space-y-12">
+              
+              {/* 3-column card grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 {capabilityGroups.map((group) => (
-                  <div key={group.title} className="space-y-4">
-                    <h4 className="text-base font-semibold uppercase tracking-wide text-foreground">
+                  <div 
+                    key={group.title} 
+                    className="group p-6 lg:p-8 border border-border/40 rounded-lg bg-card/30 hover:border-accent/50 hover:bg-card/50 transition-all duration-300"
+                  >
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-5 pb-4 border-b border-border/30">
                       {group.title}
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3 text-muted-foreground">
                       {group.items.map((item) => (
-                        <li key={item} className="text-muted-foreground">
+                        <li key={item} className="leading-relaxed">
                           {item}
                         </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Desktop: two-column layout */}
-            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
-              <div className="pt-1">
-                <h2 className="text-[2rem] font-medium leading-snug">Core Capabilities</h2>
-              </div>
-              <div className="space-y-10">
-                {capabilityGroups.map((group) => (
-                  <div key={group.title} className="space-y-3">
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-                      {group.title}
-                    </h4>
-                    <ul className="space-y-1.5 text-[0.9375rem] leading-[1.85] text-muted-foreground">
-                      {group.items.map((item) => (
-                        <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
