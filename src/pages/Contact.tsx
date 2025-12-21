@@ -77,14 +77,20 @@ export default function Contact() {
       {/* Main Content */}
       <section className="section-spacing bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
             {/* Left Column - Info */}
             <AnimatedSection delay={0.1}>
-              <div className="space-y-10">
-                <div className="space-y-4">
-                  <h2 className="text-2xl">Book a call</h2>
-                  <p className="text-muted-foreground">
+              <div className="space-y-10 lg:space-y-12">
+                {/* Book a call - Primary action */}
+                <div className="space-y-4 lg:space-y-5 lg:pb-2">
+                  <h2 className="text-2xl lg:text-[1.75rem]">Book a Call</h2>
+                  {/* Mobile copy */}
+                  <p className="lg:hidden text-muted-foreground">
                     This is a focused conversation to understand the situation you are navigating and determine whether it makes sense to work together.
+                  </p>
+                  {/* Desktop copy - reframed */}
+                  <p className="hidden lg:block text-muted-foreground">
+                    This is a short, structured conversation to assess the situation, clarify scope, and determine whether engagement makes sense.
                   </p>
                   <Button variant="hero" size="lg" asChild>
                     <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
@@ -99,13 +105,13 @@ export default function Contact() {
                   <p className="text-muted-foreground">
                     I take on a limited number of advisory and fractional roles at any one time. This allows me to give each engagement the attention it requires.
                   </p>
-                  <p className="text-muted-foreground">
+                  <p className="text-foreground font-medium">
                     I prioritise engagements where clarity, decision-making, and accountability matter.
                   </p>
                 </div>
 
                 <div className="space-y-4 pt-6 border-t border-border/50">
-                  <h3 className="text-xl">Permanent roles</h3>
+                  <h3 className="text-xl">Permanent Roles</h3>
                   <p className="text-muted-foreground">
                     From time to time, I consider senior leadership roles where the mandate, scope, and expectations are clear. If there is alignment, I am open to a conversation.
                   </p>
@@ -117,9 +123,14 @@ export default function Contact() {
             <AnimatedSection delay={0.2}>
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <h2 className="text-2xl">Send a message</h2>
-                  <p className="text-muted-foreground">
+                  <h2 className="text-2xl">Send a Message</h2>
+                  {/* Mobile copy */}
+                  <p className="lg:hidden text-muted-foreground">
                     Prefer to write? Complete the form below.
+                  </p>
+                  {/* Desktop copy - adds friction */}
+                  <p className="hidden lg:block text-muted-foreground">
+                    Prefer to write? Please use the form below for considered enquiries.
                   </p>
                 </div>
 
@@ -177,7 +188,7 @@ export default function Contact() {
                       required
                       rows={5}
                       className="bg-card border-border/50 focus:border-accent resize-none"
-                      placeholder="Briefly describe the situation you are navigating and what outcome you are seeking."
+                      placeholder="Briefly describe the situation you are navigating and the outcome you are seeking."
                     />
                   </div>
 
@@ -198,6 +209,15 @@ export default function Contact() {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* Closing statement */}
+      <section className="py-16 lg:py-24">
+        <div className="container-narrow">
+          <p className="text-muted-foreground text-center lg:text-left">
+            Engagements begin with clarity and intent.
+          </p>
         </div>
       </section>
     </Layout>
