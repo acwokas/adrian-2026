@@ -45,7 +45,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-24 md:pt-28 pb-20 md:pb-28">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div 
               className="space-y-6 md:space-y-8"
               initial={{ opacity: 0, y: 30 }}
@@ -75,7 +75,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              className="relative"
+              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
