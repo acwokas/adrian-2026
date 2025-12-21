@@ -200,7 +200,7 @@ export default function Home() {
         <div className="container-narrow text-center">
           <AnimatedSection>
             <div className="space-y-6">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground">If you are navigating complexity or change</p>
+              <p className="text-sm uppercase tracking-wide text-muted-foreground">If you are navigating complexity, change, or pressure to act</p>
               <h2>Ready to have a conversation?</h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 I am selective about what I take on, but always happy to have a first conversation.
