@@ -14,7 +14,7 @@ export default function WhatIDo() {
         canonical="/what-i-do"
       />
       {/* Header */}
-      <section className="section-spacing border-b border-border/50">
+      <section className="section-spacing">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">
@@ -22,50 +22,31 @@ export default function WhatIDo() {
               <p className="text-xl text-muted-foreground max-w-2xl">
                 My work focuses on helping leaders make decisions, align teams, and move forward with clarity and accountability. I am typically brought in when complexity, change, or pressure makes progress difficult.
               </p>
-              <p className="text-lg text-foreground/80 font-medium">
-                I work across four engagement models.
-              </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Advisory Sprints */}
-      <section id="advisory" className="section-spacing border-b border-border/50 scroll-mt-24">
+      <section id="advisory" className="py-16 md:py-24 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-10">
+            <div className="space-y-8">
               <h2>Advisory Sprints</h2>
               
-              <div className="grid md:grid-cols-3 gap-10">
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    What this is
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Short, focused engagements designed to unblock decisions and create momentum.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    When it is used
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>Early-stage ambiguity</li>
-                    <li>Stalled initiatives</li>
-                    <li>High-stakes decisions</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    What leaders walk away with
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>Clarifies priorities</li>
-                    <li>Identifies what to stop</li>
-                    <li>Unblocks stalled decisions</li>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-muted-foreground">
+                  Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
+                </p>
+                <p className="text-muted-foreground">
+                  I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
+                </p>
+                <div className="space-y-3">
+                  <p className="text-foreground/90 font-medium">Leaders walk away with:</p>
+                  <ul className="space-y-2 text-muted-foreground pl-4">
+                    <li>Clear priorities and decision paths</li>
+                    <li>What to stop, not just what to do next</li>
+                    <li>Alignment on next steps and ownership</li>
                   </ul>
                 </div>
               </div>
@@ -75,23 +56,20 @@ export default function WhatIDo() {
       </section>
 
       {/* Fractional Leadership */}
-      <section id="fractional" className="section-spacing border-b border-border/50 scroll-mt-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section id="fractional" className="py-16 md:py-24 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.05}>
-            <div className="space-y-10">
+            <div className="space-y-8">
               <h2>Fractional Leadership</h2>
               
-              <p className="text-muted-foreground max-w-2xl">
-                In fractional roles, I work directly with the CEO or executive team. I operate as a senior peer, not a consultant, with responsibility for shaping direction, aligning teams, and supporting execution across strategy, operations, and governance.
-              </p>
-
-              <div className="space-y-4">
-                <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                  Typical focus areas
-                </h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>Strategic alignment and governance</li>
-                  <li>Commercial and operating model execution</li>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-muted-foreground">
+                  In fractional roles, I work directly with the CEO or executive team. I operate as a senior peer, not a consultant, with responsibility for shaping direction, aligning teams, and supporting execution across strategy, operations, and governance.
+                </p>
+                <ul className="space-y-2 text-muted-foreground pl-4">
+                  <li>Strategic and operational alignment at executive level</li>
+                  <li>Commercial and operating model decisions</li>
+                  <li>Governance and execution during periods of change</li>
                 </ul>
               </div>
             </div>
@@ -100,36 +78,22 @@ export default function WhatIDo() {
       </section>
 
       {/* Mentoring and Capability Building */}
-      <section id="mentoring" className="section-spacing border-b border-border/50 scroll-mt-24">
+      <section id="mentoring" className="py-16 md:py-24 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
-            <div className="space-y-10">
+            <div className="space-y-8">
               <h2>Mentoring and Capability Building</h2>
               
-              <p className="text-muted-foreground max-w-2xl">
-                Mentoring and capability building form part of how I work with leaders and teams, particularly where long-term strength matters more than short-term fixes.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-12 md:gap-10">
-                <div className="space-y-5">
-                  <h4 className="text-sm font-semibold text-accent uppercase tracking-wider">
-                    Who this is for
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>Founders</li>
-                    <li>Senior operators</li>
-                    <li>Leadership teams</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-5">
-                  <h4 className="text-sm font-semibold text-accent uppercase tracking-wider">
-                    Why it matters
-                  </h4>
-                  <p className="text-muted-foreground">
-                    This work provides early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
-                  </p>
-                </div>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-muted-foreground">
+                  Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
+                </p>
+                <p className="text-muted-foreground">
+                  This work provides early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
+                </p>
+                <p className="text-muted-foreground">
+                  It is designed to build judgement, shared language, and confidence, rather than dependency.
+                </p>
               </div>
             </div>
           </AnimatedSection>
@@ -137,39 +101,22 @@ export default function WhatIDo() {
       </section>
 
       {/* Workshops and Bootcamps */}
-      <section id="workshops" className="section-spacing border-b border-border/50 scroll-mt-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section id="workshops" className="py-16 md:py-24 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.15}>
-            <div className="space-y-10">
+            <div className="space-y-8">
               <h2>Workshops and Bootcamps</h2>
               
-              <p className="text-muted-foreground max-w-2xl">
-                Workshops and bootcamps are used where alignment, shared language, and collective decision-making are required.
-              </p>
-              <p className="text-foreground/90 font-medium">
-                These are not training programmes. They are used to create alignment, shared understanding, and decisive next steps.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-10">
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    Used for
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>Leadership alignment</li>
-                    <li>Strategy resets</li>
-                    <li>Capability uplift at scale</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    Delivered through
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Direct engagements and selected partners, including Blackstorm Asia.
-                  </p>
-                </div>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-muted-foreground">
+                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required.
+                </p>
+                <p className="text-muted-foreground">
+                  These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
+                </p>
+                <p className="text-muted-foreground">
+                  Delivered through direct engagements and selected partners, including Blackstorm Asia.
+                </p>
               </div>
             </div>
           </AnimatedSection>
