@@ -42,45 +42,60 @@ export default function Home() {
   return (
     <Layout>
       <SEO canonical="/" />
-      {/* Hero Section - Two column on desktop */}
-      <section className="pt-24 md:pt-28 lg:pt-20 pb-16 md:pb-20 lg:pb-16">
+      
+      {/* Hero Section - Desktop: Two column with integrated "When brought in" */}
+      <section className="pt-24 md:pt-28 lg:pt-16 pb-16 md:pb-20 lg:pb-12">
         <div className="container-wide max-w-[1100px] mx-auto">
-          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-[60%_40%] gap-10 lg:gap-8 items-center">
+            
+            {/* Left Column */}
             <motion.div 
-              className="space-y-6 md:space-y-8 lg:space-y-6"
+              className="space-y-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="space-y-3">
-                <p className="hidden lg:block text-sm uppercase tracking-wider text-muted-foreground">
-                  Senior Commercial and Operational Leader
-                </p>
-                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+              <div className="space-y-4">
+                <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.15]">
                   I help organisations and leaders make better decisions in complex environments.
                 </h1>
+                <p className="text-base md:text-lg text-muted-foreground">
+                  Advisory, fractional leadership, mentoring, and capability building.
+                </p>
               </div>
-              <p className="text-base md:text-lg text-muted-foreground">
-                Advisory, fractional leadership, mentoring, and capability building.
-              </p>
-              <div className="flex flex-col items-start gap-4 pt-2">
+              
+              <div className="pt-2">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call
                   </Link>
                 </Button>
-                <Link 
-                  to="/how-i-work"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  View how I work
-                  <ArrowRight size={14} />
-                </Link>
+              </div>
+
+              {/* When I'm brought in - Desktop only, integrated into hero */}
+              <div className="hidden lg:block pt-6 mt-6 border-t border-border/30">
+                <p className="text-sm uppercase tracking-wider text-muted-foreground mb-5">
+                  When I am usually brought in
+                </p>
+                <ul className="space-y-3 mb-6">
+                  {broughtInFor.map((item) => (
+                    <li 
+                      key={item.bold}
+                      className="text-[0.95rem] text-muted-foreground pl-5 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent"
+                    >
+                      <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-base text-foreground font-medium leading-snug max-w-lg">
+                  I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
+                </p>
               </div>
             </motion.div>
 
+            {/* Right Column - Portrait */}
             <motion.div 
-              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none lg:pl-4"
+              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
@@ -97,18 +112,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* When I'm Brought In - Wider container on desktop */}
-      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
-        <div className="container-wide max-w-[900px] mx-auto px-6 md:px-8 lg:px-4">
+      {/* When I'm Brought In - Mobile only */}
+      <section className="lg:hidden py-16 md:py-20 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-wide px-6 md:px-8">
           <AnimatedSection>
-            <div className="space-y-8 lg:space-y-10">
+            <div className="space-y-8">
               <h2>When I am usually brought in</h2>
               
               <StaggeredChildren>
-                <ul className="space-y-5 md:space-y-6 lg:space-y-8">
+                <ul className="space-y-5 md:space-y-6">
                   {broughtInFor.map((item) => (
                     <StaggeredItem key={item.bold}>
-                      <li className="text-lg lg:text-xl text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
+                      <li className="text-lg text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-px before:bg-accent">
                         <span className="font-semibold text-foreground">{item.bold}</span> {item.rest}
                       </li>
                     </StaggeredItem>
@@ -116,8 +131,8 @@ export default function Home() {
                 </ul>
               </StaggeredChildren>
 
-              <div className="pt-10 lg:pt-14 mt-8 lg:mt-10 border-t border-accent/20">
-                <p className="text-xl md:text-2xl lg:text-[1.75rem] leading-snug text-foreground font-semibold max-w-3xl">
+              <div className="pt-10 mt-8 border-t border-accent/20">
+                <p className="text-xl md:text-2xl leading-snug text-foreground font-semibold max-w-3xl">
                   I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
                 </p>
               </div>
