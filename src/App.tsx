@@ -13,8 +13,27 @@ import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
+import { usePageTracking } from "./hooks/usePageTracking";
 
 const queryClient = new QueryClient();
+
+function AppRoutes() {
+  usePageTracking();
+  
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/what-i-do" element={<WhatIDo />} />
+      <Route path="/how-i-work" element={<HowIWork />} />
+      <Route path="/experience" element={<Experience />} />
+      <Route path="/resume" element={<Resume />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -23,17 +42,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/what-i-do" element={<WhatIDo />} />
-            <Route path="/how-i-work" element={<HowIWork />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppRoutes />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
