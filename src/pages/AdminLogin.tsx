@@ -20,11 +20,12 @@ const loginSchema = z.object({
 export default function AdminLogin() {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user, isAdmin, loading, signIn } = useAuth();
+  const { user, isAdmin, loading, signIn, signUp } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   useEffect(() => {
     if (!loading && user && isAdmin) {
@@ -48,6 +49,28 @@ export default function AdminLogin() {
     // Check if email is allowed
     if (email.toLowerCase() !== ALLOWED_ADMIN_EMAIL.toLowerCase()) {
       setError("Access denied. This admin area is restricted.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (isSignUp) {
+      const { error: signUpError } = await signUp(email, password);
+      
+      if (signUpError) {
+        if (signUpError.message.includes("already registered")) {
+          setError("User already exists. Please sign in instead.");
+        } else {
+          setError(signUpError.message);
+        }
+        setIsSubmitting(false);
+        return;
+      }
+
+      toast({
+        title: "Account created successfully",
+        description: "You can now sign in.",
+      });
+      setIsSignUp(false);
       setIsSubmitting(false);
       return;
     }
@@ -147,12 +170,25 @@ export default function AdminLogin() {
                 {isSubmitting ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
-                    Signing in...
+                    {isSignUp ? "Creating account..." : "Signing in..."}
                   </>
                 ) : (
-                  "Sign In"
+                  isSignUp ? "Create Account" : "Sign In"
                 )}
               </Button>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSignUp(!isSignUp);
+                    setError(null);
+                  }}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {isSignUp ? "Already have an account? Sign in" : "Need to create an account? Sign up"}
+                </button>
+              </div>
             </form>
           </div>
         </div>
