@@ -75,7 +75,7 @@ export default function Contact() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing">
+      <section className="section-spacing bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Column - Info */}

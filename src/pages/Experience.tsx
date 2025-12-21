@@ -94,7 +94,7 @@ export default function Experience() {
       {experienceCategories.map((category, index) => (
         <section 
           key={category.title}
-          className="section-spacing border-b border-border/50"
+          className={`section-spacing border-b border-border/50 ${index % 2 === 1 ? 'bg-[hsl(var(--section-light))] md:bg-transparent' : ''}`}
         >
           <div className="container-narrow">
             <AnimatedSection delay={index * 0.05}>

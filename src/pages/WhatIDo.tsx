@@ -67,7 +67,7 @@ export default function WhatIDo() {
         <section 
           key={service.id}
           id={service.id}
-          className="section-spacing border-b border-border/50 scroll-mt-24"
+          className={`section-spacing border-b border-border/50 scroll-mt-24 ${index % 2 === 1 ? 'bg-[hsl(var(--section-light))] md:bg-transparent' : ''}`}
         >
           <div className="container-narrow">
             <AnimatedSection delay={index * 0.05}>
