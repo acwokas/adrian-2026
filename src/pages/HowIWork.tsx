@@ -69,7 +69,7 @@ export default function HowIWork() {
       {sections.map((section, index) => (
         <section 
           key={section.title}
-          className="py-12 md:py-16 border-b border-border/50"
+          className={`py-12 md:py-16 border-b border-border/50 ${index % 2 === 1 ? 'bg-[hsl(var(--section-light))] md:bg-transparent' : ''}`}
         >
           <div className="container-narrow">
             <AnimatedSection delay={index * 0.03}>
