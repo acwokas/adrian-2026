@@ -247,7 +247,7 @@ export default function Contact() {
       {/* Closing statement */}
       <section className="py-16 lg:py-24">
         <div className="container-narrow">
-          <p className="text-muted-foreground text-center lg:text-left">
+          <p className="text-foreground text-center lg:text-left">
             Engagements begin with clarity and intent.
           </p>
         </div>
