@@ -6,7 +6,7 @@ export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
 
   useEffect(() => {
     // Set up auth state listener FIRST
@@ -18,6 +18,7 @@ export function useAuth() {
 
         // Defer role check with setTimeout to prevent deadlock
         if (session?.user) {
+          setIsAdmin(null);
           setTimeout(() => {
             checkAdminRole(session.user.id);
           }, 0);
@@ -34,7 +35,10 @@ export function useAuth() {
       setLoading(false);
 
       if (session?.user) {
+        setIsAdmin(null);
         checkAdminRole(session.user.id);
+      } else {
+        setIsAdmin(false);
       }
     });
 
