@@ -13,6 +13,7 @@ export default function WhatIDo() {
         description="Advisory sprints to unblock decisions, fractional COO/CCO leadership, executive mentoring, and capability-building workshops. Engagement models for organisations navigating complexity."
         canonical="/what-i-do"
         keywords="advisory sprints, fractional COO, fractional CCO, executive mentoring, capability building workshops, leadership development, strategic advisory"
+        breadcrumb={[{ name: "What I Do", path: "/what-i-do" }]}
       />
       {/* Header */}
       <section className="section-spacing">

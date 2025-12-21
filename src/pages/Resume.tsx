@@ -86,6 +86,7 @@ export default function Resume() {
         description="Professional CV of Adrian Watkins. Senior executive with expertise in commercial strategy, operational transformation, AI implementation, and executive advisory across Asia Pacific markets."
         canonical="/resume"
         keywords="executive resume, senior leader CV, commercial director resume, COO resume, fractional executive, Asia Pacific executive, AI leadership"
+        breadcrumb={[{ name: "Resume", path: "/resume" }]}
       />
       {/* Header with Executive Summary */}
       <section className="section-spacing lg:pb-16">

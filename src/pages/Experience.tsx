@@ -11,6 +11,7 @@ export default function Experience() {
         description="Two decades of senior commercial and operational leadership across Asia Pacific. Advisory roles, fractional executive positions, and platform building in AI, media, and technology sectors."
         canonical="/experience"
         keywords="commercial leadership experience, operational leadership, Asia Pacific executive, AI advisory, fractional executive experience, platform building, technology leadership"
+        breadcrumb={[{ name: "Experience", path: "/experience" }]}
       />
       
       {/* Header */}
