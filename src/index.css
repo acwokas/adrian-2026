@@ -153,6 +153,22 @@
     line-height: 1.8;
   }
 
+  ul {
+    list-style: none;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  ul li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: hsl(var(--muted-foreground));
+  }
+
   @media (min-width: 768px) {
     p {
       line-height: 1.7;
