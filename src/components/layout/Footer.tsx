@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -20,15 +20,26 @@ export function Footer() {
             </p>
           </div>
 
-          <a
-            href="https://aiinasia.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            AIinASIA.com
-            <ArrowUpRight size={14} />
-          </a>
+          <div className="flex items-center gap-6">
+            <a
+              href="https://aiinasia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              AIinASIA.com
+              <ArrowUpRight size={14} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adrianwatkins"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+          </div>
         </div>
 
         <div className="mt-8 pt-8 border-t border-border/30">
