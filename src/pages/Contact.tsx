@@ -57,6 +57,7 @@ export default function Contact() {
         description="Get in touch with Adrian Watkins for executive advisory, fractional leadership, or strategic consultation. Book a 30-minute clarity call to discuss your organisation's challenges."
         canonical="/contact"
         keywords="book executive advisor, fractional leadership consultation, strategic advisory call, executive coaching inquiry, business consultation"
+        breadcrumb={[{ name: "Contact", path: "/contact" }]}
       />
       {/* Header */}
       <section className="section-spacing border-b border-border/50">

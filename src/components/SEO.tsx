@@ -6,6 +6,7 @@ interface SEOProps {
   canonical?: string;
   type?: string;
   keywords?: string;
+  breadcrumb?: { name: string; path: string }[];
 }
 
 const defaultTitle = "Adrian Watkins | Executive Advisor & Fractional Leader | Asia Pacific";
@@ -84,19 +85,38 @@ const websiteSchema = {
   "alternateName": "Adrian Watkins Advisory",
   "url": siteUrl,
   "description": defaultDescription,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${siteUrl}/?s={search_term_string}`,
-    "query-input": "required name=search_term_string"
+  "publisher": {
+    "@type": "Person",
+    "name": "Adrian Watkins"
   }
 };
+
+const generateBreadcrumbSchema = (breadcrumb: { name: string; path: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    ...breadcrumb.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 2,
+      "name": item.name,
+      "item": `${siteUrl}${item.path}`
+    }))
+  ]
+});
 
 export function SEO({ 
   title, 
   description = defaultDescription,
   canonical,
   type = "website",
-  keywords = defaultKeywords
+  keywords = defaultKeywords,
+  breadcrumb
 }: SEOProps) {
   const fullTitle = title ? `${title} | Adrian Watkins` : defaultTitle;
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -108,7 +128,13 @@ export function SEO({
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Adrian Watkins" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       <link rel="canonical" href={canonicalUrl} />
+      
+      {/* Geographic targeting */}
+      <meta name="geo.region" content="SG" />
+      <meta name="geo.placename" content="Singapore" />
       
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -139,6 +165,11 @@ export function SEO({
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
       </script>
+      {breadcrumb && breadcrumb.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify(generateBreadcrumbSchema(breadcrumb))}
+        </script>
+      )}
     </Helmet>
   );
 }

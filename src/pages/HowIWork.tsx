@@ -13,6 +13,7 @@ export default function HowIWork() {
         description="Clarity, accountability, and progress over process. How Adrian Watkins approaches complex problems, works with executive teams, and builds lasting capability without dependency."
         canonical="/how-i-work"
         keywords="executive working style, leadership approach, advisory methodology, problem-solving framework, executive team collaboration, capability building"
+        breadcrumb={[{ name: "How I Work", path: "/how-i-work" }]}
       />
       {/* Header */}
       <section className="section-spacing">
