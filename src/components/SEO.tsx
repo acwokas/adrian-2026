@@ -11,6 +11,58 @@ const defaultTitle = "Adrian Watkins | Senior Commercial and Operational Leader"
 const defaultDescription = "I help organisations and leaders make better decisions in complex environments. Advisory, fractional leadership, mentoring, and capability building.";
 const siteUrl = "https://adrianwatkins.com";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Adrian Watkins",
+  "jobTitle": "Senior Commercial and Operational Leader",
+  "description": defaultDescription,
+  "url": siteUrl,
+  "sameAs": [
+    "https://www.linkedin.com/in/adrianwatkins",
+    "https://aiinasia.com"
+  ],
+  "knowsAbout": [
+    "Business Strategy",
+    "Operational Leadership",
+    "AI Implementation",
+    "Executive Advisory",
+    "Mentoring",
+    "Capability Building"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Adrian Watkins Advisory"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Adrian Watkins Advisory",
+  "description": "Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.",
+  "url": siteUrl,
+  "founder": {
+    "@type": "Person",
+    "name": "Adrian Watkins"
+  },
+  "areaServed": "Asia Pacific",
+  "serviceType": [
+    "Advisory Sprints",
+    "Fractional Leadership",
+    "Mentoring and Capability Building",
+    "Workshops and Bootcamps"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Adrian Watkins",
+  "url": siteUrl,
+  "description": defaultDescription
+};
+
 export function SEO({ 
   title, 
   description = defaultDescription,
@@ -37,6 +89,17 @@ export function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
     </Helmet>
   );
 }
