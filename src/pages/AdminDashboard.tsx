@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2 } from "lucide-react";
+import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2, Video, Play } from "lucide-react";
 import { format } from "date-fns";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, FunnelChart, Funnel, LabelList } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 import { ClickHeatmap } from "@/components/ClickHeatmap";
+import { SessionPlayback } from "@/components/SessionPlayback";
 
 type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'] & { session_id?: string | null };
 
@@ -48,6 +49,8 @@ export default function AdminDashboard() {
   const [dateRange, setDateRange] = useState<'today' | 'week' | 'month' | 'custom' | 'all'>('week');
   const [customStartDate, setCustomStartDate] = useState<string>(format(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'));
   const [customEndDate, setCustomEndDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'));
+  const [sessionRecordings, setSessionRecordings] = useState<any[]>([]);
+  const [selectedRecording, setSelectedRecording] = useState<any | null>(null);
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
@@ -362,6 +365,15 @@ export default function AdminDashboard() {
         geoBreakdown,
         clickHeatmapData,
       });
+
+      // Fetch session recordings
+      const { start: recStart, end: recEnd } = getDateFilter();
+      let recQuery = supabase.from('session_recordings').select('*');
+      if (recStart) recQuery = recQuery.gte('started_at', recStart);
+      if (recEnd) recQuery = recQuery.lte('started_at', recEnd);
+      
+      const { data: recordings } = await recQuery.order('started_at', { ascending: false }).limit(20);
+      setSessionRecordings(recordings || []);
     } catch (error) {
       console.error('Error fetching stats:', error);
       toast({
@@ -1074,6 +1086,53 @@ export default function AdminDashboard() {
                   </Card>
                 )}
 
+                {/* Session Recordings */}
+                {sessionRecordings.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Video size={18} />
+                        Session Recordings
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {sessionRecordings.map((recording) => {
+                          const events = (recording.events as any[]) || [];
+                          const duration = events.length > 0 ? events[events.length - 1]?.timestamp || 0 : 0;
+                          const durationSecs = Math.round(duration / 1000);
+                          
+                          return (
+                            <div
+                              key={recording.id}
+                              className="flex items-center justify-between p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors cursor-pointer"
+                              onClick={() => setSelectedRecording(recording)}
+                            >
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2 text-sm">
+                                  <span className="font-medium">{recording.page_path}</span>
+                                  <span className="text-xs text-muted-foreground">
+                                    {recording.session_id.slice(0, 8)}...
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                                  <span>{format(new Date(recording.started_at), 'MMM d, HH:mm')}</span>
+                                  <span>{events.length} events</span>
+                                  <span>{durationSecs}s duration</span>
+                                </div>
+                              </div>
+                              <Button variant="ghost" size="sm">
+                                <Play size={14} />
+                                Replay
+                              </Button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
                 {/* Top Events & Pages */}
                 <div className="grid lg:grid-cols-2 gap-6">
                   <Card>
@@ -1168,6 +1227,14 @@ export default function AdminDashboard() {
           </div>
         </div>
       </section>
+
+      {/* Session Playback Modal */}
+      {selectedRecording && (
+        <SessionPlayback 
+          recording={selectedRecording} 
+          onClose={() => setSelectedRecording(null)} 
+        />
+      )}
     </Layout>
   );
 }

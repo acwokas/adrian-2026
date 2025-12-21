@@ -15,6 +15,7 @@ import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
+import { SessionRecorder } from "./components/SessionRecorder";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function AppRoutes() {
   return (
     <>
       <GlobalClickTracker />
+      <SessionRecorder />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/what-i-do" element={<WhatIDo />} />
