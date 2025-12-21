@@ -11,18 +11,22 @@ const serviceCards = [
   {
     title: "Advisory",
     description: "Strategic guidance on critical decisions, direction, and priorities.",
+    anchor: "advisory",
   },
   {
     title: "Fractional Leadership",
     description: "Senior operational leadership without the commitment of a full-time hire.",
+    anchor: "fractional",
   },
   {
     title: "Mentoring and Capability Building",
     description: "Developing leaders and teams to think and execute with greater clarity.",
+    anchor: "mentoring",
   },
   {
     title: "Workshops and Bootcamps",
     description: "Intensive sessions designed to shift thinking and unlock action.",
+    anchor: "workshops",
   },
 ];
 
@@ -125,7 +129,7 @@ export default function Home() {
                 {serviceCards.map((card) => (
                   <StaggeredItem key={card.title}>
                     <Link
-                      to="/what-i-do"
+                      to={`/what-i-do#${card.anchor}`}
                       className="group block p-8 bg-card border border-border/50 hover:border-accent/50 transition-all duration-300 h-full"
                     >
                       <h3 className="mb-3 group-hover:text-accent transition-colors">

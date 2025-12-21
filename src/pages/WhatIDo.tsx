@@ -66,7 +66,8 @@ export default function WhatIDo() {
       {services.map((service, index) => (
         <section 
           key={service.id}
-          className="section-spacing border-b border-border/50"
+          id={service.id}
+          className="section-spacing border-b border-border/50 scroll-mt-24"
         >
           <div className="container-narrow">
             <AnimatedSection delay={index * 0.05}>
