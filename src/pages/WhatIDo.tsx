@@ -9,9 +9,10 @@ export default function WhatIDo() {
   return (
     <Layout>
       <SEO 
-        title="What I Do"
-        description="Advisory sprints, fractional leadership, mentoring, and workshops. Senior commercial and operational support for organisations navigating complexity."
+        title="Services - Advisory, Fractional Leadership & Mentoring"
+        description="Advisory sprints to unblock decisions, fractional COO/CCO leadership, executive mentoring, and capability-building workshops. Engagement models for organisations navigating complexity."
         canonical="/what-i-do"
+        keywords="advisory sprints, fractional COO, fractional CCO, executive mentoring, capability building workshops, leadership development, strategic advisory"
       />
       {/* Header */}
       <section className="section-spacing">

@@ -7,9 +7,10 @@ export default function Experience() {
   return (
     <Layout>
       <SEO 
-        title="Experience"
-        description="Senior commercial and operational leadership, advisory and fractional roles, and platform building across Asia Pacific and beyond."
+        title="Experience - Commercial Leadership & Advisory Background"
+        description="Two decades of senior commercial and operational leadership across Asia Pacific. Advisory roles, fractional executive positions, and platform building in AI, media, and technology sectors."
         canonical="/experience"
+        keywords="commercial leadership experience, operational leadership, Asia Pacific executive, AI advisory, fractional executive experience, platform building, technology leadership"
       />
       
       {/* Header */}
