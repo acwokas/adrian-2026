@@ -63,9 +63,9 @@ export default function WhatIDo() {
                     What leaders walk away with
                   </h4>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>Clear priorities</li>
-                    <li>What to stop</li>
-                    <li>What to act on next</li>
+                    <li>Clarifies priorities</li>
+                    <li>Identifies what to stop</li>
+                    <li>Unblocks stalled decisions</li>
                   </ul>
                 </div>
               </div>
