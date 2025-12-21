@@ -69,7 +69,7 @@ export default function Experience() {
                 <p className="text-base leading-[1.85] text-foreground">
                   Senior commercial and operational leadership roles with direct responsibility for commercial outcomes, operating models, and execution across complex and multi-market environments.
                 </p>
-                <ul className="space-y-4 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <ul className="space-y-4 text-base leading-[1.85] text-muted-foreground">
                   <li>Ownership of commercial outcomes, operating performance, and delivery accountability</li>
                   <li>Design and oversight of operating models across growth and transformation phases</li>
                   <li>Leadership across cross-functional teams and senior stakeholders</li>
@@ -106,7 +106,7 @@ export default function Experience() {
                 <p className="text-base leading-[1.85] text-foreground font-medium">
                   These engagements involve shared accountability for outcomes, not advisory input alone.
                 </p>
-                <ul className="space-y-4 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <ul className="space-y-4 text-base leading-[1.85] text-muted-foreground">
                   <li>Decision support and leadership at CEO and executive team level</li>
                   <li>Alignment of strategy, operations, and execution during periods of change</li>
                   <li>Time-bound leadership roles with clear ownership and mandate</li>
@@ -135,7 +135,7 @@ export default function Experience() {
                 <h2 className="text-[2rem] font-medium leading-snug">Platforms and<br />Ecosystems</h2>
               </div>
               <div>
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes AIinASIA and the broader you.withthepowerof.ai ecosystem.
                 </p>
               </div>
@@ -170,15 +170,15 @@ export default function Experience() {
                 <h2 className="text-[2rem] font-medium leading-snug">Founders, Startups,<br />and Scale-ups</h2>
               </div>
               <div className="space-y-6">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   Working alongside founders and early-stage leadership teams at critical moments in their growth journey.
                 </p>
-                <ul className="space-y-5 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <ul className="space-y-5 text-base leading-[1.85] text-muted-foreground">
                   <li>Mentoring founders and early leadership teams through growth and transition</li>
                   <li>Advising on decision-making, structure, and operating focus in early stages</li>
                   <li>Selective long-term advisory and investment relationships</li>
                 </ul>
-                <p className="text-[0.9375rem] leading-[1.85] text-foreground pt-2">
+                <p className="text-base leading-[1.85] text-foreground pt-2">
                   This work provides early visibility into common failure patterns and scaling challenges.
                 </p>
               </div>
