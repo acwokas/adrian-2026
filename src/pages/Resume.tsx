@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -86,15 +86,15 @@ export default function Resume() {
         description="Professional background, capabilities, and career highlights. Senior commercial and operational leadership across technology, media, and professional services."
         canonical="/resume"
       />
-      {/* Header */}
-      <section className="section-spacing border-b border-border/50">
+      {/* Header with Executive Summary */}
+      <section className="section-spacing lg:pb-16">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-8">
               <h1>Resume</h1>
               
-              {/* Executive Summary Block */}
-              <div className="space-y-4 py-6 border-y border-border/30">
+              {/* Mobile: Executive Summary Block */}
+              <div className="lg:hidden space-y-4 py-6 border-y border-border/30">
                 <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
                   Senior Commercial and Operational Leader
                 </p>
@@ -106,7 +106,20 @@ export default function Resume() {
                 </ul>
               </div>
 
-              <p className="text-lg border-l-2 border-accent pl-6 py-2">
+              {/* Desktop: Enhanced Executive Summary Block */}
+              <div className="hidden lg:block space-y-6 py-8 border-y border-border/30">
+                <p className="text-2xl font-medium text-foreground leading-relaxed">
+                  Senior Commercial and Operational Leader
+                </p>
+                <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed">
+                  <li>Operates at CEO and executive team level</li>
+                  <li>Advisory, fractional, and permanent leadership roles</li>
+                  <li>Strategy, operations, governance, and execution</li>
+                  <li>Experience across AI, data, media, platforms, and regulated environments</li>
+                </ul>
+              </div>
+
+              <p className="text-lg lg:text-xl border-l-2 border-accent pl-6 py-2 text-foreground">
                 Measured by improved focus, stronger execution, and better commercial outcomes.
               </p>
             </div>
@@ -114,25 +127,23 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Profile - With operating stance block */}
-      <section className="py-16 md:py-20 border-b border-border/50">
+      {/* Profile */}
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-8">
-              <h2 className="text-2xl">Profile</h2>
+            {/* Mobile: stacked layout */}
+            <div className="lg:hidden space-y-6">
+              <h2>Profile</h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
                   <span className="text-foreground font-medium">Decision-making under pressure.</span>{" "}
                   I work with organisations and leadership teams to drive clarity and deliver commercial outcomes in complex environments.
                 </p>
-
-                {/* Operating stance block */}
                 <ul className="space-y-2 py-4 text-foreground/90 font-medium">
                   <li>Comfortable owning decisions with commercial and reputational impact</li>
                   <li>Operates effectively in ambiguity and under pressure</li>
                   <li>Trusted advisor to CEOs and executive teams</li>
                 </ul>
-
                 <p>
                   <span className="text-foreground font-medium">Alignment between strategy and execution.</span>{" "}
                   My career spans commercial leadership, operational transformation, advisory, and ecosystem building.
@@ -143,70 +154,135 @@ export default function Resume() {
                 </p>
               </div>
             </div>
+
+            {/* Desktop: two-column layout */}
+            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
+              <div className="pt-1">
+                <h2 className="text-[2rem] font-medium leading-snug">Profile</h2>
+              </div>
+              <div className="space-y-5">
+                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  <span className="text-foreground font-medium">Decision-making under pressure.</span>{" "}
+                  I work with organisations and leadership teams to drive clarity and deliver commercial outcomes in complex environments.
+                </p>
+                <ul className="space-y-2 py-3 text-[0.9375rem] leading-[1.85] text-foreground font-medium">
+                  <li>Comfortable owning decisions with commercial and reputational impact</li>
+                  <li>Operates effectively in ambiguity and under pressure</li>
+                  <li>Trusted advisor to CEOs and executive teams</li>
+                </ul>
+                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  <span className="text-foreground font-medium">Alignment between strategy and execution.</span>{" "}
+                  My career spans commercial leadership, operational transformation, advisory, and ecosystem building.
+                </p>
+                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  <span className="text-foreground font-medium">Comfortable owning outcomes.</span>{" "}
+                  I challenge assumptions and focus attention on what will actually move the business forward.
+                </p>
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Core Capabilities - Increased visual separation */}
-      <section className="py-16 md:py-20 border-b border-border/50">
+      {/* Core Capabilities */}
+      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-10">
-              <h2 className="text-2xl">Core capabilities</h2>
-              <StaggeredChildren className="space-y-12">
+            {/* Mobile: stacked layout */}
+            <div className="lg:hidden space-y-10">
+              <h2>Core Capabilities</h2>
+              <div className="space-y-12">
                 {capabilityGroups.map((group) => (
-                  <StaggeredItem key={group.title}>
-                    <div className="space-y-4">
-                      <h4 className="text-base font-semibold uppercase tracking-wide text-foreground">
-                        {group.title}
-                      </h4>
-                      <ul className="space-y-2">
-                        {group.items.map((item) => (
-                          <li key={item} className="text-muted-foreground">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </StaggeredItem>
+                  <div key={group.title} className="space-y-4">
+                    <h4 className="text-base font-semibold uppercase tracking-wide text-foreground">
+                      {group.title}
+                    </h4>
+                    <ul className="space-y-2">
+                      {group.items.map((item) => (
+                        <li key={item} className="text-muted-foreground">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </StaggeredChildren>
+              </div>
+            </div>
+
+            {/* Desktop: two-column layout */}
+            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
+              <div className="pt-1">
+                <h2 className="text-[2rem] font-medium leading-snug">Core Capabilities</h2>
+              </div>
+              <div className="space-y-10">
+                {capabilityGroups.map((group) => (
+                  <div key={group.title} className="space-y-3">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+                      {group.title}
+                    </h4>
+                    <ul className="space-y-1.5 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                      {group.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Career Highlights - Outcome-first framing enforced */}
-      <section className="py-16 md:py-20 border-b border-border/50">
+      {/* Career Highlights */}
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-10">
-              <h2 className="text-2xl">Career highlights</h2>
-              <StaggeredChildren className="space-y-8">
+            {/* Mobile: stacked layout */}
+            <div className="lg:hidden space-y-10">
+              <h2>Career Highlights</h2>
+              <div className="space-y-8">
                 {highlights.map((item, i) => (
-                  <StaggeredItem key={i}>
-                    <div className="space-y-1">
-                      <p className="text-foreground font-semibold leading-relaxed">
-                        {item.outcome}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {item.context}
-                      </p>
-                    </div>
-                  </StaggeredItem>
+                  <div key={i} className="space-y-1">
+                    <p className="text-foreground font-semibold leading-relaxed">
+                      {item.outcome}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.context}
+                    </p>
+                  </div>
                 ))}
-              </StaggeredChildren>
+              </div>
+            </div>
+
+            {/* Desktop: two-column layout */}
+            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
+              <div className="pt-1">
+                <h2 className="text-[2rem] font-medium leading-snug">Career Highlights</h2>
+              </div>
+              <div className="space-y-8">
+                {highlights.map((item, i) => (
+                  <div key={i} className="space-y-1.5">
+                    <p className="text-base text-foreground font-semibold leading-relaxed">
+                      {item.outcome}
+                    </p>
+                    <p className="text-[0.8125rem] text-muted-foreground/80 leading-relaxed">
+                      {item.context}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Background - Reduced to essential */}
-      <section className="py-16 md:py-20 border-b border-border/50">
+      {/* Background - De-emphasised */}
+      <section className="py-16 md:py-20 lg:py-20 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-8">
-              <h2 className="text-2xl">Background</h2>
+            {/* Mobile: stacked layout */}
+            <div className="lg:hidden space-y-6">
+              <h2>Background</h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
                   Over two decades across multiple geographies, with particular depth in Asia Pacific markets. Progression from commercial leadership to executive and board-level responsibility.
@@ -216,12 +292,27 @@ export default function Resume() {
                 </p>
               </div>
             </div>
+
+            {/* Desktop: two-column layout, de-emphasised */}
+            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
+              <div className="pt-1">
+                <h3 className="text-xl font-medium leading-snug text-foreground/80">Background</h3>
+              </div>
+              <div className="space-y-4">
+                <p className="text-[0.875rem] leading-[1.85] text-muted-foreground">
+                  Over two decades across multiple geographies, with particular depth in Asia Pacific markets. Progression from commercial leadership to executive and board-level responsibility.
+                </p>
+                <p className="text-[0.875rem] leading-[1.85] text-muted-foreground">
+                  Strategic perspective combined with operational pragmatism—comfortable in both large organisations and high-growth environments.
+                </p>
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Download CTA - Assertive and obvious */}
-      <section className="py-24 md:py-32">
+      {/* Download CTA */}
+      <section className="py-24 md:py-32 lg:py-36">
         <div className="container-narrow text-center">
           <AnimatedSection>
             <div className="space-y-10">
