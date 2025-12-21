@@ -111,8 +111,8 @@ export default function Home() {
                 </ul>
               </StaggeredChildren>
 
-              <div className="pt-10 mt-10 border-t border-accent/30">
-                <p className="text-xl md:text-2xl leading-relaxed text-foreground font-medium">
+              <div className="pt-12 mt-12 border-t border-accent/30">
+                <p className="text-2xl md:text-3xl leading-snug text-foreground font-semibold max-w-3xl">
                   I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
                 </p>
               </div>
