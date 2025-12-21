@@ -12,11 +12,10 @@ export default function WhatIDo() {
 
   useEffect(() => {
     if (location.hash) {
-      // Small delay to ensure DOM is ready after navigation
       setTimeout(() => {
         const element = document.getElementById(location.hash.slice(1));
         if (element) {
-          element.scrollIntoView({ behavior: 'instant', block: 'start' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     } else {
