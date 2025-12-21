@@ -153,18 +153,21 @@ export default function Home() {
       {/* Shaping the Conversation */}
       <section className="section-spacing border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
-          <div className="space-y-12">
+          <div className="space-y-16 md:space-y-12">
             <AnimatedSection>
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <h2>Shaping the conversation</h2>
                 <p className="text-lg text-muted-foreground">
-                  Alongside my advisory and leadership work, I am the founder of AIinASIA.com, a platform focused on practical insight and responsible use of emerging technology. It also provides a constant feedback loop from founders, operators, and practitioners across the region, which directly informs my advisory work.
+                  I founded AIinASIA.com—a platform for practical insight on emerging technology.
+                </p>
+                <p className="text-muted-foreground">
+                  It keeps me connected to founders and operators across the region, which directly informs my advisory work.
                 </p>
                 <a
                   href="https://aiinasia.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-accent hover:underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-accent hover:underline underline-offset-4 pt-1"
                 >
                   Visit AIinASIA
                   <ArrowUpRight size={16} />
@@ -173,16 +176,19 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <div className="space-y-6 pt-8 border-t border-border/30">
+              <div className="space-y-5 pt-8 border-t border-border/30">
                 <h2>A broader mission</h2>
                 <p className="text-lg text-muted-foreground">
-                  I am building you.withthepowerof.ai, an ecosystem focused on democratising access to capability, tools, and thinking that are often locked behind large organisations.
+                  I am building you.withthepowerof.ai—an ecosystem for capability and tools.
+                </p>
+                <p className="text-muted-foreground">
+                  Democratising access to thinking often locked behind large organisations.
                 </p>
                 <a
                   href="https://you.withthepowerof.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-accent hover:underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-accent hover:underline underline-offset-4 pt-1"
                 >
                   Explore the ecosystem
                   <ArrowUpRight size={16} />
