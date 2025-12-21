@@ -5,20 +5,8 @@ export function Footer() {
         <div className="space-y-4 text-center md:text-left">
           <div className="space-y-1">
             <p className="text-sm font-medium text-foreground">Adrian Watkins</p>
-            <p className="text-sm text-muted-foreground">Senior Commercial and Operational Leader</p>
+            <p className="text-sm text-muted-foreground">Senior Commercial, Strategic and Operational Leader</p>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Part of the{" "}
-            <a
-              href="https://you.withthepowerof.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-accent transition-colors"
-            >
-              you.withthepowerof.ai
-            </a>{" "}
-            ecosystem
-          </p>
           <p className="text-xs text-muted-foreground pt-4">
             © Adrian Watkins. All rights reserved.
           </p>
