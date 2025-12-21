@@ -66,9 +66,9 @@ export default function Home() {
               
               <div className="pt-2">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-                  <Link to="/contact">
+                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </motion.div>
@@ -107,9 +107,9 @@ export default function Home() {
               </p>
               <div className="pt-3">
                 <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
+                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </motion.div>
@@ -278,9 +278,9 @@ export default function Home() {
               </p>
               <div className="pt-2 lg:pt-4">
                 <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
+                  <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
                     Book a 30-minute clarity call
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
