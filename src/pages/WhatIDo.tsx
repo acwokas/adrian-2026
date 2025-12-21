@@ -206,10 +206,10 @@ export default function WhatIDo() {
                 If this sounds relevant, the best next step is a short conversation to assess fit and scope.
               </p>
               <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">
+                <a href="https://calendly.com/adrian-watkins1" target="_blank" rel="noopener noreferrer">
                   Book a 30-minute clarity call
                   <ArrowRight size={16} />
-                </Link>
+                </a>
               </Button>
             </div>
           </AnimatedSection>
