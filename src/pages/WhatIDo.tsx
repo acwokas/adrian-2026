@@ -76,15 +76,15 @@ export default function WhatIDo() {
                 <h2 className="text-[2rem] font-medium leading-snug">Advisory Sprints</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
                 </p>
                 <div className="space-y-3 pt-1">
-                  <p className="text-[0.9375rem] text-foreground font-medium">Leaders walk away with:</p>
-                  <ul className="space-y-2 text-[0.9375rem] leading-[1.8] text-muted-foreground pl-5">
+                  <p className="text-base text-foreground font-medium">Leaders walk away with:</p>
+                  <ul className="space-y-2 text-base leading-[1.8] text-muted-foreground pl-5">
                     <li>Clear priorities and decision paths</li>
                     <li>What to stop, not just what to do next</li>
                     <li>Alignment on next steps and ownership</li>
@@ -121,10 +121,10 @@ export default function WhatIDo() {
                 <h2 className="text-[2rem] font-medium leading-snug">Fractional Leadership</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   In fractional roles, I work directly with the CEO or executive team. I operate as a senior peer, not a consultant, with responsibility for shaping direction, aligning teams, and supporting execution across strategy, operations, and governance.
                 </p>
-                <ul className="space-y-2 text-[0.9375rem] leading-[1.8] text-muted-foreground pl-5">
+                <ul className="space-y-2 text-base leading-[1.8] text-muted-foreground pl-5">
                   <li><span className="font-semibold text-foreground">Strategic and operational alignment</span> at executive level</li>
                   <li><span className="font-semibold text-foreground">Commercial and operating model</span> decisions</li>
                   <li><span className="font-semibold text-foreground">Governance and execution</span> during periods of change</li>
@@ -161,13 +161,13 @@ export default function WhatIDo() {
                 <h2 className="text-[2rem] font-medium leading-snug">Mentoring and<br />Capability Building</h2>
               </div>
               <div className="space-y-4">
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   This work provides early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   It is designed to build judgement, shared language, and confidence, rather than dependency.
                 </p>
               </div>
@@ -202,10 +202,10 @@ export default function WhatIDo() {
                 <h2 className="text-[2rem] font-medium leading-snug">Workshops and<br />Bootcamps</h2>
               </div>
               <div className="space-y-4">
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                <p className="text-base leading-[1.8] text-muted-foreground">
                   Delivered through direct engagements and selected partners, including Blackstorm Asia.
                 </p>
               </div>

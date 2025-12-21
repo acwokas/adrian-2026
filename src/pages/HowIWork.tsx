@@ -58,13 +58,13 @@ export default function HowIWork() {
                 <h2 className="text-[2rem] font-medium leading-snug">How I Approach<br />Problems</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   I start by understanding what is actually blocking progress, not just what is visible on the surface.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   I challenge assumptions early, before they harden into plans that waste time and resources.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   I prioritise decisions over analysis. Clarity about what to do next matters more than comprehensive diagnostics.
                 </p>
               </div>
@@ -96,10 +96,10 @@ export default function HowIWork() {
                 <h2 className="text-[2rem] font-medium leading-snug">Working With<br />Leadership Teams</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   I work directly with CEOs and executive teams as a senior peer. My role is to support decision-making, align priorities, and maintain momentum, particularly when complexity or pressure makes this difficult.
                 </p>
-                <ul className="space-y-2 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <ul className="space-y-2 text-base leading-[1.85] text-muted-foreground">
                   <li>Direct and candid conversations</li>
                   <li>Focus on shared accountability</li>
                   <li>Clear ownership of next steps</li>
@@ -131,10 +131,10 @@ export default function HowIWork() {
                 <h2 className="text-[2rem] font-medium leading-snug">Governance and<br />Responsibility</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   Governance and responsibility are integral to how I work. I am comfortable operating in regulated and high-trust environments, where decisions carry commercial, operational, and reputational consequences.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.85] text-foreground font-medium">
+                <p className="text-base leading-[1.85] text-foreground font-medium">
                   Good governance enables speed and confidence, rather than slowing progress.
                 </p>
               </div>
@@ -164,10 +164,10 @@ export default function HowIWork() {
                 <h2 className="text-[2rem] font-medium leading-snug">Building Capability,<br />Not Dependency</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   My aim is to leave teams stronger than I found them. That means building capability, shared language, and confidence so progress continues without ongoing dependence on external support.
                 </p>
-                <p className="text-[0.9375rem] leading-[1.85] text-foreground font-medium">
+                <p className="text-base leading-[1.85] text-foreground font-medium">
                   Mentoring, workshops, and structured engagement are part of how this is achieved.
                 </p>
               </div>
@@ -194,7 +194,7 @@ export default function HowIWork() {
                 <h2 className="text-[2rem] font-medium leading-snug">Staying Close to<br />the Ecosystem</h2>
               </div>
               <div className="space-y-5">
-                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
                   Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
                 </p>
               </div>
