@@ -75,7 +75,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
+              className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none py-8 lg:py-12 lg:pl-8"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
