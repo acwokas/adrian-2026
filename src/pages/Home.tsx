@@ -43,11 +43,11 @@ export default function Home() {
     <Layout>
       <SEO canonical="/" />
       {/* Hero Section */}
-      <section className="pt-24 md:pt-28 pb-20 md:pb-28">
+      <section className="pt-28 md:pt-36 pb-24 md:pb-32">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div 
-              className="space-y-8 md:space-y-10"
+              className="space-y-10 md:space-y-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
@@ -58,7 +58,7 @@ export default function Home() {
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
                 Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
               </p>
-              <div className="flex flex-col items-start gap-4 pt-4">
+              <div className="flex flex-col items-start gap-5 pt-6">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call
