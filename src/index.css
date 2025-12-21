@@ -67,35 +67,35 @@
   .dark {
     /* Deep charcoal - near black */
     --background: 0 0% 8%;
-    --foreground: 35 25% 95%;
+    --foreground: 30 8% 75%;
 
     /* Cards - slightly lighter charcoal */
     --card: 0 0% 11%;
-    --card-foreground: 35 25% 95%;
+    --card-foreground: 30 8% 75%;
 
     /* Popover */
     --popover: 0 0% 11%;
-    --popover-foreground: 35 25% 95%;
+    --popover-foreground: 30 8% 75%;
 
-    /* Primary - warm off-white */
-    --primary: 35 25% 95%;
+    /* Primary - near-white for headings and emphasis */
+    --primary: 40 15% 94%;
     --primary-foreground: 0 0% 8%;
 
     /* Secondary - muted surface */
     --secondary: 0 0% 14%;
-    --secondary-foreground: 35 25% 85%;
+    --secondary-foreground: 30 8% 75%;
 
-    /* Muted */
+    /* Muted - warm brown for tertiary/meta text */
     --muted: 0 0% 18%;
-    --muted-foreground: 35 15% 60%;
+    --muted-foreground: 30 15% 45%;
 
     /* Accent - muted teal */
     --accent: 175 30% 45%;
-    --accent-foreground: 35 25% 95%;
+    --accent-foreground: 40 15% 94%;
 
     /* Destructive */
     --destructive: 0 62% 50%;
-    --destructive-foreground: 35 25% 95%;
+    --destructive-foreground: 40 15% 94%;
 
     /* Border and input */
     --border: 0 0% 20%;
@@ -103,20 +103,20 @@
     --ring: 175 30% 45%;
 
     /* Custom tokens */
-    --text-primary: 35 25% 95%;
-    --text-secondary: 35 15% 70%;
-    --text-muted: 35 10% 50%;
+    --text-primary: 40 15% 94%;
+    --text-secondary: 30 8% 75%;
+    --text-muted: 30 15% 45%;
     
     /* Section backgrounds */
     --section-light: 0 0% 12%;
     
     /* Sidebar defaults */
     --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 35 25% 95%;
+    --sidebar-foreground: 30 8% 75%;
     --sidebar-primary: 175 30% 45%;
-    --sidebar-primary-foreground: 35 25% 95%;
+    --sidebar-primary-foreground: 40 15% 94%;
     --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 35 25% 95%;
+    --sidebar-accent-foreground: 40 15% 94%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 175 30% 45%;
   }
