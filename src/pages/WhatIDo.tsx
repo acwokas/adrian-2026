@@ -146,6 +146,9 @@ export default function WhatIDo() {
               <p className="text-muted-foreground max-w-2xl">
                 Workshops and bootcamps are used where alignment, shared language, and collective decision-making are required.
               </p>
+              <p className="text-foreground/90 font-medium">
+                These are not training programmes. They are used to create alignment, shared understanding, and decisive next steps.
+              </p>
 
               <div className="grid md:grid-cols-2 gap-10">
                 <div className="space-y-4">
