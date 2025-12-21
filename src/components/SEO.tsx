@@ -84,11 +84,15 @@ export function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Adrian Watkins" />
+      <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="640" />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
 
       {/* JSON-LD Structured Data */}
       <script type="application/ld+json">
