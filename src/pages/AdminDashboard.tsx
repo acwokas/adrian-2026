@@ -53,7 +53,15 @@ export default function AdminDashboard() {
   const [selectedRecording, setSelectedRecording] = useState<any | null>(null);
 
   useEffect(() => {
-    if (!loading && (!user || !isAdmin)) {
+    if (loading) return;
+
+    if (!user) {
+      navigate("/admin/login");
+      return;
+    }
+
+    // Wait for role check to resolve before redirecting
+    if (isAdmin === false) {
       navigate("/admin/login");
     }
   }, [user, isAdmin, loading, navigate]);
@@ -508,7 +516,7 @@ export default function AdminDashboard() {
     navigate("/");
   };
 
-  if (loading) {
+  if (loading || (user && isAdmin === null)) {
     return (
       <Layout>
         <div className="flex items-center justify-center min-h-[60vh]">
@@ -518,7 +526,7 @@ export default function AdminDashboard() {
     );
   }
 
-  if (!user || !isAdmin) {
+  if (!user || isAdmin !== true) {
     return null;
   }
 

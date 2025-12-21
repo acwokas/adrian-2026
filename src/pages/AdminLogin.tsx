@@ -28,7 +28,7 @@ export default function AdminLogin() {
   const [isSignUp, setIsSignUp] = useState(false);
 
   useEffect(() => {
-    if (!loading && user && isAdmin) {
+    if (!loading && user && isAdmin === true) {
       navigate("/admin");
     }
   }, [user, isAdmin, loading, navigate]);
