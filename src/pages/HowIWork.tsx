@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
-import { TrackedExternalLink } from "@/components/TrackedLink";
-import { TrackedButton } from "@/components/TrackedButton";
+import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/hooks/useAnalytics";
 
 export default function HowIWork() {
   return (
@@ -244,17 +243,21 @@ export default function HowIWork() {
               <p className="text-muted-foreground max-w-lg mx-auto">
                 A short conversation is often the best way to assess fit and scope.
               </p>
-              <TrackedButton variant="hero" size="lg" asChild eventName="book_clarity_call" eventData={{ page: "how-i-work" }} isCTA>
-                <TrackedExternalLink 
+              <Button 
+                variant="hero" 
+                size="lg" 
+                asChild
+                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_clarity_call', eventData: { page: 'how-i-work' } })}
+              >
+                <a 
                   href="https://calendly.com/adrian-watkins1/new-meeting" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  eventName="calendly_link"
                 >
                   Book a 30-minute clarity call
                   <ArrowRight size={16} />
-                </TrackedExternalLink>
-              </TrackedButton>
+                </a>
+              </Button>
             </div>
           </AnimatedSection>
         </div>

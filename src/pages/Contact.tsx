@@ -10,8 +10,6 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { TrackedExternalLink } from "@/components/TrackedLink";
-import { TrackedButton } from "@/components/TrackedButton";
 import { trackEvent } from "@/hooks/useAnalytics";
 
 export default function Contact() {
@@ -97,17 +95,21 @@ export default function Contact() {
                   <p className="hidden lg:block text-muted-foreground">
                     This is a short, structured conversation to assess the situation, clarify scope, and determine whether engagement makes sense.
                   </p>
-                  <TrackedButton variant="hero" size="lg" asChild eventName="book_call" eventData={{ page: "contact" }} isCTA>
-                    <TrackedExternalLink 
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    asChild
+                    onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_call', eventData: { page: 'contact' } })}
+                  >
+                    <a 
                       href="https://calendly.com/adrian-watkins1/new-meeting" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      eventName="calendly_link"
                     >
                       <Calendar size={16} />
                       Book a 30-minute call
-                    </TrackedExternalLink>
-                  </TrackedButton>
+                    </a>
+                  </Button>
                 </div>
 
                 <div className="space-y-4 pt-6 border-t border-border/50">
@@ -202,14 +204,13 @@ export default function Contact() {
                     />
                   </div>
 
-                  <TrackedButton 
+                  <Button 
                     type="submit" 
                     variant="hero" 
                     size="lg" 
                     className="w-full" 
                     disabled={isSubmitting}
-                    eventName="contact_form_submit"
-                    isCTA
+                    onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'contact_form_submit' })}
                   >
                     {isSubmitting ? (
                       <>
@@ -222,7 +223,7 @@ export default function Contact() {
                         Send message
                       </>
                     )}
-                  </TrackedButton>
+                  </Button>
                 </form>
               </div>
             </AnimatedSection>

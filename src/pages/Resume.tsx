@@ -4,8 +4,8 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
-import { TrackedExternalLink } from "@/components/TrackedLink";
-import { TrackedButton } from "@/components/TrackedButton";
+import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/hooks/useAnalytics";
 
 const capabilityGroups = [
   {
@@ -321,12 +321,18 @@ export default function Resume() {
             <div className="space-y-10">
               <h2>Full CV</h2>
               {cvUrl ? (
-                <TrackedButton variant="hero" size="xl" asChild className="min-w-[300px]" eventName="download_cv" isCTA>
-                  <TrackedExternalLink href={cvUrl} target="_blank" rel="noopener noreferrer" eventName="cv_download_link">
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  asChild 
+                  className="min-w-[300px]"
+                  onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'download_cv' })}
+                >
+                  <a href={cvUrl} target="_blank" rel="noopener noreferrer">
                     <Download size={20} />
                     Download full CV (PDF)
-                  </TrackedExternalLink>
-                </TrackedButton>
+                  </a>
+                </Button>
               ) : (
                 <p className="text-sm text-muted-foreground">CV download coming soon</p>
               )}
