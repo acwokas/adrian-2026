@@ -48,6 +48,10 @@ const highlights = [
     context: "Provided executive decision support across multiple sectors and geographies." 
   },
   { 
+    outcome: "Played a key role in acquisition/raise plans, and post-transaction integrations", 
+    context: "Focused on commercial alignment, organisational structure, and execution continuity." 
+  },
+  { 
     outcome: "Founded AIinASIA.com as a leading platform for practical AI insight", 
     context: "Responsible for content, ecosystem development, and responsible technology advocacy." 
   },
