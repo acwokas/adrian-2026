@@ -58,18 +58,19 @@ export default function Home() {
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl pb-2">
                 Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Button variant="hero" size="lg" asChild>
+              <div className="flex flex-col items-start gap-4 pt-2">
+                <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                   <Link to="/contact">
                     Book a 30-minute clarity call
                   </Link>
                 </Button>
-                <Button variant="heroOutline" size="lg" asChild>
-                  <Link to="/how-i-work">
-                    View how I work
-                    <ArrowRight size={16} />
-                  </Link>
-                </Button>
+                <Link 
+                  to="/how-i-work"
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  View how I work
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </motion.div>
 
