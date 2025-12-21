@@ -6,6 +6,65 @@
 
 @layer base {
   :root {
+    /* Light mode - warm neutral palette */
+    --background: 40 20% 98%;
+    --foreground: 30 10% 15%;
+
+    /* Cards */
+    --card: 40 15% 96%;
+    --card-foreground: 30 10% 15%;
+
+    /* Popover */
+    --popover: 40 15% 96%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Primary - dark charcoal for buttons */
+    --primary: 30 10% 15%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Secondary */
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 30 10% 25%;
+
+    /* Muted */
+    --muted: 40 10% 90%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Accent - muted teal */
+    --accent: 175 35% 40%;
+    --accent-foreground: 40 20% 98%;
+
+    /* Destructive */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 40 20% 98%;
+
+    /* Border and input */
+    --border: 40 10% 85%;
+    --input: 40 10% 85%;
+    --ring: 175 35% 40%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --text-primary: 30 10% 15%;
+    --text-secondary: 30 10% 35%;
+    --text-muted: 30 10% 50%;
+    
+    /* Section backgrounds */
+    --section-light: 40 15% 95%;
+    
+    /* Sidebar defaults */
+    --sidebar-background: 40 20% 98%;
+    --sidebar-foreground: 30 10% 15%;
+    --sidebar-primary: 175 35% 40%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 40 10% 92%;
+    --sidebar-accent-foreground: 30 10% 15%;
+    --sidebar-border: 40 10% 85%;
+    --sidebar-ring: 175 35% 40%;
+  }
+
+  .dark {
     /* Deep charcoal - near black */
     --background: 0 0% 8%;
     --foreground: 35 25% 95%;
@@ -42,8 +101,6 @@
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 175 30% 45%;
-
-    --radius: 0.25rem;
 
     /* Custom tokens */
     --text-primary: 35 25% 95%;
