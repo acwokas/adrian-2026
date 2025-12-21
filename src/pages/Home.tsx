@@ -60,8 +60,8 @@ export default function Home() {
                   I help organisations and leaders make better decisions in complex environments.
                 </h1>
               </div>
-              <p className="text-base md:text-lg text-muted-foreground max-w-xl">
-                Senior commercial and operational leadership across advisory, fractional roles, mentoring, and capability building.
+              <p className="text-base md:text-lg text-muted-foreground">
+                Advisory, fractional leadership, mentoring, and capability building.
               </p>
               <div className="flex flex-col items-start gap-4 pt-2">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
