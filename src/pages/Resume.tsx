@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { supabase } from "@/integrations/supabase/client";
 
 const capabilities = [
   {
@@ -40,6 +42,24 @@ const highlights = [
 ];
 
 export default function Resume() {
+  const [cvUrl, setCvUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCvPath = async () => {
+      const { data } = await supabase
+        .from("site_settings")
+        .select("cv_path")
+        .eq("id", "main")
+        .single();
+
+      if (data?.cv_path) {
+        const { data: urlData } = supabase.storage.from("documents").getPublicUrl(data.cv_path);
+        setCvUrl(urlData.publicUrl);
+      }
+    };
+    fetchCvPath();
+  }, []);
+
   return (
     <Layout>
       {/* Header */}
@@ -149,12 +169,16 @@ export default function Resume() {
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 For a complete overview of my career history and credentials, download my full CV.
               </p>
-              <Button variant="hero" size="lg" asChild>
-                <a href="#" onClick={(e) => { e.preventDefault(); alert('CV download would be configured here'); }}>
-                  <Download size={16} />
-                  Download full CV (PDF)
-                </a>
-              </Button>
+              {cvUrl ? (
+                <Button variant="hero" size="lg" asChild>
+                  <a href={cvUrl} target="_blank" rel="noopener noreferrer" download>
+                    <Download size={16} />
+                    Download full CV (PDF)
+                  </a>
+                </Button>
+              ) : (
+                <p className="text-sm text-muted-foreground">CV download coming soon</p>
+              )}
             </div>
           </AnimatedSection>
         </div>
