@@ -126,11 +126,11 @@ export default function Home() {
         <div className="container-wide">
           <AnimatedSection>
             <div className="space-y-10">
-              <div className="space-y-3">
+              <div className="space-y-2 mb-4">
                 <h2>How I help</h2>
-                <p className="text-muted-foreground">Engagement models I am typically brought in under.</p>
+                <p className="text-lg md:text-xl text-foreground/80 font-medium">Engagement models I am typically brought in under.</p>
               </div>
-              <StaggeredChildren className="grid md:grid-cols-2 gap-6">
+              <StaggeredChildren className="grid md:grid-cols-2 gap-6 pt-4">
                 {serviceCards.map((card) => (
                   <StaggeredItem key={card.title}>
                     <Link
