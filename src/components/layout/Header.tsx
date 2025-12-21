@@ -27,7 +27,7 @@ export function Header() {
           <TrackedLink 
             to="/" 
             eventName="nav_logo"
-            className="text-xl md:text-2xl font-medium text-foreground hover:text-accent transition-colors"
+            className="text-xl md:text-2xl font-medium text-foreground hover:text-accent transition-all duration-300 hover:scale-105 origin-left"
           >
             Adrian Watkins
           </TrackedLink>
