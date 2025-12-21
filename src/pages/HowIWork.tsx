@@ -5,50 +5,12 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 
-const sections = [
-  {
-    title: "How I approach problems",
-    content: [
-      "I start by understanding what decisions actually need to be made. Most organisations are not short of ideas or information. They are short of clarity about what matters and what to do next.",
-      "My approach is direct. I ask uncomfortable questions, challenge assumptions, and focus attention on the things that will move the business forward. I do not spend time on work that will not lead to action.",
-    ],
-  },
-  {
-    title: "Working with leadership teams",
-    content: [
-      "I work best with leadership teams that are ready to be honest about where they are and what is not working. My role is to help create the conditions for better decisions, not to tell people what to do.",
-      "I bring an outside perspective, but I earn my place by understanding the context deeply and quickly. I do not parachute in with generic frameworks.",
-    ],
-  },
-  {
-    title: "Governance and responsibility",
-    content: [
-      "Good governance is about creating the conditions for good decisions. It is not about process for the sake of process.",
-      "I help organisations think clearly about accountability, decision rights, and how to structure conversations that lead to action rather than delay.",
-    ],
-  },
-  {
-    title: "Building capability, not dependency",
-    content: [
-      "My goal is always to leave organisations and individuals more capable than when I arrived. I am not interested in creating long-term dependency.",
-      "Whether through mentoring, training, or hands-on work, I aim to transfer thinking and capability so that the people I work with can operate with greater confidence and clarity when I am not in the room.",
-    ],
-  },
-  {
-    title: "Staying close to the ecosystem",
-    content: [
-      "Through AIinASIA and my broader network, I stay connected to founders, operators, and practitioners across the region. This is not academic. It keeps my thinking grounded in what is actually happening, not what consultants say is happening.",
-      "This perspective directly informs my advisory work and ensures I am bringing real-world insight, not just theory.",
-    ],
-  },
-];
-
 export default function HowIWork() {
   return (
     <Layout>
       <SEO 
         title="How I Work"
-        description="Clarity, directness, and a focus on outcomes. How I approach problems, work with leadership teams, and build capability without dependency."
+        description="Clarity, accountability, and progress. How I approach problems, work with leadership teams, and build capability without dependency."
         canonical="/how-i-work"
       />
       {/* Header */}
@@ -58,35 +20,104 @@ export default function HowIWork() {
             <div className="space-y-6">
               <h1>How I work</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                Clarity, directness, and a focus on outcomes over activities.
+                How I work is shaped by experience operating in complex environments where decisions matter and time is limited. My focus is on clarity, accountability, and progress rather than process for its own sake.
+              </p>
+              <p className="text-lg text-foreground/80 font-medium">
+                This is how I typically engage with leaders and teams.
               </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Sections */}
-      {sections.map((section, index) => (
-        <section 
-          key={section.title}
-          className={`py-12 md:py-16 border-b border-border/50 ${index % 2 === 1 ? 'bg-[hsl(var(--section-light))] md:bg-transparent' : ''}`}
-        >
-          <div className="container-narrow">
-            <AnimatedSection delay={index * 0.03}>
-              <div className="space-y-6">
-                <h2 className="text-2xl">{section.title}</h2>
-                <div className="space-y-4">
-                  {section.content.map((paragraph, i) => (
-                    <p key={i} className="text-muted-foreground">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+      {/* How I approach problems */}
+      <section className="py-12 md:py-16 border-b border-border/50">
+        <div className="container-narrow">
+          <AnimatedSection>
+            <div className="space-y-8">
+              <h2 className="text-2xl">How I approach problems</h2>
+              <div className="space-y-5 text-muted-foreground">
+                <p>
+                  I start by understanding what is actually blocking progress, not just what is visible on the surface.
+                </p>
+                <p>
+                  I challenge assumptions early, before they harden into plans that waste time and resources.
+                </p>
+                <p>
+                  I prioritise decisions over analysis. Clarity about what to do next matters more than comprehensive diagnostics.
+                </p>
               </div>
-            </AnimatedSection>
-          </div>
-        </section>
-      ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Working with leadership teams */}
+      <section className="py-12 md:py-16 border-b border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-narrow">
+          <AnimatedSection delay={0.03}>
+            <div className="space-y-8">
+              <h2 className="text-2xl">Working with leadership teams</h2>
+              <p className="text-muted-foreground">
+                I work directly with CEOs and executive teams as a senior peer. My role is to support decision-making, align priorities, and maintain momentum, particularly when complexity or pressure makes this difficult.
+              </p>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>Direct and candid conversations</li>
+                <li>Focus on shared accountability</li>
+                <li>Clear ownership of next steps</li>
+              </ul>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Governance and responsibility */}
+      <section className="py-12 md:py-16 border-b border-border/50">
+        <div className="container-narrow">
+          <AnimatedSection delay={0.06}>
+            <div className="space-y-8">
+              <h2 className="text-2xl">Governance and responsibility</h2>
+              <p className="text-muted-foreground">
+                Governance and responsibility are integral to how I work. I am comfortable operating in regulated and high-trust environments, where decisions carry commercial, operational, and reputational consequences.
+              </p>
+              <p className="text-foreground/90 font-medium">
+                Good governance enables speed and confidence, rather than slowing progress.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Building capability, not dependency */}
+      <section className="py-12 md:py-16 border-b border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+        <div className="container-narrow">
+          <AnimatedSection delay={0.09}>
+            <div className="space-y-8">
+              <h2 className="text-2xl">Building capability, not dependency</h2>
+              <p className="text-muted-foreground">
+                My aim is to leave teams stronger than I found them. That means building capability, shared language, and confidence so progress continues without ongoing dependence on external support.
+              </p>
+              <p className="text-foreground/90 font-medium">
+                Mentoring, workshops, and structured engagement are part of how this is achieved.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Staying close to the ecosystem */}
+      <section className="py-12 md:py-16 border-b border-border/50">
+        <div className="container-narrow">
+          <AnimatedSection delay={0.12}>
+            <div className="space-y-8">
+              <h2 className="text-2xl">Staying close to the ecosystem</h2>
+              <p className="text-muted-foreground">
+                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* Different from Consulting */}
       <section className="section-spacing bg-card border-y border-border/50">
@@ -94,10 +125,10 @@ export default function HowIWork() {
           <AnimatedSection>
             <div className="space-y-6">
               <h2>How my work differs from traditional consulting</h2>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-muted-foreground">
                 I do not run large consulting programmes or deliver long decks that sit on shelves. My work focuses on helping leaders make decisions, act on them, and move forward with clarity and accountability.
               </p>
-              <p className="text-lg border-l-2 border-accent pl-6 py-2">
+              <p className="text-foreground/90 font-medium">
                 I remain close to execution and am comfortable owning outcomes, not just advising on them.
               </p>
             </div>
@@ -106,17 +137,17 @@ export default function HowIWork() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing">
+      <section className="py-24 md:py-32">
         <div className="container-narrow text-center">
           <AnimatedSection>
-            <div className="space-y-6">
-              <h2>Want to understand more?</h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                The best way to understand how I work is to have a conversation.
+            <div className="space-y-8">
+              <h2>Interested in how this could work in practice?</h2>
+              <p className="text-muted-foreground max-w-lg mx-auto">
+                A short conversation is often the best way to assess fit and scope.
               </p>
               <Button variant="hero" size="lg" asChild>
                 <Link to="/contact">
-                  Get in touch
+                  Book a 30-minute clarity call
                   <ArrowRight size={16} />
                 </Link>
               </Button>
