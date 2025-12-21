@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export default function Experience() {
   return (
@@ -193,9 +193,9 @@ export default function Experience() {
           <AnimatedSection>
             <p className="text-lg lg:text-xl text-muted-foreground">
               For a detailed role history and responsibilities, see my{" "}
-              <Link to="/resume" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
+              <TrackedLink to="/resume" eventName="resume_link" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
                 Resume
-              </Link>.
+              </TrackedLink>.
             </p>
           </AnimatedSection>
         </div>

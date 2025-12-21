@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
+import { TrackedExternalLink } from "@/components/TrackedLink";
+import { TrackedButton } from "@/components/TrackedButton";
 
 const capabilityGroups = [
   {
@@ -320,12 +321,12 @@ export default function Resume() {
             <div className="space-y-10">
               <h2>Full CV</h2>
               {cvUrl ? (
-                <Button variant="hero" size="xl" asChild className="min-w-[300px]">
-                  <a href={cvUrl} target="_blank" rel="noopener noreferrer" download>
+                <TrackedButton variant="hero" size="xl" asChild className="min-w-[300px]" eventName="download_cv" isCTA>
+                  <TrackedExternalLink href={cvUrl} target="_blank" rel="noopener noreferrer" eventName="cv_download_link">
                     <Download size={20} />
                     Download full CV (PDF)
-                  </a>
-                </Button>
+                  </TrackedExternalLink>
+                </TrackedButton>
               ) : (
                 <p className="text-sm text-muted-foreground">CV download coming soon</p>
               )}
