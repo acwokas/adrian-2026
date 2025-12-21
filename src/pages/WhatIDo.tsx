@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const services = [
   {
@@ -44,12 +45,14 @@ export default function WhatIDo() {
       {/* Header */}
       <section className="section-spacing border-b border-border/50">
         <div className="container-narrow">
-          <div className="space-y-6 animate-fade-in-up">
-            <h1>What I do</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              My work focuses on helping organisations and leaders achieve clarity, execution, and accountability. I engage through several models, each designed to meet different needs.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h1>What I do</h1>
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                My work focuses on helping organisations and leaders achieve clarity, execution, and accountability. I engage through several models, each designed to meet different needs.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -60,43 +63,45 @@ export default function WhatIDo() {
           className="section-spacing border-b border-border/50"
         >
           <div className="container-narrow">
-            <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="space-y-4">
-                <h2>{service.title}</h2>
-                <p className="text-lg text-muted-foreground">
-                  {service.description}
-                </p>
+            <AnimatedSection delay={index * 0.05}>
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h2>{service.title}</h2>
+                  <p className="text-lg text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-8 pt-4">
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
+                      Who it is for
+                    </h4>
+                    <p className="text-muted-foreground">
+                      {service.whoFor}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
+                      Where I operate
+                    </h4>
+                    <p className="text-muted-foreground">
+                      {service.whereOperate}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
+                      Decisions and outcomes
+                    </h4>
+                    <p className="text-muted-foreground">
+                      {service.outcomes}
+                    </p>
+                  </div>
+                </div>
               </div>
-
-              <div className="grid md:grid-cols-3 gap-8 pt-4">
-                <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    Who it is for
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {service.whoFor}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    Where I operate
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {service.whereOperate}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-accent uppercase tracking-wider">
-                    Decisions and outcomes
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {service.outcomes}
-                  </p>
-                </div>
-              </div>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
       ))}
@@ -104,18 +109,20 @@ export default function WhatIDo() {
       {/* CTA */}
       <section className="section-spacing">
         <div className="container-narrow text-center">
-          <div className="space-y-6">
-            <h2>Interested in working together?</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              The right engagement model depends on your context. Let us discuss what would be most useful.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">
-                Start a conversation
-                <ArrowRight size={16} />
-              </Link>
-            </Button>
-          </div>
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2>Interested in working together?</h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                The right engagement model depends on your context. Let us discuss what would be most useful.
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact">
+                  Start a conversation
+                  <ArrowRight size={16} />
+                </Link>
+              </Button>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </Layout>
