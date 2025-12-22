@@ -6,7 +6,8 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { trackEvent } from "@/hooks/useAnalytics";
-import adrianPortrait from "@/assets/adrian-portrait.jpg";
+import { BlurImage } from "@/components/BlurImage";
+import adrianPortrait from "@/assets/adrian-portrait-optimized.webp";
 
 const serviceCards = [
   {
@@ -118,13 +119,11 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
               <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/30 shadow-lg shadow-black/10">
-                <img
+                <BlurImage
                   src={adrianPortrait}
                   alt="Adrian Watkins"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  className="w-full h-full object-cover object-[center_15%] grayscale"
+                  priority
+                  className="object-cover object-[center_15%] grayscale"
                 />
               </div>
             </motion.div>
@@ -196,13 +195,11 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             >
               <div className="w-full max-w-[260px] aspect-[3/4] overflow-hidden rounded-xl border border-border/20 shadow-md shadow-black/5">
-                <img
+                <BlurImage
                   src={adrianPortrait}
                   alt="Adrian Watkins"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  className="w-full h-full object-cover object-[center_15%] grayscale contrast-[0.95]"
+                  priority
+                  className="object-cover object-[center_15%] grayscale contrast-[0.95]"
                 />
               </div>
             </motion.div>
