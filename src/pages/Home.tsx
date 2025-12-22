@@ -208,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* When I'm Brought In - Mobile only */}
-      <section className="lg:hidden py-4 md:py-5 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="lg:hidden py-6 md:py-5 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide px-6 md:px-8">
           <AnimatedSection>
             <div className="space-y-8">
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* How I Help - 2x2 grid on desktop */}
-      <section className="py-4 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-6 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
             <div className="space-y-8 lg:space-y-10">
@@ -271,7 +271,7 @@ export default function Home() {
       </section>
 
       {/* System-level exposure - Combined ecosystem section */}
-      <section className="py-4 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-6 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide max-w-[1000px] mx-auto">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
