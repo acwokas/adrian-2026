@@ -2,6 +2,7 @@ import { Linkedin } from "lucide-react";
 import { TrackedExternalLink, TrackedLink } from "@/components/TrackedLink";
 
 const navLinks = [
+  { label: "Home", path: "/" },
   { label: "What I Do", path: "/what-i-do" },
   { label: "How I Work", path: "/how-i-work" },
   { label: "Experience", path: "/experience" },
