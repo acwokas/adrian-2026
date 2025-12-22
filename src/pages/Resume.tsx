@@ -118,7 +118,7 @@ export default function Resume() {
       </section>
 
       {/* Profile */}
-      <section className="py-16 md:py-20 lg:py-28">
+      <section className="py-8 md:py-10 lg:py-14">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -181,7 +181,7 @@ export default function Resume() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-16 md:py-20 lg:py-28">
+      <section className="py-8 md:py-10 lg:py-14">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
@@ -213,7 +213,7 @@ export default function Resume() {
       </section>
 
       {/* Career Highlights */}
-      <section className="py-16 md:py-20 lg:py-32">
+      <section className="py-8 md:py-10 lg:py-16">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -256,7 +256,7 @@ export default function Resume() {
       </section>
 
       {/* Background - De-emphasised */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-8 md:py-10 lg:py-12 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -291,7 +291,7 @@ export default function Resume() {
       </section>
 
       {/* Download CTA - Clear closer with increased separation */}
-      <section className="py-28 md:py-36 lg:py-44">
+      <section className="py-14 md:py-18 lg:py-22">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-10 flex flex-col items-center text-center">
