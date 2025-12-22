@@ -275,7 +275,12 @@ export default function Home() {
         <div className="container-wide max-w-[1000px] mx-auto">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
-              <h2>Signals of depth</h2>
+              <div className="space-y-4">
+                <h2>Signals of depth</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  These initiatives exist because perspective and decision quality are built over time, across multiple contexts, not inside a single organisation.
+                </p>
+              </div>
               
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
                 {/* AIinASIA.com Block */}
