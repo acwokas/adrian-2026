@@ -2,6 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
+import { trackEvent } from "@/hooks/useAnalytics";
 
 export default function Experience() {
   return (
@@ -203,6 +206,32 @@ export default function Experience() {
                 Executive CV
               </TrackedLink>.
             </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* CTA Module */}
+      <section className="pt-4 pb-14 md:pt-6 md:pb-16 lg:pt-8 lg:pb-20">
+        <div className="container-narrow">
+          <AnimatedSection>
+            <div className="flex flex-col items-center text-center space-y-6">
+              <h2>Interested in working together?</h2>
+              <p className="text-lg lg:text-xl text-muted-foreground max-w-xl">
+                If this sounds relevant, the best next step is a short conversation to assess fit and scope.
+              </p>
+              <Button 
+                variant="hero" 
+                size="xl" 
+                asChild 
+                className="min-w-[300px]"
+                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_clarity_call_experience' })}
+              >
+                <a href="/contact">
+                  <Calendar size={20} />
+                  Book a 30-minute clarity call
+                </a>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>
