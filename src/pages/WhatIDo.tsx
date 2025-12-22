@@ -6,6 +6,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/hooks/useAnalytics";
+import { TrackedExternalLink } from "@/components/TrackedLink";
 
 export default function WhatIDo() {
   const location = useLocation();
@@ -191,7 +192,34 @@ export default function WhatIDo() {
                   These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
                 </p>
                 <p className="text-muted-foreground">
-                  Delivered through direct engagements and selected partners, including Blackstorm Asia.
+                  Delivered through direct engagements and selected partners, including{" "}
+                  <TrackedExternalLink 
+                    href="https://blackstormco.asia/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_blackstorm"
+                    className="text-accent hover:underline"
+                  >
+                    Blackstorm
+                  </TrackedExternalLink>,{" "}
+                  <TrackedExternalLink 
+                    href="https://e27.co/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_e27"
+                    className="text-accent hover:underline"
+                  >
+                    e27
+                  </TrackedExternalLink>, and{" "}
+                  <TrackedExternalLink 
+                    href="https://beyond4.tech/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_beyond4tech"
+                    className="text-accent hover:underline"
+                  >
+                    Beyond4Tech
+                  </TrackedExternalLink>.
                 </p>
               </div>
             </div>
@@ -206,7 +234,34 @@ export default function WhatIDo() {
                   Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps.
                 </p>
                 <p className="text-base leading-[1.8] text-muted-foreground">
-                  Delivered through direct engagements and selected partners, including Blackstorm Asia.
+                  Delivered through direct engagements and selected partners, including{" "}
+                  <TrackedExternalLink 
+                    href="https://blackstormco.asia/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_blackstorm"
+                    className="text-accent hover:underline"
+                  >
+                    Blackstorm
+                  </TrackedExternalLink>,{" "}
+                  <TrackedExternalLink 
+                    href="https://e27.co/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_e27"
+                    className="text-accent hover:underline"
+                  >
+                    e27
+                  </TrackedExternalLink>, and{" "}
+                  <TrackedExternalLink 
+                    href="https://beyond4.tech/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    eventName="partner_beyond4tech"
+                    className="text-accent hover:underline"
+                  >
+                    Beyond4Tech
+                  </TrackedExternalLink>.
                 </p>
               </div>
             </div>
