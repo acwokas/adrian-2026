@@ -87,18 +87,18 @@ export default function Resume() {
   return (
     <Layout>
       <SEO 
-        title="Resume - Senior Commercial & Operational Leader"
-        description="Professional CV of Adrian Watkins. Senior executive with board-level advisory experience, commercial strategy, operational transformation, and executive decision support across Asia Pacific."
+        title="Executive CV - Senior Commercial & Operational Leader"
+        description="Executive CV of Adrian Watkins. Senior executive with board-level advisory experience, commercial strategy, operational transformation, and executive decision support across Asia Pacific."
         canonical="/resume"
-        keywords="executive resume, senior leader CV, board advisor, commercial director resume, COO resume, fractional executive, executive decision support, Asia Pacific executive"
-        breadcrumb={[{ name: "Resume", path: "/resume" }]}
+        keywords="executive CV, senior leader CV, board advisor, commercial director CV, COO CV, fractional executive, executive decision support, Asia Pacific executive"
+        breadcrumb={[{ name: "Executive CV", path: "/resume" }]}
       />
       {/* Header with Executive Summary */}
       <section className="section-spacing lg:pb-20">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-8">
-              <h1>Resume</h1>
+              <h1>Executive CV</h1>
               
               {/* Mobile: Executive Summary Block */}
               <div className="lg:hidden space-y-4 py-6 border-y border-border/30">
@@ -312,7 +312,7 @@ export default function Resume() {
         <div className="container-narrow text-center">
           <AnimatedSection>
             <div className="space-y-10">
-              <h2>Full CV</h2>
+              <h2>Executive CV</h2>
               {cvUrl ? (
                 <Button 
                   variant="hero" 
