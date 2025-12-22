@@ -37,13 +37,13 @@ export function Footer() {
           </div>
 
           {/* Right column - Navigation */}
-          <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-center md:text-right">
+          <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-center md:text-right md:justify-items-end">
             {navLinks.map((link) => (
               <TrackedLink
                 key={link.path}
                 to={link.path}
                 eventName={`footer_nav_${link.label.toLowerCase().replace(/\s/g, '_')}`}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
               >
                 {link.label}
               </TrackedLink>
