@@ -1,4 +1,5 @@
 # robots.txt for adrianwatkins.com
+# Last updated: 2025-12-22
 
 User-agent: Googlebot
 Allow: /
@@ -17,9 +18,17 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
 Disallow: /api/
 
 # Sitemap location
