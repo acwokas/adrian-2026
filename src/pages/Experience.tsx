@@ -131,7 +131,7 @@ export default function Experience() {
             <div className="lg:hidden space-y-6">
               <h2>Platforms and Ecosystems</h2>
               <p className="text-muted-foreground">
-                Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes AIinASIA.com and the broader you.withthepowerof.ai ecosystem.
+                Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA.com</a> and the broader <a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> ecosystem.
               </p>
             </div>
 
@@ -142,7 +142,7 @@ export default function Experience() {
               </div>
               <div>
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes AIinASIA.com and the broader you.withthepowerof.ai ecosystem.
+                  Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA.com</a> and the broader <a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> ecosystem.
                 </p>
               </div>
             </div>
