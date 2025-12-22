@@ -19,7 +19,7 @@ const personSchema = {
   "@type": "Person",
   "name": "Adrian Watkins",
   "jobTitle": "Senior Commercial and Operational Leader",
-  "description": "Executive advisor and fractional leader helping organisations make better decisions in complex environments across Asia Pacific.",
+  "description": "Executive advisor working with CEOs, founders, and boards on decision-making, alignment, and execution in complex environments across Asia Pacific.",
   "url": siteUrl,
   "image": `${siteUrl}/og-image.jpg`,
   "sameAs": [
@@ -27,16 +27,25 @@ const personSchema = {
     "https://aiinasia.com"
   ],
   "knowsAbout": [
+    "Board Advisory",
+    "Executive Decision Support",
+    "Corporate Governance",
     "Business Strategy",
     "Operational Leadership", 
     "AI Implementation",
-    "Executive Advisory",
     "Fractional Leadership",
-    "Mentoring",
-    "Capability Building",
+    "Commercial Strategy",
+    "Organisational Alignment",
     "Digital Transformation",
     "Go-to-Market Strategy"
   ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Executive Advisor",
+    "occupationalCategory": "11-1011.00",
+    "description": "Provides board-level advisory, executive decision support, and fractional leadership to organisations navigating complexity and change.",
+    "skills": "Board Advisory, Executive Coaching, Strategic Planning, Operational Leadership, Governance"
+  },
   "alumniOf": {
     "@type": "Organization",
     "name": "Various Global Enterprises"
@@ -51,7 +60,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Adrian Watkins Advisory",
-  "description": "Executive advisory and fractional leadership services for organisations navigating complexity, change, and growth.",
+  "description": "Board-level advisory, executive decision support, and fractional leadership for organisations navigating complexity, change, and growth.",
   "url": siteUrl,
   "image": `${siteUrl}/og-image.jpg`,
   "founder": {
@@ -68,11 +77,12 @@ const organizationSchema = {
     "geoRadius": "5000"
   },
   "serviceType": [
-    "Executive Advisory",
+    "Board Advisory",
+    "Executive Decision Support",
     "Fractional Leadership",
     "Strategic Consulting",
     "Executive Mentoring",
-    "Leadership Development",
+    "Governance Advisory",
     "Capability Building Workshops"
   ],
   "priceRange": "$$$$"
