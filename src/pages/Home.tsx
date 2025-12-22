@@ -74,7 +74,7 @@ export default function Home() {
       />
       
       {/* Hero Section - Desktop: Three column layout */}
-      <section className="pt-24 md:pt-28 lg:pt-12 pb-16 md:pb-20 lg:pb-10 lg:min-h-[70vh] lg:max-h-[70vh] lg:flex lg:items-center">
+      <section className="pt-10 md:pt-11 lg:pt-5 pb-16 md:pb-20 lg:pb-10 lg:min-h-[70vh] lg:max-h-[70vh] lg:flex lg:items-center">
         <div className="container-wide max-w-[1200px] mx-auto w-full">
           
           {/* Mobile/Tablet: Original stacked layout */}
