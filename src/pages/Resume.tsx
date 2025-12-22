@@ -222,10 +222,10 @@ export default function Resume() {
               <div className="space-y-8">
                 {highlights.map((item, i) => (
                   <div key={i} className="space-y-1">
-                    <p className="text-foreground font-semibold leading-relaxed">
+                    <p className="text-lg text-foreground font-semibold leading-relaxed">
                       {item.outcome}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">
                       {item.context}
                     </p>
                   </div>
@@ -241,10 +241,10 @@ export default function Resume() {
               <div className="space-y-8">
                 {highlights.map((item, i) => (
                   <div key={i} className="space-y-1.5">
-                    <p className="text-[0.9375rem] text-foreground font-semibold leading-[1.85]">
+                    <p className="text-base text-foreground font-semibold leading-[1.85]">
                       {item.outcome}
                     </p>
-                    <p className="text-[0.875rem] text-muted-foreground/80 leading-relaxed">
+                    <p className="text-[0.9375rem] text-muted-foreground/80 leading-relaxed">
                       {item.context}
                     </p>
                   </div>
