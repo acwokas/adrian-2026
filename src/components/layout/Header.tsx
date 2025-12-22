@@ -100,16 +100,48 @@ export function Header() {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </Button>
+          {/* Mobile Controls - visible on larger mobile screens */}
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Font Size Controls - hidden on very small screens */}
+            <div className="hidden sm:flex items-center gap-1 border border-border/50 rounded-md px-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={decreaseFontSize}
+                disabled={fontSize <= MIN_FONT_SIZE}
+                aria-label="Decrease font size"
+                className="h-8 w-8 text-muted-foreground hover:text-foreground"
+              >
+                <Minus className="h-3 w-3" />
+              </Button>
+              <span className="text-xs text-muted-foreground w-6 text-center">A</span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={increaseFontSize}
+                disabled={fontSize >= MAX_FONT_SIZE}
+                aria-label="Increase font size"
+                className="h-8 w-8 text-muted-foreground hover:text-foreground"
+              >
+                <Plus className="h-3 w-3" />
+              </Button>
+            </div>
+            
+            {/* Theme Toggle - hidden on very small screens */}
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
