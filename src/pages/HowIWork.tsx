@@ -181,7 +181,7 @@ export default function HowIWork() {
             <div className="lg:hidden space-y-6">
               <h2>Staying Close to the Ecosystem</h2>
               <p className="text-muted-foreground">
-                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners.
+                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA</a>, I maintain a constant feedback loop with founders, operators, and practitioners.
               </p>
               <p className="text-muted-foreground">
                 This exposure helps me recognise patterns, risks, and second-order effects that are often missed inside a single organisation.
@@ -195,7 +195,7 @@ export default function HowIWork() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners.
+                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA</a>, I maintain a constant feedback loop with founders, operators, and practitioners.
                 </p>
                 <p className="text-base leading-[1.85] text-muted-foreground">
                   This exposure helps me recognise patterns, risks, and second-order effects that are often missed inside a single organisation.
