@@ -15,7 +15,7 @@ export default function Experience() {
       />
       
       {/* Header */}
-      <section className="section-spacing lg:pb-24">
+      <section className="section-spacing lg:pb-12">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">

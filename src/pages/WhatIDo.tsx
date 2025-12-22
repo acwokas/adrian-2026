@@ -33,7 +33,7 @@ export default function WhatIDo() {
         breadcrumb={[{ name: "What I Do", path: "/what-i-do" }]}
       />
       {/* Header */}
-      <section className="section-spacing lg:pb-24">
+      <section className="section-spacing lg:pb-12">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">

@@ -77,7 +77,7 @@ export default function Resume() {
         breadcrumb={[{ name: "Executive CV", path: "/executive-cv" }]}
       />
       {/* Header with Executive Summary */}
-      <section className="section-spacing lg:pb-20">
+      <section className="section-spacing lg:pb-10">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-8">
