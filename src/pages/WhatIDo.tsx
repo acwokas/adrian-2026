@@ -39,7 +39,7 @@ export default function WhatIDo() {
             <div className="space-y-6">
               <h1>What I do</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
+                My work focuses on helping leaders make decisions, align teams, and move forward with clarity and accountability. I am typically brought in when progress stalls, stakes are high, and the cost of getting decisions wrong is significant.
               </p>
             </div>
           </AnimatedSection>
@@ -55,17 +55,17 @@ export default function WhatIDo() {
               <h2>Advisory Sprints</h2>
               <div className="space-y-6 max-w-2xl">
                 <p className="text-muted-foreground">
-                  Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
+                  Short, focused engagements designed to unblock decisions and restore momentum.
                 </p>
                 <p className="text-muted-foreground">
-                  I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
+                  I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
                 </p>
                 <div className="space-y-3">
                   <p className="text-foreground/90 font-medium">Leaders walk away with:</p>
                   <ul className="space-y-2 text-muted-foreground pl-4">
                     <li>Clear priorities and decision paths</li>
                     <li>What to stop, not just what to do next</li>
-                    <li>Alignment on next steps and ownership</li>
+                    <li>Alignment on next steps, ownership, and decision authority</li>
                   </ul>
                 </div>
               </div>
@@ -78,17 +78,17 @@ export default function WhatIDo() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.8] text-muted-foreground">
-                  Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
+                  Short, focused engagements designed to unblock decisions and restore momentum.
                 </p>
                 <p className="text-base leading-[1.8] text-muted-foreground">
-                  I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
+                  I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
                 </p>
                 <div className="space-y-3 pt-1">
                   <p className="text-base text-foreground font-medium">Leaders walk away with:</p>
                   <ul className="space-y-2 text-base leading-[1.8] text-muted-foreground pl-5">
                     <li>Clear priorities and decision paths</li>
                     <li>What to stop, not just what to do next</li>
-                    <li>Alignment on next steps and ownership</li>
+                    <li>Alignment on next steps, ownership, and decision authority</li>
                   </ul>
                 </div>
               </div>
@@ -108,11 +108,14 @@ export default function WhatIDo() {
                 <p className="text-muted-foreground">
                   In fractional roles, I work directly with the CEO or executive team. I operate as a senior peer, not a consultant, with responsibility for shaping direction, aligning teams, and supporting execution across strategy, operations, and governance.
                 </p>
-                <ul className="space-y-2 text-muted-foreground pl-4">
-                  <li><span className="font-semibold text-foreground">Strategic and operational alignment</span> at executive level</li>
-                  <li><span className="font-semibold text-foreground">Commercial and operating model</span> decisions</li>
-                  <li><span className="font-semibold text-foreground">Governance and execution</span> during periods of change</li>
-                </ul>
+                <div className="space-y-3">
+                  <p className="text-foreground/90 font-medium">Typical focus areas include:</p>
+                  <ul className="space-y-2 text-muted-foreground pl-4">
+                    <li>Strategic and operational alignment at executive level</li>
+                    <li>Shaping commercial and operating model decisions</li>
+                    <li>Governance and execution during periods of change</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -125,18 +128,21 @@ export default function WhatIDo() {
                 <p className="text-base leading-[1.8] text-muted-foreground">
                   In fractional roles, I work directly with the CEO or executive team. I operate as a senior peer, not a consultant, with responsibility for shaping direction, aligning teams, and supporting execution across strategy, operations, and governance.
                 </p>
-                <ul className="space-y-2 text-base leading-[1.8] text-muted-foreground pl-5">
-                  <li><span className="font-semibold text-foreground">Strategic and operational alignment</span> at executive level</li>
-                  <li><span className="font-semibold text-foreground">Commercial and operating model</span> decisions</li>
-                  <li><span className="font-semibold text-foreground">Governance and execution</span> during periods of change</li>
-                </ul>
+                <div className="space-y-3 pt-1">
+                  <p className="text-base text-foreground font-medium">Typical focus areas include:</p>
+                  <ul className="space-y-2 text-base leading-[1.8] text-muted-foreground pl-5">
+                    <li>Strategic and operational alignment at executive level</li>
+                    <li>Shaping commercial and operating model decisions</li>
+                    <li>Governance and execution during periods of change</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Mentoring and Capability Building - De-emphasised */}
+      {/* Mentoring and Capability Building */}
       <section id="mentoring" className="py-16 md:py-24 lg:py-28 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
@@ -148,48 +154,16 @@ export default function WhatIDo() {
                   Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
                 </p>
                 <p className="text-muted-foreground">
-                  This work provides early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
+                  This work gives early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
                 </p>
                 <p className="text-muted-foreground">
-                  It is designed to build judgement, shared language, and confidence, rather than dependency.
+                  It builds judgement, shared language, and confidence rather than dependency.
                 </p>
-              </div>
-            </div>
-
-            {/* Desktop: two-column layout */}
-            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
-              <div className="pt-1">
-                <h2 className="text-[2rem] font-medium leading-snug">Mentoring and<br />Capability Building</h2>
-              </div>
-              <div className="space-y-4">
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
-                </p>
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  This work provides early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
-                </p>
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  It is designed to build judgement, shared language, and confidence, rather than dependency.
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Workshops and Bootcamps - Compressed and Anchored */}
-      <section id="workshops" className="py-16 md:py-24 lg:py-24 scroll-mt-24 lg:border-t lg:border-border/30">
-        <div className="container-narrow">
-          <AnimatedSection delay={0.15}>
-            {/* Mobile: stacked layout */}
-            <div className="lg:hidden space-y-8">
-              <h2>Workshops and Bootcamps</h2>
-              <div className="space-y-6 max-w-2xl">
-                <p className="text-muted-foreground">
-                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required.
+                <p className="text-foreground font-medium">
+                  These are not training programmes.
                 </p>
                 <p className="text-muted-foreground">
-                  These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
+                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
                 </p>
                 <p className="text-muted-foreground">
                   Delivered through direct engagements and selected partners, including{" "}
@@ -227,11 +201,23 @@ export default function WhatIDo() {
             {/* Desktop: two-column layout */}
             <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
               <div className="pt-1">
-                <h2 className="text-[2rem] font-medium leading-snug">Workshops and<br />Bootcamps</h2>
+                <h2 className="text-[2rem] font-medium leading-snug">Mentoring and<br />Capability Building</h2>
               </div>
               <div className="space-y-4">
                 <p className="text-base leading-[1.8] text-muted-foreground">
-                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. These are not training programmes. They are designed to create clarity, surface assumptions, and agree decisive next steps.
+                  Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
+                </p>
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  This work gives early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
+                </p>
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  It builds judgement, shared language, and confidence rather than dependency.
+                </p>
+                <p className="text-base leading-[1.8] text-foreground font-medium pt-2">
+                  These are not training programmes.
+                </p>
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
                 </p>
                 <p className="text-base leading-[1.8] text-muted-foreground">
                   Delivered through direct engagements and selected partners, including{" "}
