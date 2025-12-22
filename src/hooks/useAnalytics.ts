@@ -9,6 +9,13 @@ interface TrackEventOptions {
   eventData?: Record<string, unknown>;
 }
 
+// Google Analytics helper
+const sendToGA = (eventName: string, eventData?: Record<string, unknown>) => {
+  if (typeof window !== 'undefined' && 'gtag' in window) {
+    (window as { gtag: (command: string, ...args: unknown[]) => void }).gtag('event', eventName, eventData);
+  }
+};
+
 interface LocationData {
   country: string;
   countryCode: string;
@@ -55,6 +62,13 @@ const getSessionId = (): string => {
 
 export const trackEvent = async ({ eventType, eventName, eventData = {} }: TrackEventOptions) => {
   try {
+    // Send to Google Analytics
+    sendToGA(eventName, {
+      event_category: eventType,
+      page_path: window.location.pathname,
+      ...eventData,
+    });
+
     const sessionId = getSessionId();
     const location = await getVisitorLocation();
     
