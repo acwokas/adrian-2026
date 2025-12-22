@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, Loader2, BarChart3, MousePointerClick, ExternalLink, Eye, Download, Calendar, Users, Clock, TrendingDown, Monitor, Smartphone, Tablet, Globe, ArrowRight, MousePointer2, Video, Play, RefreshCw } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { format } from "date-fns";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, FunnelChart, Funnel, LabelList } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -554,7 +555,8 @@ export default function AdminDashboard() {
                   Logged in as {user.email}
                 </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
                 <Button variant="outline" onClick={fetchStats} disabled={loadingStats}>
                   <RefreshCw size={16} className={loadingStats ? "animate-spin" : ""} />
                   Refresh
