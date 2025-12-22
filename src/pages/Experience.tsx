@@ -95,6 +95,9 @@ export default function Experience() {
                 <li>Alignment of strategy, operations, and execution during periods of change</li>
                 <li>Time-bound leadership roles with clear ownership and mandate</li>
               </ul>
+              <p className="text-muted-foreground pt-2">
+                This work often includes board-level engagement, executive decision support, and governance context.
+              </p>
             </div>
 
             {/* Desktop: two-column layout */}
@@ -111,6 +114,9 @@ export default function Experience() {
                   <li>Alignment of strategy, operations, and execution during periods of change</li>
                   <li>Time-bound leadership roles with clear ownership and mandate</li>
                 </ul>
+                <p className="text-base leading-[1.85] text-muted-foreground pt-2">
+                  This work often includes board-level engagement, executive decision support, and governance context.
+                </p>
               </div>
             </div>
           </AnimatedSection>
