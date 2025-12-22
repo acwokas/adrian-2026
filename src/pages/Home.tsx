@@ -305,7 +305,7 @@ export default function Home() {
                   <h3 className="text-xl font-semibold">you.withthepowerof.ai</h3>
                   <div className="space-y-3">
                     <p className="text-muted-foreground leading-relaxed">
-                      An ecosystem designed to democratise access to capability often locked behind large organisations.
+                      An ecosystem designed to democratise access to capability often locked behind large organisations or underutilised due to a lack of knowledge.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
                       It reflects a long-term interest in how tools, knowledge, and systems shape decision quality, organisational behaviour, and execution at scale, especially by embracing AI.
