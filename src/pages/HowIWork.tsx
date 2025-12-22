@@ -184,7 +184,7 @@ export default function HowIWork() {
             <div className="lg:hidden space-y-6">
               <h2>Staying Close to the Ecosystem</h2>
               <p className="text-muted-foreground">
-                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
+                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA.com, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
               </p>
             </div>
 
@@ -195,7 +195,7 @@ export default function HowIWork() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
+                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA.com, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
                 </p>
               </div>
             </div>

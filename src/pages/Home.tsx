@@ -278,9 +278,9 @@ export default function Home() {
               <h2>Signals of depth</h2>
               
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                {/* AIinASIA Block */}
+                {/* AIinASIA.com Block */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">AIinASIA</h3>
+                  <h3 className="text-xl font-semibold">AIinASIA.com</h3>
                   <div className="space-y-3">
                     <p className="text-muted-foreground leading-relaxed">
                       A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory.
@@ -293,10 +293,10 @@ export default function Home() {
                     href="https://aiinasia.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => handleExternalLinkClick('AIinASIA', 'https://aiinasia.com')}
+                    onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
-                    Visit AIinASIA
+                    Visit AIinASIA.com
                     <ArrowUpRight size={14} />
                   </a>
                 </div>
