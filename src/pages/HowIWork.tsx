@@ -16,7 +16,7 @@ export default function HowIWork() {
         breadcrumb={[{ name: "How I Work", path: "/how-i-work" }]}
       />
       {/* Header */}
-      <section className="section-spacing lg:pb-24">
+      <section className="section-spacing lg:pb-12">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">

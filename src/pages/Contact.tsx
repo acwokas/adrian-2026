@@ -73,7 +73,7 @@ export default function Contact() {
         breadcrumb={[{ name: "Contact", path: "/contact" }]}
       />
       {/* Header */}
-      <section className="section-spacing lg:pb-20 border-b border-border/50">
+      <section className="section-spacing lg:pb-10 border-b border-border/50">
         <div className="container-narrow">
           <motion.div 
             className="space-y-6"
