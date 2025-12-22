@@ -8,9 +8,9 @@ export default function Experience() {
     <Layout>
       <SEO 
         title="Experience - Commercial Leadership & Advisory Background"
-        description="Two decades of senior commercial and operational leadership across Asia Pacific. Advisory roles, fractional executive positions, and platform building in AI, media, and technology sectors."
+        description="Two decades of senior commercial and operational leadership across Asia Pacific. Board-level advisory, fractional executive positions, and executive decision support in AI, media, and technology sectors."
         canonical="/experience"
-        keywords="commercial leadership experience, operational leadership, Asia Pacific executive, AI advisory, fractional executive experience, platform building, technology leadership"
+        keywords="commercial leadership experience, operational leadership, board advisory, executive decision support, Asia Pacific executive, AI advisory, fractional executive experience, governance"
         breadcrumb={[{ name: "Experience", path: "/experience" }]}
       />
       
