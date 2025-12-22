@@ -50,11 +50,11 @@ const highlights = [
     context: "Focused on commercial alignment, organisational structure, and execution continuity." 
   },
   { 
-    outcome: "Founded AIinASIA.com as a leading platform for practical AI insight", 
+    outcome: <>Founded <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">AIinASIA.com</a> as a leading platform for practical AI insight</>, 
     context: "Responsible for content, ecosystem development, and responsible technology advocacy." 
   },
   { 
-    outcome: "Created you.withthepowerof.ai to democratise access to capability", 
+    outcome: <>Created <a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> to democratise access to capability</>, 
     context: "Responsible for unlocking tools and resources often locked behind large organisations." 
   },
   { 
