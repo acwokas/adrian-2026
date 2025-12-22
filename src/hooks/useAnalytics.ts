@@ -16,6 +16,28 @@ const sendToGA = (eventName: string, eventData?: Record<string, unknown>) => {
   }
 };
 
+// GA4 Conversion Events - these should be marked as conversions in GA4 dashboard
+const GA4_CONVERSION_EVENTS = {
+  // Form submission - use GA4 recommended 'generate_lead' event
+  form_submit: 'generate_lead',
+  // Booking/scheduling clicks
+  book_call: 'schedule_appointment',
+  // Contact CTA clicks
+  contact_cta: 'begin_checkout', // Maps to high-intent action
+} as const;
+
+// Send GA4 conversion event with enhanced parameters
+const sendConversionToGA = (conversionType: keyof typeof GA4_CONVERSION_EVENTS, customData?: Record<string, unknown>) => {
+  const eventName = GA4_CONVERSION_EVENTS[conversionType];
+  if (typeof window !== 'undefined' && 'gtag' in window) {
+    (window as { gtag: (command: string, ...args: unknown[]) => void }).gtag('event', eventName, {
+      currency: 'USD',
+      value: conversionType === 'form_submit' ? 100 : conversionType === 'book_call' ? 150 : 50,
+      ...customData,
+    });
+  }
+};
+
 interface LocationData {
   country: string;
   countryCode: string;
@@ -127,7 +149,31 @@ export const useAnalytics = () => {
 
   const trackFormSubmit = (formName: string, success: boolean) => {
     trackEvent({ eventType: 'form_submit', eventName: `${formName}_submit`, eventData: { success } });
+    // Send GA4 conversion event for successful form submissions
+    if (success) {
+      sendConversionToGA('form_submit', { form_name: formName });
+    }
   };
 
-  return { trackClick, trackClickWithPosition, trackCTAClick, trackExternalLink, trackPageView, trackFormStart, trackFormSubmit };
+  const trackBookingClick = (source: string) => {
+    trackEvent({ eventType: 'cta_click', eventName: 'book_call_click', eventData: { source } });
+    sendConversionToGA('book_call', { booking_source: source });
+  };
+
+  const trackContactCTA = (source: string) => {
+    trackEvent({ eventType: 'cta_click', eventName: 'contact_cta_click', eventData: { source } });
+    sendConversionToGA('contact_cta', { cta_source: source });
+  };
+
+  return { 
+    trackClick, 
+    trackClickWithPosition, 
+    trackCTAClick, 
+    trackExternalLink, 
+    trackPageView, 
+    trackFormStart, 
+    trackFormSubmit,
+    trackBookingClick,
+    trackContactCTA,
+  };
 };
