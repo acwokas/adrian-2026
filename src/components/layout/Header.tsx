@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { TrackedLink } from "@/components/TrackedLink";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -49,9 +50,13 @@ export function Header() {
           <TrackedLink 
             to="/" 
             eventName="nav_logo"
-            className="text-xl md:text-2xl font-medium text-foreground hover:text-accent transition-all duration-300 hover:scale-105 origin-left"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
           >
-            Adrian Watkins
+            <img 
+              src={logo} 
+              alt="Adrian Watkins" 
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
           </TrackedLink>
 
           {/* Desktop Navigation */}
