@@ -16,7 +16,7 @@ import NotFound from "./pages/NotFound";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
-
+import { HashRedirectHandler } from "./components/HashRedirectHandler";
 const queryClient = new QueryClient();
 
 function AppRoutes() {
@@ -24,6 +24,7 @@ function AppRoutes() {
   
   return (
     <>
+      <HashRedirectHandler />
       <GlobalClickTracker />
       <SessionRecorder />
       <Routes>
