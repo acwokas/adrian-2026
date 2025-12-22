@@ -39,7 +39,7 @@ export default function WhatIDo() {
             <div className="space-y-6">
               <h1>What I do</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                My work focuses on helping leaders make decisions, align teams, and move forward with clarity and accountability. I am typically brought in when complexity, change, or pressure makes progress difficult.
+                I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
               </p>
             </div>
           </AnimatedSection>
@@ -58,7 +58,7 @@ export default function WhatIDo() {
                   Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
                 </p>
                 <p className="text-muted-foreground">
-                  I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
+                  I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
                 </p>
                 <div className="space-y-3">
                   <p className="text-foreground/90 font-medium">Leaders walk away with:</p>
@@ -81,7 +81,7 @@ export default function WhatIDo() {
                   Short, focused engagements designed to unblock decisions and restore momentum when progress has stalled.
                 </p>
                 <p className="text-base leading-[1.8] text-muted-foreground">
-                  I am typically brought in when initiatives stall after pilots, when leadership teams are under pressure to act, or when high-stakes decisions need to be made with incomplete information.
+                  I am typically brought in when complexity, change, or pressure makes progress difficult, and the cost of getting decisions wrong is high.
                 </p>
                 <div className="space-y-3 pt-1">
                   <p className="text-base text-foreground font-medium">Leaders walk away with:</p>
