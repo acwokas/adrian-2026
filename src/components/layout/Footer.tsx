@@ -37,7 +37,7 @@ export function Footer() {
           </div>
 
           {/* Right column - Navigation */}
-          <nav className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
+          <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-center md:text-right">
             {navLinks.map((link) => (
               <TrackedLink
                 key={link.path}
