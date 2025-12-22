@@ -3,9 +3,11 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/hooks/useAnalytics";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function HowIWork() {
+  const { trackBookingClick } = useAnalytics();
+  
   return (
     <Layout>
       <SEO 
@@ -250,7 +252,7 @@ export default function HowIWork() {
                 variant="hero" 
                 size="lg" 
                 asChild
-                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_clarity_call', eventData: { page: 'how-i-work' } })}
+                onClick={() => trackBookingClick('how-i-work-page')}
               >
                 <a 
                   href="https://calendly.com/adrian-watkins1/new-meeting" 

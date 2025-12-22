@@ -4,9 +4,11 @@ import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
-import { trackEvent } from "@/hooks/useAnalytics";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Experience() {
+  const { trackContactCTA } = useAnalytics();
+  
   return (
     <Layout>
       <SEO 
@@ -224,7 +226,7 @@ export default function Experience() {
                 size="xl" 
                 asChild 
                 className="min-w-[300px]"
-                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_clarity_call_experience' })}
+                onClick={() => trackContactCTA('experience-page')}
               >
                 <a href="/contact">
                   <Calendar size={20} />
