@@ -83,7 +83,7 @@ export default function Contact() {
           >
             <h1>Contact</h1>
             <p className="text-xl text-muted-foreground max-w-2xl">
-              I am selective about what I take on. A short first conversation is often the best way to assess fit, scope, and whether I am the right person to help.
+              I am selective about what I take on. A short first conversation is often the best way to assess fit, scope, and whether engagement makes sense.
             </p>
           </motion.div>
         </div>
