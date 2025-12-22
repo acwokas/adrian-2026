@@ -292,9 +292,9 @@ export default function Resume() {
 
       {/* Download CTA - Clear closer with increased separation */}
       <section className="py-28 md:py-36 lg:py-44">
-        <div className="container-narrow text-center">
+        <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-10">
+            <div className="space-y-10 flex flex-col items-center text-center">
               <h2>Executive CV</h2>
               <Button 
                 variant="hero" 
