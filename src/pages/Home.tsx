@@ -345,7 +345,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <p className="text-muted-foreground text-sm italic pt-4">
+              <p className="text-muted-foreground leading-relaxed pt-4">
                 These initiatives inform my thinking. They are not consulting offerings or commercial services.
               </p>
             </div>
