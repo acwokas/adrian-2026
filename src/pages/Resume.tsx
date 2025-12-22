@@ -118,7 +118,7 @@ export default function Resume() {
       </section>
 
       {/* Profile */}
-      <section className="py-4 md:py-5 lg:py-7">
+      <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -181,7 +181,7 @@ export default function Resume() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-4 md:py-5 lg:py-7">
+      <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
@@ -213,7 +213,7 @@ export default function Resume() {
       </section>
 
       {/* Career Highlights */}
-      <section className="py-4 md:py-5 lg:py-8">
+      <section className="py-6 md:py-5 lg:py-8">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -256,7 +256,7 @@ export default function Resume() {
       </section>
 
       {/* Background - De-emphasised */}
-      <section className="py-4 md:py-5 lg:py-6 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-6 md:py-5 lg:py-6 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}

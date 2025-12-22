@@ -47,7 +47,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Advisory Sprints - Visually Primary */}
-      <section id="advisory" className="py-4 md:py-6 lg:py-8 scroll-mt-24">
+      <section id="advisory" className="py-6 md:py-6 lg:py-8 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -98,7 +98,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Fractional Leadership - Increased Visual Weight */}
-      <section id="fractional" className="py-4 md:py-6 lg:py-9 scroll-mt-24">
+      <section id="fractional" className="py-6 md:py-6 lg:py-9 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.05}>
             {/* Mobile: stacked layout */}
@@ -143,7 +143,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Mentoring and Capability Building */}
-      <section id="mentoring" className="py-4 md:py-6 lg:py-7 scroll-mt-24">
+      <section id="mentoring" className="py-6 md:py-6 lg:py-7 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
             {/* Mobile: stacked layout */}
@@ -190,7 +190,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Workshops and Bootcamps */}
-      <section id="workshops" className="py-4 md:py-6 lg:py-7 scroll-mt-24">
+      <section id="workshops" className="py-6 md:py-6 lg:py-7 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.15}>
             {/* Mobile: stacked layout */}

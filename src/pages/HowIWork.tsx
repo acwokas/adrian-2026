@@ -30,7 +30,7 @@ export default function HowIWork() {
       </section>
 
       {/* How I approach problems */}
-      <section className="py-4 md:py-5 lg:py-7">
+      <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -65,7 +65,7 @@ export default function HowIWork() {
       </section>
 
       {/* Working with leadership teams */}
-      <section className="py-4 md:py-5 lg:py-7 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-6 md:py-5 lg:py-7 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.03}>
             {/* Mobile: stacked layout */}
@@ -108,7 +108,7 @@ export default function HowIWork() {
       </section>
 
       {/* Governance and responsibility */}
-      <section className="py-4 md:py-5 lg:py-7">
+      <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection delay={0.06}>
             {/* Mobile: stacked layout */}
@@ -141,7 +141,7 @@ export default function HowIWork() {
       </section>
 
       {/* Building capability, not dependency */}
-      <section className="py-4 md:py-5 lg:py-7 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-6 md:py-5 lg:py-7 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.09}>
             {/* Mobile: stacked layout */}
@@ -174,7 +174,7 @@ export default function HowIWork() {
       </section>
 
       {/* Staying close to the ecosystem */}
-      <section className="py-4 md:py-5 lg:py-7">
+      <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection delay={0.12}>
             {/* Mobile: stacked layout */}
