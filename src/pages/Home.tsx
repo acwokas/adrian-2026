@@ -280,7 +280,15 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
                 {/* AIinASIA.com Block */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">AIinASIA.com</h3>
+                  <a
+                    href="https://aiinasia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
+                    className="block"
+                  >
+                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">AIinASIA.com</h3>
+                  </a>
                   <div className="space-y-3">
                     <p className="text-muted-foreground leading-relaxed">
                       A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory.
@@ -302,7 +310,15 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">you.withthepowerof.ai</h3>
+                  <a
+                    href="https://you.withthepowerof.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleExternalLinkClick('you.withthepowerof.ai', 'https://you.withthepowerof.ai')}
+                    className="block"
+                  >
+                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">you.withthepowerof.ai</h3>
+                  </a>
                   <div className="space-y-3">
                     <p className="text-muted-foreground leading-relaxed">
                       An ecosystem designed to democratise access to capability often locked behind large organisations or underutilised due to a lack of knowledge.
