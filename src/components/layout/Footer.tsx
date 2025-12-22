@@ -30,7 +30,7 @@ export function Footer() {
                 <Linkedin size={16} />
               </TrackedExternalLink>
             </div>
-            <p className="text-sm text-muted-foreground">Senior Commercial, Strategic and Operational Leader</p>
+            <p className="text-sm text-muted-foreground text-balance max-w-[200px] mx-auto md:mx-0 md:max-w-none">Senior Commercial, Strategic and Operational Leader</p>
             <p className="text-xs text-muted-foreground">
               © Adrian Watkins. All rights reserved.
             </p>
