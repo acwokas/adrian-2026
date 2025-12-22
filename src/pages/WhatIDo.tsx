@@ -26,10 +26,10 @@ export default function WhatIDo() {
   return (
     <Layout>
       <SEO 
-        title="Services - Advisory, Fractional Leadership & Mentoring"
-        description="Advisory sprints to unblock decisions, fractional COO/CCO leadership, executive mentoring, and capability-building workshops. Engagement models for organisations navigating complexity."
+        title="Services - Advisory, Fractional Leadership & Capability Building"
+        description="Helping leaders make decisions, align teams, and move forward with clarity. Advisory sprints, fractional executive leadership, and mentoring for organisations where stakes are high."
         canonical="/what-i-do"
-        keywords="advisory sprints, fractional COO, fractional CCO, executive mentoring, capability building workshops, leadership development, strategic advisory"
+        keywords="advisory sprints, fractional COO, fractional CCO, executive mentoring, capability building, leadership development, strategic advisory, decision support"
         breadcrumb={[{ name: "What I Do", path: "/what-i-do" }]}
       />
       {/* Header */}
