@@ -88,8 +88,11 @@ export default function Home() {
                 <h1 className="text-3xl md:text-4xl">
                   I help organisations and leaders make better decisions in complex environments.
                 </h1>
-                <p className="text-base md:text-lg text-muted-foreground">
+              <p className="text-base md:text-lg text-muted-foreground">
                   Advisory, fractional leadership, mentoring, and capability building.
+                </p>
+                <p className="text-base md:text-lg text-muted-foreground">
+                  I work with CEOs, founders, senior operators, and boards where clarity, alignment, and decision quality matter.
                 </p>
               </div>
               
@@ -139,6 +142,9 @@ export default function Home() {
               </h1>
               <p className="text-base text-muted-foreground">
                 Advisory, fractional leadership, mentoring, and capability building.
+              </p>
+              <p className="text-base text-muted-foreground">
+                I work with CEOs, founders, senior operators, and boards where clarity, alignment, and decision quality matter.
               </p>
               <div className="pt-3">
                 <Button 
