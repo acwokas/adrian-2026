@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* How I Help - 2x2 grid on desktop */}
-      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-28 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
             <div className="space-y-8 lg:space-y-10">
@@ -270,8 +270,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Signals of Depth - Combined ecosystem section */}
-      <section className="py-16 md:py-20 lg:py-24 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
+      {/* System-level exposure - Combined ecosystem section */}
+      <section className="py-16 md:py-20 lg:py-28 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide max-w-[1000px] mx-auto">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
@@ -353,8 +353,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section - Enhanced presence */}
-      <section className="py-20 md:py-24 lg:py-28 border-t border-border/50">
+      {/* Final CTA Section - Clear closer with increased separation */}
+      <section className="py-24 md:py-32 lg:py-40 border-t border-border/50">
         <div className="container-wide max-w-[800px] mx-auto text-center">
           <AnimatedSection>
             <div className="space-y-6 lg:space-y-8">

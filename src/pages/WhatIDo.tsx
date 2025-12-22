@@ -33,7 +33,7 @@ export default function WhatIDo() {
         breadcrumb={[{ name: "What I Do", path: "/what-i-do" }]}
       />
       {/* Header */}
-      <section className="section-spacing">
+      <section className="section-spacing lg:pb-24">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">
@@ -47,7 +47,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Advisory Sprints - Visually Primary */}
-      <section id="advisory" className="py-16 md:py-24 lg:py-28 scroll-mt-24">
+      <section id="advisory" className="py-16 md:py-24 lg:py-32 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -98,7 +98,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Fractional Leadership - Increased Visual Weight */}
-      <section id="fractional" className="py-16 md:py-24 lg:py-32 scroll-mt-24">
+      <section id="fractional" className="py-16 md:py-24 lg:py-36 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.05}>
             {/* Mobile: stacked layout */}
@@ -137,7 +137,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Mentoring and Capability Building - De-emphasised */}
-      <section id="mentoring" className="py-16 md:py-24 lg:py-24 scroll-mt-24">
+      <section id="mentoring" className="py-16 md:py-24 lg:py-28 scroll-mt-24">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
             {/* Mobile: stacked layout */}
@@ -178,7 +178,7 @@ export default function WhatIDo() {
       </section>
 
       {/* Workshops and Bootcamps - Compressed and Anchored */}
-      <section id="workshops" className="py-16 md:py-24 lg:py-20 scroll-mt-24 lg:border-t lg:border-border/30">
+      <section id="workshops" className="py-16 md:py-24 lg:py-24 scroll-mt-24 lg:border-t lg:border-border/30">
         <div className="container-narrow">
           <AnimatedSection delay={0.15}>
             {/* Mobile: stacked layout */}
@@ -270,7 +270,7 @@ export default function WhatIDo() {
       </section>
 
       {/* CTA - With Container Band */}
-      <section className="py-24 md:py-32 lg:bg-[hsl(var(--section-light))]">
+      <section className="py-28 md:py-36 lg:py-44 lg:bg-[hsl(var(--section-light))]">
         <div className="container-narrow text-center">
           <AnimatedSection>
             <div className="space-y-8 lg:py-8">
