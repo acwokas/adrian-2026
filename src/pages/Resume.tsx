@@ -159,6 +159,9 @@ export default function Resume() {
                   <span className="text-foreground font-medium">Comfortable owning outcomes.</span>{" "}
                   I challenge assumptions and focus attention on what will actually move the business forward.
                 </p>
+                <p>
+                  Experience includes board-level advisory roles and executive decision support across multiple sectors.
+                </p>
               </div>
             </div>
 
@@ -184,6 +187,9 @@ export default function Resume() {
                 <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
                   <span className="text-foreground font-medium">Comfortable owning outcomes.</span>{" "}
                   I challenge assumptions and focus attention on what will actually move the business forward.
+                </p>
+                <p className="text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  Experience includes board-level advisory roles and executive decision support across multiple sectors.
                 </p>
               </div>
             </div>
