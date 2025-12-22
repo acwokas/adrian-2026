@@ -276,7 +276,7 @@ export default function Home() {
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
               <div className="space-y-4">
-                <h2>Signals of depth</h2>
+                <h2>System-level exposure</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   These initiatives exist because perspective and decision quality are built over time, across multiple contexts, not inside a single organisation.
                 </p>
