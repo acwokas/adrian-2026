@@ -199,8 +199,8 @@ export default function Experience() {
           <AnimatedSection>
             <p className="text-lg lg:text-xl text-muted-foreground">
               For a detailed role history and responsibilities, see my{" "}
-              <TrackedLink to="/resume" eventName="resume_link" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
-                Resume
+              <TrackedLink to="/executive-cv" eventName="executive_cv_link" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
+                Executive CV
               </TrackedLink>.
             </p>
           </AnimatedSection>
