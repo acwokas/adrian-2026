@@ -200,9 +200,9 @@
     @apply max-w-6xl mx-auto px-6 md:px-8;
   }
 
-  /* Section spacing - reduced by 60% */
+  /* Section spacing - compact desktop, breathing room on mobile */
   .section-spacing {
-    @apply py-10 md:py-11 lg:py-12;
+    @apply py-14 md:py-11 lg:py-12;
   }
 
   /* CTA section spacing - more separation on desktop */
