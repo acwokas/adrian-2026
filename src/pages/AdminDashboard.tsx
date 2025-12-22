@@ -753,8 +753,11 @@ export default function AdminDashboard() {
                               contentStyle={{ 
                                 backgroundColor: 'hsl(var(--card))', 
                                 border: '1px solid hsl(var(--border))',
-                                borderRadius: '8px'
-                              }} 
+                                borderRadius: '8px',
+                                color: 'hsl(var(--foreground))'
+                              }}
+                              labelStyle={{ color: 'hsl(var(--foreground))' }}
+                              itemStyle={{ color: 'hsl(var(--foreground))' }}
                             />
                             <Area 
                               type="monotone" 
@@ -814,8 +817,11 @@ export default function AdminDashboard() {
                               contentStyle={{ 
                                 backgroundColor: 'hsl(var(--card))', 
                                 border: '1px solid hsl(var(--border))',
-                                borderRadius: '8px'
-                              }} 
+                                borderRadius: '8px',
+                                color: 'hsl(var(--foreground))'
+                              }}
+                              labelStyle={{ color: 'hsl(var(--foreground))' }}
+                              itemStyle={{ color: 'hsl(var(--foreground))' }}
                             />
                           </PieChart>
                         </ResponsiveContainer>
@@ -866,8 +872,11 @@ export default function AdminDashboard() {
                                 contentStyle={{ 
                                   backgroundColor: 'hsl(var(--card))', 
                                   border: '1px solid hsl(var(--border))',
-                                  borderRadius: '8px'
-                                }} 
+                                  borderRadius: '8px',
+                                  color: 'hsl(var(--foreground))'
+                                }}
+                                labelStyle={{ color: 'hsl(var(--foreground))' }}
+                                itemStyle={{ color: 'hsl(var(--foreground))' }}
                               />
                               <Bar dataKey="value" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
                             </BarChart>
@@ -907,8 +916,11 @@ export default function AdminDashboard() {
                                 contentStyle={{ 
                                   backgroundColor: 'hsl(var(--card))', 
                                   border: '1px solid hsl(var(--border))',
-                                  borderRadius: '8px'
-                                }} 
+                                  borderRadius: '8px',
+                                  color: 'hsl(var(--foreground))'
+                                }}
+                                labelStyle={{ color: 'hsl(var(--foreground))' }}
+                                itemStyle={{ color: 'hsl(var(--foreground))' }}
                               />
                               <Bar dataKey="value" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
                             </BarChart>
