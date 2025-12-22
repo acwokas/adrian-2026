@@ -1,0 +1,9 @@
+# Netlify redirects file
+# Catch-all redirect for unknown routes to homepage
+# This handles server-side routing for SPA
+
+# Redirect old known paths (add specific old URLs here if known)
+# /old-path    /new-path    301
+
+# SPA fallback - serve index.html for all routes (let React Router handle it)
+/*    /index.html   200
