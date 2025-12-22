@@ -15,7 +15,7 @@ export default function Experience() {
       />
       
       {/* Header */}
-      <section className="section-spacing lg:pb-20">
+      <section className="section-spacing lg:pb-24">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">
@@ -44,7 +44,7 @@ export default function Experience() {
       </section>
 
       {/* Section 1: Commercial and Operational Leadership - Primary section */}
-      <section className="py-16 md:py-20 lg:py-28">
+      <section className="py-16 md:py-20 lg:py-32">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -81,7 +81,7 @@ export default function Experience() {
       </section>
 
       {/* Section 2: Advisory and Fractional Leadership */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-28 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.05}>
             {/* Mobile: stacked layout */}
@@ -124,7 +124,7 @@ export default function Experience() {
       </section>
 
       {/* Section 3: Platforms and Ecosystems */}
-      <section className="py-16 md:py-20 lg:py-24">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
             {/* Mobile: stacked layout */}
@@ -151,7 +151,7 @@ export default function Experience() {
       </section>
 
       {/* Section 4: Founders, Startups, and Scale-ups */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-28 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.15}>
             {/* Mobile: stacked layout */}
@@ -194,7 +194,7 @@ export default function Experience() {
       </section>
 
       {/* Closing statement */}
-      <section className="py-20 md:py-24 lg:py-32">
+      <section className="py-24 md:py-28 lg:py-36">
         <div className="container-narrow">
           <AnimatedSection>
             <p className="text-lg lg:text-xl text-muted-foreground">

@@ -67,56 +67,56 @@
   .dark {
     /* Deep charcoal - near black */
     --background: 0 0% 8%;
-    --foreground: 35 25% 95%;
+    --foreground: 35 20% 92%;
 
     /* Cards - slightly lighter charcoal */
     --card: 0 0% 11%;
-    --card-foreground: 35 25% 95%;
+    --card-foreground: 35 20% 92%;
 
     /* Popover */
     --popover: 0 0% 11%;
-    --popover-foreground: 35 25% 95%;
+    --popover-foreground: 35 20% 92%;
 
     /* Primary - warm off-white */
-    --primary: 35 25% 95%;
+    --primary: 35 20% 92%;
     --primary-foreground: 0 0% 8%;
 
     /* Secondary - muted surface */
     --secondary: 0 0% 14%;
-    --secondary-foreground: 35 25% 85%;
+    --secondary-foreground: 35 15% 80%;
 
-    /* Muted */
+    /* Muted - warm grey for supporting text */
     --muted: 0 0% 18%;
-    --muted-foreground: 35 15% 60%;
+    --muted-foreground: 35 12% 65%;
 
     /* Accent - muted teal */
     --accent: 175 30% 45%;
-    --accent-foreground: 35 25% 95%;
+    --accent-foreground: 35 20% 92%;
 
     /* Destructive */
     --destructive: 0 62% 50%;
-    --destructive-foreground: 35 25% 95%;
+    --destructive-foreground: 35 20% 92%;
 
     /* Border and input */
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 175 30% 45%;
 
-    /* Custom tokens */
-    --text-primary: 35 25% 95%;
-    --text-secondary: 35 15% 70%;
-    --text-muted: 35 10% 50%;
+    /* Custom tokens - refined contrast */
+    --text-primary: 35 20% 92%;
+    --text-secondary: 35 12% 70%;
+    --text-muted: 30 8% 45%;
     
     /* Section backgrounds */
     --section-light: 0 0% 12%;
     
     /* Sidebar defaults */
     --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 35 25% 95%;
+    --sidebar-foreground: 35 20% 92%;
     --sidebar-primary: 175 30% 45%;
-    --sidebar-primary-foreground: 35 25% 95%;
+    --sidebar-primary-foreground: 35 20% 92%;
     --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 35 25% 95%;
+    --sidebar-accent-foreground: 35 20% 92%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 175 30% 45%;
   }
@@ -133,25 +133,39 @@
     font-size: 17px;
   }
 
+  /* Heading hierarchy - desktop refinements */
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl leading-snug md:leading-tight;
+    @apply text-4xl md:text-5xl leading-snug md:leading-tight;
+    /* Desktop: larger, more top margin, less bottom margin */
+    @apply lg:text-[3.5rem] lg:leading-[1.1] lg:mt-2 lg:mb-3;
   }
 
   h2 {
     @apply text-3xl md:text-4xl leading-tight;
+    /* Desktop: larger, strong visual anchor */
+    @apply lg:text-[2.5rem] lg:leading-[1.15] lg:mt-4 lg:mb-2;
   }
 
   h3 {
     @apply text-xl md:text-2xl leading-snug;
+    @apply lg:text-[1.75rem] lg:leading-[1.25] lg:mt-3 lg:mb-1;
   }
 
   p {
     @apply leading-relaxed md:leading-relaxed text-[1.0625rem] md:text-lg;
     line-height: 1.8;
+  }
+
+  /* Desktop paragraph refinements - capped line length */
+  @media (min-width: 1024px) {
+    p {
+      line-height: 1.75;
+      max-width: 42rem;
+    }
   }
 
   ul {
@@ -186,12 +200,23 @@
     @apply max-w-6xl mx-auto px-6 md:px-8;
   }
 
+  /* Section spacing - desktop increased by ~20% */
   .section-spacing {
-    @apply py-24 md:py-28;
+    @apply py-24 md:py-28 lg:py-32;
+  }
+
+  /* CTA section spacing - more separation on desktop */
+  .cta-section {
+    @apply py-24 md:py-32 lg:py-40;
   }
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Prose container for editorial readability */
+  .prose-container {
+    @apply max-w-[42rem];
   }
 }
 

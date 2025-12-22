@@ -16,7 +16,7 @@ export default function HowIWork() {
         breadcrumb={[{ name: "How I Work", path: "/how-i-work" }]}
       />
       {/* Header */}
-      <section className="section-spacing">
+      <section className="section-spacing lg:pb-24">
         <div className="container-narrow">
           <AnimatedSection>
             <div className="space-y-6">
@@ -33,7 +33,7 @@ export default function HowIWork() {
       </section>
 
       {/* How I approach problems */}
-      <section className="py-16 md:py-20 lg:py-24">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -74,7 +74,7 @@ export default function HowIWork() {
       </section>
 
       {/* Working with leadership teams */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-28 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.03}>
             {/* Mobile: stacked layout */}
@@ -111,7 +111,7 @@ export default function HowIWork() {
       </section>
 
       {/* Governance and responsibility */}
-      <section className="py-16 md:py-20 lg:py-24">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="container-narrow">
           <AnimatedSection delay={0.06}>
             {/* Mobile: stacked layout */}
@@ -144,7 +144,7 @@ export default function HowIWork() {
       </section>
 
       {/* Building capability, not dependency */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="py-16 md:py-20 lg:py-28 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <AnimatedSection delay={0.09}>
             {/* Mobile: stacked layout */}
@@ -177,7 +177,7 @@ export default function HowIWork() {
       </section>
 
       {/* Staying close to the ecosystem */}
-      <section className="py-16 md:py-20 lg:py-24">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="container-narrow">
           <AnimatedSection delay={0.12}>
             {/* Mobile: stacked layout */}
@@ -204,7 +204,7 @@ export default function HowIWork() {
       </section>
 
       {/* Different from Consulting - Capstone section */}
-      <section className="py-20 md:py-28 lg:py-36 bg-card">
+      <section className="py-20 md:py-28 lg:py-40 bg-card">
         <div className="container-narrow">
           <AnimatedSection>
             {/* Mobile: stacked layout */}
@@ -235,7 +235,7 @@ export default function HowIWork() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 md:py-36 lg:py-40">
+      <section className="py-32 md:py-40 lg:py-48">
         <div className="container-narrow text-center">
           <AnimatedSection>
             <div className="space-y-8">

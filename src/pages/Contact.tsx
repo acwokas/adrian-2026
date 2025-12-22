@@ -73,7 +73,7 @@ export default function Contact() {
         breadcrumb={[{ name: "Contact", path: "/contact" }]}
       />
       {/* Header */}
-      <section className="section-spacing border-b border-border/50">
+      <section className="section-spacing lg:pb-20 border-b border-border/50">
         <div className="container-narrow">
           <motion.div 
             className="space-y-6"
@@ -90,7 +90,7 @@ export default function Contact() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section className="section-spacing lg:py-36 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
             {/* Left Column - Info */}
@@ -245,7 +245,7 @@ export default function Contact() {
       </section>
 
       {/* Closing statement */}
-      <section className="py-16 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="container-narrow">
           <p className="text-foreground text-center lg:text-left">
             Engagements begin with clarity and intent.
