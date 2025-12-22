@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/hooks/useAnalytics";
 
@@ -65,24 +63,9 @@ const highlights = [
   },
 ];
 
+const CV_URL = "/documents/AdrianWatkins_Executive-CV.pdf";
+
 export default function Resume() {
-  const [cvUrl, setCvUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchCvPath = async () => {
-      const { data } = await supabase
-        .from("site_settings")
-        .select("cv_path")
-        .eq("id", "main")
-        .single();
-
-      if (data?.cv_path) {
-        const { data: urlData } = supabase.storage.from("documents").getPublicUrl(data.cv_path);
-        setCvUrl(urlData.publicUrl);
-      }
-    };
-    fetchCvPath();
-  }, []);
 
   return (
     <Layout>
@@ -313,22 +296,18 @@ export default function Resume() {
           <AnimatedSection>
             <div className="space-y-10">
               <h2>Executive CV</h2>
-              {cvUrl ? (
-                <Button 
-                  variant="hero" 
-                  size="xl" 
-                  asChild 
-                  className="min-w-[300px]"
-                  onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'download_cv' })}
-                >
-                  <a href={cvUrl} target="_blank" rel="noopener noreferrer">
-                    <Download size={20} />
-                    Download full CV (PDF)
-                  </a>
-                </Button>
-              ) : (
-                <p className="text-sm text-muted-foreground">CV download coming soon</p>
-              )}
+              <Button 
+                variant="hero" 
+                size="xl" 
+                asChild 
+                className="min-w-[300px]"
+                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'download_executive_cv' })}
+              >
+                <a href={CV_URL} target="_blank" rel="noopener noreferrer">
+                  <Download size={20} />
+                  Download Executive CV (PDF)
+                </a>
+              </Button>
             </div>
           </AnimatedSection>
         </div>
