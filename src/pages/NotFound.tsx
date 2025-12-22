@@ -1,22 +1,40 @@
-import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 
+const REDIRECT_DELAY = 5; // seconds
+
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(REDIRECT_DELAY);
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+    
+    // Auto-redirect countdown
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          navigate("/", { replace: true });
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [location.pathname, navigate]);
 
   return (
     <Layout>
       <SEO 
         title="Page Not Found"
-        description="The page you are looking for does not exist. Return to Adrian Watkins' homepage for executive advisory and fractional leadership services."
+        description="The page you are looking for does not exist. Redirecting to Adrian Watkins' homepage for executive advisory and fractional leadership services."
         canonical="/404"
       />
       <section className="section-spacing">
@@ -27,10 +45,13 @@ const NotFound = () => {
             <p className="text-lg text-muted-foreground max-w-md mx-auto">
               The page you are looking for does not exist or has been moved.
             </p>
+            <p className="text-sm text-muted-foreground">
+              Redirecting to homepage in {countdown} second{countdown !== 1 ? 's' : ''}...
+            </p>
             <Button variant="hero" size="lg" asChild>
               <Link to="/">
                 <ArrowLeft size={16} />
-                Back to home
+                Go to homepage now
               </Link>
             </Button>
           </div>
