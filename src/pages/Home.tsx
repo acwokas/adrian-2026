@@ -121,6 +121,9 @@ export default function Home() {
                 <img
                   src={adrianPortrait}
                   alt="Adrian Watkins"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-full object-cover object-[center_15%] grayscale"
                 />
               </div>
@@ -198,6 +201,7 @@ export default function Home() {
                   alt="Adrian Watkins"
                   loading="eager"
                   decoding="async"
+                  fetchPriority="high"
                   className="w-full h-full object-cover object-[center_15%] grayscale contrast-[0.95]"
                 />
               </div>
