@@ -10,9 +10,9 @@ export default function HowIWork() {
     <Layout>
       <SEO 
         title="Working Approach - Executive Advisory & Leadership Style"
-        description="Clarity, accountability, and progress over process. How Adrian Watkins approaches complex problems, works with executive teams, and builds lasting capability without dependency."
+        description="Clarity, accountability, and progress over process. How I approach problems, work with leadership teams, and take responsibility for outcomes rather than just advice."
         canonical="/how-i-work"
-        keywords="executive working style, leadership approach, advisory methodology, problem-solving framework, executive team collaboration, capability building"
+        keywords="executive working style, leadership approach, advisory methodology, decision-making support, executive team collaboration, capability building, governance"
         breadcrumb={[{ name: "How I Work", path: "/how-i-work" }]}
       />
       {/* Header */}
