@@ -290,12 +290,11 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Download CTA - Clear closer with increased separation */}
-      <section className="py-7 md:py-9 lg:py-11">
+      {/* Download CTA - Seamlessly below profile content */}
+      <section className="pt-4 pb-14 md:pt-6 md:pb-16 lg:pt-8 lg:pb-20">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-10 flex flex-col items-center text-center">
-              <h2>Executive CV</h2>
+            <div className="flex flex-col items-center text-center">
               <Button 
                 variant="hero" 
                 size="xl" 
