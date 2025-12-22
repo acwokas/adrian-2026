@@ -281,9 +281,14 @@ export default function Home() {
                 {/* AIinASIA Block */}
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold">AIinASIA</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    A platform for practical insight on emerging technology across Asia.
-                  </p>
+                  <div className="space-y-3">
+                    <p className="text-muted-foreground leading-relaxed">
+                      A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      It provides a continuous feedback loop from founders, operators, and policymakers, informing my perspective on how organisations actually adopt and govern new capability.
+                    </p>
+                  </div>
                   <a
                     href="https://aiinasia.com"
                     target="_blank"
