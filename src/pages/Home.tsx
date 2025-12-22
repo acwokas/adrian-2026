@@ -68,8 +68,8 @@ export default function Home() {
     <Layout>
       <SEO 
         canonical="/" 
-        description="Adrian Watkins helps organisations and leaders make better decisions in complex environments. Executive advisory, fractional COO/CCO roles, mentoring, and capability building across Asia Pacific."
-        keywords="executive advisor Singapore, fractional COO, fractional CCO, business strategy consultant, operational leadership, AI advisory, Asia Pacific executive coach"
+        description="Adrian Watkins works with CEOs, founders, and boards on decision-making, alignment, and execution in complex environments. Executive advisory, fractional leadership, and capability building across Asia Pacific."
+        keywords="executive advisor Singapore, fractional COO, fractional CCO, board advisor, executive decision support, operational leadership, AI advisory, Asia Pacific executive coach"
       />
       
       {/* Hero Section - Desktop: Three column layout */}
