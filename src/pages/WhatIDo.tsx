@@ -162,6 +162,41 @@ export default function WhatIDo() {
                 <p className="text-foreground font-medium">
                   These are not training programmes.
                 </p>
+              </div>
+            </div>
+
+            {/* Desktop: two-column layout */}
+            <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
+              <div className="pt-1">
+                <h2 className="text-[2rem] font-medium leading-snug">Mentoring and<br />Capability Building</h2>
+              </div>
+              <div className="space-y-4">
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
+                </p>
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  This work gives early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
+                </p>
+                <p className="text-base leading-[1.8] text-muted-foreground">
+                  It builds judgement, shared language, and confidence rather than dependency.
+                </p>
+                <p className="text-base leading-[1.8] text-foreground font-medium pt-2">
+                  These are not training programmes.
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Workshops and Bootcamps */}
+      <section id="workshops" className="py-8 md:py-12 lg:py-14 scroll-mt-24">
+        <div className="container-narrow">
+          <AnimatedSection delay={0.15}>
+            {/* Mobile: stacked layout */}
+            <div className="lg:hidden space-y-8">
+              <h2>Workshops and Bootcamps</h2>
+              <div className="space-y-6 max-w-2xl">
                 <p className="text-muted-foreground">
                   Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
                 </p>
@@ -201,21 +236,9 @@ export default function WhatIDo() {
             {/* Desktop: two-column layout */}
             <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
               <div className="pt-1">
-                <h2 className="text-[2rem] font-medium leading-snug">Mentoring and<br />Capability Building</h2>
+                <h2 className="text-[2rem] font-medium leading-snug">Workshops and<br />Bootcamps</h2>
               </div>
               <div className="space-y-4">
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  Mentoring and capability building form part of how I work with founders, senior operators, and leadership teams where long-term strength matters more than short-term fixes.
-                </p>
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  This work gives early visibility into common failure patterns, decision bottlenecks, and scaling issues that established organisations often encounter later.
-                </p>
-                <p className="text-base leading-[1.8] text-muted-foreground">
-                  It builds judgement, shared language, and confidence rather than dependency.
-                </p>
-                <p className="text-base leading-[1.8] text-foreground font-medium pt-2">
-                  These are not training programmes.
-                </p>
                 <p className="text-base leading-[1.8] text-muted-foreground">
                   Workshops and bootcamps are used where alignment, shared understanding, and collective decision-making are required. They are designed to create clarity, surface assumptions, and agree decisive next steps, often during periods of change or transition.
                 </p>
