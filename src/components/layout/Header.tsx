@@ -11,7 +11,7 @@ const navItems = [
   { label: "What I Do", path: "/what-i-do" },
   { label: "How I Work", path: "/how-i-work" },
   { label: "Experience", path: "/experience" },
-  { label: "Executive CV", path: "/resume" },
+  { label: "Executive CV", path: "/executive-cv" },
   { label: "Contact", path: "/contact" },
 ];
 

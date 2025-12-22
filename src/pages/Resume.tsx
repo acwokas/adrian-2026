@@ -72,9 +72,9 @@ export default function Resume() {
       <SEO 
         title="Executive CV - Senior Commercial & Operational Leader"
         description="Executive CV of Adrian Watkins. Senior executive with board-level advisory experience, commercial strategy, operational transformation, and executive decision support across Asia Pacific."
-        canonical="/resume"
+        canonical="/executive-cv"
         keywords="executive CV, senior leader CV, board advisor, commercial director CV, COO CV, fractional executive, executive decision support, Asia Pacific executive"
-        breadcrumb={[{ name: "Executive CV", path: "/resume" }]}
+        breadcrumb={[{ name: "Executive CV", path: "/executive-cv" }]}
       />
       {/* Header with Executive Summary */}
       <section className="section-spacing lg:pb-20">

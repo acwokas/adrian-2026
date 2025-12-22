@@ -31,7 +31,7 @@ function AppRoutes() {
         <Route path="/what-i-do" element={<WhatIDo />} />
         <Route path="/how-i-work" element={<HowIWork />} />
         <Route path="/experience" element={<Experience />} />
-        <Route path="/resume" element={<Resume />} />
+        <Route path="/executive-cv" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/login" element={<AdminLogin />} />
