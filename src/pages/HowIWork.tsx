@@ -24,9 +24,6 @@ export default function HowIWork() {
               <p className="text-xl text-muted-foreground max-w-2xl">
                 How I work is shaped by experience operating in complex environments where decisions matter and time is limited. My focus is on clarity, accountability, and progress rather than process for its own sake.
               </p>
-              <p className="text-lg text-foreground/80 font-medium">
-                This is how I typically engage with leaders and teams.
-              </p>
             </div>
           </AnimatedSection>
         </div>
@@ -41,13 +38,10 @@ export default function HowIWork() {
               <h2>How I Approach Problems</h2>
               <div className="space-y-5 text-muted-foreground">
                 <p>
-                  I start by understanding what is actually blocking progress, not just what is visible on the surface.
+                  I focus first on identifying what is actually blocking progress, not just what is visible on the surface.
                 </p>
                 <p>
-                  I challenge assumptions early, before they harden into plans that waste time and resources.
-                </p>
-                <p>
-                  I prioritise decisions over analysis. Clarity about what to do next matters more than comprehensive diagnostics.
+                  From there, I prioritise decisions over analysis, helping leaders move forward with confidence rather than waiting for perfect information.
                 </p>
               </div>
             </div>
@@ -59,13 +53,10 @@ export default function HowIWork() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  I start by understanding what is actually blocking progress, not just what is visible on the surface.
+                  I focus first on identifying what is actually blocking progress, not just what is visible on the surface.
                 </p>
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  I challenge assumptions early, before they harden into plans that waste time and resources.
-                </p>
-                <p className="text-base leading-[1.85] text-muted-foreground">
-                  I prioritise decisions over analysis. Clarity about what to do next matters more than comprehensive diagnostics.
+                  From there, I prioritise decisions over analysis, helping leaders move forward with confidence rather than waiting for perfect information.
                 </p>
               </div>
             </div>
@@ -83,11 +74,14 @@ export default function HowIWork() {
               <p className="text-muted-foreground">
                 I work directly with CEOs and executive teams as a senior peer. My role is to support decision-making, align priorities, and maintain momentum, particularly when complexity or pressure makes this difficult.
               </p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>Direct and candid conversations</li>
-                <li>Focus on shared accountability</li>
-                <li>Clear ownership of next steps</li>
-              </ul>
+              <div className="space-y-3">
+                <p className="text-foreground/90 font-medium">This involves:</p>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>Direct and candid conversations</li>
+                  <li>Clear ownership of next steps</li>
+                  <li>Shared accountability for outcomes</li>
+                </ul>
+              </div>
             </div>
 
             {/* Desktop: two-column layout */}
@@ -99,11 +93,14 @@ export default function HowIWork() {
                 <p className="text-base leading-[1.85] text-muted-foreground">
                   I work directly with CEOs and executive teams as a senior peer. My role is to support decision-making, align priorities, and maintain momentum, particularly when complexity or pressure makes this difficult.
                 </p>
-                <ul className="space-y-2 text-base leading-[1.85] text-muted-foreground">
-                  <li>Direct and candid conversations</li>
-                  <li>Focus on shared accountability</li>
-                  <li>Clear ownership of next steps</li>
-                </ul>
+                <div className="space-y-3 pt-1">
+                  <p className="text-base text-foreground font-medium">This involves:</p>
+                  <ul className="space-y-2 text-base leading-[1.85] text-muted-foreground">
+                    <li>Direct and candid conversations</li>
+                    <li>Clear ownership of next steps</li>
+                    <li>Shared accountability for outcomes</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </AnimatedSection>
@@ -151,10 +148,10 @@ export default function HowIWork() {
             <div className="lg:hidden space-y-6">
               <h2>Building Capability, Not Dependency</h2>
               <p className="text-muted-foreground">
-                My aim is to leave teams stronger than I found them. That means building capability, shared language, and confidence so progress continues without ongoing dependence on external support.
+                I leave teams stronger than I found them. This work builds judgement, shared language, and confidence so progress continues without ongoing dependence on external support.
               </p>
               <p className="text-foreground/90 font-medium">
-                Mentoring, workshops, and structured engagement are part of how this is achieved.
+                Mentoring, workshops, and structured engagement form part of how this is achieved.
               </p>
             </div>
 
@@ -165,10 +162,10 @@ export default function HowIWork() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  My aim is to leave teams stronger than I found them. That means building capability, shared language, and confidence so progress continues without ongoing dependence on external support.
+                  I leave teams stronger than I found them. This work builds judgement, shared language, and confidence so progress continues without ongoing dependence on external support.
                 </p>
                 <p className="text-base leading-[1.85] text-foreground font-medium">
-                  Mentoring, workshops, and structured engagement are part of how this is achieved.
+                  Mentoring, workshops, and structured engagement form part of how this is achieved.
                 </p>
               </div>
             </div>
@@ -184,7 +181,10 @@ export default function HowIWork() {
             <div className="lg:hidden space-y-6">
               <h2>Staying Close to the Ecosystem</h2>
               <p className="text-muted-foreground">
-                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA.com, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
+                Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners.
+              </p>
+              <p className="text-muted-foreground">
+                This exposure helps me recognise patterns, risks, and second-order effects that are often missed inside a single organisation.
               </p>
             </div>
 
@@ -195,7 +195,10 @@ export default function HowIWork() {
               </div>
               <div className="space-y-5">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA.com, I maintain a constant feedback loop with founders, operators, and practitioners. This keeps my judgement grounded in what is actually working.
+                  Staying close to the ecosystem matters. Through advisory work, mentoring, and platforms such as AIinASIA, I maintain a constant feedback loop with founders, operators, and practitioners.
+                </p>
+                <p className="text-base leading-[1.85] text-muted-foreground">
+                  This exposure helps me recognise patterns, risks, and second-order effects that are often missed inside a single organisation.
                 </p>
               </div>
             </div>
@@ -214,7 +217,7 @@ export default function HowIWork() {
                 I do not run large consulting programmes or deliver long decks that sit on shelves. My work focuses on helping leaders make decisions, act on them, and move forward with clarity and accountability.
               </p>
               <p className="text-foreground/90 font-medium">
-                I remain close to execution and am comfortable owning outcomes, not just advising on them.
+                I remain close to execution and take responsibility for outcomes, not just advice.
               </p>
             </div>
 
@@ -226,7 +229,7 @@ export default function HowIWork() {
                   I do not run large consulting programmes or deliver long decks that sit on shelves. My work focuses on helping leaders make decisions, act on them, and move forward with clarity and accountability.
                 </p>
                 <p className="text-base leading-[1.85] text-foreground font-medium">
-                  I remain close to execution and am comfortable owning outcomes, not just advising on them.
+                  I remain close to execution and take responsibility for outcomes, not just advice.
                 </p>
               </div>
             </div>
