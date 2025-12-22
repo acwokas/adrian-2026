@@ -5,11 +5,13 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/hooks/useAnalytics";
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { TrackedExternalLink } from "@/components/TrackedLink";
 
 export default function WhatIDo() {
   const location = useLocation();
+
+  const { trackBookingClick } = useAnalytics();
 
   useEffect(() => {
     if (location.hash) {
@@ -291,7 +293,7 @@ export default function WhatIDo() {
                 variant="hero" 
                 size="lg" 
                 asChild
-                onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_clarity_call', eventData: { page: 'what-i-do' } })}
+                onClick={() => trackBookingClick('what-i-do-page')}
               >
                 <a 
                   href="https://calendly.com/adrian-watkins1/new-meeting" 

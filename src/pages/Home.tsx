@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
-import { trackEvent } from "@/hooks/useAnalytics";
+import { trackEvent, useAnalytics } from "@/hooks/useAnalytics";
 import { BlurImage } from "@/components/BlurImage";
 import adrianPortrait from "@/assets/adrian-portrait-optimized.webp";
 
@@ -41,12 +41,10 @@ const broughtInFor = [
 ];
 
 export default function Home() {
+  const { trackBookingClick } = useAnalytics();
+  
   const handleCTAClick = (location: string) => {
-    trackEvent({ 
-      eventType: 'cta_click', 
-      eventName: 'Book Clarity Call', 
-      eventData: { location } 
-    });
+    trackBookingClick(location);
   };
 
   const handleServiceCardClick = (service: string) => {

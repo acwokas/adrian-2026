@@ -10,11 +10,11 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { trackEvent, useAnalytics } from "@/hooks/useAnalytics";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Contact() {
   const { toast } = useToast();
-  const { trackFormStart, trackFormSubmit } = useAnalytics();
+  const { trackFormStart, trackFormSubmit, trackBookingClick } = useAnalytics();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const hasTrackedFormStart = useRef(false);
   const [formData, setFormData] = useState({
@@ -111,7 +111,7 @@ export default function Contact() {
                     variant="hero" 
                     size="lg" 
                     asChild
-                    onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'book_call', eventData: { page: 'contact' } })}
+                    onClick={() => trackBookingClick('contact-page')}
                   >
                     <a 
                       href="https://calendly.com/adrian-watkins1/new-meeting" 
@@ -223,7 +223,6 @@ export default function Contact() {
                     size="lg" 
                     className="w-full" 
                     disabled={isSubmitting}
-                    onClick={() => trackEvent({ eventType: 'cta_click', eventName: 'contact_form_submit' })}
                   >
                     {isSubmitting ? (
                       <>
