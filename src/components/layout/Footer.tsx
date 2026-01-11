@@ -32,7 +32,7 @@ export function Footer() {
             </div>
             <p className="text-sm text-muted-foreground text-balance max-w-[200px] mx-auto md:mx-0 md:max-w-none">Senior Commercial, Strategic and Operational Leader</p>
             <p className="text-xs text-muted-foreground">
-              © Adrian Watkins. All rights reserved.
+              © 2026 Adrian Watkins. All rights reserved.
             </p>
           </div>
 
