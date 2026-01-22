@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       />
       <section className="section-spacing">
         <div className="container-wide">
-          <div className="max-w-3xl mx-auto prose prose-invert">
+          <div className="max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
             
             <p className="text-muted-foreground mb-6">
@@ -29,27 +29,27 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               We may collect the following types of information:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 [&>li]:pl-2">
               <li>
-                <strong>Analytics Data:</strong> We use analytics tools to understand how visitors 
+                <strong className="text-foreground">Analytics Data:</strong> We use analytics tools to understand how visitors 
                 interact with our website. This includes page views, click events, session duration, 
                 and navigation patterns.
               </li>
               <li>
-                <strong>Device Information:</strong> Browser type, device type (desktop, mobile, tablet), 
+                <strong className="text-foreground">Device Information:</strong> Browser type, device type (desktop, mobile, tablet), 
                 and viewport dimensions.
               </li>
               <li>
-                <strong>Location Data:</strong> We may collect approximate geographic location based 
+                <strong className="text-foreground">Location Data:</strong> We may collect approximate geographic location based 
                 on your IP address (country and region level only).
               </li>
               <li>
-                <strong>Session Recordings:</strong> We record anonymized user sessions to improve 
+                <strong className="text-foreground">Session Recordings:</strong> We record anonymized user sessions to improve 
                 website usability. These recordings capture mouse movements, clicks, and scrolling 
                 behavior but do not capture any personal data you enter into forms.
               </li>
               <li>
-                <strong>Contact Form Data:</strong> When you submit our contact form, we collect 
+                <strong className="text-foreground">Contact Form Data:</strong> When you submit our contact form, we collect 
                 your name, email address, and message content.
               </li>
             </ul>
