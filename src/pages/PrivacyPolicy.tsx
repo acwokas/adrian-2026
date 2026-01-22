@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               We may collect the following types of information:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 [&>li]:pl-2">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 marker:text-muted-foreground [&>li]:pl-0 [&>li::before]:hidden">
               <li>
                 <strong className="text-foreground">Analytics Data:</strong> We use analytics tools to understand how visitors 
                 interact with our website. This includes page views, click events, session duration, 
@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               We use the collected information for the following purposes:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 marker:text-muted-foreground [&>li]:pl-0 [&>li::before]:hidden">
               <li>To improve our website's user experience and functionality</li>
               <li>To understand visitor behavior and preferences</li>
               <li>To respond to your inquiries submitted through our contact form</li>
@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               We use the following third-party services:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 marker:text-muted-foreground [&>li]:pl-0 [&>li::before]:hidden">
               <li>
                 <strong>Google Analytics:</strong> For website analytics and traffic analysis. 
                 Google Analytics may collect information about your device and browsing behavior.
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               We use cookies and similar tracking technologies to:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 marker:text-muted-foreground [&>li]:pl-0 [&>li::before]:hidden">
               <li>Track your session for analytics purposes</li>
               <li>Remember your preferences (such as theme settings)</li>
               <li>Analyze website traffic and performance</li>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               Under GDPR and CCPA, you have the following rights:
             </p>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4 marker:text-muted-foreground [&>li]:pl-0 [&>li::before]:hidden">
               <li>The right to access your personal data</li>
               <li>The right to rectification of inaccurate data</li>
               <li>The right to erasure ("right to be forgotten")</li>
