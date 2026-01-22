@@ -34,6 +34,13 @@ export function Footer() {
             <p className="text-xs text-muted-foreground">
               © 2026 Adrian Watkins. All rights reserved.
             </p>
+            <TrackedLink
+              to="/privacy"
+              eventName="footer_privacy_policy"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors underline"
+            >
+              Privacy Policy
+            </TrackedLink>
           </div>
 
           {/* Right column - Navigation */}

@@ -14,8 +14,9 @@ serve(async (req) => {
   try {
     const { email, newPassword, secretKey } = await req.json();
     
-    // Simple secret key check to prevent unauthorized access
-    if (secretKey !== "adrianwatkins-reset-2024") {
+    // Secure secret key check using environment variable
+    const expectedSecretKey = Deno.env.get("ADMIN_RESET_SECRET_KEY");
+    if (!expectedSecretKey || secretKey !== expectedSecretKey) {
       return new Response(
         JSON.stringify({ error: "Unauthorized" }),
         { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
