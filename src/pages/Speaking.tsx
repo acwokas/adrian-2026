@@ -47,7 +47,7 @@ export default function Speaking() {
                 The only framework combining board-level AI governance with executable tools, proven across Asia-Pacific markets. EDGE bridges the gap between strategic intent and operational reality, translating governance from restriction into competitive advantage.
               </p>
               <p className="text-muted-foreground leading-relaxed text-[1.05rem]">
-                Drawing from 15 years across Singapore, Jakarta, Bangkok, and beyond, I bring both commercial operating experience and governance discipline to help organisations move from experimentation to structured capability.
+                Drawing from 12 years across Singapore, Jakarta, Bangkok, Vietnam, Australia and beyond, and another 14 in London, I bring both commercial operating experience and governance discipline to help organisations move from experimentation to structured capability.
               </p>
             </div>
           </AnimatedSection>
