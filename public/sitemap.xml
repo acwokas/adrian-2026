@@ -4,47 +4,49 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://adrianwatkins.com/</loc>
-    <lastmod>2025-12-22</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://adrianwatkins.com/og-image.jpg</image:loc>
-      <image:title>Adrian Watkins - Executive Advisor and Fractional Leader</image:title>
-      <image:caption>Senior commercial and operational leader helping organisations navigate complexity across Asia Pacific</image:caption>
+      <image:title>Adrian Watkins - Creator, EDGE Framework for Applied Intelligence</image:title>
+      <image:caption>Senior commercial and operational leader helping organisations structure AI adoption and build capability</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://adrianwatkins.com/what-i-do</loc>
-    <lastmod>2025-12-22</lastmod>
+    <loc>https://adrianwatkins.com/edge</loc>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://adrianwatkins.com/how-i-work</loc>
-    <lastmod>2025-12-22</lastmod>
+    <loc>https://adrianwatkins.com/speaking</loc>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://adrianwatkins.com/tools</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adrianwatkins.com/experience</loc>
-    <lastmod>2025-12-22</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://adrianwatkins.com/executive-cv</loc>
-    <lastmod>2025-12-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://adrianwatkins.com/documents/AdrianWatkins_Executive-CV.pdf</image:loc>
-      <image:title>Adrian Watkins Executive CV</image:title>
-    </image:image>
   </url>
   <url>
     <loc>https://adrianwatkins.com/contact</loc>
-    <lastmod>2025-12-22</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://adrianwatkins.com/privacy</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
