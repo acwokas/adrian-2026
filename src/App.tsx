@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 import Edge from "./pages/Edge";
+import Tools from "./pages/Tools";
 import WhatIDo from "./pages/WhatIDo";
 import HowIWork from "./pages/HowIWork";
 import Experience from "./pages/Experience";
@@ -34,6 +35,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/edge" element={<Edge />} />
+        <Route path="/tools" element={<Tools />} />
         <Route path="/what-i-do" element={<WhatIDo />} />
         <Route path="/how-i-work" element={<HowIWork />} />
         <Route path="/experience" element={<Experience />} />
