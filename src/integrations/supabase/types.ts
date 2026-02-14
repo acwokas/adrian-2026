@@ -133,7 +133,24 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      site_settings_public: {
+        Row: {
+          cv_path: string | null
+          id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          cv_path?: string | null
+          id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          cv_path?: string | null
+          id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
