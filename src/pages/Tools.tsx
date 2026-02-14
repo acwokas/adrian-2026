@@ -8,6 +8,9 @@ import { ArrowRight } from "lucide-react";
 const evaluateTools = [
   { label: "Decision Simulation", desc: "Map terrain before choosing", href: "/tools/evaluate/decision" },
   { label: "Red Team Simulation", desc: "Pressure-test before presenting", href: "/tools/evaluate/redteam" },
+  { label: "Conversation Simulator", desc: "Rehearse difficult conversations", href: "/tools/evaluate/conversation" },
+  { label: "Before You Send", desc: "Check how messages will land", href: "/tools/evaluate/before-you-send" },
+  { label: "Negotiation Simulator", desc: "Practice negotiation dynamics", href: "/tools/evaluate/negotiation" },
 ];
 
 const defineTools = [
