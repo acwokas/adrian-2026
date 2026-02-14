@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ShieldCheck, Scale } from "lucide-react";
+import { ArrowRight, ChevronDown, ShieldCheck, Scale, ClipboardCheck } from "lucide-react";
 
 const tools = [
   {
@@ -47,6 +47,27 @@ const tools = [
       "Risk Exposure Checklist",
       "Decision Escalation Matrix",
       "Experimentation Policy Template",
+    ],
+  },
+  {
+    title: "AI Governance Maturity Assessment",
+    description:
+      "Evaluate your organisation's AI governance maturity across five dimensions. Get a personalised roadmap with specific recommendations based on your gaps.",
+    badge: "Self-assessment",
+    icon: <ClipboardCheck className="h-5 w-5 text-accent" />,
+    href: "/tools/govern/maturity-assessment",
+    buttonLabel: "Start assessment",
+    practice: [
+      "Evaluating governance across 5 dimensions",
+      "Identifying strongest and weakest areas",
+      "Benchmarking against maturity levels",
+      "Building a prioritised improvement plan",
+    ],
+    outputs: [
+      "Maturity score with dimension breakdown",
+      "Personalised roadmap",
+      "Next steps checklist",
+      "Downloadable assessment report",
     ],
   },
 ];

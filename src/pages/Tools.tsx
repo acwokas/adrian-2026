@@ -54,6 +54,7 @@ const toolSections: ToolSection[] = [
     tools: [
       { label: "Governance Review Simulator", desc: "Defend AI decisions to boards and leadership", href: "/tools/govern/governance-review" },
       { label: "Ethical Dilemma Simulator", desc: "Navigate competing values and stakeholder interests", href: "/tools/govern/ethical-dilemma" },
+      { label: "Maturity Assessment", desc: "Evaluate governance maturity across 5 dimensions", href: "/tools/govern/maturity-assessment" },
     ],
     hubHref: "/tools/govern",
     hubLabel: "Explore governance tools",
