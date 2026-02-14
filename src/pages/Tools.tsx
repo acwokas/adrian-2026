@@ -10,6 +10,12 @@ const evaluateTools = [
   { label: "Red Team Simulation", desc: "Pressure-test before presenting", href: "/tools/evaluate/redteam" },
 ];
 
+const defineTools = [
+  { label: "Brand Profile Generator", desc: "8-step positioning foundation", href: "/tools/define/brand-profile" },
+  { label: "Content Sprint Generator", desc: "7 or 14-day content calendars", href: "/tools/define/content-sprint" },
+  { label: "Engagement Analyzer", desc: "Paste feedback, get insights", href: "/tools/define/engagement" },
+];
+
 const toolSections = [
   {
     pillar: "EVALUATE",
@@ -17,17 +23,15 @@ const toolSections = [
     body: "Rehearse decisions and pressure-test ideas before they matter. Private, realistic analysis without coaching or content generation.",
     tools: evaluateTools,
     hubHref: "/tools/evaluate",
+    hubLabel: "Explore all Evaluate tools",
   },
   {
     pillar: "DEFINE",
     heading: "Positioning & Content Tools",
-    body: "Define your positioning, create platform-specific content, and analyze engagement patterns. Built for founders, operators, and marketers.",
-    tools: [
-      { label: "Brand Profile Generator", desc: "Create your positioning foundation", href: "/tools/define/brand-profile" },
-      { label: "Content Sprint Generator", desc: "Platform-specific content calendars", href: "/tools/define/content-sprint" },
-      { label: "Engagement Analyzer", desc: "Understand what's resonating", href: "/tools/define/engagement" },
-    ],
+    body: "Create positioning clarity, generate platform-specific content, and understand what's resonating with your audience.",
+    tools: defineTools,
     hubHref: "/tools/define",
+    hubLabel: "Explore positioning tools",
   },
   {
     pillar: "GOVERN",
@@ -36,7 +40,7 @@ const toolSections = [
   },
   {
     pillar: "ELEVATE",
-    heading: "Performance & Optimization Tools",
+    heading: "Performance & Optimisation Tools",
     body: "Instruments for measuring impact, optimising execution, and translating capability into sustained advantage.",
   },
 ];
@@ -105,12 +109,14 @@ export default function Tools() {
                             <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0" />
                           </Link>
                         ))}
-                        <Link
-                          to={section.hubHref!}
-                          className="inline-flex items-center text-xs text-accent hover:underline underline-offset-4 pt-1"
-                        >
-                          Explore all Evaluate tools <ArrowRight className="h-3 w-3 ml-1" />
-                        </Link>
+                        {section.hubHref && (
+                          <Link
+                            to={section.hubHref}
+                            className="inline-flex items-center text-xs text-accent hover:underline underline-offset-4 pt-1"
+                          >
+                            {section.hubLabel || "Explore all tools"} <ArrowRight className="h-3 w-3 ml-1" />
+                          </Link>
+                        )}
                       </div>
                     ) : (
                       <p className="text-sm text-muted-foreground/60 italic">
