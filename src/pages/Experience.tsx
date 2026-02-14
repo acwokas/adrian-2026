@@ -128,27 +128,63 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Section 3: Platforms and Ecosystems */}
+      {/* Section 3: Platforms and Thought Leadership */}
       <section className="py-6 md:py-5 lg:py-7">
         <div className="container-narrow">
           <AnimatedSection delay={0.1}>
             {/* Mobile: stacked layout */}
             <div className="lg:hidden space-y-6">
-              <h2>Platforms and Ecosystems</h2>
+              <h2>Platforms and Thought Leadership</h2>
               <p className="text-muted-foreground">
-                Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA.com</a> and the broader <a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> ecosystem.
+                Beyond commercial and operational roles, I have built platforms and frameworks that reflect a commitment to democratising applied intelligence.
               </p>
+              <div className="space-y-5">
+                <div className="space-y-1">
+                  <p className="text-foreground font-medium">EDGE Framework for Applied Intelligence (2024 – Present)</p>
+                  <p className="text-muted-foreground text-sm">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements.</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-foreground font-medium"><a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">AiinASIA.com</a> (2020 – Present)</p>
+                  <p className="text-muted-foreground text-sm">Founder and Publisher. Practical AI insight for Asia-Pacific markets, reaching 10,000 monthly readers with zero paid marketing. Provides continuous feedback from founders, operators, and policymakers.</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-foreground font-medium"><a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> (2023 – Present)</p>
+                  <p className="text-muted-foreground text-sm">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge.</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-foreground font-medium">Blackstorm Group (2024 – Present)</p>
+                  <p className="text-muted-foreground text-sm">Fractional Advisor and Workshop Facilitator. Executive workshops on business model innovation and AI strategy for portfolio companies.</p>
+                </div>
+              </div>
             </div>
 
             {/* Desktop: two-column layout */}
             <div className="hidden lg:grid lg:grid-cols-[30%_70%] lg:gap-12 lg:items-start">
               <div className="pt-1">
-                <h2 className="text-[2rem] font-medium leading-snug">Platforms and<br />Ecosystems</h2>
+                <h2 className="text-[2rem] font-medium leading-snug">Platforms and<br />Thought Leadership</h2>
               </div>
-              <div>
+              <div className="space-y-6">
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Building and contributing to platforms and ecosystems designed to improve access to insight, capability, and decision-making. This includes <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">AIinASIA.com</a> and the broader <a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> ecosystem.
+                  Beyond commercial and operational roles, I have built platforms and frameworks that reflect a commitment to democratising applied intelligence.
                 </p>
+                <div className="space-y-5">
+                  <div className="space-y-1">
+                    <p className="text-base text-foreground font-medium">EDGE Framework for Applied Intelligence (2024 – Present)</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements.</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-base text-foreground font-medium"><a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">AiinASIA.com</a> (2020 – Present)</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">Founder and Publisher. Practical AI insight for Asia-Pacific markets, reaching 10,000 monthly readers with zero paid marketing. Provides continuous feedback from founders, operators, and policymakers.</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-base text-foreground font-medium"><a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> (2023 – Present)</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge.</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-base text-foreground font-medium">Blackstorm Group (2024 – Present)</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">Fractional Advisor and Workshop Facilitator. Executive workshops on business model innovation and AI strategy for portfolio companies.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </AnimatedSection>
@@ -198,16 +234,25 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Closing statement */}
+      {/* CV Download */}
       <section className="py-6 md:py-7 lg:py-9">
         <div className="container-narrow">
           <AnimatedSection>
-            <p className="text-lg lg:text-xl text-muted-foreground">
-              For a detailed role history and responsibilities, see my{" "}
-              <TrackedLink to="/executive-cv" eventName="executive_cv_link" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
-                Executive CV
-              </TrackedLink>.
-            </p>
+            <div className="space-y-6">
+              <h2>For a Detailed Role History and Responsibilities</h2>
+              <p className="text-lg lg:text-xl text-muted-foreground">
+                For a detailed role history and responsibilities, see my Executive CV.
+              </p>
+              <Button
+                variant="hero"
+                size="lg"
+                asChild
+              >
+                <a href="/documents/AdrianWatkins_Executive-CV.pdf" target="_blank" rel="noopener noreferrer">
+                  Download Executive CV (PDF)
+                </a>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>
