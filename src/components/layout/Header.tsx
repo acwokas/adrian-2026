@@ -9,10 +9,10 @@ import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "What I Do", path: "/what-i-do" },
-  { label: "How I Work", path: "/how-i-work" },
+  { label: "EDGE Framework", path: "/edge-framework" },
+  { label: "Speaking & Workshops", path: "/speaking" },
+  { label: "Tools", path: "/tools" },
   { label: "Experience", path: "/experience" },
-  { label: "Executive CV", path: "/executive-cv" },
   { label: "Contact", path: "/contact" },
 ];
 
