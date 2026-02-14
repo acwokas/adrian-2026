@@ -41,11 +41,11 @@ export function TrustedBySection() {
               {partners.map((partner) => (
                 <StaggeredItem key={partner.name}>
                   <div className="p-8 bg-[hsl(222_47%_8%)] border border-[hsl(222_20%_16%)] rounded-lg h-full flex flex-col items-center text-center space-y-4 hover:border-accent/30 transition-all duration-300">
-                    <div className="h-20 flex items-center justify-center">
+                    <div className="h-48 flex items-center justify-center">
                       <img
                         src={partner.logo}
                         alt={`${partner.name} logo`}
-                        className="max-w-[180px] max-h-[72px] w-auto h-auto object-contain brightness-110 hover:opacity-80 transition-opacity duration-300"
+                        className="max-w-[540px] max-h-[216px] w-auto h-auto object-contain brightness-110 hover:opacity-80 transition-opacity duration-300"
                       />
                     </div>
                     <p className="text-accent text-sm font-medium tracking-wide">
