@@ -23,3 +23,6 @@ verify_jwt = false
 
 [functions.content-sprint-generate]
 verify_jwt = false
+
+[functions.engagement-analysis]
+verify_jwt = false
