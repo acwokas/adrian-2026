@@ -80,6 +80,26 @@ export default function Speaking() {
         </div>
       </section>
 
+      {/* Testimonial */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl">What Participants Say</h2>
+              <div className="border-l-2 border-accent pl-6 md:pl-8 max-w-[720px]">
+                <p className="text-foreground text-lg md:text-xl leading-relaxed italic">
+                  "Adrian's keynote at Smart Living Sustainable Future 2025 provided 150+ officials, investors and founders with a framework for embedding governance into infrastructure, not layering it on top. His ability to translate complex AI governance into actionable strategy was exceptional."
+                </p>
+                <div className="mt-4">
+                  <p className="text-accent font-medium text-sm">Conference Organiser</p>
+                  <p className="text-muted-foreground text-sm">Smart Living Sustainable Future 2025, Taipei</p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Executive Workshops */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[900px] mx-auto">
