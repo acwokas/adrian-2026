@@ -38,3 +38,6 @@ verify_jwt = false
 
 [functions.negotiation-analysis]
 verify_jwt = false
+
+[functions.governance-review]
+verify_jwt = false

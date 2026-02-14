@@ -47,7 +47,12 @@ const toolSections: ToolSection[] = [
   {
     pillar: "GOVERN",
     heading: "Governance & Oversight Tools",
-    body: "Frameworks and templates for establishing accountability, policy boundaries, risk management, and performance discipline.",
+    body: "Frameworks and simulations for establishing accountability, policy boundaries, risk management, and performance discipline.",
+    tools: [
+      { label: "Governance Review Simulator", desc: "Rehearse defending AI decisions to boards", href: "/tools/govern/governance-review" },
+    ],
+    hubHref: "/tools/govern",
+    hubLabel: "Explore governance tools",
   },
   {
     pillar: "ELEVATE",

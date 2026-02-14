@@ -30,6 +30,8 @@ import BeforeYouSend from "./pages/BeforeYouSend";
 import NegotiationSimulator from "./pages/NegotiationSimulator";
 import ElevateHub from "./pages/ElevateHub";
 import PromptEngineer from "./pages/PromptEngineer";
+import GovernHub from "./pages/GovernHub";
+import GovernanceReview from "./pages/GovernanceReview";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
@@ -63,6 +65,8 @@ function AppRoutes() {
         <Route path="/tools/evaluate/negotiation" element={<NegotiationSimulator />} />
         <Route path="/tools/elevate" element={<ElevateHub />} />
         <Route path="/tools/elevate/prompt-engineer" element={<PromptEngineer />} />
+        <Route path="/tools/govern" element={<GovernHub />} />
+        <Route path="/tools/govern/governance-review" element={<GovernanceReview />} />
         <Route path="/tools/define" element={<DefineHub />} />
         <Route path="/tools/define/brand-profile" element={<BrandProfileGenerator />} />
         <Route path="/tools/define/content-sprint" element={<ContentSprintGenerator />} />
