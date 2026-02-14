@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { trackEvent, useAnalytics } from "@/hooks/useAnalytics";
+import { TrustedBySection } from "@/components/home/TrustedBySection";
 import { BlurImage } from "@/components/BlurImage";
 import adrianPortrait from "@/assets/adrian-portrait-optimized.webp";
 
@@ -391,6 +392,9 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Trusted By / Ecosystem Partners */}
+      <TrustedBySection />
 
       {/* Final CTA Section - Clear closer with increased separation */}
       <section className="py-6 md:py-8 lg:py-10 border-t border-border/50">
