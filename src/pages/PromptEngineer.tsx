@@ -719,22 +719,25 @@ export default function PromptEngineer() {
             {/* Main column */}
             <div className="flex-1 min-w-0 space-y-6">
               {/* Tab switcher */}
-              <div className="flex gap-1 p-1 bg-secondary/50 border border-border/20 rounded-sm">
+              <div className="flex gap-0 border-b border-border/30">
                 {modes.map((m) => (
                   <button
                     key={m.id}
                     onClick={() => switchMode(m.id)}
                     disabled={isStreaming}
                     className={cn(
-                      "flex-1 flex items-center justify-center gap-2 py-2.5 px-3 text-sm rounded-sm transition-all",
+                      "flex-1 flex items-center justify-center gap-2 py-3 px-3 text-sm transition-all relative",
                       mode === m.id
-                        ? "bg-card text-foreground font-medium shadow-sm border border-border/30"
-                        : "text-muted-foreground hover:text-foreground disabled:opacity-50"
+                        ? "text-foreground font-medium"
+                        : "text-muted-foreground/60 hover:text-foreground disabled:opacity-50"
                     )}
                   >
                     {m.icon}
                     <span className="hidden sm:inline">{m.label}</span>
                     <span className="sm:hidden text-xs">{m.label}</span>
+                    {mode === m.id && (
+                      <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-accent rounded-full" />
+                    )}
                   </button>
                 ))}
               </div>
