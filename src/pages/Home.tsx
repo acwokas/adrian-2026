@@ -36,7 +36,7 @@ const broughtInFor = [
   { bold: "AI initiatives stalled", rest: "after pilots" },
   { bold: "Leadership pressure", rest: "without clarity" },
   { bold: "Misalignment between", rest: "strategy and execution" },
-  { bold: "Products or platforms", rest: "lacking commercial grounding" },
+  { bold: "Products or platforms", rest: "lacking commercial positioning" },
   { bold: "Teams drifting", rest: "without direction" },
 ];
 
@@ -83,28 +83,41 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h1 className="text-3xl md:text-4xl">
-                  I help organisations and leaders make better decisions in complex environments.
+                  Adrian Watkins
                 </h1>
-              <p className="text-base md:text-lg text-muted-foreground">
-                  Advisory, fractional leadership, mentoring, and capability building.
+                <p className="text-base md:text-lg text-muted-foreground">
+                  Creator, EDGE Framework for Applied Intelligence
                 </p>
                 <p className="text-base md:text-lg text-muted-foreground">
-                  I work with CEOs, founders, senior operators, and boards where clarity, alignment, and decision quality matter.
+                  SVP Commercial Operations &amp; Governance, SQREEM Technologies
                 </p>
               </div>
+              <p className="text-base md:text-lg text-muted-foreground">
+                I work with CEOs, founders, and leadership teams to transform AI adoption from scattered experiments into structured capability.
+              </p>
               
-              <div className="pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button 
                   variant="hero" 
+                  size="lg" 
+                  className="w-full sm:w-auto" 
+                  asChild
+                >
+                  <Link to="/edge-framework">
+                    Explore EDGE Framework
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
                   size="lg" 
                   className="w-full sm:w-auto" 
                   asChild
                   onClick={() => handleCTAClick('hero-mobile')}
                 >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
-                    Book a 30-minute clarity call
+                    Book a 30-minute call
                   </a>
                 </Button>
               </div>
@@ -137,24 +150,38 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <h1 className="text-[2.25rem] leading-[1.15]">
-                I help organisations and leaders make better decisions in complex environments.
-              </h1>
+              <div className="space-y-3">
+                <h1 className="text-[2.25rem] leading-[1.15]">
+                  Adrian Watkins
+                </h1>
+                <p className="text-base text-muted-foreground">
+                  Creator, EDGE Framework for Applied Intelligence
+                </p>
+                <p className="text-base text-muted-foreground">
+                  SVP Commercial Operations &amp; Governance, SQREEM Technologies
+                </p>
+              </div>
               <p className="text-base text-muted-foreground">
-                Advisory, fractional leadership, mentoring, and capability building.
+                I work with CEOs, founders, and leadership teams to transform AI adoption from scattered experiments into structured capability.
               </p>
-              <p className="text-base text-muted-foreground">
-                I work with CEOs, founders, senior operators, and boards where clarity, alignment, and decision quality matter.
-              </p>
-              <div className="pt-3">
+              <div className="flex flex-col gap-3 pt-3">
                 <Button 
                   variant="hero" 
+                  size="lg" 
+                  asChild
+                >
+                  <Link to="/edge-framework">
+                    Explore EDGE Framework
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
                   size="lg" 
                   asChild
                   onClick={() => handleCTAClick('hero-desktop')}
                 >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
-                    Book a 30-minute clarity call
+                    Book a 30-minute call
                   </a>
                 </Button>
               </div>
@@ -226,7 +253,7 @@ export default function Home() {
 
               <div className="pt-10 mt-8 border-t border-accent/20">
                 <p className="text-xl md:text-2xl leading-snug text-foreground font-semibold max-w-3xl">
-                  I am often brought in to challenge assumptions, stop unproductive work, and refocus teams on what will actually move the business forward.
+                  I challenge assumptions and refocus teams on what matters.
                 </p>
               </div>
             </div>
