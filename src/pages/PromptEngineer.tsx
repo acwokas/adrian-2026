@@ -11,7 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Sparkles, Target, Layers, ArrowRight, Copy, Check, ChevronDown,
-  RotateCcw, Download, ShieldCheck, ExternalLink,
+  RotateCcw, Download, ShieldCheck, ExternalLink, Lightbulb, Send,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -19,7 +19,16 @@ import { toast } from "@/hooks/use-toast";
 // ── Types ──
 type Mode = "generate" | "optimize" | "adapt";
 
-const platforms = ["ChatGPT", "Claude", "Gemini", "MidJourney", "Perplexity"] as const;
+const platformOptions = ["Any platform", "ChatGPT", "Claude", "Gemini", "MidJourney", "Perplexity"] as const;
+const adaptPlatforms = ["ChatGPT", "Claude", "Gemini", "MidJourney", "Perplexity"] as const;
+
+const sendToAiLinks: Record<string, string> = {
+  ChatGPT: "https://chatgpt.com/",
+  Claude: "https://claude.ai/",
+  Gemini: "https://gemini.google.com/",
+  Perplexity: "https://www.perplexity.ai/",
+  MidJourney: "https://discord.com/channels/@me",
+};
 
 const modes: { id: Mode; label: string; desc: string; icon: React.ReactNode }[] = [
   { id: "generate", label: "Generate", desc: "Create from description", icon: <Sparkles className="h-4 w-4" /> },
@@ -45,16 +54,22 @@ const allPrinciples: { name: string; desc: string }[] = [
 ];
 
 const placeholders: Record<Mode, string> = {
-  generate: "Describe what you want the AI to do.\n\ne.g., \"I need a prompt that helps me write LinkedIn posts about AI governance. The tone should be authoritative but accessible. Posts should be 150-200 words.\"",
+  generate: "e.g., Write a marketing email for my SaaS product targeting startup founders",
   optimize: "Paste your existing prompt here.\n\ne.g., \"Write me a blog post about AI\" — and see how to make it 3x more effective.",
   adapt: "Paste the prompt you want to adapt for a specific platform.\n\ne.g., A detailed ChatGPT prompt that you want to convert for use with MidJourney or Claude.",
 };
+
+const loadingPhases = [
+  "Analysing your request...",
+  "Applying prompt engineering principles...",
+  "Generating optimised prompt...",
+];
 
 // ── Streaming helper ──
 const PROMPT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/prompt-engineer`;
 
 async function streamPrompt(
-  payload: { mode: Mode; input: string; platform?: string },
+  payload: { mode: Mode; input: string; platform?: string; context?: string; targetPlatform?: string },
   onDelta: (text: string) => void,
   onDone: () => void,
   onError: (msg: string) => void,
@@ -162,6 +177,82 @@ function SectionCard({ section, defaultOpen }: { section: Section; defaultOpen?:
   );
 }
 
+// ── Loading with rotating phases ──
+function LoadingPhases() {
+  const [phase, setPhase] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPhase((p) => (p < loadingPhases.length - 1 ? p + 1 : p));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="space-y-4">
+      <div className="space-y-2">
+        {loadingPhases.map((msg, i) => (
+          <p
+            key={msg}
+            className={cn(
+              "text-sm transition-all duration-500",
+              i <= phase ? "text-muted-foreground" : "text-muted-foreground/30",
+              i === phase && "text-foreground font-medium"
+            )}
+          >
+            {i < phase ? "✓" : i === phase ? "●" : "○"} {msg}
+          </p>
+        ))}
+      </div>
+      <p className="text-xs text-muted-foreground/50">Estimated time: 15-30 seconds</p>
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="border border-border/30 bg-card rounded-sm p-4 space-y-3">
+          <Skeleton className="h-4 w-1/3" />
+          <Skeleton className="h-3 w-full" />
+          <Skeleton className="h-3 w-4/5" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── Send to AI dropdown ──
+function SendToAiMenu({ promptText }: { promptText: string }) {
+  const [open, setOpen] = useState(false);
+
+  const handleSend = async (name: string, url: string) => {
+    await navigator.clipboard.writeText(promptText);
+    window.open(url, "_blank", "noopener,noreferrer");
+    toast({ title: "Prompt copied!", description: `Opening ${name}...` });
+    setOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      <Button variant="outline" size="sm" onClick={() => setOpen(!open)}>
+        <Send className="h-3.5 w-3.5 mr-1.5" />
+        Send to AI
+        <ChevronDown className="h-3 w-3 ml-1" />
+      </Button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute left-0 top-full mt-1 z-50 bg-card border border-border/30 rounded-sm shadow-lg min-w-[180px]">
+            {Object.entries(sendToAiLinks).map(([name, url]) => (
+              <button
+                key={name}
+                onClick={() => handleSend(name, url)}
+                className="w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors first:rounded-t-sm last:rounded-b-sm"
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // ── Main page ──
 export default function PromptEngineer() {
   const location = useLocation();
@@ -174,27 +265,49 @@ export default function PromptEngineer() {
 
   const [mode, setMode] = useState<Mode>(getInitialMode);
   const [input, setInput] = useState("");
-  const [platform, setPlatform] = useState<string>("ChatGPT");
+  const [generateContext, setGenerateContext] = useState("");
+  const [generatePlatform, setGeneratePlatform] = useState("Any platform");
+  const [adaptPlatform, setAdaptPlatform] = useState<string>("ChatGPT");
   const [rawText, setRawText] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const sections = parseIntoSections(rawText);
   const activePrinciples = principlesByMode[mode];
+
+  // Extract the generated prompt from sections for quick copy
+  const generatedPromptSection = sections.find(
+    (s) => s.id.includes("generated-prompt") || s.id.includes("optimised-prompt") || s.id.includes("adapted-prompt")
+  );
 
   // Sync hash
   useEffect(() => {
     window.history.replaceState(null, "", `#${mode}`);
   }, [mode]);
 
-  const switchMode = (newMode: Mode) => {
+  // Keyboard shortcut: Cmd/Ctrl+Enter
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && canSubmit && !isStreaming && !rawText) {
+        e.preventDefault();
+        handleSubmit();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  });
+
+  const switchMode = (newMode: Mode, prefillInput?: string) => {
     if (isStreaming) return;
     setMode(newMode);
     setRawText("");
-    setInput("");
+    setInput(prefillInput || "");
+    setGenerateContext("");
+    setGeneratePlatform("Any platform");
   };
 
-  const canSubmit = input.trim().length >= 20 && (mode !== "adapt" || !!platform);
+  const canSubmit = input.trim().length >= 20 && (mode !== "adapt" || !!adaptPlatform);
 
   const handleSubmit = useCallback(() => {
     setRawText("");
@@ -203,8 +316,15 @@ export default function PromptEngineer() {
     const ctrl = new AbortController();
     abortRef.current = ctrl;
 
+    const payload: Record<string, string> = { mode, input };
+    if (mode === "generate") {
+      if (generateContext.trim()) payload.context = generateContext.trim();
+      if (generatePlatform !== "Any platform") payload.targetPlatform = generatePlatform;
+    }
+    if (mode === "adapt") payload.platform = adaptPlatform;
+
     streamPrompt(
-      { mode, input, ...(mode === "adapt" ? { platform } : {}) },
+      payload as any,
       (delta) => setRawText((prev) => prev + delta),
       () => setIsStreaming(false),
       (err) => {
@@ -213,7 +333,30 @@ export default function PromptEngineer() {
       },
       ctrl.signal,
     );
-  }, [mode, input, platform]);
+  }, [mode, input, generateContext, generatePlatform, adaptPlatform]);
+
+  const handleLoadExample = () => {
+    setInput("Create a blog post outline about AI adoption challenges for enterprise CTOs");
+    setGenerateContext("Professional tone, focus on practical solutions, include real-world examples");
+    setGeneratePlatform("Any platform");
+    toast({ title: "Example loaded", description: "See how to describe what you want effectively." });
+  };
+
+  // Extract raw prompt text from the generated prompt section (strip code block markers)
+  const extractPromptText = (): string => {
+    if (!generatedPromptSection) return rawText;
+    return generatedPromptSection.content.replace(/^```[\w]*\n?/gm, "").replace(/\n?```$/gm, "").trim();
+  };
+
+  const handleOptimiseFurther = () => {
+    const promptText = extractPromptText();
+    switchMode("optimize", promptText);
+  };
+
+  const handleAdaptFor = () => {
+    const promptText = extractPromptText();
+    switchMode("adapt", promptText);
+  };
 
   const handleDownload = () => {
     const content = `# Prompt Engineer — ${mode.charAt(0).toUpperCase() + mode.slice(1)} Mode\n\nGenerated: ${new Date().toISOString()}\n\n${rawText}`;
@@ -235,6 +378,8 @@ export default function PromptEngineer() {
     abortRef.current?.abort();
     setRawText("");
     setInput("");
+    setGenerateContext("");
+    setGeneratePlatform("Any platform");
   };
 
   const buttonLabels: Record<Mode, string> = {
@@ -316,39 +461,107 @@ export default function PromptEngineer() {
                 {modes.find((m) => m.id === mode)?.desc}
               </p>
 
-              {/* Input form — only show when no results */}
+              {/* ═══ INPUT FORM ═══ */}
               {!rawText && !isStreaming && (
                 <div className="space-y-4">
+                  {/* Main textarea */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
-                      {mode === "generate" && "Describe what you want the AI to do"}
+                      {mode === "generate" && "What do you want the AI to do?"}
                       {mode === "optimize" && "Paste your existing prompt"}
                       {mode === "adapt" && "Paste the prompt to adapt"}
                     </label>
                     <Textarea
+                      ref={textareaRef}
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder={placeholders[mode]}
-                      className="min-h-[160px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
+                      className="min-h-[140px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground/50">
                       <span>{input.length} characters</span>
-                      <span>Minimum 20 characters</span>
+                      <span>
+                        Minimum 20 characters
+                        {!isStreaming && <span className="hidden sm:inline"> · ⌘/Ctrl+Enter to submit</span>}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Platform selector for Adapt mode */}
+                  {/* ── Generate mode extras ── */}
+                  {mode === "generate" && (
+                    <>
+                      {/* Example button */}
+                      <button
+                        onClick={handleLoadExample}
+                        className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline underline-offset-4"
+                      >
+                        <Lightbulb className="h-3.5 w-3.5" />
+                        See example
+                      </button>
+
+                      {/* Collapsible context */}
+                      <Collapsible>
+                        <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                          <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
+                          Add more context
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="space-y-4 pt-4">
+                            {/* Additional details */}
+                            <div className="space-y-1.5">
+                              <label className="text-sm font-medium">Additional details</label>
+                              <Textarea
+                                value={generateContext}
+                                onChange={(e) => setGenerateContext(e.target.value)}
+                                placeholder="e.g., Professional tone, focus on ROI, include social proof"
+                                className="min-h-[80px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
+                              />
+                              <p className="text-xs text-muted-foreground/50">
+                                The more context you provide, the better the prompt
+                              </p>
+                            </div>
+
+                            {/* Target AI platform */}
+                            <div className="space-y-1.5">
+                              <label className="text-sm font-medium">Target AI platform</label>
+                              <div className="flex flex-wrap gap-2">
+                                {platformOptions.map((p) => (
+                                  <button
+                                    key={p}
+                                    onClick={() => setGeneratePlatform(p)}
+                                    className={cn(
+                                      "px-3 py-1.5 text-xs rounded-sm border transition-colors",
+                                      generatePlatform === p
+                                        ? "bg-accent/10 border-accent/40 text-accent font-medium"
+                                        : "border-border/30 text-muted-foreground hover:text-foreground hover:border-border/60"
+                                    )}
+                                  >
+                                    {p}
+                                  </button>
+                                ))}
+                              </div>
+                              <p className="text-xs text-muted-foreground/50">
+                                Optimises for platform-specific best practices
+                              </p>
+                            </div>
+                          </div>
+                        </CollapsibleContent>
+                      </Collapsible>
+                    </>
+                  )}
+
+                  {/* ── Adapt mode platform selector ── */}
                   {mode === "adapt" && (
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Target platform</label>
                       <div className="flex flex-wrap gap-2">
-                        {platforms.map((p) => (
+                        {adaptPlatforms.map((p) => (
                           <button
                             key={p}
-                            onClick={() => setPlatform(p)}
+                            onClick={() => setAdaptPlatform(p)}
                             className={cn(
                               "px-3 py-1.5 text-sm rounded-sm border transition-colors",
-                              platform === p
+                              adaptPlatform === p
                                 ? "bg-accent/10 border-accent/40 text-accent font-medium"
                                 : "border-border/30 text-muted-foreground hover:text-foreground hover:border-border/60"
                             )}
@@ -360,6 +573,7 @@ export default function PromptEngineer() {
                     </div>
                   )}
 
+                  {/* Submit */}
                   <Button onClick={handleSubmit} disabled={!canSubmit} variant="hero" size="default">
                     {buttonLabels[mode]}
                     <ArrowRight className="h-4 w-4 ml-1" />
@@ -367,24 +581,8 @@ export default function PromptEngineer() {
                 </div>
               )}
 
-              {/* Loading */}
-              {isStreaming && rawText.length === 0 && (
-                <div className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    {mode === "generate" && "Generating your prompt..."}
-                    {mode === "optimize" && "Analysing and optimising..."}
-                    {mode === "adapt" && `Adapting for ${platform}...`}
-                  </p>
-                  <p className="text-xs text-muted-foreground/50">This takes 15-30 seconds</p>
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="border border-border/30 bg-card rounded-sm p-4 space-y-3">
-                      <Skeleton className="h-4 w-1/3" />
-                      <Skeleton className="h-3 w-full" />
-                      <Skeleton className="h-3 w-4/5" />
-                    </div>
-                  ))}
-                </div>
-              )}
+              {/* ═══ LOADING ═══ */}
+              {isStreaming && rawText.length === 0 && <LoadingPhases />}
 
               {/* Streaming pre-sections */}
               {isStreaming && rawText.length > 0 && sections.length === 0 && (
@@ -396,7 +594,7 @@ export default function PromptEngineer() {
                 </div>
               )}
 
-              {/* Result sections */}
+              {/* ═══ RESULTS ═══ */}
               {sections.map((s, i) => (
                 <SectionCard key={s.id} section={s} defaultOpen={i === 0} />
               ))}
@@ -409,9 +607,28 @@ export default function PromptEngineer() {
                 </div>
               )}
 
-              {/* Actions */}
+              {/* ═══ RESULT ACTIONS ═══ */}
               {!isStreaming && sections.length > 0 && (
-                <div className="space-y-4 pt-4 border-t border-border/20">
+                <div className="space-y-5 pt-4 border-t border-border/20">
+                  {/* Primary actions */}
+                  <div className="flex flex-wrap gap-3">
+                    {generatedPromptSection && (
+                      <Button
+                        variant="hero"
+                        size="sm"
+                        onClick={async () => {
+                          await navigator.clipboard.writeText(extractPromptText());
+                          toast({ title: "Prompt copied!", description: "Ready to paste into your AI tool." });
+                        }}
+                      >
+                        <Copy className="h-3.5 w-3.5 mr-1.5" />
+                        Copy prompt
+                      </Button>
+                    )}
+                    <SendToAiMenu promptText={extractPromptText()} />
+                  </div>
+
+                  {/* Secondary actions */}
                   <div className="flex flex-wrap gap-3">
                     <Button variant="outline" size="sm" onClick={handleCopyAll}>
                       <Copy className="h-3.5 w-3.5 mr-1.5" />
@@ -423,17 +640,24 @@ export default function PromptEngineer() {
                     </Button>
                     <Button variant="ghost" size="sm" onClick={handleStartOver}>
                       <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-                      Start over
+                      Generate another
                     </Button>
                   </div>
 
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    {modes.filter((m) => m.id !== mode).map((m) => (
-                      <Button key={m.id} variant="ghost" size="sm" onClick={() => switchMode(m.id)} className="text-muted-foreground">
-                        {m.icon}
-                        <span className="ml-1.5">Try {m.label} mode</span>
+                  {/* Cross-mode actions */}
+                  <div className="flex flex-wrap gap-3 pt-1">
+                    {mode !== "optimize" && (
+                      <Button variant="ghost" size="sm" onClick={handleOptimiseFurther} className="text-muted-foreground">
+                        <Target className="h-3.5 w-3.5 mr-1.5" />
+                        Optimise further
                       </Button>
-                    ))}
+                    )}
+                    {mode !== "adapt" && (
+                      <Button variant="ghost" size="sm" onClick={handleAdaptFor} className="text-muted-foreground">
+                        <Layers className="h-3.5 w-3.5 mr-1.5" />
+                        Adapt for platform
+                      </Button>
+                    )}
                   </div>
                 </div>
               )}

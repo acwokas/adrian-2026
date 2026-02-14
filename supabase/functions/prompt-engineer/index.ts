@@ -100,7 +100,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { mode, input, platform } = await req.json();
+    const { mode, input, platform, context, targetPlatform } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -113,6 +113,8 @@ serve(async (req) => {
     let userMessage = "";
     if (mode === "generate") {
       userMessage = `I want an AI to do the following:\n\n${input}`;
+      if (context) userMessage += `\n\nAdditional context: ${context}`;
+      if (targetPlatform && targetPlatform !== "any") userMessage += `\n\nOptimise specifically for: ${targetPlatform}`;
     } else if (mode === "optimize") {
       userMessage = `Here is my current prompt:\n\n${input}\n\nPlease analyse and optimise it.`;
     } else if (mode === "adapt") {
