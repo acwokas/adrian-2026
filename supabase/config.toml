@@ -29,3 +29,6 @@ verify_jwt = false
 
 [functions.prompt-engineer]
 verify_jwt = false
+
+[functions.conversation-analysis]
+verify_jwt = false

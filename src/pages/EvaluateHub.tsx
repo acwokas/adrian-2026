@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, GitBranch, Shield, ChevronDown, ShieldCheck } from "lucide-react";
+import { ArrowRight, GitBranch, Shield, MessageCircle, ChevronDown, ShieldCheck } from "lucide-react";
 
 const tools = [
   {
@@ -35,6 +35,20 @@ const tools = [
       "Adjustable challenge intensity",
       "Mitigation planning",
       "Synthesis generation",
+    ],
+  },
+  {
+    title: "Conversation Simulator",
+    description:
+      "Rehearse difficult conversations with realistic AI pushback. Resolution must be earned through clarity, empathy, and firmness.",
+    badge: "Interactive chat",
+    icon: <MessageCircle className="h-5 w-5 text-accent" />,
+    href: "/tools/evaluate/conversation",
+    features: [
+      "Realistic resistance & pushback",
+      "5 conversation tone modes",
+      "Turn-by-turn coaching reflection",
+      "Downloadable transcripts",
     ],
   },
 ];
