@@ -60,6 +60,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        pillar: {
+          evaluate: "hsl(var(--pillar-evaluate))",
+          define: "hsl(var(--pillar-define))",
+          govern: "hsl(var(--pillar-govern))",
+          elevate: "hsl(var(--pillar-elevate))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
