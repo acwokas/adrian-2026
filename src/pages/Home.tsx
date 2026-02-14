@@ -385,7 +385,7 @@ export default function Home() {
               </StaggeredChildren>
 
               <p className="text-sm text-muted-foreground text-center">
-                Building tools, frameworks, and insights for applied intelligence
+                Building free tools, frameworks, and insights for applied intelligence for all
               </p>
             </div>
           </AnimatedSection>
