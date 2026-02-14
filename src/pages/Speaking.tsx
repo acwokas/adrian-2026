@@ -84,9 +84,29 @@ export default function Speaking() {
                     Strategic Planning &amp; Execution Discipline
                   </li>
                 </ul>
-                <p className="text-muted-foreground leading-relaxed">
-                  These are not training programmes. They focus on helping leaders make decisions, act on them, and move forward with clarity and accountability.
-                </p>
+                <div className="mt-8 pt-8 border-t border-border/30">
+                  <h3 className="text-xl md:text-2xl mb-3">What Teams Walk Away With</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-5">
+                    These are not training programmes. They are decision-making sessions that produce concrete outputs.
+                  </p>
+                  <ul className="space-y-4 pl-6 text-muted-foreground">
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                      <span className="text-foreground font-medium">Decision Ownership Map:</span> Clear accountability for AI adoption across functions
+                    </li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                      <span className="text-foreground font-medium">Risk Assessment Checklist:</span> Governance, compliance, and execution risks identified
+                    </li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                      <span className="text-foreground font-medium">30-Day Action Roadmap:</span> Prioritised next steps with assigned ownership
+                    </li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                      <span className="text-foreground font-medium">Framework Templates:</span> Downloadable decision matrices, escalation protocols, and review structures
+                    </li>
+                  </ul>
+                  <p className="text-muted-foreground leading-relaxed mt-5">
+                    Workshops typically run 2-4 hours and can be delivered in-person or remotely to executive teams, boards, or portfolio companies.
+                  </p>
+                </div>
               </div>
             </div>
           </AnimatedSection>
