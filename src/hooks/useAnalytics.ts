@@ -165,6 +165,14 @@ export const useAnalytics = () => {
     sendConversionToGA('contact_cta', { cta_source: source });
   };
 
+  const trackWhitepaperDownload = (source: string) => {
+    trackEvent({ 
+      eventType: 'cta_click', 
+      eventName: 'whitepaper_download', 
+      eventData: { source, file: 'edge-framework-whitepaper.pdf' } 
+    });
+  };
+
   return { 
     trackClick, 
     trackClickWithPosition, 
@@ -175,5 +183,6 @@ export const useAnalytics = () => {
     trackFormSubmit,
     trackBookingClick,
     trackContactCTA,
+    trackWhitepaperDownload,
   };
 };
