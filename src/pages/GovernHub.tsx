@@ -52,27 +52,54 @@ const tools = [
   {
     title: "AI Governance Maturity Assessment",
     description:
-      "Evaluate your organisation's AI governance maturity across five dimensions. Get a personalised roadmap with specific recommendations based on your gaps.",
-    badge: "Self-assessment",
+      "Evaluate your organisation's governance maturity across 5 dimensions. Get a personalised roadmap and identify which gaps to address first.",
+    badge: "5–10 minutes",
     icon: <ClipboardCheck className="h-5 w-5 text-accent" />,
     href: "/tools/govern/maturity-assessment",
-    buttonLabel: "Start assessment",
+    buttonLabel: "Take assessment",
     practice: [
-      "Evaluating governance across 5 dimensions",
-      "Identifying strongest and weakest areas",
-      "Benchmarking against maturity levels",
-      "Building a prioritised improvement plan",
+      "Where you are on the governance maturity spectrum (Reactive to Optimised)",
+      "Which dimensions need immediate attention",
+      "Benchmark comparison for your organisational stage",
+      "Personalised roadmap for improvement",
     ],
+    practiceLabel: "What you'll discover",
     outputs: [
-      "Maturity score with dimension breakdown",
-      "Personalised roadmap",
-      "Next steps checklist",
-      "Downloadable assessment report",
+      "Maturity score report with visual breakdown",
+      "Dimension-by-dimension analysis",
+      "Prioritised action plan",
+      "Links to tools addressing your gaps",
     ],
+    note: "No signup required. Results calculated in browser.",
   },
 ];
 
 const collapsibleSections = [
+  {
+    title: "Suggested workflow",
+    content: (
+      <>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-3">Recommended approach:</p>
+        <ol className="space-y-2 mb-4">
+          {[
+            { label: "Assess", desc: "Take the Maturity Assessment (5–10 min)" },
+            { label: "Practice", desc: "Use simulators to rehearse weak areas" },
+            { label: "Document", desc: "Download frameworks from simulators" },
+            { label: "Improve", desc: "Implement recommendations" },
+            { label: "Re-assess", desc: "Track progress over time" },
+          ].map((step, i) => (
+            <li key={step.label} className="text-sm text-muted-foreground flex items-start gap-3 pl-4">
+              <span className="text-accent/60 font-medium shrink-0">{i + 1}.</span>
+              <span><span className="font-medium text-foreground/80">{step.label}</span> — {step.desc}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-sm text-muted-foreground/70 leading-relaxed">
+          Or jump straight to simulators if you know your gaps.
+        </p>
+      </>
+    ),
+  },
   {
     title: "Why simulators, not templates",
     content: (
@@ -184,7 +211,7 @@ export default function GovernHub() {
                 Establish accountability, manage risk, and make ethical decisions under scrutiny.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Governance is not paperwork — it is decision-making under pressure. These simulators help you rehearse governance reviews and navigate ethical dilemmas before facing boards, investors, or public scrutiny.
+                Governance is not paperwork — it is decision-making under pressure. Start with the Maturity Assessment to identify gaps, then use simulators to practise governance reviews and navigate ethical dilemmas before facing real scrutiny.
               </p>
               <div className="flex items-start gap-2 text-sm text-muted-foreground/70">
                 <ShieldCheck className="h-4 w-4 shrink-0 mt-0.5 text-accent/60" />
@@ -215,7 +242,9 @@ export default function GovernHub() {
 
                   <div className="grid sm:grid-cols-2 gap-6 pt-2">
                     <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-2">What you'll practise</p>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-2">
+                        {(tool as any).practiceLabel || "What you'll practise"}
+                      </p>
                       <ul className="space-y-1.5">
                         {tool.practice.map((f) => (
                           <li key={f} className="text-xs text-muted-foreground/70 flex items-center gap-2">
@@ -237,6 +266,12 @@ export default function GovernHub() {
                       </ul>
                     </div>
                   </div>
+
+                  {(tool as any).note && (
+                    <p className="text-xs text-muted-foreground/50 leading-relaxed">
+                      {(tool as any).note}
+                    </p>
+                  )}
 
                   <div className="pt-2">
                     <Button variant="heroOutline" size="sm" asChild>
