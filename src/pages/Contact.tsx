@@ -22,7 +22,6 @@ export default function Contact() {
     name: "",
     email: "",
     organisation: "",
-    context: "",
     message: "",
   });
 
@@ -49,7 +48,7 @@ export default function Contact() {
         title: "Message sent",
         description: "Thank you for reaching out.",
       });
-      setFormData({ name: "", email: "", organisation: "", context: "", message: "" });
+      setFormData({ name: "", email: "", organisation: "", message: "" });
       hasTrackedFormStart.current = false;
     } catch (error: any) {
       console.error("Error sending message:", error);
@@ -260,17 +259,7 @@ export default function Contact() {
                       id="organisation"
                       value={formData.organisation}
                       onChange={(e) => setFormData({ ...formData, organisation: e.target.value })}
-                      className="bg-card border-border/50 focus:border-accent"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="context">What brings you here?</Label>
-                    <Input
-                      id="context"
-                      value={formData.context}
-                      onChange={(e) => setFormData({ ...formData, context: e.target.value })}
-                      placeholder="e.g. Advisory decision support, Fractional leadership mandate, Board-level discussion"
+                      placeholder="Organisation (optional)"
                       className="bg-card border-border/50 focus:border-accent"
                     />
                   </div>
@@ -282,7 +271,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
-                      rows={5}
+                      rows={6}
                       className="bg-card border-border/50 focus:border-accent resize-none"
                       placeholder="Briefly describe the situation you are navigating and the outcome you are seeking."
                     />
@@ -307,6 +296,9 @@ export default function Contact() {
                       </>
                     )}
                   </Button>
+                  <p className="text-xs text-muted-foreground/60 text-center">
+                    I typically respond within 2 business days.
+                  </p>
                 </form>
               </div>
             </AnimatedSection>
