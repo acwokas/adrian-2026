@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 import EvaluateHub from "./pages/EvaluateHub";
 import DefineHub from "./pages/DefineHub";
 import BrandProfileGenerator from "./pages/BrandProfileGenerator";
+import ContentSprintGenerator from "./pages/ContentSprintGenerator";
 import DecisionSimulation from "./pages/DecisionSimulation";
 import RedTeamSimulation from "./pages/RedTeamSimulation";
 import { usePageTracking } from "./hooks/usePageTracking";
@@ -53,6 +54,7 @@ function AppRoutes() {
         <Route path="/tools/evaluate/redteam" element={<RedTeamSimulation />} />
         <Route path="/tools/define" element={<DefineHub />} />
         <Route path="/tools/define/brand-profile" element={<BrandProfileGenerator />} />
+        <Route path="/tools/define/content-sprint" element={<ContentSprintGenerator />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/login" element={<AdminLogin />} />
