@@ -42,8 +42,8 @@ export default function Edge() {
     <Layout>
       <SEO
         canonical="/edge"
-        title="The EDGE Framework for Applied Intelligence"
-        description="EDGE provides a structured path from curiosity to capability. Evaluate, Define, Govern, Elevate: a framework for embedding intelligence into decision architecture and sustained advantage."
+        title="EDGE Framework | Structure Intelligence from Curiosity to Capability"
+        description="Leadership doctrine for AI governance. Evaluate, Define, Govern, Elevate. 12 simulation tools, maturity assessment, implementation guide. Free white paper available."
         keywords="EDGE framework, applied intelligence, AI adoption framework, AI governance, AI strategy, decision architecture"
       />
 

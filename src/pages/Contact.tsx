@@ -66,8 +66,8 @@ export default function Contact() {
   return (
     <Layout>
       <SEO 
-        title="Contact - Book a Clarity Call"
-        description="Get in touch with Adrian Watkins for executive advisory, fractional leadership, or strategic consultation. Book a 30-minute clarity call to discuss your organisation's challenges."
+        title="Contact | Advisory & Speaking Engagements"
+        description="Board advisory, executive workshops, and speaking engagements across Asia-Pacific. EDGE Framework diagnostic, fractional leadership, portfolio company support."
         canonical="/contact"
         keywords="book executive advisor, fractional leadership consultation, strategic advisory call, executive coaching inquiry, business consultation"
         breadcrumb={[{ name: "Contact", path: "/contact" }]}

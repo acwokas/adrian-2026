@@ -87,8 +87,8 @@ export default function Tools() {
     <Layout>
       <SEO
         canonical="/tools"
-        title="EDGE Tools for Applied Intelligence"
-        description="Structured tools and templates aligned to each EDGE Framework pillar. Diagnostic, planning, governance, and performance instruments for practical intelligence adoption."
+        title="EDGE Tools | 12 Simulation & Assessment Rooms"
+        description="Free AI governance tools: decision simulation, governance review, maturity assessment, ethical dilemma navigation. Session-based, privacy-first, immediately actionable."
         keywords="EDGE tools, AI readiness assessment, intelligence diagnostic, AI governance tools, applied intelligence instruments"
       />
 

@@ -67,10 +67,10 @@ export default function Home() {
   return (
     <Layout>
       <SEO
-        title="Executive Advisor & Fractional Leader"
+        title="EDGE Framework for Applied Intelligence"
         canonical="/" 
-        description="Adrian Watkins works with CEOs, founders, and boards on decision-making, alignment, and execution in complex environments. Executive advisory, fractional leadership, and capability building across Asia Pacific."
-        keywords="executive advisor Singapore, fractional COO, fractional CCO, board advisor, executive decision support, operational leadership, AI advisory, Asia Pacific executive coach"
+        description="Creator of EDGE Framework. Board advisory, executive workshops, and AI governance for organisations across Asia-Pacific. 15+ years Singapore, APAC experience."
+        keywords="executive advisor Singapore, fractional COO, fractional CCO, board advisor, executive decision support, operational leadership, AI advisory, Asia Pacific executive coach, EDGE framework"
       />
       
       {/* Hero Section - Desktop: Three column layout */}
