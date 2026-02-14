@@ -86,7 +86,7 @@ export default function Contact() {
               I am selective about what I take on. A short first conversation is often the best way to assess fit, scope, and whether engagement makes sense.
             </p>
             <p className="text-xl text-muted-foreground max-w-2xl">
-              I prioritise engagements where clarity, decision-making, and accountability matter.
+              I prioritise engagements where clarity, decision-making, and accountability matter. Where structured capability will create measurable advantage, not just activity.
             </p>
           </motion.div>
         </div>
