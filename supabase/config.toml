@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.engagement-analysis]
 verify_jwt = false
+
+[functions.prompt-engineer]
+verify_jwt = false
