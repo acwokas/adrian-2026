@@ -34,6 +34,7 @@ import GovernHub from "./pages/GovernHub";
 import GovernanceReview from "./pages/GovernanceReview";
 import EthicalDilemma from "./pages/EthicalDilemma";
 import MaturityAssessment from "./pages/MaturityAssessment";
+import BrandPalette from "./pages/BrandPalette";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
@@ -79,6 +80,7 @@ function AppRoutes() {
         <Route path="/tools/define/content-sprint" element={<ContentSprintGenerator />} />
         <Route path="/tools/define/engagement" element={<EngagementAnalyzer />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/brand-palette" element={<BrandPalette />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="*" element={<NotFound />} />
