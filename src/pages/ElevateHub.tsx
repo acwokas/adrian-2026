@@ -178,6 +178,50 @@ export default function ElevateHub() {
         </div>
       </section>
 
+      {/* Getting Started */}
+      <section className="pb-6 md:pb-8">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="p-6 md:p-8 border border-accent/20 bg-accent/5">
+              <h3 className="text-base font-semibold mb-3">Getting Started</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                New to prompt engineering? Start with <strong className="text-foreground">GENERATE</strong> mode to create prompts from scratch. Once comfortable, use <strong className="text-foreground">OPTIMISE</strong> to improve existing prompts, and <strong className="text-foreground">ADAPT</strong> to customise for different platforms.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Quick Tips */}
+      <section className="pb-6 md:pb-8">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <Collapsible>
+              <CollapsibleTrigger className="flex items-center justify-between w-full text-left py-3 border-t border-border/20 group">
+                <span className="text-sm font-medium">Quick tips</span>
+                <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <ul className="space-y-2 py-4">
+                  {[
+                    "Be specific about what you want",
+                    "Include context about your audience and goals",
+                    "Specify desired format and length",
+                    "Try different platforms to see what works best",
+                    "Save prompts that work well for future reference",
+                  ].map((tip) => (
+                    <li key={tip} className="text-sm text-muted-foreground flex items-start gap-3 pl-4">
+                      <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0 mt-2" />
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </CollapsibleContent>
+            </Collapsible>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* PromptAndGo Callout */}
       <section className="pb-10 md:pb-12 lg:pb-14">
         <div className="container-wide max-w-[900px] mx-auto">
@@ -200,14 +244,24 @@ export default function ElevateHub() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://promptandgo.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4"
-              >
-                Explore PromptAndGo.ai <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://promptandgo.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4"
+                >
+                  Browse Prompt Library <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href="https://promptandgo.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4"
+                >
+                  Try Prompt Studio <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </div>

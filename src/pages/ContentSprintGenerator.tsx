@@ -914,7 +914,7 @@ export default function ContentSprintGenerator() {
                       </Button>
                     ))}
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <Button variant="ghost" size="sm" onClick={() => setPhase("config")} className="text-muted-foreground">
                       <RefreshCw className="h-3.5 w-3.5 mr-1.5" /> Adjust settings
                     </Button>
@@ -923,6 +923,13 @@ export default function ContentSprintGenerator() {
                     </Button>
                     <Button variant="ghost" size="sm" onClick={handleStartOver} className="text-muted-foreground">
                       Start over
+                    </Button>
+                  </div>
+                  <div className="pt-2">
+                    <Button variant="outline" size="sm" asChild>
+                      <Link to="/tools/elevate/prompt-engineer#optimize">
+                        <Sparkles className="h-3.5 w-3.5 mr-1.5" /> Optimise with Prompt Engineer
+                      </Link>
                     </Button>
                   </div>
                 </div>
