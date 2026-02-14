@@ -33,6 +33,7 @@ import PromptEngineer from "./pages/PromptEngineer";
 import GovernHub from "./pages/GovernHub";
 import GovernanceReview from "./pages/GovernanceReview";
 import EthicalDilemma from "./pages/EthicalDilemma";
+import MaturityAssessment from "./pages/MaturityAssessment";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
@@ -69,6 +70,7 @@ function AppRoutes() {
         <Route path="/tools/govern" element={<GovernHub />} />
         <Route path="/tools/govern/governance-review" element={<GovernanceReview />} />
         <Route path="/tools/govern/ethical-dilemma" element={<EthicalDilemma />} />
+        <Route path="/tools/govern/maturity-assessment" element={<MaturityAssessment />} />
         <Route path="/tools/define" element={<DefineHub />} />
         <Route path="/tools/define/brand-profile" element={<BrandProfileGenerator />} />
         <Route path="/tools/define/content-sprint" element={<ContentSprintGenerator />} />
