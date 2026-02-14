@@ -36,6 +36,23 @@ export default function Speaking() {
         </div>
       </section>
 
+      {/* Unique Positioning */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="border-l-2 border-accent pl-6 md:pl-8 space-y-4 max-w-[720px]">
+              <h2 className="text-xl md:text-2xl">A Unique Perspective</h2>
+              <p className="text-muted-foreground leading-relaxed text-[1.05rem]">
+                The only framework combining board-level AI governance with executable tools, proven across Asia-Pacific markets. EDGE bridges the gap between strategic intent and operational reality, translating governance from restriction into competitive advantage.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-[1.05rem]">
+                Drawing from 15 years across Singapore, Jakarta, Bangkok, and beyond, I bring both commercial operating experience and governance discipline to help organisations move from experimentation to structured capability.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Recent Keynotes */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[900px] mx-auto">
