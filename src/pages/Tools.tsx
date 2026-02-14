@@ -41,7 +41,12 @@ const toolSections = [
   {
     pillar: "ELEVATE",
     heading: "Performance & Optimisation Tools",
-    body: "Instruments for measuring impact, optimising execution, and translating capability into sustained advantage.",
+    body: "Optimise AI interactions, improve prompt quality, and get better results faster. Built on proven prompt engineering principles.",
+    tools: [
+      { label: "Prompt Engineer", desc: "Generate, optimise, or adapt prompts", href: "/tools/elevate/prompt-engineer" },
+    ],
+    hubHref: "/tools/elevate",
+    hubLabel: "Explore performance tools",
   },
 ];
 
