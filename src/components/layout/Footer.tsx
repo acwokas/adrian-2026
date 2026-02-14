@@ -73,12 +73,12 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <TrackedExternalLink
-                href="mailto:adrian@democratising.ai"
+                href="mailto:me@adrianwatkins.com"
                 eventName="footer_email"
                 className="text-sm text-muted-foreground hover:text-accent transition-colors inline-flex items-center justify-center md:justify-start gap-2"
               >
                 <Mail size={14} className="shrink-0" />
-                adrian@democratising.ai
+                me@adrianwatkins.com
               </TrackedExternalLink>
 
               <TrackedExternalLink
