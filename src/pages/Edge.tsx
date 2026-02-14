@@ -294,7 +294,7 @@ export default function Edge() {
                   <div className="space-y-2">
                     <h2 className="text-2xl md:text-3xl">Download the EDGE Framework White Paper</h2>
                     <p className="text-lg text-accent font-medium">
-                      A 15-page leadership doctrine for structuring intelligence in modern organisations
+                      A 19-page leadership doctrine for structuring intelligence in modern organisations
                     </p>
                   </div>
 
@@ -324,7 +324,7 @@ export default function Edge() {
                       </a>
                     </Button>
                     <p className="text-xs text-muted-foreground">
-                      Free download · No signup required · 15 pages · ~2.5 MB PDF
+                      Free download · No signup required · 19 pages · ~2.5 MB PDF
                     </p>
                   </div>
                 </div>

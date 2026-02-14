@@ -110,7 +110,7 @@ export default function Contact() {
                 <FileText className="text-accent" size={28} />
                 <h3 className="text-lg font-semibold">Download White Paper</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                  15-page leadership doctrine for structuring intelligence in modern organisations. Includes the complete framework, maturity model, and implementation guide.
+                  19-page leadership doctrine for structuring intelligence in modern organisations. Includes the complete framework, maturity model, and implementation guide.
                 </p>
                 <Button variant="minimal" size="sm" asChild className="justify-start p-0" onClick={() => trackWhitepaperDownload('contact_page')}>
                   <a href="/edge-framework-whitepaper.pdf" download>
