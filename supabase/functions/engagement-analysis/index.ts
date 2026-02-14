@@ -98,6 +98,14 @@ ${platformContext}
 ${timeContext}
 ${topicContext}
 
+${context?.brandProfile ? `Brand context:
+- Product: ${context.brandProfile.product}${context.brandProfile.description ? ` - ${context.brandProfile.description}` : ''}
+- Target audience: ${context.brandProfile.audience || 'Not specified'}
+- Tone: ${context.brandProfile.tone || 'Not specified'}
+- Content pillars: ${context.brandProfile.pillars || 'Not specified'}
+
+Note any alignment or misalignment between engagement patterns and brand positioning.` : ''}
+
 Tone: Direct, analytical, action-oriented. Don't sugarcoat concerns but frame constructively. Use evidence from the data throughout.`;
     }
 

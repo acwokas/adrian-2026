@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { BarChart3, ChevronDown, Copy, Download, RefreshCw, Loader2, Check, ShieldCheck, Sparkles, FileJson, MessageSquare, AlertTriangle, TrendingUp, ListChecks } from "lucide-react";
+import { BarChart3, ChevronDown, Copy, Download, RefreshCw, Loader2, Check, ShieldCheck, Sparkles, FileJson, MessageSquare, AlertTriangle, TrendingUp, ListChecks, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,8 @@ import { cn } from "@/lib/utils";
 const STORAGE_KEY = "define-engagement-analysis-latest";
 
 type Phase = "input" | "loading" | "results";
+
+const PROFILE_KEY = "define-brand-profile-latest";
 
 const platformOptions = ["LinkedIn", "X", "Reddit", "Email/Newsletter", "Other"];
 
@@ -221,6 +223,10 @@ export default function EngagementAnalyzer() {
   const [postTopics, setPostTopics] = useState("");
   const [specificQuestions, setSpecificQuestions] = useState("");
   const [showContext, setShowContext] = useState(false);
+  const [useProfile, setUseProfile] = useState(false);
+
+  // Profile state
+  const [profileData, setProfileData] = useState<{ formData: Record<string, string>; profile: string } | null>(null);
 
   // Results state
   const [analysisText, setAnalysisText] = useState("");
@@ -231,7 +237,7 @@ export default function EngagementAnalyzer() {
   const [isGeneratingResponses, setIsGeneratingResponses] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  // Load existing analysis
+  // Load existing analysis + check profile
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -241,6 +247,15 @@ export default function EngagementAnalyzer() {
           setAnalysisText(parsed.analysisText);
           setGeneratedAt(parsed.generatedAt);
           setPhase("results");
+        }
+      }
+    } catch {}
+    try {
+      const profile = localStorage.getItem(PROFILE_KEY);
+      if (profile) {
+        const parsed = JSON.parse(profile);
+        if (parsed?.formData?.productName) {
+          setProfileData(parsed);
         }
       }
     } catch {}
@@ -284,6 +299,15 @@ export default function EngagementAnalyzer() {
             timePeriod: timePeriod || undefined,
             postTopics: postTopics || undefined,
             specificQuestions: specificQuestions || undefined,
+            ...(useProfile && profileData ? {
+              brandProfile: {
+                product: profileData.formData.productName,
+                description: profileData.formData.productDescription,
+                audience: profileData.formData.audienceRole,
+                pillars: profileData.profile.match(/## CONTENT PILLARS[\s\S]*$/i)?.[0]?.slice(0, 500) || "",
+                tone: profileData.formData.tones,
+              }
+            } : {}),
           },
         }),
         signal: controller.signal,
@@ -542,6 +566,20 @@ export default function EngagementAnalyzer() {
                   </CollapsibleContent>
                 </Collapsible>
 
+                {/* Brand profile context */}
+                {profileData && (
+                  <div className="border border-border/20 rounded-sm p-3">
+                    <label className="flex items-center gap-2 cursor-pointer text-sm">
+                      <Checkbox checked={useProfile} onCheckedChange={(v) => setUseProfile(!!v)} />
+                      Analyse with brand profile context
+                    </label>
+                    {useProfile && (
+                      <p className="text-xs text-accent mt-1.5 pl-6">Using profile for: {profileData.formData.productName}</p>
+                    )}
+                    <p className="text-xs text-muted-foreground/60 mt-1 pl-6">Compares engagement against your positioning goals</p>
+                  </div>
+                )}
+
                 {/* Analyse button */}
                 <Button onClick={streamAnalyse} disabled={!isInputValid} size="lg" className="w-full sm:w-auto">
                   <Sparkles className="h-4 w-4 mr-2" />
@@ -629,6 +667,30 @@ export default function EngagementAnalyzer() {
                     </Collapsible>
                   </motion.div>
                 )}
+
+                {/* Next Steps */}
+                <div className="border border-accent/20 bg-accent/5 rounded-sm p-5 space-y-3">
+                  <p className="text-sm font-medium text-foreground">What's next?</p>
+                  <div className="flex flex-wrap gap-2">
+                    <Button size="sm" asChild>
+                      <Link to="/tools/define/content-sprint">
+                        Create sprint from insights <ArrowRight className="h-3.5 w-3.5 ml-1" />
+                      </Link>
+                    </Button>
+                    {profileData && (
+                      <Button variant="outline" size="sm" asChild>
+                        <Link to="/tools/define/brand-profile">
+                          Update brand profile <ArrowRight className="h-3.5 w-3.5 ml-1" />
+                        </Link>
+                      </Button>
+                    )}
+                    <Button variant="outline" size="sm" asChild>
+                      <Link to="/tools/elevate/prompt-engineer#optimize">
+                        <Sparkles className="h-3.5 w-3.5 mr-1.5" /> Create response prompts
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
 
                 {/* Actions */}
                 <div className="border-t border-border/20 pt-6 space-y-4">
