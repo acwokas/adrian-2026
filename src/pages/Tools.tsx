@@ -20,8 +20,14 @@ const toolSections = [
   },
   {
     pillar: "DEFINE",
-    heading: "Clarity & Planning Tools",
-    body: "Frameworks and templates for establishing intent, ownership, priorities and decision architecture.",
+    heading: "Positioning & Content Tools",
+    body: "Define your positioning, create platform-specific content, and analyze engagement patterns. Built for founders, operators, and marketers.",
+    tools: [
+      { label: "Brand Profile Generator", desc: "Create your positioning foundation", href: "/tools/define/brand-profile" },
+      { label: "Content Sprint Generator", desc: "Platform-specific content calendars", href: "/tools/define/content-sprint" },
+      { label: "Engagement Analyzer", desc: "Understand what's resonating", href: "/tools/define/engagement" },
+    ],
+    hubHref: "/tools/define",
   },
   {
     pillar: "GOVERN",
