@@ -269,13 +269,18 @@ export default function Experience() {
               <p className="text-muted-foreground">
                 Working alongside founders and early-stage leadership teams at critical moments in their growth journey.
               </p>
+              <p className="text-muted-foreground">
+                Startups fail predictably. Founders make the same structural mistakes — unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
+              </p>
+              <p className="text-muted-foreground font-medium">This work focuses on:</p>
               <ul className="space-y-3 text-muted-foreground">
                 <li>Mentoring founders and early leadership teams through growth and transition</li>
                 <li>Advising on decision-making, structure, and operating focus in early stages</li>
+                <li>Building governance discipline before it becomes crisis management</li>
                 <li>Selective long-term advisory and investment relationships</li>
               </ul>
               <p className="text-muted-foreground pt-2">
-                This work provides early visibility into common failure patterns and scaling challenges.
+                Most engagements are referral-based. I work with founders who value clarity over speed, and structure over scramble.
               </p>
             </div>
 
@@ -288,13 +293,18 @@ export default function Experience() {
                 <p className="text-base leading-[1.85] text-muted-foreground">
                   Working alongside founders and early-stage leadership teams at critical moments in their growth journey.
                 </p>
-                <ul className="space-y-5 text-base leading-[1.85] text-muted-foreground">
+                <p className="text-base leading-[1.85] text-muted-foreground">
+                  Startups fail predictably. Founders make the same structural mistakes — unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
+                </p>
+                <p className="text-base leading-[1.85] text-foreground font-medium">This work focuses on:</p>
+                <ul className="space-y-4 text-base leading-[1.85] text-muted-foreground">
                   <li>Mentoring founders and early leadership teams through growth and transition</li>
                   <li>Advising on decision-making, structure, and operating focus in early stages</li>
+                  <li>Building governance discipline before it becomes crisis management</li>
                   <li>Selective long-term advisory and investment relationships</li>
                 </ul>
                 <p className="text-base leading-[1.85] text-foreground pt-2">
-                  This work provides early visibility into common failure patterns and scaling challenges.
+                  Most engagements are referral-based. I work with founders who value clarity over speed, and structure over scramble.
                 </p>
               </div>
             </div>
