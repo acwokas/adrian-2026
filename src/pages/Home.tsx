@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Hexagon, Lightbulb, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
@@ -297,71 +297,95 @@ export default function Home() {
 
       {/* Platforms & Ecosystem */}
       <section className="py-6 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
-        <div className="container-wide max-w-[1000px] mx-auto">
+        <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
-            <div className="space-y-10 lg:space-y-12">
-              <div className="space-y-4">
+            <div className="space-y-8 lg:space-y-10">
+              <div className="space-y-3">
                 <h2>Platforms &amp; Ecosystem</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  These platforms demonstrate a commitment to democratising applied intelligence and staying connected to how organisations actually adopt and govern new capability.
+                  From governance frameworks to execution tools to regional insights
                 </p>
               </div>
-              
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <div className="space-y-4">
-                  <a
-                    href="https://aiinasia.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
-                    className="block"
-                  >
-                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">AiinASIA.com</h3>
-                  </a>
-                  <p className="text-muted-foreground leading-relaxed">
-                    A platform focused on practical AI insight across Asia Pacific. Provides continuous feedback from founders, operators, and policymakers - informing real-world application rather than theory.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    It reflects the importance of staying informed about how AI is actually being adopted, governed, and scaled across diverse markets.
-                  </p>
-                  <a
-                    href="https://aiinasia.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
-                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    Read AI in Asia →
-                  </a>
-                </div>
 
-                <div className="space-y-4">
-                  <a
-                    href="https://you.withthepowerof.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleExternalLinkClick('you.withthepowerof.ai', 'https://you.withthepowerof.ai')}
-                    className="block"
-                  >
-                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">you.withthepowerof.ai</h3>
-                  </a>
-                  <p className="text-muted-foreground leading-relaxed">
-                    An ecosystem designed to democratise access to capability often locked behind large organisations or underutilised due to a lack of knowledge. It reflects a long-term interest in how tools, knowledge, and systems shape decision quality, organisational behaviour, and execution at scale, especially by embracing AI.
-                  </p>
-                  <a
-                    href="https://you.withthepowerof.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleExternalLinkClick('you.withthepowerof.ai', 'https://you.withthepowerof.ai')}
-                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    Explore the ecosystem →
-                  </a>
-                </div>
-              </div>
-              
-              <p className="text-muted-foreground leading-relaxed pt-4">
-                These platforms inform the EDGE Framework and provide ongoing insight into how organisations adopt and govern intelligence in practice.
+              <StaggeredChildren className="grid md:grid-cols-3 gap-5 lg:gap-6">
+                {/* EDGE Framework */}
+                <StaggeredItem>
+                  <div className="p-6 md:p-7 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full flex flex-col space-y-4">
+                    <Hexagon className="text-accent" size={28} />
+                    <div>
+                      <h3 className="text-lg font-semibold">EDGE Framework</h3>
+                      <p className="text-sm text-accent font-medium mt-1">AI governance &amp; leadership doctrine</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Structure intelligence with Evaluate, Define, Govern, Elevate. Includes 12 simulation rooms, maturity assessment, and implementation frameworks for boards and executives.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">12 simulation &amp; assessment tools</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">AI Governance Maturity Model</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Implementation guide &amp; frameworks</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">White paper &amp; resources</li>
+                    </ul>
+                    <div className="pt-2 mt-auto">
+                      <Button variant="hero" size="sm" asChild>
+                        <Link to="/edge">Explore EDGE →</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </StaggeredItem>
+
+                {/* PromptAndGo.ai */}
+                <StaggeredItem>
+                  <div className="p-6 md:p-7 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full flex flex-col space-y-4">
+                    <Lightbulb className="text-accent" size={28} />
+                    <div>
+                      <h3 className="text-lg font-semibold">PromptAndGo.ai</h3>
+                      <p className="text-sm text-accent font-medium mt-1">Prompt engineering platform</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Scout AI system for generating, optimising, and adapting prompts across platforms. 3,000+ prompt library with platform-specific rewrites and educational resources.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Generator (AI-powered)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Optimiser (before/after)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Platform Adapters (11 platforms)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">3,000+ Prompt Library</li>
+                    </ul>
+                    <div className="pt-2 mt-auto">
+                      <Button variant="hero" size="sm" asChild onClick={() => handleExternalLinkClick('PromptAndGo.ai', 'https://promptandgo.ai')}>
+                        <a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer">Visit PromptAndGo →</a>
+                      </Button>
+                    </div>
+                  </div>
+                </StaggeredItem>
+
+                {/* AiinASIA.com */}
+                <StaggeredItem>
+                  <div className="p-6 md:p-7 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full flex flex-col space-y-4">
+                    <Compass className="text-accent" size={28} />
+                    <div>
+                      <h3 className="text-lg font-semibold">AiinASIA.com</h3>
+                      <p className="text-sm text-accent font-medium mt-1">AI insights across Southeast Asia</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Contributing writer covering AI developments, policy, and innovation across Asian markets. Regional analysis of governance frameworks, enterprise adoption, and ecosystem trends.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Policy &amp; regulation analysis</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Enterprise AI adoption insights</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Startup ecosystem coverage</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Governance frameworks</li>
+                    </ul>
+                    <div className="pt-2 mt-auto">
+                      <Button variant="hero" size="sm" asChild onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}>
+                        <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">Read articles →</a>
+                      </Button>
+                    </div>
+                  </div>
+                </StaggeredItem>
+              </StaggeredChildren>
+
+              <p className="text-sm text-muted-foreground text-center">
+                Building tools, frameworks, and insights for applied intelligence
               </p>
             </div>
           </AnimatedSection>
