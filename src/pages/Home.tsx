@@ -295,20 +295,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* System-level exposure - Combined ecosystem section */}
+      {/* Platforms & Ecosystem */}
       <section className="py-6 md:py-5 lg:py-7 border-t border-border/50 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-wide max-w-[1000px] mx-auto">
           <AnimatedSection>
             <div className="space-y-10 lg:space-y-12">
               <div className="space-y-4">
-                <h2>System-level exposure</h2>
+                <h2>Platforms &amp; Ecosystem</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  These initiatives exist because perspective and decision quality are built over time, across multiple contexts, not inside a single organisation.
+                  These platforms demonstrate a commitment to democratising applied intelligence and staying connected to how organisations actually adopt and govern new capability.
                 </p>
               </div>
               
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                {/* AIinASIA.com Block */}
                 <div className="space-y-4">
                   <a
                     href="https://aiinasia.com"
@@ -317,16 +316,11 @@ export default function Home() {
                     onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
                     className="block"
                   >
-                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">AIinASIA.com</h3>
+                    <h3 className="text-xl font-semibold hover:text-accent transition-colors">AiinASIA.com</h3>
                   </a>
-                  <div className="space-y-3">
-                    <p className="text-muted-foreground leading-relaxed">
-                      A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      It provides a continuous feedback loop from founders, operators, and policymakers, informing my perspective on how organisations actually adopt and govern new capability.
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory. It provides a continuous feedback loop from founders, operators, and policymakers, informing my perspective on how organisations actually adapt and govern new capability.
+                  </p>
                   <a
                     href="https://aiinasia.com"
                     target="_blank"
@@ -334,8 +328,7 @@ export default function Home() {
                     onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
-                    Visit AIinASIA.com
-                    <ArrowUpRight size={14} />
+                    Visit AiinASIA.com →
                   </a>
                 </div>
 
@@ -349,14 +342,9 @@ export default function Home() {
                   >
                     <h3 className="text-xl font-semibold hover:text-accent transition-colors">you.withthepowerof.ai</h3>
                   </a>
-                  <div className="space-y-3">
-                    <p className="text-muted-foreground leading-relaxed">
-                      An ecosystem designed to democratise access to capability often locked behind large organisations or underutilised due to a lack of knowledge.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      It reflects a long-term interest in how tools, knowledge, and systems shape decision quality, organisational behaviour, and execution at scale, especially by embracing AI.
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    An ecosystem designed to democratise access to capability often locked behind large organisations or underutilised due to a lack of knowledge. It reflects a long-term interest in how tools, knowledge, and systems shape decision quality, organisational behaviour, and execution at scale, especially by embracing AI.
+                  </p>
                   <a
                     href="https://you.withthepowerof.ai"
                     target="_blank"
@@ -364,14 +352,13 @@ export default function Home() {
                     onClick={() => handleExternalLinkClick('you.withthepowerof.ai', 'https://you.withthepowerof.ai')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
-                    Explore the ecosystem
-                    <ArrowUpRight size={14} />
+                    Explore the ecosystem →
                   </a>
                 </div>
               </div>
               
               <p className="text-muted-foreground leading-relaxed pt-4">
-                These initiatives inform my thinking. They are not consulting offerings or commercial services.
+                These initiatives inform my thinking and approach. They are not consulting offerings.
               </p>
             </div>
           </AnimatedSection>
