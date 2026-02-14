@@ -9,7 +9,7 @@ import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "EDGE Framework", path: "/edge-framework" },
+  { label: "EDGE Framework", path: "/edge" },
   { label: "Speaking & Workshops", path: "/speaking" },
   { label: "Tools", path: "/tools" },
   { label: "Experience", path: "/experience" },
