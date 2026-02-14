@@ -12,39 +12,123 @@ const tools = [
   {
     title: "Governance Review Simulator",
     description:
-      "Rehearse defending AI decisions to boards, investors, or leadership. Face realistic scrutiny about ROI, risk, oversight, and accountability.",
-    badge: "Interactive Q&A",
+      "Rehearse defending AI decisions to boards, investors, or leadership. Practice explaining ROI, risk, oversight, and accountability under realistic scrutiny.",
+    badge: "Board-level rehearsal",
     icon: <ShieldCheck className="h-5 w-5 text-accent" />,
     href: "/tools/govern/governance-review",
-    features: [
-      "Board-level questioning simulation",
-      "8–12 questions across 5 governance areas",
-      "Custom governance frameworks generated",
-      "Downloadable templates & checklists",
+    buttonLabel: "Enter governance review",
+    practice: [
+      "Defending business case and expected returns",
+      "Explaining risk mitigation and oversight structures",
+      "Demonstrating accountability mechanisms",
+      "Articulating performance measurement",
+    ],
+    outputs: [
+      "AI Decision Ownership Map",
+      "Performance Accountability Template",
+      "Governance Review Checklist",
     ],
   },
   {
     title: "Ethical Dilemma Simulator",
     description:
-      "Navigate ethical tensions in AI deployment. Practice making decisions when values compete and stakeholders disagree.",
-    badge: "Scenario-based decisions",
+      "Navigate ethical tensions in AI deployment. Practice decision-making when efficiency conflicts with fairness, transparency with advantage, or automation with dignity.",
+    badge: "Ethics rehearsal",
     icon: <Scale className="h-5 w-5 text-accent" />,
     href: "/tools/govern/ethical-dilemma",
-    features: [
-      "5 structured decision points",
-      "Stakeholder reaction analysis",
-      "Multiple ethical framework comparison",
-      "Downloadable governance policies",
+    buttonLabel: "Navigate ethical dilemma",
+    practice: [
+      "Identifying ethical tensions before they become crises",
+      "Balancing competing stakeholder interests",
+      "Explaining difficult decisions with clear reasoning",
+      "Setting policy boundaries for experimentation",
+    ],
+    outputs: [
+      "Risk Exposure Checklist",
+      "Decision Escalation Matrix",
+      "Experimentation Policy Template",
     ],
   },
 ];
 
-const quickStartItems = [
-  "Know your AI capability and business case before starting",
-  "Be honest about governance gaps — the tool targets these",
-  "Have ROI figures and risk assessments ready",
-  "Use the generated frameworks as starting points, not final documents",
-  "Download and share frameworks with your team",
+const collapsibleSections = [
+  {
+    title: "Why simulators, not templates",
+    content: (
+      <>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          Governance requires judgment under pressure — not just following templates.
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-3">These simulators help you:</p>
+        <ul className="space-y-2 mb-4">
+          {[
+            "Practice defending decisions before facing actual boards",
+            "Identify governance gaps through realistic questioning",
+            "Develop consistent ethical reasoning across scenarios",
+            "Generate custom frameworks based on YOUR context",
+          ].map((item) => (
+            <li key={item} className="text-sm text-muted-foreground flex items-start gap-2 pl-4">
+              <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0 mt-2" />
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="text-sm text-muted-foreground/70 leading-relaxed">
+          The templates you download are customised to your actual gaps and decisions — not generic checklists.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Governance principles",
+    content: (
+      <ol className="space-y-3">
+        {[
+          { label: "Ownership Clarity", desc: "Who owns which AI decisions? Who approves? Who reviews?" },
+          { label: "Risk Management", desc: "What could go wrong? How do we mitigate? What's our exposure?" },
+          { label: "Performance Discipline", desc: "What metrics matter? Who tracks? What triggers action?" },
+          { label: "Ethical Boundaries", desc: "What values guide decisions? Where do we draw lines?" },
+          { label: "Accountability Structures", desc: "Who's responsible when things go wrong? How do we ensure it?" },
+        ].map((p, i) => (
+          <li key={p.label} className="text-sm text-muted-foreground flex items-start gap-3 pl-4">
+            <span className="text-accent/60 font-medium shrink-0">{i + 1}.</span>
+            <span><span className="font-medium text-foreground/80">{p.label}</span> — {p.desc}</span>
+          </li>
+        ))}
+        <li className="text-xs text-muted-foreground/50 pt-2 pl-4 list-none leading-relaxed">
+          These are not abstract concepts — they are practised through simulation and documented through frameworks.
+        </li>
+      </ol>
+    ),
+  },
+  {
+    title: "Governance vs compliance",
+    content: (
+      <>
+        <p className="text-sm font-medium text-foreground/80 mb-3">Governance ≠ Compliance</p>
+        <div className="space-y-2 mb-4">
+          <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground/70">Compliance:</span> Meeting legal and regulatory requirements (necessary but insufficient)</p>
+          <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground/70">Governance:</span> Decision-making structures ensuring AI serves organisational values and stakeholder interests</p>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+          These tools focus on governance — the hard decisions compliance does not answer:
+        </p>
+        <ul className="space-y-2">
+          {[
+            "Should we deploy even if legally allowed?",
+            "Who decides when AI conflicts with human judgment?",
+            "How do we balance competing ethical values?",
+            "What experimentation is allowed vs prohibited?",
+          ].map((item) => (
+            <li key={item} className="text-sm text-muted-foreground flex items-start gap-2 pl-4">
+              <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0 mt-2" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </>
+    ),
+  },
 ];
 
 export default function GovernHub() {
@@ -52,7 +136,7 @@ export default function GovernHub() {
     <Layout>
       <SEO
         canonical="/tools/govern"
-        title="Govern Instruments — EDGE Tools"
+        title="EDGE Govern — Governance & Oversight Tools"
         description="Governance and oversight tools for establishing accountability, policy boundaries, risk management, and performance discipline in AI implementations."
         keywords="EDGE govern, AI governance, oversight tools, accountability framework, risk management"
       />
@@ -75,8 +159,11 @@ export default function GovernHub() {
               Governance & Oversight Tools
             </h1>
             <div className="space-y-4 max-w-[720px]">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Establish accountability, manage risk, and make ethical decisions under scrutiny.
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                Frameworks and simulations for establishing accountability, policy boundaries, risk management, and performance discipline in AI implementations.
+                Governance is not paperwork — it is decision-making under pressure. These simulators help you rehearse governance reviews and navigate ethical dilemmas before facing boards, investors, or public scrutiny.
               </p>
               <div className="flex items-start gap-2 text-sm text-muted-foreground/70">
                 <ShieldCheck className="h-4 w-4 shrink-0 mt-0.5 text-accent/60" />
@@ -93,26 +180,23 @@ export default function GovernHub() {
           <StaggeredChildren className="grid gap-5 lg:gap-6">
             {tools.map((tool) => (
               <StaggeredItem key={tool.title}>
-                <Link
-                  to={tool.href}
-                  className="block p-6 md:p-8 bg-card border border-border/30 hover:border-accent/30 transition-colors group"
-                >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div className="space-y-3 flex-1">
-                      <div className="flex items-center gap-3">
-                        {tool.icon}
-                        <h2 className="text-lg font-semibold group-hover:text-accent transition-colors">
-                          {tool.title}
-                        </h2>
-                        <Badge variant="outline" className="text-[10px] tracking-wide uppercase font-normal text-muted-foreground border-border/40">
-                          {tool.badge}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed max-w-[560px]">
-                        {tool.description}
-                      </p>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 pt-2">
-                        {tool.features.map((f) => (
+                <div className="p-6 md:p-8 bg-card border border-border/30 space-y-5">
+                  <div className="flex items-center gap-3">
+                    {tool.icon}
+                    <h2 className="text-lg font-semibold">{tool.title}</h2>
+                    <Badge variant="outline" className="text-[10px] tracking-wide uppercase font-normal text-muted-foreground border-border/40">
+                      {tool.badge}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-[640px]">
+                    {tool.description}
+                  </p>
+
+                  <div className="grid sm:grid-cols-2 gap-6 pt-2">
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-2">What you'll practise</p>
+                      <ul className="space-y-1.5">
+                        {tool.practice.map((f) => (
                           <li key={f} className="text-xs text-muted-foreground/70 flex items-center gap-2">
                             <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0" />
                             {f}
@@ -120,36 +204,49 @@ export default function GovernHub() {
                         ))}
                       </ul>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0 mt-1 hidden md:block" />
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-2">What you'll get</p>
+                      <ul className="space-y-1.5">
+                        {tool.outputs.map((f) => (
+                          <li key={f} className="text-xs text-muted-foreground/70 flex items-center gap-2">
+                            <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </Link>
+
+                  <div className="pt-2">
+                    <Button variant="heroOutline" size="sm" asChild>
+                      <Link to={tool.href}>
+                        {tool.buttonLabel} <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
               </StaggeredItem>
             ))}
           </StaggeredChildren>
         </div>
       </section>
 
-      {/* Quick Start Guide */}
+      {/* Collapsible Sections */}
       <section className="pb-10 md:pb-12 lg:pb-14">
-        <div className="container-wide max-w-[900px] mx-auto">
-          <AnimatedSection>
-            <Collapsible>
-              <CollapsibleTrigger className="flex items-center justify-between w-full text-left py-3 border-t border-border/20 group">
-                <span className="text-sm font-medium">How to get the most from these tools</span>
-                <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                <ul className="space-y-2 py-4">
-                  {quickStartItems.map((item) => (
-                    <li key={item} className="text-sm text-muted-foreground flex items-start gap-2 pl-4">
-                      <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0 mt-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CollapsibleContent>
-            </Collapsible>
-          </AnimatedSection>
+        <div className="container-wide max-w-[900px] mx-auto space-y-0">
+          {collapsibleSections.map((section) => (
+            <AnimatedSection key={section.title}>
+              <Collapsible>
+                <CollapsibleTrigger className="flex items-center justify-between w-full text-left py-3 border-t border-border/20 group">
+                  <span className="text-sm font-medium">{section.title}</span>
+                  <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="py-4">{section.content}</div>
+                </CollapsibleContent>
+              </Collapsible>
+            </AnimatedSection>
+          ))}
         </div>
       </section>
 
@@ -159,13 +256,11 @@ export default function GovernHub() {
           <AnimatedSection>
             <div className="border-t border-border/20 pt-8 space-y-4">
               <p className="text-sm text-muted-foreground">
-                Built on the{" "}
+                These tools operationalise the{" "}
                 <Link to="/edge" className="text-accent hover:underline underline-offset-4">
-                  EDGE Framework for Applied Intelligence
+                  EDGE Govern pillar
                 </Link>
-              </p>
-              <p className="text-sm text-muted-foreground/70">
-                These tools operationalise the EDGE Govern pillar. Explore the full framework to understand how governance connects to evaluation, definition, and elevation.
+                . Explore the full framework to understand how governance connects to evaluation, definition, and elevation.
               </p>
               <Button variant="heroOutline" size="sm" asChild>
                 <Link to="/edge">
