@@ -268,6 +268,23 @@ export function BrandProfileResults({
         ))}
       </div>
 
+      {/* Next Steps */}
+      <div className="border border-accent/20 bg-accent/5 rounded-sm p-5 space-y-3">
+        <p className="text-sm font-medium text-foreground">Brand profile created! What's next?</p>
+        <div className="flex flex-wrap gap-2">
+          <Button size="sm" asChild>
+            <Link to="/tools/define/content-sprint">
+              Generate 7-day sprint <ArrowRight className="h-3.5 w-3.5 ml-1" />
+            </Link>
+          </Button>
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/tools/define/engagement">
+              Analyse engagement <ArrowRight className="h-3.5 w-3.5 ml-1" />
+            </Link>
+          </Button>
+        </div>
+      </div>
+
       {/* Actions */}
       <div className="border-t border-border/20 pt-6 space-y-4">
         <div className="flex flex-wrap gap-2">

@@ -38,10 +38,11 @@ const toolSections: ToolSection[] = [
   {
     pillar: "DEFINE",
     heading: "Positioning & Content Tools",
-    body: "Create positioning clarity, generate platform-specific content, and understand what's resonating with your audience.",
+    body: "Create positioning clarity, generate platform-specific content, and understand what resonates with your audience. Built for founders, operators, and marketers who need to think clearly before they act.",
     tools: defineTools,
     hubHref: "/tools/define",
     hubLabel: "Explore positioning tools",
+    note: "These tools work together as a complete positioning and content system, or use them standalone for quick tasks.",
   },
   {
     pillar: "GOVERN",

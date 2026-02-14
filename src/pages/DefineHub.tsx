@@ -4,14 +4,16 @@ import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronDown, UserCircle, CalendarDays, MessageSquareText, Lock, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, UserCircle, CalendarDays, MessageSquareText, Lock, Sparkles, CheckCircle2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const PROFILE_KEY = "define-brand-profile-latest";
 const SPRINT_KEY = "define-content-sprint-latest";
 const ANALYSIS_KEY = "define-engagement-analysis-latest";
+const ONBOARDING_KEY = "define-onboarding-dismissed";
 
 function hasProfile() {
   try {
@@ -37,19 +39,45 @@ function hasAnalysis() {
   try { return !!localStorage.getItem(ANALYSIS_KEY); } catch { return false; }
 }
 
+function getSprintAge(): number | null {
+  try {
+    const saved = localStorage.getItem(SPRINT_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.generatedAt) {
+        return Math.floor((Date.now() - new Date(parsed.generatedAt).getTime()) / (1000 * 60 * 60 * 24));
+      }
+    }
+  } catch {}
+  return null;
+}
+
 export default function DefineHub() {
   const [workflowOpen, setWorkflowOpen] = useState(false);
   const [profileExists, setProfileExists] = useState(false);
   const [profileName, setProfileName] = useState<string | null>(null);
   const [sprintExists, setSprintExists] = useState(false);
   const [analysisExists, setAnalysisExists] = useState(false);
+  const [sprintAge, setSprintAge] = useState<number | null>(null);
+  const [onboardingDismissed, setOnboardingDismissed] = useState(true);
 
   useEffect(() => {
     setProfileExists(hasProfile());
     setProfileName(getProfileName());
     setSprintExists(hasSprint());
     setAnalysisExists(hasAnalysis());
+    setSprintAge(getSprintAge());
+    try {
+      setOnboardingDismissed(!!localStorage.getItem(ONBOARDING_KEY));
+    } catch {}
   }, []);
+
+  const dismissOnboarding = () => {
+    setOnboardingDismissed(true);
+    try { localStorage.setItem(ONBOARDING_KEY, "1"); } catch {}
+  };
+
+  const completedCount = [profileExists, sprintExists, analysisExists].filter(Boolean).length;
 
   const defineTools = [
     {
@@ -67,6 +95,7 @@ export default function DefineHub() {
       badgeVariant: "accent" as const,
       icon: UserCircle,
       status: profileExists ? `Profile: ${profileName}` : null,
+      note: "15–20 minute setup, saves hours of content planning",
       enabled: true,
     },
     {
@@ -78,12 +107,13 @@ export default function DefineHub() {
         "Hashtags and keywords per post",
         "Timing and formatting recommendations",
       ],
-      href: "/tools/define/content-sprint",
-      cta: "Generate content sprint",
-      badge: "Requires profile",
+      href: profileExists ? "/tools/define/content-sprint" : "/tools/define/brand-profile",
+      cta: profileExists ? "Generate sprint →" : "Create profile first →",
+      badge: profileExists ? "Profile ready" : "Requires profile",
       badgeVariant: profileExists ? "default" as const : "muted" as const,
       icon: CalendarDays,
       status: sprintExists ? "Sprint generated" : null,
+      note: "Uses your brand profile to generate platform-ready posts",
       enabled: true,
     },
     {
@@ -97,20 +127,29 @@ export default function DefineHub() {
       ],
       href: "/tools/define/engagement",
       cta: "Analyse engagement",
-      badge: "Works standalone",
+      badge: "Works standalone or with profile",
       badgeVariant: "default" as const,
       icon: MessageSquareText,
       status: analysisExists ? "Analysis available" : null,
+      note: "Paste any engagement data — deeper insights with brand context",
       enabled: true,
     },
   ];
 
   const workflowSteps = [
-    { step: 1, title: "Start with Brand Profile Generator", desc: "Creates your positioning foundation", done: profileExists },
-    { step: 2, title: "Generate Content Sprint", desc: "Use your profile to create platform-specific content", done: sprintExists },
-    { step: 3, title: "Post and collect feedback", desc: "Share your content and gather engagement data", done: false },
-    { step: 4, title: "Analyse Engagement", desc: "Paste real feedback to understand what's working", done: analysisExists },
-    { step: 5, title: "Refine & Repeat", desc: "Update your profile based on engagement insights", done: false },
+    { step: 1, title: "Start with Brand Profile Generator", desc: "Establish your positioning foundation (15–20 minutes)", done: profileExists },
+    { step: 2, title: "Generate Content Sprint", desc: "Use your profile to create 7 or 14 days of platform-ready content (2–3 minutes)", done: sprintExists },
+    { step: 3, title: "Post your content across platforms", desc: "Share content and collect engagement data", done: false },
+    { step: 4, title: "Analyse Engagement", desc: "Paste real feedback to understand what's resonating (1–2 minutes)", done: analysisExists },
+    { step: 5, title: "Refine & Repeat", desc: "Update your profile based on insights, generate new sprint", done: false },
+  ];
+
+  const faqItems = [
+    { q: "Do I need to create a profile first?", a: "Recommended but not required. A profile makes content generation much better by providing positioning, audience, and voice context." },
+    { q: "How often should I generate content sprints?", a: "Most people do weekly or bi-weekly sprints depending on posting frequency." },
+    { q: "What if I don't have engagement data yet?", a: "Generate content first, post it, then analyse results after 1–2 weeks." },
+    { q: "Can I use these tools without signing up?", a: "Yes. Everything works in your browser. Data is stored locally, nothing on servers." },
+    { q: "How do I share with my team?", a: "Use the export features to download PDFs, markdown, or JSON files from each tool." },
   ];
 
   return (
@@ -140,27 +179,83 @@ export default function DefineHub() {
                 Positioning & Content Tools
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-[720px]">
-                Create positioning clarity, generate platform-specific content, and understand what's resonating with your audience.
+                Create positioning clarity, generate platform-specific content, and understand what's resonating with your audience. Built for founders, operators, and marketers who need to think clearly before they act.
               </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
+      {/* Sprint reminder notification */}
+      {sprintAge !== null && sprintAge >= 7 && !analysisExists && (
+        <section className="pb-4 md:pb-6">
+          <div className="container-wide max-w-[900px] mx-auto">
+            <div className="border border-accent/30 bg-accent/5 rounded-sm p-4 flex items-center justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                You generated a content sprint <span className="text-accent font-medium">{sprintAge} days ago</span>. Ready to analyse how it performed?
+              </p>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/tools/define/engagement">
+                  Analyse engagement <ArrowRight className="h-3.5 w-3.5 ml-1" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Getting Started */}
       <section className="pb-8 md:pb-10">
         <div className="container-wide max-w-[900px] mx-auto">
-          <div className="border border-accent/20 bg-accent/5 rounded-sm p-5 space-y-3">
+          <div className="border border-accent/20 bg-accent/5 rounded-sm p-5 space-y-4">
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-accent shrink-0" />
               <p className="text-sm font-medium text-foreground">Getting started</p>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              New to positioning clarity? Start with the <Link to="/tools/define/brand-profile" className="text-accent hover:underline underline-offset-4">Brand Profile Generator</Link>, then use it to power your Content Sprints and Engagement Analysis.
+              New to positioning clarity? Follow this workflow:
+            </p>
+            <ol className="text-sm text-muted-foreground leading-relaxed space-y-1.5 pl-4">
+              <li><span className="text-accent font-medium">1.</span> Start with <Link to="/tools/define/brand-profile" className="text-accent hover:underline underline-offset-4">Brand Profile Generator</Link> — Establish your positioning foundation (15–20 minutes)</li>
+              <li><span className="text-accent font-medium">2.</span> <Link to="/tools/define/content-sprint" className="text-accent hover:underline underline-offset-4">Generate Content Sprint</Link> — Use your profile to create 7 or 14 days of platform-ready content (2–3 minutes)</li>
+              <li><span className="text-accent font-medium">3.</span> Post your content across platforms</li>
+              <li><span className="text-accent font-medium">4.</span> <Link to="/tools/define/engagement" className="text-accent hover:underline underline-offset-4">Analyse Engagement</Link> — Paste real feedback to understand what's resonating (1–2 minutes)</li>
+              <li><span className="text-accent font-medium">5.</span> Refine & Repeat — Update your profile based on insights, generate new sprint</li>
+            </ol>
+            <p className="text-xs text-muted-foreground/60">
+              The tools work standalone too — skip the profile if you just need quick content or engagement analysis.
             </p>
           </div>
         </div>
       </section>
+
+      {/* Progress tracking */}
+      {completedCount > 0 && (
+        <section className="pb-6 md:pb-8">
+          <div className="container-wide max-w-[900px] mx-auto">
+            <div className="flex flex-wrap items-center gap-3">
+              {[
+                { label: "Brand profile created", done: profileExists },
+                { label: "Content sprint generated", done: sprintExists },
+                { label: "Engagement analysed", done: analysisExists },
+              ].map(item => (
+                <span key={item.label} className={cn(
+                  "inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-sm border",
+                  item.done
+                    ? "border-accent/30 bg-accent/10 text-accent"
+                    : "border-border/20 text-muted-foreground/40"
+                )}>
+                  {item.done && <CheckCircle2 className="h-3 w-3" />}
+                  {item.label}
+                </span>
+              ))}
+            </div>
+            {completedCount === 3 && (
+              <p className="text-xs text-accent mt-2">You've completed the full Define cycle. Keep refining as you learn what resonates.</p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Workflow Diagram */}
       <section className="pb-8 md:pb-10">
@@ -187,6 +282,9 @@ export default function DefineHub() {
             ))}
             <ArrowRight className="h-3 w-3 text-muted-foreground/30 rotate-[135deg]" />
           </div>
+          <p className="text-center text-[10px] text-muted-foreground/40 mt-2">
+            The Define cycle: Create positioning → Generate content → Analyse results → Refine approach
+          </p>
         </div>
       </section>
 
@@ -230,12 +328,14 @@ export default function DefineHub() {
                     </div>
 
                     <p className="text-muted-foreground leading-relaxed">{tool.description}</p>
+                    
+                    <p className="text-xs text-muted-foreground/60">{tool.note}</p>
 
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-foreground/80">What you'll get:</p>
                       <ul className="space-y-1.5">
                         {tool.features.map((f) => (
-                          <li key={f} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <li key={f} className="text-sm text-muted-foreground flex items-start gap-2 pl-4">
                             <span className="text-accent mt-1.5 h-1 w-1 rounded-full bg-accent shrink-0" />
                             {f}
                           </li>
@@ -255,6 +355,10 @@ export default function DefineHub() {
               );
             })}
           </StaggeredChildren>
+
+          <p className="text-sm text-muted-foreground/60 mt-6">
+            These tools work together as a complete positioning and content system, or use them standalone for quick tasks.
+          </p>
         </div>
       </section>
 
@@ -296,6 +400,32 @@ export default function DefineHub() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="pb-10 md:pb-12">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <Collapsible>
+            <CollapsibleTrigger className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors w-full text-left">
+              <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+              Need help?
+            </CollapsibleTrigger>
+            <CollapsibleContent className="pt-4">
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`} className="border-border/20">
+                    <AccordionTrigger className="text-sm text-foreground/90 hover:no-underline">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CollapsibleContent>
+          </Collapsible>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="pb-16 md:pb-20">
         <div className="container-wide max-w-[900px] mx-auto">
@@ -303,7 +433,7 @@ export default function DefineHub() {
             <p className="text-sm text-muted-foreground">
               These tools operationalise the EDGE Define pillar.{" "}
               <Link to="/edge" className="text-accent hover:underline underline-offset-4 inline-flex items-center gap-1">
-                Explore the full framework <ArrowRight className="h-3 w-3" />
+                Learn more about the full framework <ArrowRight className="h-3 w-3" />
               </Link>
             </p>
           </div>
