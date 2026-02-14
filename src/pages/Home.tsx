@@ -319,7 +319,10 @@ export default function Home() {
                     <h3 className="text-xl font-semibold hover:text-accent transition-colors">AiinASIA.com</h3>
                   </a>
                   <p className="text-muted-foreground leading-relaxed">
-                    A platform focused on practical insight into emerging technology across Asia, grounded in real-world application rather than theory. It provides a continuous feedback loop from founders, operators, and policymakers, informing my perspective on how organisations actually adapt and govern new capability.
+                    A platform focused on practical AI insight across Asia Pacific. Provides continuous feedback from founders, operators, and policymakers - informing real-world application rather than theory.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    It reflects the importance of staying informed about how AI is actually being adopted, governed, and scaled across diverse markets.
                   </p>
                   <a
                     href="https://aiinasia.com"
@@ -328,7 +331,7 @@ export default function Home() {
                     onClick={() => handleExternalLinkClick('AIinASIA.com', 'https://aiinasia.com')}
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
-                    Visit AiinASIA.com →
+                    Read AI in Asia →
                   </a>
                 </div>
 
@@ -358,7 +361,7 @@ export default function Home() {
               </div>
               
               <p className="text-muted-foreground leading-relaxed pt-4">
-                These initiatives inform my thinking and approach. They are not consulting offerings.
+                These platforms inform the EDGE Framework and provide ongoing insight into how organisations adopt and govern intelligence in practice.
               </p>
             </div>
           </AnimatedSection>
