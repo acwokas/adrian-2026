@@ -3,10 +3,10 @@ import { TrackedExternalLink, TrackedLink } from "@/components/TrackedLink";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "EDGE Framework", path: "/edge" },
+  { label: "Experience", path: "/experience" },
   { label: "Speaking & Workshops", path: "/speaking" },
   { label: "Tools", path: "/tools" },
-  { label: "Experience", path: "/experience" },
+  { label: "EDGE Framework", path: "/edge" },
   { label: "Contact", path: "/contact" },
 ];
 
