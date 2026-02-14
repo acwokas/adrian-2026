@@ -47,13 +47,14 @@ const toolSections: ToolSection[] = [
   {
     pillar: "GOVERN",
     heading: "Governance & Oversight Tools",
-    body: "Frameworks and simulations for establishing accountability, policy boundaries, risk management, and performance discipline.",
+    body: "Rehearse governance reviews and navigate ethical dilemmas. Establish accountability, manage risk, and make decisions under scrutiny.",
     tools: [
-      { label: "Governance Review Simulator", desc: "Rehearse defending AI decisions to boards", href: "/tools/govern/governance-review" },
-      { label: "Ethical Dilemma Simulator", desc: "Navigate competing values in AI deployment", href: "/tools/govern/ethical-dilemma" },
+      { label: "Governance Review Simulator", desc: "Defend AI decisions to boards and leadership", href: "/tools/govern/governance-review" },
+      { label: "Ethical Dilemma Simulator", desc: "Navigate competing values and stakeholder interests", href: "/tools/govern/ethical-dilemma" },
     ],
     hubHref: "/tools/govern",
     hubLabel: "Explore governance tools",
+    note: "Governance simulators produce downloadable frameworks: Decision Ownership Maps, Risk Checklists, Escalation Matrices, and Experimentation Policies — all customised to your context.",
   },
   {
     pillar: "ELEVATE",
