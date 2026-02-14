@@ -312,7 +312,7 @@ export default function Home() {
               <StaggeredChildren className="grid md:grid-cols-3 gap-5 lg:gap-6">
                 {/* EDGE Framework */}
                 <StaggeredItem>
-                  <div className="p-6 md:p-7 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full flex flex-col space-y-4">
+                   <div className="p-6 md:p-7 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full flex flex-col space-y-4">
                     <Hexagon className="text-accent" size={28} />
                     <div>
                       <h3 className="text-lg font-semibold">EDGE Framework</h3>
@@ -321,7 +321,7 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Structure intelligence with Evaluate, Define, Govern, Elevate. Includes 12 simulation rooms, maturity assessment, and implementation frameworks for boards and executives.
                     </p>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                     <ul className="space-y-2 text-sm text-muted-foreground flex-grow">
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">12 simulation &amp; assessment tools</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">AI Governance Maturity Model</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Implementation guide &amp; frameworks</li>
@@ -346,7 +346,7 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Scout AI system for generating, optimising, and adapting prompts across platforms. 3,000+ prompt library with platform-specific rewrites and educational resources.
                     </p>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                     <ul className="space-y-2 text-sm text-muted-foreground flex-grow">
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Generator (AI-powered)</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Optimiser (before/after)</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Platform Adapters (11 platforms)</li>
@@ -371,7 +371,7 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Contributing writer covering AI developments, policy, and innovation across Asian markets. Regional analysis of governance frameworks, enterprise adoption, and ecosystem trends.
                     </p>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <ul className="space-y-2 text-sm text-muted-foreground flex-grow">
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Policy &amp; regulation analysis</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Enterprise AI adoption insights</li>
                       <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Startup ecosystem coverage</li>
