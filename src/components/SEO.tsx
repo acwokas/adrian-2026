@@ -152,7 +152,7 @@ export function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Adrian Watkins" />
-      <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+      <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/WwbjjCCBHmgFggBqcrAjJjg5VjS2/social-images/social-1766426260149-favicon (1).png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Adrian Watkins - Executive Advisor and Fractional Leader" />
@@ -162,7 +162,7 @@ export function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
+      <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/WwbjjCCBHmgFggBqcrAjJjg5VjS2/social-images/social-1766426260149-favicon (1).png" />
       <meta name="twitter:image:alt" content="Adrian Watkins - Executive Advisor and Fractional Leader" />
 
       {/* JSON-LD Structured Data */}
