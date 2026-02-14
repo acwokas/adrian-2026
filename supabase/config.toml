@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.decision-analysis]
 verify_jwt = false
+
+[functions.redteam-analysis]
+verify_jwt = false
