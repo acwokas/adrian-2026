@@ -19,7 +19,7 @@ const examples = [
     description: "VP role at a startup vs staying at a stable corporate.",
     values: {
       decision: "Accept a VP Product role at a Series B startup (80 people, fintech) vs stay as Senior Director at a large bank where I've been for 6 years.",
-      stakes: "Career trajectory — the startup offers a title jump and equity, but the bank offers stability and a clear path to SVP. My identity as a 'builder' vs a 'steward' is at stake. Financial stability matters — I have a mortgage and two kids under 5.",
+      stakes: "Career trajectory: the startup offers a title jump and equity, but the bank offers stability and a clear path to SVP. My identity as a 'builder' vs a 'steward' is at stake. Financial stability matters, I have a mortgage and two kids under 5.",
       constraints: "Partner works part-time. Mortgage requires stable income. The startup is pre-profitability. My current employer would not take me back easily. Visa is employer-sponsored.",
       timeHorizon: "3-5years",
       riskTolerance: "Moderate. I can absorb 6 months of reduced income but not a total wipeout. The uncertainty of startup culture concerns me more than the financial risk.",
@@ -68,7 +68,7 @@ const fields = {
       type: "textarea" as const,
       placeholder: "What's at stake? Career trajectory, financial stability, relationships, identity...",
       tooltip: "Think beyond immediate outcomes. What ripple effects matter to you?",
-      example: "Career trajectory is at stake — this choice determines whether I optimise for growth or stability over the next decade. It also affects my family's financial security and my professional identity.",
+      example: "Career trajectory is at stake: this choice determines whether I optimise for growth or stability over the next decade. It also affects my family's financial security and my professional identity.",
       maxLength: 600,
       required: true,
     },
@@ -110,7 +110,7 @@ const fields = {
 const howItWorks = [
   "You provide context about a decision you're facing.",
   "The AI analyses both paths, identifies second-order effects, surfaces blind spots, and explores how each choice might shape your identity.",
-  "One path may feel more compelling — this reflects real biases. The analysis includes uncomfortable insights because real decisions have real trade-offs.",
+  "One path may feel more compelling. This reflects real biases. The analysis includes uncomfortable insights because real decisions have real trade-offs.",
 ];
 
 // ── Streaming helper ──
@@ -314,7 +314,7 @@ ${reflection || "(No reflection recorded)"}`;
         {currentStep === 0 && (
           <>
             <div className="space-y-1 mb-4">
-              <p className="text-xs text-muted-foreground">Step 1 of 2 — The Decision</p>
+              <p className="text-xs text-muted-foreground">Step 1 of 2: The Decision</p>
             </div>
             {fields.step1.map((f) => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={(v) => setFormValue(f.id, v)} />
@@ -331,7 +331,7 @@ ${reflection || "(No reflection recorded)"}`;
         {currentStep === 1 && (
           <>
             <div className="space-y-1 mb-4">
-              <p className="text-xs text-muted-foreground">Step 2 of 2 — Constraints & Context</p>
+              <p className="text-xs text-muted-foreground">Step 2 of 2: Constraints and Context</p>
             </div>
             {fields.step2.map((f) => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={(v) => setFormValue(f.id, v)} />
@@ -428,7 +428,7 @@ ${reflection || "(No reflection recorded)"}`;
         <div className="space-y-4 pt-6 border-t border-border/20">
           <div>
             <h3 className="text-base font-medium mb-1">Take a moment to reflect</h3>
-            <p className="text-xs text-muted-foreground">Private — saved in your browser only, never sent anywhere.</p>
+            <p className="text-xs text-muted-foreground">Private. Saved in your browser only, never sent anywhere.</p>
           </div>
           <Textarea
             value={reflection}

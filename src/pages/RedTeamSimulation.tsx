@@ -23,7 +23,7 @@ const examples = [
       idea: "Increase enterprise tier pricing by 40% and add a usage-based component. Currently flat-rate at $50k/year for unlimited seats. New model: $70k base + $0.10 per API call above 500k/month. Justification: usage has tripled while pricing hasn't changed in 3 years.",
       audience: "Board of directors and top-20 enterprise clients. Board wants margin improvement; clients want predictability.",
       dependencies: "Customer retention above 85%, competitive landscape staying stable, usage data accuracy, sales team ability to communicate value.",
-      constraints: "Annual contracts — can only implement at renewal. 3 competitors with flat-rate models. Support costs already at capacity. CFO wants 60-day implementation.",
+      constraints: "Annual contracts, can only implement at renewal. 3 competitors with flat-rate models. Support costs already at capacity. CFO wants 60-day implementation.",
       intensity: "adversarial",
     },
   },
@@ -35,7 +35,7 @@ const examples = [
       idea: "Consolidate 4 regional teams (APAC, EMEA, Americas, ANZ) into 2 functional teams (Growth and Operations). Regional heads become functional leads. Goal: reduce duplication, improve specialisation, cut management overhead by 30%.",
       audience: "CEO, CHRO, and the 4 regional heads who will be directly affected. Board will review at next quarterly.",
       dependencies: "Regional heads accepting new roles without attrition. Client relationships surviving the transition. Operational continuity during 6-month transition. Cultural integration across previously separate teams.",
-      constraints: "Two regional heads have been with the company 10+ years. ANZ team has a critical contract renewal in 4 months. Budget for transition is capped at $500k. No redundancies — must be achieved through redeployment.",
+      constraints: "Two regional heads have been with the company 10+ years. ANZ team has a critical contract renewal in 4 months. Budget for transition is capped at $500k. No redundancies, must be achieved through redeployment.",
       intensity: "forensic",
     },
   },
@@ -59,7 +59,7 @@ const examples = [
       idea: "Form a strategic alliance with CompetitorX (10x our size) to co-develop an API integration product. We provide the technology; they provide distribution. Revenue split: 60/40 in their favour for year 1, renegotiable at year 2. They get a 2-year exclusive on the integration.",
       audience: "Our board, their VP of partnerships, and our engineering team who will execute.",
       dependencies: "Their distribution channel actually activating for our product. Technology integration completing in 6 months. Neither party launching a competing product during exclusivity. Revenue share being enough to sustain our team.",
-      constraints: "We have no leverage if they decide to build rather than partner. 2-year exclusivity limits our ability to partner with others. Our engineering team is 12 people — capacity for this plus core product is tight. Their legal team has a reputation for aggressive IP terms.",
+      constraints: "We have no leverage if they decide to build rather than partner. 2-year exclusivity limits our ability to partner with others. Our engineering team is 12 people, so capacity for this plus core product is tight. Their legal team has a reputation for aggressive IP terms.",
       intensity: "measured",
     },
   },
@@ -110,9 +110,9 @@ const fields = {
       tooltip: "Adversarial is closest to a real board challenge",
       required: true,
       options: [
-        { value: "measured", label: "Measured — Constructive, diplomatic critique" },
-        { value: "adversarial", label: "Adversarial — Direct challenge, no softening" },
-        { value: "forensic", label: "Forensic — Systematic logic deconstruction" },
+        { value: "measured", label: "Measured: Constructive, diplomatic critique" },
+        { value: "adversarial", label: "Adversarial: Direct challenge, no softening" },
+        { value: "forensic", label: "Forensic: Systematic logic deconstruction" },
       ],
     },
   ],
@@ -372,7 +372,7 @@ function RedTeamContent() {
 
         {currentStep === 0 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 1 of 3 — The Idea</p>
+            <p className="text-xs text-muted-foreground">Step 1 of 3: The Idea</p>
             {fields.step1.map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -386,7 +386,7 @@ function RedTeamContent() {
 
         {currentStep === 1 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 2 of 3 — Context & Stakes</p>
+            <p className="text-xs text-muted-foreground">Step 2 of 3: Context and Stakes</p>
             {fields.step2.map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -402,7 +402,7 @@ function RedTeamContent() {
 
         {currentStep === 2 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 3 of 3 — Focus Areas</p>
+            <p className="text-xs text-muted-foreground">Step 3 of 3: Focus Areas</p>
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground">Select areas to emphasise (leave blank to analyse everything):</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -537,7 +537,7 @@ function RedTeamContent() {
         <div className="space-y-4 pt-6 border-t border-border/20">
           <div>
             <h3 className="text-base font-medium mb-1">Which concerns need immediate attention?</h3>
-            <p className="text-xs text-muted-foreground">Private — saved in your browser only.</p>
+            <p className="text-xs text-muted-foreground">Private. Saved in your browser only.</p>
           </div>
           <Textarea
             value={reflection}

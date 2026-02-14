@@ -131,7 +131,7 @@ export default function DefineHub() {
       badgeVariant: "default" as const,
       icon: MessageSquareText,
       status: analysisExists ? "Analysis available" : null,
-      note: "Paste any engagement data — deeper insights with brand context",
+      note: "Paste any engagement data. Deeper insights with brand context",
       enabled: true,
     },
   ];
@@ -156,7 +156,7 @@ export default function DefineHub() {
     <Layout>
       <SEO
         canonical="/tools/define"
-        title="EDGE Define — Positioning & Content Tools"
+        title="EDGE Define: Positioning & Content Tools"
         description="Define your positioning, create platform-specific content, and understand what worked. Tools for founders, operators, and marketers."
         keywords="brand positioning, content strategy, content calendar, engagement analysis, EDGE framework, define tools"
         breadcrumb={[
@@ -216,14 +216,14 @@ export default function DefineHub() {
               New to positioning clarity? Follow this workflow:
             </p>
             <ol className="text-sm text-muted-foreground leading-relaxed space-y-1.5 pl-4">
-              <li><span className="text-accent font-medium">1.</span> Start with <Link to="/tools/define/brand-profile" className="text-accent hover:underline underline-offset-4">Brand Profile Generator</Link> — Establish your positioning foundation (15–20 minutes)</li>
-              <li><span className="text-accent font-medium">2.</span> <Link to="/tools/define/content-sprint" className="text-accent hover:underline underline-offset-4">Generate Content Sprint</Link> — Use your profile to create 7 or 14 days of platform-ready content (2–3 minutes)</li>
+              <li><span className="text-accent font-medium">1.</span> Start with <Link to="/tools/define/brand-profile" className="text-accent hover:underline underline-offset-4">Brand Profile Generator</Link>: Establish your positioning foundation (15-20 minutes)</li>
+              <li><span className="text-accent font-medium">2.</span> <Link to="/tools/define/content-sprint" className="text-accent hover:underline underline-offset-4">Generate Content Sprint</Link>: Use your profile to create 7 or 14 days of platform-ready content (2-3 minutes)</li>
               <li><span className="text-accent font-medium">3.</span> Post your content across platforms</li>
-              <li><span className="text-accent font-medium">4.</span> <Link to="/tools/define/engagement" className="text-accent hover:underline underline-offset-4">Analyse Engagement</Link> — Paste real feedback to understand what's resonating (1–2 minutes)</li>
-              <li><span className="text-accent font-medium">5.</span> Refine & Repeat — Update your profile based on insights, generate new sprint</li>
+              <li><span className="text-accent font-medium">4.</span> <Link to="/tools/define/engagement" className="text-accent hover:underline underline-offset-4">Analyse Engagement</Link>: Paste real feedback to understand what's resonating (1-2 minutes)</li>
+              <li><span className="text-accent font-medium">5.</span> Refine and Repeat: Update your profile based on insights, generate new sprint</li>
             </ol>
             <p className="text-xs text-muted-foreground/60">
-              The tools work standalone too — skip the profile if you just need quick content or engagement analysis.
+              The tools work standalone too. Skip the profile if you just need quick content or engagement analysis.
             </p>
           </div>
         </div>

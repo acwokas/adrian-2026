@@ -548,7 +548,7 @@ export default function PromptEngineer() {
 
   const handleSubmit = useCallback(() => {
     if (mode === "adapt") {
-      // Client-side adaptation — instant
+      // Client-side adaptation, instant
       const result = adapters[adaptPlatform](input);
       setAdaptOriginal(input);
       setAdaptedResult(result);
@@ -623,7 +623,7 @@ export default function PromptEngineer() {
   };
 
   const handleDownload = () => {
-    const content = `# Prompt Engineer — ${mode.charAt(0).toUpperCase() + mode.slice(1)} Mode\n\nGenerated: ${new Date().toISOString()}\n\n${mode === "adapt" ? adaptedResult : rawText}`;
+    const content = `# Prompt Engineer: ${mode.charAt(0).toUpperCase() + mode.slice(1)} Mode\n\nGenerated: ${new Date().toISOString()}\n\n${mode === "adapt" ? adaptedResult : rawText}`;
     const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -891,7 +891,7 @@ export default function PromptEngineer() {
                                     </div>
                                     <div onClick={() => toggleFocusArea(area.id)}>
                                       <span className="text-sm text-foreground">{area.label}</span>
-                                      <span className="text-xs text-muted-foreground/60 ml-1.5">— {area.desc}</span>
+                                      <span className="text-xs text-muted-foreground/60 ml-1.5">: {area.desc}</span>
                                     </div>
                                   </label>
                                 ))}

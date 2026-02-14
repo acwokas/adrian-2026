@@ -43,7 +43,7 @@ export default function Edge() {
       <SEO
         canonical="/edge"
         title="The EDGE Framework for Applied Intelligence"
-        description="EDGE provides a structured path from curiosity to capability. Evaluate, Define, Govern, Elevate — a framework for embedding intelligence into decision architecture and sustained advantage."
+        description="EDGE provides a structured path from curiosity to capability. Evaluate, Define, Govern, Elevate: a framework for embedding intelligence into decision architecture and sustained advantage."
         keywords="EDGE framework, applied intelligence, AI adoption framework, AI governance, AI strategy, decision architecture"
       />
 
@@ -81,7 +81,7 @@ export default function Edge() {
                 The EDGE Framework was created to close that gap.
               </p>
               <p className="text-foreground font-medium leading-relaxed">
-                EDGE provides a structured path from curiosity to capability — and from capability to edge.
+                EDGE provides a structured path from curiosity to capability, and from capability to edge.
               </p>
             </div>
           </AnimatedSection>

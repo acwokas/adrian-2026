@@ -46,7 +46,7 @@ const examples = [
     title: "Workplace Productivity Monitoring",
     description: "AI monitoring employee productivity with privacy concerns.",
     values: {
-      useCase: "AI system that monitors employee activity — keystrokes, application usage, meeting attendance, communication patterns — to generate productivity scores and identify disengagement. Deployed for remote workers. Managers receive weekly reports with individual scores and trend analysis.",
+      useCase: "AI system that monitors employee activity (keystrokes, application usage, meeting attendance, communication patterns) to generate productivity scores and identify disengagement. Deployed for remote workers. Managers receive weekly reports with individual scores and trend analysis.",
       tensions: '["privacy","surveillance","autonomy","consent"]',
       affected: "Remote employees being monitored, managers receiving productivity data, HR teams using data for performance reviews. Potential impact on employee mental health, trust, and workplace culture.",
       stakeholders: "CEO believes monitoring is necessary for remote work accountability. HR Director concerned about employee trust and retention impact. Employee representatives oppose surveillance. IT team has technical capability but ethical reservations.",
@@ -68,14 +68,14 @@ const examples = [
 ];
 
 const tensionOptions = [
-  { id: "bias", label: "Bias / Fairness — AI might disadvantage certain groups" },
-  { id: "privacy", label: "Privacy — Data use vs individual privacy rights" },
-  { id: "transparency", label: "Transparency — Explainability vs competitive advantage" },
-  { id: "autonomy", label: "Autonomy — AI decisions vs human agency" },
-  { id: "displacement", label: "Displacement — Efficiency vs job loss" },
-  { id: "accuracy", label: "Accuracy — Speed vs precision" },
-  { id: "consent", label: "Consent — Opt-in vs frictionless experience" },
-  { id: "surveillance", label: "Surveillance — Insights vs monitoring concerns" },
+  { id: "bias", label: "Bias / Fairness: AI might disadvantage certain groups" },
+  { id: "privacy", label: "Privacy: Data use vs individual privacy rights" },
+  { id: "transparency", label: "Transparency: Explainability vs competitive advantage" },
+  { id: "autonomy", label: "Autonomy: AI decisions vs human agency" },
+  { id: "displacement", label: "Displacement: Efficiency vs job loss" },
+  { id: "accuracy", label: "Accuracy: Speed vs precision" },
+  { id: "consent", label: "Consent: Opt-in vs frictionless experience" },
+  { id: "surveillance", label: "Surveillance: Insights vs monitoring concerns" },
 ];
 
 const fields = {
@@ -118,10 +118,10 @@ const fields = {
 };
 
 const howItWorks = [
-  "You describe an AI use case with ethical tension — what's being built, who's affected, and what values compete.",
+  "You describe an AI use case with ethical tension: what's being built, who's affected, and what values compete.",
   "The simulation presents a realistic scenario with stakeholder perspectives and challenges you through 5 decision points.",
   "After each decision, stakeholders react and ethical frameworks challenge your reasoning.",
-  "When complete, you get downloadable governance policies — risk checklists, escalation matrices, and experimentation boundaries.",
+  "When complete, you get downloadable governance policies: risk checklists, escalation matrices, and experimentation boundaries.",
 ];
 
 // ── Types ──
@@ -449,7 +449,7 @@ function EthicalDilemmaContent() {
         <ExampleScenario examples={examples} />
         {currentStep === 0 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 1 of 2 — The Ethical Tension</p>
+            <p className="text-xs text-muted-foreground">Step 1 of 2: The Ethical Tension</p>
             {fields.step1.slice(0, 1).map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -493,7 +493,7 @@ function EthicalDilemmaContent() {
         )}
         {currentStep === 1 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 2 of 2 — Stakeholder Perspectives</p>
+            <p className="text-xs text-muted-foreground">Step 2 of 2: Stakeholder Perspectives</p>
             {fields.step2.map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -571,7 +571,7 @@ function EthicalDilemmaContent() {
         {/* Pause overlay */}
         {isPaused && (
           <div className="border border-accent/30 bg-accent/5 rounded-sm p-4 space-y-2">
-            <p className="text-sm font-medium text-accent">⏸ Paused — Consider the trade-offs</p>
+            <p className="text-sm font-medium text-accent">⏸ Paused: Consider the trade-offs</p>
             <p className="text-xs text-muted-foreground">Tensions: {setup.tensions.join(", ")}. Affected: {setup.affected.slice(0, 100)}...</p>
           </div>
         )}
@@ -590,7 +590,7 @@ function EthicalDilemmaContent() {
             {decisions.map((d, i) => (
               <div key={i} className="space-y-2 pt-3 border-t border-border/20">
                 <div className="bg-accent/10 border border-accent/20 rounded-sm p-3">
-                  <p className="text-xs text-accent font-medium mb-1">Your decision — {d.topic}</p>
+                  <p className="text-xs text-accent font-medium mb-1">Your decision: {d.topic}</p>
                   <p className="text-sm text-foreground">{d.choice}</p>
                   <p className="text-xs text-muted-foreground mt-1">{d.reasoning}</p>
                 </div>
@@ -648,7 +648,7 @@ function EthicalDilemmaContent() {
           <div className="space-y-3 border border-accent/20 bg-accent/5 rounded-sm p-4">
             <div>
               <p className="text-xs text-accent font-medium mb-1">Selected: {selectedOption}</p>
-              <p className="text-xs text-muted-foreground">Explain your reasoning — why did you choose this?</p>
+              <p className="text-xs text-muted-foreground">Explain your reasoning. Why did you choose this?</p>
             </div>
             <Textarea
               value={reasoning}
@@ -727,7 +727,7 @@ function EthicalDilemmaContent() {
         <div className="space-y-4 pt-6 border-t border-border/20">
           <div>
             <h3 className="text-base font-medium mb-1">Your notes</h3>
-            <p className="text-xs text-muted-foreground">Private — saved in your browser only.</p>
+            <p className="text-xs text-muted-foreground">Private. Saved in your browser only.</p>
           </div>
           <Textarea
             value={personalNotes}

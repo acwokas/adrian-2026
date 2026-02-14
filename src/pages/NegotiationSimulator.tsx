@@ -134,9 +134,9 @@ const fields = {
 };
 
 const howItWorks = [
-  "You set up a negotiation scenario — context, parties, stakes, and objectives.",
+  "You set up a negotiation scenario: context, parties, stakes, and objectives.",
   "The AI plays the other party with realistic behaviour including counter-asks, pressure tactics, and strategic delays.",
-  "Both parties have competing interests — concessions must be earned through good arguments, data, or trade-offs.",
+  "Both parties have competing interests. Concessions must be earned through good arguments, data, or trade-offs.",
   "When you're done, get coaching on tactics, leverage use, and alternative approaches.",
 ];
 
@@ -404,7 +404,7 @@ function NegotiationContent() {
         <ExampleScenario examples={examples} />
         {currentStep === 0 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 1 of 2 — Negotiation Context</p>
+            <p className="text-xs text-muted-foreground">Step 1 of 2: Negotiation Context</p>
             {fields.step1.map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -417,7 +417,7 @@ function NegotiationContent() {
         )}
         {currentStep === 1 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 2 of 2 — Stakes & Objectives</p>
+            <p className="text-xs text-muted-foreground">Step 2 of 2: Stakes and Objectives</p>
             {fields.step2.map(f => (
               <FormField key={f.id} config={f} value={formData[f.id] || ""} onChange={v => setFormValue(f.id, v)} />
             ))}
@@ -475,7 +475,7 @@ function NegotiationContent() {
         {/* Pause overlay */}
         {isPaused && (
           <div className="border border-accent/30 bg-accent/5 rounded-sm p-4 space-y-2">
-            <p className="text-sm font-medium text-accent">⏸ Paused — Strategise</p>
+            <p className="text-sm font-medium text-accent">⏸ Paused: Strategise</p>
             <p className="text-xs text-muted-foreground">Take a moment to think about your next move. Review the context, consider your leverage, and plan your approach.</p>
             <p className="text-xs text-muted-foreground">Your objectives: <span className="text-foreground">{setup.yourObjectives}</span></p>
           </div>
@@ -488,7 +488,7 @@ function NegotiationContent() {
               <div className="text-center text-sm text-muted-foreground py-12">
                 <Handshake className="h-8 w-8 mx-auto mb-3 text-muted-foreground/30" />
                 <p>Open the negotiation. You speak first.</p>
-                <p className="text-xs mt-1">They have their own objectives — concessions must be earned.</p>
+                <p className="text-xs mt-1">They have their own objectives. Concessions must be earned.</p>
               </div>
             )}
             {messages.map((msg, i) => (
@@ -534,7 +534,7 @@ function NegotiationContent() {
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
-            placeholder={isPaused ? "Negotiation paused — click Resume to continue" : "Make your offer or respond..."}
+            placeholder={isPaused ? "Negotiation paused. Click Resume to continue" : "Make your offer or respond..."}
             disabled={isStreaming || isPaused}
             className="flex-1 bg-secondary/30 border-border/40 focus-visible:ring-accent"
           />
@@ -590,7 +590,7 @@ function NegotiationContent() {
         <div className="space-y-4 pt-6 border-t border-border/20">
           <div>
             <h3 className="text-base font-medium mb-1">Your reflection</h3>
-            <p className="text-xs text-muted-foreground">Private — saved in your browser only.</p>
+            <p className="text-xs text-muted-foreground">Private. Saved in your browser only.</p>
           </div>
           <Textarea
             value={personalNotes}
