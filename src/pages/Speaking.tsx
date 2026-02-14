@@ -13,8 +13,8 @@ export default function Speaking() {
     <Layout>
       <SEO
         canonical="/speaking"
-        title="Speaking & Workshops - Adrian Watkins"
-        description="Executive workshops, keynotes, and advisory engagements on applied intelligence, commercial strategy, and building capability without dependency."
+        title="Speaking & Workshops | EDGE Framework"
+        description="Keynotes and executive workshops on AI governance, commercial strategy, and structured capability. Recent: Taiwan Smart Living 2025 (150+ officials, investors, founders)."
         keywords="executive workshops, AI keynote speaker, applied intelligence workshops, board advisory, commercial strategy speaker, Asia Pacific"
       />
 

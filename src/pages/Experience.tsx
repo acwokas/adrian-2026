@@ -13,8 +13,8 @@ export default function Experience() {
   return (
     <Layout>
       <SEO 
-        title="About - Adrian Watkins"
-        description="Two decades of senior commercial and operational leadership across Asia Pacific. Board-level advisory, fractional executive positions, and executive decision support in AI, media, and technology sectors."
+        title="About | SVP Commercial Operations & Governance"
+        description="15 years across Singapore, Jakarta, Bangkok building structured AI capability. Creator of EDGE Framework, advisor to startups, contributor to AiinASIA.com."
         canonical="/about"
         keywords="Adrian Watkins, commercial leadership, operational leadership, board advisory, executive decision support, Asia Pacific, AI advisory, EDGE Framework, governance"
         breadcrumb={[{ name: "About", path: "/about" }]}
