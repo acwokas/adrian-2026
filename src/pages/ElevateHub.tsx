@@ -24,7 +24,7 @@ export default function ElevateHub() {
     <Layout>
       <SEO
         canonical="/tools/elevate"
-        title="EDGE Elevate — Performance & Optimisation Tools"
+        title="Elevate Tools | EDGE Framework"
         description="Optimise AI interactions, improve prompt quality, and get better results faster. Built on proven prompt engineering principles."
         keywords="EDGE elevate, prompt engineering, AI optimisation, prompt optimization, performance tools"
       />

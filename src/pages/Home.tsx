@@ -66,7 +66,8 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO 
+      <SEO
+        title="Executive Advisor & Fractional Leader"
         canonical="/" 
         description="Adrian Watkins works with CEOs, founders, and boards on decision-making, alignment, and execution in complex environments. Executive advisory, fractional leadership, and capability building across Asia Pacific."
         keywords="executive advisor Singapore, fractional COO, fractional CCO, board advisor, executive decision support, operational leadership, AI advisory, Asia Pacific executive coach"

@@ -184,7 +184,7 @@ export default function GovernHub() {
     <Layout>
       <SEO
         canonical="/tools/govern"
-        title="EDGE Govern — Governance & Oversight Tools"
+        title="Govern Tools | EDGE Framework"
         description="Governance and oversight tools for establishing accountability, policy boundaries, risk management, and performance discipline in AI implementations."
         keywords="EDGE govern, AI governance, oversight tools, accountability framework, risk management"
       />

@@ -94,7 +94,7 @@ export default function EvaluateHub() {
     <Layout>
       <SEO
         canonical="/tools/evaluate"
-        title="Evaluate Instruments — EDGE Tools"
+        title="Evaluate Tools | EDGE Framework"
         description="Diagnostic and simulation tools for assessing intelligence readiness, testing decisions, and pressure-testing ideas before deployment."
         keywords="EDGE evaluate, AI readiness, decision simulation, red team analysis, applied intelligence tools"
       />
