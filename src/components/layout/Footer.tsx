@@ -32,16 +32,17 @@ export function Footer() {
             </div>
             <p className="text-sm text-muted-foreground text-balance max-w-[280px] mx-auto md:mx-0 md:max-w-none">Creator, EDGE Framework for Applied Intelligence</p>
             <p className="text-sm text-muted-foreground text-balance max-w-[280px] mx-auto md:mx-0 md:max-w-none">SVP Commercial Operations &amp; Governance, SQREEM Technologies</p>
-            <p className="text-xs text-muted-foreground">
-              © 2026 Adrian Watkins. All rights reserved.
-            </p>
-            <TrackedLink
-              to="/privacy"
-              eventName="footer_privacy_policy"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors underline"
-            >
-              Privacy Policy
-            </TrackedLink>
+            <div className="flex items-center justify-center md:justify-start gap-3 mt-3 text-xs text-muted-foreground">
+              <span>© 2026 Adrian Watkins</span>
+              <span className="text-border">·</span>
+              <TrackedLink
+                to="/privacy"
+                eventName="footer_privacy_policy"
+                className="hover:text-foreground transition-colors underline"
+              >
+                Privacy Policy
+              </TrackedLink>
+            </div>
           </div>
 
           {/* Right column - Navigation */}
