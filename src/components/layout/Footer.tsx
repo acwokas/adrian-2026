@@ -3,10 +3,10 @@ import { TrackedExternalLink, TrackedLink } from "@/components/TrackedLink";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "What I Do", path: "/what-i-do" },
-  { label: "How I Work", path: "/how-i-work" },
+  { label: "EDGE Framework", path: "/edge" },
+  { label: "Speaking & Workshops", path: "/speaking" },
+  { label: "Tools", path: "/tools" },
   { label: "Experience", path: "/experience" },
-  { label: "Executive CV", path: "/executive-cv" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -30,7 +30,8 @@ export function Footer() {
                 <Linkedin size={16} />
               </TrackedExternalLink>
             </div>
-            <p className="text-sm text-muted-foreground text-balance max-w-[200px] mx-auto md:mx-0 md:max-w-none">Senior Commercial, Strategic and Operational Leader</p>
+            <p className="text-sm text-muted-foreground text-balance max-w-[280px] mx-auto md:mx-0 md:max-w-none">Creator, EDGE Framework for Applied Intelligence</p>
+            <p className="text-sm text-muted-foreground text-balance max-w-[280px] mx-auto md:mx-0 md:max-w-none">SVP Commercial Operations &amp; Governance, SQREEM Technologies</p>
             <p className="text-xs text-muted-foreground">
               © 2026 Adrian Watkins. All rights reserved.
             </p>
