@@ -2,12 +2,21 @@ import { Layout } from "@/components/layout/Layout";
 import { StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+const evaluateTools = [
+  { label: "Decision Simulation", desc: "Map terrain before choosing", href: "/tools/evaluate/decision" },
+  { label: "Red Team Simulation", desc: "Pressure-test before presenting", href: "/tools/evaluate/redteam" },
+];
 
 const toolSections = [
   {
     pillar: "EVALUATE",
     heading: "Diagnostic & Simulation Tools",
-    body: "Tools for assessing intelligence readiness, identifying fragmentation, and testing scenarios before deployment.",
+    body: "Rehearse decisions and pressure-test ideas before they matter. Private, realistic analysis without coaching or content generation.",
+    tools: evaluateTools,
+    hubHref: "/tools/evaluate",
   },
   {
     pillar: "DEFINE",
@@ -22,7 +31,7 @@ const toolSections = [
   {
     pillar: "ELEVATE",
     heading: "Performance & Optimization Tools",
-    body: "Instruments for measuring impact, optimizing execution, and translating capability into sustained advantage.",
+    body: "Instruments for measuring impact, optimising execution, and translating capability into sustained advantage.",
   },
 ];
 
@@ -75,9 +84,33 @@ export default function Tools() {
                     {section.body}
                   </p>
                   <div className="pt-4 border-t border-border/20">
-                    <p className="text-sm text-muted-foreground/60 italic">
-                      Tools will be integrated here
-                    </p>
+                    {section.tools ? (
+                      <div className="space-y-3">
+                        {section.tools.map((tool) => (
+                          <Link
+                            key={tool.href}
+                            to={tool.href}
+                            className="flex items-center justify-between group text-sm"
+                          >
+                            <div>
+                              <span className="text-foreground group-hover:text-accent transition-colors font-medium">{tool.label}</span>
+                              <span className="text-muted-foreground/60 ml-2 hidden sm:inline">— {tool.desc}</span>
+                            </div>
+                            <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0" />
+                          </Link>
+                        ))}
+                        <Link
+                          to={section.hubHref!}
+                          className="inline-flex items-center text-xs text-accent hover:underline underline-offset-4 pt-1"
+                        >
+                          Explore all Evaluate tools <ArrowRight className="h-3 w-3 ml-1" />
+                        </Link>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground/60 italic">
+                        Tools coming soon
+                      </p>
+                    )}
                   </div>
                 </div>
               </StaggeredItem>
