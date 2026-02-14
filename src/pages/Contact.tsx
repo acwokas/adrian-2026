@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { Send, Calendar, Loader2 } from "lucide-react";
+import { Send, Calendar, Loader2, FileText, Wrench, Mic, ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -92,8 +93,75 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* EDGE Framework Resources */}
+      <section className="section-spacing lg:py-9 border-b border-border/50">
+        <div className="container-narrow">
+          <AnimatedSection>
+            <div className="space-y-3 mb-8">
+              <h2 className="text-2xl lg:text-[1.75rem]">EDGE Framework Resources</h2>
+              <p className="text-muted-foreground">
+                Tools, frameworks, and thought leadership on applied intelligence governance
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-5">
+              {/* Card 1 - White Paper */}
+              <div className="p-6 bg-card border border-border/30 hover:border-accent/50 transition-colors flex flex-col h-full space-y-4">
+                <FileText className="text-accent" size={28} />
+                <h3 className="text-lg font-semibold">Download White Paper</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  15-page leadership doctrine for structuring intelligence in modern organisations. Includes the complete framework, maturity model, and implementation guide.
+                </p>
+                <Button variant="minimal" size="sm" asChild className="justify-start p-0">
+                  <a href="/edge-framework-whitepaper.pdf" download>
+                    Download PDF →
+                  </a>
+                </Button>
+              </div>
+
+              {/* Card 2 - EDGE Tools */}
+              <div className="p-6 bg-card border border-border/30 hover:border-accent/50 transition-colors flex flex-col h-full space-y-4">
+                <Wrench className="text-accent" size={28} />
+                <h3 className="text-lg font-semibold">Explore EDGE Tools</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  12 simulation rooms and assessment tools that operationalise the framework. Practice governance reviews, navigate ethical dilemmas, and assess maturity.
+                </p>
+                <Button variant="minimal" size="sm" asChild className="justify-start p-0">
+                  <Link to="/tools">Try the tools →</Link>
+                </Button>
+              </div>
+
+              {/* Card 3 - Advisory & Speaking */}
+              <div className="p-6 bg-card border border-border/30 hover:border-accent/50 transition-colors flex flex-col h-full space-y-4">
+                <Mic className="text-accent" size={28} />
+                <h3 className="text-lg font-semibold">Advisory & Speaking</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  Available for board advisory, executive workshops, and conference keynotes on AI governance, applied intelligence, and the EDGE Framework.
+                </p>
+                <Button
+                  variant="minimal"
+                  size="sm"
+                  className="justify-start p-0"
+                  onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Get in touch <ArrowDown size={14} />
+                </Button>
+              </div>
+            </div>
+
+            <p className="text-sm text-muted-foreground text-center mt-6">
+              All EDGE resources are freely available in support of the{" "}
+              <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                democratising.ai
+              </a>{" "}
+              mission
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Main Content */}
-      <section className="section-spacing lg:py-9 bg-[hsl(var(--section-light))] md:bg-transparent">
+      <section id="contact-form" className="section-spacing lg:py-9 bg-[hsl(var(--section-light))] md:bg-transparent">
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
             {/* Left Column - Info */}
