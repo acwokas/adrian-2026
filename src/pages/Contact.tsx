@@ -15,7 +15,7 @@ import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Contact() {
   const { toast } = useToast();
-  const { trackFormStart, trackFormSubmit, trackBookingClick } = useAnalytics();
+  const { trackFormStart, trackFormSubmit, trackBookingClick, trackWhitepaperDownload } = useAnalytics();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const hasTrackedFormStart = useRef(false);
   const [formData, setFormData] = useState({
@@ -112,7 +112,7 @@ export default function Contact() {
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                   15-page leadership doctrine for structuring intelligence in modern organisations. Includes the complete framework, maturity model, and implementation guide.
                 </p>
-                <Button variant="minimal" size="sm" asChild className="justify-start p-0">
+                <Button variant="minimal" size="sm" asChild className="justify-start p-0" onClick={() => trackWhitepaperDownload('contact_page')}>
                   <a href="/edge-framework-whitepaper.pdf" download>
                     Download PDF →
                   </a>

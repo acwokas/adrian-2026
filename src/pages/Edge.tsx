@@ -36,7 +36,7 @@ const frameworkSteps = [
 ];
 
 export default function Edge() {
-  const { trackBookingClick } = useAnalytics();
+  const { trackBookingClick, trackWhitepaperDownload } = useAnalytics();
 
   return (
     <Layout>
@@ -316,6 +316,7 @@ export default function Edge() {
                       variant="hero"
                       size="lg"
                       asChild
+                      onClick={() => trackWhitepaperDownload('edge_page')}
                     >
                       <a href="/edge-framework-whitepaper.pdf" download>
                         <Download className="w-5 h-5" />
