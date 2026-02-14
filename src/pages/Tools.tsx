@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 
@@ -15,6 +15,11 @@ const toolSections = [
     body: "Frameworks and templates for establishing intent, ownership, priorities and decision architecture.",
   },
   {
+    pillar: "GOVERN",
+    heading: "Governance & Oversight Tools",
+    body: "Frameworks and templates for establishing accountability, policy boundaries, risk management, and performance discipline.",
+  },
+  {
     pillar: "ELEVATE",
     heading: "Performance & Optimization Tools",
     body: "Instruments for measuring impact, optimizing execution, and translating capability into sustained advantage.",
@@ -27,7 +32,7 @@ export default function Tools() {
       <SEO
         canonical="/tools"
         title="EDGE Instruments — Tools for Applied Intelligence"
-        description="Structured tools and templates aligned to each EDGE Framework pillar. Diagnostic, planning, and performance instruments for practical intelligence adoption."
+        description="Structured tools and templates aligned to each EDGE Framework pillar. Diagnostic, planning, governance, and performance instruments for practical intelligence adoption."
         keywords="EDGE tools, AI readiness assessment, intelligence diagnostic, AI governance tools, applied intelligence instruments"
       />
 
@@ -55,21 +60,21 @@ export default function Tools() {
         </div>
       </section>
 
-      {/* Tool Sections */}
+      {/* Tool Cards */}
       <section className="pb-10 md:pb-12 lg:pb-14">
-        <div className="container-wide max-w-[900px] mx-auto">
-          <StaggeredChildren className="space-y-8 lg:space-y-10">
+        <div className="container-wide max-w-[1100px] mx-auto">
+          <StaggeredChildren className="grid md:grid-cols-2 gap-5 lg:gap-8">
             {toolSections.map((section) => (
               <StaggeredItem key={section.pillar}>
-                <div className="p-6 md:p-8 lg:p-10 bg-card border border-border/30 space-y-4">
+                <div className="p-6 md:p-8 lg:p-10 bg-card border border-border/30 h-full space-y-4">
                   <span className="text-xs uppercase tracking-widest text-accent font-medium">
                     {section.pillar}
                   </span>
-                  <h2 className="text-xl md:text-2xl font-semibold">{section.heading}</h2>
-                  <p className="text-muted-foreground leading-relaxed max-w-[640px]">
+                  <h3 className="text-xl font-semibold">{section.heading}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     {section.body}
                   </p>
-                  <div className="pt-4 border-t border-border/20 mt-4">
+                  <div className="pt-4 border-t border-border/20">
                     <p className="text-sm text-muted-foreground/60 italic">
                       Tools will be integrated here
                     </p>
@@ -78,19 +83,6 @@ export default function Tools() {
               </StaggeredItem>
             ))}
           </StaggeredChildren>
-        </div>
-      </section>
-
-      {/* Govern Note */}
-      <section className="pb-10 md:pb-12 lg:pb-14">
-        <div className="container-wide max-w-[900px] mx-auto">
-          <AnimatedSection>
-            <div className="p-6 md:p-8 border-l-2 border-accent/40">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <span className="text-accent font-medium">GOVERN</span> — Governance tools are typically frameworks and templates delivered through advisory engagements rather than digital tools.
-              </p>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
     </Layout>
