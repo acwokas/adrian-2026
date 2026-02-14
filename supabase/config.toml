@@ -14,3 +14,9 @@ verify_jwt = false
 
 [functions.redteam-analysis]
 verify_jwt = false
+
+[functions.brand-profile-refine]
+verify_jwt = false
+
+[functions.brand-profile-generate]
+verify_jwt = false
