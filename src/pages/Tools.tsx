@@ -1,9 +1,10 @@
 import { Layout } from "@/components/layout/Layout";
-import { StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
+import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, Lightbulb, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const evaluateTools = [
   { label: "Decision Simulation", desc: "Map terrain before choosing", href: "/tools/evaluate/decision" },
@@ -93,7 +94,7 @@ export default function Tools() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15]">
-              EDGE Instruments
+              EDGE Tools
             </h1>
             <div className="space-y-4 max-w-[720px]">
               <p className="text-muted-foreground leading-relaxed">
@@ -104,6 +105,70 @@ export default function Tools() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Getting Started */}
+      <section className="pb-10 md:pb-12 lg:pb-14">
+        <div className="container-wide max-w-[1100px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <h2 className="text-2xl md:text-3xl">New to EDGE? Start Here</h2>
+                <p className="text-muted-foreground leading-relaxed max-w-[720px]">
+                  The 12 EDGE tools work together as a system, but you don't need to use them all at once. Here's how to begin:
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-5">
+                {[
+                  {
+                    icon: Search,
+                    heading: "Diagnose First",
+                    tool: "Maturity Assessment",
+                    desc: "Not sure where you are? Start with the 5-dimension Maturity Assessment to understand your governance baseline across decision ownership, risk management, performance oversight, ethical boundaries, and accountability.",
+                    button: "Take Maturity Assessment →",
+                    href: "/tools/govern/maturity-assessment",
+                  },
+                  {
+                    icon: Lightbulb,
+                    heading: "Practice Decisions",
+                    tool: "Decision Simulation",
+                    desc: "Have a strategic decision coming up? Use the Decision Simulation room to map terrain, identify blind spots, and stress-test your assumptions before commitment.",
+                    button: "Try Decision Simulation →",
+                    href: "/tools/evaluate/decision",
+                  },
+                  {
+                    icon: FileText,
+                    heading: "Build Frameworks",
+                    tool: "Governance Review Simulator",
+                    desc: "Need to prepare for board review or establish oversight? The Governance Review Simulator helps you rehearse AI decisions and build downloadable frameworks (Decision Ownership Maps, Risk Checklists, Escalation Matrices).",
+                    button: "Start Governance Review →",
+                    href: "/tools/govern/governance-review",
+                  },
+                ].map((path) => (
+                  <div
+                    key={path.heading}
+                    className="p-6 md:p-8 bg-card border border-border/30 h-full flex flex-col space-y-4 hover:border-accent/30 transition-colors duration-300"
+                  >
+                    <path.icon className="h-6 w-6 text-accent" />
+                    <h3 className="text-lg font-semibold">{path.heading}</h3>
+                    <p className="text-accent text-sm font-medium">{path.tool}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                      {path.desc}
+                    </p>
+                    <Button variant="hero" size="sm" asChild className="w-full mt-auto">
+                      <Link to={path.href}>{path.button}</Link>
+                    </Button>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-muted-foreground/60 text-sm pt-2">
+                All tools are free, session-based, and privacy-first. No signup required.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
