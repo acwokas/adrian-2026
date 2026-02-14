@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Experience() {
@@ -163,18 +164,39 @@ export default function Experience() {
               <p className="text-muted-foreground">
                 Beyond commercial and operational roles, I have built platforms and frameworks that reflect a commitment to democratising applied intelligence.
               </p>
-              <div className="space-y-5">
-                <div className="space-y-1">
+              <div className="space-y-6">
+                <div className="space-y-2">
                   <p className="text-foreground font-medium">EDGE Framework for Applied Intelligence (2024 – Present)</p>
-                  <p className="text-muted-foreground text-sm">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements.</p>
+                  <p className="text-muted-foreground text-sm">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements. Includes 12 simulation rooms, maturity assessment, and implementation frameworks for boards and executives.</p>
+                  <ul className="space-y-1 text-muted-foreground text-sm pl-4">
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">12 simulation &amp; assessment tools</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">AI Governance Maturity Model</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Implementation guide &amp; frameworks</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">White paper &amp; resources</li>
+                  </ul>
+                  <Button variant="hero" size="sm" asChild className="mt-2">
+                    <Link to="/edge">Explore EDGE →</Link>
+                  </Button>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <p className="text-foreground font-medium"><a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">AiinASIA.com</a> (2020 – Present)</p>
                   <p className="text-muted-foreground text-sm">Founder and Publisher. Practical AI insight for Asia-Pacific markets, reaching 10,000 monthly readers with zero paid marketing. Provides continuous feedback from founders, operators, and policymakers.</p>
+                  <Button variant="hero" size="sm" asChild className="mt-2">
+                    <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer">Read articles →</a>
+                  </Button>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-foreground font-medium"><a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> (2023 – Present)</p>
-                  <p className="text-muted-foreground text-sm">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge.</p>
+                <div className="space-y-2">
+                  <p className="text-foreground font-medium"><a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">PromptAndGo.ai</a> (2023 – Present)</p>
+                  <p className="text-muted-foreground text-sm">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge. Scout AI system for generating, optimising, and adapting prompts across platforms. 3,000+ prompt library with platform-specific rewrites and educational resources.</p>
+                  <ul className="space-y-1 text-muted-foreground text-sm pl-4">
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Generator (AI-powered)</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Optimiser (before/after)</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Platform Adapters (11 platforms)</li>
+                    <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">3,000+ Prompt Library</li>
+                  </ul>
+                  <Button variant="hero" size="sm" asChild className="mt-2">
+                    <a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer">Visit PromptAndGo →</a>
+                  </Button>
                 </div>
                 <div className="space-y-1">
                   <p className="text-foreground font-medium">Blackstorm Group (2024 – Present)</p>
@@ -192,18 +214,39 @@ export default function Experience() {
                 <p className="text-base leading-[1.85] text-muted-foreground">
                   Beyond commercial and operational roles, I have built platforms and frameworks that reflect a commitment to democratising applied intelligence.
                 </p>
-                <div className="space-y-5">
-                  <div className="space-y-1">
+                <div className="space-y-6">
+                  <div className="space-y-2">
                     <p className="text-base text-foreground font-medium">EDGE Framework for Applied Intelligence (2024 – Present)</p>
-                    <p className="text-base leading-[1.85] text-muted-foreground">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements.</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">A leadership-level framework for structuring AI adoption in modern organisations. Applied through diagnostics, workshops, and advisory engagements. Includes 12 simulation rooms, maturity assessment, and implementation frameworks for boards and executives.</p>
+                    <ul className="space-y-1 text-sm text-muted-foreground pl-4">
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">12 simulation &amp; assessment tools</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">AI Governance Maturity Model</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Implementation guide &amp; frameworks</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">White paper &amp; resources</li>
+                    </ul>
+                    <Button variant="hero" size="sm" asChild className="mt-2">
+                      <Link to="/edge">Explore EDGE →</Link>
+                    </Button>
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <p className="text-base text-foreground font-medium"><a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">AiinASIA.com</a> (2020 – Present)</p>
                     <p className="text-base leading-[1.85] text-muted-foreground">Founder and Publisher. Practical AI insight for Asia-Pacific markets, reaching 10,000 monthly readers with zero paid marketing. Provides continuous feedback from founders, operators, and policymakers.</p>
+                    <Button variant="hero" size="sm" asChild className="mt-2">
+                      <a href="https://www.aiinasia.com" target="_blank" rel="noopener noreferrer">Read articles →</a>
+                    </Button>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-base text-foreground font-medium"><a href="https://you.withthepowerof.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">you.withthepowerof.ai</a> (2023 – Present)</p>
-                    <p className="text-base leading-[1.85] text-muted-foreground">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge.</p>
+                  <div className="space-y-2">
+                    <p className="text-base text-foreground font-medium"><a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors">PromptAndGo.ai</a> (2023 – Present)</p>
+                    <p className="text-base leading-[1.85] text-muted-foreground">An ecosystem of tools and resources designed to democratise access to capability often locked behind large organisations or underutilised due to lack of knowledge. Scout AI system for generating, optimising, and adapting prompts across platforms. 3,000+ prompt library with platform-specific rewrites and educational resources.</p>
+                    <ul className="space-y-1 text-sm text-muted-foreground pl-4">
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Generator (AI-powered)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Prompt Optimiser (before/after)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Platform Adapters (11 platforms)</li>
+                      <li className="pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">3,000+ Prompt Library</li>
+                    </ul>
+                    <Button variant="hero" size="sm" asChild className="mt-2">
+                      <a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer">Visit PromptAndGo →</a>
+                    </Button>
                   </div>
                   <div className="space-y-1">
                     <p className="text-base text-foreground font-medium">Blackstorm Group (2024 – Present)</p>
