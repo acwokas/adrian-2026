@@ -5,6 +5,8 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { Download } from "lucide-react";
+import edgeCover from "@/assets/edge-cover.png";
 
 const frameworkSteps = [
   {
@@ -269,6 +271,68 @@ export default function Edge() {
         </div>
       </section>
 
+      {/* White Paper Download */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[1100px] mx-auto">
+          <AnimatedSection>
+            <div className="bg-card border border-border/30 p-6 md:p-10 lg:p-12">
+              <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
+                {/* Cover preview */}
+                <div className="w-full max-w-[240px] md:max-w-[260px] flex-shrink-0">
+                  <div className="aspect-[3/4] overflow-hidden border border-border/20 shadow-lg">
+                    <img
+                      src={edgeCover}
+                      alt="EDGE Framework White Paper cover"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                {/* Download info */}
+                <div className="space-y-5 text-center md:text-left">
+                  <div className="space-y-2">
+                    <h2 className="text-2xl md:text-3xl">Download the EDGE Framework White Paper</h2>
+                    <p className="text-lg text-accent font-medium">
+                      A 15-page leadership doctrine for structuring intelligence in modern organisations
+                    </p>
+                  </div>
+
+                  <p className="text-muted-foreground leading-relaxed">
+                    This comprehensive white paper provides the complete EDGE Framework methodology, including:
+                  </p>
+
+                  <ul className="space-y-2 text-muted-foreground text-left">
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">The structural problem: Adoption without architecture</li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Detailed exploration of all four pillars</li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">The 12 EDGE tools and how they operationalise the framework</li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">AI Governance Maturity Model with 5-level assessment</li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Implementation guide from assessment to advantage</li>
+                    <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Real-world application across startups, SMEs, enterprises, and government</li>
+                  </ul>
+
+                  <div className="flex flex-col items-center md:items-start gap-3 pt-2">
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      asChild
+                    >
+                      <a href="/edge-framework-whitepaper.pdf" download>
+                        <Download className="w-5 h-5" />
+                        Download White Paper (PDF)
+                      </a>
+                    </Button>
+                    <p className="text-xs text-muted-foreground">
+                      Free download · No signup required · 15 pages · ~2.5 MB PDF
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[800px] mx-auto text-center">
@@ -292,12 +356,6 @@ export default function Edge() {
                     Book a 30-minute clarity call
                   </a>
                 </Button>
-                <a
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Download EDGE Framework White Paper (PDF) →
-                </a>
               </div>
             </div>
           </AnimatedSection>
