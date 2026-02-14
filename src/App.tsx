@@ -56,7 +56,8 @@ function AppRoutes() {
         <Route path="/speaking" element={<Speaking />} />
         <Route path="/what-i-do" element={<WhatIDo />} />
         <Route path="/how-i-work" element={<HowIWork />} />
-        <Route path="/experience" element={<Experience />} />
+        <Route path="/about" element={<Experience />} />
+        <Route path="/experience" element={<Experience />} /> {/* Legacy redirect */}
         <Route path="/executive-cv" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/tools/evaluate" element={<EvaluateHub />} />

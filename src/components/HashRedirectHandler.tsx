@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const hashRedirects: Record<string, { path: string; externalUrl?: string }> = {
   "#about-me": { path: "/" },
   "#resume": { path: "/executive-cv" },
-  "#portfolio": { path: "/experience" },
+  "#portfolio": { path: "/about" },
   "#new-ai-blog": { path: "/", externalUrl: "https://www.aiinasia.com" },
   "#posts": { path: "/", externalUrl: "https://you.withthepowerof.ai" },
   "#connect": { path: "/contact" },

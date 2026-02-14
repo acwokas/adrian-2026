@@ -19,12 +19,12 @@ const serviceCards = [
   {
     title: "Fractional Leadership",
     description: "Senior operational leadership without the commitment of a full-time hire. I work directly with CEOs and executive teams as a senior peer.",
-    link: "/experience",
+    link: "/about",
   },
   {
     title: "Advisory & Board Support",
     description: "Strategic guidance on critical decisions, direction, and priorities. Board-level engagement focused on commercial outcomes and governance.",
-    link: "/experience",
+    link: "/about",
   },
   {
     title: "Workshops & Capability Building",

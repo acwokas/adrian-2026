@@ -12,7 +12,7 @@ const navItems = [
   { label: "EDGE Framework", path: "/edge" },
   { label: "Speaking & Workshops", path: "/speaking" },
   { label: "Tools", path: "/tools" },
-  { label: "Experience", path: "/experience" },
+  { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
 
