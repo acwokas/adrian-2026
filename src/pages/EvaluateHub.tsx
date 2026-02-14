@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, GitBranch, Shield, MessageCircle, Send, ChevronDown, ShieldCheck } from "lucide-react";
+import { ArrowRight, GitBranch, Shield, MessageCircle, Send, Handshake, ChevronDown, ShieldCheck } from "lucide-react";
 
 const tools = [
   {
@@ -63,6 +63,20 @@ const tools = [
       "Perception risk identification",
       "Side-by-side audience comparison",
       "Iterative revision helper",
+    ],
+  },
+  {
+    title: "Negotiation Simulator",
+    description:
+      "Rehearse negotiation dynamics with realistic AI counterparty. Counter-asks, pressure tactics, and strategic delays included.",
+    badge: "Interactive chat",
+    icon: <Handshake className="h-5 w-5 text-accent" />,
+    href: "/tools/evaluate/negotiation",
+    features: [
+      "Realistic counter-asks & tactics",
+      "Pause & strategise feature",
+      "5 negotiation style modes",
+      "Leverage analysis in reflection",
     ],
   },
 ];
