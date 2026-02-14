@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, GitBranch, Shield, MessageCircle, ChevronDown, ShieldCheck } from "lucide-react";
+import { ArrowRight, GitBranch, Shield, MessageCircle, Send, ChevronDown, ShieldCheck } from "lucide-react";
 
 const tools = [
   {
@@ -49,6 +49,20 @@ const tools = [
       "5 conversation tone modes",
       "Turn-by-turn coaching reflection",
       "Downloadable transcripts",
+    ],
+  },
+  {
+    title: "Before You Send",
+    description:
+      "Analyse how different audiences might interpret your message. Surface perception gaps and ambiguities before you hit send.",
+    badge: "30–45 second analysis",
+    icon: <Send className="h-5 w-5 text-accent" />,
+    href: "/tools/evaluate/before-you-send",
+    features: [
+      "Multi-audience interpretation analysis",
+      "Perception risk identification",
+      "Side-by-side audience comparison",
+      "Iterative revision helper",
     ],
   },
 ];

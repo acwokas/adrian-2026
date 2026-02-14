@@ -26,6 +26,7 @@ import EngagementAnalyzer from "./pages/EngagementAnalyzer";
 import DecisionSimulation from "./pages/DecisionSimulation";
 import RedTeamSimulation from "./pages/RedTeamSimulation";
 import ConversationSimulator from "./pages/ConversationSimulator";
+import BeforeYouSend from "./pages/BeforeYouSend";
 import ElevateHub from "./pages/ElevateHub";
 import PromptEngineer from "./pages/PromptEngineer";
 import { usePageTracking } from "./hooks/usePageTracking";
@@ -57,6 +58,7 @@ function AppRoutes() {
         <Route path="/tools/evaluate/decision" element={<DecisionSimulation />} />
         <Route path="/tools/evaluate/redteam" element={<RedTeamSimulation />} />
         <Route path="/tools/evaluate/conversation" element={<ConversationSimulator />} />
+        <Route path="/tools/evaluate/before-you-send" element={<BeforeYouSend />} />
         <Route path="/tools/elevate" element={<ElevateHub />} />
         <Route path="/tools/elevate/prompt-engineer" element={<PromptEngineer />} />
         <Route path="/tools/define" element={<DefineHub />} />
