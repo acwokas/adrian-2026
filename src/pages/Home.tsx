@@ -13,7 +13,7 @@ const serviceCards = [
   {
     title: "EDGE Diagnostic",
     description: "Strategic assessment of intelligence readiness, fragmentation, and opportunity. Typically a 2-4 week engagement resulting in clear recommendations and roadmap.",
-    link: "/edge-framework",
+    link: "/edge",
   },
   {
     title: "Fractional Leadership",
@@ -105,7 +105,7 @@ export default function Home() {
                   className="w-full sm:w-auto" 
                   asChild
                 >
-                  <Link to="/edge-framework">
+                  <Link to="/edge">
                     Explore EDGE Framework
                   </Link>
                 </Button>
@@ -170,7 +170,7 @@ export default function Home() {
                   size="lg" 
                   asChild
                 >
-                  <Link to="/edge-framework">
+                  <Link to="/edge">
                     Explore EDGE Framework
                   </Link>
                 </Button>
