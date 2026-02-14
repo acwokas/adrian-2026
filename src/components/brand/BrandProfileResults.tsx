@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { ChevronDown, Copy, RefreshCw, Download, ClipboardCopy, FileJson, ArrowRight, RotateCcw, Loader2, Check } from "lucide-react";
+import { ChevronDown, Copy, RefreshCw, Download, ClipboardCopy, FileJson, ArrowRight, RotateCcw, Loader2, Check, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -284,13 +284,18 @@ export function BrandProfileResults({
             <ArrowRight className="h-3.5 w-3.5 mr-1.5" /> Use for content sprint
           </Button>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Button variant="ghost" size="sm" onClick={() => onRegenerate()} disabled={isRegenerating} className="text-muted-foreground">
             {isRegenerating ? <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" /> : <RefreshCw className="h-3.5 w-3.5 mr-1.5" />}
             Regenerate entire profile
           </Button>
           <Button variant="ghost" size="sm" onClick={handleConfirmStartOver} className="text-muted-foreground">
             <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Start over
+          </Button>
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/tools/elevate/prompt-engineer#optimize">
+              <Sparkles className="h-3.5 w-3.5 mr-1.5" /> Optimise with Prompt Engineer
+            </Link>
           </Button>
         </div>
       </div>

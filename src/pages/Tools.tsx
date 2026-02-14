@@ -16,7 +16,17 @@ const defineTools = [
   { label: "Engagement Analyzer", desc: "Paste feedback, get insights", href: "/tools/define/engagement" },
 ];
 
-const toolSections = [
+interface ToolSection {
+  pillar: string;
+  heading: string;
+  body: string;
+  tools?: { label: string; desc: string; href: string }[];
+  hubHref?: string;
+  hubLabel?: string;
+  note?: string;
+}
+
+const toolSections: ToolSection[] = [
   {
     pillar: "EVALUATE",
     heading: "Diagnostic & Simulation Tools",
@@ -40,13 +50,14 @@ const toolSections = [
   },
   {
     pillar: "ELEVATE",
-    heading: "Performance & Optimisation Tools",
-    body: "Optimise AI interactions, improve prompt quality, and get better results faster. Built on proven prompt engineering principles.",
+    heading: "Performance & Optimization Tools",
+    body: "Optimize AI interactions and elevate prompt quality for better results. Generate, improve, and adapt prompts using proven engineering principles.",
     tools: [
-      { label: "Prompt Engineer", desc: "Generate, optimise, or adapt prompts", href: "/tools/elevate/prompt-engineer" },
+      { label: "Prompt Engineer", desc: "3 modes: Generate | Optimize | Adapt", href: "/tools/elevate/prompt-engineer" },
     ],
     hubHref: "/tools/elevate",
-    hubLabel: "Explore performance tools",
+    hubLabel: "Open Prompt Engineer",
+    note: "Built on prompt engineering best practices. For advanced features including 3,000+ prompt library and 16 template builders, explore PromptAndGo.ai",
   },
 ];
 
@@ -114,13 +125,18 @@ export default function Tools() {
                             <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0" />
                           </Link>
                         ))}
-                        {section.hubHref && (
+                    {section.hubHref && (
                           <Link
                             to={section.hubHref}
                             className="inline-flex items-center text-xs text-accent hover:underline underline-offset-4 pt-1"
                           >
                             {section.hubLabel || "Explore all tools"} <ArrowRight className="h-3 w-3 ml-1" />
                           </Link>
+                        )}
+                        {section.note && (
+                          <p className="text-xs text-muted-foreground/50 pt-2 leading-relaxed">
+                            {section.note}
+                          </p>
                         )}
                       </div>
                     ) : (

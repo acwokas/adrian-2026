@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { SEO } from "@/components/SEO";
-import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, SlidersHorizontal, Download, Columns2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, SlidersHorizontal, Download, Columns2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
@@ -441,23 +441,35 @@ ${reflection || "(No reflection recorded)"}`;
 
       {/* Actions */}
       {!isStreaming && sections.length > 0 && (
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/20">
-          <Button variant="outline" size="sm" onClick={() => { setPhase("setup"); }}>
-            <SlidersHorizontal className="h-3.5 w-3.5 mr-1.5" />
-            Adjust inputs
-          </Button>
-          <Button variant="outline" size="sm" onClick={handleStartOver}>
-            <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-            Analyse different decision
-          </Button>
-          <div className="sm:ml-auto flex gap-2">
-            <Button variant="outline" size="sm" onClick={handleCopyAll}>
-              <Copy className="h-3.5 w-3.5 mr-1.5" />
-              Copy all
+        <div className="space-y-3 pt-4 border-t border-border/20">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button variant="outline" size="sm" onClick={() => { setPhase("setup"); }}>
+              <SlidersHorizontal className="h-3.5 w-3.5 mr-1.5" />
+              Adjust inputs
             </Button>
-            <Button variant="outline" size="sm" onClick={handleDownload}>
-              <Download className="h-3.5 w-3.5 mr-1.5" />
-              Download
+            <Button variant="outline" size="sm" onClick={handleStartOver}>
+              <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+              Analyse different decision
+            </Button>
+            <div className="sm:ml-auto flex gap-2">
+              <Button variant="outline" size="sm" onClick={handleCopyAll}>
+                <Copy className="h-3.5 w-3.5 mr-1.5" />
+                Copy all
+              </Button>
+              <Button variant="outline" size="sm" onClick={handleDownload}>
+                <Download className="h-3.5 w-3.5 mr-1.5" />
+                Download
+              </Button>
+            </div>
+          </div>
+          <div>
+            <Button variant="outline" size="sm" onClick={() => {
+              const promptTemplate = `Analyze this decision: ${formData.decision || ""}\n\nStakes: ${formData.stakes || ""}\n\nConstraints: ${formData.constraints || ""}\n\nProvide a structured analysis with paths, second-order effects, and blind spots.`;
+              navigator.clipboard.writeText(promptTemplate);
+              window.open("/tools/elevate/prompt-engineer#optimize", "_blank");
+            }}>
+              <Sparkles className="h-3.5 w-3.5 mr-1.5" />
+              Turn into reusable prompt
             </Button>
           </div>
         </div>
