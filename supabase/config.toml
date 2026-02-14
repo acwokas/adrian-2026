@@ -41,3 +41,6 @@ verify_jwt = false
 
 [functions.governance-review]
 verify_jwt = false
+
+[functions.ethical-dilemma]
+verify_jwt = false

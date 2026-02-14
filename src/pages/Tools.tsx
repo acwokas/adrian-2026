@@ -50,6 +50,7 @@ const toolSections: ToolSection[] = [
     body: "Frameworks and simulations for establishing accountability, policy boundaries, risk management, and performance discipline.",
     tools: [
       { label: "Governance Review Simulator", desc: "Rehearse defending AI decisions to boards", href: "/tools/govern/governance-review" },
+      { label: "Ethical Dilemma Simulator", desc: "Navigate competing values in AI deployment", href: "/tools/govern/ethical-dilemma" },
     ],
     hubHref: "/tools/govern",
     hubLabel: "Explore governance tools",
