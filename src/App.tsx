@@ -18,7 +18,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
-import EvaluateRoom from "./pages/EvaluateRoom";
+import EvaluateHub from "./pages/EvaluateHub";
 import DecisionSimulation from "./pages/DecisionSimulation";
 import RedTeamSimulation from "./pages/RedTeamSimulation";
 import { usePageTracking } from "./hooks/usePageTracking";
@@ -46,7 +46,7 @@ function AppRoutes() {
         <Route path="/experience" element={<Experience />} />
         <Route path="/executive-cv" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/tools/evaluate" element={<EvaluateRoom />} />
+        <Route path="/tools/evaluate" element={<EvaluateHub />} />
         <Route path="/tools/evaluate/decision" element={<DecisionSimulation />} />
         <Route path="/tools/evaluate/redteam" element={<RedTeamSimulation />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
