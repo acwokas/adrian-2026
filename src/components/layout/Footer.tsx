@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Globe } from "lucide-react";
+import { Mail, Globe, Linkedin } from "lucide-react";
 import { TrackedExternalLink, TrackedLink } from "@/components/TrackedLink";
 
 const navLinks = [
@@ -20,19 +20,7 @@ export function Footer() {
           {/* Column 1 - Brand & Description */}
           <div className="space-y-4 text-center md:text-left md:col-span-1">
             <div className="space-y-1">
-              <div className="flex items-center justify-center md:justify-start gap-2.5">
-                <span className="text-lg font-semibold text-foreground">Adrian Watkins</span>
-                <TrackedExternalLink
-                  href="https://www.linkedin.com/in/adrianwatkins"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  eventName="linkedin_footer"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={16} />
-                </TrackedExternalLink>
-              </div>
+              <span className="text-lg font-semibold text-foreground">Adrian Watkins</span>
               <p className="text-sm text-muted-foreground">
                 Creator, EDGE Framework for Applied Intelligence
               </p>
