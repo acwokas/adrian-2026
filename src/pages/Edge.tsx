@@ -195,11 +195,11 @@ export default function Edge() {
                   Define answers:
                 </p>
                 <ul className="space-y-3 pl-6 text-muted-foreground">
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Why are we embedding intelligence?</li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Where will it create measurable value?</li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Who is accountable?</li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">What decisions will it influence?</li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">How will success be measured?</li>
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Why are we embedding intelligence?</li>
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Where will it create measurable value?</li>
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Who is accountable?</li>
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">What decisions will it influence?</li>
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">How will success be measured?</li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed">
                   Without definition, adoption becomes scattered. Ownership becomes ambiguous. Decision-making becomes inconsistent.

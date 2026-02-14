@@ -74,13 +74,13 @@ export default function Speaking() {
                   Intensive sessions designed to shift thinking and unlock action. Recent engagements include:
                 </p>
                 <ul className="space-y-3 pl-6 text-muted-foreground">
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Business Model Canvas &amp; AI Strategy (Blackstorm Group, 2024–2026)
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Applied Intelligence for Portfolio Companies (Blackstorm Group)
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Strategic Planning &amp; Execution Discipline
                   </li>
                 </ul>
@@ -104,16 +104,16 @@ export default function Speaking() {
                   Speaking topics include:
                 </p>
                 <ul className="space-y-3 pl-6 text-muted-foreground">
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     The EDGE Framework: Structuring Intelligence for Capability
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     From Experimentation to Execution: Making AI Adoption Systematic
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Governance as Enabler: Building Trust Through Discipline
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Commercial Strategy in Complex Environments
                   </li>
                 </ul>
@@ -137,16 +137,16 @@ export default function Speaking() {
                   Board-level engagement focused on:
                 </p>
                 <ul className="space-y-3 pl-6 text-muted-foreground">
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Strategic direction and commercial priorities
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Investment readiness and execution risk
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     Governance and accountability frameworks
                   </li>
-                  <li className="leading-relaxed pl-2 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
                     M&amp;A integration and transformation
                   </li>
                 </ul>
