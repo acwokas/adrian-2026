@@ -32,7 +32,7 @@ export function PrivacyNotice({ className }: PrivacyNoticeProps) {
     return (
       <div className={cn("flex items-center gap-1.5 text-xs text-muted-foreground/50", className)}>
         <ShieldCheck className="h-3 w-3" />
-        <span>Private by design — nothing stored on servers</span>
+        <span>Private by design. Nothing stored on servers.</span>
       </div>
     );
   }

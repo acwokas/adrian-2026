@@ -67,7 +67,7 @@ const toolSections: ToolSection[] = [
     ],
     hubHref: "/tools/govern",
     hubLabel: "Explore governance tools",
-    note: "Governance simulators produce downloadable frameworks: Decision Ownership Maps, Risk Checklists, Escalation Matrices, and Experimentation Policies — all customised to your context.",
+    note: "Governance simulators produce downloadable frameworks: Decision Ownership Maps, Risk Checklists, Escalation Matrices, and Experimentation Policies, all customised to your context.",
   },
   {
     pillar: "ELEVATE",
@@ -87,7 +87,7 @@ export default function Tools() {
     <Layout>
       <SEO
         canonical="/tools"
-        title="EDGE Instruments — Tools for Applied Intelligence"
+        title="EDGE Tools for Applied Intelligence"
         description="Structured tools and templates aligned to each EDGE Framework pillar. Diagnostic, planning, governance, and performance instruments for practical intelligence adoption."
         keywords="EDGE tools, AI readiness assessment, intelligence diagnostic, AI governance tools, applied intelligence instruments"
       />
@@ -214,7 +214,7 @@ export default function Tools() {
                                   {tool.badge}
                                 </span>
                               )}
-                              <span className="text-muted-foreground/60 ml-1 hidden sm:inline">— {tool.desc}</span>
+                              <span className="text-muted-foreground/60 ml-1 hidden sm:inline">: {tool.desc}</span>
                             </div>
                             <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0" />
                           </Link>

@@ -41,132 +41,132 @@ const questions: Question[] = [
     id: 1, dimension: "Decision Ownership", dimensionIndex: 0,
     text: "Are AI deployment decisions clearly owned by specific individuals or roles?",
     options: [
-      { level: 1, label: "No — AI decisions are made ad-hoc by whoever is implementing" },
-      { level: 2, label: "Somewhat — ownership is informal and varies by project" },
-      { level: 3, label: "Yes — ownership is documented but not always followed" },
-      { level: 4, label: "Yes — clear ownership with documented approval processes" },
-      { level: 5, label: "Yes — ownership includes accountability metrics and review" },
+      { level: 1, label: "No: AI decisions are made ad-hoc by whoever is implementing" },
+      { level: 2, label: "Somewhat: ownership is informal and varies by project" },
+      { level: 3, label: "Yes: ownership is documented but not always followed" },
+      { level: 4, label: "Yes: clear ownership with documented approval processes" },
+      { level: 5, label: "Yes: ownership includes accountability metrics and review" },
     ],
   },
   {
     id: 2, dimension: "Decision Ownership", dimensionIndex: 0,
     text: "Is there a documented process for who approves AI deployments?",
     options: [
-      { level: 1, label: "No — approvals are informal or do not exist" },
-      { level: 2, label: "Partial — some projects require approval, others do not" },
-      { level: 3, label: "Yes — documented but approval criteria are unclear" },
-      { level: 4, label: "Yes — clear approval authority and criteria" },
-      { level: 5, label: "Yes — tiered approval based on risk with audit trail" },
+      { level: 1, label: "No: approvals are informal or do not exist" },
+      { level: 2, label: "Partial: some projects require approval, others do not" },
+      { level: 3, label: "Yes: documented but approval criteria are unclear" },
+      { level: 4, label: "Yes: clear approval authority and criteria" },
+      { level: 5, label: "Yes: tiered approval based on risk with audit trail" },
     ],
   },
   {
     id: 3, dimension: "Risk Management", dimensionIndex: 1,
     text: "Are potential AI risks systematically identified before deployment?",
     options: [
-      { level: 1, label: "No — risks are addressed reactively when problems occur" },
-      { level: 2, label: "Sometimes — risks considered informally by teams" },
-      { level: 3, label: "Yes — risk assessment exists but not consistently applied" },
-      { level: 4, label: "Yes — structured risk assessment for all AI projects" },
-      { level: 5, label: "Yes — continuous risk monitoring with quantified metrics" },
+      { level: 1, label: "No: risks are addressed reactively when problems occur" },
+      { level: 2, label: "Sometimes: risks considered informally by teams" },
+      { level: 3, label: "Yes: risk assessment exists but not consistently applied" },
+      { level: 4, label: "Yes: structured risk assessment for all AI projects" },
+      { level: 5, label: "Yes: continuous risk monitoring with quantified metrics" },
     ],
   },
   {
     id: 4, dimension: "Risk Management", dimensionIndex: 1,
     text: "Do you have documented risk mitigation plans for AI deployments?",
     options: [
-      { level: 1, label: "No — we handle issues as they arise" },
-      { level: 2, label: "Informal — teams have their own approaches" },
-      { level: 3, label: "Partial — mitigation plans exist but are not comprehensive" },
-      { level: 4, label: "Yes — documented mitigation for known risks" },
-      { level: 5, label: "Yes — living mitigation plans updated based on monitoring" },
+      { level: 1, label: "No: we handle issues as they arise" },
+      { level: 2, label: "Informal: teams have their own approaches" },
+      { level: 3, label: "Partial: mitigation plans exist but are not comprehensive" },
+      { level: 4, label: "Yes: documented mitigation for known risks" },
+      { level: 5, label: "Yes: living mitigation plans updated based on monitoring" },
     ],
   },
   {
     id: 5, dimension: "Risk Management", dimensionIndex: 1,
     text: "Is there a process for escalating AI-related risks?",
     options: [
-      { level: 1, label: "No — unclear who to escalate to" },
-      { level: 2, label: "Informal — escalation happens through normal channels" },
-      { level: 3, label: "Defined — escalation path exists but rarely used" },
-      { level: 4, label: "Active — clear escalation with defined triggers" },
-      { level: 5, label: "Proactive — risk escalation happens before incidents" },
+      { level: 1, label: "No: unclear who to escalate to" },
+      { level: 2, label: "Informal: escalation happens through normal channels" },
+      { level: 3, label: "Defined: escalation path exists but rarely used" },
+      { level: 4, label: "Active: clear escalation with defined triggers" },
+      { level: 5, label: "Proactive: risk escalation happens before incidents" },
     ],
   },
   {
     id: 6, dimension: "Performance Oversight", dimensionIndex: 2,
     text: "Are AI outputs reviewed by humans?",
     options: [
-      { level: 1, label: "Rarely — AI runs autonomously without review" },
-      { level: 2, label: "Ad-hoc — review happens when someone notices issues" },
-      { level: 3, label: "Sometimes — review processes exist but inconsistently applied" },
-      { level: 4, label: "Regularly — scheduled review on defined cadence" },
-      { level: 5, label: "Continuous — real-time monitoring with automated alerts" },
+      { level: 1, label: "Rarely: AI runs autonomously without review" },
+      { level: 2, label: "Ad-hoc: review happens when someone notices issues" },
+      { level: 3, label: "Sometimes: review processes exist but inconsistently applied" },
+      { level: 4, label: "Regularly: scheduled review on defined cadence" },
+      { level: 5, label: "Continuous: real-time monitoring with automated alerts" },
     ],
   },
   {
     id: 7, dimension: "Performance Oversight", dimensionIndex: 2,
     text: "Do you track performance metrics for AI systems?",
     options: [
-      { level: 1, label: "No — we do not measure AI performance systematically" },
-      { level: 2, label: "Basic — we track some operational metrics" },
-      { level: 3, label: "Yes — metrics defined but not consistently monitored" },
-      { level: 4, label: "Yes — active monitoring with dashboards" },
-      { level: 5, label: "Yes — metrics tied to business outcomes with targets" },
+      { level: 1, label: "No: we do not measure AI performance systematically" },
+      { level: 2, label: "Basic: we track some operational metrics" },
+      { level: 3, label: "Yes: metrics defined but not consistently monitored" },
+      { level: 4, label: "Yes: active monitoring with dashboards" },
+      { level: 5, label: "Yes: metrics tied to business outcomes with targets" },
     ],
   },
   {
     id: 8, dimension: "Performance Oversight", dimensionIndex: 2,
     text: "Is there accountability for ongoing AI performance?",
     options: [
-      { level: 1, label: "No — unclear who is responsible after deployment" },
-      { level: 2, label: "Informal — teams monitor their own implementations" },
-      { level: 3, label: "Assigned — someone owns it but accountability is loose" },
-      { level: 4, label: "Clear — defined ownership with regular reporting" },
-      { level: 5, label: "Measured — performance accountability with consequences" },
+      { level: 1, label: "No: unclear who is responsible after deployment" },
+      { level: 2, label: "Informal: teams monitor their own implementations" },
+      { level: 3, label: "Assigned: someone owns it but accountability is loose" },
+      { level: 4, label: "Clear: defined ownership with regular reporting" },
+      { level: 5, label: "Measured: performance accountability with consequences" },
     ],
   },
   {
     id: 9, dimension: "Ethical Boundaries", dimensionIndex: 3,
     text: "Are ethical principles for AI use documented?",
     options: [
-      { level: 1, label: "No — ethics handled case-by-case" },
-      { level: 2, label: "Informal — shared understanding but not written" },
-      { level: 3, label: "Documented — principles exist but not operationalised" },
-      { level: 4, label: "Active — principles guide decisions with examples" },
-      { level: 5, label: "Embedded — principles integrated into all processes" },
+      { level: 1, label: "No: ethics handled case-by-case" },
+      { level: 2, label: "Informal: shared understanding but not written" },
+      { level: 3, label: "Documented: principles exist but not operationalised" },
+      { level: 4, label: "Active: principles guide decisions with examples" },
+      { level: 5, label: "Embedded: principles integrated into all processes" },
     ],
   },
   {
     id: 10, dimension: "Ethical Boundaries", dimensionIndex: 3,
     text: "Is there a process for raising ethical concerns about AI?",
     options: [
-      { level: 1, label: "No — unclear how to raise concerns" },
-      { level: 2, label: "Informal — concerns raised through normal channels" },
-      { level: 3, label: "Exists — process documented but rarely used" },
-      { level: 4, label: "Active — clear process with responsive review" },
-      { level: 5, label: "Proactive — regular ethical reviews before issues arise" },
+      { level: 1, label: "No: unclear how to raise concerns" },
+      { level: 2, label: "Informal: concerns raised through normal channels" },
+      { level: 3, label: "Exists: process documented but rarely used" },
+      { level: 4, label: "Active: clear process with responsive review" },
+      { level: 5, label: "Proactive: regular ethical reviews before issues arise" },
     ],
   },
   {
     id: 11, dimension: "Accountability Structures", dimensionIndex: 4,
     text: "Is it clear who is accountable when AI causes harm or errors?",
     options: [
-      { level: 1, label: "No — accountability is unclear or avoided" },
-      { level: 2, label: "Varies — depends on the situation" },
-      { level: 3, label: "Defined — roles exist but responsibility is diffuse" },
-      { level: 4, label: "Clear — specific accountability with investigation process" },
-      { level: 5, label: "Comprehensive — accountability with remediation and learning" },
+      { level: 1, label: "No: accountability is unclear or avoided" },
+      { level: 2, label: "Varies: depends on the situation" },
+      { level: 3, label: "Defined: roles exist but responsibility is diffuse" },
+      { level: 4, label: "Clear: specific accountability with investigation process" },
+      { level: 5, label: "Comprehensive: accountability with remediation and learning" },
     ],
   },
   {
     id: 12, dimension: "Accountability Structures", dimensionIndex: 4,
     text: "Are governance processes for AI documented and accessible?",
     options: [
-      { level: 1, label: "No — processes are informal or do not exist" },
-      { level: 2, label: "Partial — some documentation exists in scattered places" },
-      { level: 3, label: "Documented — processes exist but hard to find or follow" },
-      { level: 4, label: "Accessible — clear documentation that teams reference" },
-      { level: 5, label: "Living — documentation updated based on learnings" },
+      { level: 1, label: "No: processes are informal or do not exist" },
+      { level: 2, label: "Partial: some documentation exists in scattered places" },
+      { level: 3, label: "Documented: processes exist but hard to find or follow" },
+      { level: 4, label: "Accessible: clear documentation that teams reference" },
+      { level: 5, label: "Living: documentation updated based on learnings" },
     ],
   },
 ];
@@ -288,11 +288,11 @@ export default function MaturityAssessment() {
       `Date: ${new Date().toLocaleDateString("en-GB")}`,
       "",
       `Overall Score: ${overallScore} / 5.0`,
-      `Maturity Level: Level ${overallLevel} — ${maturityLevels[overallLevel].label}`,
+      `Maturity Level: Level ${overallLevel}: ${maturityLevels[overallLevel].label}`,
       `${maturityLevels[overallLevel].description}`,
       "",
       "DIMENSION BREAKDOWN",
-      ...dimensions.map((d, i) => `  ${d}: ${dimensionScores[i]} / 5.0 (Level ${getLevel(dimensionScores[i])} — ${maturityLevels[getLevel(dimensionScores[i])].label})`),
+      ...dimensions.map((d, i) => `  ${d}: ${dimensionScores[i]} / 5.0 (Level ${getLevel(dimensionScores[i])}: ${maturityLevels[getLevel(dimensionScores[i])].label})`),
       "",
       "WEAKEST AREA",
       `  ${dimensions[lowestDimIndex]} (${dimensionScores[lowestDimIndex]} / 5.0)`,
@@ -302,7 +302,7 @@ export default function MaturityAssessment() {
       ...activeSteps.map((s) => `  □ ${s}`),
       "",
       "QUESTION RESPONSES",
-      ...questions.map((q) => `  Q${q.id}. ${q.text}\n     Answer: Level ${answers[q.id] ?? "Skipped"} — ${q.options.find((o) => o.level === answers[q.id])?.label ?? "Skipped"}`),
+      ...questions.map((q) => `  Q${q.id}. ${q.text}\n     Answer: Level ${answers[q.id] ?? "Skipped"}: ${q.options.find((o) => o.level === answers[q.id])?.label ?? "Skipped"}`),
     ];
     const blob = new Blob([lines.join("\n")], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -378,7 +378,7 @@ export default function MaturityAssessment() {
                       return (
                         <li key={d} className="text-sm text-muted-foreground flex items-start gap-3 pl-4">
                           <span className="text-accent/60 font-medium shrink-0">{i + 1}.</span>
-                          <span><span className="font-medium text-foreground/80">{d}</span> — {descs[i]}</span>
+                          <span><span className="font-medium text-foreground/80">{d}</span>: {descs[i]}</span>
                         </li>
                       );
                     })}
@@ -512,7 +512,7 @@ export default function MaturityAssessment() {
                     <p className="text-sm text-muted-foreground">out of 5.0</p>
                   </div>
                   <Badge variant="outline" className="text-sm px-4 py-1 font-medium">
-                    Level {overallLevel} — {maturityLevels[overallLevel].label}
+                    Level {overallLevel}: {maturityLevels[overallLevel].label}
                   </Badge>
                   <p className="text-sm text-muted-foreground leading-relaxed max-w-[500px] mx-auto">
                     {maturityLevels[overallLevel].description}
@@ -539,7 +539,7 @@ export default function MaturityAssessment() {
                             />
                           </div>
                           <p className="text-xs text-muted-foreground/50">
-                            Level {lvl} — {maturityLevels[lvl].label}
+                            Level {lvl}: {maturityLevels[lvl].label}
                           </p>
                         </div>
                       );
@@ -570,14 +570,14 @@ export default function MaturityAssessment() {
                     <div className="space-y-2">
                       <p className="text-xs uppercase tracking-widest text-muted-foreground/50">Quick wins</p>
                       <p className="text-sm text-muted-foreground">
-                        These dimensions are partially developed — easiest to improve:
+                        These dimensions are partially developed. Easiest to improve:
                       </p>
                       <ul className="space-y-1.5">
                         {dimensions.map((d, i) =>
                           dimensionScores[i] >= 2 && dimensionScores[i] < 3 ? (
                             <li key={d} className="text-sm text-muted-foreground flex items-start gap-2 pl-4">
                               <span className="w-1 h-1 rounded-full bg-yellow-400 shrink-0 mt-2" />
-                              <span><span className="font-medium text-foreground/80">{d}</span> — {dimensionScores[i]} / 5.0</span>
+                              <span><span className="font-medium text-foreground/80">{d}</span>: {dimensionScores[i]} / 5.0</span>
                             </li>
                           ) : null
                         )}

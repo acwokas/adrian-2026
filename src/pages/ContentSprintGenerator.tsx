@@ -486,7 +486,7 @@ export default function ContentSprintGenerator() {
           .meta { color: #666; font-size: 12px; margin-bottom: 24px; }
         </style>
       </head><body>
-        <h1>${productName} — ${duration}-Day Content Sprint</h1>
+        <h1>${productName}: ${duration}-Day Content Sprint</h1>
         <p class="meta">Generated ${new Date(generatedAt).toLocaleDateString()} via EDGE Define</p>
         ${sprintText.replace(/## /g, "<h2>").replace(/### /g, "<h3>").replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n- /g, "\n<br>• ").replace(/\n/g, "<br>")}
       </body></html>

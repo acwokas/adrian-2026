@@ -20,7 +20,7 @@ const roomConfig: SimulationRoomConfig = {
       id: "org_context",
       label: "Organisation context",
       type: "textarea",
-      placeholder: "Briefly describe your organisation — industry, size, and what prompted interest in AI/intelligence adoption.",
+      placeholder: "Briefly describe your organisation: industry, size, and what prompted interest in AI/intelligence adoption.",
       tooltip: "General context helps calibrate the assessment. No confidential details needed.",
       example: "Mid-size financial services firm (~2,000 staff) in Southeast Asia. Board has mandated an AI strategy but no central function exists yet.",
       maxLength: 500,
@@ -62,7 +62,7 @@ const roomConfig: SimulationRoomConfig = {
   examples: [
     {
       id: "finserv",
-      title: "Financial Services — Early Stage",
+      title: "Financial Services: Early Stage",
       description: "A mid-size bank exploring AI with no central function.",
       values: {
         org_context: "Mid-size financial services firm (~2,000 staff) in Southeast Asia. Board has mandated an AI strategy but no central function exists yet.",
@@ -73,7 +73,7 @@ const roomConfig: SimulationRoomConfig = {
     },
     {
       id: "manufacturing",
-      title: "Manufacturing — Scaling Pilots",
+      title: "Manufacturing: Scaling Pilots",
       description: "A manufacturer with successful pilots struggling to scale.",
       values: {
         org_context: "Large manufacturing company (8,000 employees) with operations across APAC. Have been experimenting with predictive maintenance and quality control AI.",
@@ -136,7 +136,7 @@ export default function EvaluatePage() {
     <>
       <SEO
         canonical="/tools/evaluate"
-        title="AI Readiness Diagnostic — EDGE Evaluate"
+        title="AI Readiness Diagnostic: EDGE Evaluate"
         description="Assess your organisation's readiness to adopt applied intelligence. Identify structural gaps in strategy, data, governance, and capability."
       />
       <SimulationProvider roomId={roomConfig.id} totalSteps={roomConfig.steps.length}>

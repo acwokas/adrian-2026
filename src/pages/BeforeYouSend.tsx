@@ -48,8 +48,8 @@ const messageTypeOptions = [
 const howItWorks = [
   "Paste a message you're planning to send and describe your intended outcome.",
   "Add 2–4 audiences who might interpret it differently.",
-  "The AI analyses how each audience might read it — surfacing perception risks, assumptions, and ambiguities.",
-  "This doesn't rewrite your message — it shows interpretation gaps so you can decide what to change.",
+  "The AI analyses how each audience might read it, surfacing perception risks, assumptions, and ambiguities.",
+  "This doesn't rewrite your message. It shows interpretation gaps so you can decide what to change.",
 ];
 
 // ── Audience data ──
@@ -282,7 +282,7 @@ function BeforeYouSendContent() {
   }, [revisedMessage, formData, audiences, setPhase, setFormValue]);
 
   const handleDownload = () => {
-    const content = `# Before You Send — Analysis\n\nGenerated: ${new Date().toISOString()}\n\n## YOUR MESSAGE\n\n${formData.message}\n\n## INTENT\n\n${formData.intent}\n\n## ANALYSIS\n\n${rawText}`;
+    const content = `# Before You Send: Analysis\n\nGenerated: ${new Date().toISOString()}\n\n## YOUR MESSAGE\n\n${formData.message}\n\n## INTENT\n\n${formData.intent}\n\n## ANALYSIS\n\n${rawText}`;
     const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -309,7 +309,7 @@ function BeforeYouSendContent() {
 
         {currentStep === 0 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 1 of 2 — Your Message</p>
+            <p className="text-xs text-muted-foreground">Step 1 of 2: Your Message</p>
 
             <FormField
               config={{
@@ -363,7 +363,7 @@ function BeforeYouSendContent() {
 
         {currentStep === 1 && (
           <>
-            <p className="text-xs text-muted-foreground">Step 2 of 2 — Your Audiences</p>
+            <p className="text-xs text-muted-foreground">Step 2 of 2: Your Audiences</p>
             <p className="text-sm text-muted-foreground mb-2">Add 2–4 audiences who might interpret this differently.</p>
 
             <div className="space-y-4">
@@ -429,7 +429,7 @@ function BeforeYouSendContent() {
       {isStreaming && rawText.length === 0 && (
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">Analysing interpretations...</p>
-          <p className="text-xs text-muted-foreground/50">Considering each audience's perspective — 30–45 seconds</p>
+          <p className="text-xs text-muted-foreground/50">Considering each audience's perspective, 30-45 seconds</p>
           {[1, 2, 3].map(i => (
             <div key={i} className="border border-border/30 bg-card rounded-sm p-4 space-y-3">
               <Skeleton className="h-4 w-1/3" />

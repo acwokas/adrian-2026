@@ -13,7 +13,7 @@ export default function Speaking() {
     <Layout>
       <SEO
         canonical="/speaking"
-        title="Speaking & Workshops — Adrian Watkins"
+        title="Speaking & Workshops - Adrian Watkins"
         description="Executive workshops, keynotes, and advisory engagements on applied intelligence, commercial strategy, and building capability without dependency."
         keywords="executive workshops, AI keynote speaker, applied intelligence workshops, board advisory, commercial strategy speaker, Asia Pacific"
       />
@@ -80,7 +80,7 @@ export default function Speaking() {
                       Democratising Intelligence for a Sustainable Future
                     </p>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      Smart Living Sustainable Future 2025 — Taipei City Government, Taiwan (November 2025)
+                      Smart Living Sustainable Future 2025, Taipei City Government, Taiwan (November 2025)
                     </p>
                     <p className="text-muted-foreground/70 text-sm leading-relaxed">
                       Keynote to 150+ officials, investors, and founders on building governance into infrastructure
@@ -101,7 +101,7 @@ export default function Speaking() {
                       Business Model Canvas &amp; Marketing Workshop
                     </p>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      Launch Entrepreneurship Bootcamp 3 — National Library Board x Blackstorm Group, Singapore (1 March 2026)
+                      Launch Entrepreneurship Bootcamp 3, National Library Board x Blackstorm Group, Singapore (1 March 2026)
                     </p>
                     <p className="text-muted-foreground/70 text-sm leading-relaxed">
                       Interactive workshop for aspiring entrepreneurs and early-stage founders on structuring business ideas and go-to-market strategy

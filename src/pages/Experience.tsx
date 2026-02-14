@@ -13,7 +13,7 @@ export default function Experience() {
   return (
     <Layout>
       <SEO 
-        title="About — Adrian Watkins"
+        title="About - Adrian Watkins"
         description="Two decades of senior commercial and operational leadership across Asia Pacific. Board-level advisory, fractional executive positions, and executive decision support in AI, media, and technology sectors."
         canonical="/about"
         keywords="Adrian Watkins, commercial leadership, operational leadership, board advisory, executive decision support, Asia Pacific, AI advisory, EDGE Framework, governance"
@@ -43,7 +43,7 @@ export default function Experience() {
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    After 15 years watching organisations fragment AI adoption across Asia-Pacific — from Singapore to Jakarta to Bangkok — I kept seeing the same pattern: enthusiasm without architecture. Pilots launched. Tools trialled. Teams experiment. But few embed intelligence into decision-making with clarity and discipline.
+                    After 15 years watching organisations fragment AI adoption across Asia-Pacific, from Singapore to Jakarta to Bangkok, I kept seeing the same pattern: enthusiasm without architecture. Pilots launched. Tools trialled. Teams experiment. But few embed intelligence into decision-making with clarity and discipline.
                   </p>
                   <p>
                     The EDGE Framework emerged from that gap. It is not theory. It is the structure I wish had existed when I was navigating fragmentation, exposure, and illusion of progress across commercial leadership, advisory, and fractional roles.
@@ -270,7 +270,7 @@ export default function Experience() {
                 Working alongside founders and early-stage leadership teams at critical moments in their growth journey.
               </p>
               <p className="text-muted-foreground">
-                Startups fail predictably. Founders make the same structural mistakes — unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
+                Startups fail predictably. Founders make the same structural mistakes: unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
               </p>
               <p className="text-muted-foreground font-medium">This work focuses on:</p>
               <ul className="space-y-3 text-muted-foreground">
@@ -294,7 +294,7 @@ export default function Experience() {
                   Working alongside founders and early-stage leadership teams at critical moments in their growth journey.
                 </p>
                 <p className="text-base leading-[1.85] text-muted-foreground">
-                  Startups fail predictably. Founders make the same structural mistakes — unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
+                  Startups fail predictably. Founders make the same structural mistakes: unclear ownership, scattered tools, governance as afterthought. I work with founders who want to avoid those patterns, not repeat them.
                 </p>
                 <p className="text-base leading-[1.85] text-foreground font-medium">This work focuses on:</p>
                 <ul className="space-y-4 text-base leading-[1.85] text-muted-foreground">
