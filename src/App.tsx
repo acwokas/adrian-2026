@@ -18,6 +18,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
+import EvaluateRoom from "./pages/EvaluateRoom";
 import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
@@ -43,6 +44,7 @@ function AppRoutes() {
         <Route path="/experience" element={<Experience />} />
         <Route path="/executive-cv" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/tools/evaluate" element={<EvaluateRoom />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/login" element={<AdminLogin />} />
