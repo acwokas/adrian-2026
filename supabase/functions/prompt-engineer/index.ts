@@ -33,37 +33,40 @@ Give 3-4 suggestions for how they could modify the prompt for different situatio
 
 Be practical. The generated prompt should be immediately usable. British English spelling.`,
 
-  optimize: `You are an expert prompt engineer. The user will paste an existing prompt. Analyse it and create an optimised version.
+  optimize: `You are a prompt engineering expert. Analyse the prompt provided and optimise it for better AI results.
 
-Your output must follow this exact structure:
-
-## ANALYSIS OF ORIGINAL
-
-Rate the original on a scale of 1-10 and identify specific weaknesses. Be direct but constructive.
+Generate your response in this exact markdown structure:
 
 ## OPTIMISED PROMPT
 
-Write the complete improved prompt in a code block. Show clear improvements.
+Write the complete, improved prompt ready to copy and use. Don't just describe improvements — actually rewrite it. Make it immediately usable.
 
-## WHAT CHANGED & WHY
+## KEY IMPROVEMENTS
 
-List each change with the principle it applies:
-1. **Clarity** — Removing ambiguity
-2. **Specificity** — Adding constraints
-3. **Structure** — Using numbered steps, sections
-4. **Context** — Including relevant background
-5. **Output Format** — Specifying response structure
-6. **Examples** — Adding few-shot examples
-7. **Role/Persona** — Defining the AI's role
-8. **Constraints** — Adding guardrails
+Provide a bulleted list of 3-5 specific changes made and why each matters. Be concrete about what was changed.
 
-Use a before/after format for key changes so the user can learn from them.
+## EXPLANATION
 
-## FURTHER IMPROVEMENTS
+2-3 paragraphs explaining:
+- What was unclear or missing in the original
+- How the optimised version will get better results
+- Which prompt engineering principles were applied
 
-Suggest 2-3 additional enhancements they could make depending on their use case.
+Reference these principles where relevant:
+1. **Clarity** — Removing ambiguity, making instructions explicit
+2. **Specificity** — Adding helpful constraints (length, format, tone, audience)
+3. **Structure** — Using clear sections, numbered steps, or formatting
+4. **Context** — Including relevant background information
+5. **Output Format** — Specifying exactly how the response should be structured
+6. **Examples** — Adding examples when helpful (few-shot prompting)
+7. **Role/Persona** — Defining the AI's role when beneficial
+8. **Constraints** — Adding guardrails (what NOT to do)
 
-Be specific about what was weak and why the changes improve it. British English spelling.`,
+## OPTIONAL ENHANCEMENTS
+
+2-3 suggestions for further refinement depending on their use case.
+
+Make the optimised prompt copy-ready. Tone: Helpful, educational, specific. Explain WHY changes improve results. British English spelling.`,
 
   adapt: `You are an expert prompt engineer specialising in cross-platform prompt adaptation. The user will provide a prompt and a target platform. Rewrite the prompt to be optimised for that specific platform.
 
@@ -100,7 +103,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { mode, input, platform, context, targetPlatform } = await req.json();
+    const { mode, input, platform, context, targetPlatform, aiTool, goal, focusAreas } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -117,6 +120,9 @@ serve(async (req) => {
       if (targetPlatform && targetPlatform !== "any") userMessage += `\n\nOptimise specifically for: ${targetPlatform}`;
     } else if (mode === "optimize") {
       userMessage = `Here is my current prompt:\n\n${input}\n\nPlease analyse and optimise it.`;
+      if (aiTool) userMessage += `\n\nOptimise specifically for: ${aiTool}`;
+      if (goal) userMessage += `\n\nThe user's goal is: ${goal}. Focus on achieving this.`;
+      if (focusAreas && focusAreas.length > 0) userMessage += `\n\nPrioritise these optimisation areas: ${focusAreas.join(", ")}`;
     } else if (mode === "adapt") {
       userMessage = `Here is my prompt:\n\n${input}\n\nPlease adapt it for: ${platform}`;
     }

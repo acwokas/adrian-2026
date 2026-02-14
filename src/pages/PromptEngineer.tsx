@@ -4,7 +4,7 @@ import { SEO } from "@/components/SEO";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link, useLocation } from "react-router-dom";
@@ -53,23 +53,31 @@ const allPrinciples: { name: string; desc: string }[] = [
   { name: "Constraints", desc: "Add guardrails (what NOT to do)" },
 ];
 
+const focusAreaOptions = [
+  { id: "clarity", label: "Clarity", desc: "Make instructions clearer" },
+  { id: "specificity", label: "Specificity", desc: "Add helpful constraints" },
+  { id: "structure", label: "Structure", desc: "Improve organisation" },
+  { id: "context", label: "Context", desc: "Add relevant background" },
+  { id: "output-format", label: "Output format", desc: "Specify desired format" },
+];
+
 const placeholders: Record<Mode, string> = {
   generate: "e.g., Write a marketing email for my SaaS product targeting startup founders",
-  optimize: "Paste your existing prompt here.\n\ne.g., \"Write me a blog post about AI\" — and see how to make it 3x more effective.",
+  optimize: "Paste your existing prompt here",
   adapt: "Paste the prompt you want to adapt for a specific platform.\n\ne.g., A detailed ChatGPT prompt that you want to convert for use with MidJourney or Claude.",
 };
 
-const loadingPhases = [
-  "Analysing your request...",
-  "Applying prompt engineering principles...",
-  "Generating optimised prompt...",
-];
+const loadingPhasesMap: Record<Mode, string[]> = {
+  generate: ["Analysing your request...", "Applying prompt engineering principles...", "Generating optimised prompt..."],
+  optimize: ["Analysing your prompt...", "Identifying improvements...", "Generating optimised version..."],
+  adapt: ["Analysing prompt structure...", "Applying platform optimisations...", "Generating adapted version..."],
+};
 
 // ── Streaming helper ──
 const PROMPT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/prompt-engineer`;
 
 async function streamPrompt(
-  payload: { mode: Mode; input: string; platform?: string; context?: string; targetPlatform?: string },
+  payload: Record<string, unknown>,
   onDelta: (text: string) => void,
   onDone: () => void,
   onError: (msg: string) => void,
@@ -178,19 +186,19 @@ function SectionCard({ section, defaultOpen }: { section: Section; defaultOpen?:
 }
 
 // ── Loading with rotating phases ──
-function LoadingPhases() {
+function LoadingPhases({ phases }: { phases: string[] }) {
   const [phase, setPhase] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-      setPhase((p) => (p < loadingPhases.length - 1 ? p + 1 : p));
+      setPhase((p) => (p < phases.length - 1 ? p + 1 : p));
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [phases.length]);
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        {loadingPhases.map((msg, i) => (
+        {phases.map((msg, i) => (
           <p
             key={msg}
             className={cn(
@@ -253,6 +261,34 @@ function SendToAiMenu({ promptText }: { promptText: string }) {
   );
 }
 
+// ── Side-by-side comparison ──
+function SideBySideComparison({ original, optimised }: { original: string; optimised: string }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-4">
+      {/* Original */}
+      <div className="border border-border/20 bg-secondary/20 rounded-sm overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/20">
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Original</span>
+          <CopyBtn text={original} label="Original prompt copied" />
+        </div>
+        <div className="p-4 whitespace-pre-wrap text-sm text-muted-foreground leading-relaxed max-h-[300px] overflow-y-auto">
+          {original}
+        </div>
+      </div>
+      {/* Optimised */}
+      <div className="border border-accent/30 bg-card rounded-sm overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-accent/20 bg-accent/5">
+          <span className="text-xs font-medium text-accent uppercase tracking-wide">Optimised</span>
+          <CopyBtn text={optimised} label="Optimised prompt copied" />
+        </div>
+        <div className="p-4 whitespace-pre-wrap text-sm text-foreground/90 leading-relaxed max-h-[300px] overflow-y-auto">
+          {optimised}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main page ──
 export default function PromptEngineer() {
   const location = useLocation();
@@ -265,28 +301,41 @@ export default function PromptEngineer() {
 
   const [mode, setMode] = useState<Mode>(getInitialMode);
   const [input, setInput] = useState("");
+  // Generate state
   const [generateContext, setGenerateContext] = useState("");
   const [generatePlatform, setGeneratePlatform] = useState("Any platform");
+  // Optimize state
+  const [optimizeAiTool, setOptimizeAiTool] = useState("");
+  const [optimizeGoal, setOptimizeGoal] = useState("");
+  const [optimizeFocusAreas, setOptimizeFocusAreas] = useState<string[]>([]);
+  const [originalPrompt, setOriginalPrompt] = useState("");
+  // Adapt state
   const [adaptPlatform, setAdaptPlatform] = useState<string>("ChatGPT");
+  // Shared
   const [rawText, setRawText] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const sections = parseIntoSections(rawText);
   const activePrinciples = principlesByMode[mode];
 
-  // Extract the generated prompt from sections for quick copy
-  const generatedPromptSection = sections.find(
+  // Extract prompt section
+  const promptSection = sections.find(
     (s) => s.id.includes("generated-prompt") || s.id.includes("optimised-prompt") || s.id.includes("adapted-prompt")
   );
+  // Non-prompt sections for display
+  const otherSections = sections.filter((s) => s !== promptSection);
 
   // Sync hash
   useEffect(() => {
     window.history.replaceState(null, "", `#${mode}`);
   }, [mode]);
 
-  // Keyboard shortcut: Cmd/Ctrl+Enter
+  // Keyboard shortcut
+  const canSubmit = mode === "optimize"
+    ? input.trim().length >= 30
+    : input.trim().length >= 20 && (mode !== "adapt" || !!adaptPlatform);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && canSubmit && !isStreaming && !rawText) {
@@ -298,33 +347,51 @@ export default function PromptEngineer() {
     return () => window.removeEventListener("keydown", handler);
   });
 
+  const resetModeState = () => {
+    setGenerateContext("");
+    setGeneratePlatform("Any platform");
+    setOptimizeAiTool("");
+    setOptimizeGoal("");
+    setOptimizeFocusAreas([]);
+    setOriginalPrompt("");
+  };
+
   const switchMode = (newMode: Mode, prefillInput?: string) => {
     if (isStreaming) return;
     setMode(newMode);
     setRawText("");
     setInput(prefillInput || "");
-    setGenerateContext("");
-    setGeneratePlatform("Any platform");
+    resetModeState();
   };
 
-  const canSubmit = input.trim().length >= 20 && (mode !== "adapt" || !!adaptPlatform);
+  const toggleFocusArea = (id: string) => {
+    setOptimizeFocusAreas((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
+    );
+  };
 
   const handleSubmit = useCallback(() => {
+    if (mode === "optimize") setOriginalPrompt(input);
     setRawText("");
     setIsStreaming(true);
 
     const ctrl = new AbortController();
     abortRef.current = ctrl;
 
-    const payload: Record<string, string> = { mode, input };
+    const payload: Record<string, unknown> = { mode, input };
     if (mode === "generate") {
       if (generateContext.trim()) payload.context = generateContext.trim();
       if (generatePlatform !== "Any platform") payload.targetPlatform = generatePlatform;
     }
+    if (mode === "optimize") {
+      if (optimizeAiTool.trim()) payload.aiTool = optimizeAiTool.trim();
+      if (optimizeGoal.trim()) payload.goal = optimizeGoal.trim();
+      if (optimizeFocusAreas.length > 0) payload.focusAreas = optimizeFocusAreas;
+    }
     if (mode === "adapt") payload.platform = adaptPlatform;
 
     streamPrompt(
-      payload as any,
+      payload,
       (delta) => setRawText((prev) => prev + delta),
       () => setIsStreaming(false),
       (err) => {
@@ -333,19 +400,26 @@ export default function PromptEngineer() {
       },
       ctrl.signal,
     );
-  }, [mode, input, generateContext, generatePlatform, adaptPlatform]);
+  }, [mode, input, generateContext, generatePlatform, optimizeAiTool, optimizeGoal, optimizeFocusAreas, adaptPlatform]);
 
-  const handleLoadExample = () => {
+  const handleLoadGenerateExample = () => {
     setInput("Create a blog post outline about AI adoption challenges for enterprise CTOs");
     setGenerateContext("Professional tone, focus on practical solutions, include real-world examples");
     setGeneratePlatform("Any platform");
     toast({ title: "Example loaded", description: "See how to describe what you want effectively." });
   };
 
-  // Extract raw prompt text from the generated prompt section (strip code block markers)
+  const handleLoadOptimizeExample = () => {
+    setInput("Write me a marketing email");
+    setOptimizeAiTool("ChatGPT");
+    setOptimizeGoal("Generate marketing copy for a SaaS product launch");
+    setOptimizeFocusAreas(["clarity", "specificity"]);
+    toast({ title: "Example loaded", description: "A typical vague prompt ready for optimisation." });
+  };
+
   const extractPromptText = (): string => {
-    if (!generatedPromptSection) return rawText;
-    return generatedPromptSection.content.replace(/^```[\w]*\n?/gm, "").replace(/\n?```$/gm, "").trim();
+    if (!promptSection) return rawText;
+    return promptSection.content.replace(/^```[\w]*\n?/gm, "").replace(/\n?```$/gm, "").trim();
   };
 
   const handleOptimiseFurther = () => {
@@ -378,8 +452,8 @@ export default function PromptEngineer() {
     abortRef.current?.abort();
     setRawText("");
     setInput("");
-    setGenerateContext("");
-    setGeneratePlatform("Any platform");
+    setOriginalPrompt("");
+    resetModeState();
   };
 
   const buttonLabels: Record<Mode, string> = {
@@ -387,6 +461,8 @@ export default function PromptEngineer() {
     optimize: "Optimise prompt",
     adapt: "Adapt prompt",
   };
+
+  const minChars = mode === "optimize" ? 30 : 20;
 
   return (
     <Layout>
@@ -456,7 +532,6 @@ export default function PromptEngineer() {
                 ))}
               </div>
 
-              {/* Tab description */}
               <p className="text-xs text-muted-foreground">
                 {modes.find((m) => m.id === mode)?.desc}
               </p>
@@ -468,20 +543,24 @@ export default function PromptEngineer() {
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
                       {mode === "generate" && "What do you want the AI to do?"}
-                      {mode === "optimize" && "Paste your existing prompt"}
+                      {mode === "optimize" && "Your prompt"}
                       {mode === "adapt" && "Paste the prompt to adapt"}
                     </label>
                     <Textarea
-                      ref={textareaRef}
                       value={input}
-                      onChange={(e) => setInput(e.target.value)}
+                      onChange={(e) => {
+                        if (mode === "optimize" && e.target.value.length > 10000) return;
+                        setInput(e.target.value);
+                      }}
                       placeholder={placeholders[mode]}
                       className="min-h-[140px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground/50">
-                      <span>{input.length} characters</span>
                       <span>
-                        Minimum 20 characters
+                        {input.length}{mode === "optimize" ? " / 10,000" : ""} characters
+                      </span>
+                      <span>
+                        Minimum {minChars} characters
                         {!isStreaming && <span className="hidden sm:inline"> · ⌘/Ctrl+Enter to submit</span>}
                       </span>
                     </div>
@@ -490,16 +569,14 @@ export default function PromptEngineer() {
                   {/* ── Generate mode extras ── */}
                   {mode === "generate" && (
                     <>
-                      {/* Example button */}
                       <button
-                        onClick={handleLoadExample}
+                        onClick={handleLoadGenerateExample}
                         className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline underline-offset-4"
                       >
                         <Lightbulb className="h-3.5 w-3.5" />
                         See example
                       </button>
 
-                      {/* Collapsible context */}
                       <Collapsible>
                         <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
                           <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
@@ -507,7 +584,6 @@ export default function PromptEngineer() {
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                           <div className="space-y-4 pt-4">
-                            {/* Additional details */}
                             <div className="space-y-1.5">
                               <label className="text-sm font-medium">Additional details</label>
                               <Textarea
@@ -516,12 +592,8 @@ export default function PromptEngineer() {
                                 placeholder="e.g., Professional tone, focus on ROI, include social proof"
                                 className="min-h-[80px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
                               />
-                              <p className="text-xs text-muted-foreground/50">
-                                The more context you provide, the better the prompt
-                              </p>
+                              <p className="text-xs text-muted-foreground/50">The more context you provide, the better the prompt</p>
                             </div>
-
-                            {/* Target AI platform */}
                             <div className="space-y-1.5">
                               <label className="text-sm font-medium">Target AI platform</label>
                               <div className="flex flex-wrap gap-2">
@@ -540,9 +612,84 @@ export default function PromptEngineer() {
                                   </button>
                                 ))}
                               </div>
-                              <p className="text-xs text-muted-foreground/50">
-                                Optimises for platform-specific best practices
-                              </p>
+                              <p className="text-xs text-muted-foreground/50">Optimises for platform-specific best practices</p>
+                            </div>
+                          </div>
+                        </CollapsibleContent>
+                      </Collapsible>
+                    </>
+                  )}
+
+                  {/* ── Optimize mode extras ── */}
+                  {mode === "optimize" && (
+                    <>
+                      <button
+                        onClick={handleLoadOptimizeExample}
+                        className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline underline-offset-4"
+                      >
+                        <Lightbulb className="h-3.5 w-3.5" />
+                        See example
+                      </button>
+
+                      <Collapsible>
+                        <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                          <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
+                          Add context
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="space-y-4 pt-4">
+                            {/* AI tool */}
+                            <div className="space-y-1.5">
+                              <label className="text-sm font-medium">What AI tool will you use this with?</label>
+                              <Input
+                                value={optimizeAiTool}
+                                onChange={(e) => setOptimizeAiTool(e.target.value)}
+                                placeholder="e.g., ChatGPT, Claude, Gemini"
+                                className="bg-secondary/30 border-border/40 focus-visible:ring-accent"
+                              />
+                              <p className="text-xs text-muted-foreground/50">Helps tailor optimisation to platform best practices</p>
+                            </div>
+
+                            {/* Goal */}
+                            <div className="space-y-1.5">
+                              <label className="text-sm font-medium">What's your goal?</label>
+                              <Textarea
+                                value={optimizeGoal}
+                                onChange={(e) => setOptimizeGoal(e.target.value)}
+                                placeholder="e.g., Generate marketing copy, analyse data, create strategy"
+                                className="min-h-[70px] bg-secondary/30 border-border/40 focus-visible:ring-accent"
+                              />
+                              <p className="text-xs text-muted-foreground/50">Knowing your objective helps optimise for results</p>
+                            </div>
+
+                            {/* Focus areas */}
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium">Focus areas</label>
+                              <div className="space-y-2">
+                                {focusAreaOptions.map((area) => (
+                                  <label
+                                    key={area.id}
+                                    className="flex items-start gap-2.5 cursor-pointer group"
+                                  >
+                                    <div
+                                      className={cn(
+                                        "mt-0.5 w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 transition-colors",
+                                        optimizeFocusAreas.includes(area.id)
+                                          ? "bg-accent border-accent text-accent-foreground"
+                                          : "border-border/60 group-hover:border-muted-foreground"
+                                      )}
+                                      onClick={() => toggleFocusArea(area.id)}
+                                    >
+                                      {optimizeFocusAreas.includes(area.id) && <Check className="h-3 w-3" />}
+                                    </div>
+                                    <div onClick={() => toggleFocusArea(area.id)}>
+                                      <span className="text-sm text-foreground">{area.label}</span>
+                                      <span className="text-xs text-muted-foreground/60 ml-1.5">— {area.desc}</span>
+                                    </div>
+                                  </label>
+                                ))}
+                              </div>
+                              <p className="text-xs text-muted-foreground/50">Leave blank to optimise all aspects</p>
                             </div>
                           </div>
                         </CollapsibleContent>
@@ -582,7 +729,7 @@ export default function PromptEngineer() {
               )}
 
               {/* ═══ LOADING ═══ */}
-              {isStreaming && rawText.length === 0 && <LoadingPhases />}
+              {isStreaming && rawText.length === 0 && <LoadingPhases phases={loadingPhasesMap[mode]} />}
 
               {/* Streaming pre-sections */}
               {isStreaming && rawText.length > 0 && sections.length === 0 && (
@@ -595,8 +742,30 @@ export default function PromptEngineer() {
               )}
 
               {/* ═══ RESULTS ═══ */}
-              {sections.map((s, i) => (
-                <SectionCard key={s.id} section={s} defaultOpen={i === 0} />
+
+              {/* Side-by-side for optimize mode */}
+              {mode === "optimize" && promptSection && originalPrompt && !isStreaming && (
+                <SideBySideComparison
+                  original={originalPrompt}
+                  optimised={extractPromptText()}
+                />
+              )}
+
+              {/* Prompt section for non-optimize modes */}
+              {mode !== "optimize" && promptSection && (
+                <SectionCard section={promptSection} defaultOpen />
+              )}
+
+              {/* Other sections */}
+              {otherSections.map((s, i) => (
+                <SectionCard
+                  key={s.id}
+                  section={s}
+                  defaultOpen={
+                    // For optimize: KEY IMPROVEMENTS expanded by default
+                    mode === "optimize" ? s.id.includes("key-improvement") : i === 0 && !promptSection
+                  }
+                />
               ))}
 
               {/* Streaming indicator */}
@@ -610,25 +779,23 @@ export default function PromptEngineer() {
               {/* ═══ RESULT ACTIONS ═══ */}
               {!isStreaming && sections.length > 0 && (
                 <div className="space-y-5 pt-4 border-t border-border/20">
-                  {/* Primary actions */}
+                  {/* Primary */}
                   <div className="flex flex-wrap gap-3">
-                    {generatedPromptSection && (
-                      <Button
-                        variant="hero"
-                        size="sm"
-                        onClick={async () => {
-                          await navigator.clipboard.writeText(extractPromptText());
-                          toast({ title: "Prompt copied!", description: "Ready to paste into your AI tool." });
-                        }}
-                      >
-                        <Copy className="h-3.5 w-3.5 mr-1.5" />
-                        Copy prompt
-                      </Button>
-                    )}
+                    <Button
+                      variant="hero"
+                      size="sm"
+                      onClick={async () => {
+                        await navigator.clipboard.writeText(extractPromptText());
+                        toast({ title: "Prompt copied!", description: "Ready to paste into your AI tool." });
+                      }}
+                    >
+                      <Copy className="h-3.5 w-3.5 mr-1.5" />
+                      Copy {mode === "optimize" ? "optimised" : ""} prompt
+                    </Button>
                     <SendToAiMenu promptText={extractPromptText()} />
                   </div>
 
-                  {/* Secondary actions */}
+                  {/* Secondary */}
                   <div className="flex flex-wrap gap-3">
                     <Button variant="outline" size="sm" onClick={handleCopyAll}>
                       <Copy className="h-3.5 w-3.5 mr-1.5" />
@@ -640,12 +807,26 @@ export default function PromptEngineer() {
                     </Button>
                     <Button variant="ghost" size="sm" onClick={handleStartOver}>
                       <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-                      Generate another
+                      {mode === "optimize" ? "Optimise different prompt" : "Start over"}
                     </Button>
                   </div>
 
-                  {/* Cross-mode actions */}
+                  {/* Cross-mode */}
                   <div className="flex flex-wrap gap-3 pt-1">
+                    {mode === "optimize" && (
+                      <Button
+                        variant="ghost" size="sm"
+                        onClick={() => {
+                          setOriginalPrompt(extractPromptText());
+                          setInput(extractPromptText());
+                          setRawText("");
+                        }}
+                        className="text-muted-foreground"
+                      >
+                        <Target className="h-3.5 w-3.5 mr-1.5" />
+                        Optimise further
+                      </Button>
+                    )}
                     {mode !== "optimize" && (
                       <Button variant="ghost" size="sm" onClick={handleOptimiseFurther} className="text-muted-foreground">
                         <Target className="h-3.5 w-3.5 mr-1.5" />
