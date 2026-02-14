@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { motion } from "framer-motion";
+import { Check, ArrowRight } from "lucide-react";
 
 export default function Speaking() {
   const { trackBookingClick } = useAnalytics();
@@ -53,27 +54,76 @@ export default function Speaking() {
         </div>
       </section>
 
-      {/* Recent Keynotes */}
+      {/* Recent & Upcoming Engagements */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[900px] mx-auto">
           <AnimatedSection>
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl">Recent Keynotes</h2>
-              <div className="space-y-5 max-w-[720px]">
-                <p className="text-muted-foreground leading-relaxed">
-                  Recent speaking engagements include:
+            <div className="space-y-8">
+              <div className="space-y-3">
+                <h2 className="text-2xl md:text-3xl">Recent &amp; Upcoming Engagements</h2>
+                <p className="text-muted-foreground leading-relaxed max-w-[720px]">
+                  Keynotes, workshops, and interactive sessions across Asia-Pacific
                 </p>
-                <div className="space-y-2 pl-6 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
-                  <p className="text-foreground font-medium leading-relaxed pl-2">
-                    Democratising Intelligence for a Sustainable Future
-                  </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed pl-2">
-                    Taipei City Government, Smart Living Sustainable Future 2025, Taiwan (November 2025)
-                  </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed pl-2">
-                    Keynote address to 130+ officials, investors and founders on building governance into infrastructure and making intelligence accessible beyond compute access.
-                  </p>
+              </div>
+
+              <div className="max-w-[720px] space-y-6">
+                {/* Recent label */}
+                <p className="text-accent text-xs font-medium tracking-widest uppercase">Recent</p>
+
+                {/* Recent engagement */}
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <Check className="h-4 w-4 text-accent" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-foreground font-medium leading-relaxed">
+                      Democratising Intelligence for a Sustainable Future
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Smart Living Sustainable Future 2025 — Taipei City Government, Taiwan (November 2025)
+                    </p>
+                    <p className="text-muted-foreground/70 text-sm leading-relaxed">
+                      Keynote to 150+ officials, investors, and founders on building governance into infrastructure
+                    </p>
+                  </div>
                 </div>
+
+                {/* Upcoming label */}
+                <p className="text-accent text-xs font-medium tracking-widest uppercase pt-4">Upcoming</p>
+
+                {/* Upcoming engagement */}
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <ArrowRight className="h-4 w-4 text-accent" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-foreground font-medium leading-relaxed">
+                      Business Model Canvas &amp; Marketing Workshop
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Launch Entrepreneurship Bootcamp 3 — National Library Board x Blackstorm Group, Singapore (1 March 2026)
+                    </p>
+                    <p className="text-muted-foreground/70 text-sm leading-relaxed">
+                      Interactive workshop for aspiring entrepreneurs and early-stage founders on structuring business ideas and go-to-market strategy
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="max-w-[720px] pt-4 space-y-5">
+                <p className="text-muted-foreground leading-relaxed">
+                  Available for keynotes, executive workshops, and interactive sessions on applied intelligence, AI governance, commercial strategy, and building structured capability.
+                </p>
+                <Button
+                  variant="hero"
+                  size="lg"
+                  asChild
+                  onClick={() => trackBookingClick('speaking-engagements-cta')}
+                >
+                  <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
+                    Discuss a speaking engagement →
+                  </a>
+                </Button>
               </div>
             </div>
           </AnimatedSection>
