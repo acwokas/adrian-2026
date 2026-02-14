@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronDown, ShieldCheck, Scale } from "lucide-react";
 
 const tools = [
   {
@@ -21,6 +21,20 @@ const tools = [
       "8–12 questions across 5 governance areas",
       "Custom governance frameworks generated",
       "Downloadable templates & checklists",
+    ],
+  },
+  {
+    title: "Ethical Dilemma Simulator",
+    description:
+      "Navigate ethical tensions in AI deployment. Practice making decisions when values compete and stakeholders disagree.",
+    badge: "Scenario-based decisions",
+    icon: <Scale className="h-5 w-5 text-accent" />,
+    href: "/tools/govern/ethical-dilemma",
+    features: [
+      "5 structured decision points",
+      "Stakeholder reaction analysis",
+      "Multiple ethical framework comparison",
+      "Downloadable governance policies",
     ],
   },
 ];
