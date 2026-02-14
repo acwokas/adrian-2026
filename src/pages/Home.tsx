@@ -11,24 +11,24 @@ import adrianPortrait from "@/assets/adrian-portrait-optimized.webp";
 
 const serviceCards = [
   {
-    title: "Advisory",
-    description: "Strategic guidance on critical decisions, direction, and priorities.",
-    anchor: "advisory",
+    title: "EDGE Diagnostic",
+    description: "Strategic assessment of intelligence readiness, fragmentation, and opportunity. Typically a 2-4 week engagement resulting in clear recommendations and roadmap.",
+    link: "/edge-framework",
   },
   {
     title: "Fractional Leadership",
-    description: "Senior operational leadership without the commitment of a full-time hire.",
-    anchor: "fractional",
+    description: "Senior operational leadership without the commitment of a full-time hire. I work directly with CEOs and executive teams as a senior peer.",
+    link: "/experience",
   },
   {
-    title: "Mentoring and Capability Building",
-    description: "Developing leaders and teams to think and execute with greater clarity.",
-    anchor: "mentoring",
+    title: "Advisory & Board Support",
+    description: "Strategic guidance on critical decisions, direction, and priorities. Board-level engagement focused on commercial outcomes and governance.",
+    link: "/experience",
   },
   {
-    title: "Workshops and Bootcamps",
-    description: "Intensive sessions designed to shift thinking and unlock action.",
-    anchor: "workshops",
+    title: "Workshops & Capability Building",
+    description: "Intensive sessions designed to shift thinking and unlock action. Delivered to leadership teams, boards, and portfolio companies.",
+    link: "/speaking",
   },
 ];
 
@@ -276,7 +276,7 @@ export default function Home() {
                 {serviceCards.map((card) => (
                   <StaggeredItem key={card.title}>
                     <Link
-                      to={`/what-i-do#${card.anchor}`}
+                      to={card.link}
                       onClick={() => handleServiceCardClick(card.title)}
                       className="group block p-6 md:p-8 lg:p-10 bg-card border border-border/30 hover:border-accent/40 transition-all duration-300 h-full"
                     >
