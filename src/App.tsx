@@ -38,6 +38,7 @@ import { usePageTracking } from "./hooks/usePageTracking";
 import { GlobalClickTracker } from "./components/GlobalClickTracker";
 import { SessionRecorder } from "./components/SessionRecorder";
 import { HashRedirectHandler } from "./components/HashRedirectHandler";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ function AppRoutes() {
   
   return (
     <>
+      <ScrollToTop />
       <HashRedirectHandler />
       <GlobalClickTracker />
       <SessionRecorder />
