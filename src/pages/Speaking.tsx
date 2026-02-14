@@ -36,6 +36,33 @@ export default function Speaking() {
         </div>
       </section>
 
+      {/* Recent Keynotes */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl">Recent Keynotes</h2>
+              <div className="space-y-5 max-w-[720px]">
+                <p className="text-muted-foreground leading-relaxed">
+                  Recent speaking engagements include:
+                </p>
+                <div className="space-y-2 pl-6 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">
+                  <p className="text-foreground font-medium leading-relaxed pl-2">
+                    Democratising Intelligence for a Sustainable Future
+                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed pl-2">
+                    Taipei City Government, Smart Living Sustainable Future 2025, Taiwan (November 2025)
+                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed pl-2">
+                    Keynote address to 130+ officials, investors and founders on building governance into infrastructure and making intelligence accessible beyond compute access.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Executive Workshops */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[900px] mx-auto">
@@ -71,7 +98,7 @@ export default function Speaking() {
         <div className="container-wide max-w-[900px] mx-auto">
           <AnimatedSection>
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl">Keynotes &amp; Speaking</h2>
+              <h2 className="text-2xl md:text-3xl">Speaking Topics</h2>
               <div className="space-y-5 max-w-[720px]">
                 <p className="text-muted-foreground leading-relaxed">
                   Speaking topics include:
