@@ -213,15 +213,75 @@ export default function Edge() {
         </div>
       </section>
 
+      {/* Without Governance */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl">Without Governance, Progress Erodes</h2>
+              <div className="space-y-5 max-w-[720px]">
+                <p className="text-foreground font-medium leading-relaxed">
+                  Capability without discipline does not scale.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Govern is the stabilising discipline of the EDGE Framework. It ensures that intelligence remains responsible, accountable and sustainable.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Govern addresses oversight structures, policy boundaries, risk management, data responsibility, and performance measurement.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Governance is often misunderstood as restriction. In reality, governance enables confidence. When teams understand boundaries, they experiment responsibly. When leadership understands accountability, they invest confidently. When stakeholders see oversight, they trust outcomes.
+                </p>
+                <p className="text-foreground font-medium leading-relaxed">
+                  Governance is not bureaucracy. It is discipline.
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Without Elevation */}
+      <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
+        <div className="container-wide max-w-[900px] mx-auto">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl">Without Elevation, Capability Remains Theoretical</h2>
+              <div className="space-y-5 max-w-[720px]">
+                <p className="text-foreground font-medium leading-relaxed">
+                  Adoption is not the objective. Advantage is.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Many organisations successfully evaluate and define. Some even govern effectively. Yet they stall before intelligence becomes a differentiator.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Elevate is the stage where structured capability produces measurable edge. It is where intelligence moves from supporting activity to shaping outcomes.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Elevation is visible in faster decision cycles, improved margin discipline, stronger customer insight, reduced operational friction, more resilient strategic positioning, and greater institutional trust.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  At this stage, intelligence is embedded into workflows, not layered on top of them. When organisations reach Elevate, intelligence is no longer experimental. It becomes part of their edge.
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[800px] mx-auto text-center">
           <AnimatedSection>
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl">Interested in applying EDGE?</h2>
+              <h2 className="text-2xl md:text-3xl">Interested in Applying EDGE?</h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                The EDGE Diagnostic is the starting point — a focused engagement to assess where your organisation stands and what structured capability could look like.
+                The EDGE Framework can be applied through diagnostic assessments, executive workshops, or advisory engagements.
               </p>
-              <div className="pt-2">
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                A short conversation is often the best way to assess fit and scope.
+              </p>
+              <div className="flex flex-col items-center gap-4 pt-2">
                 <Button
                   variant="hero"
                   size="lg"
@@ -229,9 +289,15 @@ export default function Edge() {
                   onClick={() => trackBookingClick('edge-cta')}
                 >
                   <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">
-                    Book a 30-minute call
+                    Book a 30-minute clarity call
                   </a>
                 </Button>
+                <a
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Download EDGE Framework White Paper (PDF) →
+                </a>
               </div>
             </div>
           </AnimatedSection>
