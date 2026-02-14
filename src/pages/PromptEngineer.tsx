@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import {
   Sparkles, Target, Layers, ArrowRight, Copy, Check, ChevronDown,
   RotateCcw, Download, ShieldCheck, ExternalLink, Lightbulb, Send,
+  MessageSquare, Brain, Gem, Palette, Search,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -20,7 +21,7 @@ import { toast } from "@/hooks/use-toast";
 type Mode = "generate" | "optimize" | "adapt";
 
 const platformOptions = ["Any platform", "ChatGPT", "Claude", "Gemini", "MidJourney", "Perplexity"] as const;
-const adaptPlatforms = ["ChatGPT", "Claude", "Gemini", "MidJourney", "Perplexity"] as const;
+type AdaptPlatform = "ChatGPT" | "Claude" | "Gemini" | "MidJourney" | "Perplexity";
 
 const sendToAiLinks: Record<string, string> = {
   ChatGPT: "https://chatgpt.com/",
@@ -64,13 +65,126 @@ const focusAreaOptions = [
 const placeholders: Record<Mode, string> = {
   generate: "e.g., Write a marketing email for my SaaS product targeting startup founders",
   optimize: "Paste your existing prompt here",
-  adapt: "Paste the prompt you want to adapt for a specific platform.\n\ne.g., A detailed ChatGPT prompt that you want to convert for use with MidJourney or Claude.",
+  adapt: "Paste any prompt here",
 };
 
 const loadingPhasesMap: Record<Mode, string[]> = {
   generate: ["Analysing your request...", "Applying prompt engineering principles...", "Generating optimised prompt..."],
   optimize: ["Analysing your prompt...", "Identifying improvements...", "Generating optimised version..."],
-  adapt: ["Analysing prompt structure...", "Applying platform optimisations...", "Generating adapted version..."],
+  adapt: [],
+};
+
+// ── Platform card data ──
+interface PlatformCardData {
+  id: AdaptPlatform;
+  icon: React.ReactNode;
+  description: string;
+  badge: string;
+  tip: string;
+}
+
+const platformCards: PlatformCardData[] = [
+  {
+    id: "ChatGPT",
+    icon: <MessageSquare className="h-5 w-5" />,
+    description: "Structured, conversational format",
+    badge: "Most popular",
+    tip: "Works best with structured objectives and clear output requirements",
+  },
+  {
+    id: "Claude",
+    icon: <Brain className="h-5 w-5" />,
+    description: "Narrative elegance, detailed context",
+    badge: "Best for complex tasks",
+    tip: "Benefits from context and requests for detailed thinking",
+  },
+  {
+    id: "Gemini",
+    icon: <Gem className="h-5 w-5" />,
+    description: "Analytical, bullet-point format",
+    badge: "Data-focused",
+    tip: "Excels with analytical tasks and bullet-point organisation",
+  },
+  {
+    id: "MidJourney",
+    icon: <Palette className="h-5 w-5" />,
+    description: "Visual generation, photography terms",
+    badge: "Image creation",
+    tip: "Add aspect ratio (--ar 16:9) and version (--v 6) parameters",
+  },
+  {
+    id: "Perplexity",
+    icon: <Search className="h-5 w-5" />,
+    description: "Research format with citations",
+    badge: "Research & analysis",
+    tip: "Include 'cite sources' for research-heavy queries",
+  },
+];
+
+// ── Client-side adapters ──
+function adaptForChatGPT(prompt: string): string {
+  const sentences = prompt.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const objective = sentences[0] || prompt;
+  const rest = sentences.slice(1).join(" ").trim();
+
+  return `Objective: ${objective}${rest ? `\n\nApproach:\n${rest}` : ""}
+
+Expected Output:
+- Provide clear, structured response
+- Use examples when helpful
+- Format for readability`;
+}
+
+function adaptForClaude(prompt: string): string {
+  return `I need your help with the following task, and I'd like you to approach it with narrative elegance and thorough consideration:
+
+${prompt}
+
+Please structure your response with:
+- Clear introduction to your approach
+- Detailed analysis or explanation
+- Concrete examples
+- Summary of key takeaways
+
+Take your time to think through this comprehensively.`;
+}
+
+function adaptForGemini(prompt: string): string {
+  return `Task: ${prompt}
+
+Please provide:
+- Key concepts and definitions
+- Structured analysis
+- Data points or examples
+- Summary in bullet format
+
+Format your response for clarity and analytical depth.`;
+}
+
+function adaptForMidJourney(prompt: string): string {
+  const cleaned = prompt.replace(/\b(create|generate|make|design|produce|write|explain|describe how)\b/gi, "").replace(/\s{2,}/g, " ").trim();
+  return `${cleaned}, professional photography, highly detailed, cinematic lighting, vibrant colors, ultra-realistic, 8k resolution, masterpiece quality --ar 16:9 --v 6`;
+}
+
+function adaptForPerplexity(prompt: string): string {
+  return `Research query: ${prompt}
+
+Please provide a comprehensive analysis including:
+- Overview with key definitions
+- Current state of knowledge (cite sources)
+- Multiple perspectives where relevant
+- Data and statistics where available
+- Conclusion with synthesis
+
+Use British English. Cite authoritative sources throughout.`;
+}
+
+const adapters: Record<AdaptPlatform, (prompt: string) => string> = {
+  ChatGPT: adaptForChatGPT,
+  Claude: adaptForClaude,
+  Gemini: adaptForGemini,
+  MidJourney: adaptForMidJourney,
+  Perplexity: adaptForPerplexity,
 };
 
 // ── Streaming helper ──
@@ -224,7 +338,7 @@ function LoadingPhases({ phases }: { phases: string[] }) {
 }
 
 // ── Send to AI dropdown ──
-function SendToAiMenu({ promptText }: { promptText: string }) {
+function SendToAiMenu({ promptText, defaultPlatform }: { promptText: string; defaultPlatform?: string }) {
   const [open, setOpen] = useState(false);
 
   const handleSend = async (name: string, url: string) => {
@@ -233,6 +347,16 @@ function SendToAiMenu({ promptText }: { promptText: string }) {
     toast({ title: "Prompt copied!", description: `Opening ${name}...` });
     setOpen(false);
   };
+
+  // If a default platform is set, show a direct button
+  if (defaultPlatform && sendToAiLinks[defaultPlatform]) {
+    return (
+      <Button variant="outline" size="sm" onClick={() => handleSend(defaultPlatform, sendToAiLinks[defaultPlatform])}>
+        <Send className="h-3.5 w-3.5 mr-1.5" />
+        Send to {defaultPlatform}
+      </Button>
+    );
+  }
 
   return (
     <div className="relative">
@@ -262,7 +386,7 @@ function SendToAiMenu({ promptText }: { promptText: string }) {
 }
 
 // ── Side-by-side comparison ──
-function SideBySideComparison({ original, optimised }: { original: string; optimised: string }) {
+function SideBySideComparison({ original, adapted, label, badgeText }: { original: string; adapted: string; label?: string; badgeText?: string }) {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       {/* Original */}
@@ -275,15 +399,61 @@ function SideBySideComparison({ original, optimised }: { original: string; optim
           {original}
         </div>
       </div>
-      {/* Optimised */}
+      {/* Adapted/Optimised */}
       <div className="border border-accent/30 bg-card rounded-sm overflow-hidden">
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-accent/20 bg-accent/5">
-          <span className="text-xs font-medium text-accent uppercase tracking-wide">Optimised</span>
-          <CopyBtn text={optimised} label="Optimised prompt copied" />
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium text-accent uppercase tracking-wide">{label || "Optimised"}</span>
+            {badgeText && (
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+                {badgeText}
+              </span>
+            )}
+          </div>
+          <CopyBtn text={adapted} label={`${label || "Optimised"} prompt copied`} />
         </div>
         <div className="p-4 whitespace-pre-wrap text-sm text-foreground/90 leading-relaxed max-h-[300px] overflow-y-auto">
-          {optimised}
+          {adapted}
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Compare all platforms view ──
+function CompareAllPlatforms({ original }: { original: string }) {
+  const [activeTab, setActiveTab] = useState<AdaptPlatform>("ChatGPT");
+  const adapted = adapters[activeTab](original);
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-1.5">
+        {platformCards.map((p) => (
+          <button
+            key={p.id}
+            onClick={() => setActiveTab(p.id)}
+            className={cn(
+              "px-3 py-1.5 text-xs rounded-sm border transition-colors",
+              activeTab === p.id
+                ? "bg-accent/10 border-accent/40 text-accent font-medium"
+                : "border-border/30 text-muted-foreground hover:text-foreground hover:border-border/60"
+            )}
+          >
+            {p.id}
+          </button>
+        ))}
+      </div>
+      <SideBySideComparison
+        original={original}
+        adapted={adapted}
+        label="Adapted"
+        badgeText={`Optimised for ${activeTab}`}
+      />
+      <div className="flex items-start gap-2 p-3 bg-secondary/30 border border-border/20 rounded-sm">
+        <Lightbulb className="h-3.5 w-3.5 shrink-0 mt-0.5 text-accent/70" />
+        <p className="text-xs text-muted-foreground">
+          {platformCards.find((p) => p.id === activeTab)?.tip}
+        </p>
       </div>
     </div>
   );
@@ -310,7 +480,10 @@ export default function PromptEngineer() {
   const [optimizeFocusAreas, setOptimizeFocusAreas] = useState<string[]>([]);
   const [originalPrompt, setOriginalPrompt] = useState("");
   // Adapt state
-  const [adaptPlatform, setAdaptPlatform] = useState<string>("ChatGPT");
+  const [adaptPlatform, setAdaptPlatform] = useState<AdaptPlatform>("ChatGPT");
+  const [adaptedResult, setAdaptedResult] = useState("");
+  const [adaptOriginal, setAdaptOriginal] = useState("");
+  const [showCompareAll, setShowCompareAll] = useState(false);
   // Shared
   const [rawText, setRawText] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
@@ -338,7 +511,7 @@ export default function PromptEngineer() {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && canSubmit && !isStreaming && !rawText) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && canSubmit && !isStreaming && !rawText && !adaptedResult) {
         e.preventDefault();
         handleSubmit();
       }
@@ -354,6 +527,9 @@ export default function PromptEngineer() {
     setOptimizeGoal("");
     setOptimizeFocusAreas([]);
     setOriginalPrompt("");
+    setAdaptedResult("");
+    setAdaptOriginal("");
+    setShowCompareAll(false);
   };
 
   const switchMode = (newMode: Mode, prefillInput?: string) => {
@@ -371,6 +547,14 @@ export default function PromptEngineer() {
   };
 
   const handleSubmit = useCallback(() => {
+    if (mode === "adapt") {
+      // Client-side adaptation — instant
+      const result = adapters[adaptPlatform](input);
+      setAdaptOriginal(input);
+      setAdaptedResult(result);
+      return;
+    }
+
     if (mode === "optimize") setOriginalPrompt(input);
     setRawText("");
     setIsStreaming(true);
@@ -388,7 +572,6 @@ export default function PromptEngineer() {
       if (optimizeGoal.trim()) payload.goal = optimizeGoal.trim();
       if (optimizeFocusAreas.length > 0) payload.focusAreas = optimizeFocusAreas;
     }
-    if (mode === "adapt") payload.platform = adaptPlatform;
 
     streamPrompt(
       payload,
@@ -417,7 +600,14 @@ export default function PromptEngineer() {
     toast({ title: "Example loaded", description: "A typical vague prompt ready for optimisation." });
   };
 
+  const handleLoadAdaptExample = () => {
+    setInput("Explain blockchain to a non-technical person");
+    setAdaptPlatform("ChatGPT");
+    toast({ title: "Example loaded", description: "Try adapting this for different platforms." });
+  };
+
   const extractPromptText = (): string => {
+    if (mode === "adapt" && adaptedResult) return adaptedResult;
     if (!promptSection) return rawText;
     return promptSection.content.replace(/^```[\w]*\n?/gm, "").replace(/\n?```$/gm, "").trim();
   };
@@ -433,7 +623,7 @@ export default function PromptEngineer() {
   };
 
   const handleDownload = () => {
-    const content = `# Prompt Engineer — ${mode.charAt(0).toUpperCase() + mode.slice(1)} Mode\n\nGenerated: ${new Date().toISOString()}\n\n${rawText}`;
+    const content = `# Prompt Engineer — ${mode.charAt(0).toUpperCase() + mode.slice(1)} Mode\n\nGenerated: ${new Date().toISOString()}\n\n${mode === "adapt" ? adaptedResult : rawText}`;
     const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -444,7 +634,8 @@ export default function PromptEngineer() {
   };
 
   const handleCopyAll = async () => {
-    await navigator.clipboard.writeText(rawText);
+    const text = mode === "adapt" ? adaptedResult : rawText;
+    await navigator.clipboard.writeText(text);
     toast({ title: "Copied", description: "Full result copied to clipboard." });
   };
 
@@ -453,7 +644,18 @@ export default function PromptEngineer() {
     setRawText("");
     setInput("");
     setOriginalPrompt("");
+    setAdaptedResult("");
+    setAdaptOriginal("");
+    setShowCompareAll(false);
     resetModeState();
+  };
+
+  const handleTryDifferentPlatform = () => {
+    // Keep the original prompt, clear result
+    setInput(adaptOriginal);
+    setAdaptedResult("");
+    setAdaptOriginal("");
+    setShowCompareAll(false);
   };
 
   const buttonLabels: Record<Mode, string> = {
@@ -463,6 +665,11 @@ export default function PromptEngineer() {
   };
 
   const minChars = mode === "optimize" ? 30 : 20;
+
+  const hasAdaptResult = mode === "adapt" && !!adaptedResult;
+  const hasStreamResult = !isStreaming && sections.length > 0;
+  const hasResult = hasAdaptResult || hasStreamResult;
+  const showInputForm = mode === "adapt" ? !adaptedResult : !rawText && !isStreaming;
 
   return (
     <Layout>
@@ -537,14 +744,14 @@ export default function PromptEngineer() {
               </p>
 
               {/* ═══ INPUT FORM ═══ */}
-              {!rawText && !isStreaming && (
+              {showInputForm && (
                 <div className="space-y-4">
                   {/* Main textarea */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
                       {mode === "generate" && "What do you want the AI to do?"}
                       {mode === "optimize" && "Your prompt"}
-                      {mode === "adapt" && "Paste the prompt to adapt"}
+                      {mode === "adapt" && "Your prompt"}
                     </label>
                     <Textarea
                       value={input}
@@ -638,7 +845,6 @@ export default function PromptEngineer() {
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                           <div className="space-y-4 pt-4">
-                            {/* AI tool */}
                             <div className="space-y-1.5">
                               <label className="text-sm font-medium">What AI tool will you use this with?</label>
                               <Input
@@ -650,7 +856,6 @@ export default function PromptEngineer() {
                               <p className="text-xs text-muted-foreground/50">Helps tailor optimisation to platform best practices</p>
                             </div>
 
-                            {/* Goal */}
                             <div className="space-y-1.5">
                               <label className="text-sm font-medium">What's your goal?</label>
                               <Textarea
@@ -662,7 +867,6 @@ export default function PromptEngineer() {
                               <p className="text-xs text-muted-foreground/50">Knowing your objective helps optimise for results</p>
                             </div>
 
-                            {/* Focus areas */}
                             <div className="space-y-2">
                               <label className="text-sm font-medium">Focus areas</label>
                               <div className="space-y-2">
@@ -697,27 +901,59 @@ export default function PromptEngineer() {
                     </>
                   )}
 
-                  {/* ── Adapt mode platform selector ── */}
+                  {/* ── Adapt mode: platform cards + example ── */}
                   {mode === "adapt" && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Target platform</label>
-                      <div className="flex flex-wrap gap-2">
-                        {adaptPlatforms.map((p) => (
-                          <button
-                            key={p}
-                            onClick={() => setAdaptPlatform(p)}
-                            className={cn(
-                              "px-3 py-1.5 text-sm rounded-sm border transition-colors",
-                              adaptPlatform === p
-                                ? "bg-accent/10 border-accent/40 text-accent font-medium"
-                                : "border-border/30 text-muted-foreground hover:text-foreground hover:border-border/60"
-                            )}
-                          >
-                            {p}
-                          </button>
-                        ))}
+                    <>
+                      <button
+                        onClick={handleLoadAdaptExample}
+                        className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline underline-offset-4"
+                      >
+                        <Lightbulb className="h-3.5 w-3.5" />
+                        See example
+                      </button>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Target platform</label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {platformCards.map((p) => (
+                            <button
+                              key={p.id}
+                              onClick={() => setAdaptPlatform(p.id)}
+                              className={cn(
+                                "relative flex flex-col items-start gap-2 p-4 rounded-sm border transition-all text-left",
+                                adaptPlatform === p.id
+                                  ? "border-accent/50 bg-accent/5 ring-1 ring-accent/20"
+                                  : "border-border/30 hover:border-border/60 hover:bg-secondary/20"
+                              )}
+                            >
+                              <div className="flex items-center gap-2 w-full">
+                                <div className={cn(
+                                  "transition-colors",
+                                  adaptPlatform === p.id ? "text-accent" : "text-muted-foreground"
+                                )}>
+                                  {p.icon}
+                                </div>
+                                <span className={cn(
+                                  "text-sm font-medium",
+                                  adaptPlatform === p.id ? "text-foreground" : "text-muted-foreground"
+                                )}>
+                                  {p.id}
+                                </span>
+                                <span className={cn(
+                                  "ml-auto text-[10px] px-1.5 py-0.5 rounded-full border",
+                                  adaptPlatform === p.id
+                                    ? "bg-accent/10 text-accent border-accent/20"
+                                    : "bg-secondary/50 text-muted-foreground/60 border-border/20"
+                                )}>
+                                  {p.badge}
+                                </span>
+                              </div>
+                              <p className="text-xs text-muted-foreground/70">{p.description}</p>
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    </>
                   )}
 
                   {/* Submit */}
@@ -743,26 +979,51 @@ export default function PromptEngineer() {
 
               {/* ═══ RESULTS ═══ */}
 
+              {/* Adapt mode: side-by-side comparison */}
+              {hasAdaptResult && !showCompareAll && (
+                <>
+                  <SideBySideComparison
+                    original={adaptOriginal}
+                    adapted={adaptedResult}
+                    label="Adapted"
+                    badgeText={`Optimised for ${adaptPlatform}`}
+                  />
+
+                  {/* Platform-specific tip */}
+                  <div className="flex items-start gap-2 p-3 bg-secondary/30 border border-border/20 rounded-sm">
+                    <Lightbulb className="h-3.5 w-3.5 shrink-0 mt-0.5 text-accent/70" />
+                    <p className="text-xs text-muted-foreground">
+                      <span className="font-medium text-foreground/80">{adaptPlatform} tip:</span>{" "}
+                      {platformCards.find((p) => p.id === adaptPlatform)?.tip}
+                    </p>
+                  </div>
+                </>
+              )}
+
+              {/* Adapt mode: compare all platforms */}
+              {hasAdaptResult && showCompareAll && (
+                <CompareAllPlatforms original={adaptOriginal} />
+              )}
+
               {/* Side-by-side for optimize mode */}
               {mode === "optimize" && promptSection && originalPrompt && !isStreaming && (
                 <SideBySideComparison
                   original={originalPrompt}
-                  optimised={extractPromptText()}
+                  adapted={extractPromptText()}
                 />
               )}
 
-              {/* Prompt section for non-optimize modes */}
-              {mode !== "optimize" && promptSection && (
+              {/* Prompt section for generate mode */}
+              {mode === "generate" && promptSection && (
                 <SectionCard section={promptSection} defaultOpen />
               )}
 
-              {/* Other sections */}
-              {otherSections.map((s, i) => (
+              {/* Other sections (generate/optimize) */}
+              {mode !== "adapt" && otherSections.map((s, i) => (
                 <SectionCard
                   key={s.id}
                   section={s}
                   defaultOpen={
-                    // For optimize: KEY IMPROVEMENTS expanded by default
                     mode === "optimize" ? s.id.includes("key-improvement") : i === 0 && !promptSection
                   }
                 />
@@ -777,9 +1038,9 @@ export default function PromptEngineer() {
               )}
 
               {/* ═══ RESULT ACTIONS ═══ */}
-              {!isStreaming && sections.length > 0 && (
+              {hasResult && (
                 <div className="space-y-5 pt-4 border-t border-border/20">
-                  {/* Primary */}
+                  {/* Primary actions */}
                   <div className="flex flex-wrap gap-3">
                     <Button
                       variant="hero"
@@ -790,28 +1051,54 @@ export default function PromptEngineer() {
                       }}
                     >
                       <Copy className="h-3.5 w-3.5 mr-1.5" />
-                      Copy {mode === "optimize" ? "optimised" : ""} prompt
+                      Copy {mode === "adapt" ? "adapted" : mode === "optimize" ? "optimised" : ""} prompt
                     </Button>
-                    <SendToAiMenu promptText={extractPromptText()} />
+                    <SendToAiMenu
+                      promptText={extractPromptText()}
+                      defaultPlatform={mode === "adapt" ? adaptPlatform : undefined}
+                    />
                   </div>
 
-                  {/* Secondary */}
+                  {/* Secondary actions */}
                   <div className="flex flex-wrap gap-3">
-                    <Button variant="outline" size="sm" onClick={handleCopyAll}>
-                      <Copy className="h-3.5 w-3.5 mr-1.5" />
-                      Copy all
-                    </Button>
-                    <Button variant="outline" size="sm" onClick={handleDownload}>
-                      <Download className="h-3.5 w-3.5 mr-1.5" />
-                      Download .md
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={handleStartOver}>
+                    {mode !== "adapt" && (
+                      <>
+                        <Button variant="outline" size="sm" onClick={handleCopyAll}>
+                          <Copy className="h-3.5 w-3.5 mr-1.5" />
+                          Copy all
+                        </Button>
+                        <Button variant="outline" size="sm" onClick={handleDownload}>
+                          <Download className="h-3.5 w-3.5 mr-1.5" />
+                          Download .md
+                        </Button>
+                      </>
+                    )}
+
+                    {mode === "adapt" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setShowCompareAll(!showCompareAll)}
+                      >
+                        <Layers className="h-3.5 w-3.5 mr-1.5" />
+                        {showCompareAll ? "Single platform" : "Compare all platforms"}
+                      </Button>
+                    )}
+
+                    <Button variant="ghost" size="sm" onClick={mode === "adapt" ? handleTryDifferentPlatform : handleStartOver}>
                       <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-                      {mode === "optimize" ? "Optimise different prompt" : "Start over"}
+                      {mode === "adapt" ? "Try different platform" : mode === "optimize" ? "Optimise different prompt" : "Start over"}
                     </Button>
+
+                    {mode === "adapt" && (
+                      <Button variant="ghost" size="sm" onClick={handleStartOver}>
+                        <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                        Adapt different prompt
+                      </Button>
+                    )}
                   </div>
 
-                  {/* Cross-mode */}
+                  {/* Cross-mode actions */}
                   <div className="flex flex-wrap gap-3 pt-1">
                     {mode === "optimize" && (
                       <Button
@@ -840,6 +1127,24 @@ export default function PromptEngineer() {
                       </Button>
                     )}
                   </div>
+
+                  {/* PromptAndGo upsell for adapt */}
+                  {mode === "adapt" && (
+                    <div className="flex items-start gap-2 p-3 bg-secondary/20 border border-border/10 rounded-sm">
+                      <Sparkles className="h-3.5 w-3.5 shrink-0 mt-0.5 text-accent/50" />
+                      <p className="text-xs text-muted-foreground/70">
+                        Want all 11 platforms? PromptAndGo.ai includes: DeepSeek, Ideogram, GroqChat, Mistral, Llama-3, Nano Banana.{" "}
+                        <a
+                          href="https://promptandgo.ai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-accent hover:underline underline-offset-2 inline-flex items-center gap-1"
+                        >
+                          Explore PromptAndGo <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
