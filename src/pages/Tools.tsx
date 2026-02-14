@@ -7,7 +7,7 @@ import { ArrowRight, Search, Lightbulb, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const evaluateTools = [
-  { label: "Decision Simulation", desc: "Map terrain before choosing", href: "/tools/evaluate/decision" },
+  { label: "Decision Simulation", desc: "Map terrain before choosing", href: "/tools/evaluate/decision", badge: "Popular", badgeColor: "accent" as const },
   { label: "Red Team Simulation", desc: "Pressure-test before presenting", href: "/tools/evaluate/redteam" },
   { label: "Conversation Simulator", desc: "Rehearse difficult conversations", href: "/tools/evaluate/conversation" },
   { label: "Before You Send", desc: "Check how messages will land", href: "/tools/evaluate/before-you-send" },
@@ -20,11 +20,19 @@ const defineTools = [
   { label: "Engagement Analyzer", desc: "Paste feedback, get insights", href: "/tools/define/engagement" },
 ];
 
+interface ToolItem {
+  label: string;
+  desc: string;
+  href: string;
+  badge?: string;
+  badgeColor?: "accent" | "purple";
+}
+
 interface ToolSection {
   pillar: string;
   heading: string;
   body: string;
-  tools?: { label: string; desc: string; href: string }[];
+  tools?: ToolItem[];
   hubHref?: string;
   hubLabel?: string;
   note?: string;
@@ -53,9 +61,9 @@ const toolSections: ToolSection[] = [
     heading: "Governance & Oversight Tools",
     body: "Rehearse governance reviews and navigate ethical dilemmas. Establish accountability, manage risk, and make decisions under scrutiny.",
     tools: [
-      { label: "Governance Review Simulator", desc: "Defend AI decisions to boards and leadership", href: "/tools/govern/governance-review" },
+      { label: "Governance Review Simulator", desc: "Defend AI decisions to boards and leadership", href: "/tools/govern/governance-review", badge: "Produces frameworks", badgeColor: "purple" as const },
       { label: "Ethical Dilemma Simulator", desc: "Navigate competing values and stakeholder interests", href: "/tools/govern/ethical-dilemma" },
-      { label: "Maturity Assessment", desc: "Evaluate governance maturity across 5 dimensions", href: "/tools/govern/maturity-assessment" },
+      { label: "Maturity Assessment", desc: "Evaluate governance maturity across 5 dimensions", href: "/tools/govern/maturity-assessment", badge: "Start here", badgeColor: "accent" as const },
     ],
     hubHref: "/tools/govern",
     hubLabel: "Explore governance tools",
@@ -195,9 +203,18 @@ export default function Tools() {
                             to={tool.href}
                             className="flex items-center justify-between group text-sm"
                           >
-                            <div>
+                            <div className="flex items-center gap-2">
                               <span className="text-foreground group-hover:text-accent transition-colors font-medium">{tool.label}</span>
-                              <span className="text-muted-foreground/60 ml-2 hidden sm:inline">— {tool.desc}</span>
+                              {tool.badge && (
+                                <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${
+                                  tool.badgeColor === "purple"
+                                    ? "bg-[hsl(258_60%_55%/0.15)] text-[hsl(258_60%_65%)]"
+                                    : "bg-accent/15 text-accent"
+                                }`}>
+                                  {tool.badge}
+                                </span>
+                              )}
+                              <span className="text-muted-foreground/60 ml-1 hidden sm:inline">— {tool.desc}</span>
                             </div>
                             <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-accent transition-colors shrink-0" />
                           </Link>
