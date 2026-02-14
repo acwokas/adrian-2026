@@ -11,51 +11,60 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ChevronDown, UserCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, UserCircle, Sparkles, Pencil, Loader2, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const STORAGE_KEY = "define-brand-profile-data";
 const TOTAL_STEPS = 8;
 
 const stepLabels = [
-  "Business Overview",
-  "Target Audience",
-  "Value Proposition",
-  "Competitive Landscape",
-  "Brand Personality",
-  "Content Pillars",
-  "Platform Strategy",
-  "Review & Generate",
+  "Your Product",
+  "Your Audience",
+  "Your Markets",
+  "The Problem",
+  "Differentiators",
+  "Competitors",
+  "Your Tone",
+  "Platforms",
 ];
 
-const industryOptions = [
-  "Technology / SaaS",
-  "Professional Services",
-  "E-commerce / DTC",
-  "Healthcare / Biotech",
-  "Finance / Fintech",
-  "Education / EdTech",
-  "Media / Entertainment",
-  "Manufacturing / Industrial",
-  "Other",
+const companySizeOptions = [
+  { value: "startup", label: "Startups (1–20 people)" },
+  { value: "small", label: "Small teams (21–100 people)" },
+  { value: "mid", label: "Mid-market (101–1000 people)" },
+  { value: "enterprise", label: "Enterprise (1000+ people)" },
+  { value: "not-specific", label: "Not company-specific" },
 ];
 
 const toneOptions = [
-  { value: "authoritative", label: "Authoritative", desc: "Expert, confident, decisive" },
-  { value: "conversational", label: "Conversational", desc: "Approachable, warm, relatable" },
-  { value: "provocative", label: "Provocative", desc: "Challenging, bold, contrarian" },
-  { value: "analytical", label: "Analytical", desc: "Data-driven, precise, methodical" },
-  { value: "inspirational", label: "Inspirational", desc: "Visionary, motivating, forward-looking" },
+  "Professional", "Approachable", "Direct", "Technical",
+  "Conversational", "Authoritative", "Witty/Humorous", "Educational",
 ];
 
 const platformOptions = [
-  { value: "linkedin", label: "LinkedIn" },
-  { value: "twitter", label: "X (Twitter)" },
-  { value: "newsletter", label: "Newsletter" },
-  { value: "blog", label: "Blog / Website" },
-  { value: "instagram", label: "Instagram" },
-  { value: "threads", label: "Threads" },
+  "LinkedIn", "X (Twitter)", "Reddit", "Product Hunt",
+  "Company blog", "Newsletter", "Other",
 ];
+
+const exampleData: Record<string, string> = {
+  productName: "Acme Analytics",
+  productDescription: "Real-time customer behaviour analytics for B2B SaaS companies. Combines product usage data with revenue signals to help teams identify expansion opportunities and reduce churn.",
+  audienceRole: "VP Marketing, Head of Product",
+  companySize: "mid",
+  audienceCares: "Revenue growth, reducing churn, proving ROI to leadership, understanding which features drive retention",
+  primaryMarkets: "North America, UK, Western Europe",
+  marketNotes: "GDPR compliance required for EU markets. English-language focus initially.",
+  coreProblem: "Marketing teams waste 15+ hours per week manually tracking campaign performance across 6 different tools, leading to delayed decisions and missed optimisation windows that cost 20-30% of ad spend.",
+  differentiators: "Only platform that combines behavioural analytics with AI-powered recommendations. Real-time processing vs batch. Built specifically for B2B SaaS, not retrofitted from consumer analytics.",
+  directCompetitors: "Mixpanel, Amplitude, Google Analytics",
+  indirectAlternatives: "Manual spreadsheet tracking, hiring a data analyst, Looker dashboards built in-house",
+  tones: "Professional,Direct,Authoritative",
+  toneNotes: "Professional but not corporate. Confident without being arrogant. Data-informed language.",
+  platforms: "LinkedIn,Company blog,Newsletter",
+};
 
 function loadData(): Record<string, string> {
   try {
@@ -71,8 +80,10 @@ function saveData(data: Record<string, string>) {
 export default function BrandProfileGenerator() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<Record<string, string>>(loadData);
+  const [isRefining, setIsRefining] = useState(false);
+  const [preRefineText, setPreRefineText] = useState<string | null>(null);
+  const [showReview, setShowReview] = useState(false);
 
-  // Autosave
   useEffect(() => {
     if (Object.keys(formData).length > 0) saveData(formData);
   }, [formData]);
@@ -83,11 +94,25 @@ export default function BrandProfileGenerator() {
 
   const getVal = (key: string) => formData[key] || "";
 
-  const handleNext = () => setCurrentStep(prev => Math.min(prev + 1, TOTAL_STEPS - 1));
-  const handleBack = () => setCurrentStep(prev => Math.max(prev - 1, 0));
+  const handleNext = () => {
+    if (currentStep === TOTAL_STEPS - 1) {
+      setShowReview(true);
+    } else {
+      setCurrentStep(prev => Math.min(prev + 1, TOTAL_STEPS - 1));
+    }
+  };
+  const handleBack = () => {
+    if (showReview) {
+      setShowReview(false);
+    } else {
+      setCurrentStep(prev => Math.max(prev - 1, 0));
+    }
+  };
   const handleGoToStep = (step: number) => {
-    // Only allow going to completed steps
-    if (step < currentStep) setCurrentStep(step);
+    if (step <= currentStep) {
+      setShowReview(false);
+      setCurrentStep(step);
+    }
   };
 
   const handleSave = () => {
@@ -103,35 +128,108 @@ export default function BrandProfileGenerator() {
   const handleLoad = (data: Record<string, string>) => {
     setFormData(data);
     setCurrentStep(0);
+    setShowReview(false);
   };
 
   const handleGenerate = () => {
-    // Placeholder — generation will be implemented next
+    // Generation will be wired in next step
     console.log("Generate profile with:", formData);
+    toast.info("Profile generation coming soon");
   };
 
-  // Step validation
+  const fillExample = () => {
+    setFormData(prev => ({ ...prev, ...exampleData }));
+    toast.success("Example data loaded");
+  };
+
+  // AI refinement
+  const handleRefine = async (type: "problem" | "differentiators", fieldKey: string) => {
+    const text = getVal(fieldKey);
+    if (!text || text.length < 10) {
+      toast.error("Add more text before refining");
+      return;
+    }
+    setIsRefining(true);
+    setPreRefineText(text);
+    try {
+      const { data, error } = await supabase.functions.invoke("brand-profile-refine", {
+        body: { type, text },
+      });
+      if (error) throw error;
+      if (data?.refined) {
+        setValue(fieldKey, data.refined);
+        toast.success("Refined. You can revert if needed.", {
+          action: {
+            label: "Revert",
+            onClick: () => setValue(fieldKey, text),
+          },
+        });
+      }
+    } catch (err: any) {
+      console.error("Refine error:", err);
+      toast.error(err?.message || "Refinement failed");
+    } finally {
+      setIsRefining(false);
+      setPreRefineText(null);
+    }
+  };
+
+  // Helpers for multi-select
+  const getList = (key: string) => getVal(key) ? getVal(key).split(",").filter(Boolean) : [];
+  const toggleItem = (key: string, val: string) => {
+    const list = getList(key);
+    const updated = list.includes(val) ? list.filter(v => v !== val) : [...list, val];
+    setValue(key, updated.join(","));
+  };
+
+  // Validation
   const isStepValid = (): boolean => {
     switch (currentStep) {
-      case 0: return (getVal("businessName").length >= 2) && (getVal("businessDescription").length >= 30);
-      case 1: return (getVal("targetAudience").length >= 20);
-      case 2: return (getVal("valueProp").length >= 20);
-      case 3: return (getVal("competitors").length >= 10);
-      case 4: return !!getVal("brandTone");
-      case 5: return (getVal("contentPillars").length >= 10);
-      case 6: return !!getVal("platforms");
-      case 7: return true;
+      case 0: return getVal("productName").length >= 2 && getVal("productDescription").length >= 30;
+      case 1: return getVal("audienceRole").length >= 2 && !!getVal("companySize") && getVal("audienceCares").length >= 10;
+      case 2: return getVal("primaryMarkets").length >= 3;
+      case 3: return getVal("coreProblem").length >= 40;
+      case 4: return getVal("differentiators").length >= 10;
+      case 5: return true; // optional
+      case 6: return getList("tones").length >= 2;
+      case 7: return getList("platforms").length >= 1;
       default: return false;
     }
   };
 
-  const selectedPlatforms = getVal("platforms") ? getVal("platforms").split(",").filter(Boolean) : [];
-  const togglePlatform = (val: string) => {
-    const updated = selectedPlatforms.includes(val)
-      ? selectedPlatforms.filter(p => p !== val)
-      : [...selectedPlatforms, val];
-    setValue("platforms", updated.join(","));
-  };
+  // Review data
+  const reviewSections = [
+    { step: 0, label: "Your Product", items: [
+      { key: "productName", label: "Product" },
+      { key: "productDescription", label: "Description" },
+    ]},
+    { step: 1, label: "Your Audience", items: [
+      { key: "audienceRole", label: "Role/Title" },
+      { key: "companySize", label: "Company Size", transform: (v: string) => companySizeOptions.find(o => o.value === v)?.label || v },
+      { key: "audienceCares", label: "Priorities" },
+    ]},
+    { step: 2, label: "Your Markets", items: [
+      { key: "primaryMarkets", label: "Markets" },
+      { key: "marketNotes", label: "Considerations" },
+    ]},
+    { step: 3, label: "The Problem", items: [
+      { key: "coreProblem", label: "Core Problem" },
+    ]},
+    { step: 4, label: "Differentiators", items: [
+      { key: "differentiators", label: "Key Differentiators" },
+    ]},
+    { step: 5, label: "Competitors", items: [
+      { key: "directCompetitors", label: "Direct" },
+      { key: "indirectAlternatives", label: "Indirect" },
+    ]},
+    { step: 6, label: "Your Tone", items: [
+      { key: "tones", label: "Tone", transform: (v: string) => v.split(",").join(", ") },
+      { key: "toneNotes", label: "Notes" },
+    ]},
+    { step: 7, label: "Platforms", items: [
+      { key: "platforms", label: "Platforms", transform: (v: string) => v.split(",").join(", ") },
+    ]},
+  ];
 
   return (
     <Layout>
@@ -194,8 +292,8 @@ export default function BrandProfileGenerator() {
                     "Complete each step with as much detail as you can.",
                     "Your progress saves automatically to your browser.",
                     "Use Save/Load to export and resume across sessions.",
-                    "On Step 8, review your inputs and generate your profile.",
-                    "The AI creates positioning summary, personas, voice guide, and content pillars.",
+                    "AI refinement is available on Steps 4 and 5 to sharpen your language.",
+                    "On the final review, check your inputs and generate your profile.",
                   ].map((s, i) => (
                     <li key={i} className="flex gap-3 before:hidden pl-0">
                       <span className="text-accent font-medium shrink-0">{i + 1}.</span>
@@ -209,324 +307,352 @@ export default function BrandProfileGenerator() {
 
           <PrivacyNotice className="mb-8" />
 
-          {/* Wizard */}
-          <StepWizard
-            currentStep={currentStep}
-            totalSteps={TOTAL_STEPS}
-            stepLabels={stepLabels}
-            onNext={handleNext}
-            onBack={handleBack}
-            onGoToStep={handleGoToStep}
-            onGenerate={handleGenerate}
-            onSave={handleSave}
-            onLoad={handleLoad}
-            isNextDisabled={!isStepValid()}
-            storageKey={STORAGE_KEY}
-          >
-            {/* Step 1: Business Overview */}
-            {currentStep === 0 && (
-              <FormStep
-                stepNumber={1}
-                title="Business Overview"
-                description="Tell us about your business or personal brand."
-                example={`Business: Acme Consulting\nDescription: We help mid-market SaaS companies build scalable go-to-market strategies. Our focus is on reducing sales cycles and improving win rates through structured processes and data-driven decision-making.`}
-              >
-                <FormFieldGroup label="Business or brand name" charCount={{ current: getVal("businessName").length, max: 100 }}>
-                  <Input
-                    placeholder="e.g., Acme Consulting"
-                    value={getVal("businessName")}
-                    onChange={e => setValue("businessName", e.target.value)}
-                    maxLength={100}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="What do you do?"
-                  helpText="Describe your business, product, or service in plain language."
-                  charCount={{ current: getVal("businessDescription").length, min: 30, max: 500 }}
-                >
-                  <Textarea
-                    placeholder="e.g., We help mid-market SaaS companies build scalable go-to-market strategies..."
-                    value={getVal("businessDescription")}
-                    onChange={e => setValue("businessDescription", e.target.value)}
-                    maxLength={500}
-                    rows={4}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup label="Industry" helpText="Select the closest match.">
-                  <Select value={getVal("industry")} onValueChange={v => setValue("industry", v)}>
-                    <SelectTrigger><SelectValue placeholder="Select industry" /></SelectTrigger>
-                    <SelectContent>
-                      {industryOptions.map(o => <SelectItem key={o} value={o}>{o}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
-                </FormFieldGroup>
-              </FormStep>
-            )}
+          {/* Review or Wizard */}
+          {showReview ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <div className="space-y-2">
+                <h2 className="text-xl font-semibold">Review your inputs</h2>
+                <p className="text-sm text-muted-foreground">Check everything looks right before generating.</p>
+              </div>
 
-            {/* Step 2: Target Audience */}
-            {currentStep === 1 && (
-              <FormStep
-                stepNumber={2}
-                title="Target Audience"
-                description="Who are you trying to reach?"
-                example={`Primary: VP Sales and CROs at B2B SaaS companies (Series B-D, 50-500 employees) who are struggling to scale their sales team beyond founder-led selling.\n\nSecondary: Marketing leaders at the same companies who need to align with sales on pipeline generation.`}
-              >
-                <FormFieldGroup
-                  label="Describe your ideal audience"
-                  helpText="Include role, seniority, company size, and what they care about."
-                  charCount={{ current: getVal("targetAudience").length, min: 20, max: 800 }}
-                >
-                  <Textarea
-                    placeholder="e.g., VP Sales and CROs at B2B SaaS companies who are struggling to scale..."
-                    value={getVal("targetAudience")}
-                    onChange={e => setValue("targetAudience", e.target.value)}
-                    maxLength={800}
-                    rows={5}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="What problems do they face?"
-                  helpText="What keeps them up at night?"
-                  charCount={{ current: getVal("audiencePains").length, max: 500 }}
-                >
-                  <Textarea
-                    placeholder="e.g., Long sales cycles, inconsistent pipeline, difficulty hiring..."
-                    value={getVal("audiencePains")}
-                    onChange={e => setValue("audiencePains", e.target.value)}
-                    maxLength={500}
-                    rows={3}
-                  />
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 3: Value Proposition */}
-            {currentStep === 2 && (
-              <FormStep
-                stepNumber={3}
-                title="Value Proposition"
-                description="What makes you different and why should anyone care?"
-                example={`We combine sales process design with data analytics to identify exactly where deals stall and why. Unlike traditional sales training, we build systems, not motivation.`}
-              >
-                <FormFieldGroup
-                  label="What value do you deliver?"
-                  helpText="Focus on outcomes, not features."
-                  charCount={{ current: getVal("valueProp").length, min: 20, max: 600 }}
-                >
-                  <Textarea
-                    placeholder="e.g., We reduce average sales cycle by 30% through structured qualification frameworks..."
-                    value={getVal("valueProp")}
-                    onChange={e => setValue("valueProp", e.target.value)}
-                    maxLength={600}
-                    rows={4}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="What do people misunderstand about what you do?"
-                  helpText="Common misconceptions or objections you hear."
-                  charCount={{ current: getVal("misconceptions").length, max: 400 }}
-                >
-                  <Textarea
-                    placeholder="e.g., People think we're a sales training company, but we actually..."
-                    value={getVal("misconceptions")}
-                    onChange={e => setValue("misconceptions", e.target.value)}
-                    maxLength={400}
-                    rows={3}
-                  />
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 4: Competitive Landscape */}
-            {currentStep === 3 && (
-              <FormStep
-                stepNumber={4}
-                title="Competitive Landscape"
-                description="Who else is in this space and how are you different?"
-                example={`Competitors: Gartner (too expensive for mid-market), Pavilion (community-focused, not hands-on), freelance consultants (inconsistent quality).\n\nOur edge: We actually build the systems and stay until they work.`}
-              >
-                <FormFieldGroup
-                  label="Key competitors or alternatives"
-                  helpText="Include direct competitors, indirect alternatives, and 'do nothing' as an option."
-                  charCount={{ current: getVal("competitors").length, min: 10, max: 600 }}
-                >
-                  <Textarea
-                    placeholder="e.g., Main competitors are..., but customers also consider..."
-                    value={getVal("competitors")}
-                    onChange={e => setValue("competitors", e.target.value)}
-                    maxLength={600}
-                    rows={4}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="Your unfair advantage"
-                  helpText="What can you do that others can't easily replicate?"
-                  charCount={{ current: getVal("advantage").length, max: 400 }}
-                >
-                  <Textarea
-                    placeholder="e.g., 15 years of operational experience in exactly this segment..."
-                    value={getVal("advantage")}
-                    onChange={e => setValue("advantage", e.target.value)}
-                    maxLength={400}
-                    rows={3}
-                  />
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 5: Brand Personality */}
-            {currentStep === 4 && (
-              <FormStep
-                stepNumber={5}
-                title="Brand Personality"
-                description="How should your brand sound and feel?"
-              >
-                <FormFieldGroup label="Primary tone" helpText="Choose the tone that best represents how you communicate.">
-                  <Select value={getVal("brandTone")} onValueChange={v => setValue("brandTone", v)}>
-                    <SelectTrigger><SelectValue placeholder="Select primary tone" /></SelectTrigger>
-                    <SelectContent>
-                      {toneOptions.map(o => (
-                        <SelectItem key={o.value} value={o.value}>
-                          <span>{o.label}</span>
-                          <span className="text-muted-foreground ml-2 text-xs">— {o.desc}</span>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="Words that describe your brand"
-                  helpText="3-5 adjectives that capture your brand's personality."
-                  charCount={{ current: getVal("brandWords").length, max: 200 }}
-                >
-                  <Input
-                    placeholder="e.g., Direct, pragmatic, evidence-based, understated"
-                    value={getVal("brandWords")}
-                    onChange={e => setValue("brandWords", e.target.value)}
-                    maxLength={200}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="Words you want to avoid"
-                  helpText="Language or associations you don't want."
-                  charCount={{ current: getVal("avoidWords").length, max: 200 }}
-                >
-                  <Input
-                    placeholder="e.g., Guru, disruptive, synergy, thought leader"
-                    value={getVal("avoidWords")}
-                    onChange={e => setValue("avoidWords", e.target.value)}
-                    maxLength={200}
-                  />
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 6: Content Pillars */}
-            {currentStep === 5 && (
-              <FormStep
-                stepNumber={6}
-                title="Content Pillars"
-                description="What themes should your content revolve around?"
-                example={`1. Sales process design — frameworks, templates, case studies\n2. Revenue operations — metrics, dashboards, alignment\n3. Hiring & team building — what to look for, interview processes\n4. Industry insights — market trends, competitive analysis`}
-              >
-                <FormFieldGroup
-                  label="Content themes or topics"
-                  helpText="List 3-5 themes you want to be known for. These become your content pillars."
-                  charCount={{ current: getVal("contentPillars").length, min: 10, max: 600 }}
-                >
-                  <Textarea
-                    placeholder="e.g., 1. Sales process design&#10;2. Revenue operations&#10;3. Hiring & team building"
-                    value={getVal("contentPillars")}
-                    onChange={e => setValue("contentPillars", e.target.value)}
-                    maxLength={600}
-                    rows={5}
-                  />
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="Topics you explicitly won't cover"
-                  helpText="Setting boundaries is as important as setting themes."
-                  charCount={{ current: getVal("avoidTopics").length, max: 300 }}
-                >
-                  <Textarea
-                    placeholder="e.g., We don't cover marketing automation, paid ads, or generic productivity tips"
-                    value={getVal("avoidTopics")}
-                    onChange={e => setValue("avoidTopics", e.target.value)}
-                    maxLength={300}
-                    rows={2}
-                  />
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 7: Platform Strategy */}
-            {currentStep === 6 && (
-              <FormStep
-                stepNumber={7}
-                title="Platform Strategy"
-                description="Where will you publish content?"
-              >
-                <FormFieldGroup label="Select platforms" helpText="Choose all that apply.">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {platformOptions.map(p => (
-                      <label
-                        key={p.value}
-                        className="flex items-center gap-2 p-3 border border-border/30 rounded-sm cursor-pointer hover:border-accent/40 transition-colors text-sm"
-                      >
-                        <Checkbox
-                          checked={selectedPlatforms.includes(p.value)}
-                          onCheckedChange={() => togglePlatform(p.value)}
-                        />
-                        {p.label}
-                      </label>
-                    ))}
-                  </div>
-                </FormFieldGroup>
-                <FormFieldGroup
-                  label="Posting frequency goal"
-                  helpText="How often do you realistically want to publish?"
-                >
-                  <Select value={getVal("frequency")} onValueChange={v => setValue("frequency", v)}>
-                    <SelectTrigger><SelectValue placeholder="Select frequency" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="daily">Daily</SelectItem>
-                      <SelectItem value="3-5-week">3-5 times per week</SelectItem>
-                      <SelectItem value="1-2-week">1-2 times per week</SelectItem>
-                      <SelectItem value="weekly">Weekly</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormFieldGroup>
-              </FormStep>
-            )}
-
-            {/* Step 8: Review */}
-            {currentStep === 7 && (
-              <FormStep
-                stepNumber={8}
-                title="Review & Generate"
-                description="Review your inputs below. Click 'Generate profile' to create your brand positioning package."
-              >
-                <div className="space-y-4">
-                  {[
-                    { label: "Business", value: getVal("businessName") },
-                    { label: "Description", value: getVal("businessDescription") },
-                    { label: "Industry", value: getVal("industry") },
-                    { label: "Target Audience", value: getVal("targetAudience") },
-                    { label: "Value Proposition", value: getVal("valueProp") },
-                    { label: "Competitors", value: getVal("competitors") },
-                    { label: "Brand Tone", value: toneOptions.find(t => t.value === getVal("brandTone"))?.label || getVal("brandTone") },
-                    { label: "Content Pillars", value: getVal("contentPillars") },
-                    { label: "Platforms", value: selectedPlatforms.map(p => platformOptions.find(o => o.value === p)?.label || p).join(", ") },
-                    { label: "Frequency", value: getVal("frequency") },
-                  ].filter(r => r.value).map(r => (
-                    <div key={r.label} className="space-y-1">
-                      <p className="text-xs uppercase tracking-wider text-accent font-medium">{r.label}</p>
-                      <p className="text-sm text-muted-foreground whitespace-pre-line">{r.value}</p>
+              <div className="space-y-4">
+                {reviewSections.map(section => {
+                  const hasContent = section.items.some(item => getVal(item.key));
+                  if (!hasContent) return null;
+                  return (
+                    <div key={section.label} className="p-5 bg-card border border-border/30 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs uppercase tracking-wider text-accent font-medium">{section.label}</p>
+                        <button
+                          onClick={() => handleGoToStep(section.step)}
+                          className="text-xs text-muted-foreground hover:text-accent transition-colors flex items-center gap-1"
+                        >
+                          <Pencil className="h-3 w-3" /> Edit
+                        </button>
+                      </div>
+                      {section.items.map(item => {
+                        const val = getVal(item.key);
+                        if (!val) return null;
+                        const display = item.transform ? item.transform(val) : val;
+                        return (
+                          <div key={item.key}>
+                            <p className="text-xs text-muted-foreground/60">{item.label}</p>
+                            <p className="text-sm text-foreground/90 whitespace-pre-line">{display}</p>
+                          </div>
+                        );
+                      })}
                     </div>
-                  ))}
-                </div>
-              </FormStep>
-            )}
-          </StepWizard>
+                  );
+                })}
+              </div>
+
+              <div className="flex items-center gap-2 p-3 border border-accent/20 bg-accent/5 rounded-sm text-xs text-muted-foreground">
+                <ShieldCheck className="h-3.5 w-3.5 text-accent shrink-0" />
+                Your inputs will be sent to AI for analysis but not stored. The generated profile stays in your browser.
+              </div>
+
+              <div className="flex items-center justify-between pt-4 border-t border-border/20">
+                <Button variant="ghost" size="sm" onClick={handleBack} className="text-muted-foreground">
+                  Back
+                </Button>
+                <Button variant="hero" onClick={handleGenerate}>
+                  <Sparkles className="h-4 w-4 mr-1.5" /> Generate brand profile
+                </Button>
+              </div>
+            </motion.div>
+          ) : (
+            <StepWizard
+              currentStep={currentStep}
+              totalSteps={TOTAL_STEPS}
+              stepLabels={stepLabels}
+              onNext={handleNext}
+              onBack={handleBack}
+              onGoToStep={handleGoToStep}
+              onGenerate={() => setShowReview(true)}
+              onSave={handleSave}
+              onLoad={handleLoad}
+              isNextDisabled={!isStepValid()}
+              storageKey={STORAGE_KEY}
+            >
+              {/* STEP 1 - YOUR PRODUCT */}
+              {currentStep === 0 && (
+                <FormStep
+                  stepNumber={1}
+                  title="Tell us about your product"
+                  description="What are you building? Keep it simple and focused."
+                >
+                  <FormFieldGroup label="Product name" charCount={{ current: getVal("productName").length, max: 50 }}>
+                    <Input
+                      placeholder="e.g., Acme Analytics"
+                      value={getVal("productName")}
+                      onChange={e => setValue("productName", e.target.value)}
+                      maxLength={50}
+                    />
+                  </FormFieldGroup>
+                  <FormFieldGroup
+                    label="What does it do?"
+                    helpText="One clear sentence. What problem does it solve?"
+                    charCount={{ current: getVal("productDescription").length, min: 30, max: 500 }}
+                  >
+                    <Textarea
+                      placeholder="e.g., Real-time customer behaviour analytics for B2B SaaS companies"
+                      value={getVal("productDescription")}
+                      onChange={e => setValue("productDescription", e.target.value)}
+                      maxLength={500}
+                      rows={4}
+                    />
+                  </FormFieldGroup>
+                  <Button variant="ghost" size="sm" onClick={fillExample} className="text-xs text-muted-foreground">
+                    <Sparkles className="h-3 w-3 mr-1" /> Load B2B SaaS example
+                  </Button>
+                </FormStep>
+              )}
+
+              {/* STEP 2 - YOUR AUDIENCE */}
+              {currentStep === 1 && (
+                <FormStep
+                  stepNumber={2}
+                  title="Who are you trying to reach?"
+                  description="Who makes the decision to buy or use what you're building?"
+                >
+                  <FormFieldGroup label="Primary role/title">
+                    <Input
+                      placeholder="e.g., VP Marketing, Product Manager, Founder"
+                      value={getVal("audienceRole")}
+                      onChange={e => setValue("audienceRole", e.target.value)}
+                      maxLength={100}
+                    />
+                  </FormFieldGroup>
+                  <FormFieldGroup label="Company size">
+                    <Select value={getVal("companySize")} onValueChange={v => setValue("companySize", v)}>
+                      <SelectTrigger><SelectValue placeholder="Select company size" /></SelectTrigger>
+                      <SelectContent>
+                        {companySizeOptions.map(o => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </FormFieldGroup>
+                  <FormFieldGroup
+                    label="What do they care about?"
+                    helpText="Their priorities, pressures, what keeps them up at night"
+                    charCount={{ current: getVal("audienceCares").length, max: 500 }}
+                  >
+                    <Textarea
+                      placeholder="e.g., Revenue growth, reducing churn, proving ROI to leadership"
+                      value={getVal("audienceCares")}
+                      onChange={e => setValue("audienceCares", e.target.value)}
+                      maxLength={500}
+                      rows={3}
+                    />
+                  </FormFieldGroup>
+                </FormStep>
+              )}
+
+              {/* STEP 3 - YOUR MARKETS */}
+              {currentStep === 2 && (
+                <FormStep
+                  stepNumber={3}
+                  title="Where do you operate?"
+                  description="Geography and market context matter for positioning."
+                >
+                  <FormFieldGroup
+                    label="Primary markets"
+                    helpText="Where most of your customers are or will be"
+                  >
+                    <Textarea
+                      placeholder="e.g., North America, Southeast Asia, UK"
+                      value={getVal("primaryMarkets")}
+                      onChange={e => setValue("primaryMarkets", e.target.value)}
+                      maxLength={300}
+                      rows={2}
+                    />
+                  </FormFieldGroup>
+                  <FormFieldGroup
+                    label="Any market-specific considerations?"
+                    helpText="Optional"
+                  >
+                    <Textarea
+                      placeholder="e.g., Regulatory requirements in EU, language localisation needs"
+                      value={getVal("marketNotes")}
+                      onChange={e => setValue("marketNotes", e.target.value)}
+                      maxLength={400}
+                      rows={2}
+                    />
+                  </FormFieldGroup>
+                </FormStep>
+              )}
+
+              {/* STEP 4 - THE PROBLEM */}
+              {currentStep === 3 && (
+                <FormStep
+                  stepNumber={4}
+                  title="What problem are you solving?"
+                  description="The clearer the problem, the clearer your positioning."
+                >
+                  <FormFieldGroup
+                    label="Core problem"
+                    helpText="Be specific. Quantify if possible. What pain are you removing?"
+                    charCount={{ current: getVal("coreProblem").length, min: 40, max: 600 }}
+                  >
+                    <Textarea
+                      placeholder="e.g., Marketing teams waste 15+ hours per week manually tracking campaign performance across 6 different tools"
+                      value={getVal("coreProblem")}
+                      onChange={e => setValue("coreProblem", e.target.value)}
+                      maxLength={600}
+                      rows={4}
+                    />
+                  </FormFieldGroup>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={isRefining || getVal("coreProblem").length < 10}
+                    onClick={() => handleRefine("problem", "coreProblem")}
+                    className="text-xs"
+                  >
+                    {isRefining ? <Loader2 className="h-3 w-3 mr-1 animate-spin" /> : <Sparkles className="h-3 w-3 mr-1" />}
+                    Refine my problem statement
+                  </Button>
+                </FormStep>
+              )}
+
+              {/* STEP 5 - DIFFERENTIATORS */}
+              {currentStep === 4 && (
+                <FormStep
+                  stepNumber={5}
+                  title="What makes you different?"
+                  description="Why should someone choose you over alternatives?"
+                >
+                  <FormFieldGroup
+                    label="Key differentiators"
+                    helpText="What do you do that others don't? What do you do better?"
+                    charCount={{ current: getVal("differentiators").length, min: 10, max: 600 }}
+                  >
+                    <Textarea
+                      placeholder="e.g., Only platform that combines behavioural analytics with AI-powered recommendations. Real-time vs batch processing."
+                      value={getVal("differentiators")}
+                      onChange={e => setValue("differentiators", e.target.value)}
+                      maxLength={600}
+                      rows={4}
+                    />
+                  </FormFieldGroup>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={isRefining || getVal("differentiators").length < 10}
+                    onClick={() => handleRefine("differentiators", "differentiators")}
+                    className="text-xs"
+                  >
+                    {isRefining ? <Loader2 className="h-3 w-3 mr-1 animate-spin" /> : <Sparkles className="h-3 w-3 mr-1" />}
+                    Clarify my differentiators
+                  </Button>
+                </FormStep>
+              )}
+
+              {/* STEP 6 - COMPETITORS */}
+              {currentStep === 5 && (
+                <FormStep
+                  stepNumber={6}
+                  title="Who else solves this problem?"
+                  description="Understanding alternatives helps position you clearly."
+                >
+                  <FormFieldGroup
+                    label="Direct competitors"
+                    helpText="Tools or services that solve the same problem"
+                  >
+                    <Textarea
+                      placeholder="e.g., Mixpanel, Amplitude, Google Analytics"
+                      value={getVal("directCompetitors")}
+                      onChange={e => setValue("directCompetitors", e.target.value)}
+                      maxLength={400}
+                      rows={3}
+                    />
+                  </FormFieldGroup>
+                  <FormFieldGroup
+                    label="Indirect alternatives"
+                    helpText="What do people use today instead of a product like yours?"
+                  >
+                    <Textarea
+                      placeholder="e.g., Manual spreadsheet tracking, hiring a data analyst"
+                      value={getVal("indirectAlternatives")}
+                      onChange={e => setValue("indirectAlternatives", e.target.value)}
+                      maxLength={400}
+                      rows={3}
+                    />
+                  </FormFieldGroup>
+                </FormStep>
+              )}
+
+              {/* STEP 7 - YOUR TONE */}
+              {currentStep === 6 && (
+                <FormStep
+                  stepNumber={7}
+                  title="How should your brand sound?"
+                  description="Tone shapes how your message lands."
+                >
+                  <FormFieldGroup label="Preferred tone" helpText="Select 2–4 that feel right for your audience">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {toneOptions.map(tone => (
+                        <label
+                          key={tone}
+                          className="flex items-center gap-2 p-3 border border-border/30 rounded-sm cursor-pointer hover:border-accent/40 transition-colors text-sm"
+                        >
+                          <Checkbox
+                            checked={getList("tones").includes(tone)}
+                            onCheckedChange={() => toggleItem("tones", tone)}
+                          />
+                          {tone}
+                        </label>
+                      ))}
+                    </div>
+                    {getList("tones").length > 0 && getList("tones").length < 2 && (
+                      <p className="text-xs text-destructive">Select at least 2 tones</p>
+                    )}
+                  </FormFieldGroup>
+                  <FormFieldGroup label="Tone notes" helpText="Optional">
+                    <Textarea
+                      placeholder="e.g., Professional but not corporate. Confident without being arrogant."
+                      value={getVal("toneNotes")}
+                      onChange={e => setValue("toneNotes", e.target.value)}
+                      maxLength={300}
+                      rows={2}
+                    />
+                  </FormFieldGroup>
+                </FormStep>
+              )}
+
+              {/* STEP 8 - PLATFORMS */}
+              {currentStep === 7 && (
+                <FormStep
+                  stepNumber={8}
+                  title="Where do you communicate?"
+                  description="We'll optimise content for the platforms you actually use."
+                >
+                  <FormFieldGroup label="Primary platforms" helpText="Where does your audience spend time?">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {platformOptions.map(p => (
+                        <label
+                          key={p}
+                          className="flex items-center gap-2 p-3 border border-border/30 rounded-sm cursor-pointer hover:border-accent/40 transition-colors text-sm"
+                        >
+                          <Checkbox
+                            checked={getList("platforms").includes(p)}
+                            onCheckedChange={() => toggleItem("platforms", p)}
+                          />
+                          {p}
+                        </label>
+                      ))}
+                    </div>
+                    {getList("platforms").length === 0 && (
+                      <p className="text-xs text-destructive">Select at least 1 platform</p>
+                    )}
+                  </FormFieldGroup>
+                </FormStep>
+              )}
+            </StepWizard>
+          )}
         </div>
       </section>
     </Layout>
