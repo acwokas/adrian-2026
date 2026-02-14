@@ -12,37 +12,62 @@ export default function Experience() {
   return (
     <Layout>
       <SEO 
-        title="Experience - Commercial Leadership & Advisory Background"
+        title="About — Adrian Watkins"
         description="Two decades of senior commercial and operational leadership across Asia Pacific. Board-level advisory, fractional executive positions, and executive decision support in AI, media, and technology sectors."
-        canonical="/experience"
-        keywords="commercial leadership experience, operational leadership, board advisory, executive decision support, Asia Pacific executive, AI advisory, fractional executive experience, governance"
-        breadcrumb={[{ name: "Experience", path: "/experience" }]}
+        canonical="/about"
+        keywords="Adrian Watkins, commercial leadership, operational leadership, board advisory, executive decision support, Asia Pacific, AI advisory, EDGE Framework, governance"
+        breadcrumb={[{ name: "About", path: "/about" }]}
       />
       
-      {/* Header */}
+      {/* Narrative Intro */}
       <section className="section-spacing lg:pb-12">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-6">
-              <h1>Experience</h1>
-              {/* Mobile intro */}
-              <div className="lg:hidden space-y-4">
-                <p className="text-xl text-muted-foreground max-w-2xl">
-                  My experience spans senior commercial and operational leadership, advisory and fractional roles, and building platforms and ecosystems. I have operated across different growth stages and complex environments, often where clarity, governance, and execution were critical.
-                </p>
-                <p className="text-lg text-muted-foreground">
-                  The examples below are grouped by responsibility rather than chronology.
-                </p>
+            <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
+              {/* Photo */}
+              <div className="w-full max-w-[320px] md:max-w-[400px] flex-shrink-0 mx-auto md:mx-0">
+                <img
+                  src="/adrian-headshot.webp"
+                  alt="Adrian Watkins"
+                  className="w-full h-auto rounded-sm border border-border/20"
+                  loading="eager"
+                />
               </div>
-              {/* Desktop intro - enhanced authority */}
-              <div className="hidden lg:block space-y-4">
-                <p className="text-[1.375rem] leading-relaxed text-muted-foreground max-w-3xl">
-                  My experience spans senior commercial and operational leadership, advisory and fractional roles, and building platforms and ecosystems. I have operated across different growth stages and complex environments, often where clarity, governance, and execution were critical.
-                </p>
-                <p className="text-base text-muted-foreground/70">
-                  The examples below are grouped by responsibility rather than chronology.
-                </p>
+              {/* Narrative */}
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <h1>Adrian Watkins</h1>
+                  <p className="text-accent font-medium">Creator, EDGE Framework for Applied Intelligence</p>
+                  <p className="text-muted-foreground text-sm">SVP Commercial Operations &amp; Governance, SQREEM Technologies</p>
+                </div>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    After 15 years watching organisations fragment AI adoption across Asia-Pacific — from Singapore to Jakarta to Bangkok — I kept seeing the same pattern: enthusiasm without architecture. Pilots launched. Tools trialled. Teams experiment. But few embed intelligence into decision-making with clarity and discipline.
+                  </p>
+                  <p>
+                    The EDGE Framework emerged from that gap. It is not theory. It is the structure I wish had existed when I was navigating fragmentation, exposure, and illusion of progress across commercial leadership, advisory, and fractional roles.
+                  </p>
+                  <p>
+                    EDGE provides what scattered adoption cannot: a path from curiosity to capability, and from capability to sustained advantage.
+                  </p>
+                </div>
               </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Experience Context */}
+      <section className="py-6 md:py-5 lg:py-8 border-t border-border/50">
+        <div className="container-narrow">
+          <AnimatedSection>
+            <div className="space-y-4 max-w-3xl">
+              <p className="text-xl lg:text-[1.375rem] leading-relaxed text-muted-foreground">
+                My experience spans senior commercial and operational leadership, advisory and fractional roles, and building platforms and ecosystems. I have operated across different growth stages and complex environments, often where clarity, governance, and execution were critical.
+              </p>
+              <p className="text-base text-muted-foreground/70">
+                The sections below are grouped by responsibility rather than chronology.
+              </p>
             </div>
           </AnimatedSection>
         </div>
