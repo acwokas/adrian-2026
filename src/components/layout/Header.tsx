@@ -138,14 +138,13 @@ export function Header() {
             </div>
             
             {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              className="p-2 text-foreground hover:text-accent transition-colors"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </Button>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
 
