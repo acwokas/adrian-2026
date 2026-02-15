@@ -275,7 +275,7 @@ export default function Edge() {
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
-            <div className="bg-[hsl(222_47%_6%)] border border-[hsl(222_20%_16%)] rounded-lg p-6 md:p-10 lg:p-12 shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)]">
+            <div className="bg-[hsl(222_47%_6%)] border border-[hsl(222_20%_16%)] rounded-lg p-4 sm:p-6 md:p-10 lg:p-12 shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)] overflow-hidden">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
                 {/* Cover preview */}
                 <div className="w-full max-w-[320px] md:max-w-[400px] flex-shrink-0">
@@ -292,8 +292,8 @@ export default function Edge() {
                 {/* Download info */}
                 <div className="space-y-5 text-center md:text-left">
                   <div className="space-y-2">
-                    <h2 className="text-2xl md:text-3xl">Download the EDGE Framework White Paper</h2>
-                    <p className="text-lg text-accent font-medium">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl">Download the EDGE Framework White Paper</h2>
+                    <p className="text-base sm:text-lg text-accent font-medium">
                       A 19-page leadership doctrine for structuring intelligence in modern organisations
                     </p>
                   </div>
