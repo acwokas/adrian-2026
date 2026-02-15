@@ -278,7 +278,7 @@ export default function Edge() {
             <div className="bg-[hsl(222_47%_6%)] border border-[hsl(222_20%_16%)] rounded-lg p-4 sm:p-6 md:p-10 lg:p-12 shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)] overflow-hidden">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
                 {/* Cover preview */}
-                <div className="w-full max-w-[320px] md:max-w-[400px] flex-shrink-0">
+                <div className="hidden sm:block w-full max-w-[320px] md:max-w-[400px] flex-shrink-0">
                   <div className="aspect-[3/4] overflow-hidden border border-[hsl(222_20%_16%)] shadow-xl rounded-sm">
                     <img
                       src={edgeCover}
@@ -298,11 +298,11 @@ export default function Edge() {
                     </p>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     This comprehensive white paper provides the complete EDGE Framework methodology, including:
                   </p>
 
-                  <ul className="space-y-2 text-muted-foreground text-left">
+                  <ul className="space-y-2 text-sm sm:text-base text-muted-foreground text-left">
                     <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">The structural problem: Adoption without architecture</li>
                     <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Detailed exploration of all four pillars</li>
                     <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">The 12 EDGE tools and how they operationalise the framework</li>
