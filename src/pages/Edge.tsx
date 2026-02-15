@@ -311,7 +311,7 @@ export default function Edge() {
                     <li className="leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-px before:bg-accent">Real-world application across startups, SMEs, enterprises, and government</li>
                   </ul>
 
-                  <div className="flex flex-col items-center md:items-start gap-3 pt-2">
+                  <div className="flex flex-col items-start gap-3 pt-2">
                     <Button
                       variant="hero"
                       size="lg"

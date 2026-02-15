@@ -316,7 +316,7 @@ export default function Experience() {
       <section className="py-6 md:py-7 lg:py-9">
         <div className="container-narrow">
           <AnimatedSection>
-            <div className="space-y-6">
+            <div className="flex flex-col items-center text-center space-y-6">
               <h2>For a Detailed Role History and Responsibilities</h2>
               <p className="text-lg lg:text-xl text-muted-foreground">
                 For a detailed role history and responsibilities, see my Executive CV.
