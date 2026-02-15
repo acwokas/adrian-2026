@@ -275,7 +275,7 @@ export default function Edge() {
       <section className="py-10 md:py-12 lg:py-14 border-t border-border/50">
         <div className="container-wide max-w-[1100px] mx-auto">
           <AnimatedSection>
-            <div className="bg-[hsl(222_47%_6%)] border border-[hsl(222_20%_16%)] rounded-lg p-5 sm:p-6 md:p-10 lg:p-12 shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)] overflow-hidden">
+            <div className="sm:bg-[hsl(222_47%_6%)] sm:border sm:border-[hsl(222_20%_16%)] sm:rounded-lg py-2 sm:p-6 md:p-10 lg:p-12 sm:shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)] overflow-hidden">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
                 {/* Cover preview */}
                 <div className="hidden sm:block w-full max-w-[320px] md:max-w-[400px] flex-shrink-0">
