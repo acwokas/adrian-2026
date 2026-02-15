@@ -181,7 +181,7 @@
     content: "–";
     position: absolute;
     left: 0;
-    color: hsl(var(--muted-foreground));
+    color: hsl(var(--accent));
   }
 
   @media (min-width: 768px) {
