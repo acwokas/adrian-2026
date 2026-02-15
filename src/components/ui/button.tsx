@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-secondary hover:text-foreground rounded-sm",
         link: "text-foreground underline-offset-4 hover:underline",
         // Custom variants for Adrian's site
-        hero: "bg-accent text-accent-foreground hover:bg-accent/90 font-medium tracking-wide rounded-sm",
+        hero: "bg-accent text-accent-foreground hover:bg-accent/90 font-medium tracking-wide rounded-sm w-fit",
         heroOutline: "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/5 hover:border-foreground/50 rounded-sm",
         minimal: "text-muted-foreground hover:text-foreground underline-offset-4 hover:underline",
       },
