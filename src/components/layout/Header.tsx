@@ -141,7 +141,7 @@ export function Header() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
-              className="p-2 text-foreground hover:text-accent transition-colors"
+              className="flex items-center justify-center h-10 w-10 text-foreground hover:text-accent transition-colors"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
