@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, SlidersHorizontal, Download, Sparkles, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -585,7 +585,7 @@ function RedTeamContent() {
 export default function RedTeamSimulation() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate/redteam"
         title="Red Team Simulation | EDGE Evaluate"
         description="Pressure-test ideas through adversarial challenge. Surface vulnerabilities, assumptions, and structural fault lines."

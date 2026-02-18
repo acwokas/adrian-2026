@@ -1,12 +1,12 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function PrivacyPolicy() {
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Privacy Policy" 
-        description="Privacy Policy for Adrian Watkins - Learn how we collect, use, and protect your data."
+        description="Privacy Policy for Adrian Watkins. How we collect, use, and protect your data."
         canonical="/privacy"
       />
       <section className="section-spacing">

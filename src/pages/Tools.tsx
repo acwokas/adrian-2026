@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Search, Lightbulb, FileText } from "lucide-react";
@@ -85,11 +85,10 @@ const toolSections: ToolSection[] = [
 export default function Tools() {
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools"
         title="EDGE Tools | 12 Simulation & Assessment Rooms"
         description="Free AI governance tools: decision simulation, governance review, maturity assessment, ethical dilemma navigation. Session-based, privacy-first, immediately actionable."
-        keywords="EDGE tools, AI readiness assessment, intelligence diagnostic, AI governance tools, applied intelligence instruments"
       />
 
       {/* Hero */}

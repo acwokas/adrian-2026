@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,11 +22,10 @@ const principles = [
 export default function ElevateHub() {
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/elevate"
         title="Elevate Tools | EDGE Framework"
         description="Optimise AI interactions, improve prompt quality, and get better results faster. Built on proven prompt engineering principles."
-        keywords="EDGE elevate, prompt engineering, AI optimisation, prompt optimization, performance tools"
       />
 
       {/* Hero */}

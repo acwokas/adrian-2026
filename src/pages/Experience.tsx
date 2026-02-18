@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
@@ -12,12 +12,10 @@ export default function Experience() {
   
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="About | SVP Commercial Operations & Governance"
         description="15 years across Singapore, Jakarta, Bangkok building structured AI capability. Creator of EDGE Framework, advisor to startups, contributor to AiinASIA.com."
         canonical="/about"
-        keywords="Adrian Watkins, commercial leadership, operational leadership, board advisory, executive decision support, Asia Pacific, AI advisory, EDGE Framework, governance"
-        breadcrumb={[{ name: "About", path: "/about" }]}
       />
       
       {/* Narrative Intro */}

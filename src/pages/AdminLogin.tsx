@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -106,10 +106,11 @@ export default function AdminLogin() {
 
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Admin Login" 
         description="Admin login for Adrian Watkins website."
         canonical="/admin/login"
+        noIndex
       />
       <section className="section-spacing">
         <div className="container-narrow max-w-md mx-auto">

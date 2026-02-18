@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, Download, Send, MessageCircle, User, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -651,11 +651,10 @@ function ConversationContent() {
 export default function ConversationSimulator() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate/conversation"
         title="Conversation Simulator | EDGE Evaluate"
         description="Rehearse difficult conversations before they happen. Practice with AI that pushes back realistically until you earn resolution."
-        keywords="conversation simulator, difficult conversations, negotiation practice, AI roleplay, professional communication"
       />
       <SimulationProvider roomId="conversation" totalSteps={2}>
         <SimulationLayout

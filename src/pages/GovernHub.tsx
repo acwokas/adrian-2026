@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -182,11 +182,10 @@ const collapsibleSections = [
 export default function GovernHub() {
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/govern"
         title="Govern Tools | EDGE Framework"
         description="Governance and oversight tools for establishing accountability, policy boundaries, risk management, and performance discipline in AI implementations."
-        keywords="EDGE govern, AI governance, oversight tools, accountability framework, risk management"
       />
 
       {/* Hero */}

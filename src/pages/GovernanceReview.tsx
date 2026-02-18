@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, Download, Send, User, ShieldCheck, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -696,11 +696,10 @@ function GovernanceContent() {
 export default function GovernanceReview() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/govern/governance-review"
         title="Governance Review Simulator | EDGE Govern"
         description="Rehearse governance reviews before facing boards, investors, or leadership. Practice defending AI decisions under realistic scrutiny."
-        keywords="governance review, AI governance, board review simulation, AI oversight, accountability framework"
       />
       <SimulationProvider roomId="governance-review" totalSteps={2}>
         <SimulationLayout

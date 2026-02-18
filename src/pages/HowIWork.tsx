@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
@@ -10,12 +10,10 @@ export default function HowIWork() {
   
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Working Approach - Executive Advisory & Leadership Style"
         description="Clarity, accountability, and progress over process. How I approach problems, work with leadership teams, and take responsibility for outcomes rather than just advice."
         canonical="/how-i-work"
-        keywords="executive working style, leadership approach, advisory methodology, decision-making support, executive team collaboration, capability building, governance"
-        breadcrumb={[{ name: "How I Work", path: "/how-i-work" }]}
       />
       {/* Header */}
       <section className="section-spacing lg:pb-12">

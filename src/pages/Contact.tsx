@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -65,12 +65,10 @@ export default function Contact() {
 
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Contact | Advisory & Speaking Engagements"
         description="Board advisory, executive workshops, and speaking engagements across Asia-Pacific. EDGE Framework diagnostic, fractional leadership, portfolio company support."
         canonical="/contact"
-        keywords="book executive advisor, fractional leadership consultation, strategic advisory call, executive coaching inquiry, business consultation"
-        breadcrumb={[{ name: "Contact", path: "/contact" }]}
       />
       {/* Header */}
       <section className="section-spacing lg:pb-10 border-b border-border/50">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 
 const REDIRECT_DELAY = 5; // seconds
 
@@ -32,10 +32,11 @@ const NotFound = () => {
 
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Page Not Found"
         description="The page you are looking for does not exist. Redirecting to Adrian Watkins' homepage for executive advisory and fractional leadership services."
         canonical="/404"
+        noIndex
       />
       <section className="section-spacing">
         <div className="container-narrow text-center">

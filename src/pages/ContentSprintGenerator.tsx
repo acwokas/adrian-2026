@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { PrivacyNotice } from "@/components/simulation/PrivacyNotice";
@@ -543,16 +543,10 @@ export default function ContentSprintGenerator() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/define/content-sprint"
         title="Content Sprint Generator | EDGE Define"
         description="Generate platform-ready content calendars. 7 or 14 days of copy-ready posts with CTAs, hashtags, and timing guidance."
-        keywords="content calendar, content sprint, social media content, LinkedIn posts, content strategy, EDGE framework"
-        breadcrumb={[
-          { name: "Tools", path: "/tools" },
-          { name: "Define", path: "/tools/define" },
-          { name: "Content Sprint", path: "/tools/define/content-sprint" },
-        ]}
       />
 
       <section className="section-spacing">

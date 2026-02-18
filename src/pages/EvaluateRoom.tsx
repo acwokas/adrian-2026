@@ -1,7 +1,7 @@
 import { SimulationProvider, SimulationLayout, FormField, ExampleScenario, ResultsDisplay, useSimulation } from "@/components/simulation";
 import type { SimulationRoomConfig } from "@/components/simulation";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight } from "lucide-react";
 
 const roomConfig: SimulationRoomConfig = {
@@ -134,7 +134,7 @@ function EvaluateContent() {
 export default function EvaluatePage() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate"
         title="AI Readiness Diagnostic: EDGE Evaluate"
         description="Assess your organisation's readiness to adopt applied intelligence. Identify structural gaps in strategy, data, governance, and capability."

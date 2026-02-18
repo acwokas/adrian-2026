@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { PrivacyNotice } from "@/components/simulation/PrivacyNotice";
@@ -416,16 +416,10 @@ export default function EngagementAnalyzer() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/define/engagement"
         title="Engagement Analyzer | EDGE Define"
         description="Paste comments, feedback, or conversations from your posts. Get structured analysis of what's resonating and what to do next."
-        keywords="engagement analysis, content performance, audience feedback, social media analytics, EDGE framework"
-        breadcrumb={[
-          { name: "Tools", path: "/tools" },
-          { name: "Define", path: "/tools/define" },
-          { name: "Engagement Analyzer", path: "/tools/define/engagement" },
-        ]}
       />
 
       <section className="section-spacing">
