@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { trackEvent, useAnalytics } from "@/hooks/useAnalytics";
 import { TrustedBySection } from "@/components/home/TrustedBySection";
 import { BlurImage } from "@/components/BlurImage";
@@ -66,11 +66,10 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         title="EDGE Framework for Applied Intelligence"
         canonical="/" 
         description="Creator of EDGE Framework. Board advisory, executive workshops, and AI governance for organisations across Asia-Pacific. 15+ years Singapore, APAC experience."
-        keywords="executive advisor Singapore, fractional COO, fractional CCO, board advisor, executive decision support, operational leadership, AI advisory, Asia Pacific executive coach, EDGE framework"
       />
       
       {/* Hero Section - Desktop: Three column layout */}

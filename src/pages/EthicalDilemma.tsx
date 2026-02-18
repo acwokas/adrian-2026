@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, Download, Scale, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -767,11 +767,10 @@ function EthicalDilemmaContent() {
 export default function EthicalDilemma() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/govern/ethical-dilemma"
         title="Ethical Dilemma Simulator | EDGE Govern"
         description="Navigate ethical challenges in AI deployment. Practice decision-making when values compete and stakeholders disagree."
-        keywords="ethical dilemma, AI ethics, governance simulation, ethical framework, AI deployment ethics"
       />
       <SimulationProvider roomId="ethical-dilemma" totalSteps={2}>
         <SimulationLayout

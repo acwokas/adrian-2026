@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -355,7 +355,7 @@ export default function AdminDashboard() {
 
   return (
     <Layout>
-      <SEO title="Analytics Dashboard" description="Site analytics and event tracking dashboard." canonical="/admin" />
+      <SEOHead title="Analytics Dashboard" description="Site analytics and event tracking dashboard." canonical="/admin" noIndex />
       <section className="section-spacing">
         <div className="container-wide">
           <div className="space-y-8">

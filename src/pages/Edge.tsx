@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { Download } from "lucide-react";
 import edgeCover from "@/assets/edge-cover.png";
@@ -40,11 +40,10 @@ export default function Edge() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/edge"
         title="EDGE Framework | Structure Intelligence from Curiosity to Capability"
         description="Leadership doctrine for AI governance. Evaluate, Define, Govern, Elevate. 12 simulation tools, maturity assessment, implementation guide. Free white paper available."
-        keywords="EDGE framework, applied intelligence, AI adoption framework, AI governance, AI strategy, decision architecture"
       />
 
       {/* Hero */}

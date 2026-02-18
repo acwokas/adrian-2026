@@ -1,7 +1,7 @@
 import { Download } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/hooks/useAnalytics";
 
@@ -69,12 +69,10 @@ export default function Resume() {
 
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Executive CV - Senior Commercial & Operational Leader"
         description="Executive CV of Adrian Watkins. Senior executive with board-level advisory experience, commercial strategy, operational transformation, and executive decision support across Asia Pacific."
         canonical="/executive-cv"
-        keywords="executive CV, senior leader CV, board advisor, commercial director CV, COO CV, fractional executive, executive decision support, Asia Pacific executive"
-        breadcrumb={[{ name: "Executive CV", path: "/executive-cv" }]}
       />
       {/* Header with Executive Summary */}
       <section className="section-spacing lg:pb-10">

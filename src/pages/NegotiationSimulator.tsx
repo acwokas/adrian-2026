@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, Download, Send, User, SlidersHorizontal, Handshake, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -633,11 +633,10 @@ function NegotiationContent() {
 export default function NegotiationSimulator() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate/negotiation"
         title="Negotiation Simulator | EDGE Evaluate"
         description="Practice negotiation dynamics with realistic AI behavior. AI uses counter-asks, delays, and pressure tactics."
-        keywords="negotiation simulator, negotiation practice, AI negotiation, salary negotiation, contract negotiation"
       />
       <SimulationProvider roomId="negotiation" totalSteps={2}>
         <SimulationLayout

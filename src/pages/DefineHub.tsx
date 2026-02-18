@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -154,15 +154,10 @@ export default function DefineHub() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/define"
         title="EDGE Define: Positioning & Content Tools"
         description="Define your positioning, create platform-specific content, and understand what worked. Tools for founders, operators, and marketers."
-        keywords="brand positioning, content strategy, content calendar, engagement analysis, EDGE framework, define tools"
-        breadcrumb={[
-          { name: "Tools", path: "/tools" },
-          { name: "Define", path: "/tools/define" },
-        ]}
       />
 
       {/* Hero */}

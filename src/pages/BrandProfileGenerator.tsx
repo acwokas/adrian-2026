@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
@@ -379,16 +379,10 @@ export default function BrandProfileGenerator() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/define/brand-profile"
         title="Brand Profile Generator | EDGE Define"
         description="Create your positioning foundation. 8-step guided process to define how your brand should be understood."
-        keywords="brand positioning, brand profile, brand voice, content strategy, audience personas, EDGE framework"
-        breadcrumb={[
-          { name: "Tools", path: "/tools" },
-          { name: "Define", path: "/tools/define" },
-          { name: "Brand Profile Generator", path: "/tools/define/brand-profile" },
-        ]}
       />
 
       <section className="section-spacing">

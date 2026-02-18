@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
@@ -321,11 +321,10 @@ export default function MaturityAssessment() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/govern/maturity-assessment"
         title="AI Governance Maturity Assessment | EDGE Govern"
         description="Assess your organisation's AI governance maturity across 5 dimensions. Get a personalised roadmap and recommendations."
-        keywords="AI governance maturity, governance assessment, EDGE govern, AI oversight"
       />
 
       <section className="section-spacing">

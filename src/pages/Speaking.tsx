@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { motion } from "framer-motion";
@@ -11,11 +11,10 @@ export default function Speaking() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/speaking"
         title="Speaking & Workshops | EDGE Framework"
         description="Keynotes and executive workshops on AI governance, commercial strategy, and structured capability. Recent: Taiwan Smart Living 2025 (150+ officials, investors, founders)."
-        keywords="executive workshops, AI keynote speaker, applied intelligence workshops, board advisory, commercial strategy speaker, Asia Pacific"
       />
 
       {/* Hero */}

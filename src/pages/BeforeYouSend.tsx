@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, Download, Plus, X, Table2, List } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -559,11 +559,10 @@ function BeforeYouSendContent() {
 export default function BeforeYouSend() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate/before-you-send"
         title="Before You Send | EDGE Evaluate"
         description="Test how your message might be interpreted by different audiences. Surface perception gaps before hitting send."
-        keywords="communication analysis, message interpretation, audience perception, before you send, professional communication"
       />
       <SimulationProvider roomId="before-you-send" totalSteps={2}>
         <SimulationLayout

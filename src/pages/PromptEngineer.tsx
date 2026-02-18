@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -673,11 +673,10 @@ export default function PromptEngineer() {
 
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/elevate/prompt-engineer"
         title="Prompt Engineer | EDGE Elevate"
         description="Generate, optimise, and adapt AI prompts. Three modes for better results: create from scratch, improve existing, or rewrite for specific platforms."
-        keywords="prompt engineering, AI prompts, prompt optimization, ChatGPT prompts, Claude prompts"
       />
 
       {/* Header */}

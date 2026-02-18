@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { AnimatedSection, StaggeredChildren, StaggeredItem } from "@/components/AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -92,11 +92,10 @@ const quickStartItems = [
 export default function EvaluateHub() {
   return (
     <Layout>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate"
         title="Evaluate Tools | EDGE Framework"
         description="Diagnostic and simulation tools for assessing intelligence readiness, testing decisions, and pressure-testing ideas before deployment."
-        keywords="EDGE evaluate, AI readiness, decision simulation, red team analysis, applied intelligence tools"
       />
 
       {/* Hero */}

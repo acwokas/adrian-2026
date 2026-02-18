@@ -1,6 +1,7 @@
 import { useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 const lightPalette = [
   { name: "Background", hex: "#FAF9F7", hsl: "40, 20%, 98%" },
@@ -118,6 +119,12 @@ export default function BrandPalette() {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEOHead
+        title="Colour Palette"
+        description="Brand colours for Adrian Watkins. Download light and dark mode swatch sheets as PNG."
+        canonical="/brand-palette"
+        noIndex
+      />
       <div className="container-narrow section-spacing pt-28 md:pt-32">
         <div className="space-y-2 mb-10">
           <h1 className="text-3xl font-semibold">Colour Palette</h1>

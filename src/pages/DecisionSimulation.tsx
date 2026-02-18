@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { ArrowRight, ArrowLeft, Copy, Check, ChevronDown, RotateCcw, SlidersHorizontal, Download, Columns2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -481,7 +481,7 @@ ${reflection || "(No reflection recorded)"}`;
 export default function DecisionSimulation() {
   return (
     <>
-      <SEO
+      <SEOHead
         canonical="/tools/evaluate/decision"
         title="Decision Simulation | EDGE Evaluate"
         description="Analyze decisions before committing. Surface second-order effects, blind spots, and identity-level implications."

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { SEO } from "@/components/SEO";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { TrackedExternalLink } from "@/components/TrackedLink";
@@ -27,12 +27,10 @@ export default function WhatIDo() {
   }, [location.hash]);
   return (
     <Layout>
-      <SEO 
+      <SEOHead 
         title="Services - Advisory, Fractional Leadership & Capability Building"
         description="Helping leaders make decisions, align teams, and move forward with clarity. Advisory sprints, fractional executive leadership, and mentoring for organisations where stakes are high."
         canonical="/what-i-do"
-        keywords="advisory sprints, fractional COO, fractional CCO, executive mentoring, capability building, leadership development, strategic advisory, decision support"
-        breadcrumb={[{ name: "What I Do", path: "/what-i-do" }]}
       />
       {/* Header */}
       <section className="section-spacing lg:pb-12">
