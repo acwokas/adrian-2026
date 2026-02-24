@@ -323,7 +323,7 @@ export default function MaturityAssessment() {
     <Layout>
       <SEOHead
         canonical="/tools/govern/maturity-assessment"
-        title="AI Governance Maturity Assessment | EDGE Govern"
+        title="Governance Maturity Assessment | EDGE"
         description="Assess your organisation's AI governance maturity across 5 dimensions. Get a personalised roadmap and recommendations."
       />
 
