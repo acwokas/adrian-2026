@@ -11,7 +11,7 @@ export default function HowIWork() {
   return (
     <Layout>
       <SEOHead 
-        title="Working Approach - Executive Advisory & Leadership Style"
+        title="How I Work: Advisory & Leadership Style"
         description="Clarity, accountability, and progress over process. How I approach problems, work with leadership teams, and take responsibility for outcomes rather than just advice."
         canonical="/how-i-work"
       />
