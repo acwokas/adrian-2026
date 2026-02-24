@@ -87,8 +87,8 @@ export default function Tools() {
     <Layout>
       <SEOHead
         canonical="/tools"
-        title="EDGE Tools | 12 Simulation & Assessment Rooms"
-        description="Free AI governance tools: decision simulation, governance review, maturity assessment, ethical dilemma navigation. Session-based, privacy-first, immediately actionable."
+        title="EDGE Framework Tools & Simulations"
+        description="Free AI governance tools: decision simulation, governance review, maturity assessment, ethical dilemma navigation. Session-based and privacy-first."
       />
 
       {/* Hero */}
