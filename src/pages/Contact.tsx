@@ -66,7 +66,7 @@ export default function Contact() {
   return (
     <Layout>
       <SEOHead 
-        title="Contact | Advisory & Speaking Engagements"
+        title="Get in Touch: Advisory & Speaking"
         description="Board advisory, executive workshops, and speaking engagements across Asia-Pacific. EDGE Framework diagnostic, fractional leadership, portfolio company support."
         canonical="/contact"
       />
