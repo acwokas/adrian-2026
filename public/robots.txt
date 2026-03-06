@@ -1,5 +1,5 @@
 # robots.txt for adrianwatkins.com
-# Last updated: 2026-02-14
+# Last updated: 2026-03-06
 
 User-agent: Googlebot
 Allow: /
