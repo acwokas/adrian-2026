@@ -9,11 +9,24 @@ interface TrackEventOptions {
   eventData?: Record<string, unknown>;
 }
 
+// Push to dataLayer for GTM triggers
+const pushToDataLayer = (eventName: string, eventData?: Record<string, unknown>) => {
+  if (typeof window !== 'undefined') {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: eventName,
+      ...eventData,
+    });
+  }
+};
+
 // Google Analytics helper
 const sendToGA = (eventName: string, eventData?: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && 'gtag' in window) {
     (window as { gtag: (command: string, ...args: unknown[]) => void }).gtag('event', eventName, eventData);
   }
+  // Also push to dataLayer for GTM
+  pushToDataLayer(eventName, eventData);
 };
 
 // GA4 Conversion Events - these should be marked as conversions in GA4 dashboard
@@ -186,3 +199,4 @@ export const useAnalytics = () => {
     trackWhitepaperDownload,
   };
 };
+
