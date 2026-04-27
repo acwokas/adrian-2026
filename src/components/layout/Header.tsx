@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { TrackedLink } from "@/components/TrackedLink";
 import logo from "@/assets/logo.png";
@@ -101,8 +100,6 @@ export function Header() {
                 <Plus className="h-3 w-3" />
               </Button>
             </div>
-            
-            <ThemeToggle />
           </div>
 
           {/* Mobile Controls - visible on larger mobile screens */}
@@ -130,11 +127,6 @@ export function Header() {
               >
                 <Plus className="h-3 w-3" />
               </Button>
-            </div>
-            
-            {/* Theme Toggle - hidden on very small screens */}
-            <div className="hidden sm:block">
-              <ThemeToggle />
             </div>
             
             {/* Mobile Menu Button */}
@@ -195,10 +187,6 @@ export function Header() {
                     <Plus className="h-3 w-3" />
                   </Button>
                 </div>
-              </div>
-              
-              <div className="pt-2 border-t border-border/50">
-                <ThemeToggle />
               </div>
             </div>
           </div>
