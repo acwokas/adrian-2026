@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Writing. Adrian Watkins.';
+const description = 'Long-form essays, the Friday Note, a quarterly reading list, and field notes from Asia-Pacific. Operators, governance, applied intelligence.';
+---
+
+<BaseLayout title={title} description={description} current="writing">
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Writing</div>
+      <h1>Notes, essays, and the Friday Note.</h1>
+      <p class="lede">Long-form posts, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Four threads: Friday Note (weekly, 200 words), Reading list (quarterly), Operating decisions I got wrong (long-form), Field notes from Asia (photographed).</p>
+
+      <p class="prose">The archive opens in Phase 3 with at least three entries per thread. The Friday Note starts the week of the cutover. Cross-posting to LinkedIn for distribution, canonical here.</p>
+
+      <p class="stub-note">Archive, RSS, and Friday Note signup ship in Phase 3 once the editorial cadence is set.</p>
+      <!-- TODO: phase 2/3 - content collections (posts/, friday-notes/, reading/, field-notes/), RSS feed, MDX shortcodes for citations and pull-quotes, Article JSON-LD per post, three-entry seed for each thread, LinkedIn cross-post workflow -->
+    </div>
+  </section>
+</BaseLayout>

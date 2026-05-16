@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = '/now. Adrian Watkins.';
+const description = 'What I am working on this quarter. Updated monthly. Borrowed from Derek Sivers. Building, advising, reading, where I will be on stage.';
+---
+
+<BaseLayout title={title} description={description} current="now">
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">/now</div>
+      <h1>What I am working on this quarter.</h1>
+      <p class="lede">Updated monthly. Borrowed from Derek Sivers. What I am building, who I am advising in broad strokes, what I am reading, where I will be on stage.</p>
+
+      <div class="prose">
+        <p><strong>Q2 2026.</strong> Building EDGE Diagnostic v2, a 25-minute structured conversation that produces a board-ready AI capability snapshot. Currently advising two founders, one fintech operator in Singapore and one healthtech in Jakarta. Drafting the EDGE field manual for nominating committees, due Q3.</p>
+        <p>Two speaking commitments confirmed for the next two quarters: Launch Bootcamp 3 with NLB and Blackstorm in March, and a closed CEO roundtable in Bangkok in May. Reading: Margaret Heffernan on uncertainty, Marc Levinson on the box. Listening: Patrick Collison and Tyler Cowen archive. Foodie field notes return next month.</p>
+        <p class="quiet" style="font-size:14px;margin-top:24px">Last updated 16 May 2026.</p>
+      </div>
+
+      <p class="stub-note">/now archive (one entry per month) ships in Phase 3 once the cadence is established.</p>
+      <!-- TODO: phase 3 - one entry per month in a /now/ content collection, archive index, RSS for /now updates -->
+    </div>
+  </section>
+</BaseLayout>

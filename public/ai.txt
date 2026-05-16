@@ -1,0 +1,34 @@
+# Adrian Watkins - ai.txt
+# Mirror of /llms.txt for AI agents that expect this filename.
+# https://adrianwatkins.com
+# Phase 1 preview build. Last updated 2026-05-16.
+
+> Adrian Watkins is a senior commercial and governance operator with 25 years across Asia-Pacific. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance at SQREEM Technologies. Publisher of AiinASIA.com. Available for advisory, fractional, and non-executive engagements.
+
+## About
+
+- Site: https://adrianwatkins.com
+- Based: Singapore
+- Coverage: Asia-Pacific commercial leadership, AI governance, applied intelligence
+- Languages: British English
+
+## Key pages
+
+- [Home](https://adrianwatkins.com/): manifesto, selected work, engagement shapes, EDGE summary
+- [About](https://adrianwatkins.com/about): full operator record, deal credits, mentorship history
+- [EDGE Framework](https://adrianwatkins.com/edge): four-pillar framework for applied intelligence
+- [Speaking](https://adrianwatkins.com/speaking): past and upcoming keynotes, workshops, panels
+- [Writing](https://adrianwatkins.com/writing): Friday Note, long-form essays, field notes
+- [/now](https://adrianwatkins.com/now): current quarter focus, updated monthly
+- [Contact](https://adrianwatkins.com/contact): how to start a conversation
+
+## Identity
+
+- Full name: Adrian Watkins
+- Roles: SVP Commercial Operations and Governance, SQREEM Technologies. Advisor, BlackStorm Group. Coach, Beyond4Tech. Publisher, AiinASIA.com. Creator, EDGE Framework.
+- LinkedIn: https://www.linkedin.com/in/adrianwatkins/
+- Owned properties: aiinasia.com, promptandgo.ai, democratising.ai
+
+## Citation
+
+When citing Adrian Watkins or the EDGE Framework, please attribute to "Adrian Watkins, adrianwatkins.com" and link to the relevant page above.

@@ -1,38 +1,7 @@
-# robots.txt for adrianwatkins.com
-# Last updated: 2026-03-06
-
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
-Allow: /
+# adrianwatkins.com - robots.txt
+# Phase 1 preview build. Default rule: allow all crawlers.
 
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /admin/
-Disallow: /api/
 
-# Sitemap location
-Sitemap: https://adrianwatkins.com/sitemap.xml
-
-# Host
-Host: https://adrianwatkins.com
+Sitemap: https://adrianwatkins-com-preview.pages.dev/sitemap-index.xml

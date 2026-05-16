@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import AnalyticsHead from '../components/AnalyticsHead.astro';
+import AnalyticsBody from '../components/AnalyticsBody.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  canonicalOverride?: string;
+}
+
+const {
+  title,
+  description,
+  current = '',
+  ogImage = '/images/hero-portrait.jpg',
+  jsonLd,
+  canonicalOverride,
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE_URL || Astro.site?.toString() || 'https://adrianwatkins-com-preview.pages.dev';
+const cleanSite = siteUrl.replace(/\/$/, '');
+const canonical = canonicalOverride || `${cleanSite}${Astro.url.pathname.replace(/\/$/, '') || '/'}`;
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${cleanSite}${ogImage}`;
+
+const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Adrian Watkins" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {jsonLdString && (
+      <script is:inline type="application/ld+json" set:html={jsonLdString} />
+    )}
+
+    <AnalyticsHead />
+  </head>
+  <body>
+    <AnalyticsBody />
+    <Nav current={current} />
+    <main id="top">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

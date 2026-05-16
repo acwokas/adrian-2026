@@ -1,0 +1,68 @@
+---
+/**
+ * PhotoSlot. Renders a real JPG from /public/images/<src> if present at build
+ * time. Otherwise renders a hatched SVG-style placeholder with the same
+ * aspect ratio. Drop a correctly-named JPG into /public/images/ and rebuild;
+ * no code change required to fill a slot.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  src: string;
+  alt: string;
+  description?: string;
+  aspectRatio?: string;
+  label?: string;
+  meta?: string;
+  loading?: 'lazy' | 'eager';
+  caption?: string;
+}
+
+const {
+  src,
+  alt,
+  description = '',
+  aspectRatio = '16 / 9',
+  label = 'Photo to come',
+  meta = '',
+  loading = 'lazy',
+  caption = '',
+} = Astro.props;
+
+const publicPath = path.join(process.cwd(), 'public', 'images', src);
+const hasReal = fs.existsSync(publicPath);
+const imgSrc = `/images/${src}`;
+---
+
+<figure class="speak-media">
+  <div style={`aspect-ratio:${aspectRatio};`}>
+    {hasReal ? (
+      <img
+        class="photo-slot-img"
+        src={imgSrc}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+      />
+    ) : (
+      <div
+        class="photo-placeholder"
+        style={`width:100%;height:100%;`}
+        role="img"
+        aria-label={alt}
+      >
+        <div class="ph-label">{label}</div>
+        <div class="ph-icon">[ ]</div>
+        {description && <div class="ph-desc">{description}</div>}
+        {meta && <div class="ph-meta">{meta}</div>}
+      </div>
+    )}
+  </div>
+  {caption && (
+    <figcaption>
+      {!hasReal && <span class="tag-needed">Placeholder caption</span>}
+      {caption}
+    </figcaption>
+  )}
+</figure>

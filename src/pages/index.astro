@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+
+const title = 'Adrian Watkins. Operator. Builder. Governor.';
+const description = 'Senior commercial and governance operator across Asia-Pacific. 25 years. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance, SQREEM Technologies.';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Adrian Watkins',
+  url: 'https://adrianwatkins.com',
+  jobTitle: 'SVP Commercial Operations and Governance',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'SQREEM Technologies',
+  },
+  description: 'Senior commercial and governance operator across Asia-Pacific. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
+  knowsAbout: [
+    'AI governance',
+    'Applied intelligence',
+    'EDGE Framework',
+    'Commercial operations',
+    'M&A integration',
+    'Asia-Pacific go-to-market',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/adrianwatkins/',
+    'https://aiinasia.com',
+    'https://promptandgo.ai',
+    'https://democratising.ai',
+    'https://blackstormco.asia/personnel/adrian-watkins/',
+    'https://mmaglobal.com/speakers/adrian-watkins',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Singapore',
+    addressCountry: 'SG',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} current="home" jsonLd={personJsonLd}>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="eyebrow">Singapore. 25 years across Asia and Europe.</div>
+          <h1>Operator. Builder.<br /><em>Governor.</em></h1>
+          <p class="lede">Senior commercial and governance leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.</p>
+
+          <div class="manifesto prose">
+            <p>I have spent 25 years building and governing commercial businesses across Asia-Pacific. The last five have been about one question. Why do most organisations adopt AI like they are buying stationery, then act surprised when nothing compounds?</p>
+
+            <p>I built EDGE to answer that question for the teams I work with, and to give boards a working language for AI capability that does not collapse the first time someone asks "but what did it actually do?".</p>
+
+            <p>I am SVP of Commercial Operations and Governance at SQREEM Technologies. I sourced and led the integration of the TotallyAwesome acquisition in 2024. I also publish AiinASIA.com, which reaches around 10,000 readers a month without paid distribution, and I built PromptAndGo.ai because Asia deserves AI prompts that respect the register, the market, and the language.</p>
+
+            <p>If you are a CEO, a board chair, or a sponsor and you need someone who can carry the commercial number and the governance memo in the same week, I take on a small number of advisory, fractional, and non-executive engagements a year. The rest of this site explains how.</p>
+          </div>
+
+          <div class="ctarow">
+            <a class="btn btn-primary" href="/contact">Book a 30-minute call</a>
+            <a class="btn btn-secondary" href="/edge">Read the EDGE framework</a>
+          </div>
+
+          <div class="meta-line">
+            <span>SVP, SQREEM Technologies</span>
+            <span>Advisor, BlackStorm Group</span>
+            <span>Coach, Beyond4Tech</span>
+            <span>Publisher, AiinASIA.com</span>
+          </div>
+        </div>
+
+        <figure class="hero-photo">
+          <img src="/images/hero-portrait.jpg" alt="Adrian Watkins. Black-and-white editorial portrait. Singapore." />
+          <figcaption>Singapore, 2025.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected work.</h2>
+        <p class="aside">Three named engagements where the public record speaks for itself. The longer list, with anonymised cases, sits on the work page.</p>
+      </div>
+      <div class="cases">
+
+        <article class="case">
+          <div class="tag">M&amp;A integration, 2024</div>
+          <h3>SQREEM acquires TotallyAwesome.</h3>
+          <p>I sourced the target, helped broker the deal, and led the go-to-market and operational integration. Two commercial stacks became one, with governance controls in place from day one. The internal lessons sit in the EDGE Govern pillar.</p>
+          <div class="meta">Public commentary on the merger is on record.</div>
+        </article>
+
+        <article class="case">
+          <div class="tag">Owned media, since 2020</div>
+          <h3>AiinASIA.com.</h3>
+          <p>I founded and publish AiinASIA, an editorial brief on how artificial intelligence is actually being adopted across Asia-Pacific. Around 10,000 readers a month, zero paid distribution, written for operators rather than tourists.</p>
+          <div class="meta">aiinasia.com</div>
+        </article>
+
+        <article class="case">
+          <div class="tag">Advisory, since 2024</div>
+          <h3>BlackStorm Group.</h3>
+          <p>Advisor on growth, transformation, and AI adoption for BlackStorm's Asia-Pacific portfolio of founders and scale-ups. Workshops, board prep, and the harder conversations about which AI initiatives to stop.</p>
+          <div class="meta">blackstormco.asia</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>How I work.</h2>
+        <p class="aside">Four engagement shapes. I take on a small number of each per year. Selection happens both ways.</p>
+      </div>
+      <div class="help">
+        <div class="help-card">
+          <h4>One</h4>
+          <h3>EDGE Diagnostic.</h3>
+          <p>A 25-minute structured conversation that produces a board-ready snapshot of where your AI adoption actually is. The output is a single-page memo, not a slide deck.</p>
+        </div>
+        <div class="help-card">
+          <h4>Two</h4>
+          <h3>Fractional leadership.</h3>
+          <p>Embedded commercial and governance leadership on a defined cadence. For founders and operators who need a senior peer, not a consultant.</p>
+        </div>
+        <div class="help-card">
+          <h4>Three</h4>
+          <h3>Advisory and board.</h3>
+          <p>Non-executive, advisory board, or specific board-committee work. AI governance, commercial readiness, and the hard parts of Asia-Pacific go-to-market.</p>
+        </div>
+        <div class="help-card">
+          <h4>Four</h4>
+          <h3>Workshops and capability.</h3>
+          <p>One-day and multi-day executive workshops built on the EDGE pillars. Outputs are working artefacts your team uses on the Monday after.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="edge" class="dark">
+    <div class="container">
+      <div class="section-head">
+        <h2 style="color:#F4ECD8">The EDGE Framework.</h2>
+        <p class="aside" style="color:#B7A98E">A practical structure for applied intelligence. Four pillars. Used by founders, operators, and boards.</p>
+      </div>
+
+      <p class="edge-quote">Artificial intelligence is widely accessible.<br /><em>Structured capability is not.</em></p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <h3>Evaluate.</h3>
+          <p>Where you actually are. Capability, exposure, and the gap between what your AI tools do and what your teams say they do.</p>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <h3>Define.</h3>
+          <p>What "good" looks like for your organisation. The specific outcomes AI is allowed to chase, and the ones it is not.</p>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <h3>Govern.</h3>
+          <p>The decisions, controls, and review cadence that turn AI activity into AI capability. Board-legible. Not theatre.</p>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <h3>Elevate.</h3>
+          <p>What changes about your people, your operating model, and your competitive position when the first three are in place.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="/edge" style="background:#D89A55;color:#1A1714">Download the 19-page white paper</a>
+        <a class="btn btn-secondary" href="/edge" style="border-color:#E9E2D2;color:#E9E2D2">Try the EDGE Diagnostic</a>
+      </div>
+      <p style="font-size:13px;color:#7A7060;margin-top:18px;max-width:none">Tools and diagnostic live on democratising.ai. Built on the EDGE Framework.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="now-grid">
+        <div class="label">
+          <h2>/now.</h2>
+          <p>What I am working on this quarter. Updated monthly. Borrowed from Derek Sivers.</p>
+        </div>
+        <div class="body">
+          <p>Q2 2026. Building EDGE Diagnostic v2, a 25-minute structured conversation that produces a board-ready AI capability snapshot. Currently advising two founders, one fintech operator in Singapore and one healthtech in Jakarta. Drafting the EDGE field manual for nominating committees, due Q3.</p>
+          <p>Two speaking commitments confirmed for the next two quarters: Launch Bootcamp 3 with NLB and Blackstorm in March, and a closed CEO roundtable in Bangkok in May. Reading: Margaret Heffernan on uncertainty, Marc Levinson on the box. Listening: Patrick Collison and Tyler Cowen archive. Foodie field notes return next month.</p>
+          <p>Last updated 16 May 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>More of me.</h2>
+        <p class="aside">Six places to go deeper. Some are running, some are queued for Q3. Field notes from the rebuild.</p>
+      </div>
+      <div class="slots">
+
+        <article class="slot">
+          <div class="kicker">Weekly</div>
+          <h3>Friday Note.</h3>
+          <p>A 200-word missive on what I noticed this week. Operators, governance, Asia-Pacific. Cross-posted to LinkedIn, archived here.</p>
+          <a class="more" href="/writing">Read the archive</a>
+        </article>
+
+        <article class="slot">
+          <div class="kicker">Quarterly</div>
+          <h3>Reading list.</h3>
+          <p>Five books a quarter, one line each, with the date I picked them up. The Patrick Collison move. Current: Heffernan, Levinson, Slouka, Tett, McGilchrist.</p>
+          <a class="more" href="/writing">Read the list</a>
+        </article>
+
+        <article class="slot">
+          <div class="kicker">Long-form</div>
+          <h3>Operating decisions I got wrong.</h3>
+          <p>Three to five essays a year on the calls I missed, the integrations that stalled, the AI projects I should have killed sooner. Specific. Costed where possible.</p>
+          <a class="more" href="/writing">Read the essays</a>
+        </article>
+
+        <article class="slot">
+          <div class="kicker">Field notes</div>
+          <h3>On the ground in Asia.</h3>
+          <p>Three paragraphs from a city, a deal, or a meeting. Photographed. Singapore, Jakarta, Bangkok, Ho Chi Minh, Taipei, Kuala Lumpur, the regional cities the headlines miss.</p>
+          <a class="more" href="/writing">Read the notes</a>
+        </article>
+
+        <article class="slot">
+          <div class="kicker">Reference</div>
+          <h3>How I work with founders.</h3>
+          <p>What I take on, what I do not, what it costs, and what I expect from you in return. Published rather than hidden. Filters inbound. Saves both of us time.</p>
+          <a class="more" href="/about">Read the brief</a>
+        </article>
+
+        <article class="slot">
+          <div class="kicker">Speaking</div>
+          <h3>The question I want the audience to leave with.</h3>
+          <p>Most speaker pages list the talk. Mine lists the question. If the question is not yours, the talk is not for you.</p>
+          <a class="more" href="/speaking">See the calendar</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking">
+    <div class="container">
+      <div class="section-head">
+        <h2>Recent and upcoming.</h2>
+        <p class="aside">Selected engagements. Full calendar on the speaking page.</p>
+      </div>
+
+      <PhotoSlot
+        src="speaking-government.jpg"
+        alt="Wide proof shot of Adrian on stage, presenting to a government audience."
+        description="Wide proof shot: Adrian on stage, presenting to a government audience."
+        meta="Drop the JPG at /public/images/speaking-government.jpg to populate."
+        aspectRatio="16 / 9"
+        caption="Presenting on AI policy to [REGULATOR or EVENT], [YYYY]."
+      />
+
+      <div class="speak">
+        <div class="speak-card">
+          <div class="when">November 2025</div>
+          <h3>Smart Living Sustainable Future 2025.</h3>
+          <p>Taipei City Government. Keynote on applied intelligence for urban operating models. 150+ officials, investors, and founders.</p>
+        </div>
+        <div class="speak-card">
+          <div class="when">March 2026</div>
+          <h3>Launch Entrepreneurship Bootcamp 3.</h3>
+          <p>National Library Board, Singapore, with Blackstorm Group. Workshop and keynote on governance discipline for AI-native founders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta alt" id="contact">
+    <div class="container">
+      <h2>Ready for a real conversation about AI?</h2>
+      <p class="lede">I am selective about what I take on. A 30-minute call is the right place to start, even if we conclude we are not a fit.</p>
+      <div class="ctarow">
+        <a class="btn btn-primary" href="/contact">Book a 30-minute call</a>
+        <a class="btn btn-secondary" href="/about">Download my executive CV</a>
+      </div>
+      <p class="quiet" style="margin-top:24px;font-size:13px">I typically respond within two business days. Singapore-based, available across Asia-Pacific time zones.</p>
+    </div>
+  </section>
+
+</BaseLayout>

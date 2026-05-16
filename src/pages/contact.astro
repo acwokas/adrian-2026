@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Contact. Adrian Watkins.';
+const description = 'How to start a conversation. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements.';
+---
+
+<BaseLayout title={title} description={description} current="contact">
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Contact</div>
+      <h1>Ready for a real conversation about AI?</h1>
+      <p class="lede">I am selective about what I take on. A 30-minute call is the right place to start, even if we conclude we are not a fit.</p>
+
+      <div class="ctarow" style="margin-bottom:32px">
+        <a class="btn btn-primary" href="mailto:me@adrianwatkins.com">Email me</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+
+      <p class="prose">I typically respond within two business days. Singapore-based, available across Asia-Pacific time zones. Working hours that overlap London and New York on request.</p>
+
+      <p class="stub-note">Calendly booking, contact form, and three resource cards (EDGE Diagnostic, white paper, speaker pack) ship in Phase 2.</p>
+      <!-- TODO: phase 2 - Calendly embed, contact form (Resend or Formspree), three resource cards, response-time microcopy, anti-spam honeypot, success state -->
+    </div>
+  </section>
+</BaseLayout>

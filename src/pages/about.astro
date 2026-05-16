@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+
+const title = 'About. Adrian Watkins.';
+const description = '25 years across Asia-Pacific. Operator, builder, governor. SVP Commercial Operations and Governance, SQREEM Technologies. Creator of the EDGE Framework for Applied Intelligence.';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Adrian Watkins',
+  url: 'https://adrianwatkins.com',
+  jobTitle: 'SVP Commercial Operations and Governance',
+  worksFor: { '@type': 'Organization', name: 'SQREEM Technologies' },
+  description: 'Senior commercial and governance operator across Asia-Pacific. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
+  sameAs: [
+    'https://www.linkedin.com/in/adrianwatkins/',
+    'https://aiinasia.com',
+    'https://promptandgo.ai',
+    'https://democratising.ai',
+    'https://blackstormco.asia/personnel/adrian-watkins/',
+    'https://mmaglobal.com/speakers/adrian-watkins',
+  ],
+  address: { '@type': 'PostalAddress', addressLocality: 'Singapore', addressCountry: 'SG' },
+};
+---
+
+<BaseLayout title={title} description={description} current="about" jsonLd={personJsonLd}>
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">About</div>
+      <h1>Operator. Builder. Governor.</h1>
+      <p class="lede">25 years of commercial leadership across Asia-Pacific. The last five years building EDGE so that boards and operators have a working language for AI capability that does not collapse the first time someone asks what it actually did.</p>
+
+      <PhotoSlot
+        src="about-working.jpg"
+        alt="Working portrait of Adrian Watkins. Editorial register."
+        description="Working portrait. Desk, notebook, or in-the-room. Editorial register."
+        meta="Drop the JPG at /public/images/about-working.jpg to populate."
+        aspectRatio="3 / 2"
+      />
+
+      <p class="prose">Adrian is SVP of Commercial Operations and Governance at SQREEM Technologies, where he sourced and led the integration of the TotallyAwesome acquisition in 2024. Before SQREEM: Growth and Marketing Director at AdColony and Digital Turbine, Chief Strategy Officer at Tickled Media, CEO of PerformanceAsia, with earlier leadership at Virgin, News Corporate, and CBS. Coach at the Facebook Accelerator Programme, e27, and the Beyond4Tech Mentorship Programme. Publisher of AiinASIA.com. Singapore-based, available across Asia-Pacific time zones.</p>
+
+      <p class="stub-note">Full operator record, employer logos, deal credits, mentorship roles, and press list ship in Phase 2.</p>
+      <!-- TODO: phase 2 - employer logos timeline, deal credits, mentorship roles, press list, executive CV HTML view, food line, board engagements -->
+    </div>
+  </section>
+</BaseLayout>

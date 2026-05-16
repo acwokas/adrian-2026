@@ -1,0 +1,34 @@
+---
+interface Props {
+  current?: string;
+}
+const { current = '' } = Astro.props;
+
+const links = [
+  { href: '/edge', label: 'EDGE', key: 'edge' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/writing', label: 'Writing', key: 'writing', mobileHidden: true },
+  { href: '/speaking', label: 'Speaking', key: 'speaking', mobileHidden: true },
+  { href: '/now', label: '/now', key: 'now', mobileHidden: true },
+  { href: '/contact', label: 'Contact', key: 'contact' },
+];
+---
+
+<header class="topbar">
+  <div class="container row">
+    <a class="wordmark" href="/">Adrian Watkins<span class="dot">.</span></a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        {links.map((link) => (
+          <li class={link.mobileHidden ? 'hide-mobile' : ''}>
+            <a
+              href={link.href}
+              class={current === link.key ? 'active' : ''}
+              aria-current={current === link.key ? 'page' : undefined}
+            >{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

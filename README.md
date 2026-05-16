@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+# adrianwatkins.com - Astro rebuild
 
-## Project info
+Phase 1 build of the new adrianwatkins.com. Pure SSG, Astro 5, no React SPA.
+Branch `astro-rebuild`. The Lovable export remains on `main` for cutover comparison.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Local
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+npm install
+npm run dev          # http://localhost:4321
+npm run build        # output to ./dist
+npm run check        # astro typecheck
 ```
 
-**Edit a file directly in GitHub**
+## Deploy (preview only)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Preview deploys go to `adrianwatkins-com-preview.pages.dev`. The live
+`adrianwatkins.com` domain still points at the Lovable build until explicit cutover.
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npm run deploy:preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Wrangler authenticates via the existing OAuth session on this machine.
 
-## What technologies are used for this project?
+## Environment
 
-This project is built with:
+Copy `.env.example` to `.env` and fill in:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `SITE_URL` - canonical URL used for OG tags, sitemap, and JSON-LD. Defaults to the preview URL.
+- `GTM_ID` - Google Tag Manager container ID. Leave blank to skip injection.
 
-## How can I deploy this project?
+## Photo slots
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+See `public/images/README.md`. Drop a JPG with the documented filename into
+`public/images/` and the `<PhotoSlot>` component swaps the hatched placeholder
+for the real photo on the next build.
 
-## Can I connect a custom domain to my Lovable project?
+## House rules
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Pure SSG. No React SPA. Add React islands only if a feature genuinely needs interactivity.
+- No em or en dashes anywhere. Hyphens or restructure.
+- British English.
+- Every external `<a>` gets `target="_blank" rel="noopener noreferrer"`.
+- The 8-item AI visibility baseline (`/llms.txt`, `/ai.txt`, `/.well-known/security.txt`,
+  `/robots.txt`, per-page OG, canonical, Schema.org Person on home and about,
+  alt text on every image) is mandatory before any deploy.
