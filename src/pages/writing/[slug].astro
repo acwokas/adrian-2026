@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.summary,
+  datePublished: post.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Adrian Watkins',
+    url: 'https://adrianwatkins.com',
+  },
+  keywords: post.data.tags.join(', '),
+};
+---
+
+<BaseLayout
+  title={`${post.data.title}. Adrian Watkins.`}
+  description={post.data.summary}
+  current="writing"
+  jsonLd={articleJsonLd}
+>
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Writing</div>
+      <p style="font-size:13px;color:var(--muted);letter-spacing:0.04em;margin-bottom:18px">
+        {post.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {post.data.tags.length > 0 && <span style="margin-left:14px">{post.data.tags.join(' / ')}</span>}
+      </p>
+      <h1>{post.data.title}</h1>
+      <p class="lede">{post.data.summary}</p>
+
+      <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
+        <Content />
+      </div>
+
+      <p class="stub-note" style="margin-top:64px">
+        <a href="/writing">← All writing</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

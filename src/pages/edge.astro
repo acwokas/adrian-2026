@@ -3,28 +3,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 
 const title = 'EDGE Framework. Adrian Watkins.';
-const description = 'A practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia-Pacific.';
+const description = 'A practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia-Pacific to turn scattered AI activity into structured capability.';
 ---
 
 <BaseLayout title={title} description={description} current="edge">
-  <section class="stub">
+  <section class="stub" style="padding-bottom:48px">
     <div class="container">
       <div class="eyebrow">EDGE Framework</div>
-      <h1>A practical framework for applied intelligence.</h1>
-      <p class="lede">Artificial intelligence is widely accessible. Structured capability is not. EDGE is the answer I built for the teams I work with, and the working language I give boards for AI capability that does not collapse the first time someone asks what it actually did.</p>
+      <h1>Structured capability for applied intelligence.</h1>
+      <p class="lede">Artificial intelligence is widely accessible. Structured capability is not. EDGE is the working language I give boards, founders, and operators so AI adoption becomes a structured choice rather than a series of scattered experiments that look impressive in a slide and collapse the first time someone asks what they actually did.</p>
+      <div class="prose" style="margin-top:24px">
+        <p>Four pillars. Used in the order they appear, then revisited as a loop. Each pillar is a board-legible artefact: a one-page memo, a decision log, a control list, a cadence. Nothing in EDGE is novel on its own. The contribution is the sequence and the discipline.</p>
+      </div>
+    </div>
+  </section>
 
-      <PhotoSlot
-        src="edge-workshop.jpg"
-        alt="Adrian Watkins running an EDGE workshop. Whiteboard, sticky notes, small group."
-        description="Adrian in a workshop session. Whiteboard, sticky notes, small group."
-        meta="Drop the JPG at /public/images/edge-workshop.jpg to populate."
-        aspectRatio="16 / 9"
-      />
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 01</div>
+      <h2>Evaluate.</h2>
+      <div class="prose" style="margin-top:24px">
+        <p><strong>What it is.</strong> A structured capability snapshot. Where you actually are on AI: which workflows are touched, which controls exist, what your teams say they do, what their tools actually do, and the gap between the two. The output is a single-page memo a board can read in five minutes.</p>
+        <p><strong>When to use it.</strong> Before any AI strategy decision, any vendor commitment, any new hire. Most organisations skip this step and discover the gap eighteen months later during an audit or an incident.</p>
+        <p><strong>Example.</strong> A regional operator who believed they had AI in twelve workflows. Evaluate found six were active, four were stalled pilots, and two were vendor demo accounts with no live data. The conversation changed from "scale" to "consolidate, then scale".</p>
+      </div>
+    </div>
+  </section>
 
-      <p class="prose">The four pillars (Evaluate, Define, Govern, Elevate) get their own deep-dive pages in Phase 2, with the long-form copy, the canonical EDGE diagram, the 19-page white paper, and the EDGE Diagnostic teaser linking through to democratising.ai. The Phase 1 home page summarises the pillars; this page is the canonical landing for the framework.</p>
+  <section style="padding:64px 0">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 02</div>
+      <h2>Define.</h2>
+      <div class="prose" style="margin-top:24px">
+        <p><strong>What it is.</strong> What "good" looks like for your specific organisation. The outcomes AI is allowed to chase, the ones it is not, and the unambiguous criteria for both. Written down. Signed off. Dated.</p>
+        <p><strong>When to use it.</strong> Immediately after Evaluate. Skipping Define is how organisations end up with seventeen pilots, three of which directly contradict each other, none of which any executive can defend on a Tuesday morning to a regulator.</p>
+        <p><strong>Example.</strong> A consumer brand defined that AI was allowed to draft customer-facing copy, but not allowed to publish it without a named human reviewer, and never permitted to invent product attributes. Three lines, signed by the CMO and the General Counsel. Killed a year of well-meaning slide decks about "AI content".</p>
+      </div>
+    </div>
+  </section>
 
-      <p class="stub-note">Four pillar pages, the canonical EDGE diagram (SVG), the white paper, and the EDGE Diagnostic teaser ship in Phase 2. The tools and diagnostic itself live on democratising.ai.</p>
-      <!-- TODO: phase 2 - four pillar deep-dive pages (/edge/evaluate, /edge/define, /edge/govern, /edge/elevate), canonical SVG diagram, 19-page white paper download, EDGE Diagnostic teaser, "without X..." sections with five-question lists, cross-link to democratising.ai -->
+  <PhotoSlot
+    src="edge-workshop.jpg"
+    alt="Adrian Watkins running an EDGE workshop. Whiteboard, sticky notes, small group."
+    description="Adrian in a workshop session. Whiteboard, sticky notes, small group."
+    meta="Drop the JPG at /public/images/edge-workshop.jpg to populate."
+    aspectRatio="16 / 9"
+  />
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 03</div>
+      <h2>Govern.</h2>
+      <div class="prose" style="margin-top:24px">
+        <p><strong>What it is.</strong> The decisions, controls, and review cadence that turn AI activity into AI capability. A board-legible governance pack: decision rights, escalation paths, audit trail, model and vendor register, kill-switch criteria. Boring on purpose.</p>
+        <p><strong>When to use it.</strong> The moment a single AI deployment touches a customer, a regulator, a price, or a number that reports up. Which is most of them.</p>
+        <p><strong>Example.</strong> The internal pack that came out of the SQREEM TotallyAwesome integration. Two companies, two AI stacks, two governance postures, becoming one. The pack defined what survived, what got retired, and the review cadence for the combined surface. Sat on top of the commercial integration, not under it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:64px 0">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 04</div>
+      <h2>Elevate.</h2>
+      <div class="prose" style="margin-top:24px">
+        <p><strong>What it is.</strong> What changes about your people, your operating model, and your competitive position once the first three pillars are in place. The hardest pillar to write, because it depends on having actually shipped the first three.</p>
+        <p><strong>When to use it.</strong> When Evaluate, Define, and Govern are producing repeatable artefacts and your AI surface has stopped surprising you. That is usually six to twelve months after the first EDGE engagement.</p>
+        <p><strong>Example.</strong> A team that started with twelve scattered tools and a nervous executive sponsor. Eighteen months later: two consolidated platforms, a published AI use policy, a named AI capability lead, and an executive sponsor who could open a board conversation with "here is what AI does for us, here is what it does not, here is the next ninety days". That is Elevate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" style="padding:80px 0">
+    <div class="container">
+      <h2 style="color:#F4ECD8;margin-bottom:20px">Get the framework.</h2>
+      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">The full EDGE Framework white paper is 19 pages. Free. No signup. The interactive EDGE Diagnostic lives on democratising.ai.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#TBD-EDGE-WHITEPAPER-URL" style="background:#D89A55;color:#1A1714">Download the EDGE white paper</a>
+        <a class="btn btn-secondary" href="https://democratising.ai" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2">Try the EDGE Diagnostic</a>
+      </div>
+      <p style="font-size:13px;color:#7A7060;margin-top:24px;max-width:none">Tools and diagnostic live on democratising.ai. Built on the EDGE Framework.</p>
+      <!-- TBD: Adrian to provide the white paper PDF URL. Options: keep on the current Lovable R2 bucket during preview, or upload to a new bucket. Until provided, the download link is a placeholder anchor that does nothing. -->
     </div>
   </section>
 </BaseLayout>

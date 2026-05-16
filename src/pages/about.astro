@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 
 const title = 'About. Adrian Watkins.';
-const description = '25 years across Asia-Pacific. Operator, builder, governor. SVP Commercial Operations and Governance, SQREEM Technologies. Creator of the EDGE Framework for Applied Intelligence.';
+const description = '25 years across Asia-Pacific. Operator, builder, governor. SVP Commercial Operations and Governance, SQREEM Technologies. Creator of the EDGE Framework for Applied Intelligence. Publisher of AiinASIA.com.';
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -13,6 +13,24 @@ const personJsonLd = {
   jobTitle: 'SVP Commercial Operations and Governance',
   worksFor: { '@type': 'Organization', name: 'SQREEM Technologies' },
   description: 'Senior commercial and governance operator across Asia-Pacific. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
+  knowsAbout: [
+    'AI governance',
+    'Applied intelligence',
+    'EDGE Framework',
+    'Commercial operations',
+    'M&A integration',
+    'Asia-Pacific go-to-market',
+    'Owned-media strategy',
+    'Board readiness',
+  ],
+  alumniOf: [
+    { '@type': 'Organization', name: 'AdColony / Digital Turbine' },
+    { '@type': 'Organization', name: 'Tickled Media' },
+    { '@type': 'Organization', name: 'PerformanceAsia' },
+    { '@type': 'Organization', name: 'Virgin' },
+    { '@type': 'Organization', name: 'News Corporate' },
+    { '@type': 'Organization', name: 'CBS' },
+  ],
   sameAs: [
     'https://www.linkedin.com/in/adrianwatkins/',
     'https://aiinasia.com',
@@ -26,11 +44,43 @@ const personJsonLd = {
 ---
 
 <BaseLayout title={title} description={description} current="about" jsonLd={personJsonLd}>
-  <section class="stub">
+  <section class="stub" style="padding-bottom:32px">
     <div class="container">
       <div class="eyebrow">About</div>
       <h1>Operator. Builder. Governor.</h1>
       <p class="lede">25 years of commercial leadership across Asia-Pacific. The last five years building EDGE so that boards and operators have a working language for AI capability that does not collapse the first time someone asks what it actually did.</p>
+    </div>
+  </section>
+
+  <section style="padding:48px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">Who I am now.</h2>
+      <div class="prose">
+        <p>I am SVP of Commercial Operations and Governance at SQREEM Technologies, based in Singapore. I sit at the intersection of commercial revenue ownership, M&amp;A integration, and AI governance. The day job is a P&amp;L and a board pack. The other half of the week is EDGE, AiinASIA, and a small number of advisory and fractional engagements with founders and operators who need a senior peer rather than a consultant.</p>
+
+        <p>I created the EDGE Framework for Applied Intelligence because most organisations adopt AI like they are buying stationery. Enthusiasm without architecture. Scattered experiments, mounting exposure, and an illusion of progress that collapses the first time a board asks for evidence. EDGE is what I use to make AI capability a structured choice rather than a vibe.</p>
+
+        <p>I also publish AiinASIA.com, which reaches around 10,000 readers a month without paid distribution, and I built PromptAndGo.ai because Asia deserves AI prompts that respect the register, the market, and the language.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:32px">What I have actually done.</h2>
+
+      <div class="prose" style="margin-bottom:40px">
+        <p><strong>SQREEM Technologies, since 2022.</strong> SVP Commercial Operations and Governance. In 2024 I sourced the TotallyAwesome acquisition target, helped broker the deal, and led the go-to-market and operational integration. Two commercial stacks became one, with governance controls in place from day one. The internal lessons sit in the EDGE Govern pillar.</p>
+
+        <p><strong>AiinASIA.com, since 2020.</strong> Founder and publisher. Around 10,000 monthly readers, no paid distribution, written for operators rather than tourists. AiinASIA is the editorial wing of the same voice as this site; the longer-form work increasingly cross-publishes here.</p>
+
+        <p><strong>BlackStorm Group, since 2024.</strong> Advisor. Growth, transformation, and AI adoption across the firm's Asia-Pacific portfolio of founders and scale-ups. Workshops, board prep, and the harder conversations about which AI initiatives to stop.</p>
+
+        <p><strong>Earlier leadership.</strong> Growth and Marketing Director at AdColony and Digital Turbine. Chief Strategy Officer at Tickled Media. CEO at PerformanceAsia. Earlier leadership at Virgin, News Corporate, and CBS. 25 years across regions, formats, and stack layers: agency, publisher, ad-tech, AI-tech.</p>
+
+        <p><strong>Coaching and committee work.</strong> Coach at the Facebook Accelerator Programme, e27, and the Beyond4Tech Mentorship Programme. Judge on industry panels in the trade-marketing space. The full mentorship and press list ships shortly.</p>
+        <!-- TBD: Adrian to confirm currently active mentorship and coaching engagements before cutover. Assessment captured: Facebook Accelerator, e27, Beyond4Tech. Confirm none have lapsed. -->
+      </div>
 
       <PhotoSlot
         src="about-working.jpg"
@@ -39,11 +89,22 @@ const personJsonLd = {
         meta="Drop the JPG at /public/images/about-working.jpg to populate."
         aspectRatio="3 / 2"
       />
+    </div>
+  </section>
 
-      <p class="prose">Adrian is SVP of Commercial Operations and Governance at SQREEM Technologies, where he sourced and led the integration of the TotallyAwesome acquisition in 2024. Before SQREEM: Growth and Marketing Director at AdColony and Digital Turbine, Chief Strategy Officer at Tickled Media, CEO of PerformanceAsia, with earlier leadership at Virgin, News Corporate, and CBS. Coach at the Facebook Accelerator Programme, e27, and the Beyond4Tech Mentorship Programme. Publisher of AiinASIA.com. Singapore-based, available across Asia-Pacific time zones.</p>
+  <section style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">How I work.</h2>
 
-      <p class="stub-note">Full operator record, employer logos, deal credits, mentorship roles, and press list ship in Phase 2.</p>
-      <!-- TODO: phase 2 - employer logos timeline, deal credits, mentorship roles, press list, executive CV HTML view, food line, board engagements -->
+      <div class="prose">
+        <p>I take on a small number of advisory, fractional, and non-executive engagements a year, alongside the SQREEM commitment. Selection happens both ways. The shapes are listed on the home page: EDGE Diagnostic, fractional leadership, advisory and board, workshops and capability.</p>
+
+        <p>What I expect from clients: a real question, a willingness to act on the answer, and someone in the room with authority to spend or stop. What clients can expect from me: short documents, dated decisions, and the specific costed lessons rather than generalities. I do not write decks for decks' sake. The output of every engagement is something a team can act on the Monday after.</p>
+
+        <p>If we have not worked together before, the right first move is a 30-minute call. <a href="/contact">Book or email me here.</a></p>
+      </div>
+
+      <p class="stub-note">I am also somewhere in the top one percent of Singapore reviewers on TripAdvisor, which is the second most interesting thing on this page.</p>
     </div>
   </section>
 </BaseLayout>

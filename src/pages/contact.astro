@@ -2,25 +2,179 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Contact. Adrian Watkins.';
-const description = 'How to start a conversation. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements.';
+const description = 'How to start a conversation. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements. Email, contact form, or a 30-minute call.';
 ---
 
 <BaseLayout title={title} description={description} current="contact">
-  <section class="stub">
+  <section class="stub" style="padding-bottom:48px">
     <div class="container">
       <div class="eyebrow">Contact</div>
       <h1>Ready for a real conversation about AI?</h1>
-      <p class="lede">I am selective about what I take on. A 30-minute call is the right place to start, even if we conclude we are not a fit.</p>
+      <p class="lede">I am selective about what I take on. A 30-minute call is the right place to start, even if we conclude we are not a fit. Three ways to reach me. Pick whichever has the least friction for you.</p>
 
-      <div class="ctarow" style="margin-bottom:32px">
-        <a class="btn btn-primary" href="mailto:me@adrianwatkins.com">Email me</a>
+      <div class="ctarow" style="margin-top:32px;margin-bottom:8px">
+        <a class="btn btn-primary" href="mailto:me@adrianwatkins.com">Email me@adrianwatkins.com</a>
         <a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
+      <p class="quiet" style="font-size:13px">I typically respond within two business days.</p>
+    </div>
+  </section>
 
-      <p class="prose">I typically respond within two business days. Singapore-based, available across Asia-Pacific time zones. Working hours that overlap London and New York on request.</p>
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:14px">Book a 30-minute call.</h2>
+      <p class="prose" style="margin-bottom:28px">Pick a slot directly. Singapore and Asia-Pacific hours, plus overlap with London and New York on request.</p>
 
-      <p class="stub-note">Calendly booking, contact form, and three resource cards (EDGE Diagnostic, white paper, speaker pack) ship in Phase 2.</p>
-      <!-- TODO: phase 2 - Calendly embed, contact form (Resend or Formspree), three resource cards, response-time microcopy, anti-spam honeypot, success state -->
+      <!-- TBD: Adrian to provide the Calendly (or Cal.com) URL. The iframe src below is a placeholder anchor; until populated, this section shows the booking-pending notice instead of an embed. -->
+      <div style="border:1px solid var(--rule);background:#FBF7EF;padding:32px;border-radius:2px;text-align:center;color:var(--ink-soft)">
+        <p style="margin:0 0 8px 0;font-family:'Fraunces',serif;font-size:18px;color:var(--ink)">Booking widget arrives shortly.</p>
+        <p style="margin:0;font-size:14px;color:var(--muted)">In the meantime, email <a href="mailto:me@adrianwatkins.com">me@adrianwatkins.com</a> with two or three windows that work for you and I will send back a confirmed slot the same day.</p>
+      </div>
+
+      <!--
+      Once Adrian provides the Calendly URL, replace the placeholder above with:
+
+      <div style="border:1px solid var(--rule);background:#fff;border-radius:2px;overflow:hidden">
+        <iframe
+          src="#TBD-CALENDLY-URL"
+          width="100%"
+          height="720"
+          frameborder="0"
+          title="Book a 30-minute call with Adrian Watkins"
+          loading="lazy"
+        ></iframe>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <section style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:14px">Or send a note.</h2>
+      <p class="prose" style="margin-bottom:28px">Three fields. No tracking, no captcha. Goes to my inbox.</p>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="320" />
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required rows="6" maxlength="8000"></textarea>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="cf-hp">Leave this field empty</label>
+          <input id="cf-hp" name="honeypot" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="field actions">
+          <button type="submit" class="btn btn-primary" id="cf-submit">Send</button>
+          <span id="cf-status" class="cf-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:48px 0 96px 0">
+    <div class="container">
+      <p class="stub-note">Singapore-based, available across Asia-Pacific time zones. Working hours that overlap London and New York on request.</p>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .contact-form { max-width: 620px; display: grid; gap: 18px; }
+  .contact-form .field { display: flex; flex-direction: column; gap: 8px; }
+  .contact-form label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    padding: 12px 14px;
+    width: 100%;
+    transition: border-color .15s ease;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .contact-form textarea { resize: vertical; min-height: 140px; }
+  .contact-form .hp {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .contact-form .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+  }
+  .cf-status { font-size: 14px; color: var(--muted); }
+  .cf-status.ok { color: #2D6A4F; }
+  .cf-status.err { color: var(--accent); }
+</style>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const status = document.getElementById('cf-status');
+    const submit = document.getElementById('cf-submit');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      status.className = 'cf-status';
+      status.textContent = 'Sending...';
+      submit.disabled = true;
+
+      const data = {
+        name: form.elements['name'].value.trim(),
+        email: form.elements['email'].value.trim(),
+        message: form.elements['message'].value.trim(),
+        honeypot: form.elements['honeypot'].value,
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = await res.json().catch(function () { return {}; });
+        if (res.ok && body.ok) {
+          status.className = 'cf-status ok';
+          status.textContent = body.sent === false
+            ? 'Received. (Live email send not yet wired on this preview; I will see this on the server log.)'
+            : 'Sent. I will be in touch within two business days.';
+          form.reset();
+        } else {
+          status.className = 'cf-status err';
+          status.textContent = (body && body.error) || 'Send failed. Please email me directly.';
+        }
+      } catch (err) {
+        status.className = 'cf-status err';
+        status.textContent = 'Network error. Please email me directly.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  })();
+</script>
