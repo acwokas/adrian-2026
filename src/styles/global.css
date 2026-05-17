@@ -73,7 +73,8 @@ header.topbar .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 .wordmark {
   font-family: 'Fraunces', serif;
