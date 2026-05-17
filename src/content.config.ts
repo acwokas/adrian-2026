@@ -9,6 +9,7 @@ const writing = defineCollection({
     summary: z.string(),
     tags: z.array(z.string()).default([]),
     heroImageSlot: z.string().optional(),
+    canonical: z.string().url().optional(),
     draft: z.boolean().default(false),
   }),
 });
