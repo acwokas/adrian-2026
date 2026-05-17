@@ -12,6 +12,16 @@ const links = [
   { href: '/now', label: '/now', key: 'now', mobileHidden: true },
   { href: '/contact', label: 'Contact', key: 'contact' },
 ];
+
+const mobileLinks = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/edge', label: 'EDGE', key: 'edge' },
+  { href: '/speaking', label: 'Speaking', key: 'speaking' },
+  { href: '/writing', label: 'Writing', key: 'writing' },
+  { href: '/now', label: '/now', key: 'now' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
+];
 ---
 
 <header class="topbar">
@@ -30,5 +40,55 @@ const links = [
         ))}
       </ul>
     </nav>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <div class="container">
+      <ul>
+        {mobileLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={current === link.key ? 'active' : ''}
+              aria-current={current === link.key ? 'page' : undefined}
+            >{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
 </header>
+
+<script is:inline>
+  (function () {
+    var btn = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    function setOpen(open) {
+      menu.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    btn.addEventListener('click', function () {
+      setOpen(!menu.classList.contains('open'));
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) setOpen(false);
+    });
+  })();
+</script>
