@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const title = 'Writing. Adrian Watkins.';
-const description = 'Long-form essays, the Friday Note, a quarterly reading list, and field notes from Asia-Pacific. Operators, governance, applied intelligence.';
+const description = 'Long-form executive writing and the Friday Note. Operators, governance, applied intelligence. Asia-Pacific.';
 
 const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -14,21 +14,12 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
     <div class="container">
       <div class="eyebrow">Writing</div>
       <h1>Notes, essays, and the Friday Note.</h1>
-      <p class="lede">Long-form posts, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Four threads: Friday Note (weekly, 200 words), Reading list (quarterly), Operating decisions I got wrong (long-form), Field notes from Asia (photographed).</p>
+      <p class="lede">Long-form writing, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Two regular threads: the <a href="/writing/friday-note">Friday Note</a> (weekly, 200 words) and the <a href="/now#reading">Reading list</a> (quarterly).</p>
 
       {posts.length === 0 ? (
         <div class="prose" style="margin-top:48px">
-          <p><strong>First essays publishing soon.</strong> The Friday Note ships weekly from cutover. The first three long-form essays are in the drawer.</p>
-
-          <div style="border:1px solid var(--rule);background:var(--bg-alt);padding:28px;margin-top:32px;border-radius:2px">
-            <h3 style="margin-bottom:10px;font-size:20px">Get the Friday Note.</h3>
-            <p style="margin:0 0 18px 0;font-size:15px;color:var(--ink-soft)">A 200-word missive on what I noticed this week. Operators, governance, Asia-Pacific. No tracking pixels, no funnel.</p>
-            <a class="btn btn-primary" href="mailto:me@adrianwatkins.com?subject=Subscribe%20to%20the%20Friday%20Note&body=Add%20me%20to%20the%20Friday%20Note.%20Thanks.">Subscribe by email</a>
-            <p style="margin:14px 0 0 0;font-size:12.5px;color:var(--muted);font-style:italic;font-family:'Fraunces',serif">Replace with a proper newsletter form once the list crosses 50 subscribers.</p>
-          </div>
-
-          <p class="stub-note" style="margin-top:48px">RSS feed: <a href="/writing/rss.xml">/writing/rss.xml</a>. Architecture is ready; entries publish as they are written.</p>
-          <!-- TODO: phase 3 - seed at least three long-form essays, three Friday Notes, one quarterly reading list, one field note. Replace mailto with proper Resend or Buttondown signup once subscriber list is real. -->
+          <p><strong>First essays publishing soon.</strong></p>
+          <p class="stub-note" style="margin-top:24px">RSS feed: <a href="/writing/rss.xml">/writing/rss.xml</a>.</p>
         </div>
       ) : (
         <ul class="writing-list" style="margin-top:48px;list-style:none;padding:0">

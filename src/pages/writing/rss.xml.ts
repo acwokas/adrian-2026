@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'Adrian Watkins. Writing.',
-    description: 'Long-form essays, the Friday Note, and field notes from Asia-Pacific. Operators, governance, applied intelligence.',
+    description: 'Long-form executive writing and the Friday Note. Operators, governance, applied intelligence. Asia-Pacific.',
     site: siteUrl,
     items: sorted.map((post) => ({
       title: post.data.title,

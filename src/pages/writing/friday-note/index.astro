@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Friday Note. Adrian Watkins.';
+const description = 'A 200-word weekly missive on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
+
+const allNotes = await getCollection('fridayNote', ({ data }) => !data.draft);
+const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={title} description={description} current="writing">
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Writing / Friday Note</div>
+      <h1>The Friday Note.</h1>
+      <p class="lede">A 200-word weekly missive on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday. Archive below, newest first.</p>
+
+      {notes.length === 0 ? (
+        <div class="prose" style="margin-top:48px">
+          <p><strong>First note publishing this Friday.</strong></p>
+          <p class="stub-note" style="margin-top:24px">RSS feed: <a href="/writing/rss.xml">/writing/rss.xml</a>.</p>
+        </div>
+      ) : (
+        <ul class="writing-list" style="margin-top:48px;list-style:none;padding:0">
+          {notes.map((note) => (
+            <li style="border-top:1px solid var(--rule);padding:24px 0">
+              <article>
+                <div class="eyebrow" style="margin-bottom:8px;font-size:11px">
+                  {note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+                <h2 style="font-size:24px;margin-bottom:10px">
+                  <a href={`/writing/friday-note/${note.id}`} style="text-decoration:none">{note.data.title}</a>
+                </h2>
+                <p style="font-family:'Fraunces',serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{note.data.summary}</p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <p class="stub-note" style="margin-top:64px">
+        <a href="/writing">← All writing</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

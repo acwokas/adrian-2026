@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('fridayNote', ({ data }) => !data.draft);
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: note.data.title,
+  description: note.data.summary,
+  datePublished: note.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Adrian Watkins',
+    url: 'https://adrianwatkins.com',
+  },
+  isPartOf: {
+    '@type': 'Series',
+    name: 'Friday Note',
+  },
+};
+---
+
+<BaseLayout
+  title={`${note.data.title}. Friday Note. Adrian Watkins.`}
+  description={note.data.summary}
+  current="writing"
+  jsonLd={articleJsonLd}
+>
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Writing / Friday Note</div>
+      <p style="font-size:13px;color:var(--muted);letter-spacing:0.04em;margin-bottom:18px">
+        {note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+      <h1>{note.data.title}</h1>
+      <p class="lede">{note.data.summary}</p>
+
+      <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
+        <Content />
+      </div>
+
+      <p class="stub-note" style="margin-top:64px">
+        <a href="/writing/friday-note">← All Friday Notes</a>
+        <span style="margin:0 12px;color:var(--muted)">·</span>
+        <a href="/writing">All writing</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
