@@ -1,8 +1,9 @@
 # adrianwatkins.com 301 map
-# Built from Google Search Console: 20 indexed pages + 31 Not-found(404) pages.
-# Apply on Cloudflare Pages. Order matters: most-specific first, wildcard last.
+# Built from GSC Not-found (30 URLs) + GA4 Pages and screens (2078 paths, last 90d).
+# Cloudflare Pages: order matters, most-specific first, wildcard catch-all last.
+# Static assets win over redirects, so /about etc. serve normally.
 
-# Lovable-era routes (still indexed by Google as of May 2026)
+# === Lovable-era routes (still indexed by Google) ===
 /tools/elevate/prompt-engineer       https://promptandgo.ai/                     301
 /tools/evaluate/negotiation          https://democratising.ai/                   301
 /tools/evaluate/redteam              https://democratising.ai/                   301
@@ -17,51 +18,54 @@
 /how-i-work                          /about                                      301
 /what-i-do                           /                                           301
 /privacy                             /                                           301
+/contact-2                           /contact                                    301
+/about-me                            /about                                      301
+/contact-us                          /contact                                    301
 
-# WordPress-era legacy URLs (apex and www, all return 404 today)
-# WP CV download
+# === WordPress-era endpoints ===
 /wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
 /wp-content/*                        /                                           301
+/wp-json                             /                                           301
+/wp-json/*                           /                                           301
+/feed                                /writing/rss.xml                            301
+/feed/                               /writing/rss.xml                            301
+/comments/feed                       /writing/rss.xml                            301
+/comments/feed/                      /writing/rss.xml                            301
+/index.html                          /                                           301
+/author/me                           /about                                      301
+/author/me/*                         /about                                      301
+/author/*                            /about                                      301
+/posts                               /writing                                    301
+/posts/                              /writing                                    301
 
-# WP blog index + portfolio
+# === WP blog index + portfolio ===
 /blog                                /writing                                    301
 /blog/                               /writing                                    301
 /blog/*                              /writing                                    301
 /portfolio                           /                                           301
 /portfolio/                          /                                           301
+/portfolio/*                         /                                           301
 
-# WP taxonomy
+# === WP taxonomy ===
 /tag/*                               /writing                                    301
 /category/*                          /writing                                    301
 
-# WP date-format permalinks (e.g. /2019/02/05/slug)
+# === WP date-format permalinks (e.g. /2019/02/05/slug) ===
 /2019/*                              /writing                                    301
 /2020/*                              /writing                                    301
 /2021/*                              /writing                                    301
 /2022/*                              /writing                                    301
 /2023/*                              /writing                                    301
 /2024/*                              /writing                                    301
+/2025/*                              /writing                                    301
 
-# Specific WP article slugs that Google still has crawled
-/maybe-information-actually-doesnt-want-to-be-free-nyt              /writing  301
-/maybe-information-actually-doesnt-want-to-be-free-nyt/             /writing  301
-/40_best_vc_bets                                                    /writing  301
-/40_best_vc_bets/                                                   /writing  301
-/im-over-the-obviously-fake-glassdoor-reviews                       /writing  301
-/im-over-the-obviously-fake-glassdoor-reviews/                      /writing  301
-/pg-pumps-in-sg50m-to-advance-digital-capabilities-in-sg            /writing  301
-/pg-pumps-in-sg50m-to-advance-digital-capabilities-in-sg/           /writing  301
-/did-joe-rogan-get-ripped-off                                       /writing  301
-/did-joe-rogan-get-ripped-off/                                      /writing  301
-/5-best-prompts-to-use-with-google-gemini                           https://promptandgo.ai/  301
-/5-best-prompts-to-use-with-google-gemini/                          https://promptandgo.ai/  301
-/thought-does-the-demise-of-third-party-cookies-mean-were-back-to-the-future   /writing  301
-/thought-does-the-demise-of-third-party-cookies-mean-were-back-to-the-future/  /writing  301
-/generationz-is-connected-engaged-and-coming-of-age-in-apac         /writing  301
-/generationz-is-connected-engaged-and-coming-of-age-in-apac/        /writing  301
-/what-is-generative-ai                                              https://aiinasia.com/  301
-/what-is-generative-ai/                                             https://aiinasia.com/  301
-/how-a-deeper-understanding-of-consumers-drives-stronger-brand-engagement-and-loyalty   /writing  301
-/how-a-deeper-understanding-of-consumers-drives-stronger-brand-engagement-and-loyalty/  /writing  301
-/6-brands-targeting-female-audiences-on-digital                     /writing  301
-/6-brands-targeting-female-audiences-on-digital/                    /writing  301
+# === High-value off-site WP articles (specific destinations) ===
+/5-best-prompts-to-use-with-google-gemini    https://promptandgo.ai/  301
+/5-best-prompts-to-use-with-google-gemini/   https://promptandgo.ai/  301
+/what-is-generative-ai                       https://aiinasia.com/    301
+/what-is-generative-ai/                      https://aiinasia.com/    301
+
+# === Catch-all: any remaining unmatched path falls through to /writing ===
+# This handles the long tail of ~500+ WP article slugs without listing each.
+# Static assets (existing Astro routes) take precedence over this rule.
+/*                                   /writing                                    301
