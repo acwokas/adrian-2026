@@ -1,7 +1,10 @@
 # adrianwatkins.com 301 map
-# Built from GSC Not-found (30 URLs) + GA4 Pages and screens (2078 paths, last 90d).
-# Cloudflare Pages: order matters, most-specific first, wildcard catch-all last.
-# Static assets win over redirects, so /about etc. serve normally.
+# Sources: GSC Not-found export (30 URLs) + GA4 Pages and screens last 90d (2078 paths).
+# Cloudflare Pages: rules are evaluated TOP-DOWN against the request path BEFORE
+# static-asset lookup, first match wins. NO catch-all '/*' — it would intercept
+# legitimate Astro routes (e.g. /about). Specific entries only.
+# Bot scan paths (/env, /admin, /wp-json/wp/v2/*, /storage/*, /config/*, etc.) are
+# intentionally NOT redirected — they should 404.
 
 # === Lovable-era routes (still indexed by Google) ===
 /tools/elevate/prompt-engineer       https://promptandgo.ai/                     301
@@ -25,18 +28,16 @@
 # === WordPress-era endpoints ===
 /wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
 /wp-content/*                        /                                           301
-/wp-json                             /                                           301
-/wp-json/*                           /                                           301
 /feed                                /writing/rss.xml                            301
 /feed/                               /writing/rss.xml                            301
 /comments/feed                       /writing/rss.xml                            301
 /comments/feed/                      /writing/rss.xml                            301
-/index.html                          /                                           301
 /author/me                           /about                                      301
 /author/me/*                         /about                                      301
 /author/*                            /about                                      301
 /posts                               /writing                                    301
 /posts/                              /writing                                    301
+/index.html                          /                                           301
 
 # === WP blog index + portfolio ===
 /blog                                /writing                                    301
@@ -50,7 +51,7 @@
 /tag/*                               /writing                                    301
 /category/*                          /writing                                    301
 
-# === WP date-format permalinks (e.g. /2019/02/05/slug) ===
+# === WP date-format permalinks ===
 /2019/*                              /writing                                    301
 /2020/*                              /writing                                    301
 /2021/*                              /writing                                    301
@@ -58,6 +59,8 @@
 /2023/*                              /writing                                    301
 /2024/*                              /writing                                    301
 /2025/*                              /writing                                    301
+/2019_unicorns                       /writing                                    301
+/2019_unicorns/                      /writing                                    301
 
 # === High-value off-site WP articles (specific destinations) ===
 /5-best-prompts-to-use-with-google-gemini    https://promptandgo.ai/  301
@@ -65,7 +68,183 @@
 /what-is-generative-ai                       https://aiinasia.com/    301
 /what-is-generative-ai/                      https://aiinasia.com/    301
 
-# === Catch-all: any remaining unmatched path falls through to /writing ===
-# This handles the long tail of ~500+ WP article slugs without listing each.
-# Static assets (existing Astro routes) take precedence over this rule.
-/*                                   /writing                                    301
+# === Pre-existing WP article slugs (GSC) ===
+/maybe-information-actually-doesnt-want-to-be-free-nyt              /writing  301
+/maybe-information-actually-doesnt-want-to-be-free-nyt/             /writing  301
+/40_best_vc_bets                                                    /writing  301
+/40_best_vc_bets/                                                   /writing  301
+/im-over-the-obviously-fake-glassdoor-reviews                       /writing  301
+/im-over-the-obviously-fake-glassdoor-reviews/                      /writing  301
+/pg-pumps-in-sg50m-to-advance-digital-capabilities-in-sg            /writing  301
+/pg-pumps-in-sg50m-to-advance-digital-capabilities-in-sg/           /writing  301
+/did-joe-rogan-get-ripped-off                                       /writing  301
+/did-joe-rogan-get-ripped-off/                                      /writing  301
+/thought-does-the-demise-of-third-party-cookies-mean-were-back-to-the-future   /writing  301
+/thought-does-the-demise-of-third-party-cookies-mean-were-back-to-the-future/  /writing  301
+/generationz-is-connected-engaged-and-coming-of-age-in-apac         /writing  301
+/generationz-is-connected-engaged-and-coming-of-age-in-apac/        /writing  301
+/how-a-deeper-understanding-of-consumers-drives-stronger-brand-engagement-and-loyalty   /writing  301
+/how-a-deeper-understanding-of-consumers-drives-stronger-brand-engagement-and-loyalty/  /writing  301
+/6-brands-targeting-female-audiences-on-digital                     /writing  301
+/6-brands-targeting-female-audiences-on-digital/                    /writing  301
+
+# === WP article slugs (from GA4 last 90d, >= 4 views) ===
+# Each listed in both no-slash and trailing-slash form.
+/10-things-successful-leaders-never-tolerate                                                    /writing  301
+/10-things-successful-leaders-never-tolerate/                                                   /writing  301
+/2019_unicorns                                                                                  /writing  301
+/2019_unicorns/                                                                                 /writing  301
+/30-questions-to-ask-before-joining-a-startup                                                   /writing  301
+/30-questions-to-ask-before-joining-a-startup/                                                  /writing  301
+/4-questions-the-best-managers-answer-to-energise-employees-leadership-freak                    /writing  301
+/4-questions-the-best-managers-answer-to-energise-employees-leadership-freak/                   /writing  301
+/5-crucial-tips-for-managing-up-at-work                                                         /writing  301
+/5-crucial-tips-for-managing-up-at-work/                                                        /writing  301
+/5-mental-exercises-to-strengthen-your-emotional-fitness                                        /writing  301
+/5-mental-exercises-to-strengthen-your-emotional-fitness/                                       /writing  301
+/55-of-gen-alpha-swayed-by-social-stars                                                         /writing  301
+/55-of-gen-alpha-swayed-by-social-stars/                                                        /writing  301
+/7-and-a-half-dos-and-donts-for-creating-winning-sales-campaigns                                /writing  301
+/7-and-a-half-dos-and-donts-for-creating-winning-sales-campaigns/                               /writing  301
+/7-strategies-for-better-group-decision-making                                                  /writing  301
+/7-strategies-for-better-group-decision-making/                                                 /writing  301
+/alphabets-next-billion-dollar-business-10-industries-to-watch                                  /writing  301
+/alphabets-next-billion-dollar-business-10-industries-to-watch/                                 /writing  301
+/amazon-music-passes-55m-customers-still-lags-behind-spotify-and-apple                          /writing  301
+/amazon-music-passes-55m-customers-still-lags-behind-spotify-and-apple/                         /writing  301
+/apple-google-epic-games-the-fortnite-battle-where-no-one-can-claim-a-victory-royale            /writing  301
+/apple-google-epic-games-the-fortnite-battle-where-no-one-can-claim-a-victory-royale/           /writing  301
+/are-companies-about-to-have-a-gen-x-retention-problem-hbr                                      /writing  301
+/are-companies-about-to-have-a-gen-x-retention-problem-hbr/                                     /writing  301
+/blog-verify                                                                                    /writing  301
+/blog-verify/                                                                                   /writing  301
+/brands-are-scrambling-to-get-onto-roblox-is-it-worth-it                                        /writing  301
+/brands-are-scrambling-to-get-onto-roblox-is-it-worth-it/                                       /writing  301
+/cashflow-is-king                                                                               /writing  301
+/cashflow-is-king/                                                                              /writing  301
+/confusion-is-the-point                                                                         /writing  301
+/confusion-is-the-point/                                                                        /writing  301
+/could-covid-scale-the-four-day-work-week                                                       /writing  301
+/could-covid-scale-the-four-day-work-week/                                                      /writing  301
+/dettols-tiktok-hand-wash-challenge-gets-nearly-11-billion-views-in-5-days                      /writing  301
+/dettols-tiktok-hand-wash-challenge-gets-nearly-11-billion-views-in-5-days/                     /writing  301
+/email-etiquette-and-other-annoying-phrases-people-write-in-work-emails                         /writing  301
+/email-etiquette-and-other-annoying-phrases-people-write-in-work-emails/                        /writing  301
+/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired                                /writing  301
+/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired/                               /writing  301
+/following-successful-experiments-twitter-will-prompt-all-users-to-read-the-articles-theyre-about-to-retweet /writing  301
+/following-successful-experiments-twitter-will-prompt-all-users-to-read-the-articles-theyre-about-to-retweet/ /writing  301
+/from-alibaba-to-zynga-40-of-the-best-vc-bets-of-all-time-and-what-we-can-learn-from-them       /writing  301
+/from-alibaba-to-zynga-40-of-the-best-vc-bets-of-all-time-and-what-we-can-learn-from-them/      /writing  301
+/from-playing-to-paying-the-art-of-monetizing-games-in-asia                                     /writing  301
+/from-playing-to-paying-the-art-of-monetizing-games-in-asia/                                    /writing  301
+/full-funnel-marketing-for-mobile                                                               /writing  301
+/full-funnel-marketing-for-mobile/                                                              /writing  301
+/gaming-mums-the-key-demographics-adversiters-are-missing                                       /writing  301
+/gaming-mums-the-key-demographics-adversiters-are-missing/                                      /writing  301
+/ghosting_employers                                                                             /writing  301
+/ghosting_employers/                                                                            /writing  301
+/googles-new-meena-chatbot-imitates-human-conversation-and-bad-jokes                            /writing  301
+/googles-new-meena-chatbot-imitates-human-conversation-and-bad-jokes/                           /writing  301
+/gravitas-is-a-quality-you-can-develop                                                          /writing  301
+/gravitas-is-a-quality-you-can-develop/                                                         /writing  301
+/how-ai-is-driving-the-hunt-for-clean-energy                                                    /writing  301
+/how-ai-is-driving-the-hunt-for-clean-energy/                                                   /writing  301
+/how-can-digital-publishers-build-a-unified-user-identity                                       /writing  301
+/how-can-digital-publishers-build-a-unified-user-identity/                                      /writing  301
+/how-dettol-and-tiktok-got-india-to-wash-its-hands                                              /writing  301
+/how-dettol-and-tiktok-got-india-to-wash-its-hands/                                             /writing  301
+/how-dlc-boosts-engagement-for-pc-and-console-games                                             /writing  301
+/how-dlc-boosts-engagement-for-pc-and-console-games/                                            /writing  301
+/how-influencers-got-swallowed-by-the-talent-management-machine                                 /writing  301
+/how-influencers-got-swallowed-by-the-talent-management-machine/                                /writing  301
+/how-the-third-party-cookie-crumbles                                                            /writing  301
+/how-the-third-party-cookie-crumbles/                                                           /writing  301
+/how-to-avoid-common-thinking-traps                                                             /writing  301
+/how-to-avoid-common-thinking-traps/                                                            /writing  301
+/how-to-identify-the-most-important-tasks                                                       /writing  301
+/how-to-identify-the-most-important-tasks/                                                      /writing  301
+/how-to-optimize-your-visual-content-marketing-strategy                                         /writing  301
+/how-to-optimize-your-visual-content-marketing-strategy/                                        /writing  301
+/how-to-spot-a-deepfake                                                                         /writing  301
+/how-to-spot-a-deepfake/                                                                        /writing  301
+/how-to-stop-second-guessing-your-biggest-decisions                                             /writing  301
+/how-to-stop-second-guessing-your-biggest-decisions/                                            /writing  301
+/improve-strategic-alignment-through-better-metrics                                             /writing  301
+/improve-strategic-alignment-through-better-metrics/                                            /writing  301
+/in-silicon-valley-some-men-say-cosmetic-procedures-are-essential-to-a-career                   /writing  301
+/in-silicon-valley-some-men-say-cosmetic-procedures-are-essential-to-a-career/                  /writing  301
+/is-ai-stealing-our-jobs                                                                        /writing  301
+/is-ai-stealing-our-jobs/                                                                       /writing  301
+/jeff-bezos-right-wom-future                                                                    /writing  301
+/jeff-bezos-right-wom-future/                                                                   /writing  301
+/marketers_and_millenials                                                                       /writing  301
+/marketers_and_millenials/                                                                      /writing  301
+/microsofts-xbox-boss-says-amazon-and-google-are-the-main-competitors-going-forward             /writing  301
+/microsofts-xbox-boss-says-amazon-and-google-are-the-main-competitors-going-forward/            /writing  301
+/more-brands-are-leaving-amazon-but-the-strategy-could-backfire                                 /writing  301
+/more-brands-are-leaving-amazon-but-the-strategy-could-backfire/                                /writing  301
+/newsonomics-here-are-20-epiphanies-for-the-news-business-of-the-2020s                          /writing  301
+/newsonomics-here-are-20-epiphanies-for-the-news-business-of-the-2020s/                         /writing  301
+/nfts-what-youre-missing-and-where-theyre-going                                                 /writing  301
+/nfts-what-youre-missing-and-where-theyre-going/                                                /writing  301
+/nme-asia-british-music-brand-launches-in-asia                                                  /writing  301
+/nme-asia-british-music-brand-launches-in-asia/                                                 /writing  301
+/plusmusic-ai-uses-ai-to-create-in-game-soundtracks                                             /writing  301
+/plusmusic-ai-uses-ai-to-create-in-game-soundtracks/                                            /writing  301
+/reopening-your-business-3-ways-to-support-your-employees                                       /writing  301
+/reopening-your-business-3-ways-to-support-your-employees/                                      /writing  301
+/report-south-east-asias-esports-gamers-and-viewers-prefer-a-mobile-first-experience            /writing  301
+/report-south-east-asias-esports-gamers-and-viewers-prefer-a-mobile-first-experience/           /writing  301
+/sales-calls-have-gone-virtual-and-ai-is-listening-in                                           /writing  301
+/sales-calls-have-gone-virtual-and-ai-is-listening-in/                                          /writing  301
+/should-publishers-build-a-common-tech-platform-together                                        /writing  301
+/should-publishers-build-a-common-tech-platform-together/                                       /writing  301
+/some-what-if-questions-you-should-be-asking-right-now                                          /writing  301
+/some-what-if-questions-you-should-be-asking-right-now/                                         /writing  301
+/spotify-launches-car-view-on-android                                                           /writing  301
+/spotify-launches-car-view-on-android/                                                          /writing  301
+/stop-rushing-in-with-advice                                                                    /writing  301
+/stop-rushing-in-with-advice/                                                                   /writing  301
+/the-14-coolest-toys-the-new-york-toy-fair                                                      /writing  301
+/the-14-coolest-toys-the-new-york-toy-fair/                                                     /writing  301
+/the-covid-19-recovery-will-be-digital-a-plan-for-the-first-90-days                             /writing  301
+/the-covid-19-recovery-will-be-digital-a-plan-for-the-first-90-days/                            /writing  301
+/the-era-of-move-fast-and-break-things-is-over                                                  /writing  301
+/the-era-of-move-fast-and-break-things-is-over/                                                 /writing  301
+/the-iceberg-illusion                                                                           /writing  301
+/the-iceberg-illusion/                                                                          /writing  301
+/the-importance-of-consistency-in-social-media-marketing                                        /writing  301
+/the-importance-of-consistency-in-social-media-marketing/                                       /writing  301
+/the-leadership-difference-between-being-accessible-and-available                               /writing  301
+/the-leadership-difference-between-being-accessible-and-available/                              /writing  301
+/the-livestreaming-boom-isnt-slowing-down-anytime-soon                                          /writing  301
+/the-livestreaming-boom-isnt-slowing-down-anytime-soon/                                         /writing  301
+/the-metric-every-publisher-should-use-in-2019-revenue-at-risk                                  /writing  301
+/the-metric-every-publisher-should-use-in-2019-revenue-at-risk/                                 /writing  301
+/top-earning-video-gamers                                                                       /writing  301
+/top-earning-video-gamers/                                                                      /writing  301
+/uncontrolled-ai-a-growing-threat-to-businesses                                                 /writing  301
+/uncontrolled-ai-a-growing-threat-to-businesses/                                                /writing  301
+/what-do-influencers-want-in-brand-relationships-smartbrief                                     /writing  301
+/what-do-influencers-want-in-brand-relationships-smartbrief/                                    /writing  301
+/what-is-attribution-modelling                                                                  /writing  301
+/what-is-attribution-modelling/                                                                 /writing  301
+/what-to-do-when-youre-losing-your-audience-during-a-presentation-hbr                           /writing  301
+/what-to-do-when-youre-losing-your-audience-during-a-presentation-hbr/                          /writing  301
+/when-burnout-is-a-sign-you-should-leave-your-job                                               /writing  301
+/when-burnout-is-a-sign-you-should-leave-your-job/                                              /writing  301
+/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion                                 /writing  301
+/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion/                                /writing  301
+/why-businesses-struggle-to-adopt-generative-ai-in-asia                                         /writing  301
+/why-businesses-struggle-to-adopt-generative-ai-in-asia/                                        /writing  301
+/why-it-will-be-so-hard-to-return-to-normal                                                     /writing  301
+/why-it-will-be-so-hard-to-return-to-normal/                                                    /writing  301
+/why-it-will-be-so-hard-to-return-to-normal-2                                                   /writing  301
+/why-it-will-be-so-hard-to-return-to-normal-2/                                                  /writing  301
+/with-retargeted-advertising-sooner-is-better-than-later-standford-business                     /writing  301
+/with-retargeted-advertising-sooner-is-better-than-later-standford-business/                    /writing  301
+/youtubes-working-on-a-new-analytics-overview-summary-to-help-creators-maximize-performance     /writing  301
+/youtubes-working-on-a-new-analytics-overview-summary-to-help-creators-maximize-performance/    /writing  301
+/zoomers-insights-from-totally-awesome                                                          /writing  301
+/zoomers-insights-from-totally-awesome/                                                         /writing  301
