@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Page not found. Adrian Watkins.';
+const description = 'That page does not exist on adrianwatkins.com. Try /writing for essays or / for the home page.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="stub" style="padding:96px 0">
+    <div class="container" style="text-align:left">
+      <div class="eyebrow">404</div>
+      <h1>Not found.</h1>
+      <p class="lede">That page is not here. The site was rebuilt in May 2026 and a lot of old URLs have moved. Try one of these.</p>
+
+      <div class="ctarow" style="margin-top:32px">
+        <a class="btn btn-primary" href="/">Home</a>
+        <a class="btn btn-secondary" href="/writing">Writing</a>
+        <a class="btn btn-secondary" href="/about">About</a>
+        <a class="btn btn-secondary" href="/contact">Contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
