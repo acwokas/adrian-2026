@@ -9,6 +9,8 @@
 /tools/evaluate/conversation         https://democratising.ai/                   301
 /tools/define/content-sprint         https://democratising.ai/                   301
 /tools/govern/maturity-assessment    https://democratising.ai/                   301
+/tools                               /edge                                       301
+/tools/                              /edge                                       301
 /tools/*                             https://democratising.ai/                   301
 /executive-cv                        /documents/AdrianWatkins_Executive-CV.pdf   301
 /experience                          /about                                      301
