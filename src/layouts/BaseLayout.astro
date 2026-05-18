@@ -25,7 +25,8 @@ const {
 
 const siteUrl = import.meta.env.SITE_URL || Astro.site?.toString() || 'https://adrianwatkins-com-preview.pages.dev';
 const cleanSite = siteUrl.replace(/\/$/, '');
-const canonical = canonicalOverride || `${cleanSite}${Astro.url.pathname.replace(/\/$/, '') || '/'}`;
+const cleanPath = (Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/');
+const canonical = canonicalOverride || `${cleanSite}${cleanPath}`;
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${cleanSite}${ogImage}`;
 
 const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
@@ -59,6 +60,10 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
     />
+
+    <link rel="alternate" hreflang="en-GB" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <meta http-equiv="content-language" content="en-GB" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />

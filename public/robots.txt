@@ -1,7 +1,0 @@
-# adrianwatkins.com - robots.txt
-# Phase 1 preview build. Default rule: allow all crawlers.
-
-User-agent: *
-Allow: /
-
-Sitemap: https://adrianwatkins-com-preview.pages.dev/sitemap-index.xml

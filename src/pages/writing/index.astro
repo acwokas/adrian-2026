@@ -7,9 +7,25 @@ const description = 'Long-form executive writing and the Friday Note. Operators,
 
 const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const writingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Writing. Adrian Watkins.',
+  url: 'https://adrianwatkins.com/writing',
+  description,
+  author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    url: post.data.canonical || `https://adrianwatkins.com/writing/${post.id}`,
+    datePublished: post.data.date.toISOString(),
+    description: post.data.summary,
+  })),
+};
 ---
 
-<BaseLayout title={title} description={description} current="writing">
+<BaseLayout title={title} description={description} current="writing" jsonLd={writingJsonLd}>
   <section class="stub">
     <div class="container">
       <div class="eyebrow">Writing</div>

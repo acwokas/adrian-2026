@@ -3,9 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Contact. Adrian Watkins.';
 const description = 'How to start a conversation. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements. Email, contact form, or a 30-minute call.';
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Adrian Watkins',
+  url: 'https://adrianwatkins.com/contact',
+  description,
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Adrian Watkins',
+    email: 'me@adrianwatkins.com',
+    url: 'https://adrianwatkins.com',
+    address: { '@type': 'PostalAddress', addressLocality: 'Singapore', addressCountry: 'SG' },
+  },
+};
 ---
 
-<BaseLayout title={title} description={description} current="contact">
+<BaseLayout title={title} description={description} current="contact" jsonLd={contactJsonLd}>
   <section class="stub" style="padding-bottom:48px">
     <div class="container">
       <div class="eyebrow">Contact</div>

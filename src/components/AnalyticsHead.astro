@@ -1,9 +1,9 @@
 ---
 /**
- * Google Tag Manager head snippet. Renders only when GTM_ID is set.
- * Mirrors the pattern used on the aiin* sites.
+ * Google Tag Manager head snippet. GA4 lives inside the GTM container; never a separate GA4_ID.
+ * Defaults to the production container so preview deploys carry GTM without extra env wiring.
  */
-const gtmId = import.meta.env.GTM_ID || import.meta.env.PUBLIC_GTM_ID || '';
+const gtmId = import.meta.env.GTM_ID || import.meta.env.PUBLIC_GTM_ID || 'GTM-W5NHK72H';
 ---
 
 {gtmId && (

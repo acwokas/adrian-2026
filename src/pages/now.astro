@@ -6,9 +6,19 @@ const description = 'What I am working on this quarter. Updated monthly. Borrowe
 
 const lastUpdated = '2026-05-17';
 const lastUpdatedHuman = '17 May 2026';
+
+const nowJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: '/now. Adrian Watkins.',
+  url: 'https://adrianwatkins.com/now',
+  description,
+  dateModified: lastUpdated,
+  about: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+};
 ---
 
-<BaseLayout title={title} description={description} current="now">
+<BaseLayout title={title} description={description} current="now" jsonLd={nowJsonLd}>
   <section class="stub" style="padding-bottom:32px">
     <div class="container">
       <div class="eyebrow">/now</div>

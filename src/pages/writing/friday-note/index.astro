@@ -7,9 +7,18 @@ const description = 'A 200-word weekly missive on applied intelligence, governan
 
 const allNotes = await getCollection('fridayNote', ({ data }) => !data.draft);
 const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fridayNoteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Friday Note. Adrian Watkins.',
+  url: 'https://adrianwatkins.com/writing/friday-note',
+  description,
+  author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+};
 ---
 
-<BaseLayout title={title} description={description} current="writing">
+<BaseLayout title={title} description={description} current="writing" jsonLd={fridayNoteJsonLd}>
   <section class="stub">
     <div class="container">
       <div class="eyebrow">Writing / Friday Note</div>

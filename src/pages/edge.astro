@@ -4,9 +4,28 @@ import PhotoSlot from '../components/PhotoSlot.astro';
 
 const title = 'EDGE Framework. Adrian Watkins.';
 const description = 'A practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia-Pacific to turn scattered AI activity into structured capability.';
+
+const edgeJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'EDGE Framework',
+    url: 'https://adrianwatkins.com/edge',
+    description,
+    about: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: 'EDGE Framework for Applied Intelligence',
+    creator: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+    url: 'https://adrianwatkins.com/edge',
+    description: 'Four-pillar framework (Evaluate, Define, Govern, Elevate) for applied intelligence in commercial organisations.',
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} current="edge">
+<BaseLayout title={title} description={description} current="edge" ogImage="/images/edge-workshop.jpg" jsonLd={edgeJsonLd}>
   <section class="stub" style="padding-bottom:48px">
     <div class="container">
       <div class="eyebrow">EDGE Framework</div>
@@ -72,6 +91,14 @@ const description = 'A practical framework for applied intelligence. Four pillar
       </div>
     </div>
   </section>
+
+  <PhotoSlot
+    src="edge-workshop-2.jpg"
+    alt="Adrian Watkins running a BlackStorm workshop. Workshop Agenda slide visible behind him."
+    description="Mid-session at a BlackStorm workshop with the Workshop Agenda slide projected."
+    aspectRatio="16 / 9"
+    caption="BlackStorm Group workshop. EDGE pillars in the room."
+  />
 
   <section class="dark" style="padding:80px 0">
     <div class="container">
