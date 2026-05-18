@@ -222,8 +222,16 @@ section.hero { padding: 72px 0 64px 0; }
 .hero .ctarow { margin-top: 32px; }
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hero-photo { position: static; order: -1; max-width: 260px; }
-  .hero-photo img { max-width: 260px; }
+  .hero-photo {
+    position: static;
+    order: -1;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 260px;
+  }
+  .hero-photo img { display: block; margin: 0 auto; max-width: 260px; }
+  .hero-photo figcaption { text-align: center; margin-left: auto; margin-right: auto; }
   section.hero { padding: 48px 0 56px 0; }
 }
 
