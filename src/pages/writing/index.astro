@@ -8,6 +8,37 @@ const description = 'Long-form executive writing and the Friday Note. Operators,
 const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+const crossPosts = [
+  // 2026-05-18
+  { date: '2026-05-18', title: 'Publicis Bought LiveRamp. What APAC Operators Do Monday Morning.', summary: 'Publicis is paying 2.167 billion dollars for LiveRamp. From inside an APAC adtech acquisition, the read on what changes Monday morning for operators running real media budgets.', site: 'AI in Asia', url: 'https://aiinasia.com/news/publicis-buys-liveramp-apac-adtech-news-2026-05-17' },
+  { date: '2026-05-18', title: 'Publicis Bought LiveRamp. The Gulf Sovereignty Question Now.', summary: 'From an operator who has watched Gulf demand connect to APAC supply for seven years, the read is about sovereignty as much as adtech.', site: 'AI in Arabia', url: 'https://aiinarabia.com/articles/publicis-buys-liveramp-mena-identity-stack-news-2026-05-17' },
+  { date: '2026-05-18', title: 'Publicis Bought LiveRamp. EU Operators Will Make Three Calls.', summary: 'French ownership repackages the legal exposure of a US identity stack under GDPR and the AI Act. Three calls EU operators will need to make.', site: 'AI in Europe', url: 'https://aiineurope.co/news/publicis-buys-liveramp-gdpr-ai-act-news-2026-05-17' },
+  // 2026-05-17
+  { date: '2026-05-17', title: 'Brussels Postponed Its AI Act. The Hard Deadlines Are Still Real.', summary: 'At 4:30 in the morning of 7 May 2026, EU co-legislators agreed the AI Omnibus, deferring Annex III obligations to December 2027. The hard deadlines have not moved.', site: 'AI in Europe', url: 'https://aiineurope.co/policy/eu-ai-act-omnibus-deadline-extension-2026-05-17' },
+  // 2026-05-16
+  { date: '2026-05-16', title: "Law Before Models: Inside South Korea's Governance-First AI Bet.", summary: 'South Korea is the first country in the world running a fully enforced national AI law. Its own startup association admits only 2 per cent of AI startups are export-ready.', site: 'AI in Asia', url: 'https://aiinasia.com/essays/korea-law-before-models-governance-first-ai-asia-2026-05-17' },
+  // 2026-05-14
+  { date: '2026-05-14', title: "AI Fluency Is Now Asia's Graduate Hiring Default.", summary: "Singapore's 40,000 worker pivot, India's 150,000 developer programme and Japan's 2.3 million target have made AI fluency the baseline screen.", site: 'AI in Asia', url: 'https://aiinasia.com/careers/asia-ai-fluency-graduate-hiring-default-careers-2026-05-14' },
+  // 2026-05-10
+  { date: '2026-05-10', title: 'The Slow Bet: How Japan Is Building AI That Refuses To Race.', summary: 'Japan does not look like a country in an AI race. What it has is a slow accumulation of laws, line items and small models that taken together form a distinct doctrine.', site: 'AI in Asia', url: 'https://aiinasia.com/essays/japan-slow-bet-ai-refuses-to-race-asia-2026-05-10' },
+  { date: '2026-05-10', title: 'Europe Just Got a Frontier AI Lab Map. It Does Not Look Like Silicon Valley.', summary: 'In seventeen days, three deals redrew Europe\'s frontier AI lab map. SAP, Schwarz Group, and ASML are now doing what US venture capital used to.', site: 'AI in Europe', url: 'https://aiineurope.co/policy/europe-frontier-ai-lab-enterprise-capital-2026-05-10' },
+  // 2026-05-03
+  { date: '2026-05-03', title: "The Quiet Sovereign: How Singapore Wrote Asia's AI Playbook With 5.9 Million People.", summary: 'Singapore is not racing China on chips or training a frontier LLM. It is doing the slower thing: a rulebook, a compute plan and a workforce ladder others can adopt.', site: 'AI in Asia', url: 'https://aiinasia.com/essays/singapore-sovereign-ai-playbook-asia-2026-05-03' },
+  { date: '2026-05-03', title: 'Three Capitals, Three Bets: Inside the Arabic LLM Race in Abu Dhabi, Riyadh, and Doha.', summary: 'Falcon-H1 leads the Open Arabic LLM Leaderboard. ALLaM 34B ships in Saudi. Fanar 2.0 holds Doha. Three Arabic AI bets, one language.', site: 'AI in Arabia', url: 'https://aiinarabia.com/articles/arabic-llm-falcon-allam-fanar-three-bets-2026' },
+  { date: '2026-05-03', title: 'Europe Wants to Triple Its Data Centre Capacity. The Power Grid Has Other Ideas.', summary: "The Cloud and AI Development Act is meant to unlock the tripling of EU data centre capacity. The binding constraint is no longer permits. It's electrons.", site: 'AI in Europe', url: 'https://aiineurope.co/policy/european-data-centre-grid-constraint-cada-electrons-not-permits' },
+  // 2026-04-28
+  { date: '2026-04-28', title: "Three Kinds of Sovereignty: Why HUMAIN's $1.2 Billion Bet Is Still Looking for Its Identity.", summary: "PIF's HUMAIN venture is Saudi Arabia's answer to the global AI race. Sovereign AI is not a single thing: data residency, model residency, or talent residency.", site: 'AI in Arabia', url: 'https://aiinarabia.com/articles/humain-saudi-ai-sovereignty-data-model-talent-residency' },
+];
+
+const siteBadge = (site: string) => {
+  const tone: Record<string, string> = {
+    'AI in Asia': '#1A3C5E',
+    'AI in Arabia': '#6B4226',
+    'AI in Europe': '#2D5A3D',
+  };
+  return tone[site] || '#1A1714';
+};
+
 const writingJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
@@ -57,6 +88,25 @@ const writingJsonLd = {
           ))}
         </ul>
       )}
+
+      <h2 style="margin-top:96px;margin-bottom:8px;font-size:32px">Cross-posted essays.</h2>
+      <p class="aside" style="color:var(--muted);margin-bottom:32px">Bylined work first published on the AiinASIA / AiinArabia / AiinEurope mastheads. Canonical lives at the source.</p>
+      <ul class="writing-list" style="list-style:none;padding:0">
+        {crossPosts.map((p) => (
+          <li style="border-top:1px solid var(--rule);padding:24px 0">
+            <article>
+              <div class="eyebrow" style="margin-bottom:8px;font-size:11px">
+                {new Date(p.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+                <span style="margin-left:12px;font-weight:600;color:#fff;background:{siteBadge(p.site)};padding:2px 8px;border-radius:2px;letter-spacing:0.04em">{p.site}</span>
+              </div>
+              <h3 style="font-size:24px;margin-bottom:10px">
+                <a href={p.url} target="_blank" rel="noopener noreferrer" style="text-decoration:none">{p.title}</a>
+              </h3>
+              <p style="font-family:'Fraunces',serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{p.summary}</p>
+            </article>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 </BaseLayout>
