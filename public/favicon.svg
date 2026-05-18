@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#F6F2EB"/>
-  <text x="16" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="500" fill="#111111">A</text>
-  <circle cx="25" cy="22" r="2" fill="#6B1F1F"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#14264C"/>
+  <!-- A: triangle with crossbar -->
+  <path d="M 110 380 L 175 130 L 240 380 M 132 290 L 218 290" stroke="#D89A55" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  <!-- W: zigzag -->
+  <path d="M 272 130 L 305 380 L 360 235 L 415 380 L 448 130" stroke="#D89A55" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
 </svg>
