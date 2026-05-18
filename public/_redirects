@@ -1,9 +1,23 @@
 # adrianwatkins.com 301 map (Cloudflare Pages free tier: 100-rule cap)
-# Sources: GSC Not-found export (30 URLs) + GA4 last 90d (2078 paths).
-# Rules fire BEFORE static-asset lookup; no catch-all (would intercept Astro routes).
+# Sources audited:
+#   - GSC: Page indexing (Not-found 30, Page-with-redirect 14, Excluded-noindex 1,
+#     Crawled-not-indexed 60, Discovered-not-indexed 10)
+#   - GSC Crawl Stats: 93 not-found events, 50 unique examples surveyed
+#   - GSC Sitemaps: 26 live Lovable URLs (all covered)
+#   - GSC Removals: empty
+#   - GA4 last 90d: 2078 paths, 80 with >=4 views
+#   - Live Lovable sitemap.xml: 26 URLs (all covered)
+#   - CV PDF + EDGE whitepaper internal URLs
+#   - Inbound: LinkedIn profile + Contact info, BlackStorm personnel page,
+#     MMA Global speaker page, AiinASIA, PromptAndGo, Democratising.ai
+#   - WebSearch external mentions
+#   - Self-crawl of Astro preview (33 paths all 200)
+#
+# Rules fire BEFORE static-asset lookup, first match wins.
+# NO catch-all '/*' (would intercept Astro routes).
 # Bot scan paths intentionally NOT redirected - they get the 404 page.
 
-# === Lovable-era routes ===
+# === Lovable-era routes (all 26 sitemap URLs covered) ===
 /tools/elevate/prompt-engineer       https://promptandgo.ai/                     301
 /tools/evaluate/negotiation          https://democratising.ai/                   301
 /tools/evaluate/redteam              https://democratising.ai/                   301
@@ -24,6 +38,7 @@
 
 # === WordPress-era endpoints ===
 /wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
+/wp-content/uploads/2020/07/Adrian-Watkins-CV-August-2020_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
 /wp-content/*                        /                                           301
 /feed                                /writing/rss.xml                            301
 /feed/                               /writing/rss.xml                            301
@@ -34,13 +49,14 @@
 /posts/                              /writing                                    301
 /index.html                          /                                           301
 
-# === WP blog index + portfolio ===
+# === WP blog index + portfolio + projects ===
 /blog                                /writing                                    301
 /blog/                               /writing                                    301
 /blog/*                              /writing                                    301
 /portfolio                           /                                           301
 /portfolio/                          /                                           301
 /portfolio/*                         /                                           301
+/project/*                           /about                                      301
 
 # === WP taxonomy ===
 /tag/*                               /writing                                    301
@@ -57,13 +73,13 @@
 /2019_unicorns                       /writing                                    301
 /2019_unicorns/                      /writing                                    301
 
-# === High-value off-site WP articles ===
+# === High-value off-site WP articles (specific destinations) ===
 /5-best-prompts-to-use-with-google-gemini    https://promptandgo.ai/  301
 /5-best-prompts-to-use-with-google-gemini/   https://promptandgo.ai/  301
 /what-is-generative-ai                       https://aiinasia.com/    301
 /what-is-generative-ai/                      https://aiinasia.com/    301
 
-# === Top GSC + GA4 WP article slugs (highest views, both forms) ===
+# === Top WP article slugs (GSC + GA4 + WebSearch confirmed) ===
 /maybe-information-actually-doesnt-want-to-be-free-nyt   /writing  301
 /maybe-information-actually-doesnt-want-to-be-free-nyt/  /writing  301
 /40_best_vc_bets                                         /writing  301
@@ -88,8 +104,8 @@
 /is-ai-stealing-our-jobs/                                /writing  301
 /plusmusic-ai-uses-ai-to-create-in-game-soundtracks      /writing  301
 /plusmusic-ai-uses-ai-to-create-in-game-soundtracks/     /writing  301
-/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion   /writing  301
-/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion/  /writing  301
+/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion    /writing  301
+/why-asia-will-emerge-as-the-global-hub-for-web3-gaming-opinion/   /writing  301
 /how-ai-is-driving-the-hunt-for-clean-energy             /writing  301
 /how-ai-is-driving-the-hunt-for-clean-energy/            /writing  301
 /jeff-bezos-right-wom-future                             /writing  301
@@ -98,3 +114,15 @@
 /the-iceberg-illusion/                                   /writing  301
 /uncontrolled-ai-a-growing-threat-to-businesses          /writing  301
 /uncontrolled-ai-a-growing-threat-to-businesses/         /writing  301
+/myanmar-digital-landscape-2020                          /writing  301
+/myanmar-digital-landscape-2020/                         /writing  301
+/top-earning-video-gamers                                /writing  301
+/top-earning-video-gamers/                               /writing  301
+/the-era-of-move-fast-and-break-things-is-over           /writing  301
+/the-era-of-move-fast-and-break-things-is-over/          /writing  301
+/7-strategies-for-better-group-decision-making           /writing  301
+/7-strategies-for-better-group-decision-making/          /writing  301
+/gravitas-is-a-quality-you-can-develop                   /writing  301
+/gravitas-is-a-quality-you-can-develop/                  /writing  301
+/the-most-interesting-and-bizarre-startups-at-ces-2019   /writing  301
+/the-most-interesting-and-bizarre-startups-at-ces-2019/  /writing  301
