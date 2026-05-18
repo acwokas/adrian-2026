@@ -84,7 +84,7 @@ header.topbar .row {
   color: var(--ink);
   text-decoration: none;
 }
-.wordmark .dot { color: var(--accent); }
+.wordmark .dot { color: #D89A55; }
 nav.primary ul {
   list-style: none;
   display: flex;
