@@ -2,32 +2,32 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const title = 'Friday Note. Adrian Watkins.';
-const description = 'A 200-word weekly missive on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
+const title = 'Friday Frame. Adrian Watkins.';
+const description = 'A 200-word weekly frame on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
 
-const allNotes = await getCollection('fridayNote', ({ data }) => !data.draft);
+const allNotes = await getCollection('fridayFrame', ({ data }) => !data.draft);
 const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const fridayNoteJsonLd = {
+const fridayFrameJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'Friday Note. Adrian Watkins.',
-  url: 'https://adrianwatkins.com/writing/friday-note',
+  name: 'Friday Frame. Adrian Watkins.',
+  url: 'https://adrianwatkins.com/writing/friday-frame',
   description,
   author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
 };
 ---
 
-<BaseLayout title={title} description={description} current="writing" jsonLd={fridayNoteJsonLd}>
+<BaseLayout title={title} description={description} current="writing" jsonLd={fridayFrameJsonLd}>
   <section class="stub">
     <div class="container">
-      <div class="eyebrow">Writing / Friday Note</div>
-      <h1>The Friday Note.</h1>
-      <p class="lede">A 200-word weekly missive on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday. Archive below, newest first.</p>
+      <div class="eyebrow">Writing / Friday Frame</div>
+      <h1>The Friday Frame archive.</h1>
+      <p class="lede">A 200-word weekly frame on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday. Archive below, newest first.</p>
 
       {notes.length === 0 ? (
         <div class="prose" style="margin-top:48px">
-          <p><strong>First note publishing this Friday.</strong></p>
+          <p><strong>First frame publishing this Friday.</strong></p>
           <p class="stub-note" style="margin-top:24px">RSS feed: <a href="/writing/rss.xml">/writing/rss.xml</a>.</p>
         </div>
       ) : (
@@ -39,7 +39,7 @@ const fridayNoteJsonLd = {
                   {note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </div>
                 <h2 style="font-size:24px;margin-bottom:10px">
-                  <a href={`/writing/friday-note/${note.id}`} style="text-decoration:none">{note.data.title}</a>
+                  <a href={`/writing/friday-frame/${note.id}`} style="text-decoration:none">{note.data.title}</a>
                 </h2>
                 <p style="font-family:'Fraunces',serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{note.data.summary}</p>
               </article>

@@ -1,10 +1,10 @@
 ---
-title: "Friday Note: the standing order."
+title: "Friday Frame: the standing order."
 date: 2026-05-15
 summary: "The 200-word weekly missive starts here. Operators, governance, Asia-Pacific. One thing I noticed this week, every Friday."
 ---
 
-This is the standing entry for the Friday Note. The brief is simple. 200 words, once a week, on the one thing I noticed about applied intelligence, governance, or commercial leadership in Asia-Pacific that I want to think out loud about with you.
+This is the standing entry for the Friday Frame. The brief is simple. 200 words, once a week, on the one thing I noticed about applied intelligence, governance, or commercial leadership in Asia-Pacific that I want to think out loud about with you.
 
 No tracking pixels. No funnel. If it ends up in your inbox or your reader, that is because you put it there.
 

@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import crossPostData from '../../data/cross-posts.json';
 
 const title = 'Writing. Adrian Watkins.';
-const description = 'Long-form executive writing and the Friday Note. Operators, governance, applied intelligence. Asia-Pacific.';
+const description = 'Long-form executive writing and the Friday Frame. Operators, governance, applied intelligence. Asia-Pacific.';
 
 const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -54,8 +54,8 @@ const writingJsonLd = {
   <section class="stub">
     <div class="container">
       <div class="eyebrow">Writing</div>
-      <h1>Notes, essays, and the Friday Note.</h1>
-      <p class="lede">Long-form writing, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Two regular threads: the <a href="/writing/friday-note">Friday Note</a> (weekly, 200 words) and the <a href="/now#reading">Reading list</a> (quarterly).</p>
+      <h1>Frames, essays, and the Friday Frame.</h1>
+      <p class="lede">Long-form writing, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Two regular threads: the <a href="/writing/friday-frame">Friday Frame</a> (weekly, 200 words) and the <a href="/now#reading">Reading list</a> (quarterly).</p>
 
       {posts.length === 0 ? (
         <div class="prose" style="margin-top:48px">

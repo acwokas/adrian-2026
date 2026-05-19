@@ -18,7 +18,7 @@
 - [About](https://adrianwatkins.com/about): full operator record, deal credits, mentorship history
 - [EDGE Framework](https://adrianwatkins.com/edge): four-pillar framework for applied intelligence
 - [Speaking](https://adrianwatkins.com/speaking): past and upcoming keynotes, workshops, panels
-- [Writing](https://adrianwatkins.com/writing): Friday Note, long-form essays, field notes
+- [Writing](https://adrianwatkins.com/writing): Friday Frame, long-form essays, field notes
 - [/now](https://adrianwatkins.com/now): current quarter focus, updated monthly
 - [Contact](https://adrianwatkins.com/contact): how to start a conversation
 
