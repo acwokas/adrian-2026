@@ -12,13 +12,17 @@ interface Env {}
 
 const ASTRO_PAGES = new Set([
   '/', '/about', '/edge', '/speaking', '/writing', '/now', '/contact',
-  '/writing/friday-note', '/404',
+  '/writing/friday-frame', '/404',
   // Specific essay slugs
   '/writing/your-ai-earning-its-energy', '/writing/japan-slow-bet',
   '/writing/singapore-at-60', '/writing/singapore-quiet-sovereign',
   '/writing/tech-translators', '/writing/year-of-the-horse',
-  '/writing/ai-literacy-events', '/writing/friday-note/welcome',
+  '/writing/ai-literacy-events', '/writing/friday-frame/welcome',
 ]);
+
+// Crawler convenience: /sitemap.xml -> /sitemap-index.xml (Astro emits the
+// index under -index.xml by default; many crawlers default to /sitemap.xml).
+const SITEMAP_ALIASES = new Set(['/sitemap.xml', '/sitemap']);
 
 const ASSET_EXT = /\.(html|xml|txt|pdf|png|jpe?g|gif|svg|webp|ico|css|js|woff2?|ttf|mp4|json|map|webmanifest)$/i;
 const KNOWN_ASSET_DIRS = /^\/(images|documents|_astro|favicon|robots|sitemap|llms|ai|edge-framework|\.well-known|api)/;
@@ -40,6 +44,15 @@ const BOT_PATTERNS = [
 export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(context.request.url);
   const path = url.pathname;
+
+  // Crawler-friendly sitemap alias. Run BEFORE static-asset lookup so it
+  // always wins and doesn't depend on a 404 first.
+  if (SITEMAP_ALIASES.has(path)) {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: '/sitemap-index.xml' },
+    });
+  }
 
   // Try to serve the request normally first (static assets, _redirects, etc.)
   const response = await context.next();
