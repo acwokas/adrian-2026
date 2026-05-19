@@ -1,0 +1,214 @@
+---
+/**
+ * FridayFramePromo: shared cross-promo block. Three variants.
+ *
+ * - hero:   full navy band, two buttons. Use on /writing landing.
+ * - inline: compact eyebrow + one line + 'see all'. Use above Frame essay H1.
+ * - footer: navy strip with two inline links. Use at the foot of every writing
+ *           essay (Friday Frame and regular).
+ *
+ * 'Latest' resolves dynamically to the most recent Friday Frame entry by date,
+ * excluding the welcome stub and any draft.
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  variant: 'hero' | 'inline' | 'footer';
+  /** Slug of the current Frame, so 'Read the latest' can avoid linking to self. */
+  currentSlug?: string;
+}
+
+const { variant, currentSlug } = Astro.props;
+
+const frames = await getCollection('fridayFrame', ({ data, id }) =>
+  !data.draft && id !== 'welcome'
+);
+const sorted = frames.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+let latest = sorted[0];
+if (currentSlug && latest?.id === currentSlug && sorted.length > 1) {
+  latest = sorted[1];
+}
+const latestHref = latest ? `/writing/friday-frame/${latest.id}` : '/writing/friday-frame';
+const latestLabel = latest ? 'Read the latest frame' : 'See the archive';
+
+const strap = 'The weekly 200-word missive. Operators, governance, Asia-Pacific.';
+---
+
+{variant === 'hero' && (
+  <section class="ff-promo ff-promo-hero">
+    <div class="ff-promo-eyebrow">The Friday Frame</div>
+    <h3 class="ff-promo-h3">The weekly 200-word missive.<br />Operators, governance, Asia-Pacific.<br />One thing noticed, every Friday.</h3>
+    <div class="ff-promo-ctas">
+      <a class="ff-btn ff-btn-filled" href={latestHref}>{latestLabel} →</a>
+      <a class="ff-btn ff-btn-ghost" href="/writing/friday-frame">Read the whole archive →</a>
+    </div>
+  </section>
+)}
+
+{variant === 'inline' && (
+  <div class="ff-promo-inline">
+    <span class="ff-promo-inline-eyebrow">The Friday Frame</span>
+    <span class="ff-promo-inline-sep">·</span>
+    <span class="ff-promo-inline-strap">{strap}</span>
+    <a class="ff-promo-inline-link" href="/writing/friday-frame">See all frames →</a>
+  </div>
+)}
+
+{variant === 'footer' && (
+  <section class="ff-promo ff-promo-footer">
+    <div class="ff-promo-footer-row">
+      <div>
+        <div class="ff-promo-eyebrow">The Friday Frame</div>
+        <p class="ff-promo-footer-strap">{strap}</p>
+      </div>
+      <div class="ff-promo-footer-ctas">
+        <a class="ff-btn ff-btn-filled" href={latestHref}>{latestLabel} →</a>
+        <a class="ff-btn ff-btn-ghost-light" href="/writing/friday-frame">The frame archive →</a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  /* ===== Shared button family ===== */
+  .ff-btn {
+    display: inline-block;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 11px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    border: 1px solid transparent;
+    line-height: 1.2;
+  }
+  .ff-btn-filled {
+    background: #D89A55;
+    color: #1A1714;
+    border-color: #D89A55;
+  }
+  .ff-btn-filled:hover { background: #C58A45; border-color: #C58A45; transform: translateY(-1px); }
+  .ff-btn-ghost {
+    background: transparent;
+    color: #F4ECD8;
+    border-color: #F4ECD8;
+  }
+  .ff-btn-ghost:hover { border-color: #D89A55; color: #D89A55; }
+  .ff-btn-ghost-light {
+    background: transparent;
+    color: #F4ECD8;
+    border-color: #C4B89F;
+  }
+  .ff-btn-ghost-light:hover { border-color: #D89A55; color: #D89A55; }
+
+  /* ===== Shared eyebrow ===== */
+  .ff-promo-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #D89A55;
+    margin-bottom: 12px;
+  }
+
+  /* ===== Hero variant ===== */
+  .ff-promo-hero {
+    background: #14264C;
+    color: #F4ECD8;
+    padding: 28px 32px;
+    border-radius: 2px;
+    margin: 32px 0 48px 0;
+  }
+  .ff-promo-h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.35;
+    color: #F4ECD8;
+    margin: 0 0 22px 0;
+    font-weight: 500;
+  }
+  .ff-promo-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ===== Inline variant ===== */
+  .ff-promo-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #FAF6EC;
+    border-left: 3px solid #D89A55;
+    border-radius: 2px;
+    margin: 14px 0 28px 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .ff-promo-inline-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #D89A55;
+  }
+  .ff-promo-inline-sep { color: #B7A98E; }
+  .ff-promo-inline-strap {
+    color: var(--ink-soft, #4A3F33);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+  .ff-promo-inline-link {
+    margin-left: auto;
+    color: #D89A55;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .ff-promo-inline-link:hover { border-bottom-color: #D89A55; }
+
+  /* ===== Footer variant ===== */
+  .ff-promo-footer {
+    background: #14264C;
+    color: #F4ECD8;
+    padding: 28px 32px;
+    border-radius: 2px;
+    margin: 64px 0 32px 0;
+  }
+  .ff-promo-footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ff-promo-footer-strap {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.4;
+    color: #C4B89F;
+    margin: 0;
+    max-width: 460px;
+  }
+  .ff-promo-footer-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ===== Mobile (375px) ===== */
+  @media (max-width: 640px) {
+    .ff-promo-hero, .ff-promo-footer { padding: 22px 20px; }
+    .ff-promo-h3 { font-size: 19px; }
+    .ff-promo-ctas, .ff-promo-footer-ctas { flex-direction: column; align-items: stretch; }
+    .ff-btn { text-align: center; }
+    .ff-promo-footer-row { flex-direction: column; align-items: stretch; gap: 18px; }
+    .ff-promo-inline { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .ff-promo-inline-sep { display: none; }
+    .ff-promo-inline-link { margin-left: 0; margin-top: 6px; }
+  }
+</style>

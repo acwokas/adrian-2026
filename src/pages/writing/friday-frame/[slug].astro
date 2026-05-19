@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FridayFramePromo from '../../../components/FridayFramePromo.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -52,7 +53,9 @@ const articleJsonLd = {
         <a href="/writing/friday-frame">Friday Frame</a>
       </nav>
 
-      <div class="eyebrow" style="margin-top:24px">Writing / Friday Frame</div>
+      <FridayFramePromo variant="inline" currentSlug={note.id} />
+
+      <div class="eyebrow">Writing / Friday Frame</div>
       <p style="font-size:13px;color:var(--muted);letter-spacing:0.04em;margin-bottom:18px">
         {note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
       </p>
@@ -63,8 +66,10 @@ const articleJsonLd = {
         <Content />
       </div>
 
+      <FridayFramePromo variant="footer" currentSlug={note.id} />
+
       {others.length > 0 && (
-        <section class="more-frames" style="margin-top:80px;padding-top:48px;border-top:1px solid var(--rule)">
+        <section class="more-frames" style="margin-top:48px;padding-top:48px;border-top:1px solid var(--rule)">
           <h2 style="font-size:24px;margin-bottom:24px">More from the Friday Frame archive.</h2>
           <ul class="frame-cards">
             {others.map((n) => (

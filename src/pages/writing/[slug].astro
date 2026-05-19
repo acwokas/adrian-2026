@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FridayFramePromo from '../../components/FridayFramePromo.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -49,7 +50,9 @@ const articleJsonLd = {
         <Content />
       </div>
 
-      <p class="stub-note" style="margin-top:64px">
+      <FridayFramePromo variant="footer" />
+
+      <p class="stub-note" style="margin-top:32px">
         <a href="/writing">← All writing</a>
       </p>
     </div>

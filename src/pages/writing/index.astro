@@ -1,13 +1,48 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FridayFramePromo from '../../components/FridayFramePromo.astro';
 import { getCollection } from 'astro:content';
 import crossPostData from '../../data/cross-posts.json';
 
 const title = 'Writing. Adrian Watkins.';
 const description = 'Long-form executive writing and the Friday Frame. Operators, governance, applied intelligence. Asia-Pacific.';
 
-const allPosts = await getCollection('writing', ({ data }) => !data.draft);
-const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const writingPosts = await getCollection('writing', ({ data }) => !data.draft);
+const framePosts = await getCollection('fridayFrame', ({ data, id }) => !data.draft && id !== 'welcome');
+
+// Merge both collections into one chronological feed. Distinguish kind so the
+// list can render an "FF" badge on Friday Frame entries.
+type Entry = {
+  kind: 'writing' | 'frame';
+  id: string;
+  title: string;
+  date: Date;
+  summary: string;
+  tags: string[];
+  canonical?: string;
+};
+const merged: Entry[] = [
+  ...writingPosts.map((p): Entry => ({
+    kind: 'writing',
+    id: p.id,
+    title: p.data.title,
+    date: p.data.date,
+    summary: p.data.summary,
+    tags: p.data.tags,
+    canonical: p.data.canonical,
+  })),
+  ...framePosts.map((p): Entry => ({
+    kind: 'frame',
+    id: p.id,
+    title: p.data.title,
+    date: p.data.date,
+    summary: p.data.summary,
+    tags: [],
+  })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const entryHref = (e: Entry) =>
+  e.kind === 'frame' ? `/writing/friday-frame/${e.id}` : `/writing/${e.id}`;
 
 type CrossPostEntry = {
   slug: string;
@@ -24,7 +59,6 @@ const crossPosts = (crossPostData.entries as CrossPostEntry[])
   .sort((a, b) => b.published_at.localeCompare(a.published_at));
 
 const siteBadge = (site: string) => {
-  // Saturated pill backgrounds with white text. Each meets WCAG AA on white text.
   const tone: Record<string, string> = {
     'AI in Asia': '#0F2E4D',
     'AI in Arabia': '#5C3617',
@@ -40,12 +74,12 @@ const writingJsonLd = {
   url: 'https://adrianwatkins.com/writing',
   description,
   author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
-  blogPost: posts.map((post) => ({
+  blogPost: merged.map((e) => ({
     '@type': 'BlogPosting',
-    headline: post.data.title,
-    url: post.data.canonical || `https://adrianwatkins.com/writing/${post.id}`,
-    datePublished: post.data.date.toISOString(),
-    description: post.data.summary,
+    headline: e.title,
+    url: e.canonical || `https://adrianwatkins.com${entryHref(e)}`,
+    datePublished: e.date.toISOString(),
+    description: e.summary,
   })),
 };
 ---
@@ -54,29 +88,34 @@ const writingJsonLd = {
   <section class="stub">
     <div class="container">
       <div class="eyebrow">Writing</div>
-      <h1>Frames, essays, and the Friday Frame.</h1>
+      <h1>Frames, essays, and cross-posts.</h1>
       <p class="lede">Long-form writing, with cross-links to AiinASIA where appropriate. The canonical executive writing lives here. Two regular threads: the <a href="/writing/friday-frame">Friday Frame</a> (weekly, 200 words) and the <a href="/now#reading">Reading list</a> (quarterly).</p>
 
-      {posts.length === 0 ? (
+      <FridayFramePromo variant="hero" />
+
+      {merged.length === 0 ? (
         <div class="prose" style="margin-top:48px">
           <p><strong>First essays publishing soon.</strong></p>
           <p class="stub-note" style="margin-top:24px">RSS feed: <a href="/writing/rss.xml">/writing/rss.xml</a>.</p>
         </div>
       ) : (
-        <ul class="writing-list" style="margin-top:48px;list-style:none;padding:0">
-          {posts.map((post) => (
+        <ul class="writing-list" style="margin-top:8px;list-style:none;padding:0">
+          {merged.map((e) => (
             <li style="border-top:1px solid var(--rule);padding:24px 0">
               <article>
                 <div class="eyebrow" style="margin-bottom:8px;font-size:11px">
-                  {post.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  {post.data.tags.length > 0 && (
-                    <span style="color:var(--muted);margin-left:12px;font-weight:400">{post.data.tags.join(' / ')}</span>
+                  {e.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {e.kind === 'frame' && (
+                    <span class="ff-tag">FF</span>
+                  )}
+                  {e.tags.length > 0 && (
+                    <span style="color:var(--muted);margin-left:12px;font-weight:400">{e.tags.join(' / ')}</span>
                   )}
                 </div>
                 <h2 style="font-size:28px;margin-bottom:10px">
-                  <a href={`/writing/${post.id}`} style="text-decoration:none">{post.data.title}</a>
+                  <a href={entryHref(e)} style="text-decoration:none">{e.title}</a>
                 </h2>
-                <p style="font-family:'Fraunces',serif;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{post.data.summary}</p>
+                <p style="font-family:'Fraunces',serif;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{e.summary}</p>
               </article>
             </li>
           ))}
@@ -104,3 +143,18 @@ const writingJsonLd = {
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .ff-tag {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #1A1714;
+    background: #D89A55;
+    padding: 2px 7px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+</style>
