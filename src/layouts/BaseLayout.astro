@@ -18,7 +18,7 @@ const {
   title,
   description,
   current = '',
-  ogImage = '/images/hero-portrait.jpg',
+  ogImage = '/og-image.png',
   jsonLd,
   canonicalOverride,
 } = Astro.props;
@@ -46,6 +46,9 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Adrian Watkins. Operator. Builder. Governor." />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="Adrian Watkins" />
 
@@ -53,6 +56,7 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
+    <meta name="twitter:image:alt" content="Adrian Watkins. Operator. Builder. Governor." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
