@@ -24,10 +24,11 @@ const crossPosts = (crossPostData.entries as CrossPostEntry[])
   .sort((a, b) => b.published_at.localeCompare(a.published_at));
 
 const siteBadge = (site: string) => {
+  // Saturated pill backgrounds with white text. Each meets WCAG AA on white text.
   const tone: Record<string, string> = {
-    'AI in Asia': '#1A3C5E',
-    'AI in Arabia': '#6B4226',
-    'AI in Europe': '#2D5A3D',
+    'AI in Asia': '#0F2E4D',
+    'AI in Arabia': '#5C3617',
+    'AI in Europe': '#1F4A30',
   };
   return tone[site] || '#1A1714';
 };
@@ -90,7 +91,7 @@ const writingJsonLd = {
             <article>
               <div class="eyebrow" style="margin-bottom:8px;font-size:11px">
                 {new Date(p.published_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-                <span style={`margin-left:12px;font-weight:600;color:#fff;background:${siteBadge(p.site_name)};padding:2px 8px;border-radius:2px;letter-spacing:0.04em`}>{p.site_name}</span>
+                <span style={`display:inline-block;margin-left:12px;font-weight:700;font-size:11px;color:#FFFFFF;background-color:${siteBadge(p.site_name)};padding:3px 10px;border-radius:3px;letter-spacing:0.06em;text-transform:uppercase`}>{p.site_name}</span>
               </div>
               <h3 style="font-size:24px;margin-bottom:10px">
                 <a href={p.canonical_url} target="_blank" rel="noopener noreferrer" style="text-decoration:none">{p.title}</a>

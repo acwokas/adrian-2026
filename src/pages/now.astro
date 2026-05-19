@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { lastUpdated, lastUpdatedHuman } from '../data/now';
 
 const title = '/now. Adrian Watkins.';
 const description = 'What I am working on this quarter. Updated monthly. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
-
-const lastUpdated = '2026-05-17';
-const lastUpdatedHuman = '17 May 2026';
 
 const nowJsonLd = {
   '@context': 'https://schema.org',
@@ -39,7 +37,7 @@ const nowJsonLd = {
   </section>
 
   <section class="alt" style="padding:48px 0">
-    <div class="container">
+    <div class="container" style="padding-top:1rem">
       <h2 style="margin-bottom:18px">Advising.</h2>
       <div class="prose">
         <p>Two engagements active right now, both anonymous on the public site. A catering business in Singapore, where I am also an investor. A professional services firm in Malaysia. The work ranges from strategy through operating-model redesign and AI integration, depending on where the room actually needs the help.</p>
@@ -63,7 +61,7 @@ const nowJsonLd = {
     <div class="container">
       <h2 style="margin-bottom:18px">Recent moments.</h2>
       <div class="prose">
-        <p>Moderated the Ortus Club closed-door senior executive roundtable on "The Era of Services Delivery" and the impact of artificial intelligence. Chatham House format. Useful room. Notes stay in the room; the questions worth carrying forward are in the queue at <a href="/writing">/writing</a>.</p>
+        <p>Moderated the Ortus Club closed-door senior executive roundtable on "The Era of Services Delivery" and the impact of artificial intelligence. Chatham House format. Useful room. Notes stay in the room; the questions worth carrying forward are explored at <a href="/writing">/writing</a>.</p>
         <p>Taipei City Government keynote at Smart Living, Sustainable Future 2025 still landing. Opened "Democratising Intelligence for a Sustainable Future" and moderated the startup panel. The post-event reflection became the first essay live on this site: <a href="/writing/your-ai-earning-its-energy">Is your AI earning its energy?</a></p>
       </div>
     </div>
@@ -74,7 +72,6 @@ const nowJsonLd = {
       <h2 style="margin-bottom:18px">Reading.</h2>
       <div class="prose">
         <p>Margaret Heffernan on uncertainty. Marc Levinson on the box. Mark Slouka's older essays. Gillian Tett's Anthro-Vision, again. Iain McGilchrist on attention. The Patrick Collison reading list is still the bar.</p>
-        <p>Quarterly reading list, one line each per book, with the date I picked them up, ships at <a href="/writing">/writing</a> from next quarter.</p>
       </div>
     </div>
   </section>
@@ -83,7 +80,7 @@ const nowJsonLd = {
     <div class="container">
       <h2 style="margin-bottom:18px">Listening.</h2>
       <div class="prose">
-        <p>Patrick Collison and Tyler Cowen archive, on rotation. The Conversations with Tyler episodes with operators rather than economists. The occasional Founders Podcast biography when the subject is unfashionable.</p>
+        <p>All In, <a href="https://aiineurope.co" target="_blank" rel="noopener noreferrer">The Continental</a>, <a href="https://aiinarabia.com" target="_blank" rel="noopener noreferrer">AI Mezze</a>, <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">3 Before 9</a>, the Patrick Collison and Tyler Cowen archive on rotation. The Conversations with Tyler episodes with operators rather than economists. The occasional Founders Podcast biography when the subject is unfashionable.</p>
       </div>
     </div>
   </section>
@@ -94,16 +91,6 @@ const nowJsonLd = {
       <div class="prose">
         <p>Two things, slowly. First, why "AI capability" still gets read as a technology question by boards when it is mostly a decision-rights question. EDGE Govern is a partial answer. The longer answer is the essay queued at the top of the drawer.</p>
         <p>Second, what an executive practice looks like when the operator publishes from their own surface instead of renting LinkedIn's. AiinASIA. Three years of days now. Approximately ten thousand readers a month, zero paid distribution. The conclusion is not "everyone should blog". The conclusion is more specific and slightly contrarian.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding:48px 0">
-    <div class="container">
-      <h2 style="margin-bottom:18px">What has changed since last update.</h2>
-      <div class="prose">
-        <p>First long-form essay live on <a href="/writing">/writing</a>. The Taiwan post-event reflection, cross-posted from LinkedIn Pulse with the canonical pointing back to the original.</p>
-        <p>Foodie field notes still in the drawer. They return in next month's update.</p>
       </div>
     </div>
   </section>

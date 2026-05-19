@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import { digestParagraphs, lastUpdatedHuman } from '../data/now';
 
 const title = 'Adrian Watkins. Operator. Builder. Governor.';
 const description = 'Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance, SQREEM Technologies.';
@@ -183,7 +184,7 @@ const personJsonLd = {
         <a class="btn btn-primary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer" style="background:#D89A55;color:#1A1714">Download the EDGE white paper</a>
         <a class="btn btn-secondary" href="/edge" style="border-color:#E9E2D2;color:#E9E2D2">Try the EDGE Diagnostic</a>
       </div>
-      <p style="font-size:13px;color:#7A7060;margin-top:18px;max-width:none">Tools and diagnostic live on democratising.ai. Built on the EDGE Framework.</p>
+      <p style="font-size:13px;color:#F4ECD8;opacity:0.92;margin-top:18px;max-width:none">Tools and diagnostic live on democratising.ai. Built on the EDGE Framework.</p>
     </div>
   </section>
 
@@ -195,9 +196,7 @@ const personJsonLd = {
           <p>What I am working on this quarter. Updated monthly. Borrowed from Derek Sivers.</p>
         </div>
         <div class="body">
-          <p>Q2 2026. Building EDGE Diagnostic v2, a 25-minute structured conversation that produces a board-ready AI capability snapshot. Advising three businesses across the region, all anonymous on the public site: a sustainability operator in the Philippines, a catering business modernising its operating model, and a professional services firm in Australia. Drafting the EDGE field manual for nominating committees, due Q3.</p>
-          <p>SDG Open Hack 2026 NP Edition mentorship runs from late May. Standing panellist work continues across business strategy, operational implementation, and AI. Reading: Margaret Heffernan on uncertainty, Marc Levinson on the box. Listening: Patrick Collison and Tyler Cowen archive. Foodie field notes return next month.</p>
-          <p>Last updated 16 May 2026.</p>
+          {digestParagraphs.map((p) => (<p>{p}</p>))}
         </div>
       </div>
     </div>
