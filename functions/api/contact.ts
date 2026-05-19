@@ -17,7 +17,7 @@ interface ContactPayload {
   honeypot?: string;
 }
 
-const DEFAULT_FROM = 'Adrian Watkins <contact@aiinasia.com>';
+const DEFAULT_FROM = 'Adrian Watkins <contact@adrianwatkins.com>';
 const DEFAULT_TO = 'me@adrianwatkins.com';
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
@@ -85,7 +85,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   if (!notifyRes.ok) {
     console.error('[contact] notify send failed', notifyRes.status, notifyRes.body);
-    return json({ ok: false, error: 'send_failed' }, 500);
+    return json({ ok: false, error: 'send_failed', status: notifyRes.status }, 500);
   }
 
   // 2. Auto-reply to the submitter
@@ -114,6 +114,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!autoRes.ok) {
     // Notification already sent. Surface but do not 500 the request.
     console.error('[contact] auto-reply failed', autoRes.status, autoRes.body);
+    return json({ ok: true, sent: true, autoReplyFailed: true, autoReplyStatus: autoRes.status });
   }
 
   return json({ ok: true, sent: true });
