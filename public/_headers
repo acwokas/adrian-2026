@@ -7,6 +7,7 @@
 /documents/AdrianWatkins_Executive-CV.pdf
   Cache-Control: public, max-age=300, must-revalidate
 
-# EDGE Framework whitepaper: changes rarely. 1-hour browser TTL is fine.
-/documents/EDGE-Framework-Whitepaper.pdf
-  Cache-Control: public, max-age=3600, must-revalidate
+# Wildcard match for the same path as a belt-and-braces (CF Pages applies the
+# most specific rule but list both forms in case of order quirks).
+/documents/*.pdf
+  Cache-Control: public, max-age=300, must-revalidate
