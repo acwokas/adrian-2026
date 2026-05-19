@@ -57,6 +57,21 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Try to serve the request normally first (static assets, _redirects, etc.)
   const response = await context.next();
 
+  // Force a short Cache-Control on the CV PDF. The Pages custom-domain layer
+  // otherwise applies a 4-hour default to .pdf which makes new versions
+  // invisible to returning visitors until their browser revalidates.
+  // _headers does not survive the custom-domain edge for .pdf assets — the
+  // middleware does, because it runs as the final response layer.
+  if (path === '/documents/AdrianWatkins_Executive-CV.pdf') {
+    const headers = new Headers(response.headers);
+    headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  }
+
   // Only intercept 404s
   if (response.status !== 404) return response;
 
