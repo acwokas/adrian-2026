@@ -1,0 +1,12 @@
+# Cloudflare Pages custom response headers.
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# CV PDF: revalidate aggressively so a fresh upload is visible without users
+# needing to hard-refresh. ETag still does the heavy lifting; this just
+# ensures the browser checks back every 5 minutes instead of every 4 hours.
+/documents/AdrianWatkins_Executive-CV.pdf
+  Cache-Control: public, max-age=300, must-revalidate
+
+# EDGE Framework whitepaper: changes rarely. 1-hour browser TTL is fine.
+/documents/EDGE-Framework-Whitepaper.pdf
+  Cache-Control: public, max-age=3600, must-revalidate
