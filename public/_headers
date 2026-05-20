@@ -1,5 +1,6 @@
 # Cloudflare Pages custom response headers.
 # https://developers.cloudflare.com/pages/configuration/headers/
+# Auto-deploy verification: 2026-05-20 (first GH Actions run confirmed)
 
 # CV PDF: revalidate aggressively so a fresh upload is visible without users
 # needing to hard-refresh. ETag still does the heavy lifting; this just
