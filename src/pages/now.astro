@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { lastUpdated, lastUpdatedHuman } from '../data/now';
 
 const title = '/now. Adrian Watkins.';
-const description = 'What I am working on this quarter. Updated monthly. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
+const description = 'What I am working on, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
 
 const nowJsonLd = {
   '@context': 'https://schema.org',
@@ -21,7 +21,7 @@ const nowJsonLd = {
     <div class="container">
       <div class="eyebrow">/now</div>
       <h1>What I am working on, right now.</h1>
-      <p class="lede">Borrowed from Derek Sivers and the <a href="https://nownownow.com" target="_blank" rel="noopener noreferrer">nownownow.com</a> convention. The current quarter, current week if it has shifted that fast. Updated monthly, or when something material changes. The site itself is being rebuilt this month, so the cadence will land properly from June.</p>
+      <p class="lede">Borrowed from Derek Sivers and the <a href="https://nownownow.com" target="_blank" rel="noopener noreferrer">nownownow.com</a> convention. Updated when something material changes.</p>
       <p class="quiet" style="font-size:13px;margin-top:8px">Last updated: <time datetime={lastUpdated}>{lastUpdatedHuman}</time>.</p>
     </div>
   </section>

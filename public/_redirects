@@ -27,7 +27,7 @@
 /tools                               /edge                                       301
 /tools/                              /edge                                       301
 /tools/*                             https://democratising.ai/                   301
-/executive-cv                        /documents/AdrianWatkins_Executive-CV.pdf   301
+/executive-cv                        /documents/AdrianWatkins_Executive-CV.pdf?v=12   301
 /experience                          /about                                      301
 /how-i-work                          /about                                      301
 /what-i-do                           /                                           301
@@ -43,8 +43,8 @@
 /writing/friday-note                 /writing/friday-frame                       301
 /writing/friday-note/                /writing/friday-frame                       301
 /writing/friday-note/*               /writing/friday-frame/:splat                301
-/wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
-/wp-content/uploads/2020/07/Adrian-Watkins-CV-August-2020_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf  301
+/wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf?v=12  301
+/wp-content/uploads/2020/07/Adrian-Watkins-CV-August-2020_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf?v=12  301
 /wp-content/*                        /                                           301
 /feed                                /writing/rss.xml                            301
 /feed/                               /writing/rss.xml                            301
