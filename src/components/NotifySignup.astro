@@ -1,0 +1,343 @@
+---
+/**
+ * NotifySignup: email capture for /writing.
+ *
+ * Captures emails for notification when a new piece publishes (Friday Frame,
+ * essay, anything under /writing) or when an existing post gets a material
+ * update.
+ *
+ * Variants:
+ *   - "card":   full block. Used at the bottom of /writing index and the
+ *               bottom of every /writing/* post.
+ *   - "slim":   compact one-line variant. Reserved for sidebars if needed.
+ *
+ * Source is captured so the eventual notification dispatcher can attribute
+ * signups back to the page that converted them.
+ *
+ * Endpoint: POST /api/writing-subscribe  (functions/api/writing-subscribe.ts)
+ */
+interface Props {
+  variant?: 'card' | 'slim';
+  source?: string;
+}
+
+const { variant = 'card', source } = Astro.props;
+
+// Resolve the source URL path so we know which page captured the signup.
+const resolvedSource = source || Astro.url.pathname || '/writing';
+---
+
+{variant === 'card' && (
+  <section class="ns-card" data-notify-source={resolvedSource} aria-labelledby="ns-heading">
+    <div class="ns-eyebrow">Subscribe</div>
+    <h3 id="ns-heading" class="ns-heading">Get a heads up when there is new writing here.</h3>
+    <p class="ns-strap">
+      I publish irregularly. The Friday Frame ships most weeks. The longer essays land when they are ready. Drop your email and you will get a note when something new goes up, or when an existing post gets a meaningful rewrite. Nothing else.
+    </p>
+
+    <form class="ns-form" action="/api/writing-subscribe" method="POST" novalidate>
+      <label class="ns-label" for="ns-email-input">Email</label>
+      <div class="ns-row">
+        <input
+          id="ns-email-input"
+          class="ns-input"
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          inputmode="email"
+          placeholder="you@example.com"
+          spellcheck="false"
+        />
+        <button class="ns-btn" type="submit">Subscribe</button>
+      </div>
+      <input type="hidden" name="source" value={resolvedSource} />
+      <input
+        type="text"
+        name="company"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"
+      />
+      <p class="ns-status" data-ns-status hidden role="status" aria-live="polite"></p>
+      <p class="ns-fine">No filler. Unsubscribe any time with one click.</p>
+    </form>
+  </section>
+)}
+
+{variant === 'slim' && (
+  <aside class="ns-slim" data-notify-source={resolvedSource} aria-labelledby="ns-slim-heading">
+    <h4 id="ns-slim-heading" class="ns-slim-heading">New writing in your inbox.</h4>
+    <p class="ns-slim-strap">I publish irregularly. Want a heads up?</p>
+    <form class="ns-form ns-form-slim" action="/api/writing-subscribe" method="POST" novalidate>
+      <label class="ns-label sr-only" for="ns-email-slim">Email</label>
+      <input
+        id="ns-email-slim"
+        class="ns-input"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        inputmode="email"
+        placeholder="you@example.com"
+        spellcheck="false"
+      />
+      <button class="ns-btn ns-btn-slim" type="submit">Subscribe</button>
+      <input type="hidden" name="source" value={resolvedSource} />
+      <input
+        type="text"
+        name="company"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"
+      />
+      <p class="ns-status" data-ns-status hidden role="status" aria-live="polite"></p>
+    </form>
+  </aside>
+)}
+
+<script is:inline>
+  (function () {
+    if (window.__notifySignupBound) return;
+    window.__notifySignupBound = true;
+
+    document.addEventListener('submit', async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      if (form.getAttribute('action') !== '/api/writing-subscribe') return;
+
+      event.preventDefault();
+
+      const status = form.querySelector('[data-ns-status]');
+      const button = form.querySelector('button[type="submit"]');
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = (emailInput && emailInput.value || '').trim();
+      const honey = (form.elements.namedItem('company') || {}).value || '';
+      const source = (form.elements.namedItem('source') || {}).value || (location.pathname || '/writing');
+
+      const setStatus = (msg, tone) => {
+        if (!status) return;
+        status.hidden = false;
+        status.textContent = msg;
+        status.setAttribute('data-tone', tone || 'info');
+      };
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus('That email looks off. Try again?', 'err');
+        return;
+      }
+
+      if (button) {
+        button.disabled = true;
+        button.dataset.originalLabel = button.textContent || 'Subscribe';
+        button.textContent = 'Sending...';
+      }
+      setStatus('Sending...', 'info');
+
+      try {
+        const res = await fetch('/api/writing-subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source, honeypot: honey }),
+        });
+        let payload = {};
+        try { payload = await res.json(); } catch (_) {}
+
+        if (res.ok && payload && payload.ok) {
+          setStatus('You are on the list. I will email you when there is something new.', 'ok');
+          form.reset();
+          if (button) {
+            button.textContent = 'Subscribed';
+          }
+          return;
+        }
+
+        const err = (payload && payload.error) || 'unknown';
+        if (err === 'already_subscribed') {
+          setStatus('You are already on the list. Nothing more to do.', 'ok');
+        } else if (err === 'invalid_email') {
+          setStatus('That email looks off. Try again?', 'err');
+        } else {
+          setStatus('Something went sideways. Try again in a minute, or email me directly at me@adrianwatkins.com.', 'err');
+        }
+      } catch (err) {
+        setStatus('Network hiccup. Try again in a minute.', 'err');
+      } finally {
+        if (button && button.textContent !== 'Subscribed') {
+          button.disabled = false;
+          button.textContent = button.dataset.originalLabel || 'Subscribe';
+        }
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* ===== Card variant ===== */
+  .ns-card {
+    margin: 56px 0 16px 0;
+    padding: 32px;
+    background: #FAF6EC;
+    border: 1px solid var(--rule);
+    border-left: 3px solid #D89A55;
+    border-radius: 2px;
+    max-width: 720px;
+  }
+  .ns-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #D89A55;
+    margin-bottom: 12px;
+  }
+  .ns-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+  }
+  .ns-strap {
+    font-family: 'Fraunces', serif;
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 22px 0;
+    max-width: none;
+  }
+
+  /* ===== Form (shared between variants) ===== */
+  .ns-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ns-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .ns-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .ns-input {
+    flex: 1 1 260px;
+    min-width: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 12px 14px;
+    background: #FFFFFF;
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ns-input:focus {
+    outline: none;
+    border-color: #D89A55;
+    box-shadow: 0 0 0 3px rgba(216, 154, 85, 0.15);
+  }
+  .ns-input::placeholder { color: var(--muted); }
+  .ns-btn {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 12px 22px;
+    background: #1A1714;
+    color: #F4ECD8;
+    border: 1px solid #1A1714;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+  .ns-btn:hover {
+    background: #D89A55;
+    border-color: #D89A55;
+    color: #1A1714;
+    transform: translateY(-1px);
+  }
+  .ns-btn:disabled {
+    opacity: 0.65;
+    cursor: progress;
+    transform: none;
+  }
+  .ns-status {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    max-width: none;
+  }
+  .ns-status[data-tone="ok"] { color: #1F4A30; }
+  .ns-status[data-tone="err"] { color: var(--accent); }
+  .ns-fine {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 8px 0 0 0;
+    max-width: none;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== Slim variant ===== */
+  .ns-slim {
+    padding: 18px 20px;
+    background: #FAF6EC;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .ns-slim-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .ns-slim-strap {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    max-width: none;
+  }
+  .ns-form-slim { gap: 8px; }
+  .ns-btn-slim { padding: 10px 16px; font-size: 13px; }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 640px) {
+    .ns-card { padding: 22px 20px; margin: 40px 0 12px 0; }
+    .ns-heading { font-size: 20px; }
+    .ns-strap { font-size: 15px; }
+    .ns-row { flex-direction: column; align-items: stretch; }
+    .ns-btn { width: 100%; text-align: center; }
+  }
+</style>

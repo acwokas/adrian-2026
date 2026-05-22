@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import FridayFramePromo from '../../../components/FridayFramePromo.astro';
+import ShareButtons from '../../../components/ShareButtons.astro';
+import NotifySignup from '../../../components/NotifySignup.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -13,6 +15,10 @@ export async function getStaticPaths() {
 
 const { note } = Astro.props;
 const { Content } = await render(note);
+
+const siteOrigin = (Astro.site?.toString() || 'https://adrianwatkins.com').replace(/\/$/, '');
+const notePath = `/writing/friday-frame/${note.id}`;
+const shareUrl = `${siteOrigin}${notePath}`;
 
 // Pull the three most recent OTHER frames for the read-another block.
 const allFrames = await getCollection('fridayFrame', ({ data }) => !data.draft);
@@ -65,6 +71,10 @@ const articleJsonLd = {
       <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
         <Content />
       </div>
+
+      <ShareButtons title={note.data.title} url={shareUrl} />
+
+      <NotifySignup variant="card" source={notePath} />
 
       <FridayFramePromo variant="footer" currentSlug={note.id} />
 

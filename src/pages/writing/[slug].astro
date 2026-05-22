@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FridayFramePromo from '../../components/FridayFramePromo.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import NotifySignup from '../../components/NotifySignup.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -13,6 +15,10 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const siteOrigin = (Astro.site?.toString() || 'https://adrianwatkins.com').replace(/\/$/, '');
+const postPath = `/writing/${post.id}`;
+const shareUrl = post.data.canonical || `${siteOrigin}${postPath}`;
 
 const articleJsonLd = {
   '@context': 'https://schema.org',
@@ -49,6 +55,10 @@ const articleJsonLd = {
       <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
         <Content />
       </div>
+
+      <ShareButtons title={post.data.title} url={shareUrl} />
+
+      <NotifySignup variant="card" source={postPath} />
 
       <FridayFramePromo variant="footer" />
 

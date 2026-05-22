@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FridayFramePromo from '../../components/FridayFramePromo.astro';
+import NotifySignup from '../../components/NotifySignup.astro';
 import { getCollection } from 'astro:content';
 import crossPostData from '../../data/cross-posts.json';
 
@@ -140,6 +141,8 @@ const writingJsonLd = {
           </li>
         ))}
       </ul>
+
+      <NotifySignup variant="card" source="/writing" />
     </div>
   </section>
 </BaseLayout>
