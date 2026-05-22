@@ -60,7 +60,13 @@ const articleJsonLd = {
         <Content />
       </div>
 
-      <ShareButtons title={post.data.title} url={shareUrl} />
+      <ShareButtons
+        title={post.data.title}
+        url={shareUrl}
+        excerpt={post.data.summary}
+        tags={post.data.tags}
+        section="Writing"
+      />
 
       <NotifySignup variant="card" source={postPath} />
 

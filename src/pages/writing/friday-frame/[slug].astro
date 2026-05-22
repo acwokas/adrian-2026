@@ -75,7 +75,13 @@ const articleJsonLd = {
         <Content />
       </div>
 
-      <ShareButtons title={note.data.title} url={shareUrl} />
+      <ShareButtons
+        title={note.data.title}
+        url={shareUrl}
+        excerpt={note.data.summary}
+        tags={[]}
+        section="Friday Frame"
+      />
 
       <NotifySignup variant="card" source={notePath} />
 
