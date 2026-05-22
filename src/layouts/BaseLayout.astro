@@ -10,6 +10,13 @@ interface Props {
   description: string;
   current?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  articleSection?: string;
+  articleTags?: string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   canonicalOverride?: string;
 }
@@ -18,12 +25,24 @@ const {
   title,
   description,
   current = '',
-  ogImage = '/og-image.png?v=2',
+  ogImage = '/og/site-default.png',
+  ogImageAlt = 'Adrian Watkins. Operator. Builder. Governor.',
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  author = 'Adrian Watkins',
+  articleSection,
+  articleTags = [],
   jsonLd,
   canonicalOverride,
 } = Astro.props;
 
-const siteUrl = import.meta.env.SITE_URL || Astro.site?.toString() || 'https://adrianwatkins-com-preview.pages.dev';
+// Production canonical host. Override at build time with SITE_URL only if you
+// genuinely want a non-apex canonical (e.g. local dev). Production deploys MUST
+// resolve to https://adrianwatkins.com so LinkedIn / X preview crawlers see a
+// canonical that matches the shared URL.
+const PROD_SITE = 'https://adrianwatkins.com';
+const siteUrl = import.meta.env.SITE_URL || Astro.site?.toString() || PROD_SITE;
 const cleanSite = siteUrl.replace(/\/$/, '');
 const cleanPath = (Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/');
 const canonical = canonicalOverride || `${cleanSite}${cleanPath}`;
@@ -41,22 +60,40 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:secure_url" content={ogImageAbs} />
+    <meta property="og:image:type" content={ogImageAbs.endsWith('.jpg') || ogImageAbs.endsWith('.jpeg') ? 'image/jpeg' : 'image/png'} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Adrian Watkins. Operator. Builder. Governor." />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="Adrian Watkins" />
+
+    {ogType === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+    {ogType === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
+    )}
+    {ogType === 'article' && author && (
+      <meta property="article:author" content={author} />
+    )}
+    {ogType === 'article' && articleSection && (
+      <meta property="article:section" content={articleSection} />
+    )}
+    {ogType === 'article' && articleTags.length > 0 && articleTags.map((tag) => (
+      <meta property="article:tag" content={tag} />
+    ))}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
-    <meta name="twitter:image:alt" content="Adrian Watkins. Operator. Builder. Governor." />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

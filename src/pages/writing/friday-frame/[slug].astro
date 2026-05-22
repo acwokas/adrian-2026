@@ -49,6 +49,12 @@ const articleJsonLd = {
   title={`${note.data.title}. Friday Frame. Adrian Watkins.`}
   description={note.data.summary}
   current="writing"
+  ogType="article"
+  ogImage="/og/friday-frame-default.png"
+  ogImageAlt={`${note.data.title}. Friday Frame by Adrian Watkins.`}
+  publishedTime={note.data.date.toISOString()}
+  author="Adrian Watkins"
+  articleSection="Friday Frame"
   jsonLd={articleJsonLd}
 >
   <section class="stub">

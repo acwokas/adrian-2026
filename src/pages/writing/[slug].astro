@@ -39,6 +39,13 @@ const articleJsonLd = {
   title={`${post.data.title}. Adrian Watkins.`}
   description={post.data.summary}
   current="writing"
+  ogType="article"
+  ogImage="/og/site-default.png"
+  ogImageAlt={`${post.data.title}. Adrian Watkins.`}
+  publishedTime={post.data.date.toISOString()}
+  author="Adrian Watkins"
+  articleSection="Writing"
+  articleTags={post.data.tags}
   jsonLd={articleJsonLd}
   canonicalOverride={post.data.canonical}
 >
