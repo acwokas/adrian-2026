@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import { PERSON_ID } from '../data/person';
 
-const title = 'Speaking. Adrian Watkins.';
-const description = 'Keynotes, workshops, and panels on applied intelligence, AI governance, and commercial leadership across Asia-Pacific and Europe. Past engagements, upcoming dates, and the question I want each audience to leave with.';
+const title = 'Speaking. Adrian Watkins. Applied intelligence and AI governance.';
+const description = 'Adrian Watkins. Keynotes, workshops, and panels on applied intelligence, AI governance, and commercial leadership across Asia-Pacific and Europe. Past engagements, upcoming dates, and the question I want each audience to leave with.';
 
 const speakingJsonLd = {
   '@context': 'https://schema.org',
@@ -11,7 +12,7 @@ const speakingJsonLd = {
   name: 'Speaking. Adrian Watkins.',
   url: 'https://adrianwatkins.com/speaking',
   description,
-  about: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  about: { '@id': PERSON_ID },
 };
 ---
 

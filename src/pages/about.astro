@@ -1,52 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import { PERSON_ID } from '../data/person';
 
-const title = 'About. Adrian Watkins.';
-const description = '25 years across Asia-Pacific and Europe. Operator, builder, governor. SVP Commercial Operations and Governance, SQREEM Technologies. Creator of the EDGE Framework for Applied Intelligence. Publisher of AIinASIA.com.';
+const title = 'About Adrian Watkins. Operator, builder, governor.';
+const description = 'About Adrian Watkins. 25 years across Asia-Pacific and Europe. SVP Commercial Operations and Governance at SQREEM Technologies. Creator of the EDGE Framework for Applied Intelligence. Publisher of AIinASIA.com.';
 
-const personJsonLd = {
+// ProfilePage anchored to the canonical Person entity defined in
+// src/data/person.ts. Person + WebSite are emitted globally by
+// BaseLayout; this ProfilePage block tells Google that /about is the
+// authoritative profile surface for Adrian.
+const profileJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
-  mainEntity: {
-  '@type': 'Person',
-  name: 'Adrian Watkins',
-  url: 'https://adrianwatkins.com',
-  jobTitle: 'SVP Commercial Operations and Governance',
-  worksFor: { '@type': 'Organization', name: 'SQREEM Technologies' },
-  description: 'Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
-  knowsAbout: [
-    'AI governance',
-    'Applied intelligence',
-    'EDGE Framework',
-    'Commercial operations',
-    'M&A integration',
-    'Asia-Pacific go-to-market',
-    'Owned-media strategy',
-    'Board readiness',
-  ],
-  alumniOf: [
-    { '@type': 'Organization', name: 'AdColony / Digital Turbine' },
-    { '@type': 'Organization', name: 'Tickled Media' },
-    { '@type': 'Organization', name: 'PerformanceAsia' },
-    { '@type': 'Organization', name: 'Virgin' },
-    { '@type': 'Organization', name: 'News Corporate' },
-    { '@type': 'Organization', name: 'CBS' },
-  ],
-  sameAs: [
-    'https://www.linkedin.com/in/adrianwatkins/',
-    'https://aiinasia.com',
-    'https://promptandgo.ai',
-    'https://democratising.ai',
-    'https://blackstormco.asia/personnel/adrian-watkins/',
-    'https://mmaglobal.com/speakers/adrian-watkins',
-  ],
-  address: { '@type': 'PostalAddress', addressLocality: 'Singapore', addressCountry: 'SG' },
+  '@id': 'https://adrianwatkins.com/about#profile',
+  url: 'https://adrianwatkins.com/about',
+  name: 'About Adrian Watkins',
+  description,
+  mainEntity: { '@id': PERSON_ID },
+  about: { '@id': PERSON_ID },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://adrianwatkins.com/images/hero-portrait.jpg',
   },
+  inLanguage: 'en-GB',
 };
 ---
 
-<BaseLayout title={title} description={description} current="about" jsonLd={personJsonLd}>
+<BaseLayout title={title} description={description} current="about" jsonLd={profileJsonLd}>
   <section class="stub" style="padding-bottom:32px">
     <div class="container">
       <div class="eyebrow">About</div>

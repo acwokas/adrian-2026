@@ -4,9 +4,10 @@ import FridayFramePromo from '../../components/FridayFramePromo.astro';
 import NotifySignup from '../../components/NotifySignup.astro';
 import { getCollection } from 'astro:content';
 import crossPostData from '../../data/cross-posts.json';
+import { PERSON_ID } from '../../data/person';
 
-const title = 'Writing. Adrian Watkins.';
-const description = 'Long-form executive writing and the Friday Frame. Operators, governance, applied intelligence. Asia-Pacific.';
+const title = 'Writing by Adrian Watkins. Executive essays and the Friday Frame.';
+const description = 'Writing by Adrian Watkins. Long-form executive essays and the Friday Frame. Operators, governance, applied intelligence. Asia-Pacific.';
 
 const writingPosts = await getCollection('writing', ({ data }) => !data.draft);
 const framePosts = await getCollection('fridayFrame', ({ data, id }) => !data.draft && id !== 'welcome');
@@ -74,7 +75,7 @@ const writingJsonLd = {
   name: 'Writing. Adrian Watkins.',
   url: 'https://adrianwatkins.com/writing',
   description,
-  author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  author: { '@id': PERSON_ID },
   blogPost: merged.map((e) => ({
     '@type': 'BlogPosting',
     headline: e.title,

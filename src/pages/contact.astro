@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { PERSON_ID } from '../data/person';
 
-const title = 'Contact. Adrian Watkins.';
-const description = 'How to start a conversation. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements. Email, contact form, or a 30-minute call.';
+const title = 'Contact Adrian Watkins. Singapore. Selective engagements.';
+const description = 'Contact Adrian Watkins. Singapore-based, available across Asia-Pacific time zones. Selective about new engagements. Email, contact form, or a 30-minute call.';
 
 const contactJsonLd = {
   '@context': 'https://schema.org',
@@ -10,13 +11,7 @@ const contactJsonLd = {
   name: 'Contact Adrian Watkins',
   url: 'https://adrianwatkins.com/contact',
   description,
-  mainEntity: {
-    '@type': 'Person',
-    name: 'Adrian Watkins',
-    email: 'me@adrianwatkins.com',
-    url: 'https://adrianwatkins.com',
-    address: { '@type': 'PostalAddress', addressLocality: 'Singapore', addressCountry: 'SG' },
-  },
+  mainEntity: { '@id': PERSON_ID },
 };
 ---
 

@@ -4,44 +4,13 @@ import PhotoSlot from '../components/PhotoSlot.astro';
 import { digestParagraphs, lastUpdatedHuman } from '../data/now';
 
 const title = 'Adrian Watkins. Operator. Builder. Governor.';
-const description = 'Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance, SQREEM Technologies.';
+const description = 'Adrian Watkins. Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance, SQREEM Technologies.';
 
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Adrian Watkins',
-  url: 'https://adrianwatkins.com',
-  jobTitle: 'SVP Commercial Operations and Governance',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'SQREEM Technologies',
-  },
-  description: 'Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
-  knowsAbout: [
-    'AI governance',
-    'Applied intelligence',
-    'EDGE Framework',
-    'Commercial operations',
-    'M&A integration',
-    'Asia-Pacific go-to-market',
-  ],
-  sameAs: [
-    'https://www.linkedin.com/in/adrianwatkins/',
-    'https://aiinasia.com',
-    'https://promptandgo.ai',
-    'https://democratising.ai',
-    'https://blackstormco.asia/personnel/adrian-watkins/',
-    'https://mmaglobal.com/speakers/adrian-watkins',
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Singapore',
-    addressCountry: 'SG',
-  },
-};
+// Person + WebSite JSON-LD is emitted globally via BaseLayout
+// (src/data/person.ts). No need to duplicate here.
 ---
 
-<BaseLayout title={title} description={description} current="home" jsonLd={personJsonLd}>
+<BaseLayout title={title} description={description} current="home">
 
   <section class="hero">
     <div class="container">

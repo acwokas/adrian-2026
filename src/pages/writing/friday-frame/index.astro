@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { PERSON_ID } from '../../../data/person';
 
-const title = 'Friday Frame. Adrian Watkins.';
-const description = 'A 200-word weekly frame on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
+const title = 'Friday Frame by Adrian Watkins. Weekly 200-word notes on applied intelligence.';
+const description = 'Friday Frame by Adrian Watkins. A 200-word weekly note on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
 
 const allNotes = await getCollection('fridayFrame', ({ data }) => !data.draft);
 const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -14,7 +15,7 @@ const fridayFrameJsonLd = {
   name: 'Friday Frame. Adrian Watkins.',
   url: 'https://adrianwatkins.com/writing/friday-frame',
   description,
-  author: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  author: { '@id': PERSON_ID },
 };
 ---
 

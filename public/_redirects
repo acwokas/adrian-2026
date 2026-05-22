@@ -17,6 +17,18 @@
 # NO catch-all '/*' (would intercept Astro routes).
 # Bot scan paths intentionally NOT redirected - they get the 404 page.
 
+# === www -> apex (kill the WordPress-era host duplication in Google) ===
+# GSC last 3 months shows ~9 different www.adrianwatkins.com/* URLs still
+# in the index (/40_best_vc_bets/, /blog/page/21/, /wp-content/uploads/*,
+# how-ai-is-driving-the-hunt-for-clean-energy, etc) stealing equity from
+# the apex. Host-based 301 forces every www request to the apex, then the
+# path-level WP rules below catch the slug.
+# Requires www.adrianwatkins.com to be bound to this Pages project in
+# Cloudflare DNS. If it still points to a WP host, see publish-seo-fix.sh
+# for the DNS step.
+https://www.adrianwatkins.com/*   https://adrianwatkins.com/:splat   301!
+http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
+
 # === Lovable-era routes (all 26 sitemap URLs covered) ===
 /tools/elevate/prompt-engineer       https://promptandgo.ai/                     301
 /tools/evaluate/negotiation          https://democratising.ai/                   301

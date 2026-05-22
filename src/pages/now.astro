@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { lastUpdated, lastUpdatedHuman } from '../data/now';
+import { PERSON_ID } from '../data/person';
 
-const title = '/now. Adrian Watkins.';
-const description = 'What I am working on, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
+const title = '/now. Adrian Watkins. What I am working on.';
+const description = 'Adrian Watkins, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
 
 const nowJsonLd = {
   '@context': 'https://schema.org',
@@ -12,7 +13,7 @@ const nowJsonLd = {
   url: 'https://adrianwatkins.com/now',
   description,
   dateModified: lastUpdated,
-  about: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+  about: { '@id': PERSON_ID },
 };
 ---
 

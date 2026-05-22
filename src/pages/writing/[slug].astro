@@ -4,6 +4,7 @@ import FridayFramePromo from '../../components/FridayFramePromo.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
 import NotifySignup from '../../components/NotifySignup.astro';
 import { getCollection, render } from 'astro:content';
+import { PERSON_ID } from '../../data/person';
 
 export async function getStaticPaths() {
   const posts = await getCollection('writing', ({ data }) => !data.draft);
@@ -26,11 +27,7 @@ const articleJsonLd = {
   headline: post.data.title,
   description: post.data.summary,
   datePublished: post.data.date.toISOString(),
-  author: {
-    '@type': 'Person',
-    name: 'Adrian Watkins',
-    url: 'https://adrianwatkins.com',
-  },
+  author: { '@id': PERSON_ID },
   keywords: post.data.tags.join(', '),
 };
 ---

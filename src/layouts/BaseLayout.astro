@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import AnalyticsHead from '../components/AnalyticsHead.astro';
 import AnalyticsBody from '../components/AnalyticsBody.astro';
+import { personSchema, websiteSchema } from '../data/person';
 
 interface Props {
   title: string;
@@ -18,6 +19,9 @@ interface Props {
   articleSection?: string;
   articleTags?: string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  // When true, suppresses the default Person + WebSite schema (rare;
+  // only use if a page is intentionally not about Adrian).
+  skipDefaultSchema?: boolean;
   canonicalOverride?: string;
 }
 
@@ -34,6 +38,7 @@ const {
   articleSection,
   articleTags = [],
   jsonLd,
+  skipDefaultSchema = false,
   canonicalOverride,
 } = Astro.props;
 
@@ -48,7 +53,19 @@ const cleanPath = (Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') 
 const canonical = canonicalOverride || `${cleanSite}${cleanPath}`;
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${cleanSite}${ogImage}`;
 
-const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
+// Build the full JSON-LD payload for this page.
+//
+// Strategy: every page emits a baseline Person + WebSite schema (single
+// source of truth in src/data/person.ts). Pages that need additional
+// schema (ProfilePage on /about, Article on Friday Frame posts, etc.)
+// pass it via the `jsonLd` prop and we concatenate.
+//
+// The Person + WebSite blocks use stable @id values so multiple schema
+// blocks on the same page reference the same entity rather than each
+// declaring a fresh Person.
+const defaultSchema = skipDefaultSchema ? [] : [personSchema, websiteSchema];
+const extraSchema = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const schemaBlocks = [...defaultSchema, ...extraSchema];
 ---
 
 <!doctype html>
@@ -111,9 +128,12 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : null;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    {jsonLdString && (
-      <script is:inline type="application/ld+json" set:html={jsonLdString} />
-    )}
+    {schemaBlocks.map((block) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
+
+    <meta name="author" content="Adrian Watkins" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 
     <AnalyticsHead />
   </head>

@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import { PERSON_ID } from '../data/person';
 
-const title = 'EDGE Framework. Adrian Watkins.';
-const description = 'A practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia-Pacific to turn scattered AI activity into structured capability.';
+const title = 'EDGE Framework by Adrian Watkins. Applied Intelligence for AI adoption.';
+const description = 'EDGE is Adrian Watkins\'s practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia-Pacific to turn scattered AI activity into structured capability.';
 
 const edgeJsonLd = [
   {
@@ -12,13 +13,13 @@ const edgeJsonLd = [
     name: 'EDGE Framework',
     url: 'https://adrianwatkins.com/edge',
     description,
-    about: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+    about: { '@id': PERSON_ID },
   },
   {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: 'EDGE Framework for Applied Intelligence',
-    creator: { '@type': 'Person', name: 'Adrian Watkins', url: 'https://adrianwatkins.com' },
+    creator: { '@id': PERSON_ID },
     url: 'https://adrianwatkins.com/edge',
     description: 'Four-pillar framework (Evaluate, Define, Govern, Elevate) for applied intelligence in commercial organisations.',
   },
