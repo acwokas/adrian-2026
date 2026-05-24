@@ -338,6 +338,9 @@ const resolvedSource = source || Astro.url.pathname || '/writing';
     .ns-heading { font-size: 20px; }
     .ns-strap { font-size: 15px; }
     .ns-row { flex-direction: column; align-items: stretch; }
+    /* Fix: flex:1 1 260px on column-direction means basis 260px applies to HEIGHT.
+       Reset to auto so the email input keeps its natural single-line height. */
+    .ns-input { flex: 0 1 auto; height: auto; min-height: 0; }
     .ns-btn { width: 100%; text-align: center; }
   }
 </style>
