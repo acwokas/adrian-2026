@@ -17,6 +17,10 @@ export async function getStaticPaths() {
 const { note } = Astro.props;
 const { Content } = await render(note);
 
+// Strip trailing sentence punctuation so the meta title chain does not render
+// a doubled stop (e.g. "...market.. Friday Frame.") in share previews.
+const cleanTitle = note.data.title.replace(/[.!?]+$/, '');
+
 const siteOrigin = (Astro.site?.toString() || 'https://adrianwatkins.com').replace(/\/$/, '');
 const notePath = `/writing/friday-frame/${note.id}`;
 const shareUrl = `${siteOrigin}${notePath}`;
@@ -43,12 +47,12 @@ const articleJsonLd = {
 ---
 
 <BaseLayout
-  title={`${note.data.title}. Friday Frame. Adrian Watkins.`}
+  title={`${cleanTitle}. Friday Frame. Adrian Watkins.`}
   description={note.data.summary}
   current="writing"
   ogType="article"
   ogImage="/og/friday-frame-default.png"
-  ogImageAlt={`${note.data.title}. Friday Frame by Adrian Watkins.`}
+  ogImageAlt={`${cleanTitle}. Friday Frame by Adrian Watkins.`}
   publishedTime={note.data.date.toISOString()}
   author="Adrian Watkins"
   articleSection="Friday Frame"
