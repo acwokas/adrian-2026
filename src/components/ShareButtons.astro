@@ -7,24 +7,22 @@
  * emoji, no exclamation copy). Uses inline Lucide-style SVG so we do not
  * pull a runtime icon dep.
  *
- * Both the LinkedIn and X buttons now prefill the composer with a
- * sensible caption built from the post frontmatter. LinkedIn's
- * sharing/share-offsite endpoint stopped honouring summary text years
- * ago, so we use feed/?shareActive=true&text=... which still prefills
- * the composer for logged-in users. X uses intent/tweet with the
- * dedicated hashtags param so the tags render as proper tags.
+ * LinkedIn uses sharing/share-offsite/?url=..., which reliably opens the
+ * share composer with the article's link preview (built from the page OG
+ * tags). The older feed/?shareActive=true&text=... surface no longer opens
+ * the composer for most users and just drops them on the feed. X uses
+ * intent/tweet with the dedicated hashtags param so the tags render as
+ * proper tags.
  *
  * Props:
- *   title:   article title (used as caption headline and email subject)
+ *   title:   article title (used as the X caption and email subject)
  *   url:     canonical absolute URL of the article
- *   excerpt: one-sentence summary used in the caption (optional)
  *   tags:    topic tags from frontmatter, converted to hashtags
  *   section: "Friday Frame" for FF entries, else the section name
  */
 interface Props {
   title: string;
   url: string;
-  excerpt?: string;
   tags?: string[];
   section?: string;
 }
@@ -32,7 +30,6 @@ interface Props {
 const {
   title,
   url,
-  excerpt = '',
   tags = [],
   section = '',
 } = Astro.props;
@@ -72,48 +69,12 @@ const topicHashtags = tags
   .filter((h) => !fixedHashtags.includes(h));
 
 const allHashtags = [...fixedHashtags, ...topicHashtags].slice(0, HASHTAG_CAP);
-const hashtagLine = allHashtags.join(' ');
 
-// Build the multi-line caption used for the LinkedIn composer. The
-// Friday Frame variant adds a single positioning line so a brand-new
-// LinkedIn reader sees what the series is without leaving the post.
-const captionExcerpt = (excerpt || '').trim();
-
-const captionLines = isFridayFrame
-  ? [
-      `"${title}"`,
-      '',
-      captionExcerpt,
-      '',
-      'Friday Frame is my weekly 200-word piece on how AI is reshaping work.',
-      '',
-      hashtagLine,
-      '',
-      url,
-    ]
-  : [
-      `"${title}"`,
-      '',
-      captionExcerpt,
-      '',
-      hashtagLine,
-      '',
-      url,
-    ];
-
-// Collapse adjacent blank lines that appear when an optional segment
-// (like an empty excerpt) drops out, so the composer does not show
-// runs of empty lines.
-const caption = captionLines
-  .filter((line, idx, arr) => line !== '' || (idx > 0 && arr[idx - 1] !== ''))
-  .join('\n');
-
-// LinkedIn: /feed/?shareActive=true&text=... is the surviving prefill
-// surface (sharing/share-offsite stopped accepting summary years ago).
-// When the user is logged in this opens the composer prefilled with
-// our caption; when they are not, LinkedIn shows the login wall then
-// drops them into the prefilled composer after auth.
-const liHref = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(caption)}`;
+// LinkedIn: share-offsite opens the composer with the article's link
+// preview pulled from the page OG tags. It does not accept prefilled
+// commentary, but it reliably lands the user in the share dialog rather
+// than the bare feed.
+const liHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
 
 // X: keep the text short so the prefilled tweet stays under 280 chars
 // across long titles. Hashtags go through the dedicated param so X
