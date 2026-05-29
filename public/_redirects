@@ -55,6 +55,9 @@ http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 /writing/friday-note                 /writing/friday-frame                       301
 /writing/friday-note/                /writing/friday-frame                       301
 /writing/friday-note/*               /writing/friday-frame/:splat                301
+
+# === Friday Frame re-date to canonical Friday (2026-05-29) ===
+/writing/friday-frame/2026-05-28-agentic-measurement-will-reprice-the-market   /writing/friday-frame/2026-05-29-agentic-measurement-will-reprice-the-market   301
 /wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf?v=12  301
 /wp-content/uploads/2020/07/Adrian-Watkins-CV-August-2020_GTM.pdf  /documents/AdrianWatkins_Executive-CV.pdf?v=12  301
 /wp-content/*                        /                                           301

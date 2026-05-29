@@ -1,6 +1,6 @@
 ---
 title: "Agentic measurement will reprice the market."
-date: 2026-05-28
+date: 2026-05-29
 summary: "When the reporting layer finally sees what was always there, a lot of marketing orgs are going to discover they've been optimising against a fiction. The repricing won't be gentle."
 ---
 
