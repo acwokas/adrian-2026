@@ -1,10 +1,10 @@
 ---
-title: "The Chief AI Officer is a coping mechanism."
+title: "The goal of a Chief AI Officer should be to eliminate the need for a Chief AI Officer."
 date: 2026-06-05
 summary: "A single seat for AI accountability is a comfort to the board, not a fix for the operating model. The work belongs distributed, or it doesn't land at all."
 ---
 
-A friend was sharing with me that he's been asked to find a 'Chief AI Officer'. Why? The board wanted a name on a slide. The CEO wanted a throat to choke. The CFO wanted a budget line that could be defended at the next review. Ultimately, everyone wanted the same thing: one person who owns it.
+A friend was sharing with me that he's been asked to find a 'Chief AI Officer'. Why? The board wants a name on a slide. The CEO wants a throat to choke. The CFO wants a budget line that could be defended at the next review. Ultimately, everyone wants the same thing: one person who owns it.
 
 The role is transitional. It exists because the operating model hasn't caught up with where AI accountability actually sits. Procurement decides which models get bought. Governance decides what risk is tolerable. The function heads decide what gets deployed into their workflows. Data owners decide what the models are allowed to see. Finance decides what counts as a return. None of that can be lifted out and parked in a single seat without breaking the accountability lines that already exist.
 
