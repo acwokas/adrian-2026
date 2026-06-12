@@ -72,7 +72,7 @@ const articleJsonLd = {
       <p style="font-size:13px;color:var(--muted);letter-spacing:0.04em;margin-bottom:18px">
         {note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
       </p>
-      <h1>{note.data.title}</h1>
+      {note.data.titleHtml ? <h1 set:html={note.data.titleHtml} /> : <h1>{note.data.title}</h1>}
       <p class="lede">{note.data.summary}</p>
 
       <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
