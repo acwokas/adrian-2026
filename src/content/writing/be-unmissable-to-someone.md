@@ -32,7 +32,7 @@ Poor product-market fit is what "for everyone" looks like a year later, once the
 
 That single shift, from inventing your customer to *noticing* your customer, changes almost everything that comes after it.
 
-When I started AIinASIA in 2020, the lazy instinct was to cover AI for everyone. There were already a hundred sites doing exactly that, louder and far better funded than me. So I asked a narrower question: who am I genuinely the best person in the world to write for? The answer was the operator in Asia who has to adopt this stuff and make it work, not the tourist who likes to admire it from a distance.
+When I started [AIinASIA](https://aiinasia.com) in 2020, the lazy instinct was to cover AI for everyone. There were already a hundred sites doing exactly that, louder and far better funded than me. So I asked a narrower question: who am I genuinely the best person in the world to write for? The answer was the operator in Asia who has to adopt this stuff and make it work, not the tourist who likes to admire it from a distance.
 
 I didn't guess that. The market confirmed it. The pieces written for that one reader travelled. The generic ones sat there and died. Today the site reaches around ten thousand readers a month with no paid distribution, because the right people instantly recognise it was built for them rather than at them.
 
@@ -90,7 +90,7 @@ This is one of the most studied moves in business. Peter Thiel argues in *Zero t
 
 The textbook example is Amazon, which sold nothing but books, globally, for years. Only once it owned that did it move into other categories, having already built a trusted brand and a buying experience people loved. The niche wasn't the limit. It was the **launch pad**.
 
-My own version is PromptAndGo. The global incumbents had more money, more content, and more reach. I couldn't out-broad them, and I didn't try. I out-specified them, with prompts built for the Asian operator's market, register, and language. That's a position a global player can't copy without becoming a worse fit for everyone they already serve. You don't beat a giant by being a smaller giant. You beat them by being unbeatable for the customer they can't be bothered to love.
+My own version is [PromptAndGo](https://promptandgo.ai). The global incumbents had more money, more content, and more reach. I couldn't out-broad them, and I didn't try. I out-specified them, with prompts built for the Asian operator's market, register, and language. That's a position a global player can't copy without becoming a worse fit for everyone they already serve. You don't beat a giant by being a smaller giant. You beat them by being unbeatable for the customer they can't be bothered to love.
 
 <aside class="pullquote">You don't beat a giant by being a smaller giant.</aside>
 
@@ -113,3 +113,8 @@ That's the entire discipline in a sentence. Not a grand act of positioning geniu
 ---
 
 *If you want the short version, I distilled this into this week's [Friday Frame](/writing/friday-frame/2026-06-19-be-unmissable-to-someone). This essay is the long-form writeup behind it.*
+
+*Thanks for reading,*  
+*Adrian*
+
+<small>This is written as part of the [democratising.ai engine](https://democratising.ai).</small>
