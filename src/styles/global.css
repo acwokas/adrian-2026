@@ -61,6 +61,38 @@ p { margin: 0 0 1.1em 0; max-width: var(--maxprose); }
 /* Markdown images in essays/Friday Frames: keep them inside the reading
    column and never wider than the viewport (fixes mobile full-bleed break). */
 .prose img { display: block; max-width: 100%; height: auto; margin: 28px auto; border-radius: 2px; }
+/* Pull quotes: emphasised verbatim lines lifted from the essay body. */
+.prose .pullquote {
+  margin: 38px 0;
+  padding: 4px 0 4px 26px;
+  border-left: 3px solid #D89A55;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 100%;
+}
+/* Callout panel: tinted box for a takeaway block. */
+.prose .callout {
+  margin: 40px 0;
+  padding: 24px 28px;
+  background: #FAF6EC;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.prose .callout p {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 100%;
+}
+@media (max-width: 720px) {
+  .prose .pullquote { font-size: 21px; padding-left: 18px; }
+  .prose .callout { padding: 20px; }
+}
 hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
 /* Sticky top bar */
