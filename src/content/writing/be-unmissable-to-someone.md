@@ -70,7 +70,7 @@ Slow, painful deals are usually a fit problem wearing a process costume. It's te
 
 Of all the signals, the one I trust most is the referral, because it's the market doing **your positioning** for you.
 
-Think about how this actually happens. People in the same line of work talk to each other. They sit in a coffee shop, they compare notes, they scratch their heads over the same problems. And one of them says, "I've got just the thing that solved this for me, it cost this much, and it worked quickly." That's a referral, and it's gold, because it means a customer understood you clearly enough to recognise someone else who looks just like them and send them your way.
+Think about how this actually happens. People in the same line of work talk to each other. They sit in a coffee shop, they compare notes, they scratch their heads over the same problems. And one of them says, "I've got just the thing that solved this for me, it cost this much, and it worked quickly." That's a referral, and it's gold, because it takes a customer who understood the fit clearly enough to spot it in someone else, and the conviction to bring them in.
 
 So the referral is also a test you can fail. If a happy customer can't describe you crisply enough to pass you on, your positioning is still blurry to them, however much they like you.
 
