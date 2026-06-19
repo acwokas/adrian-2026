@@ -1,8 +1,8 @@
 // Shared source for /now and the home page /now teaser.
 // Edit this file when the underlying facts change. Both surfaces re-render.
 
-export const lastUpdated = '2026-05-19';
-export const lastUpdatedHuman = '19 May 2026';
+export const lastUpdated = '2026-06-19';
+export const lastUpdatedHuman = '19 June 2026';
 
 // Three short paragraphs the home page renders as the /now digest.
 // /now itself renders the same facts in expanded sections below.
