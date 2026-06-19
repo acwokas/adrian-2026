@@ -58,6 +58,9 @@ p { margin: 0 0 1.1em 0; max-width: var(--maxprose); }
 
 .container { width: 100%; max-width: var(--maxgrid); margin: 0 auto; padding: 0 24px; }
 .prose { max-width: var(--maxprose); }
+/* Markdown images in essays/Friday Frames: keep them inside the reading
+   column and never wider than the viewport (fixes mobile full-bleed break). */
+.prose img { display: block; max-width: 100%; height: auto; margin: 28px auto; border-radius: 2px; }
 hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
 /* Sticky top bar */
