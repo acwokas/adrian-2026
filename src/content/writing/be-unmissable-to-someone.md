@@ -48,7 +48,7 @@ This is the part founders find hardest, because opinions are flattering and beha
 
 <aside class="pullquote">A signature, a renewal, a referral is worth everything.</aside>
 
-It's the same logic behind my day job at SQREEM, where I run global commercial operations and governance: the Large Behaviour Model (LBM) exists because the cheap behavioural signal is what tells you who your real customer is, faster than any survey can.
+It's the same logic behind my day job at SQREEM, where I run global commercial operations and governance: the Large Behaviour Model (LBM) exists because the behavioural signal is what tells you who your real customer is, faster than any survey can.
 
 Y Combinator, which has now funded thousands of startups and watched most of the failure modes up close, puts the same idea more bluntly in its [essential startup advice](https://www.ycombinator.com/library/4D-yc-s-essential-startup-advice): it's better to make a few users love you than a lot of users merely like you. Paul Graham's test for whether a market even exists is whether there are people who want what you're building so urgently that they'll use it, bugs and all, from a company they've never heard of. Not a lot of them. Some. Love is **a behaviour**. It shows up as urgency, and urgency shows up in your numbers.
 
