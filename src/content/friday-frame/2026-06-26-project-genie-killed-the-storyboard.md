@@ -10,4 +10,4 @@ For decades, storyboards have been the slowest, most expensive part of pre-produ
 
 Storyboards don't disappear, but the craft of "translating the idea into shots" increasingly moves into the model. The director's taste shifts from drawing frames to designing worlds. Agencies have to decide whether they own the prototype layer or orbit it.
 
-For operators, this is applied intelligence, not magic. Project Genie is EDGE in action: when the pitch is a playable prototype, you have to Evaluate, Define, Govern and Elevate the creative process itself.
+For operators, this is applied intelligence, not magic. Project Genie is [EDGE](/edge) in action: when the pitch is a playable prototype, you have to Evaluate, Define, Govern and Elevate the creative process itself.
