@@ -1,0 +1,8 @@
+STATUS=OK
+COMMIT=57985cf349c2356b9391e38a0ec7f2997f265ea2
+SHORT=57985cf
+DEPLOY_URL=https://d7a787b5.adrianwatkins-com-preview.pages.dev
+DEPLOY_ID=complete
+INPUT_FIX=MISSING
+SIGNUP_POSITION=OK_AFTER_CTA (read@21512 signup@22178)
+WA_RESP=<p>Message to: +6581617961<p>Text to send: Email-box mobile fix deployed.%0ACommit 57985cf%0ALive: https://adrianwatkins.com/writing/friday-frame/the-search-box-wasnt-the-product%0APreview: https://d7a787b5.adrianwatkins-com-preview.pages.dev%0AInput height fix: MISSING%0ASignup position: OK_AFTER_C
