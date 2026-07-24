@@ -10,6 +10,8 @@ Which is why the news that OpenAI is [shutting down Atlas](https://mashable.com/
 
 Anthropic's Chrome extension does the same thing from the other end. Every serious frontier lab now has a way for its model to see, click, and type on a live web page. It works. I've been living with it several days this month.
 
+Perplexity's Comet is the honest counter-example, near 18 million monthly active users after going free in March and running an agentic completion rate above 70%. It sharpens the point rather than undermining it, because Comet survives by explicitly not trying to replace Chrome, positioning itself instead as a research destination people visit for a specific job rather than a general-purpose browser they live inside all day. Atlas made the opposite bet and lost inside a year. The browsers that hold ground as standalone products carve off a job; the agent capability itself, which is the valuable part, ends up moving everywhere else.
+
 Three implications the board should be discussing on Monday.
 
 First, your funnel measurement is quietly losing coverage. When the "user" is an agent, the pixel doesn't fire, the cookie doesn't set, the consent banner is dismissed by script. The CRO team is not wrong. The number just no longer describes the audience.
