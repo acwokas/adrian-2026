@@ -3,8 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { PERSON_ID } from '../../../data/person';
 
-const title = 'Friday Frame by Adrian Watkins. Weekly 200-word notes on applied intelligence.';
-const description = 'Friday Frame by Adrian Watkins. A 200-word weekly note on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
+const title = 'Friday Frame by Adrian Watkins. Weekly 200-500 word notes on applied intelligence.';
+const description = 'Friday Frame by Adrian Watkins. A 200-500 word weekly note on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday.';
 
 const allNotes = await getCollection('fridayFrame', ({ data }) => !data.draft);
 const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -31,7 +31,7 @@ const fridayFrameJsonLd = {
     <div class="container">
       <div class="eyebrow">Writing / Friday Frame</div>
       <h1>The Friday Frame archive.</h1>
-      <p class="lede">A 200-word weekly frame on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday. Archive below, newest first.</p>
+      <p class="lede">A 200-500 word weekly frame on applied intelligence, governance, and commercial leadership across Asia-Pacific. One thing noticed, every Friday. Archive below, newest first.</p>
 
       {notes.length === 0 ? (
         <div class="prose" style="margin-top:48px">

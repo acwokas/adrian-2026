@@ -31,13 +31,13 @@ if (currentSlug && latest?.id === currentSlug && sorted.length > 1) {
 const latestHref = latest ? `/writing/friday-frame/${latest.id}` : '/writing/friday-frame';
 const latestLabel = latest ? 'Read the latest frame' : 'See the archive';
 
-const strap = 'The weekly 200-word missive. Operators, governance, Asia-Pacific.';
+const strap = 'The weekly 200-500 word missive. Operators, governance, Asia-Pacific.';
 ---
 
 {variant === 'hero' && (
   <section class="ff-promo ff-promo-hero">
     <div class="ff-promo-eyebrow">The Friday Frame</div>
-    <h3 class="ff-promo-h3">The weekly 200-word missive.<br />Operators, governance, Asia-Pacific.<br />One thing noticed, every Friday.</h3>
+    <h3 class="ff-promo-h3">The weekly 200-500 word missive.<br />Operators, governance, Asia-Pacific.<br />One thing noticed, every Friday.</h3>
     <div class="ff-promo-ctas">
       <a class="ff-btn ff-btn-filled" href={latestHref}>{latestLabel} →</a>
       <a class="ff-btn ff-btn-ghost" href="/writing/friday-frame">Read the whole archive →</a>
