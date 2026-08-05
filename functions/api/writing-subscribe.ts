@@ -100,6 +100,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   // Direct Supabase REST insert. Service-role key bypasses RLS, so we don't
   // need any anon-key policy gymnastics. Use Prefer:resolution=merge-duplicates
   // and on_conflict=email so the same address re-subscribing does not 409.
+  // 5s hard cap on the Supabase round-trip: without this, a Supabase outage
+  // leaves the visitor's form submission spinning forever (no page to fall
+  // back to here, this is a POST endpoint, so the fix is bounding the wait
+  // and returning a clear error instead of hanging).
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
   try {
     const endpoint = `${supaUrl.replace(/\/$/, '')}/rest/v1/writing_subscribers?on_conflict=email`;
     const res = await fetch(endpoint, {
@@ -119,6 +125,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           country,
         },
       ]),
+      signal: controller.signal,
     });
 
     if (!res.ok) {
@@ -135,8 +142,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     return json({ ok: true, sent: true, stored: true });
   } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      console.error('[writing-subscribe] supabase timeout after 5s');
+      return json({ ok: false, error: 'store_timeout' }, 503);
+    }
     console.error('[writing-subscribe] supabase exception', err);
     return json({ ok: false, error: 'store_exception' }, 500);
+  } finally {
+    clearTimeout(timeout);
   }
 };
 

@@ -132,16 +132,30 @@ async function sendEmail(
   apiKey: string,
   args: SendArgs
 ): Promise<{ ok: boolean; status: number; body: string }> {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(args),
-  });
-  const text = await res.text().catch(() => '');
-  return { ok: res.ok, status: res.status, body: text };
+  // 5s hard cap: without this, a Resend outage leaves the submitter's
+  // browser waiting on a stuck fetch instead of a clear, fast error.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(args),
+      signal: controller.signal,
+    });
+    const text = await res.text().catch(() => '');
+    return { ok: res.ok, status: res.status, body: text };
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      return { ok: false, status: 504, body: 'resend_timeout' };
+    }
+    return { ok: false, status: 599, body: err instanceof Error ? err.message : 'unknown_error' };
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function json(payload: unknown, status = 200): Response {
