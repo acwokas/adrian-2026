@@ -1,7 +1,7 @@
 ---
 title: "The last mile."
 date: 2026-08-15
-draft: true
+draft: false
 summary: "AI can be at the table. It can't be in the dock. Three answers I gave a panel about what I wouldn't use AI for, and a fourth I nearly missed."
 ---
 
