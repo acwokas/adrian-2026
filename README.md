@@ -1,7 +1,11 @@
-# adrianwatkins.com - Astro rebuild
+# adrianwatkins.com
 
-Phase 1 build of the new adrianwatkins.com. Pure SSG, Astro 5, no React SPA.
-Branch `astro-rebuild`. The Lovable export remains on `main` for cutover comparison.
+Astro 5 rebuild of adrianwatkins.com. Pure SSG, no React SPA.
+
+`astro-rebuild` is the live branch: it is both the GitHub default branch and
+production. `main` was an earlier fork (the original Lovable-era scaffold)
+kept for cutover comparison; that comparison is long over and `main` has been
+retired. Push everything to `astro-rebuild`.
 
 ## Local
 
@@ -12,10 +16,14 @@ npm run build        # output to ./dist
 npm run check        # astro typecheck
 ```
 
-## Deploy (preview only)
+## Deploy
 
-Preview deploys go to `adrianwatkins-com-preview.pages.dev`. The live
-`adrianwatkins.com` domain still points at the Lovable build until explicit cutover.
+`.github/workflows/deploy.yml` deploys automatically on every push to
+`astro-rebuild` via Cloudflare Pages (project `adrianwatkins-com-preview`,
+which is where `adrianwatkins.com` is actually served from despite the name).
+Don't run wrangler manually for routine changes; just push.
+
+For a manual/local deploy:
 
 ```bash
 npm run build
