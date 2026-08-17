@@ -62,13 +62,13 @@ p { margin: 0 0 1.1em 0; max-width: var(--maxprose); }
    column and never wider than the viewport (fixes mobile full-bleed break). */
 .prose img { display: block; max-width: 100%; height: auto; margin: 28px auto; border-radius: 2px; }
 /* Pull quotes: emphasised verbatim lines lifted from the essay body. */
-/* Set apart by hairlines above and below, not a bar down the left edge.
-   A left-edge rule on a content block is banned estate-wide. */
+/* Keeps its left rule. The banned pattern is a bar carrying information the
+   layout could carry itself; a rule beside a quotation encodes nothing and is
+   a typographic convention older than the objection. Adrian, 2026-08-17. */
 .prose .pullquote {
   margin: 38px 0;
-  padding: 22px 0;
-  border-top: 1px solid rgba(216, 154, 85, 0.55);
-  border-bottom: 1px solid rgba(216, 154, 85, 0.55);
+  padding: 4px 0 4px 26px;
+  border-left: 3px solid #D89A55;
   font-family: 'Fraunces', serif;
   font-style: italic;
   font-size: 24px;
