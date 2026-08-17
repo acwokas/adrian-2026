@@ -3,6 +3,17 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [astro-rebuild]
+  # Added 2026-08-17 for friday-frame.yml, which commits the weekly un-draft
+  # with the default GITHUB_TOKEN. GitHub does not raise push events for
+  # commits made with that token, so the push above never fires this workflow
+  # and the site is never rebuilt. workflow_dispatch is one of the two
+  # documented exceptions to that rule, so friday-frame.yml dispatches this
+  # workflow explicitly and waits for it before verifying.
+  #
+  # Behaviour is unchanged for every other path. A dispatch pinned to
+  # astro-rebuild resolves github.ref_name to astro-rebuild exactly as a push
+  # does, so the wrangler --branch argument below is identical either way.
+  workflow_dispatch:
 
 jobs:
   deploy:

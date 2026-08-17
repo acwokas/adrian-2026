@@ -1,0 +1,373 @@
+name: Friday Frame (adrianwatkins.com)
+
+# Cloud-hosted replacement for the Cowork friday-frame-weekly task.
+#
+# WHY THIS EXISTS
+# On 2026-08-14 the Friday Frame did not publish at Friday 14:00 SGT. The
+# staged frame (2026-08-15-the-last-mile, staged draft:true on 2026-08-12) sat
+# un-flipped until it was un-drafted by hand on 2026-08-15 at 10:40 SGT, a day
+# late. Nothing alerted, because nothing ever asserted that the archive had
+# grown. This workflow makes that shape impossible: see assertion 5.
+#
+# BRANCH TOPOLOGY (re-verified 2026-08-17, this CHANGED on 2026-08-15)
+# `main` no longer exists. Commit 4be40a3 ("Retire main: deploy.yml watches
+# astro-rebuild only") deleted it, and acwokas/adrian-2026 now has
+# default_branch = astro-rebuild. Production is served from astro-rebuild too,
+# so default branch and deploy branch are now the SAME branch.
+#
+# GitHub only fires `schedule:` from the default branch. That constraint used
+# to require a second copy of this file on `main`; it no longer does, and a
+# copy on `main` is now impossible anyway. Landing this file on astro-rebuild
+# alone both arms the cron and puts it on the deployed branch.
+#
+# The explicit `ref: astro-rebuild` pin below is kept deliberately even though
+# it currently equals the default. It is the guard that stopped the original
+# draft from committing the un-draft to a branch that is not deployed, and it
+# keeps this workflow correct if the default branch is ever moved again.
+#
+# CADENCE
+# Friday 14:00 SGT. Singapore does not observe DST, so 06:00 UTC is stable
+# year-round.
+#
+# DESTINATION
+# adrianwatkins.com only. No Buffer, no Beehiiv.
+
+on:
+  schedule:
+    - cron: '0 6 * * 5'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Rehearsal. Verifies the live site end to end without committing. Uncheck for a real publish.'
+        type: boolean
+        default: true
+      slug:
+        description: 'Optional. Publish a specific pre-staged slug instead of auto-selecting this week Friday.'
+        type: string
+        default: ''
+
+concurrency:
+  group: friday-frame
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  # Required so this job can dispatch deploy.yml. That dispatch is mandatory,
+  # not convenience: see "Trigger the Cloudflare Pages deploy" below.
+  actions: write
+
+env:
+  SITE_BASE: https://adrianwatkins.com
+  ARCHIVE_PATH: /writing/friday-frame
+  WRITING_PATH: /writing
+  CONTENT_DIR: src/content/friday-frame
+  DEPLOY_BRANCH: astro-rebuild
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # 25 not 20: the deploy dispatch below waits on a full Astro build
+    # (npm ci + build + wrangler) before verification even starts.
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out the deploy branch
+        uses: actions/checkout@v4
+        with:
+          ref: astro-rebuild
+          fetch-depth: 0
+
+      # DRY RUN PATH ------------------------------------------------------
+      # A rehearsal that skipped verification would prove almost nothing, and
+      # the estate convention is that no cron is armed on a pipeline that has
+      # never had a green run. So the dry run verifies the CURRENT live state
+      # of the most recently published frame with EXPECT_DELTA=0. That
+      # exercises all five assertions, including the archive-count arithmetic,
+      # against the real site while publishing nothing.
+      #
+      # Every fetch below lands in a file before anything parses it. Piping
+      # curl into a pipeline that ends in `head -1` is the same SIGPIPE +
+      # pipefail race documented at assertion 4 in the verifier: the reader
+      # exits on its first line, curl dies writing the remainder, and pipefail
+      # promotes that to a false failure on a perfectly healthy site.
+      - name: Rehearse verification against live site (dry run only)
+        if: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARCHIVE_HTML="$(mktemp)"
+          curl -sS --max-time 30 "${SITE_BASE}${ARCHIVE_PATH}" > "$ARCHIVE_HTML" \
+            || { echo "::error::Could not fetch the live archive at ${SITE_BASE}${ARCHIVE_PATH}."; exit 1; }
+
+          LATEST_SLUG="$(grep -oE 'href="(https://adrianwatkins\.com)?/writing/friday-frame/[a-z0-9-]+"' "$ARCHIVE_HTML" \
+            | grep -oE '/writing/friday-frame/[a-z0-9-]+' \
+            | sed 's#.*/##' | sed -n '1p')"
+          [ -n "$LATEST_SLUG" ] || { echo "::error::Could not read any slug from the live archive."; exit 1; }
+
+          LATEST_FILE="${CONTENT_DIR}/${LATEST_SLUG}.md"
+          [ -f "$LATEST_FILE" ] || { echo "::error::Live slug ${LATEST_SLUG} has no matching file at ${LATEST_FILE}."; exit 1; }
+
+          LATEST_TITLE="$(sed -n 's/^title:[[:space:]]*//p' "$LATEST_FILE" | sed -n '1p' | sed 's/^"//; s/"$//')"
+          COUNT="$(grep -oE 'href="(https://adrianwatkins\.com)?/writing/friday-frame/[a-z0-9-]+"' "$ARCHIVE_HTML" \
+            | sort -u | wc -l | tr -d ' ')"
+          rm -f "$ARCHIVE_HTML"
+
+          echo "Rehearsing against already-live slug: ${LATEST_SLUG} (archive count ${COUNT})"
+          EXPECT_DELTA=0 VERIFY_ATTEMPTS=2 VERIFY_SLEEP=5 \
+            bash .github/scripts/verify-friday-frame.sh "$LATEST_SLUG" "$LATEST_TITLE" "$COUNT"
+          echo "Dry run complete. Nothing was committed or published."
+
+      # REAL PUBLISH PATH -------------------------------------------------
+      - name: Resolve target slug
+        id: target
+        if: ${{ !inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          if [ -n "${{ inputs.slug }}" ]; then
+            FILE="${CONTENT_DIR}/${{ inputs.slug }}.md"
+            if [ ! -f "$FILE" ]; then
+              echo "::error::Requested slug '${{ inputs.slug }}' not found at ${FILE}."
+              exit 1
+            fi
+          else
+            # This week Friday. The runner is UTC; 06:00 UTC Friday is the same
+            # calendar day in SGT, so date -u is safe here.
+            FRIDAY="$(date -u +%Y-%m-%d)"
+
+            # Date prefixes are NOT unique in this collection: 2026-06-19 has
+            # both a published frame (be-unmissable-to-someone, draft: false)
+            # and a still-drafted one (the-most-expensive-sentence-in-a-startup,
+            # draft: true). Taking `head -1` of the glob (as the first draft
+            # did) would have picked the already-published file. Select on draft
+            # state instead, and refuse to guess if the staging is ambiguous.
+            CANDIDATES=()
+            for f in ${CONTENT_DIR}/${FRIDAY}-*.md; do
+              [ -f "$f" ] || continue
+              if grep -qE '^draft:[[:space:]]*true[[:space:]]*$' "$f"; then CANDIDATES+=("$f"); fi
+            done
+
+            if [ "${#CANDIDATES[@]}" -eq 0 ]; then
+              echo "::error::No staged Friday Frame with 'draft: true' found in ${CONTENT_DIR} for ${FRIDAY}. Nothing to publish."
+              # Make the failure actionable rather than merely loud. The frame
+              # is expected to be named with THIS Friday's date; if it was
+              # staged under a different date prefix it will be listed here and
+              # can be shipped with a workflow_dispatch using the slug input.
+              echo "Draft frames currently staged in ${CONTENT_DIR}:"
+              FOUND=0
+              for f in ${CONTENT_DIR}/*.md; do
+                [ -f "$f" ] || continue
+                if grep -qE '^draft:[[:space:]]*true[[:space:]]*$' "$f"; then
+                  echo "  $(basename "$f" .md)"
+                  FOUND=1
+                fi
+              done
+              [ "$FOUND" = "1" ] || echo "  (none)"
+              echo "Re-run this workflow with dry_run unchecked and slug=<one of the above> to publish it."
+              exit 1
+            fi
+            if [ "${#CANDIDATES[@]}" -gt 1 ]; then
+              echo "::error::Ambiguous staging for ${FRIDAY}: ${CANDIDATES[*]}. Refusing to guess which frame to publish."
+              exit 1
+            fi
+            FILE="${CANDIDATES[0]}"
+          fi
+
+          SLUG="$(basename "$FILE" .md)"
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+          echo "Target: $FILE"
+
+      - name: Extract and gate frontmatter
+        id: fm
+        if: ${{ !inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          python3 - "${{ steps.target.outputs.file }}" <<'PY' >> "$GITHUB_OUTPUT"
+          import re, sys
+          raw = open(sys.argv[1], encoding='utf-8').read()
+          m = re.match(r'^---\s*\n(.*?)\n---\s*\n', raw, re.S)
+          if not m:
+              print('::error::Frontmatter block not found or malformed.', file=sys.stderr)
+              sys.exit(1)
+          fm = {}
+          for line in m.group(1).splitlines():
+              if ':' not in line or line.lstrip().startswith('#'):
+                  continue
+              k, v = line.split(':', 1)
+              fm[k.strip()] = v.strip().strip('"').strip("'")
+          title = fm.get('title', '')
+          if not title:
+              print('::error::Frontmatter is missing a title.', file=sys.stderr)
+              sys.exit(1)
+          # This collection uses `summary`, not `description`.
+          if not fm.get('summary'):
+              print('::error::Frontmatter is missing `summary`; the archive listing and og:description both read from it.', file=sys.stderr)
+              sys.exit(1)
+          body = raw[m.end():].strip()
+          if len(body.split()) < 150:
+              print(f'::error::Body is {len(body.split())} words, below the 200-500 word Friday Frame floor.', file=sys.stderr)
+              sys.exit(1)
+          # AGENT_RULES: no em dashes or en dashes anywhere.
+          if '—' in raw or '–' in raw:
+              print('::error::Em dash or en dash found. AGENT_RULES forbids both.', file=sys.stderr)
+              sys.exit(1)
+          print(f'title={title}')
+          PY
+
+      - name: Baseline archive count
+        id: baseline
+        if: ${{ !inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARCHIVE_HTML="$(mktemp)"
+          curl -sS --max-time 30 "${SITE_BASE}${ARCHIVE_PATH}" > "$ARCHIVE_HTML" \
+            || { echo "::error::Could not fetch the live archive to take a baseline."; exit 1; }
+          COUNT="$(grep -oE 'href="(https://adrianwatkins\.com)?/writing/friday-frame/[a-z0-9-]+"' "$ARCHIVE_HTML" \
+            | sort -u | wc -l | tr -d ' ')"
+          rm -f "$ARCHIVE_HTML"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Archive currently lists $COUNT frames."
+          if [ "$COUNT" -lt 1 ]; then
+            echo "::error::Baseline archive count is zero. Refusing to publish against an unreadable archive."
+            exit 1
+          fi
+
+      - name: Flip draft to false and commit
+        if: ${{ !inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          FILE="${{ steps.target.outputs.file }}"
+          sed -i 's/^draft:[[:space:]]*true[[:space:]]*$/draft: false/' "$FILE"
+          git config user.name  "friday-frame-bot"
+          git config user.email "me@adrianwatkins.com"
+          if git diff --quiet -- "$FILE"; then
+            echo "::error::Draft flag did not change. Refusing to continue: this is the silent no-op shape."
+            exit 1
+          fi
+          git add "$FILE"
+          git commit -m "friday frame: publish ${{ steps.target.outputs.slug }}"
+          git push origin HEAD:${DEPLOY_BRANCH}
+
+      # DEPLOY ------------------------------------------------------------
+      # WITHOUT THIS STEP EVERY REAL PUBLISH FAILS. It is not a propagation
+      # nicety, it is the missing half of the publish.
+      #
+      # deploy.yml is the ONLY thing that builds the Astro site and ships it to
+      # Cloudflare Pages, and it triggers on `push` to astro-rebuild. But the
+      # commit above is made with the default GITHUB_TOKEN, and GitHub's rule is
+      # explicit: "When you use the repository's GITHUB_TOKEN to perform tasks,
+      # events triggered by the GITHUB_TOKEN will not create a new workflow
+      # run", with workflow_dispatch and repository_dispatch as the documented
+      # exceptions. So the push lands, deploy.yml never fires, the site is never
+      # rebuilt, and the verifier then fails against an archive that still shows
+      # the old count. Loudly, not silently, so the safety net holds, but the
+      # frame does not publish. A plain `sleep 90` waits for a build that was
+      # never started.
+      #
+      # We therefore dispatch deploy.yml explicitly and wait for it. The
+      # alternative fix, pushing with a PAT so the push event fires normally,
+      # needs a new long-lived secret in a public repo and was not worth it when
+      # a documented exception does the same job with the token we already have.
+      # deploy.yml's build stays the single source of truth rather than being
+      # duplicated here, so the two cannot drift.
+      - name: Trigger the Cloudflare Pages deploy and wait for it
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          # BOTH queries must filter on --event workflow_dispatch. Comparing a
+          # baseline taken across all events against a candidate filtered to
+          # dispatches is not like for like, and it breaks from the second week
+          # onward: any ordinary push to astro-rebuild between two Fridays
+          # becomes the newest run overall, so the newest *dispatch* run (last
+          # Friday's, long finished) differs from it on the very first poll.
+          # The loop would then latch onto that stale run, `gh run watch` would
+          # return its old success immediately, and verification would race a
+          # site that was never rebuilt.
+          PREV="$(gh run list --workflow deploy.yml --branch "${DEPLOY_BRANCH}" \
+            --event workflow_dispatch --limit 1 --json databaseId -q '.[0].databaseId // 0')"
+          echo "Most recent deploy DISPATCH before this one: ${PREV}"
+
+          gh workflow run deploy.yml --ref "${DEPLOY_BRANCH}"
+
+          # The dispatch API returns no run id, so poll for one newer than the
+          # id recorded above rather than assuming the newest run is ours.
+          RUN_ID=""
+          for i in $(seq 1 20); do
+            sleep 6
+            CANDIDATE="$(gh run list --workflow deploy.yml --branch "${DEPLOY_BRANCH}" \
+              --event workflow_dispatch --limit 1 --json databaseId -q '.[0].databaseId // 0')"
+            if [ "$CANDIDATE" != "0" ] && [ "$CANDIDATE" != "$PREV" ]; then
+              RUN_ID="$CANDIDATE"
+              echo "Deploy run ${RUN_ID} registered after $((i * 6))s"
+              break
+            fi
+            echo "  attempt $i: no new deploy run yet"
+          done
+          [ -n "$RUN_ID" ] || { echo "::error::Dispatched deploy.yml but no new run appeared within 120s. The frame is committed but not built."; exit 1; }
+
+          echo "Watching ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}"
+          gh run watch "$RUN_ID" --exit-status \
+            || { echo "::error::The Cloudflare Pages deploy failed. The frame is committed but not live."; exit 1; }
+
+      - name: Let the CDN settle
+        if: ${{ !inputs.dry_run }}
+        run: sleep 30
+
+      # The verifier polls the post URL 6 times at 20s intervals before it
+      # gives up. That polling loop IS the automated remediation stage for the
+      # commonest real failure here, a Cloudflare Pages build that has not
+      # finished propagating yet. Only a failure that survives the full two
+      # minutes reaches the reporting step below.
+      - name: Verify published
+        if: ${{ !inputs.dry_run }}
+        env:
+          EXPECT_DELTA: '1'
+        run: |
+          bash .github/scripts/verify-friday-frame.sh \
+            "${{ steps.target.outputs.slug }}" \
+            "${{ steps.fm.outputs.title }}" \
+            "${{ steps.baseline.outputs.count }}"
+
+      # FAILURE REPORTING -------------------------------------------------
+      # This step sends NOTHING. That is deliberate and it is the policy, not
+      # an omission.
+      #
+      # Resend is P0 only. Adrian's test is "if it arrives and he does nothing
+      # differently, it must not be an email", and the standing rule since
+      # 2026-08-16 is that non-P0 signal travels as a loud report plus a
+      # non-zero workflow exit. An `if: failure()` mailer inside an already
+      # failing workflow is the exact pattern that was stripped out of ~30
+      # callers across the estate, because it is a second notification of
+      # something GitHub has already notified about, for free, in a channel
+      # that cannot be filtered away.
+      #
+      # So the alert for "the Friday Frame did not publish" is this job going
+      # red. No RESEND_API_KEY, no RESEND_FROM, no repo secret to rotate, and
+      # no alert path that can itself fail silently at 401.
+      #
+      # This DOES depend on GitHub Actions failure notifications being on for
+      # Adrian's account, which is the same dependency the whole estate policy
+      # already rests on.
+      - name: Report failure loudly (no email by design)
+        if: ${{ failure() }}
+        env:
+          SLUG: ${{ steps.target.outputs.slug }}
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          {
+            echo "## Friday Frame FAILED"
+            echo
+            echo "Nothing was published."
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Slug | ${SLUG:-(not resolved)} |"
+            echo "| Dry run | ${DRY:-false} |"
+            echo "| Run | ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} |"
+            echo
+            echo "The verifier already retried the live site for two minutes before failing."
+            echo "This red run is the alert. Read the failing step above for the assertion that broke."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error::Friday Frame did not publish. This failing run is the alert; no email is sent by design."
