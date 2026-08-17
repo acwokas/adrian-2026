@@ -525,7 +525,7 @@ section.alt .case { background: #FBF7EF; }
 
 /* Speaking strip */
 .speak { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-.speak-card { border-left: 2px solid var(--accent); padding: 0 0 0 24px; }
+.speak-card { padding: 0; }
 .speak-card .when {
   font-size: 12px;
   letter-spacing: 0.14em;
