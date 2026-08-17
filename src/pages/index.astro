@@ -2,6 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { digestParagraphs, lastUpdatedHuman } from '../data/now';
+import { homepageEntries } from '../data/speaking';
+import { currentCardLine } from '../data/reading';
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const homeUpcoming = homepageEntries('upcoming', todayISO);
+const homeRecent = homepageEntries('recent', todayISO);
 
 const title = 'Adrian Watkins. Operator. Builder. Governor.';
 const description = 'Adrian Watkins. Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance, SQREEM Technologies.';
@@ -190,7 +196,7 @@ const description = 'Adrian Watkins. Senior commercial and governance operator a
         <article class="slot">
           <div class="kicker">Quarterly</div>
           <h3>Reading list.</h3>
-          <p>Five books a quarter, one line each, with the date I picked them up. The Patrick Collison move. Current: Levinson, Slouka, Tett, McGilchrist, Sutherland.</p>
+          <p>Five books a quarter, one line each. The Patrick Collison move. {currentCardLine()}</p>
           <a class="more" href="/now#reading">Read the list</a>
         </article>
 
@@ -255,30 +261,24 @@ const description = 'Adrian Watkins. Senior commercial and governance operator a
 
       <div class="eyebrow" style="margin-bottom:18px">Upcoming and ongoing</div>
       <div class="speak">
-        <div class="speak-card">
-          <div class="when">Since May 2026</div>
-          <h3>SDG Open Hack 2026, NP Edition.</h3>
-          <p>Mentor on the Ngee Ann Polytechnic edition of SDG Open Hack 2026. Running across the hack window and beyond.</p>
-        </div>
-        <div class="speak-card">
-          <div class="when">September 2026 · NTU Campus</div>
-          <h3>SDG Open Hack 2026, NTU Campus Edition.</h3>
-          <p>Mentor. Coaching and discussion sessions across the NTU Campus edition. Feedback and guidance to help student teams strengthen their solution and business pitches, working toward the UN Sustainable Development Goals.</p>
-        </div>
+        {homeUpcoming.map((entry) => (
+          <div class="speak-card">
+            <div class="when">{entry.homepage.when ?? entry.when}</div>
+            <h3 set:html={entry.homepage.titleHtml} />
+            <p set:html={entry.homepage.bodyHtml} />
+          </div>
+        ))}
       </div>
 
       <div class="eyebrow" style="margin:40px 0 18px 0">Recent</div>
       <div class="speak">
-        <div class="speak-card">
-          <div class="when">12 August 2026 · Online</div>
-          <h3><a href="https://entrebosshub.com/event/the-competitive-edge-mastering-strategy-and-executive-performance/" target="_blank" rel="noopener noreferrer">The Competitive Edge</a>. EntreBoss Hub panel.</h3>
-          <p>Panel with Victor Chan, Mark Gaynor and Paddy Tan, moderated by Darius Chang. My seat: moving AI initiatives out of scattered pilots and into disciplined, embedded decision-making.</p>
-        </div>
-        <div class="speak-card">
-          <div class="when">November 2025</div>
-          <h3>Smart Living, Sustainable Future 2025.</h3>
-          <p>Guest of Taipei City Government. Opened the event with "Democratising Intelligence for a Sustainable Future" and moderated the startup panel. <a href="https://www.linkedin.com/pulse/your-ai-earning-its-energy-taiwan-has-left-me-adrian-watkins-uzvgc/" target="_blank" rel="noopener noreferrer">Post-event reflection on LinkedIn Pulse.</a></p>
-        </div>
+        {homeRecent.map((entry) => (
+          <div class="speak-card">
+            <div class="when">{entry.homepage.when ?? entry.when}</div>
+            <h3 set:html={entry.homepage.titleHtml} />
+            <p set:html={entry.homepage.bodyHtml} />
+          </div>
+        ))}
       </div>
     </div>
   </section>
