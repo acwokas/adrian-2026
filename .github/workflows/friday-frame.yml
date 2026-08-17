@@ -9,6 +9,28 @@ name: Friday Frame (adrianwatkins.com)
 # late. Nothing alerted, because nothing ever asserted that the archive had
 # grown. This workflow makes that shape impossible: see assertion 5.
 #
+# CORRECTION TO THE RECEIVED ACCOUNT (established 2026-08-17)
+# The account this migration was commissioned under, repeated in the commit
+# message on 807b2f5, says the Cowork task fired on time, could not reach its
+# credentials, and exited silently. That is not what happened, and the
+# distinction matters for anyone reasoning about this later.
+#
+# friday-frame-weekly is not registered on any scheduler and appears not to
+# have been for some time. It is absent from the scheduled-tasks MCP listing,
+# it has no directory in ~/.claude/scheduled-tasks (78 present, none of them
+# this), there is no launchd job for it (the two friday-frame plists are
+# .disabled or unloaded), and there is no crontab. The only artefact anywhere
+# is an unregistered SKILL.md in the Documents working tree.
+#
+# So the frame did not fail to publish because a credential was unreachable.
+# It did not publish because nothing was scheduled to publish it. Consistent
+# with that, the recovery commit 1ae6c0c carries committer
+# "GitHub <noreply@github.com>", i.e. it was done by hand through the web UI.
+#
+# The practical consequence is that this workflow is not taking over from a
+# live publisher, it is filling a gap where there was none. Nothing needed
+# disabling when it landed.
+#
 # BRANCH TOPOLOGY (re-verified 2026-08-17, this CHANGED on 2026-08-15)
 # `main` no longer exists. Commit 4be40a3 ("Retire main: deploy.yml watches
 # astro-rebuild only") deleted it, and acwokas/adrian-2026 now has
@@ -117,15 +139,23 @@ jobs:
           echo "Dry run complete. Nothing was committed or published."
 
       # REAL PUBLISH PATH -------------------------------------------------
+      # Templated values reach the shell through env:, never spliced into the
+      # script body. `${{ }}` is substituted as raw text before bash sees the
+      # line, so a value containing a quote or a semicolon changes what runs
+      # rather than what is read. This is the GitHub-recommended form and it
+      # matters most here, because every step below is gated on !dry_run and
+      # therefore never executed by the rehearsal that proved this workflow.
       - name: Resolve target slug
         id: target
         if: ${{ !inputs.dry_run }}
+        env:
+          INPUT_SLUG: ${{ inputs.slug }}
         run: |
           set -euo pipefail
-          if [ -n "${{ inputs.slug }}" ]; then
-            FILE="${CONTENT_DIR}/${{ inputs.slug }}.md"
+          if [ -n "${INPUT_SLUG}" ]; then
+            FILE="${CONTENT_DIR}/${INPUT_SLUG}.md"
             if [ ! -f "$FILE" ]; then
-              echo "::error::Requested slug '${{ inputs.slug }}' not found at ${FILE}."
+              echo "::error::Requested slug '${INPUT_SLUG}' not found at ${FILE}."
               exit 1
             fi
           else
@@ -179,9 +209,11 @@ jobs:
       - name: Extract and gate frontmatter
         id: fm
         if: ${{ !inputs.dry_run }}
+        env:
+          TARGET_FILE: ${{ steps.target.outputs.file }}
         run: |
           set -euo pipefail
-          python3 - "${{ steps.target.outputs.file }}" <<'PY' >> "$GITHUB_OUTPUT"
+          python3 - "$TARGET_FILE" <<'PY' >> "$GITHUB_OUTPUT"
           import re, sys
           raw = open(sys.argv[1], encoding='utf-8').read()
           m = re.match(r'^---\s*\n(.*?)\n---\s*\n', raw, re.S)
@@ -233,9 +265,12 @@ jobs:
 
       - name: Flip draft to false and commit
         if: ${{ !inputs.dry_run }}
+        env:
+          TARGET_FILE: ${{ steps.target.outputs.file }}
+          TARGET_SLUG: ${{ steps.target.outputs.slug }}
         run: |
           set -euo pipefail
-          FILE="${{ steps.target.outputs.file }}"
+          FILE="$TARGET_FILE"
           sed -i 's/^draft:[[:space:]]*true[[:space:]]*$/draft: false/' "$FILE"
           git config user.name  "friday-frame-bot"
           git config user.email "me@adrianwatkins.com"
@@ -244,7 +279,7 @@ jobs:
             exit 1
           fi
           git add "$FILE"
-          git commit -m "friday frame: publish ${{ steps.target.outputs.slug }}"
+          git commit -m "friday frame: publish ${TARGET_SLUG}"
           git push origin HEAD:${DEPLOY_BRANCH}
 
       # DEPLOY ------------------------------------------------------------
@@ -324,11 +359,15 @@ jobs:
         if: ${{ !inputs.dry_run }}
         env:
           EXPECT_DELTA: '1'
+          TARGET_SLUG: ${{ steps.target.outputs.slug }}
+          TARGET_TITLE: ${{ steps.fm.outputs.title }}
+          BASELINE_COUNT: ${{ steps.baseline.outputs.count }}
         run: |
+          set -euo pipefail
           bash .github/scripts/verify-friday-frame.sh \
-            "${{ steps.target.outputs.slug }}" \
-            "${{ steps.fm.outputs.title }}" \
-            "${{ steps.baseline.outputs.count }}"
+            "$TARGET_SLUG" \
+            "$TARGET_TITLE" \
+            "$BASELINE_COUNT"
 
       # FAILURE REPORTING -------------------------------------------------
       # This step sends NOTHING. That is deliberate and it is the policy, not
