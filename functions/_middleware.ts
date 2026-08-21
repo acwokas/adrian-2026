@@ -41,7 +41,7 @@ const BOT_PATTERNS = [
   /\/wp-(cron|login|admin|json|content)/,
 ];
 
-export const onRequest: PagesFunction<Env> = async (context) => {
+const handleRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(context.request.url);
   const path = url.pathname;
 
@@ -100,4 +100,61 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   // Everything else (random typos etc.) → return the 404 page
   return response;
+};
+
+/**
+ * Indexing guard for *.pages.dev hostnames.
+ *
+ * The Pages project backing adrianwatkins.com is itself named
+ * "adrianwatkins-com-preview", so its built-in subdomain
+ * adrianwatkins-com-preview.pages.dev serves the *production* deployment.
+ * Cloudflare auto-applies X-Robots-Tag: noindex to preview deployments
+ * (<hash>.*.pages.dev and <branch>.*.pages.dev) but NOT to a project's
+ * production subdomain, which left that host fully indexable: robots.txt
+ * answered "Allow: /" and no noindex header was present. The canonical tag
+ * limited the damage but did not close the host.
+ *
+ * This runs per-request and keys off the Host header, so the custom domains
+ * (adrianwatkins.com / www.adrianwatkins.com) are untouched and stay fully
+ * indexable, while every *.pages.dev hostname serving this project is
+ * explicitly closed. It cannot be done in _headers, which is path-scoped,
+ * not host-scoped.
+ */
+const PAGES_DEV_HOST = /(^|\.)pages\.dev$/i;
+
+// 204/304 must not be reconstructed with a body; rewriting headers on them is
+// unnecessary anyway since they carry no indexable content.
+const BODYLESS = new Set([204, 304]);
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const url = new URL(context.request.url);
+  const isPagesDev = PAGES_DEV_HOST.test(url.hostname);
+
+  // Serve a hard Disallow on the alias hosts instead of the site's real
+  // robots.txt, which allows everything and advertises the live sitemap.
+  if (isPagesDev && url.pathname === '/robots.txt') {
+    return new Response(
+      '# Preview/alias host. Not for indexing.\n# Canonical site: https://adrianwatkins.com\n\nUser-agent: *\nDisallow: /\n',
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/plain; charset=utf-8',
+          'X-Robots-Tag': 'noindex, nofollow',
+          'Cache-Control': 'public, max-age=300',
+        },
+      }
+    );
+  }
+
+  const response = await handleRequest(context);
+
+  if (!isPagesDev || BODYLESS.has(response.status)) return response;
+
+  const headers = new Headers(response.headers);
+  headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 };
