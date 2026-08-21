@@ -176,7 +176,50 @@ jobs:
             done
 
             if [ "${#CANDIDATES[@]}" -eq 0 ]; then
-              echo "::error::No staged Friday Frame with 'draft: true' found in ${CONTENT_DIR} for ${FRIDAY}. Nothing to publish."
+              # ALREADY-PUBLISHED IS NOT A FAILURE.
+              #
+              # This frame can legitimately be shipped by another path before
+              # this cron fires: the adrian-scheduled pipeline publishes
+              # directly, and on 2026-08-21 it un-drafted the frame at 02:19
+              # UTC, nearly four hours before the 06:00 UTC schedule. This step
+              # then found no `draft: true` file for today, which is CORRECT,
+              # and exited 1, which is not. A job that goes red every time the
+              # work was already done trains everyone to ignore the one week it
+              # goes red because the work was not done.
+              #
+              # So: no staged draft AND this week's frame already live is a
+              # clean no-op. No staged draft and NOT live is still a failure.
+              # The liveness check is what keeps that distinction honest, so
+              # this cannot be quietly satisfied by an un-drafted file that
+              # never actually deployed.
+              PUBLISHED=()
+              for f in ${CONTENT_DIR}/${FRIDAY}-*.md; do
+                [ -f "$f" ] || continue
+                if grep -qE '^draft:[[:space:]]*false[[:space:]]*$' "$f"; then PUBLISHED+=("$f"); fi
+              done
+
+              if [ "${#PUBLISHED[@]}" -gt 0 ]; then
+                ALREADY_SLUG="$(basename "${PUBLISHED[0]}" .md)"
+                LIVE_CODE="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 \
+                  "${SITE_BASE}${ARCHIVE_PATH}/${ALREADY_SLUG}" || echo 000)"
+                if [ "$LIVE_CODE" = "200" ]; then
+                  echo "already=true" >> "$GITHUB_OUTPUT"
+                  echo "slug=${ALREADY_SLUG}" >> "$GITHUB_OUTPUT"
+                  {
+                    echo "## Friday Frame already published"
+                    echo
+                    echo "\`${ALREADY_SLUG}\` was already live before this scheduled run fired, so there was nothing to do."
+                    echo
+                    echo "This run is green on purpose. It is not a skipped publish."
+                  } >> "$GITHUB_STEP_SUMMARY"
+                  echo "This week's frame (${ALREADY_SLUG}) is already published and live at ${SITE_BASE}${ARCHIVE_PATH}/${ALREADY_SLUG}. Nothing to do."
+                  exit 0
+                fi
+                echo "::error::${ALREADY_SLUG} is un-drafted in git but the live site returned ${LIVE_CODE} for ${SITE_BASE}${ARCHIVE_PATH}/${ALREADY_SLUG}. The frame is committed but not live."
+                exit 1
+              fi
+
+              echo "::error::No staged Friday Frame with 'draft: true' found in ${CONTENT_DIR} for ${FRIDAY}, and no published frame for ${FRIDAY} either. Nothing to publish."
               # Make the failure actionable rather than merely loud. The frame
               # is expected to be named with THIS Friday's date; if it was
               # staged under a different date prefix it will be listed here and
@@ -208,7 +251,7 @@ jobs:
 
       - name: Extract and gate frontmatter
         id: fm
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           TARGET_FILE: ${{ steps.target.outputs.file }}
         run: |
@@ -247,7 +290,7 @@ jobs:
 
       - name: Baseline archive count
         id: baseline
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         run: |
           set -euo pipefail
           ARCHIVE_HTML="$(mktemp)"
@@ -264,7 +307,7 @@ jobs:
           fi
 
       - name: Flip draft to false and commit
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           TARGET_FILE: ${{ steps.target.outputs.file }}
           TARGET_SLUG: ${{ steps.target.outputs.slug }}
@@ -305,7 +348,7 @@ jobs:
       # deploy.yml's build stays the single source of truth rather than being
       # duplicated here, so the two cannot drift.
       - name: Trigger the Cloudflare Pages deploy and wait for it
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -347,7 +390,7 @@ jobs:
             || { echo "::error::The Cloudflare Pages deploy failed. The frame is committed but not live."; exit 1; }
 
       - name: Let the CDN settle
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         run: sleep 30
 
       # The verifier polls the post URL 6 times at 20s intervals before it
@@ -356,7 +399,7 @@ jobs:
       # finished propagating yet. Only a failure that survives the full two
       # minutes reaches the reporting step below.
       - name: Verify published
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           EXPECT_DELTA: '1'
           TARGET_SLUG: ${{ steps.target.outputs.slug }}
