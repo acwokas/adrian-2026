@@ -34,7 +34,7 @@ That single shift, from inventing your customer to *noticing* your customer, cha
 
 When I started [AIinASIA](https://aiinasia.com) in 2020, the lazy instinct was to cover AI for everyone. There were already a hundred sites doing exactly that, louder and far better funded than me. So I asked a narrower question: who am I genuinely the best person in the world to write for? The answer was the operator in Asia who has to adopt this stuff and make it work, not the tourist who likes to admire it from a distance.
 
-I didn't guess that. The market confirmed it. The pieces written for that one reader travelled. The generic ones sat there and died. Today the site reaches around ten thousand readers a month with no paid distribution, because the right people instantly recognise it was built for them rather than at them.
+I didn't guess that. The market confirmed it. The pieces written for that one reader travelled. The generic ones sat there and died. Today the site reaches around twenty-five thousand readers a month with no paid distribution, because the right people instantly recognise it was built for them rather than at them.
 
 ![A cluster of identical matte spheres in shadow, one lit and clearly in focus.](/img/writing/be-unmissable-to-someone/spheres.webp)
 

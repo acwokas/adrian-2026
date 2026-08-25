@@ -22,7 +22,7 @@ Speed is the tell. The right fit buys fast. Slow, painful deals are usually a fi
 
 A niche is a beachhead, not a prison. A sharp message travels. A generic one gets ignored.
 
-When I started AIinASIA I tried to write for everyone, then narrowed to the operators in Asia who actually adopt this stuff. The generic pieces sat there. The focused ones travelled, and now about ten thousand people read it every month with no paid distribution.
+When I started AIinASIA I tried to write for everyone, then narrowed to the operators in Asia who actually adopt this stuff. The generic pieces sat there. The focused ones travelled, and now about twenty-five thousand people read it every month with no paid distribution.
 
 So stop trying to be wanted by everyone. Go and be unmissable to someone. The rest of your strategy gets easier the moment you choose.
 
