@@ -3,9 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { lastUpdated, lastUpdatedHuman } from '../data/now';
 import { PERSON_ID } from '../data/person';
 import { fullReadingParagraph } from '../data/reading';
+import { entriesByBucket } from '../data/speaking';
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const upcomingSpeaking = entriesByBucket('upcoming', todayISO);
 
 const title = '/now. Adrian Watkins. What I am working on.';
-const description = 'Adrian Watkins, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, advising, reading, where I will be on stage.';
+const description = 'Adrian Watkins, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, reading, where I will be on stage.';
 
 const nowJsonLd = {
   '@context': 'https://schema.org',
@@ -40,25 +44,13 @@ const nowJsonLd = {
     </div>
   </section>
 
-  <section class="alt" style="padding:48px 0">
-    <div class="container" style="padding-top:1rem">
-      <h2 style="margin-bottom:18px">Advising.</h2>
-      <div class="prose">
-        <p>Two engagements active right now, both anonymous on the public site. A catering business in Singapore, where I am also an investor. A professional services firm in Malaysia. The work ranges from strategy through operating-model redesign and AI integration. None of it conflicts with the day job.</p>
-      </div>
-    </div>
-  </section>
-
   <section style="padding:48px 0">
     <div class="container">
       <h2 style="margin-bottom:18px">Where I will be.</h2>
       <div class="prose">
-        <p>Mentoring the latest cohort of start-up founders at Beyond4Tech.</p>
-        <p>Delivering a masterclass on Product Development.</p>
-        <p>Mentoring student teams at SDG Open Hack 2026, NTU Campus edition, in September.</p>
-        <p>Joining a panel on the entrepreneurial journey, scaling and strategy, in September.</p>
-        <p>Moderating <a href="https://www.ortusclub.com/moderator/why-is-democratising-the-room-the-most-underrated-skill-in-executive-moderation-adrian-watkins-sqreem-technologies/" target="_blank" rel="noopener noreferrer">Ortus Club</a> executive roundtables (ongoing).</p>
-        <p>Frequent panellist across business strategy, operational implementation, playbooks, and frameworks, increasingly with an AI overlay back to EDGE.</p>
+        {upcomingSpeaking.map((entry) => (
+          <p><strong>{entry.when}.</strong> <span set:html={entry.titleHtml} /></p>
+        ))}
         <p>Full speaking calendar on <a href="/speaking">/speaking</a>. New dates added there first.</p>
       </div>
     </div>
