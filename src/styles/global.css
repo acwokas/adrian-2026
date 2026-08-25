@@ -497,9 +497,8 @@ section.alt .case { background: #FBF7EF; }
   gap: 0;
   border-top: 1px solid var(--rule);
 }
-.slot { padding: 36px 28px 36px 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.slot:nth-child(3n) { border-right: 0; padding-right: 0; }
-.slot:nth-last-child(-n+3) { border-bottom: 0; }
+.slot { padding: 36px 28px 36px 0; }
+.slot:nth-child(3n) { padding-right: 0; }
 .slot .kicker {
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -521,9 +520,7 @@ section.alt .case { background: #FBF7EF; }
 }
 @media (max-width: 880px) {
   .slots { grid-template-columns: 1fr; }
-  .slot { padding: 28px 0; border-right: 0; }
-  .slot:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
-  .slot:last-child { border-bottom: 0; }
+  .slot { padding: 28px 0; }
 }
 
 /* Speaking strip */
