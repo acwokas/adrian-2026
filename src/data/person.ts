@@ -26,19 +26,19 @@ export const personSchema = {
   familyName: 'Watkins',
   url: 'https://adrianwatkins.com',
   image: 'https://adrianwatkins.com/images/hero-portrait.jpg',
-  jobTitle: 'SVP Commercial Operations and Governance',
+  jobTitle: 'VP Product',
   worksFor: {
     '@type': 'Organization',
     name: 'SQREEM Technologies',
     url: 'https://sqreem.com',
   },
   description:
-    'Senior commercial and governance operator across Asia-Pacific and Europe. 25 years. Creator of the EDGE Framework for Applied Intelligence.',
+    'Senior product and operating leader across Asia-Pacific and Europe. 25 years, the last fifteen building and scaling digital products. Creator of the EDGE Framework for Applied Intelligence.',
   knowsAbout: [
-    'AI governance',
+    'Product strategy',
     'Applied intelligence',
     'EDGE Framework',
-    'Commercial operations',
+    'Cross-functional leadership',
     'M&A integration',
     'Asia-Pacific go-to-market',
     'Owned-media strategy',
@@ -55,6 +55,8 @@ export const personSchema = {
   sameAs: [
     'https://www.linkedin.com/in/adrianwatkins/',
     'https://aiinasia.com',
+    'https://aiinarabia.com',
+    'https://aiineurope.co',
     'https://promptandgo.ai',
     'https://democratising.ai',
     'https://blackstormco.asia/personnel/adrian-watkins/',
@@ -74,7 +76,7 @@ export const websiteSchema = {
   url: 'https://adrianwatkins.com',
   name: 'Adrian Watkins',
   description:
-    'Senior commercial and governance leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.',
+    'Senior product and operating leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.',
   publisher: { '@id': PERSON_ID },
   inLanguage: 'en-GB',
 };

@@ -25,3 +25,8 @@ pnpm-debug.log*
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# Personal drafts, not site assets
+outputs/
+*_PRIVATE.*
+*Interview-Numbers*

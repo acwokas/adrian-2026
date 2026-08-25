@@ -3,8 +3,8 @@
 
 import { digestReadingLine } from './reading';
 
-export const lastUpdated = '2026-08-17';
-export const lastUpdatedHuman = '17 August 2026';
+export const lastUpdated = '2026-08-25';
+export const lastUpdatedHuman = '25 August 2026';
 
 // Three short paragraphs the home page renders as the /now digest.
 // /now itself renders the same facts in expanded sections below.
@@ -13,6 +13,6 @@ export const lastUpdatedHuman = '17 August 2026';
 // Reading section or the homepage reading card the way it did before.
 export const digestParagraphs: string[] = [
   `Q3 2026. SDG Open Hack 2026 NP Edition mentorship is underway. Moderating Ortus Club executive roundtables on a rolling basis. Standing panellist work continues across business strategy, operational implementation, and AI. ${digestReadingLine()}`,
-  'Building EDGE Diagnostic v2, a 25-minute structured conversation that produces a board-ready AI capability snapshot. Advising two businesses, both anonymous on the public site: a catering business in Singapore where I am also an investor, and a professional services firm in Malaysia. Drafting the EDGE field manual for nominating committees, due this quarter.',
+  'Leading product day to day at SQREEM Technologies. Building out the AIinASIA family: AIinASIA.com, AIinArabia, and AIinEurope. Advising two businesses, both anonymous on the public site: a catering business in Singapore where I am also an investor, and a professional services firm in Malaysia. Spending real time this quarter on what comes next.',
   `Last updated ${lastUpdatedHuman}.`,
 ];
