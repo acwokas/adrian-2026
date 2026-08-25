@@ -33,7 +33,7 @@ export const personSchema = {
     url: 'https://sqreem.com',
   },
   description:
-    'Senior product and operating leader across Asia, Europe, and the US. 25 years, the last fifteen building and scaling digital products. Creator of the EDGE Framework for Applied Intelligence.',
+    'Senior commercial and operating leader across Asia, Europe, and the US. 25 years, the last fifteen building and scaling organisations. Creator of the EDGE Framework for Applied Intelligence.',
   knowsAbout: [
     'Product strategy',
     'Applied intelligence',
@@ -76,7 +76,7 @@ export const websiteSchema = {
   url: 'https://adrianwatkins.com',
   name: 'Adrian Watkins',
   description:
-    'Senior product and operating leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.',
+    'Senior commercial and operating leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.',
   publisher: { '@id': PERSON_ID },
   inLanguage: 'en-GB',
 };
