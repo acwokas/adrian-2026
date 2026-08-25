@@ -82,6 +82,14 @@ export const speakingEntries: SpeakingEntry[] = [
       'Frequent panellist and judge across business strategy, operational implementation, playbooks, and frameworks, including the trade press circuit. Increasingly with an AI overlay, often the entry point back to EDGE.',
   },
   {
+    id: 'moderation',
+    when: 'Ongoing',
+    date: null,
+    titleHtml: 'Moderation.',
+    bodyHtml:
+      'Regular moderator and facilitator for executive roundtables and closed-door discussions, including Ortus Club, Beyond4, and others. Typically strategy, AI, and operational leadership themes.',
+  },
+  {
     id: 'entreboss-competitive-edge',
     when: 'Tuesday 12 August 2026, 9pm SGT · Online',
     date: '2026-08-12',
