@@ -11,10 +11,10 @@ The short version is that transparency obligations are now enforceable across th
 
 I wonder how many SLTs have actually checked which of their tools are affected. Not in the "we'll get legal to review it" sense, but in the practical sense of listing every customer-facing AI system and asking whether it currently tells the user it's not human. In most large companies, that list is surprisingly hard to assemble, because the tools were deployed by different teams at different times and there's no central register.
 
-Running commercial operations and governance at an AI company gives you a useful vantage point on this. You see the gap between what the technology can do and what the regulation assumes it does. You also see how quickly that gap changes shape. The OECD now tracks over a thousand AI policy initiatives across 69 countries. That's not a single compliance exercise, it's an atmosphere.
+Running commercial operations and governance at an AI company gives you a useful vantage point on this. You see the gap between what the technology can do and what the regulation assumes it does. You also see how quickly that gap changes shape. The OECD now tracks over 900 AI policy initiatives across more than 80 jurisdictions. That's not a single compliance exercise, it's an atmosphere.
 
 I'd suggest the transparency rules are actually the interesting ones, more so than the high-risk framework. High-risk compliance is expensive and complicated but it's legible - there's a classification, a process, a deadline. Transparency is harder because it requires you to know what you have. You can't disclose what you haven't inventoried.
 
-The question I keep coming back to when I'm advising SLTs is a simple one: could you list every AI system that interacts with your customers, and confirm each one identifies itself? If assembling that list takes more than a day, that's the finding.
+If you're part of an SLT, could you list every AI system that interacts with your customers, and confirm each one identifies itself? If assembling that list takes more than a day, that's the finding.
 
 The regulation just formalised what was already a gap in most operating models. Worth running that audit before December 2027 turns the conversation from transparency to risk classification. The easy rules are always the ones that catch you out, precisely because they looked easy.
