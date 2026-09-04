@@ -2,6 +2,9 @@
 title: "Holiday mode for a one-person operation."
 date: 2026-08-28
 draft: true
+status: "retired"
+retired_date: "2026-09-04"
+retired_note: "Retired, not published. Temporally welded to a departure (\"I fly out tomorrow\") that has since passed -- Adrian is back; the tense can't be salvaged without rewriting the piece from scratch. It was also never gated (hand-authored, sat as draft: true, never ran through check_gates -- two dash-rule-adjacent slips are visible in the body: a spaced hyphen standing in for an em dash, and a staccato two-part aphorism). And it's a beat departure from the adtech/AI-governance line the frame has been running. This is the only copy; kept on this branch for the idea underneath it, not for the prose. See src/content/friday-frame -- the underlying observability insight (a pipeline returning exit 0 while producing nothing looks healthy until someone checks) is carried forward as a topic seed in the friday-frame task's candidate-topics list, not this file."
 summary: "Two content pipelines silently stalled for five days and nothing told me. The checklist I actually needed wasn't what needs to run while I'm away. It was what I wouldn't notice if it stopped."
 ---
 

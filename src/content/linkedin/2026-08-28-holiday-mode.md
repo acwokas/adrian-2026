@@ -2,6 +2,9 @@
 title: "Holiday mode for a one-person operation"
 date: 2026-08-28
 draft: true
+status: "retired"
+retired_date: "2026-09-04"
+retired_note: "Retired alongside its Friday Frame -- see src/content/friday-frame/2026-08-28-holiday-mode-for-a-one-person-operation.md for the reason. Companion piece, stands or falls with the parent post."
 friday_frame_url: "https://adrianwatkins.com/writing/friday-frame/2026-08-28-holiday-mode-for-a-one-person-operation"
 note: "Native LinkedIn post. Paste the body below as-is. No markdown, no rich text."
 ---
