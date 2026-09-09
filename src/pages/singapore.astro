@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
-import { upcomingMentoring, mentoringAsOfHuman, joinEnglishList } from '../data/singapore-mentoring';
+import { upcomingMentoring, mentoringAsOfHuman } from '../data/singapore-mentoring';
 
 const title = 'Adrian Watkins in Singapore | Mentoring and Community';
 const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring, NLB workshops and regional programmes.";
@@ -15,10 +15,6 @@ const singaporeJsonLd = {
   description,
   about: { '@id': PERSON_ID },
 };
-
-const mentoringSentence = joinEnglishList(
-  upcomingMentoring.map((m) => `${m.programme} on ${m.when}`),
-);
 
 // /experience does not exist yet as a page. Pointing the secondary CTA at
 // /about until it does, per Adrian's instruction, so the button has a real
@@ -69,30 +65,43 @@ const mentoringSentence = joinEnglishList(
         <p>My contribution is to question assumptions, give constructive feedback and help teams connect an ambitious idea with a credible next step. I particularly enjoy the point where a team moves from describing a product to understanding the people who might use it.</p>
       </div>
 
-      <div style="margin-bottom:32px">
-        <h3>Ngee Ann Polytechnic</h3>
-        <p class="quiet" style="font-size:13px;margin-bottom:10px">May 2026</p>
-        <div class="prose">
+      {/* Ngee Ann and NTU are parallel campus entries (name, date, one short
+          paragraph each), so they sit side by side using the same .speak /
+          .speak-card pairing /speaking.astro uses for its calendar entries,
+          rather than stacking as two full-width blocks. */}
+      <div class="speak" style="margin-bottom:32px">
+        <div class="speak-card">
+          <div class="when">May 2026</div>
+          <h3>Ngee Ann Polytechnic</h3>
           <p>I supported the Ngee Ann Polytechnic edition through an online mentoring session on 21 May. My preferred track was responsible consumption and production, where my commercial and marketing background could help students think through customers, behaviour and the practical value of their ideas.</p>
+        </div>
+        <div class="speak-card">
+          <div class="when">September 2026</div>
+          <h3>Nanyang Technological University</h3>
+          <p>I continued with the NTU edition, joining the online mentoring session on 5 September. The programme explored nature-positive cities and communities, and responsible consumption through circular retail innovation.</p>
         </div>
       </div>
 
-      <div style="margin-bottom:16px">
-        <h3>Nanyang Technological University</h3>
-        <p class="quiet" style="font-size:13px;margin-bottom:10px">September 2026</p>
-        <div class="prose">
-          <p>I continued with the NTU edition, joining the online mentoring session on 5 September. The programme explored nature-positive cities and communities, and responsible consumption through circular retail innovation.</p>
-          <p>The value of these sessions lies in the conversation: helping students test their thinking, sharpen a business pitch and decide which questions need better answers.</p>
-          {/* No URL supplied for the organiser's NTU programme highlights, and none found in the site's own content. Left as plain text pending a real link from Adrian. */}
-          <p class="quiet" style="font-size:14px">See the organiser's NTU programme highlights.</p>
-        </div>
+      <div class="prose" style="margin-bottom:40px">
+        <p>The value of these sessions lies in the conversation: helping students test their thinking, sharpen a business pitch and decide which questions need better answers.</p>
+        {/* No URL supplied for the organiser's NTU programme highlights, and none
+            found in the site's own content. Styled as a caption/note rather than
+            a dangling sentence; wrap the text in an <a href="..."> the moment
+            Adrian supplies the URL, same treatment as PhotoSlot figcaptions. */}
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--muted);margin-top:12px">See the organiser's NTU programme highlights.</p>
       </div>
 
       <div>
         <h3>Next mentoring dates</h3>
-        <p class="quiet" style="font-size:13px;margin-bottom:10px">Upcoming as of {mentoringAsOfHuman}</p>
+        <p class="quiet" style="font-size:13px;margin-bottom:14px">Upcoming as of {mentoringAsOfHuman}</p>
         <div class="prose">
-          <p>My next SDG Open Hack commitments include {mentoringSentence}.</p>
+          <aside class="callout">
+            <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
+              {upcomingMentoring.map((m) => (
+                <li>{m.programme} on {m.when}.</li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </div>
     </div>
@@ -111,6 +120,18 @@ const mentoringSentence = joinEnglishList(
         <p>I also joined Entrepreneurship Connect at the National Library on 8 March 2026, meeting participants and others involved in the founder community.</p>
         {/* No URL supplied for the 2025 NLB workshop reflection, and none found in src/content/writing or src/content/linkedin. Left as plain text pending a real link from Adrian. */}
         <p class="quiet" style="font-size:14px">Read my reflection on the 2025 workshop.</p>
+      </div>
+
+      {/* Moved here from "A regional perspective from Singapore" per Adrian: the
+          programme runs out of Singapore even though its name and scope are
+          ASEAN-wide, so it belongs with the Singapore-based work, not the
+          regional/overseas section. Copy unchanged. */}
+      <div style="margin-top:40px">
+        <h3>ASEAN Foundation</h3>
+        <p class="quiet" style="font-size:13px;margin-bottom:10px">New appointment, September 2026</p>
+        <div class="prose">
+          <p>I have been selected as a mentor for the ASEAN Foundation's ASEAN SOAR Together 2026 Group Mentorship Programme. The appointment involves supporting enterprises across Southeast Asia with practical guidance on their business challenges. Programme onboarding begins in September.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -165,14 +186,6 @@ const mentoringSentence = joinEnglishList(
           aspectRatio="16 / 9"
           caption="Opening keynote, Smart Living, Sustainable Future 2025. Taipei City Government, November 2025."
         />
-      </div>
-
-      <div>
-        <h3>ASEAN Foundation</h3>
-        <p class="quiet" style="font-size:13px;margin-bottom:10px">New appointment, September 2026</p>
-        <div class="prose">
-          <p>I have been selected as a mentor for the ASEAN Foundation's ASEAN SOAR Together 2026 Group Mentorship Programme. The appointment involves supporting enterprises across Southeast Asia with practical guidance on their business challenges. Programme onboarding begins in September.</p>
-        </div>
       </div>
     </div>
   </section>

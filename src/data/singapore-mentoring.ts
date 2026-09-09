@@ -28,13 +28,3 @@ export const upcomingMentoring: MentoringDate[] = [
 ];
 
 export const completedMentoring: MentoringDate[] = [];
-
-// Joins ["A", "B", "C"] as "A, B, and C" (Oxford comma), "A and B" for two,
-// "A" for one. Used to render the upcoming-dates sentence from the array
-// above so the copy never drifts out of sync with the data.
-export function joinEnglishList(items: string[]): string {
-  if (items.length === 0) return '';
-  if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
-}
