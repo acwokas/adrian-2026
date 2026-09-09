@@ -8,7 +8,7 @@ const title = 'Adrian Watkins in Singapore | Mentoring and Community';
 const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring, NLB workshops and regional programmes.";
 
 const todayISO = new Date().toISOString().slice(0, 10);
-const upcomingMentoring = getUpcomingMentoring(todayISO);
+const mentoringProgrammes = getUpcomingMentoring(todayISO);
 
 const singaporeJsonLd = {
   '@context': 'https://schema.org',
@@ -47,7 +47,7 @@ const singaporeJsonLd = {
           above it). When there are no upcoming dates the second column
           isn't rendered at all and the grid falls back to a single column,
           so the right side never sits empty. */}
-      <div class="hero-grid" style={upcomingMentoring.length === 0 ? 'grid-template-columns:1fr' : undefined}>
+      <div class="hero-grid" style={mentoringProgrammes.length === 0 ? 'grid-template-columns:1fr' : undefined}>
         <div>
           <p class="lede">Singapore is where I live, work and build. Alongside my executive responsibilities, I contribute to programmes that help students develop their ideas, founders build stronger businesses and business leaders make sense of technology.</p>
           <div class="prose" style="margin-top:8px">
@@ -60,18 +60,30 @@ const singaporeJsonLd = {
             component the essays use for a takeaway block), but its
             background/border/padding only apply inside .prose, the
             previous markup dropped that wrapper, which is why this rendered
-            as unstyled floating text instead of a card. Heading now sits
-            inside the box too, so the title and the list read as one
-            deliberate element instead of a loose line above a separate box. */}
-        {upcomingMentoring.length > 0 && (
+            as unstyled floating text instead of a card. Heading sits inside
+            the box too, so the title and the lists read as one deliberate
+            element instead of a loose line above a separate box.
+
+            Two programmes, so each gets its own small accent-coloured label
+            (same visual recipe as .speak-card .when: 12px, uppercase,
+            letter-spaced, accent colour) above its own list, rather than
+            folding the programme name into every line. Grouping comes
+            straight from the data shape (an array of programmes, each with
+            its own entries) rather than being hard-coded here. */}
+        {mentoringProgrammes.length > 0 && (
           <div class="prose">
             <aside class="callout" style="margin:0">
-              <h3 style="font-size:22px;font-weight:500;margin-bottom:14px">Next mentoring dates</h3>
-              <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
-                {upcomingMentoring.map((m) => (
-                  <li>{m.programme} on {m.when}</li>
-                ))}
-              </ul>
+              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Next mentoring dates</h3>
+              {mentoringProgrammes.map((programme, i) => (
+                <div style={i < mentoringProgrammes.length - 1 ? 'margin-bottom:20px' : undefined}>
+                  <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px">{programme.label}</div>
+                  <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
+                    {programme.entries.map((entry) => (
+                      <li>{entry.detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </aside>
           </div>
         )}
