@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PERSON_ID } from '../data/person';
+
+// PLACEHOLDER PAGE. Title, description, and body copy below are not
+// publishable. Awaiting the briefing and final content from Adrian; do not
+// deploy this page until that copy replaces the placeholder blocks.
+const title = 'PLACEHOLDER: Singapore. Adrian Watkins.';
+const description = 'PLACEHOLDER description, replace before publishing.';
+
+const singaporeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'PLACEHOLDER: Singapore. Adrian Watkins.',
+  url: 'https://adrianwatkins.com/singapore',
+  description,
+  about: { '@id': PERSON_ID },
+};
+---
+
+<BaseLayout title={title} description={description} current="singapore" jsonLd={singaporeJsonLd}>
+  <section class="stub" style="padding-bottom:32px">
+    <div class="container">
+      <div class="eyebrow">Singapore</div>
+      <h1>[[ PLACEHOLDER HEADLINE: DO NOT PUBLISH ]]</h1>
+      <p class="lede">[[ PLACEHOLDER LEDE. Awaiting briefing and content from Adrian. This page is a structural shell only. ]]</p>
+    </div>
+  </section>
+
+  <section style="padding:48px 0">
+    <div class="container">
+      <h2 style="margin-bottom:18px">[[ PLACEHOLDER SECTION HEADING ]]</h2>
+      <div class="prose">
+        <p>[[ PLACEHOLDER BODY COPY. Nothing below this line is real. Do not ship this section as written. Replace entirely once the briefing and content arrive. ]]</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 0 96px 0">
+    <div class="container">
+      <p class="stub-note">[[ PLACEHOLDER CTA. Confirm destination link once content lands. ]] <a href="/contact">get in touch</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
