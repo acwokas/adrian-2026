@@ -2,10 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
-import { upcomingMentoring, mentoringAsOfHuman } from '../data/singapore-mentoring';
+import { getUpcomingMentoring } from '../data/singapore-mentoring';
 
 const title = 'Adrian Watkins in Singapore | Mentoring and Community';
 const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring, NLB workshops and regional programmes.";
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const upcomingMentoring = getUpcomingMentoring(todayISO);
 
 const singaporeJsonLd = {
   '@context': 'https://schema.org',
@@ -31,16 +34,41 @@ const singaporeJsonLd = {
 >
   <section class="stub" style="padding-bottom:32px">
     <div class="container">
-      <div class="eyebrow">Singapore</div>
-      <h1>Singapore is home</h1>
-      <p class="lede">Singapore is where I live, work and build. Alongside my executive responsibilities, I contribute to programmes that help students develop their ideas, founders build stronger businesses and business leaders make sense of technology.</p>
-      <div class="prose" style="margin-top:8px">
-        <p>I bring the experience of working across markets and leading commercial and operating teams. In a mentoring session, that usually comes down to practical questions: who is this for, what problem does it solve, and what would you need to test next?</p>
-        <p>This page brings together some of that work in Singapore, alongside the regional relationships I continue to build from here.</p>
-      </div>
-      <div class="ctarow" style="margin-top:28px">
-        <a class="btn btn-primary" href="/contact">Discuss a mentoring or guest session</a>
-        <a class="btn btn-secondary" href="/about">Explore my executive experience</a>
+      {/* Two-column hero: intro copy left, "Next mentoring dates" card right,
+          reusing the same .hero-grid the homepage hero uses for text + photo
+          (align-items:start, collapses to one column and stacks in normal
+          DOM order below 880px, so the card lands right after the intro
+          copy on mobile rather than reordering above it). When there are no
+          upcoming dates the second column isn't rendered at all and the
+          grid falls back to a single column, so the right side never sits
+          empty. */}
+      <div class="hero-grid" style={upcomingMentoring.length === 0 ? 'grid-template-columns:1fr' : undefined}>
+        <div>
+          <div class="eyebrow">Singapore</div>
+          <h1>Singapore is home</h1>
+          <p class="lede">Singapore is where I live, work and build. Alongside my executive responsibilities, I contribute to programmes that help students develop their ideas, founders build stronger businesses and business leaders make sense of technology.</p>
+          <div class="prose" style="margin-top:8px">
+            <p>I bring the experience of working across markets and leading commercial and operating teams. In a mentoring session, that usually comes down to practical questions: who is this for, what problem does it solve, and what would you need to test next?</p>
+            <p>This page brings together some of that work in Singapore, alongside the regional relationships I continue to build from here.</p>
+          </div>
+          <div class="ctarow" style="margin-top:28px">
+            <a class="btn btn-primary" href="/contact">Discuss a mentoring or guest session</a>
+            <a class="btn btn-secondary" href="/about">Explore my executive experience</a>
+          </div>
+        </div>
+
+        {upcomingMentoring.length > 0 && (
+          <div>
+            <h3>Next mentoring dates</h3>
+            <aside class="callout" style="margin-top:14px">
+              <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
+                {upcomingMentoring.map((m) => (
+                  <li>{m.programme} on {m.when}.</li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -88,20 +116,6 @@ const singaporeJsonLd = {
             No URL supplied and none found in the site's own content — a link
             with no destination is worse than no line at all. Restore this
             sentence (with a real <a href>) the moment Adrian sends the URL. */}
-      </div>
-
-      <div>
-        <h3>Next mentoring dates</h3>
-        <p class="quiet" style="font-size:13px;margin-bottom:14px">Upcoming as of {mentoringAsOfHuman}</p>
-        <div class="prose">
-          <aside class="callout">
-            <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
-              {upcomingMentoring.map((m) => (
-                <li>{m.programme} on {m.when}.</li>
-              ))}
-            </ul>
-          </aside>
-        </div>
       </div>
     </div>
   </section>
