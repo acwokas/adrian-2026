@@ -54,10 +54,6 @@ const singaporeJsonLd = {
             <p>I bring the experience of working across markets and leading commercial and operating teams. In a mentoring session, that usually comes down to practical questions: who is this for, what problem does it solve, and what would you need to test next?</p>
             <p>This page brings together some of that work in Singapore, alongside the regional relationships I continue to build from here.</p>
           </div>
-          <div class="ctarow" style="margin-top:28px">
-            <a class="btn btn-primary" href="/contact">Discuss a mentoring or guest session</a>
-            <a class="btn btn-secondary" href="/about">Explore my executive experience</a>
-          </div>
         </div>
 
         {/* .callout is the site's existing boxed/highlight treatment (same
@@ -79,6 +75,21 @@ const singaporeJsonLd = {
             </aside>
           </div>
         )}
+      </div>
+
+      {/* CTA row moved below both columns rather than kept in the narrower
+          left column. These are page-level actions relevant to the whole
+          hero (intro and the mentoring card both), not specifically tied to
+          the first paragraph, so a full-width row after both columns is a
+          reasonable place for them, not just a fallback. It also matches
+          /contact's own hero CTA row exactly: plain .ctarow/.btn, no
+          per-button overrides, at the full unconstrained container width,
+          rather than fighting the left column's fixed 1.55fr share, which
+          is what was forcing "Discuss a mentoring or guest session" to wrap
+          and the two buttons to sit at different heights. */}
+      <div class="ctarow" style="margin-top:28px">
+        <a class="btn btn-primary" href="/contact">Discuss a mentoring or guest session</a>
+        <a class="btn btn-secondary" href="/about">Explore my executive experience</a>
       </div>
     </div>
   </section>
