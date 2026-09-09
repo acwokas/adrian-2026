@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import { PERSON_ID } from '../data/person';
+import { getUpcomingMentoring } from '../data/singapore-mentoring';
+
+const title = 'Adrian Watkins in Singapore | Mentoring and Community';
+const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring, NLB workshops and regional programmes.";
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const mentoringProgrammes = getUpcomingMentoring(todayISO);
+
+const singaporeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Adrian Watkins in Singapore',
+  url: 'https://adrianwatkins.com/singapore',
+  description,
+  about: { '@id': PERSON_ID },
+};
+
+// /experience does not exist yet as a page. Pointing the secondary CTA at
+// /about until it does, per Adrian's instruction, so the button has a real
+// destination in the meantime.
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  current="singapore"
+  ogImage="/images/speaking-workshop-blackstorm.jpg"
+  ogImageAlt="Adrian Watkins delivering the BlackStorm What is Marketing, Really? workshop for the National Library Board Launch Entrepreneurship Bootcamp."
+  jsonLd={singaporeJsonLd}
+>
+  <section class="stub" style="padding-bottom:32px">
+    <div class="container">
+      <div class="eyebrow">Singapore</div>
+      <h1>Singapore is home</h1>
+
+      {/* Eyebrow and H1 sit outside the grid deliberately: the grid row itself
+          starts at the lede on the left, so align-items:start lines the card
+          up with the first line of "Singapore is where I live..." rather
+          than with the top of the eyebrow/H1 block above it. Reuses the same
+          .hero-grid the homepage hero uses for text + photo (collapses to
+          one column and stacks in normal DOM order below 880px, so the card
+          lands right after the intro copy on mobile rather than reordering
+          above it). When there are no upcoming dates the second column
+          isn't rendered at all and the grid falls back to a single column,
+          so the right side never sits empty. */}
+      <div class="hero-grid" style={mentoringProgrammes.length === 0 ? 'grid-template-columns:1fr' : undefined}>
+        <div>
+          <p class="lede">Singapore is where I live, work and build. Alongside my executive responsibilities, I contribute to programmes that help students develop their ideas, founders build stronger businesses and business leaders make sense of technology.</p>
+          <div class="prose" style="margin-top:8px">
+            <p>I bring the experience of working across markets and leading commercial and operating teams. In a mentoring session, that usually comes down to practical questions: who is this for, what problem does it solve, and what would you need to test next?</p>
+            <p>This page brings together some of that work in Singapore, alongside the regional relationships I continue to build from here.</p>
+          </div>
+        </div>
+
+        {/* .callout is the site's existing boxed/highlight treatment (same
+            component the essays use for a takeaway block), but its
+            background/border/padding only apply inside .prose, the
+            previous markup dropped that wrapper, which is why this rendered
+            as unstyled floating text instead of a card. Heading sits inside
+            the box too, so the title and the lists read as one deliberate
+            element instead of a loose line above a separate box.
+
+            Two programmes, so each gets its own small accent-coloured label
+            (same visual recipe as .speak-card .when: 12px, uppercase,
+            letter-spaced, accent colour) above its own list, rather than
+            folding the programme name into every line. Grouping comes
+            straight from the data shape (an array of programmes, each with
+            its own entries) rather than being hard-coded here. */}
+        {mentoringProgrammes.length > 0 && (
+          <div class="prose">
+            <aside class="callout" style="margin:0">
+              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Next mentoring dates</h3>
+              {mentoringProgrammes.map((programme, i) => (
+                <div style={i < mentoringProgrammes.length - 1 ? 'margin-bottom:20px' : undefined}>
+                  <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px">{programme.label}</div>
+                  <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--ink)">
+                    {programme.entries.map((entry) => (
+                      <li>{entry.detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </aside>
+          </div>
+        )}
+      </div>
+
+      {/* CTA row moved below both columns rather than kept in the narrower
+          left column. These are page-level actions relevant to the whole
+          hero (intro and the mentoring card both), not specifically tied to
+          the first paragraph, so a full-width row after both columns is a
+          reasonable place for them, not just a fallback. It also matches
+          /contact's own hero CTA row exactly: plain .ctarow/.btn, no
+          per-button overrides, at the full unconstrained container width,
+          rather than fighting the left column's fixed 1.55fr share, which
+          is what was forcing "Discuss a mentoring or guest session" to wrap
+          and the two buttons to sit at different heights. */}
+      <div class="ctarow" style="margin-top:28px">
+        <a class="btn btn-primary" href="/contact">Discuss a mentoring or guest session</a>
+        <a class="btn btn-secondary" href="/about">Explore my executive experience</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 0 48px 0">
+    <div class="container">
+      <PhotoSlot
+        src="speaking-workshop-blackstorm.jpg"
+        alt="Adrian Watkins delivering the BlackStorm What is Marketing, Really? workshop. Adrian at a flipchart with the workshop title on screen."
+        description="Mid-flow on the National Library Board Launch Entrepreneurship Bootcamp workshop with BlackStorm Group."
+        aspectRatio="4 / 3"
+        caption="National Library Board and BlackStorm Group, Launch Entrepreneurship Bootcamp."
+      />
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">Helping students turn ideas into practical solutions</h2>
+      <div class="prose" style="margin-bottom:32px">
+        <p>In 2026, I have been volunteering as a mentor with the Global Green Economic Foundation's SDG Open Hack programme in Singapore. Students work on challenges connected to the UN Sustainable Development Goals, developing solutions and learning how to explain their value.</p>
+        <p>My contribution is to question assumptions, give constructive feedback and help teams connect an ambitious idea with a credible next step. I particularly enjoy the point where a team moves from describing a product to understanding the people who might use it.</p>
+      </div>
+
+      {/* Ngee Ann and NTU are parallel campus entries (name, date, one short
+          paragraph each), so they sit side by side using the same .speak /
+          .speak-card pairing /speaking.astro uses for its calendar entries,
+          rather than stacking as two full-width blocks. */}
+      <div class="speak" style="margin-bottom:32px">
+        <div class="speak-card">
+          <div class="when">May 2026</div>
+          <h3>Ngee Ann Polytechnic</h3>
+          <p>I supported the Ngee Ann Polytechnic edition through an online mentoring session on 21 May. My preferred track was responsible consumption and production, where my commercial and marketing background could help students think through customers, behaviour and the practical value of their ideas.</p>
+        </div>
+        <div class="speak-card">
+          <div class="when">September 2026</div>
+          <h3>Nanyang Technological University</h3>
+          <p>I continued with the NTU edition, joining the online mentoring session on 5 September. The programme explored nature-positive cities and communities, and responsible consumption through circular retail innovation.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-bottom:40px">
+        <p>The value of these sessions lies in the conversation: helping students test their thinking, sharpen a business pitch and decide which questions need better answers.</p>
+        {/* REMOVED per Adrian: "See the organiser's NTU programme highlights."
+            No URL supplied and none found in the site's own content, a link
+            with no destination is worse than no line at all. Restore this
+            sentence (with a real <a href>) the moment Adrian sends the URL. */}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">Working with Singapore founders</h2>
+
+      <h3>National Library Board and BlackStorm Group</h3>
+      <p class="quiet" style="font-size:13px;margin-bottom:10px">Launch Entrepreneurship Bootcamp, 2025 and 2026</p>
+      <div class="prose">
+        <p>I have contributed to two consecutive years of the Launch Entrepreneurship Bootcamp with the National Library Board and BlackStorm Group.</p>
+        <p>In March 2025, I led an afternoon session on marketing, audience engagement and using AI in execution. We worked through practical exercises in communicating an idea clearly and testing whether a message earns attention.</p>
+        <p>I returned on 1 March 2026 as a facilitator for the Business Model Canvas and Marketing module. The session covered value propositions, customers, branding and routes to market, helping aspiring entrepreneurs connect their business ideas with the decisions needed to put them into practice.</p>
+        <p>I also joined Entrepreneurship Connect at the National Library on 8 March 2026, meeting participants and others involved in the founder community.</p>
+        {/* REMOVED per Adrian: "Read my reflection on the 2025 workshop."
+            No URL supplied and none found in src/content/writing or
+            src/content/linkedin, a link with no destination is worse than no
+            line at all. Restore this sentence (with a real <a href>) the
+            moment Adrian sends the URL. */}
+      </div>
+
+      {/* Moved here from "A regional perspective from Singapore" per Adrian: the
+          programme runs out of Singapore even though its name and scope are
+          ASEAN-wide, so it belongs with the Singapore-based work, not the
+          regional/overseas section. Copy unchanged. */}
+      <div style="margin-top:40px">
+        <h3>ASEAN Foundation</h3>
+        <p class="quiet" style="font-size:13px;margin-bottom:10px">New appointment, September 2026</p>
+        <div class="prose">
+          <p>I have been selected as a mentor for the ASEAN Foundation's ASEAN SOAR Together 2026 Group Mentorship Programme. The appointment involves supporting enterprises across Southeast Asia with practical guidance on their business challenges. Programme onboarding begins in September.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">Bringing business leaders into useful conversation</h2>
+
+      <h3>Executive moderation</h3>
+      <p class="quiet" style="font-size:13px;margin-bottom:10px">The Ortus Club, May 2026</p>
+      <div class="prose" style="margin-bottom:32px">
+        <p>On 15 May 2026, I moderated The Era of Services Delivery, a Singapore executive roundtable organised by The Ortus Club with Rocketlane.</p>
+        <p>The discussion explored services delivery and the impact of AI. My role was to guide the conversation, make space for different experiences and help participants examine the operating questions behind the technology. The discussion was held in confidence; the substance shared by participants stays in the room.</p>
+        <p>The Ortus Club subsequently interviewed me about my approach to executive moderation and how to involve everyone at the table. <a href="https://www.ortusclub.com/moderator/why-is-democratising-the-room-the-most-underrated-skill-in-executive-moderation-adrian-watkins-sqreem-technologies/" target="_blank" rel="noopener noreferrer">Read the Ortus Club interview.</a></p>
+      </div>
+
+      <h3>AI and commercial leadership</h3>
+      <div class="prose">
+        <p>I also contribute to public discussions through the founder and business community. In August 2025, I joined Koo Ping Shung and Longjin Guo for Beyond the Hype, an online panel on fractional AI leadership and its practical value for executives.</p>
+        {/* REMOVED per Adrian: "Explore the Beyond the Hype event."
+            No URL supplied and none found in the site's own content, a link
+            with no destination is worse than no line at all. Restore this
+            sentence (with a real <a href>) the moment Adrian sends the URL. */}
+        <p>In 2026, I took part in EntreBoss Hub's The Competitive Edge panel alongside Mark Gaynor, Paddy Tan and Victor Chan, moderated by Darius Chang. We explored strategy, executive performance and the role of human judgement when using AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">A regional perspective from Singapore</h2>
+      <div class="prose" style="margin-bottom:32px">
+        <p>My work with founders and business leaders extends across the region. Those conversations give me different perspectives to bring back to my work in Singapore.</p>
+      </div>
+
+      <div style="margin-bottom:32px">
+        <h3>Malaysia</h3>
+        <div class="prose">
+          <p>Through BEYOND4, I have supported the Pahang Innovative Startup Accelerator across its 2025 and 2026 cohorts, including lead mentoring and practical training.</p>
+          <p>In 2025, that included an eight-session mentoring engagement. In June 2026, I delivered Product Development for Scaling and an accompanying office hour for founders to discuss their business plans. I also continued individual founder mentoring during the 2026 programme.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:32px">
+        <h3>Taiwan</h3>
+        <div class="prose" style="margin-bottom:24px">
+          <p>In November 2025, I travelled from Singapore to Taipei for Smart Living, Sustainable Future 2025 at t.Hub, working with the Industrial Technology Research Institute and the event team.</p>
+          <p>I delivered the opening keynote, Democratising Intelligence for a Sustainable Future, and moderated a startup panel with Jameson Hsu and Debbie Chien. The visit prompted further writing about AI's energy demands and the responsibilities that come with building its infrastructure. <a href="/writing/your-ai-earning-its-energy">Read my Taiwan reflection.</a></p>
+        </div>
+        <PhotoSlot
+          src="speaking-government.jpg"
+          alt="Adrian Watkins on stage opening the Taipei City Government Smart Living, Sustainable Future 2025 event."
+          description="Adrian opening the Taipei City Government keynote at Smart Living, Sustainable Future 2025."
+          aspectRatio="16 / 9"
+          caption="Opening keynote, Smart Living, Sustainable Future 2025. Taipei City Government, November 2025."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:18px">Sharing what I learn</h2>
+      <div class="prose">
+        <p>I publish AIinASIA and write about leadership, technology and the business decisions behind AI adoption. Singapore is a recurring part of that work, from its approach to long-term planning to the way its businesses and institutions build capability. <a href="/writing">Read my writing.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" style="padding:80px 0">
+    <div class="container">
+      <h2 style="color:#F4ECD8;margin-bottom:20px">Invite me to contribute</h2>
+      <div style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5">
+        <p style="margin-bottom:20px">I welcome conversations with Singapore universities, polytechnics, student programmes and founder communities about mentoring, guest sessions and practical workshops.</p>
+        <p style="margin-bottom:20px">Topics I can contribute to include customer discovery, commercial strategy, moving from an idea to an operating plan, and making informed decisions about AI. I am happy to discuss pro bono student sessions where the topic, audience and timing fit.</p>
+        <p style="margin-bottom:32px">Tell me about your programme, who will be in the room and what you would like them to take away.</p>
+      </div>
+      <div class="ctarow">
+        <a class="btn btn-primary" href="/contact" style="background:#D89A55;flex:0 0 auto">Discuss a session</a>
+        <a class="btn btn-secondary" href="mailto:me@adrianwatkins.com" style="border-color:#E9E2D2;color:#E9E2D2;flex:0 0 auto;min-width:auto">me@adrianwatkins.com</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
