@@ -5,11 +5,11 @@ interface Props {
 const { current = '' } = Astro.props;
 
 const links = [
-  { href: '/edge', label: 'EDGE', key: 'edge' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/writing', label: 'Writing', key: 'writing', mobileHidden: true },
   { href: '/speaking', label: 'Speaking', key: 'speaking', mobileHidden: true },
   { href: '/singapore', label: 'Singapore', key: 'singapore', mobileHidden: true },
+  { href: '/edge', label: 'EDGE', key: 'edge' },
   { href: '/now', label: '/now', key: 'now', mobileHidden: true },
   { href: '/contact', label: 'Contact', key: 'contact' },
 ];
@@ -17,10 +17,10 @@ const links = [
 const mobileLinks = [
   { href: '/', label: 'Home', key: 'home' },
   { href: '/about', label: 'About', key: 'about' },
-  { href: '/edge', label: 'EDGE', key: 'edge' },
-  { href: '/speaking', label: 'Speaking', key: 'speaking' },
   { href: '/writing', label: 'Writing', key: 'writing' },
+  { href: '/speaking', label: 'Speaking', key: 'speaking' },
   { href: '/singapore', label: 'Singapore', key: 'singapore' },
+  { href: '/edge', label: 'EDGE', key: 'edge' },
   { href: '/now', label: '/now', key: 'now' },
   { href: '/contact', label: 'Contact', key: 'contact' },
 ];
