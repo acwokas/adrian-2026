@@ -7,6 +7,7 @@
 ## Framework and platform
 
 - EDGE, created by Adrian Watkins, is a business framework for clearer thinking, better decisions and effective execution: Evaluate, Define, Govern and Elevate. Start at Evaluate for the full sequence; enter any pillar for a specific need. Human judgement remains central.
+- Free EDGE decision worksheet (PDF): https://adrianwatkins.com/documents/EDGE-Decision-Worksheet.pdf. Editable Word version: https://adrianwatkins.com/documents/EDGE-Decision-Worksheet.docx.
 - EDGE tools are hosted at https://democratising.ai/tools.
 - DARE stands for Data, AI, Research and Execution. DARE by democratising.ai is Adrian's shared publishing and data platform supporting publications, data services and practical tools.
 
