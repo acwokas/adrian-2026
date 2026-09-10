@@ -30,15 +30,15 @@ https://www.adrianwatkins.com/*   https://adrianwatkins.com/:splat   301!
 http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 
 # === Lovable-era routes (all 26 sitemap URLs covered) ===
-/tools/elevate/prompt-engineer       https://promptandgo.ai/                     301
-/tools/evaluate/negotiation          https://democratising.ai/                   301
-/tools/evaluate/redteam              https://democratising.ai/                   301
-/tools/evaluate/conversation         https://democratising.ai/                   301
-/tools/define/content-sprint         https://democratising.ai/                   301
-/tools/govern/maturity-assessment    https://democratising.ai/                   301
+/tools/elevate/prompt-engineer         https://democratising.ai/tools/prompt-engineer 301
+/tools/evaluate/negotiation            https://democratising.ai/tools/negotiation-simulator 301
+/tools/evaluate/redteam                https://democratising.ai/tools/red-team-simulation 301
+/tools/evaluate/conversation           https://democratising.ai/tools/conversation-simulator 301
+/tools/define/content-sprint           https://democratising.ai/tools/content-sprint-generator 301
+/tools/govern/maturity-assessment      https://democratising.ai/tools/maturity-assessment 301
 /tools                               /edge                                       301
 /tools/                              /edge                                       301
-/tools/*                             https://democratising.ai/                   301
+/tools/*                             https://democratising.ai/tools              301
 /executive-cv                        /documents/Adrian-Watkins-Executive-CV-2026.pdf   301
 /experience                          /about                                      301
 /how-i-work                          /about                                      301
