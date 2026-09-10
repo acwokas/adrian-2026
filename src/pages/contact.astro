@@ -172,15 +172,19 @@ const contactJsonLd = {
         });
         const body = await res.json().catch(function () { return {}; });
         if (res.ok && body.ok) {
+          window.awTrack?.('aw_form_success', { form_name: 'contact' });
+          window.awTrack?.('generate_lead', { lead_type: 'contact', method: 'contact_form' });
           status.className = 'cf-status ok';
           status.textContent = 'Sent. Thank you for getting in touch.';
           form.reset();
         } else {
           status.className = 'cf-status err';
+          window.awTrack?.('aw_form_error', { form_name: 'contact', error_type: ['missing_fields', 'invalid_fields', 'invalid_email'].includes(body.error) ? 'validation' : 'service_error' });
           const errors = { missing_fields: 'Please complete your name, email and message.', invalid_fields: 'Please check your details and try again.', invalid_email: 'Please enter a valid email address.' };
           status.textContent = errors[body.error] || 'Your message could not be sent. Please email me@adrianwatkins.com directly.';
         }
       } catch (err) {
+        window.awTrack?.('aw_form_error', { form_name: 'contact', error_type: 'network' });
         status.className = 'cf-status err';
         status.textContent = 'Network error. Please email me directly.';
       } finally {

@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const code=ts.transpileModule(fs.readFileSync('functions/api/writing-subscribe.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {onRequestPost}=await import(`data:text/javascript;base64,${Buffer.from(code).toString('base64')}`);
+const pending=[];let requests=[];let duplicate=false;let storageFail=false;let alertFail=false;
+globalThis.fetch=async (url,init)=>{requests.push({url,init});return url.includes('resend.com')?new Response('{}',{status:alertFail?400:200}):new Response(JSON.stringify(duplicate?[]:[{id:'test-id',created_at:'2026-09-10T13:00:00Z'}]),{status:storageFail?503:201});};
+const submit=async(email='test@example.invalid',honeypot='')=>{requests=[];const result=await onRequestPost({request:new Request('https://adrianwatkins.com/api/writing-subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,source:'/writing/test',honeypot})}),env:{SUPABASE_URL:'https://example.test',SUPABASE_SERVICE_ROLE_KEY:'fake',RESEND_API_KEY:'fake'},waitUntil:p=>pending.push(p)});await Promise.all(pending.splice(0));return result;};
+assert.equal((await submit()).status,200);assert.equal(requests.length,2);assert.match(requests[0].init.headers.Prefer,/ignore-duplicates/);assert.equal(requests[1].init.headers['Idempotency-Key'],'newsletter-signup/test-id');assert.deepEqual(JSON.parse(requests[1].init.body).to,['me@adrianwatkins.com']);
+duplicate=true;assert.equal((await submit()).status,409);assert.equal(requests.length,1);duplicate=false;
+storageFail=true;assert.equal((await submit()).status,500);assert.equal(requests.length,1);storageFail=false;
+alertFail=true;assert.equal((await submit()).status,200);assert.equal(requests.length,2);alertFail=false;
+assert.equal((await submit('adrian@watkinsworks.asia.')).status,400);assert.equal(requests.length,0);
+assert.equal((await submit('test@example.invalid','bot')).status,200);assert.equal(requests.length,0);
+console.log('Signup storage, duplicate, validation, alert recipient and failure checks passed. No real emails sent.');

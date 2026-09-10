@@ -33,6 +33,9 @@
 // they subscribed when their details were not saved.
 
 interface Env {
+  RESEND_API_KEY?: string;
+  CONTACT_FROM?: string;
+  CONTACT_TO?: string;
   SUPABASE_URL?: string;
   SUPABASE_SERVICE_ROLE_KEY?: string;
 }
@@ -76,7 +79,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const source = (body.source || '/writing').trim().slice(0, MAX_SOURCE);
 
   if (!email) return json({ ok: false, error: 'missing_email' }, 400);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!/^[^\s@]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i.test(email)) {
     return json({ ok: false, error: 'invalid_email' }, 400);
   }
 
@@ -95,7 +98,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   }
 
   // Direct Supabase REST insert. Service-role key bypasses RLS, so we don't
-  // need any anon-key policy gymnastics. Use Prefer:resolution=merge-duplicates
+  // need any anon-key policy gymnastics. Use Prefer:resolution=ignore-duplicates
   // and on_conflict=email so the same address re-subscribing does not 409.
   // 5s hard cap on the Supabase round-trip: without this, a Supabase outage
   // leaves the visitor's form submission spinning forever (no page to fall
@@ -111,7 +114,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         'Content-Type': 'application/json',
         apikey: supaKey,
         Authorization: `Bearer ${supaKey}`,
-        Prefer: 'resolution=merge-duplicates,return=minimal',
+        Prefer: 'resolution=ignore-duplicates,return=representation',
       },
       body: JSON.stringify([
         {
@@ -137,6 +140,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return json({ ok: false, error: 'store_failed', status: res.status }, 500);
     }
 
+    const rows = await res.json() as Array<{ id: string; created_at: string }>;
+    if (!rows.length) return json({ ok: false, error: 'already_subscribed' }, 409);
+    // Storage is the source of truth. Email failure must not undo a signup.
+    ctx.waitUntil(notifySignup(ctx.env, rows[0], email, source));
     return json({ ok: true, sent: true, stored: true });
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
@@ -164,4 +171,28 @@ function json(payload: unknown, status = 200): Response {
       'Cache-Control': 'no-store',
     },
   });
+}
+
+async function notifySignup(env: Env, row: { id: string; created_at: string }, email: string, source: string) {
+  if (!env.RESEND_API_KEY) { console.error('[writing-subscribe] Alert configuration missing'); return; }
+  const when = new Date(row.created_at).toLocaleString('en-SG', { timeZone: 'Asia/Singapore', dateStyle: 'medium', timeStyle: 'short' });
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': `newsletter-signup/${row.id}` },
+        body: JSON.stringify({
+          from: env.CONTACT_FROM || 'Adrian Watkins <contact@adrianwatkins.com>',
+          to: [env.CONTACT_TO || 'me@adrianwatkins.com'],
+          subject: 'New website newsletter signup',
+          text: `A new subscriber has joined your website writing list.\n\nEmail: ${email}\nSigned up: ${when} SGT\nSource: ${source}\n\nPrivate signup list: https://supabase.com/dashboard/project/ukacqljogssreycumocn/editor/56028`,
+        }),
+        signal: AbortSignal.timeout(5000),
+      });
+      if (response.ok) return;
+      if (response.status < 500 && response.status !== 429) { console.error('[writing-subscribe] Alert rejected', response.status); return; }
+    } catch { /* Retry using the same idempotency key. */ }
+    if (attempt < 2) await new Promise(resolve => setTimeout(resolve, 500 * (attempt + 1)));
+  }
+  console.error('[writing-subscribe] Alert delivery failed after retries', row.id);
 }

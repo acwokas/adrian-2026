@@ -148,6 +148,8 @@ const resolvedSource = source || Astro.url.pathname || '/writing';
         try { payload = await res.json(); } catch (_) {}
 
         if (res.ok && payload && payload.ok) {
+          window.awTrack?.('sign_up', { method: 'newsletter', form_name: 'newsletter' });
+          window.awTrack?.('aw_form_success', { form_name: 'newsletter' });
           setStatus('You are on the list. I will email you when there is something new.', 'ok');
           form.reset();
           if (button) {
@@ -157,6 +159,7 @@ const resolvedSource = source || Astro.url.pathname || '/writing';
         }
 
         const err = (payload && payload.error) || 'unknown';
+        window.awTrack?.('aw_form_error', { form_name: 'newsletter', error_type: err === 'already_subscribed' ? 'already_subscribed' : err === 'invalid_email' ? 'validation' : 'service_error' });
         if (err === 'already_subscribed') {
           setStatus('You are already on the list. Nothing more to do.', 'ok');
         } else if (err === 'invalid_email') {
@@ -165,6 +168,7 @@ const resolvedSource = source || Astro.url.pathname || '/writing';
           setStatus('Something went sideways. Try again in a minute, or email me directly at me@adrianwatkins.com.', 'err');
         }
       } catch (err) {
+        window.awTrack?.('aw_form_error', { form_name: 'newsletter', error_type: 'network' });
         setStatus('Network hiccup. Try again in a minute.', 'err');
       } finally {
         if (button && button.textContent !== 'Subscribed') {
