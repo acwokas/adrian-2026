@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Selected leadership work | Adrian Watkins';
+const description = 'How Adrian Watkins brings commercial operations, integration and governance together to support growth across markets. Selected leadership case studies.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="work-intro"><div class="container">
+    <div class="eyebrow">Selected leadership work</div>
+    <h1>Putting strategy into practice.</h1>
+  </div></section>
+  <article id="sqreem" class="case-study"><div class="container">
+    <header class="case-header">
+      <div class="tag"><a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a> / Commercial operations, integration and governance</div>
+      <h2>Bringing three businesses into one operating approach.</h2>
+      <div class="prose">
+        <p class="lede">Integrating three businesses meant bringing different commercial practices into a shared approach that could support growth across markets.</p>
+        <p>Reporting to the Global Group CEO, I lead commercial operations and governance across SQREEM Technologies. A central part of that work has been harmonising people, product, process and compliance, while giving regional teams the clarity to move opportunities forward.</p>
+      </div>
+    </header>
+    <div class="case-grid">
+      <section>
+        <h3>Turning integration into everyday decisions.</h3>
+        <p>I standardised contracts, pricing and approval routes around clear margin guidelines. Regional managing directors gained defined authority over pricing within the framework, alongside flexibility to select supply partners and prepare agreements. Final agreements and requests outside the framework came to me for approval.</p>
+        <p>Alongside this, I negotiated global supply partnerships with businesses including <a href="https://www.openx.com/" target="_blank" rel="noopener noreferrer">OpenX</a> and <a href="https://www.magnite.com/" target="_blank" rel="noopener noreferrer">Magnite</a>, creating opportunities for improved commercial models, joint pitches and a stronger exchange of value.</p>
+      </section>
+      <section>
+        <h3>Supporting growth across markets.</h3>
+        <p>These changes helped shorten sales cycles, maintain margins and improve revenue quality, while supporting expansion across regions, including the US. They also gave teams a more consistent commercial narrative, with room to adapt to local market needs.</p>
+        <p class="case-principle">The principle behind the work is straightforward: clear responsibilities and commercial boundaries help people act with confidence. Governance becomes part of how growth happens.</p>
+      </section>
+    </div>
+    <div class="ctarow"><a class="btn btn-primary" href="/contact">Start a conversation</a><a class="btn btn-secondary" href="/about">More about my experience</a></div>
+  </div></article>
+</BaseLayout>
+<style>
+.work-intro { padding: 64px 0 40px; }
+.work-intro h1 { margin: 18px 0 0; font-size: clamp(36px, 4vw, 54px); }
+.case-study { border-top: 1px solid var(--rule); padding: 48px 0 64px; }
+.case-header h2 { max-width: 900px; margin: 20px 0 24px; }
+.case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin: 36px 0; }
+.case-grid section { border-top: 1px solid var(--rule); padding-top: 24px; min-width: 0; }
+.case-grid h3 { margin: 0 0 20px; }
+.case-principle { border-left: 3px solid #D89A55; padding-left: 20px; }
+@media (max-width: 760px) {
+  .work-intro { padding: 40px 0 32px; }
+  .case-grid { grid-template-columns: 1fr; gap: 24px; }
+  .case-study { padding: 32px 0 40px; }
+}
+</style>
