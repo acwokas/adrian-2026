@@ -22,13 +22,12 @@ const handleRequest: PagesFunction<Env> = async (context) => {
   const response = await context.next();
 
   // Keep published document downloads quick to revalidate. The Pages custom-domain layer
-  // otherwise applies a 4-hour default to .pdf which makes new versions
-  // invisible to returning visitors until their browser revalidates.
-  // _headers does not survive the custom-domain edge for .pdf assets; the
-  // middleware does, because it runs as the final response layer.
+  // otherwise raises a short max-age to its 4-hour browser-cache minimum.
+  // no-cache permits storage but requires validation before reuse, allowing
+  // ETags to avoid downloading unchanged files.
   if (/^\/documents\/[^/]+\.(pdf|docx?)$/i.test(path)) {
     const headers = new Headers(response.headers);
-    headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+    headers.set('Cache-Control', 'public, no-cache, must-revalidate');
     return new Response([204, 304].includes(response.status) ? null : response.body, {
       status: response.status,
       statusText: response.statusText,
