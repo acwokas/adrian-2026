@@ -29,12 +29,26 @@ const profileJsonLd = {
 ---
 
 <BaseLayout title={title} description={description} current="about" jsonLd={profileJsonLd}>
-<section class="stub" style="padding-bottom:32px"><div class="container">
-<div class="eyebrow">About</div>
-<h1>The experience behind the work.</h1>
-<p class="lede">I’m Adrian Watkins, a commercial and operating leader based in Singapore, with 25 years of experience across Asia, Europe and the US.</p>
-<div class="prose"><p>My career connects media, technology and business growth. Across different organisations and markets, my work has centred on bringing people, products and processes together, turning strategy into execution and creating the conditions for businesses to grow.</p></div>
-</div></section>
+<section class="about-intro">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-intro-copy">
+        <div class="eyebrow">About</div>
+        <h1>The experience behind the work.</h1>
+        <p class="lede">I’m Adrian Watkins, a commercial and operating leader based in Singapore, with 25 years of experience across Asia, Europe and the US.</p>
+        <p>I bring people, products and processes together to turn strategy into execution and create the conditions for businesses to grow.</p>
+      </div>
+      <div class="about-intro-photo">
+        <PhotoSlot src="about-ortus-roundtable-moderating.jpg" alt="Adrian Watkins moderating an Ortus Club executive roundtable in Singapore." aspectRatio="3 / 2" loading="eager" caption="Exchanging perspectives at an Ortus Club executive roundtable. Singapore." />
+      </div>
+    </div>
+    <ul class="about-focus" aria-label="Areas of experience">
+      <li>Commercial leadership</li>
+      <li>Building businesses</li>
+      <li>Governance that enables progress</li>
+    </ul>
+  </div>
+</section>
 <section class="about-section"><div class="container"><h2>Leading across markets.</h2><div class="prose"><p>I lead commercial operations and governance across <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>. My remit brings together commercial priorities, operational delivery and the decisions that support growth across regions.</p>
 <p>That has included sourcing the TotallyAwesome acquisition, helping broker the deal and leading commercial and operational integration. The wider work brought three businesses together within <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>, harmonising people, products, processes and compliance practices to support efficiencies, revenue growth and expansion, including into the US.</p>
 <p>In the second half of 2026, I was also appointed a Data Protection Officer (DPO), formalising work I had been carrying out over the preceding year. It complements my wider leadership responsibilities, translating privacy requirements across jurisdictions into practical product, commercial and operating decisions.</p></div><div class="about-photo"><PhotoSlot src="team-sqreem.jpg" alt="Adrian Watkins with the SQREEM Technologies team in front of a SQREEM banner." aspectRatio="16 / 9" caption="With the SQREEM Technologies team. Singapore." /></div></div></section>
@@ -52,7 +66,7 @@ const profileJsonLd = {
 <section class="about-section"><div class="container"><h2>Singapore is home.</h2><div class="prose"><p>Singapore is where I live, work and contribute. My ambition is to make everyday decisions a little easier to navigate, starting with the place I call home.</p>
 <p>That takes different forms: helping students develop their ideas, working with founders, bringing business leaders into conversation and building useful information services for people and local businesses.</p>
 <p>Recent contributions include student mentoring through SDG Open Hack, founder workshops with the <a href="https://www.nlb.gov.sg/" target="_blank" rel="noopener noreferrer">National Library Board</a> and <a href="https://blackstormco.asia/" target="_blank" rel="noopener noreferrer">BlackStorm Group</a>, and executive moderation with the <a href="https://www.ortusclub.com/moderator/why-is-democratising-the-room-the-most-underrated-skill-in-executive-moderation-adrian-watkins-sqreem-technologies/" target="_blank" rel="noopener noreferrer">Ortus Club</a>.</p>
-<p>I also support founders through regional programmes and have recently been appointed a mentor with the <a href="https://aseanfoundation.org/" target="_blank" rel="noopener noreferrer">ASEAN Foundation</a>’s ASEAN SOAR Together programme. Those relationships extend my contribution beyond Singapore and bring different perspectives back into my work here.</p></div><div class="ctarow"><a class="btn btn-primary" href="/singapore">My contribution in Singapore</a><a class="btn btn-secondary" href="/speaking">Speaking and conversations</a></div><div class="about-photo"><PhotoSlot src="about-ortus-roundtable-moderating.jpg" alt="Adrian Watkins moderating an Ortus Club executive roundtable in Singapore." aspectRatio="3 / 2" caption="Moderating an Ortus Club executive roundtable. Singapore." /></div></div></section>
+<p>I also support founders through regional programmes and have recently been appointed a mentor with the <a href="https://aseanfoundation.org/" target="_blank" rel="noopener noreferrer">ASEAN Foundation</a>’s ASEAN SOAR Together programme. Those relationships extend my contribution beyond Singapore and bring different perspectives back into my work here.</p></div><div class="ctarow"><a class="btn btn-primary" href="/singapore">My contribution in Singapore</a><a class="btn btn-secondary" href="/speaking">Speaking and conversations</a></div></div></section>
 <section class="about-section alt"><div class="container"><h2>Beyond work.</h2><div class="prose"><p>Music, reading and football are regular parts of my life. I enjoy ideas that give me a different perspective, whether they come from a book, a podcast or a conversation.</p>
 <p>I’m a Manchester United fan, although that loyalty does not always make selecting my Fantasy football team straightforward.</p></div><p class="about-related"><a href="/now">What I’m reading, listening to and thinking about</a></p></div></section>
 <section class="about-section"><div class="container"><h2>Let’s connect.</h2><div class="prose"><p>I welcome conversations with people leading teams, building businesses and putting ideas into practice.</p>
@@ -60,6 +74,20 @@ const profileJsonLd = {
 <p>For mentoring, guest sessions, speaking or a shared interest, I’d be glad to hear from you.</p></div><div class="ctarow"><a class="btn btn-primary" href="/contact">Get in touch</a><a class="btn btn-secondary" href="/documents/Adrian-Watkins-Executive-CV-2026.pdf" target="_blank" rel="noopener noreferrer">View my executive CV</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></div></div></section>
 </BaseLayout>
 <style>
+.about-intro { padding: 64px 0 40px; }
+.about-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.about-intro-copy h1 { font-size: clamp(36px, 4vw, 54px); margin: 18px 0 24px; }
+.about-intro-copy .lede { font-size: 21px; margin-bottom: 20px; }
+.about-intro-copy > p:last-child { margin-bottom: 0; }
+.about-intro-photo :global(.speak-media) { margin: 0; }
+.about-focus { display: flex; flex-wrap: wrap; gap: 16px 32px; list-style: none; padding: 24px 0 0; margin: 36px 0 0; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-soft); }
+.about-focus li { padding-left: 14px; border-left: 2px solid #D89A55; }
+@media (max-width: 760px) {
+  .about-intro { padding: 40px 0 32px; }
+  .about-intro-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-focus { gap: 14px; margin-top: 24px; }
+}
+
 .about-section { padding: 56px 0; }
 .about-section h2 { margin-bottom: 24px; }
 .about-photo { max-width: 800px; margin-top: 36px; }
