@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import parentLogo from '../assets/theparent-logo.jpg';
+import DareLogo from './DareLogo.astro';
+interface Props { brand: 'sqreem' | 'parent' | 'democratising' | 'dare'; }
+const { brand } = Astro.props;
+---
+<div class:list={['work-brand', brand]}>
+  {brand === 'sqreem' && <a href="https://www.sqreem.com" target="_blank" rel="noopener noreferrer"><img src="/images/logos/sqreem.svg" width="220" height="32" alt="SQREEM Technologies" loading="lazy" /></a>}
+  {brand === 'parent' && <a href="https://theparentinc.com" target="_blank" rel="noopener noreferrer"><Image src={parentLogo} width={140} widths={[140, 280]} sizes="140px" format="webp" alt="theParent Inc" loading="lazy" /></a>}
+  {brand === 'democratising' && <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer"><img src="/images/logos/democratising.svg" width="48" height="48" alt="" /><span>democratising.ai</span></a>}
+  {brand === 'dare' && <DareLogo />}
+</div>
+<style>
+.work-brand { height: 104px; display: flex; align-items: center; margin-bottom: 24px; }
+.work-brand a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; max-width: 100%; }
+.work-brand img { display: block; max-width: 100%; height: auto; }
+.parent img { width: 140px; mix-blend-mode: multiply; }
+.democratising span { font-family: Georgia, serif; font-size: clamp(21px, 2.2vw, 27px); font-weight: 700; letter-spacing: -1px; }
+.democratising img { width: 48px; background: #102b4e; border-radius: 6px; }
+.work-brand :global(.dare-logo) { width: 218px; margin: 0; }
+.work-brand a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+</style>

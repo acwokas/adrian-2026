@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DareLogo from '../components/DareLogo.astro';
+import WorkBrand from '../components/WorkBrand.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { digestParagraphs } from '../data/now';
 import { homepageEntries } from '../data/speaking';
@@ -67,15 +67,17 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       </div>
       <div class="work-features">
         <article class="work-feature">
+          <WorkBrand brand="sqreem" />
           <div class="tag">One / Commercial leadership</div>
           <h3>Bringing businesses together.</h3>
           <p>At <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>, I lead global commercial operations and governance. Integrating three businesses has meant harmonising people, products, processes and compliance to support growth across regions, including the US.</p>
           <p>Clearer contracts, pricing and approvals give regional leaders room to act, with margin discipline and accountability built in.</p>
-          <p><a href="/work#sqreem">Read the SQREEM case study</a></p>
-          <h4>An expanded remit in data protection.</h4>
-          <p>Appointed a Data Protection Officer (DPO) in the second half of 2026, I translate cross-market privacy requirements into practical commercial and product decisions alongside my wider remit.</p>
+          <aside class="work-remit"><h4>An expanded remit in data protection.</h4>
+          <p>Appointed a Data Protection Officer (DPO) in the second half of 2026, I translate cross-market privacy requirements into practical commercial and product decisions alongside my wider remit.</p></aside>
+          <a class="work-link" href="/work#sqreem">Read the SQREEM case study</a>
         </article>
         <article class="work-feature">
+          <WorkBrand brand="parent" />
           <div class="tag">Two / Commercial transformation</div>
           <h3>Aligning teams around growth.</h3>
           <p>At <a href="https://theparentinc.com" target="_blank" rel="noopener noreferrer">theParent Inc</a>, I led approximately 100 people across commercial, product, delivery and technology. Simpler products, shared sales and delivery incentives, and sustained coaching helped drive 55% year-on-year company revenue growth.</p>
@@ -83,6 +85,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
           <a class="work-link" href="/work#theparent-inc">Read theParent Inc case study</a>
         </article>
         <article class="work-feature">
+          <WorkBrand brand="democratising" />
           <div class="tag">Three / Products and public data</div>
           <h3>Built in Singapore. Useful here and beyond.</h3>
           <p>My ambition is to make everyday decisions a little easier, starting where I call home. Through <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, I build services grounded in local context and linked to relevant sources.</p>
@@ -95,10 +98,10 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
           <a class="work-link" href="/singapore">My contribution in Singapore</a>
         </article>
         <article class="work-feature">
+          <WorkBrand brand="dare" />
           <div class="tag">Four / Reusable foundations</div>
           <h3>One platform. Many useful applications.</h3>
-          <DareLogo />
-          <p>DARE by <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a> stands for Data, AI, Research and Execution. It is the shared publishing and data platform I built to bring together collection, publishing, source checks and monitoring.</p>
+          <p><a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">DARE by democratising.ai</a> stands for Data, AI, Research and Execution. It is the shared publishing and data platform I built to bring together collection, publishing, source checks and monitoring.</p>
           <p>Improvements carry across the portfolio, with sources and editorial context adapted for <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">Asia</a>, <a href="https://aiinarabia.com" target="_blank" rel="noopener noreferrer">the Arab world</a> and <a href="https://aiineurope.co" target="_blank" rel="noopener noreferrer">Europe</a>.</p>
           <p><strong>25,000 monthly visitors</strong> to <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>, built over four years without paid distribution.</p>
           <a class="work-link" href="https://democratising.ai" target="_blank" rel="noopener noreferrer">Explore democratising.ai ↗</a>
@@ -323,17 +326,22 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
   .edge-tools-copy h3 { color: #F4ECD8; }
   .edge-tools-copy a { color: #F4ECD8; text-decoration: underline; text-underline-offset: 3px; }
   .edge-tools-copy a:hover { color: #D89A55; }
-  .work-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 40px; }
-  .work-feature { border-top: 1px solid var(--line, #b8ad98); padding-top: 24px; min-width: 0; }
+  .work-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .work-feature { display: flex; flex-direction: column; border: 1px solid var(--line, #b8ad98); background: var(--bg); padding: 28px; min-width: 0; }
+  .work-feature .tag { font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--accent); }
+  .work-remit { border-left: 2px solid #D89A55; padding-left: 18px; margin: 8px 0 24px; }
+  .work-remit h4 { margin-top: 0; }
+  .work-remit p:last-child { margin-bottom: 0; }
   .work-feature h3 { margin: 10px 0 16px; }
   .work-feature h4 { text-transform: none; letter-spacing: normal; font-size: 17px; font-weight: 700; margin: 24px 0 10px; }
   .work-feature p { margin-bottom: 16px; }
-  .work-link { display: inline-block; margin-top: 8px; }
+  .work-link { display: block; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); }
   .work-services { list-style: none; padding: 0; margin: 20px 0; }
   .work-services li { display: grid; grid-template-columns: 145px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line, #d5cbbc); }
   .work-services span { font-size: 14px; }
   @media (max-width: 760px) {
-    .work-features { grid-template-columns: 1fr; gap: 36px; }
+    .work-features { grid-template-columns: 1fr; gap: 24px; }
+    .work-feature { padding: 22px; }
     .work-services li { grid-template-columns: 1fr; gap: 3px; }
   }
 </style>
