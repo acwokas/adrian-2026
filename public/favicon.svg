@@ -1,7 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" fill="#14264C"/>
-  <!-- A: triangle with crossbar -->
-  <path d="M 110 380 L 175 130 L 240 380 M 132 290 L 218 290" stroke="#D89A55" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
-  <!-- W: zigzag -->
-  <path d="M 272 130 L 305 380 L 360 235 L 415 380 L 448 130" stroke="#D89A55" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 455" width="512" height="512" role="img" aria-label="Adrian Watkins AW monogram">
+  <rect width="455" height="455" rx="30" fill="#14264C"/>
+  <path fill="#D89A55" fill-rule="evenodd" d="M31 326 137 117H174L239 253 275 177H309L330 237 381 128H425L333 326H294L270 263 236 326H194L171 278H100L76 326ZM126 239H178L151 180Z"/>
 </svg>
