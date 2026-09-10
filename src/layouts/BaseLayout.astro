@@ -23,6 +23,7 @@ interface Props {
   // only use if a page is intentionally not about Adrian).
   skipDefaultSchema?: boolean;
   canonicalOverride?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -40,6 +41,7 @@ const {
   jsonLd,
   skipDefaultSchema = false,
   canonicalOverride,
+  noindex = false,
 } = Astro.props;
 
 // Production canonical host. Override at build time with SITE_URL only if you
@@ -133,7 +135,7 @@ const schemaBlocks = [...defaultSchema, ...extraSchema];
     ))}
 
     <meta name="author" content="Adrian Watkins" />
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1'} />
 
     <AnalyticsHead />
   </head>

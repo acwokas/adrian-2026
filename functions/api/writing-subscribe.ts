@@ -29,9 +29,8 @@
 //     on public.writing_subscribers (lower(email))
 //     where unsubscribed_at is null;
 //
-// Until the env vars are bound the function logs the signup to console and
-// returns success so the UI form keeps working. Mirrors the contact.ts
-// pattern.
+// Missing storage configuration returns a failure so visitors are never told
+// they subscribed when their details were not saved.
 
 interface Env {
   SUPABASE_URL?: string;
@@ -50,19 +49,22 @@ const MAX_SOURCE = 200;
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   let body: SubscribePayload;
   try {
-    body = await ctx.request.json();
-  } catch {
-    // Fall back to form-encoded body for no-JS posts.
-    try {
+    if ((ctx.request.headers.get('content-type') || '').includes('application/json')) {
+      body = await ctx.request.json();
+    } else {
       const form = await ctx.request.formData();
       body = {
         email: String(form.get('email') || ''),
         source: String(form.get('source') || ''),
         honeypot: String(form.get('company') || ''),
       };
-    } catch {
-      return json({ ok: false, error: 'bad_request' }, 400);
     }
+  } catch {
+    return json({ ok: false, error: 'bad_request' }, 400);
+  }
+  if (!body || typeof body !== 'object' || Array.isArray(body) ||
+      (['email', 'source', 'honeypot'] as const).some(key => body[key] !== undefined && typeof body[key] !== 'string')) {
+    return json({ ok: false, error: 'invalid_fields' }, 400);
   }
 
   // Honeypot: silently absorb. Return 200 so the bot moves on.
@@ -88,13 +90,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const supaKey = ctx.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supaUrl || !supaKey) {
-    console.warn('[writing-subscribe] Supabase env not bound; logging only', {
-      email,
-      source,
-      ip,
-      country,
-    });
-    return json({ ok: true, sent: true, stored: false });
+    console.warn('[writing-subscribe] Storage configuration missing');
+    return json({ ok: false, error: 'not_configured' }, 503);
   }
 
   // Direct Supabase REST insert. Service-role key bypasses RLS, so we don't

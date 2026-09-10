@@ -1,119 +1,171 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
 
-const title = 'EDGE Framework by Adrian Watkins. Applied Intelligence for AI adoption.';
-const description = 'EDGE is Adrian Watkins\'s practical framework for applied intelligence. Four pillars: Evaluate, Define, Govern, Elevate. Used by founders, operators, and boards across Asia, Europe, and the US to turn scattered AI activity into structured capability.';
-
+const title = 'EDGE Framework by Adrian Watkins | Thinking, Decisions and Execution';
+const description = 'Explore EDGE by Adrian Watkins: Evaluate, Define, Govern and Elevate. A practical business framework for clearer thinking, better decisions and effective execution.';
 const edgeJsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'EDGE Framework',
+    name: 'EDGE Framework by Adrian Watkins',
     url: 'https://adrianwatkins.com/edge',
     description,
+    mainEntity: { '@id': 'https://adrianwatkins.com/edge#framework' },
     about: { '@id': PERSON_ID },
   },
   {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
+    '@id': 'https://adrianwatkins.com/edge#framework',
     name: 'EDGE Framework for Applied Intelligence',
     creator: { '@id': PERSON_ID },
     url: 'https://adrianwatkins.com/edge',
-    description: 'Four-pillar framework (Evaluate, Define, Govern, Elevate) for applied intelligence in commercial organisations.',
+    description,
   },
+];
+const pillars = [
+  { name: 'Evaluate', subtitle: 'Understand before you act.', body: 'Explore the situation, the evidence and the people involved. Draw on what you know, identify what needs checking and consider different perspectives.', ask: 'What are we trying to understand? What do we know? Which assumptions should we test?', outcome: 'A clear picture of the situation and the choices available.', forward: 'Evidence, context and insights.' },
+  { name: 'Define', subtitle: 'Give the work a clear direction.', body: 'Decide what you want to achieve and why it matters. Set priorities, clarify the message and agree how you will recognise progress.', ask: 'What outcome matters most? Who needs to be involved? What would success look like?', outcome: 'A shared direction, clear ownership and a practical next step.', forward: 'A clear outcome, priorities and direction.' },
+  { name: 'Govern', subtitle: 'Create the conditions for confident action.', body: 'Build accountability, decision boundaries and proportionate checks into the approach. Give people the clarity to move forward and know when to seek another perspective.', ask: 'Who can decide? What needs checking? When should we review or adapt?', outcome: 'Practical guardrails that enable progress and help anticipate issues before they become costly.', forward: 'Accountability and the conditions for confident execution.' },
+  { name: 'Elevate', subtitle: 'Apply, improve and build capability.', body: 'Apply what you learn to improve the outcome and how you work. Share useful insights, develop people and carry the learning into the next decision.', ask: 'What have we learned? What should we improve? Where else could this help?', outcome: 'A stronger approach and learning you can use again.', forward: 'Applied learning, improved outcomes and stronger capability.' },
+];
+const tools = [
+  { slug: 'decision-simulation', name: 'Decision Simulation', description: 'Explore alternative paths, assumptions and possible consequences.' },
+  { slug: 'before-you-send', name: 'Before You Send', description: 'Consider how different audiences might interpret your message and refine it before sharing.' },
+  { slug: 'conversation-simulator', name: 'Conversation Simulator', description: 'Rehearse an important conversation and explore different approaches.' },
+  { slug: 'negotiation-simulator', name: 'Negotiation Simulator', description: 'Practise your approach and consider another party’s perspective.' },
 ];
 ---
 
 <BaseLayout title={title} description={description} current="edge" ogImage="/images/edge-workshop.jpg" jsonLd={edgeJsonLd}>
-  <section class="stub" style="padding-bottom:48px">
+  <section class="stub edge-hero">
     <div class="container">
-      <img src="/images/edge-mark.svg" alt="EDGE Framework mark" width="120" height="120" style="display:block;width:120px;height:120px;margin:0 0 24px 0" />
-      <div class="eyebrow">EDGE Framework</div>
-      <h1>Structured capability for applied intelligence.</h1>
-      <p class="lede">Artificial intelligence is widely accessible. Structured capability is not. EDGE is the working language I give boards, founders, and operators so AI adoption becomes a structured choice rather than a series of scattered experiments that look impressive in a slide and collapse the first time someone asks what they actually did.</p>
-      <div class="prose" style="margin-top:24px">
-        <p>Four pillars. Used in the order they appear, then revisited as a loop. Each pillar is a board-legible artefact: a one-page memo, a decision log, a control list, a cadence. Nothing in EDGE is novel on its own. The contribution is the sequence and the discipline.</p>
+      <img src="/images/edge-mark.svg" alt="EDGE Framework mark" width="120" height="120" class="edge-mark" />
+      <div class="eyebrow">Created by Adrian Watkins</div>
+      <h1>The EDGE Framework.</h1>
+      <p class="lede">A practical framework for clearer thinking, better decisions and effective execution.</p>
+      <div class="prose">
+        <p>I created EDGE to help people turn knowledge, experience and insight into action. It gives structure to the work of understanding a situation, choosing a direction, acting with confidence and learning as you go.</p>
+        <p>You can apply it to a single message, an important decision, a team priority or a wider business initiative. AI-powered tools help you explore and practise that thinking. Your context and judgement guide the outcome.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="alt" style="padding:64px 0">
-    <div class="container">
-      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 01</div>
-      <h2>Evaluate.</h2>
-      <div class="prose" style="margin-top:24px">
-        <p><strong>What it is.</strong> A structured capability snapshot. Where you actually are on AI: which workflows are touched, which controls exist, what your teams say they do, what their tools actually do, and the gap between the two. The output is a single-page memo a board can read in five minutes.</p>
-        <p><strong>When to use it.</strong> Before any AI strategy decision, any vendor commitment, any new hire. Most organisations skip this step and discover the gap eighteen months later during an audit or an incident.</p>
-        <p><strong>Example.</strong> A regional operator who believed they had AI in twelve workflows. Evaluate found six were active, four were stalled pilots, and two were vendor demo accounts with no live data. The conversation changed from "scale" to "consolidate, then scale".</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding:64px 0">
-    <div class="container">
-      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 02</div>
-      <h2>Define.</h2>
-      <div class="prose" style="margin-top:24px">
-        <p><strong>What it is.</strong> What "good" looks like for your specific organisation. The outcomes AI is allowed to chase, the ones it is not, and the unambiguous criteria for both. Written down. Signed off. Dated.</p>
-        <p><strong>When to use it.</strong> Immediately after Evaluate. Skipping Define is how organisations end up with seventeen pilots, three of which directly contradict each other, none of which any executive can defend on a Tuesday morning to a regulator.</p>
-        <p><strong>Example.</strong> A consumer brand defined that AI was allowed to draft customer-facing copy, but not allowed to publish it without a named human reviewer, and never permitted to invent product attributes. Three lines, signed by the CMO and the General Counsel. Killed a year of well-meaning slide decks about "AI content".</p>
-      </div>
-    </div>
-  </section>
-
-  <PhotoSlot
-    src="edge-workshop.jpg"
-    alt="Adrian Watkins running a workshop session for founders. Workshop agenda on the screen, a full room of attendees seated and engaged."
-    description="Adrian running a workshop session for founders. Workshop agenda on the screen, full room engaged."
-    aspectRatio="16 / 9"
-  />
-
-  <section class="alt" style="padding:64px 0">
-    <div class="container">
-      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 03</div>
-      <h2>Govern.</h2>
-      <div class="prose" style="margin-top:24px">
-        <p><strong>What it is.</strong> The decisions, controls, and review cadence that turn AI activity into AI capability. A board-legible governance pack: decision rights, escalation paths, audit trail, model and vendor register, kill-switch criteria. Boring on purpose.</p>
-        <p><strong>When to use it.</strong> The moment a single AI deployment touches a customer, a regulator, a price, or a number that reports up. Which is most of them.</p>
-        <p><strong>Example.</strong> The internal pack that came out of the SQREEM TotallyAwesome integration. Two companies, two AI stacks, two governance postures, becoming one. The pack defined what survived, what got retired, and the review cadence for the combined surface. Sat on top of the commercial integration, not under it.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding:64px 0">
-    <div class="container">
-      <div class="eyebrow" style="color:var(--accent);font-size:11px;letter-spacing:0.18em;font-weight:600;margin-bottom:14px">Pillar 04</div>
-      <h2>Elevate.</h2>
-      <div class="prose" style="margin-top:24px">
-        <p><strong>What it is.</strong> What changes about your people, your operating model, and your competitive position once the first three pillars are in place. The hardest pillar to write, because it depends on having actually shipped the first three.</p>
-        <p><strong>When to use it.</strong> When Evaluate, Define, and Govern are producing repeatable artefacts and your AI surface has stopped surprising you. That is usually six to twelve months after the first EDGE engagement.</p>
-        <p><strong>Example.</strong> A team that started with twelve scattered tools and a nervous executive sponsor. Eighteen months later: two consolidated platforms, a published AI use policy, a named AI capability lead, and an executive sponsor who could open a board conversation with "here is what AI does for us, here is what it does not, here is the next ninety days". That is Elevate.</p>
-      </div>
-    </div>
-  </section>
-
-  <PhotoSlot
-    src="edge-workshop-2.jpg"
-    alt="Adrian Watkins running a BlackStorm workshop. Workshop Agenda slide visible behind him."
-    description="Mid-session at a BlackStorm workshop with the Workshop Agenda slide projected."
-    aspectRatio="16 / 9"
-    caption="BlackStorm Group workshop. EDGE pillars in the room."
-  />
-
-  <section class="dark" style="padding:80px 0">
-    <div class="container">
-      <div style="display:flex;align-items:center;gap:24px;margin-bottom:20px">
-        <img src="/brand/edge-mark-on-navy.svg" alt="EDGE Framework mark" width="80" height="80" style="width:80px;height:80px;flex:0 0 80px" />
-        <h2 style="color:#F4ECD8;margin:0">Get the framework.</h2>
-      </div>
-      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">The full EDGE Framework white paper is free. No signup. The interactive EDGE Diagnostic lives on <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>.</p>
       <div class="ctarow">
-        <a class="btn btn-primary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer" style="background:#D89A55;color:#1A1714">Download the EDGE white paper</a>
-        <a class="btn btn-secondary" href="https://democratising.ai" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2">Try the EDGE Diagnostic</a>
+        <a class="btn btn-primary" href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer">Explore the tools</a>
+        <a class="btn btn-secondary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer">Read the white paper</a>
       </div>
-      <p style="font-size:13px;color:#F4ECD8;opacity:0.92;margin-top:24px;max-width:none">Tools and diagnostic live on <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>. Built on the EDGE Framework.</p>
+    </div>
+  </section>
+
+  <section class="alt edge-section">
+    <div class="container">
+      <h2>Why I created EDGE.</h2>
+      <div class="prose">
+        <p>My work brings together commercial operations, people, products and governance across markets. That requires moving between the wider ambition and the decisions that make it happen.</p>
+        <p>EDGE brings those perspectives together. It creates a shared structure for asking useful questions, making priorities clear and carrying learning into action.</p>
+        <p>EDGE follows a deliberate sequence: Evaluate, Define, Govern and Elevate. Each stage builds on what you learned in the previous one, taking you from understanding the situation to acting, improving and developing capability.</p>
+        <p>Evaluate is the recommended starting point when working through a decision or initiative. You can also enter at any pillar when you have a specific need, particularly when using the tools. Bring the relevant context with you and revisit earlier stages whenever new information changes your understanding.</p>
+        <p>The depth should fit the task: a message may need a few thoughtful minutes; a business initiative may involve several teams.</p>
+      </div>
+      <nav class="edge-sequence" aria-label="EDGE pillars">
+        {pillars.map((pillar, index) => (
+          <a href={`#${pillar.name.toLowerCase()}`}><span class="eyebrow">0{index + 1}</span><strong>{pillar.name}</strong><span>{pillar.forward}</span></a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  {pillars.map((pillar, index) => (
+    <section id={pillar.name.toLowerCase()} class:list={['edge-section', { alt: index % 2 === 1 }]}>
+      <div class="container">
+        <div class="eyebrow">Pillar 0{index + 1}</div>
+        <h2>{pillar.name}.</h2>
+        <h3>{pillar.subtitle}</h3>
+        <div class="prose">
+          <p>{pillar.body}</p>
+          <p><strong>Ask:</strong> {pillar.ask}</p>
+          <p><strong>Leave with:</strong> {pillar.outcome}</p>
+          {pillar.name === 'Govern' && <p>Relevant responsibilities and boundaries inform every stage. Here, you formalise the arrangements around the direction you have defined.</p>}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="edge-section">
+    <div class="container">
+      <h2>What this looks like in practice.</h2>
+      <div class="prose">
+        <p><strong>Illustration: preparing a message about a change in direction.</strong></p>
+        <p>Start by considering the context and how different audiences might interpret the message. Define what people need to understand and what you want them to do next. Check accuracy, confidentiality and who should review it. Then refine the message and learn from the response.</p>
+        <p>The same four questions scale to larger work, from aligning teams after an acquisition to preparing a product launch or entering a new market.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt edge-section">
+    <div class="container">
+      <h2>Practical tools. Human judgement.</h2>
+      <div class="prose">
+        <p>I have created AI-powered tools on <a href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer">democratising.ai</a> to help people apply EDGE to specific business situations.</p>
+      </div>
+      <div class="edge-tool-grid">
+        {tools.map(tool => (
+          <article class="edge-tool">
+            <h3><a href={`https://democratising.ai/tools/${tool.slug}`} target="_blank" rel="noopener noreferrer">{tool.name}</a></h3>
+            <p>{tool.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="prose">
+        <p>The wider collection includes tools for brand definition, ethical trade-offs, governance review and planning.</p>
+        <p>Use them to broaden your thinking, prepare and reflect. Their outputs are material to consider as you apply your own experience, knowledge and judgement.</p>
+      </div>
+      <a class="btn btn-primary" href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer">Explore all EDGE tools</a>
+    </div>
+  </section>
+
+  <section class="edge-section">
+    <div class="container">
+      <h2>Built from Singapore, applicable across markets.</h2>
+      <div class="prose">
+        <p><a href="/singapore">Singapore is home</a> and the base for my work across regions. That experience shapes how I think about applying a common framework in different settings.</p>
+        <p>The questions can remain consistent while the answers reflect local commercial conditions, regulations, working cultures and expectations. Understanding that context is part of using EDGE well.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark edge-section edge-cta">
+    <div class="container">
+      <h2>Put EDGE to work.</h2>
+      <p>Explore the tools, read the framework or get in touch to discuss how EDGE could support a team session, workshop or business initiative.</p>
+      <div class="ctarow">
+        <a class="btn btn-primary" href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer">Explore the EDGE tools</a>
+        <a class="btn btn-secondary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer">Read the white paper</a>
+        <a class="btn btn-secondary" href="/contact">Discuss EDGE with me</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .edge-hero { padding-bottom: 48px; }
+  .edge-mark { display: block; width: 120px; height: 120px; margin-bottom: 24px; }
+  .edge-section { padding: 64px 0; scroll-margin-top: 80px; }
+  .prose { margin-top: 24px; }
+  .edge-sequence { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+  .edge-sequence a { display: flex; flex-direction: column; gap: 10px; padding: 22px; border: 1px solid var(--rule); text-decoration: none; }
+  .edge-sequence a:hover { border-color: var(--accent); }
+  .edge-sequence strong { font-family: 'Fraunces', serif; font-size: 23px; }
+  .edge-sequence span:last-child { font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+  .edge-tool-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 32px 0; }
+  .edge-tool { border: 1px solid var(--rule); padding: 28px; }
+  .edge-tool h3 { font-size: 24px; }
+  .edge-tool p { margin-bottom: 0; }
+  .edge-cta h2, .edge-cta p { color: #F4ECD8; }
+  .edge-cta .btn-primary { background: #D89A55; color: #1A1714; }
+  .edge-cta .btn-secondary { border-color: #E9E2D2; color: #E9E2D2; }
+  @media (max-width: 880px) { .edge-sequence { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) {
+    .edge-sequence, .edge-tool-grid { grid-template-columns: 1fr; }
+    .edge-section { padding: 44px 0; }
+  }
+</style>

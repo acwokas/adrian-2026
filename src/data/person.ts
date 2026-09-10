@@ -5,14 +5,6 @@
 // Article on Friday Frame posts, etc.) can reference the Person via the
 // stable @id below.
 //
-// Why this matters for SEO:
-//   - GSC shows adrianwatkins.com does not rank for "adrian watkins"
-//     (133 impressions / 0 clicks / pos 20.22, last 3 months).
-//   - Google was fuzzy-matching against other Watkins (Ariana, Sebastian,
-//     etc.) because no structured Person entity was emitted.
-//   - Emitting a consistent Person@id on every page gives Google a single
-//     entity to anchor the brand query to.
-
 export const PERSON_ID = 'https://adrianwatkins.com/#person';
 export const WEBSITE_ID = 'https://adrianwatkins.com/#website';
 export const ORG_ID = 'https://adrianwatkins.com/#org';
@@ -33,7 +25,7 @@ export const personSchema = {
     url: 'https://sqreem.com',
   },
   description:
-    'Senior commercial and operating leader across Asia, Europe, and the US. 25 years, the last fifteen building and scaling organisations. Creator of the EDGE Framework for Applied Intelligence.',
+    'Singapore-based commercial and operating leader at SQREEM Technologies, with data protection responsibilities (DPO). Creator of EDGE and builder of DARE by democratising.ai.',
   knowsAbout: [
     'Product strategy',
     'Applied intelligence',
@@ -42,7 +34,8 @@ export const personSchema = {
     'M&A integration',
     'Go-to-market across Asia, Europe, and the US',
     'Owned-media strategy',
-    'Board readiness',
+    'Commercial operations',
+    'Data protection and privacy governance',
   ],
   alumniOf: [
     { '@type': 'Organization', name: 'AdColony / Digital Turbine' },
@@ -54,11 +47,6 @@ export const personSchema = {
   ],
   sameAs: [
     'https://www.linkedin.com/in/adrianwatkins/',
-    'https://aiinasia.com',
-    'https://aiinarabia.com',
-    'https://aiineurope.co',
-    'https://promptandgo.ai',
-    'https://democratising.ai',
     'https://blackstormco.asia/personnel/adrian-watkins/',
     'https://mmaglobal.com/speakers/adrian-watkins',
   ],
@@ -76,7 +64,7 @@ export const websiteSchema = {
   url: 'https://adrianwatkins.com',
   name: 'Adrian Watkins',
   description:
-    'Senior commercial and operating leadership for organisations adopting AI seriously. Creator of the EDGE Framework for Applied Intelligence.',
+    'Commercial and operating leadership, governance, and practical perspectives from Adrian Watkins. Creator of EDGE, builder of DARE by democratising.ai, and contributor to student and founder programmes in Singapore.',
   publisher: { '@id': PERSON_ID },
   inLanguage: 'en-GB',
 };

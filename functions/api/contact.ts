@@ -28,6 +28,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return json({ ok: false, error: 'bad_json' }, 400);
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body) ||
+      ['name', 'email', 'message', 'honeypot'].some((key) =>
+        body[key as keyof ContactPayload] !== undefined && typeof body[key as keyof ContactPayload] !== 'string')) {
+    return json({ ok: false, error: 'invalid_fields' }, 400);
+  }
+
   // Honeypot: silently absorb. Return success so the bot moves on.
   if (body.honeypot && body.honeypot.length > 0) {
     return json({ ok: true, sent: true });
@@ -43,15 +49,6 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ ok: false, error: 'invalid_email' }, 400);
-  }
-
-  // Lightweight spam heuristics: drop silently. The submitter sees success;
-  // nothing actually sends. We do not want to give bots a 4xx signal.
-  const urlCount = (message.match(/https?:\/\//gi) || []).length;
-  const tooShort = message.length < 20;
-  if (urlCount >= 2 || tooShort) {
-    console.log('[contact] spam heuristic drop', { urlCount, len: message.length, email });
-    return json({ ok: true, sent: true });
   }
 
   const apiKey = ctx.env.RESEND_API_KEY;
@@ -93,6 +90,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     from,
     to: [email],
     subject: 'Thanks for getting in touch. Adrian Watkins.',
+    reply_to: to,
     text: [
       `Hi ${name.split(/\s+/)[0]},`,
       '',

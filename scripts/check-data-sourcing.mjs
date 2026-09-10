@@ -88,7 +88,8 @@ for (const absPath of walk(SRC)) {
 // --- 3. The three reading surfaces must actually import from the data module
 // (guards against someone hardcoding a paraphrase that dodges the term list
 // above while still bypassing readingItems).
-const READING_IMPORT_FILES = ['src/pages/now.astro', 'src/pages/index.astro', 'src/data/now.ts'];
+// Homepage reading text now arrives through digestParagraphs from data/now.ts.
+const READING_IMPORT_FILES = ['src/pages/now.astro', 'src/data/now.ts'];
 for (const file of READING_IMPORT_FILES) {
   const text = read(file);
   if (!text.includes("from '../data/reading'") && !text.includes("from './reading'")) {

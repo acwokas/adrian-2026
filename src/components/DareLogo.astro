@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import dareWordmark from '../assets/dare-wordmark.png';
+---
+<a class="dare-logo" href="https://democratising.ai" target="_blank" rel="noopener noreferrer" aria-label="DARE by democratising.ai, opens in a new tab">
+  <Image src={dareWordmark} alt="DARE by democratising.ai" widths={[320, 640]} sizes="(max-width: 400px) 80vw, 280px" width={320} format="webp" loading="lazy" />
+</a>
+<style>
+  .dare-logo { display: block; width: 280px; max-width: 100%; margin: 8px 0 20px; }
+  .dare-logo img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+  .dare-logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+</style>

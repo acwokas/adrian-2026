@@ -8,8 +8,8 @@ const todayISO = new Date().toISOString().slice(0, 10);
 const upcomingEntries = entriesByBucket('upcoming', todayISO);
 const recentEntries = entriesByBucket('recent', todayISO);
 
-const title = 'Speaking. Adrian Watkins. Applied intelligence and AI governance.';
-const description = 'Adrian Watkins. Keynotes, workshops, and panels on applied intelligence, AI governance, and commercial leadership across Asia, Europe, and the US. Past engagements, upcoming dates, and the question I want each audience to leave with.';
+const title = 'Speaking and contribution. Adrian Watkins.';
+const description = 'Singapore-based Adrian Watkins contributes to industry conversations, executive roundtables and learning programmes on leadership, growth, governance and putting intelligence into action.';
 
 const speakingJsonLd = {
   '@context': 'https://schema.org',
@@ -24,9 +24,13 @@ const speakingJsonLd = {
 <BaseLayout title={title} description={description} current="speaking" ogImage="/images/speaking-government.jpg" jsonLd={speakingJsonLd}>
   <section class="stub" style="padding-bottom:48px">
     <div class="container">
-      <div class="eyebrow">Speaking</div>
-      <h1>Keynotes, workshops, panels.</h1>
-      <p class="lede">Most speaker pages list the talk. Mine lists the question I want the audience to leave with. If the question is not yours, the talk is not for you. Singapore-based, available across Asia-Pacific time zones and back to Europe on request.</p>
+      <div class="eyebrow">Speaking and contribution</div>
+      <h1>Practical perspectives. Useful conversations.</h1>
+      <p class="lede">I speak about building and growing technology businesses, turning intelligence into action, and making governance part of how organisations move forward.</p>
+      <div class="prose" style="margin-top:24px">
+        <p>My perspective comes from leading commercial operations across markets and building publications, data services and practical tools through <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>. Singapore is home, and my work connects local experience with regional and global commercial, regulatory and cultural contexts.</p>
+        <p>Through selected industry conversations, executive roundtables and learning programmes, I aim to give people something useful to take into their next decision.</p>
+      </div>
     </div>
   </section>
 
@@ -68,33 +72,28 @@ const speakingJsonLd = {
       <div class="help" style="grid-template-columns:repeat(2,1fr)">
         <div class="help-card">
           <h4>One</h4>
-          <h3>Applied intelligence for boards.</h3>
-          <p>What AI capability actually looks like at board level, and what nominating committees should ask of any company they sit on. The question to leave with: <em>what is the one AI-related risk on this board's agenda that no one is sponsoring?</em></p>
+          <h3>Leading growth and integration.</h3>
+          <p>Aligning people, product, process and compliance as businesses scale. Drawing on my experience bringing three businesses together within SQREEM Technologies, improving commercial operations and supporting expansion across markets.</p>
         </div>
         <div class="help-card">
           <h4>Two</h4>
-          <h3>AI governance for operating teams.</h3>
-          <p>The EDGE Govern pillar in the room. Decision rights, model and vendor registers, kill-switch criteria, the boring artefacts that prevent the loud incident. The question to leave with: <em>what is your current AI surface, and who could name it without opening a document?</em></p>
+          <h3>Governance that enables progress.</h3>
+          <p>Building accountability and privacy into commercial and operating decisions, so teams can move forward with clarity and confidence. Practical perspectives from group leadership and my expanded data protection remit (DPO).</p>
         </div>
         <div class="help-card">
           <h4>Three</h4>
-          <h3>Building AI products for Asia, and the reason I launched <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>.</h3>
-          <p>Why most "global" AI products feel translated rather than built for the region, and what changes when you start with the market. Drawn from <a href="https://promptandgo.ai" target="_blank" rel="noopener noreferrer">PromptAndGo.ai</a> and <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>. The question to leave with: <em>which of your AI assumptions is actually a US assumption with a Singapore postcode on top?</em></p>
+          <h3>From intelligence to action with EDGE.</h3>
+          <p>Applying evidence, experience and human judgement to everyday business situations. How <a href="/edge">EDGE</a> helps people evaluate a situation, define a direction, establish accountability and put learning into practice, with AI tools supporting the process where useful.</p>
         </div>
         <div class="help-card">
           <h4>Four</h4>
-          <h3>M&amp;A and integration in tech.</h3>
-          <p>What the SQREEM TotallyAwesome integration taught about collapsing two commercial stacks into one without breaking the AI surface in between. The question to leave with: <em>what part of your integration plan assumes the AI just keeps working?</em></p>
+          <h3>Building useful services.</h3>
+          <p>Lessons from DARE, the shared publishing and data platform behind <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>, and publications including <a href="https://aiinasia.com/" target="_blank" rel="noopener noreferrer">AIinASIA</a> and <a href="https://urbandogowner.com/" target="_blank" rel="noopener noreferrer">UrbanDogOwner</a>. Starting with where I call home, <a href="/singapore">Singapore</a>, and building on what we learn to serve audiences beyond it.</p>
         </div>
         <div class="help-card">
           <h4>Five</h4>
-          <h3>Owned media for executives.</h3>
-          <p>Building <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a> from zero to roughly 25,000 monthly readers with no paid distribution, and why most executives should publish on their own surface instead of renting LinkedIn's. The question to leave with: <em>what do you publish under your own name in a year, and where does it live in 2030?</em></p>
-        </div>
-        <div class="help-card">
-          <h4>Six</h4>
-          <h3>Commercial governance under regulatory pressure.</h3>
-          <p>Drawn from running this at SQREEM. Keeping commercial discipline, margins, and regulatory posture aligned when AI moves faster than policy. The question to leave with: <em>which of your commercial controls would survive a 90-day regulator review?</em></p>
+          <h3>Working across markets.</h3>
+          <p>Adapting execution to local commercial, regulatory and cultural needs while maintaining a coherent regional or global direction. What to keep consistent, where to adapt and how to give local teams the context to make sound decisions.</p>
         </div>
       </div>
     </div>
@@ -148,9 +147,10 @@ const speakingJsonLd = {
 
   <section style="padding:64px 0">
     <div class="container">
-      <h2 style="margin-bottom:24px">Workshop and keynote format.</h2>
+      <h2 style="margin-bottom:24px">Shaped around the audience.</h2>
       <div class="prose">
-        <p>Keynote runs 30 to 45 minutes plus questions. Workshops run a half-day or a full day, with EDGE pillar artefacts as the working output. Panels are fine if there is a real argument in the room.</p>
+        <p>I contribute to selected industry conversations, executive roundtables and learning programmes where my experience can be useful. The format follows the audience, purpose and scope, whether that is a keynote, panel, moderated discussion or practical session.</p>
+        <p><a href="/singapore">Singapore</a> is home, and I particularly welcome opportunities to support local students and emerging business leaders through mentoring and guest teaching.</p>
       </div>
 
       <div style="margin-top:32px">
@@ -175,8 +175,8 @@ const speakingJsonLd = {
 
   <section class="dark" style="padding:80px 0">
     <div class="container">
-      <h2 style="color:#F4ECD8;margin-bottom:20px">Book Adrian.</h2>
-      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">If the topic, the audience, and the question you want them to leave with line up, the right next step is a short call.</p>
+      <h2 style="color:#F4ECD8;margin-bottom:20px">Start a conversation.</h2>
+      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">If my experience could be useful to your audience, get in touch with the topic, purpose and scope. We can explore the right format together.</p>
       <div class="ctarow">
         <a class="btn btn-primary" href="/contact" style="background:#D89A55;flex:0 0 auto">Get in touch</a>
         <a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2;display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;min-width:auto">

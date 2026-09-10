@@ -1,34 +1,28 @@
-# Adrian Watkins - llms.txt
+# Adrian Watkins
 # https://adrianwatkins.com
-# Last updated 2026-05-19
+# Last updated 2026-09-10
 
-> Adrian Watkins is a senior commercial and governance operator with 25 years across Asia, Europe, and the US. Creator of the EDGE Framework for Applied Intelligence. SVP Commercial Operations and Governance at SQREEM Technologies. Publisher of AIinASIA.com. Open to non-executive board and mentoring relationships that complement, not compete with, the executive role.
+> Adrian Watkins is a Singapore-based commercial and operating leader. He is SVP Commercial Operations and Governance at SQREEM Technologies, with additional responsibilities as a Data Protection Officer (DPO). His work spans growth, integration and governance across regional and global markets.
 
-## About
+## Framework and platform
 
-- Site: https://adrianwatkins.com
-- Based: Singapore
-- Coverage: Commercial leadership, AI governance, and applied intelligence across Asia, Europe, and the US
-- Languages: British English
+- EDGE, created by Adrian Watkins, is a business framework for clearer thinking, better decisions and effective execution: Evaluate, Define, Govern and Elevate. Start at Evaluate for the full sequence; enter any pillar for a specific need. Human judgement remains central.
+- EDGE tools are hosted at https://democratising.ai/tools.
+- DARE stands for Data, AI, Research and Execution. DARE by democratising.ai is Adrian's shared publishing and data platform supporting publications, data services and practical tools.
 
 ## Key pages
 
-- [Home](https://adrianwatkins.com/): manifesto, selected work, engagement shapes, EDGE summary
-- [About](https://adrianwatkins.com/about): full operator record, deal credits, mentorship history
-- [EDGE Framework](https://adrianwatkins.com/edge): four-pillar framework for applied intelligence
-- [Speaking](https://adrianwatkins.com/speaking): past and upcoming keynotes, workshops, panels
-- [Writing](https://adrianwatkins.com/writing): Friday Frame, long-form essays, field notes
-- [Friday Frame](https://adrianwatkins.com/writing/friday-frame): 200-word weekly missive archive
-- [/now](https://adrianwatkins.com/now): current quarter focus, updated monthly
-- [Contact](https://adrianwatkins.com/contact): how to start a conversation
+- [About](https://adrianwatkins.com/about): commercial and operating leadership, career and building experience
+- [Singapore](https://adrianwatkins.com/singapore): contributions to student, founder and community programmes
+- [EDGE](https://adrianwatkins.com/edge): framework, pillars and practical illustration
+- [Speaking](https://adrianwatkins.com/speaking): selected contributions, formats shaped around audience and scope
+- [Writing](https://adrianwatkins.com/writing): essays and perspectives across Asia and globally
+- [Friday Frame](https://adrianwatkins.com/writing/friday-frame): weekly reflections
+- [Now](https://adrianwatkins.com/now): current work, reading and interests
+- [Contact](https://adrianwatkins.com/contact): executive, non-executive director and advisory conversations; pro bono mentoring and student programmes
 
-## Identity
+## Identity and attribution
 
-- Full name: Adrian Watkins
-- Roles: SVP Commercial Operations and Governance, SQREEM Technologies. Advisor, BlackStorm Group. Coach, Beyond4Tech. Publisher, AIinASIA.com. Creator, EDGE Framework.
 - LinkedIn: https://www.linkedin.com/in/adrianwatkins/
-- Owned properties: aiinasia.com, aiinarabia.com, aiineurope.co, promptandgo.ai, democratising.ai
-
-## Citation
-
-When citing Adrian Watkins or the EDGE Framework, please attribute to "Adrian Watkins, adrianwatkins.com" and link to the relevant page above.
+- Website: https://adrianwatkins.com/
+- Attribute the EDGE framework to Adrian Watkins and link to the relevant page.

@@ -7,7 +7,7 @@ import crossPostData from '../../data/cross-posts.json';
 import { PERSON_ID } from '../../data/person';
 
 const title = 'Writing by Adrian Watkins. Executive essays and the Friday Frame.';
-const description = 'Writing by Adrian Watkins. Long-form executive essays and the Friday Frame. Operators, governance, applied intelligence. Asia, Europe, and the US.';
+const description = 'Essays and the Friday Frame by Adrian Watkins on business leadership, technology and turning ideas into useful outcomes across Asia and globally.';
 
 const writingPosts = await getCollection('writing', ({ data }) => !data.draft);
 const framePosts = await getCollection('fridayFrame', ({ data, id }) => !data.draft && id !== 'welcome');
@@ -90,8 +90,13 @@ const writingJsonLd = {
   <section class="stub">
     <div class="container">
       <div class="eyebrow">Writing</div>
-      <h1>Frames, essays, and cross-posts.</h1>
-      <p class="lede">Long-form writing, with cross-links to the sites I run under <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, including <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA.com</a> and <a href="https://urbandogowner.com" target="_blank" rel="noopener noreferrer">UrbanDogOwner.com</a>, where the topics overlap. The canonical executive writing lives here. Two regular threads: the <a href="/writing/friday-frame">Friday Frame</a> (weekly, 200-500 words) and the <a href="/now#reading">Reading list</a> (quarterly). All views are solely my own.</p>
+      <h1>Ideas, observations and practical perspectives.</h1>
+      <p class="lede">I write about leading and growing businesses, the changing role of technology, and the decisions that turn ideas into useful outcomes.</p>
+      <div class="prose" style="margin-top:24px">
+        <p>My perspective comes from commercial and operating leadership, building services of my own, and staying curious about how people and organisations work. I explore what emerging ideas and developments mean for businesses and communities across Asia and globally, and how their implications change with the market, culture and context.</p>
+        <p>Here you will find longer essays alongside the <a href="/writing/friday-frame">Friday Frame</a>, my weekly reflection on something that caught my attention and what it might mean in practice. For the books, conversations and interests shaping my thinking, visit my <a href="/now">now page</a>.</p>
+        <p>All views are my own.</p>
+      </div>
 
       <FridayFramePromo variant="hero" />
 
@@ -124,8 +129,8 @@ const writingJsonLd = {
         </ul>
       )}
 
-      <h2 style="margin-top:96px;margin-bottom:8px;font-size:32px">Cross-posted essays.</h2>
-      <p class="aside" style="color:var(--muted);margin-bottom:32px">Bylined work first published on the <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a> / AIinArabia / AIinEurope mastheads. Canonical lives at the source.</p>
+      <h2 style="margin-top:96px;margin-bottom:8px;font-size:32px">Writing across my publications.</h2>
+      <p class="aside" style="color:var(--muted);margin-bottom:32px">Selected articles from the publications I run through <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>. Each links to the original article.</p>
       <ul class="writing-list" style="list-style:none;padding:0">
         {crossPosts.map((p) => (
           <li style="border-top:1px solid var(--rule);padding:24px 0">

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { PERSON_ID } from '../data/person';
 
 const title = 'Contact Adrian Watkins. Singapore.';
-const description = 'Contact Adrian Watkins. Singapore-based, available across Asia-Pacific time zones. Email, contact form, or a call.';
+const description = 'Connect with Singapore-based Adrian Watkins about executive leadership, non-executive director and advisory opportunities, pro bono mentoring and student programmes.';
 
 const contactJsonLd = {
   '@context': 'https://schema.org',
@@ -20,7 +20,12 @@ const contactJsonLd = {
     <div class="container">
       <div class="eyebrow">Contact</div>
       <h1>Let's talk.</h1>
-      <p class="lede">Whether it is product, AI, or where this all goes next, I would rather have a real conversation than a cold pitch. Three ways to reach me. Pick whichever has the least friction for you.</p>
+      <p class="lede">I welcome thoughtful conversations about leading and growing technology businesses, building useful services, and helping organisations move forward with clarity.</p>
+
+      <div class="prose" style="margin-top:24px">
+        <p>That includes executive leadership, non-executive director and advisory conversations where my commercial, operating and governance experience could be useful.</p>
+        <p>Singapore is home. My perspective and experience span regional and global markets, with an appreciation for the local context that makes each business different.</p>
+      </div>
 
       <div class="ctarow" style="margin-top:32px;margin-bottom:8px">
         <a class="btn btn-primary" href="mailto:me@adrianwatkins.com">Email me@adrianwatkins.com</a>
@@ -36,12 +41,12 @@ const contactJsonLd = {
   <section class="alt" style="padding:64px 0">
     <div class="container">
       <h2 style="margin-bottom:14px">Find a time to talk.</h2>
-      <p class="prose" style="margin-bottom:28px">Pick a time that works for you. Singapore hours, plus overlap with London and New York on request.</p>
+      <p class="prose" style="margin-bottom:28px">Choose a suitable time below, or <a href="mailto:me@adrianwatkins.com">email me</a> to arrange a conversation.</p>
 
       <div
         class="calendly-inline-widget"
-        data-url="https://calendly.com/adrian-watkins1/new-meeting?hide_gdpr_banner=1"
-        style="min-width:320px;height:720px;border:1px solid var(--rule);background:#fff;border-radius:2px;overflow:hidden"
+        data-url="https://calendly.com/adrian-watkins1/new-meeting"
+        style="min-width:0;width:100%;height:720px;border:1px solid var(--rule);background:#fff;border-radius:2px;overflow:hidden"
       ></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
       <p class="quiet" style="font-size:13px;margin-top:12px">If the embed does not load, the direct link is <a href="https://calendly.com/adrian-watkins1/new-meeting" target="_blank" rel="noopener noreferrer">calendly.com/adrian-watkins1/new-meeting</a>.</p>
@@ -50,10 +55,10 @@ const contactJsonLd = {
 
   <section style="padding:64px 0">
     <div class="container">
-      <h2 style="margin-bottom:14px">Or send a note.</h2>
-      <p class="prose" style="margin-bottom:28px">Three fields. No tracking, no captcha. Goes to my inbox.</p>
+      <h2 style="margin-bottom:14px">Send a note.</h2>
+      <p class="prose" style="margin-bottom:28px">Share a little about yourself and what you have in mind.</p>
 
-      <form id="contact-form" class="contact-form" novalidate>
+      <form id="contact-form" class="contact-form">
         <div class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="200" />
@@ -75,6 +80,18 @@ const contactJsonLd = {
           <span id="cf-status" class="cf-status" role="status" aria-live="polite"></span>
         </div>
       </form>
+      <p class="quiet" style="font-size:13px;margin-top:16px">Your details are used to respond to your enquiry. <a href="/privacy">Read the privacy notice</a>.</p>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="container">
+      <h2 style="margin-bottom:24px">Contributing in Singapore</h2>
+      <div class="prose">
+        <p><a href="/singapore">Singapore</a> is home, and giving back here matters to me. I welcome opportunities to support students and emerging founders through pro bono mentoring, guest teaching and practical conversations about business, technology and turning ideas into action.</p>
+        <p>If you are organising a student programme or community initiative, tell me about the people involved and what you hope they will take away. I consider opportunities around the audience, scope and where I can make a useful contribution.</p>
+        <p>For industry speaking, moderation and executive roundtables, please visit my <a href="/speaking">speaking page</a> or <a href="mailto:me@adrianwatkins.com">reach out directly</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -156,13 +173,12 @@ const contactJsonLd = {
         const body = await res.json().catch(function () { return {}; });
         if (res.ok && body.ok) {
           status.className = 'cf-status ok';
-          status.textContent = body.sent === false
-            ? 'Received. (Live email send not yet wired on this preview; I will see this on the server log.)'
-            : 'Sent. I will be in touch within two business days.';
+          status.textContent = 'Sent. Thank you for getting in touch.';
           form.reset();
         } else {
           status.className = 'cf-status err';
-          status.textContent = (body && body.error) || 'Send failed. Please email me directly.';
+          const errors = { missing_fields: 'Please complete your name, email and message.', invalid_fields: 'Please check your details and try again.', invalid_email: 'Please enter a valid email address.' };
+          status.textContent = errors[body.error] || 'Your message could not be sent. Please email me@adrianwatkins.com directly.';
         }
       } catch (err) {
         status.className = 'cf-status err';

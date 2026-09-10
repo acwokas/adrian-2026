@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Privacy | Adrian Watkins';
+const description = 'How adrianwatkins.com handles contact enquiries, writing subscriptions, booking information and website usage data.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Privacy</div>
+      <h1>Your information.</h1>
+      <p class="lede">This notice explains how I handle personal information collected through adrianwatkins.com.</p>
+      <div class="prose">
+        <p>Last updated: 10 September 2026. This website is operated by Adrian Watkins, based in Singapore. For privacy questions, requests or concerns, email <a href="mailto:me@adrianwatkins.com">me@adrianwatkins.com</a>.</p>
+        <h2>Contact enquiries</h2>
+        <p>When you send a message, I receive your name, email address and the information you choose to include. I use these details to respond, arrange conversations and manage any resulting professional relationship. The contact form uses Resend to deliver the message and an acknowledgement email. Please avoid including sensitive information that is not needed for your enquiry.</p>
+        <h2>Writing subscriptions</h2>
+        <p>If you subscribe to writing updates, the site collects your email address, the signup page and technical information including your IP address, browser information and country. The subscription service uses Supabase for storage. You can ask to stop receiving updates or have your subscription details removed by emailing me.</p>
+        <h2>Booking a conversation</h2>
+        <p>The contact page includes a Calendly booking service. Calendly receives the details you provide when arranging a meeting and may process technical information when its booking widget loads. You can email me instead if you prefer not to use it.</p>
+        <h2>Website services and usage information</h2>
+        <p>Cloudflare hosts and delivers this site. The site also loads Google Tag Manager for measurement and Google Fonts for typography. These services receive technical information when your browser connects to them. Analytics and embedded services may use cookies or similar technologies. Your browser settings can control cookies, although some third-party features may then work differently.</p>
+        <p>Service providers may process information outside Singapore. Their own privacy notices describe their processing: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a>, <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a>, <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a>, <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>.</p>
+        <h2>How long information is kept</h2>
+        <p>There is no single retention period for every enquiry. I review retained information periodically and delete it, or remove identifying details, when it is no longer needed for the original purpose or for a continuing business or legal reason. You can contact me to request deletion at any time. Some information may need to be retained to meet legal obligations or resolve an outstanding matter.</p>
+        <h2>Your requests and choices</h2>
+        <p>You can contact me to ask about your information, request access or correction, withdraw consent where applicable, request deletion or raise a privacy concern. I may need to verify your identity before responding. If a request cannot be met in full, I will explain why.</p>
+        <h2>Other websites</h2>
+        <p>This site links to publications, tools and other services with their own privacy practices. Some book links are affiliate links, which may earn a commission on qualifying purchases. Review the destination site's notice before sharing information there.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

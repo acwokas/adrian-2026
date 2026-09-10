@@ -1,7 +1,7 @@
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
-  const siteUrl = (context.site?.toString() || 'https://adrianwatkins-com-preview.pages.dev').replace(/\/$/, '');
+  const siteUrl = (context.site?.toString() || 'https://adrianwatkins.com').replace(/\/$/, '');
   const body = [
     '# adrianwatkins.com - robots.txt',
     '# Default rule: allow all crawlers.',

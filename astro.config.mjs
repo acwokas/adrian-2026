@@ -11,7 +11,7 @@ const SITE_URL = process.env.SITE_URL || 'https://adrianwatkins.com';
 export default defineConfig({
   site: SITE_URL,
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !/\/404(?:\.html)?\/?$/.test(page) })],
   trailingSlash: 'never',
   build: {
     format: 'file',

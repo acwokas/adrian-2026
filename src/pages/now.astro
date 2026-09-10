@@ -2,23 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { lastUpdated, lastUpdatedHuman } from '../data/now';
 import { PERSON_ID } from '../data/person';
-import { fullReadingParagraph } from '../data/reading';
-import { entriesByBucket } from '../data/speaking';
+import { currentBooks, magazines, podcasts, regularAuthor, currentMusic } from '../data/reading';
 
-const todayISO = new Date().toISOString().slice(0, 10);
-const upcomingSpeaking = entriesByBucket('upcoming', todayISO);
-
-const title = '/now. Adrian Watkins. What I am working on.';
-const description = 'Adrian Watkins, right now. Borrowed from Derek Sivers and the nownownow.com convention. Building, reading, where I will be on stage.';
-
+const title = 'Adrian Watkins | What I’m Working on Now';
+const description = 'Adrian Watkins’s current work, reading and interests: commercial leadership, data protection, democratising.ai and mentoring, from his home in Singapore.';
 const nowJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: '/now. Adrian Watkins.',
-  url: 'https://adrianwatkins.com/now',
-  description,
-  dateModified: lastUpdated,
-  about: { '@id': PERSON_ID },
+  '@context': 'https://schema.org', '@type': 'WebPage',
+  name: 'What Adrian Watkins is working on now', url: 'https://adrianwatkins.com/now',
+  description, dateModified: lastUpdated, about: { '@id': PERSON_ID },
 };
 ---
 
@@ -26,78 +17,92 @@ const nowJsonLd = {
   <section class="stub" style="padding-bottom:32px">
     <div class="container">
       <div class="eyebrow">/now</div>
-      <h1>What I am working on, right now.</h1>
-      <p class="lede">Borrowed from Derek Sivers and the <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">nownownow.com</a> convention. Updated when something material changes.</p>
+      <h1>What I’m working on, right now.</h1>
+      <p class="lede">Work, ideas and the things holding my attention. Based in Singapore, updated when something meaningful changes.</p>
       <p class="quiet" style="font-size:13px;margin-top:8px">Last updated: <time datetime={lastUpdated}>{lastUpdatedHuman}</time>.</p>
     </div>
   </section>
 
-  <section style="padding:48px 0">
+  <div class="container now-grid">
+  <section class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Building.</h2>
+      <div class="eyebrow">01 / In practice</div><h2>Leading.</h2>
       <div class="prose">
-        <p>Leading commercial operations and governance day to day at SQREEM Technologies, an AI and data company in Singapore.</p>
-        <p>Building out the AIinASIA family: <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA.com</a>, <a href="https://aiinarabia.com" target="_blank" rel="noopener noreferrer">AIinArabia</a>, and <a href="https://aiineurope.co" target="_blank" rel="noopener noreferrer">AIinEurope</a>.</p>
-        <p>EDGE Diagnostic v2. A 25-minute structured conversation that produces a board-ready AI capability snapshot. The v2 spec is closed; the build is in flight and lands on <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>.</p>
-        <p>Drafting the EDGE field manual for nominating committees. Aimed at the question a board chair actually asks at a quarterly review. Due this quarter.</p>
+        <p>I lead commercial operations and governance across <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>, working across markets to connect strategy with everyday execution.</p>
+        <p>My recently formalised responsibilities as a Data Protection Officer (DPO) build on work I have been doing over the past year. Right now, I’m spending considerable time with official papers and decisions on data privacy across the EU, US and Australia, understanding what they mean for product, commercial and operational decisions across jurisdictions.</p>
       </div>
     </div>
   </section>
 
-  <section style="padding:48px 0">
+  <section class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Where I will be.</h2>
+      <div class="eyebrow">02 / In the making</div><h2>Building.</h2>
       <div class="prose">
-        {upcomingSpeaking.map((entry) => (
-          <p><strong>{entry.when}.</strong> <span set:html={entry.titleHtml} /></p>
-        ))}
-        <p>Full speaking calendar on <a href="/speaking">/speaking</a>. New dates added there first.</p>
+        <p>I’m continuing to improve DARE, the shared publishing and data platform behind <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, along with the publications, data services and tools it supports.</p>
+        <p>A particular focus is taking <a href="https://urbandogowner.com" target="_blank" rel="noopener noreferrer">Urban Dog Owner</a> further: making it more useful for people navigating life with a dog in Singapore, from adoption and everyday care to discovering places together, and helping local businesses connect with customers who will appreciate what they offer.</p>
+        <p>I’m also refining how I explain <a href="/edge">EDGE</a> and help people put it into practice. The framework brings structure to business thinking and decisions, with AI-powered tools supporting exploration, preparation and reflection.</p>
       </div>
     </div>
   </section>
 
-  <section class="alt" style="padding:48px 0">
+  <section class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Recent moments.</h2>
+      <div class="eyebrow">03 / Giving back</div><h2>Contributing.</h2>
       <div class="prose">
-        <p>Spent an hour as the guest of a Beyond4Tech fireside chat with founders in Malaysia. The topic was "From everyone to someone". A warm, generous room, and it kept circling the same trap: most founders try to be wanted by everyone when the job is to be unmissable to someone. I wrote the longer version up as <a href="/writing/be-unmissable-to-someone" target="_blank" rel="noopener noreferrer">Be unmissable to someone</a>.</p>
-        <p>Moderated the <a href="https://www.ortusclub.com/moderator/why-is-democratising-the-room-the-most-underrated-skill-in-executive-moderation-adrian-watkins-sqreem-technologies/" target="_blank" rel="noopener noreferrer">Ortus Club</a> closed-door senior executive roundtable on "The Era of Services Delivery" and the impact of artificial intelligence. Chatham House format. Useful room. Notes stay in the room; the questions worth carrying forward are explored at <a href="/writing">/writing</a>.</p>
+        <p>I’m exploring how I can do more for students in Singapore. Guest mentoring through <a href="/singapore">SDG Open Hack</a> has been an early way to contribute, learn from the students and understand where my experience can be useful.</p>
+        <p>I’d like to build on that through further mentoring, guest sessions and practical workshops.</p>
+        <p>Alongside my Singapore commitments, I continue supporting founders across the region. I have also recently been appointed a mentor for the <a href="https://aseanfoundation.org" target="_blank" rel="noopener noreferrer">ASEAN Foundation</a>’s ASEAN SOAR Together programme.</p>
+        <p><a href="/singapore">My contribution in Singapore</a></p>
       </div>
     </div>
   </section>
 
-  <section id="reading" class="alt" style="padding:48px 0">
+  <section id="reading" class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Reading.</h2>
+      <div class="eyebrow">04 / On my bookshelf</div><h2>Reading.</h2>
       <div class="prose">
-        <p>{fullReadingParagraph()}</p>
+        <p>On my current reading pile: {currentBooks.map((book, index) => (
+          <Fragment>{index > 0 && ' and '}{book.affiliateUrl ? <a href={book.affiliateUrl} target="_blank" rel="sponsored noopener noreferrer"><em>{book.title}</em></a> : <em>{book.title}</em>} by {book.author}</Fragment>
+        ))}.</p>
+        {currentBooks.some(book => book.affiliateUrl) && <p class="quiet">As an Amazon Associate I earn from qualifying purchases.</p>}
+        <p>For current affairs and opinion, I read <a href={magazines[0].url} target="_blank" rel="noopener noreferrer"><em>{magazines[0].name}</em></a> and <a href={magazines[1].url} target="_blank" rel="noopener noreferrer"><em>{magazines[1].name}</em></a>. For chuckles, <a href={magazines[2].url} target="_blank" rel="noopener noreferrer"><em>{magazines[2].name}</em></a>.</p>
+        <p>Alongside those, I’m neck-deep in official data privacy papers from the EU, US and Australia. Different reading, equally capable of keeping me occupied.</p>
       </div>
     </div>
   </section>
 
-  <section style="padding:48px 0">
+  <section class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Listening.</h2>
+      <div class="eyebrow">05 / On repeat</div><h2>Listening.</h2>
       <div class="prose">
-        <p>All In, the Patrick Collison and Tyler Cowen archive on rotation. The Conversations with Tyler episodes with operators rather than economists. The occasional Founders Podcast biography when the subject is unfashionable.</p>
+        <p>Regular listens include <a href={podcasts[0].url} target="_blank" rel="noopener noreferrer"><em>{podcasts[0].name}</em></a>, <a href={podcasts[1].url} target="_blank" rel="noopener noreferrer"><em>{podcasts[1].name}</em></a> and <a href={podcasts[2].url} target="_blank" rel="noopener noreferrer"><em>{podcasts[2].name}</em></a>, The Athletic’s Manchester United podcast.</p>
+        <p>I also listen to <a href={podcasts[3].url} target="_blank" rel="noopener noreferrer"><em>{podcasts[3].name}</em></a> by {podcasts[3].host}.</p>
+        <p>I also tend to find time for anything <a href={regularAuthor.url} target="_blank" rel="noopener noreferrer">{regularAuthor.name}</a> publishes or appears on.</p>
+        <p>Music is a big part of my life too. Right now, I’m rediscovering the full <a href={currentMusic.url} target="_blank" rel="noopener noreferrer"><em>{currentMusic.name}</em></a> collection.</p>
       </div>
     </div>
   </section>
 
-  <section class="alt" style="padding:48px 0">
+  <section class="now-section">
     <div class="container">
-      <h2 style="margin-bottom:18px">Thinking about.</h2>
+      <div class="eyebrow">06 / Open questions</div><h2>Thinking about.</h2>
       <div class="prose">
-        <p>Two things, slowly. First, why "AI capability" still gets read as a technology question by boards when it is mostly a decision-rights question. EDGE Govern is a partial answer. The longer answer is the essay queued at the top of the drawer.</p>
-        <p>Second, what an executive practice looks like when the operator publishes from their own surface instead of renting LinkedIn's. <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>. Three years of days now. Approximately twenty-five thousand readers a month, zero paid distribution. The conclusion is not "everyone should blog". The conclusion is more specific and slightly contrarian.</p>
-        <p>And a quieter thread underneath both: what the next chapter of scope looks like, and what kind of seat makes sense for it.</p>
+        <p>How changing privacy expectations across countries and regions should shape everyday business decisions.</p>
+        <p>How I can contribute more to Singapore students, and what would make Urban Dog Owner more useful to the people who rely on it.</p>
+        <p>And whether leaving every Manchester United player out of my Fantasy football team makes me a bad Manchester United fan. Loyalty and judgement are occasionally in discussion.</p>
+        <p><a href="/contact">Get in touch</a></p>
       </div>
     </div>
   </section>
-
-  <section style="padding:48px 0 96px 0">
-    <div class="container">
-      <p class="stub-note">If something here is genuinely useful to you, <a href="/contact">get in touch</a>. I read every note.</p>
-    </div>
-  </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .now-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 48px; padding-top: 32px; padding-bottom: 80px; }
+  .now-section { padding: 24px 0 0; border-top: 1px solid var(--line, #b8ad98); scroll-margin-top: 80px; min-width: 0; }
+  .now-section > .container { width: 100%; padding: 0; max-width: none; }
+  .now-section h2 { margin: 10px 0 20px; }
+  .now-section .prose { max-width: none; }
+  .now-section .quiet { font-size: 13px; }
+  @media (max-width: 760px) { .now-grid { grid-template-columns: 1fr; gap: 36px; } }
+</style>
