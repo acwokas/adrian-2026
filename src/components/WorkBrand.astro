@@ -7,7 +7,7 @@ const { brand } = Astro.props;
 ---
 <div class:list={['work-brand', brand]}>
   {brand === 'sqreem' && <a href="https://www.sqreem.com" target="_blank" rel="noopener noreferrer"><img src="/images/logos/sqreem.svg" width="220" height="32" alt="SQREEM Technologies" loading="lazy" /></a>}
-  {brand === 'parent' && <a href="https://theparentinc.com" target="_blank" rel="noopener noreferrer"><Image src={parentLogo} width={140} widths={[140, 280]} sizes="140px" format="webp" alt="theParent Inc" loading="lazy" /></a>}
+  {brand === 'parent' && <a href="https://theparentinc.com" target="_blank" rel="noopener noreferrer"><Image src={parentLogo} width={140} widths={[140, 280]} sizes="140px" format="webp" alt="The ParentInc" loading="lazy" /></a>}
   {brand === 'democratising' && <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer"><img src="/images/logos/democratising.svg" width="48" height="48" alt="" /><span>democratising.ai</span></a>}
   {brand === 'dare' && <DareLogo />}
 </div>
