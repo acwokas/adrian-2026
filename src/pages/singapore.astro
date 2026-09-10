@@ -1,4 +1,5 @@
 ---
+import Recommendation from '../components/Recommendation.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
@@ -155,6 +156,7 @@ const singaporeJsonLd = {
   <section style="padding:64px 0">
     <div class="container">
       <h2 style="margin-bottom:24px">Working with Singapore founders</h2>
+      <div class="mentoring-recommendation"><Recommendation quote="Often voted as 'most requested mentor' Adrian has a natural talent for bringing people together and motivating them to achieve their best." name="Selma Ayuanshari" relationship="Mentoring programme collaborator" date="3 July 2023" datetime="2023-07-03" /></div>
 
 
         <article class="reflection">
@@ -300,6 +302,7 @@ const singaporeJsonLd = {
 </BaseLayout>
 
 <style>
+  .mentoring-recommendation { max-width: 760px; margin: 32px 0 40px; }
   .reflection-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; }
   .reflection { border-top:1px solid var(--rule, #c5baa7); padding-top:22px; }
   .reflection h3 { margin-bottom:12px; }

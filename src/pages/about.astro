@@ -1,4 +1,5 @@
 ---
+import Recommendation from '../components/Recommendation.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DareLogo from '../components/DareLogo.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
@@ -75,10 +76,19 @@ const profileJsonLd = {
 </div><div class="ctarow"><a class="btn btn-primary" href="/contact">Start a conversation</a></div></div></section>
 <section class="about-section alt"><div class="container"><h2>Beyond work.</h2><div class="prose"><p>Music, reading and football are regular parts of my life. I enjoy ideas that give me a different perspective, whether they come from a book, a podcast or a conversation.</p>
 <p>I’m a Manchester United fan, although that loyalty does not always make selecting my Fantasy football team straightforward.</p></div><p class="about-related"><a href="/now">What I’m reading, listening to and thinking about</a></p></div></section>
+<section class="about-section alt" aria-labelledby="recommendations-title"><div class="container">
+<h2 id="recommendations-title">What colleagues and clients say.</h2>
+<div class="recommendations-grid">
+<Recommendation quote="His vision for integrating technology with business processes is both forward-thinking and practical, making him an invaluable asset to any team." name="Paddy Tan" relationship="Collaborator" date="16 March 2025" datetime="2025-03-16" />
+<Recommendation quote="Under his guidance, the company experienced significant revenue growth year-on-year by optimizing margins, securing new trading agreements, and implementing a dynamic pricing strategy." name="Kieu Nguyen" relationship="Worked with Adrian on the same team" date="18 March 2024" datetime="2024-03-18" />
+<Recommendation quote="He understands the region very well, and he has a unique talent for uncovering business solutions consistently, through a blend of local sensibilities and a clear vision for what's really required." name="Pete Mitchell" relationship="Client" date="7 April 2020" datetime="2020-04-07" />
+</div></div></section>
 <section class="about-section"><div class="container"><h2>Let’s connect.</h2><div class="prose"><p>I welcome conversations with people leading teams, building businesses and putting ideas into practice.</p>
 <p>For mentoring, guest sessions, speaking or a shared interest, I’d be glad to hear from you.</p></div><div class="ctarow"><a class="btn btn-primary" href="/contact">Get in touch</a><a class="btn btn-secondary" href="/documents/Adrian-Watkins-Executive-CV-2026.pdf" target="_blank" rel="noopener noreferrer">View my executive CV</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></div></div></section>
 </BaseLayout>
 <style>
+.recommendations-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+@media (max-width: 880px) { .recommendations-grid { grid-template-columns: 1fr; } }
 .about-intro { padding: 64px 0 40px; }
 .about-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .about-intro-copy h1 { font-size: clamp(36px, 4vw, 54px); margin: 18px 0 24px; }
