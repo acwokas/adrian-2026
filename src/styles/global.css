@@ -196,11 +196,11 @@ nav.primary a.active { color: var(--accent); }
 .mobile-menu a:hover,
 .mobile-menu a.active { color: var(--accent); }
 
-@media (max-width: 720px) {
+@media (max-width: 960px) {
   nav.primary { display: none; }
   .nav-toggle { display: flex; }
 }
-@media (min-width: 721px) {
+@media (min-width: 961px) {
   .mobile-menu { display: none !important; }
 }
 

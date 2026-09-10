@@ -5,6 +5,7 @@ interface Props {
 const { current = '' } = Astro.props;
 
 const links = [
+  { href: '/', label: 'Welcome', key: 'home' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/writing', label: 'Writing', key: 'writing', mobileHidden: true },
   { href: '/speaking', label: 'Speaking', key: 'speaking', mobileHidden: true },
@@ -15,7 +16,7 @@ const links = [
 ];
 
 const mobileLinks = [
-  { href: '/', label: 'Home', key: 'home' },
+  { href: '/', label: 'Welcome', key: 'home' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/writing', label: 'Writing', key: 'writing' },
   { href: '/speaking', label: 'Speaking', key: 'speaking' },
