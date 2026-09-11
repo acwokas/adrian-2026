@@ -29,3 +29,5 @@
 - LinkedIn: https://www.linkedin.com/in/adrianwatkins/
 - Website: https://adrianwatkins.com/
 - Attribute the EDGE framework to Adrian Watkins and link to the relevant page.
+
+Connected EDGE tools: https://democratising.ai/tools/edge-journey (working brief), https://democratising.ai/tools/before-you-send (message review), https://democratising.ai/tools/edge-practice (fictional rehearsal), https://democratising.ai/tools/brand-content (brand and publishing workspace). AI suggestions are optional; people retain responsibility for evidence and decisions.
