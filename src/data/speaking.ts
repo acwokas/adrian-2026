@@ -35,11 +35,11 @@ export const speakingEntries: SpeakingEntry[] = [
     id: 'sdg-open-hack-np',
     when: 'Since May 2026',
     date: null,
-    titleHtml: 'SDG Open Hack 2026, Ngee Ann Polytechnic Edition.',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> 2026, Ngee Ann Polytechnic Edition.',
     bodyHtml:
       'Mentor. Working with student teams across the NP edition of the hack as they build toward the UN Sustainable Development Goals. Running across the hack window and beyond.',
     homepage: {
-      titleHtml: 'SDG Open Hack 2026, NP Edition.',
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> 2026, NP Edition.',
       bodyHtml:
         'Mentor on the Ngee Ann Polytechnic edition of SDG Open Hack 2026. Running across the hack window and beyond.',
     },
@@ -64,11 +64,11 @@ export const speakingEntries: SpeakingEntry[] = [
     id: 'sdg-open-hack-ntu',
     when: 'September 2026 · NTU Campus',
     date: '2026-09-01',
-    titleHtml: 'SDG Open Hack 2026, NTU Campus Edition.',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> 2026, NTU Campus Edition.',
     bodyHtml:
       'Mentor. Coaching and discussion sessions across the NTU Campus edition of the hack. Providing feedback and guidance to help student teams strengthen their solution and business pitches, working toward the UN Sustainable Development Goals.',
     homepage: {
-      titleHtml: 'SDG Open Hack 2026, NTU Campus Edition.',
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> 2026, NTU Campus Edition.',
       bodyHtml:
         'Mentor. Coaching and discussion sessions across the NTU Campus edition. Feedback and guidance to help student teams strengthen their solution and business pitches, working toward the UN Sustainable Development Goals.',
     },
