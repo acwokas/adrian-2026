@@ -32,6 +32,28 @@ export type SpeakingEntry = {
 
 export const speakingEntries: SpeakingEntry[] = [
   {
+    id: 'sdg-open-hack-sic',
+    when: '12 September 2026 · In person, Singapore',
+    date: '2026-09-12',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Social Impact Catalyst Edition.',
+    bodyHtml: 'Mentored student teams in person during the 12–13 September programme, alongside fellow mentors helping participants refine ideas for sustainability challenges. The edition brought together students from across Singapore’s educational institutions.',
+    homepage: {
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Social Impact Catalyst Edition.',
+      bodyHtml: 'In-person student mentoring during the 12–13 September programme. Supporting teams from across Singapore as they refined ideas for sustainability challenges.',
+    },
+  },
+  {
+    id: 'sdg-open-hack-nyp',
+    when: '23 September 2026 · Nanyang Polytechnic',
+    date: '2026-09-23',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Nanyang Polytechnic Edition.',
+    bodyHtml: 'Confirmed mentoring session on 23 September, part of the 23–24 September campus edition. Supporting student teams developing ideas connected to the UN Sustainable Development Goals.',
+    homepage: {
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Nanyang Polytechnic Edition.',
+      bodyHtml: 'Next confirmed mentoring session: 23 September, as part of the 23–24 September edition. Helping student teams develop their ideas and identify practical next steps.',
+    },
+  },
+  {
     id: 'sdg-open-hack-np',
     when: 'Since May 2026',
     date: null,

@@ -38,7 +38,6 @@ const programmes: MentoringProgramme[] = [
     id: 'sdg-open-hack',
     label: 'SDG Open Hack',
     entries: [
-      { id: 'sdg-open-hack-social-impact-catalyst', detail: 'the Social Impact Catalyst edition on 12 September', endDate: '2026-09-12' },
       { id: 'sdg-open-hack-nanyang-polytechnic', detail: 'Nanyang Polytechnic on 23 September', endDate: '2026-09-23' },
       { id: 'sdg-open-hack-nus', detail: 'the National University of Singapore on 9 to 10 October', endDate: '2026-10-10' },
     ],
