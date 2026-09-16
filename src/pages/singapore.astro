@@ -6,7 +6,7 @@ import { PERSON_ID } from '../data/person';
 import { getUpcomingMentoring } from '../data/singapore-mentoring';
 
 const title = 'Adrian Watkins in Singapore | Mentoring and Community';
-const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring, NLB workshops and regional programmes.";
+const description = "Adrian Watkins's work with students, founders and business leaders in Singapore, including SDG Open Hack mentoring and judging, NLB workshops and regional programmes.";
 
 const todayISO = new Date().toISOString().slice(0, 10);
 const mentoringProgrammes = getUpcomingMentoring(todayISO);
@@ -74,7 +74,7 @@ const singaporeJsonLd = {
         {mentoringProgrammes.length > 0 && (
           <div class="prose">
             <aside class="callout" style="margin:0">
-              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Next mentoring dates</h3>
+              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Upcoming mentoring and judging</h3>
               {mentoringProgrammes.map((programme, i) => (
                 <div style={i < mentoringProgrammes.length - 1 ? 'margin-bottom:20px' : undefined}>
                   <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px">{programme.label}</div>
@@ -124,6 +124,7 @@ const singaporeJsonLd = {
       <h2 style="margin-bottom:24px">Helping students turn ideas into practical solutions</h2>
       <div class="prose" style="margin-bottom:32px">
         <p>In 2026, I have been volunteering as a mentor with the Global Green Economic Foundation's <a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> programme in Singapore. Students work on challenges connected to the UN Sustainable Development Goals, developing solutions and learning how to explain their value.</p>
+        <p>I have also been invited to judge the National University of Singapore edition of <a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> on 10 October 2026. The in-person judging session will involve reviewing student team pitches and taking part in questions and answers.</p>
         <p>My contribution is to question assumptions, give constructive feedback and help teams connect an ambitious idea with a credible next step. I particularly enjoy the point where a team moves from describing a product to understanding the people who might use it.</p>
       </div>
 

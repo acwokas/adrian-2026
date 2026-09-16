@@ -1,4 +1,4 @@
-// Confirmed mentoring commitments for /singapore, grouped by programme.
+// Confirmed mentoring and judging commitments for /singapore, grouped by programme.
 //
 // Two programmes, handled differently:
 //   - SDG Open Hack entries carry a real `endDate` and drop out of
@@ -39,7 +39,7 @@ const programmes: MentoringProgramme[] = [
     label: 'SDG Open Hack',
     entries: [
       { id: 'sdg-open-hack-nanyang-polytechnic', detail: 'Nanyang Polytechnic on 23 September', endDate: '2026-09-23' },
-      { id: 'sdg-open-hack-nus', detail: 'the National University of Singapore on 9 to 10 October', endDate: '2026-10-10' },
+      { id: 'sdg-open-hack-nus', detail: 'Judge, National University of Singapore edition on 10 October', endDate: '2026-10-10' },
     ],
   },
   {

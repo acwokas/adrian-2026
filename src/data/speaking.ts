@@ -54,6 +54,17 @@ export const speakingEntries: SpeakingEntry[] = [
     },
   },
   {
+    id: 'sdg-open-hack-nus',
+    when: '10 October 2026 · In person, Singapore',
+    date: '2026-10-10',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, National University of Singapore Edition.',
+    bodyHtml: 'Invited judge. Reviewing student team pitches and participating in questions and answers at the in-person judging session for the NUS edition.',
+    homepage: {
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, NUS Edition.',
+      bodyHtml: 'Invited judge for the in-person session on 10 October, reviewing student team pitches and participating in questions and answers.',
+    },
+  },
+  {
     id: 'sdg-open-hack-np',
     when: 'Since May 2026',
     date: null,
