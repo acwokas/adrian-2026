@@ -1,3 +1,4 @@
+import { readFileSync, readdirSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -8,10 +9,20 @@ import rehypeExternalLinks from 'rehype-external-links';
 // only when you specifically want a self-canonical preview build.
 const SITE_URL = process.env.SITE_URL || 'https://adrianwatkins.com';
 
+// Syndicated copies keep their source canonical but do not compete in our sitemap.
+const writingDir = new URL('./src/content/writing/', import.meta.url);
+const syndicatedPaths = new Set(readdirSync(writingDir).flatMap((file) => {
+  if (!/\.mdx?$/.test(file)) return [];
+  const frontmatter = readFileSync(new URL(file, writingDir), 'utf8').split(/^---\s*$/m)[1] || '';
+  const match = frontmatter.match(/^canonical:\s*["']?(https?:\/\/[^\s"']+)["']?\s*$/m);
+  return match && new URL(match[1]).origin !== new URL(SITE_URL).origin
+    ? [`/writing/${file.replace(/\.mdx?$/, '')}`] : [];
+}));
+
 export default defineConfig({
   site: SITE_URL,
   output: 'static',
-  integrations: [sitemap({ filter: (page) => !/\/404(?:\.html)?\/?$/.test(page) })],
+  integrations: [sitemap({ filter: (page) => !/\/404(?:\.html)?\/?$/.test(page) && !syndicatedPaths.has(new URL(page).pathname.replace(/\/$/, '')) })],
   trailingSlash: 'never',
   build: {
     format: 'file',
