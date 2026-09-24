@@ -47,10 +47,10 @@ export const speakingEntries: SpeakingEntry[] = [
     when: '23 September 2026 · Nanyang Polytechnic',
     date: '2026-09-23',
     titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Nanyang Polytechnic Edition.',
-    bodyHtml: 'Confirmed mentoring session on 23 September, part of the 23–24 September campus edition. Supporting student teams developing ideas connected to the UN Sustainable Development Goals.',
+    bodyHtml: 'Mentored student teams on 23 September during the 23–24 September campus edition, supporting ideas connected to the UN Sustainable Development Goals.',
     homepage: {
       titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, Nanyang Polytechnic Edition.',
-      bodyHtml: 'Next confirmed mentoring session: 23 September, as part of the 23–24 September edition. Helping student teams develop their ideas and identify practical next steps.',
+      bodyHtml: 'Mentored student teams on 23 September during the 23–24 September edition, helping them develop their ideas and identify practical next steps.',
     },
   },
   {
