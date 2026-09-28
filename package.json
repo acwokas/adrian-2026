@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/check-data-sourcing.mjs && astro build && node scripts/check-h1.mjs",
+    "build": "node scripts/check-editorial-facts.mjs && node scripts/check-data-sourcing.mjs && astro build && node scripts/check-h1.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "deploy:preview": "wrangler pages deploy dist --project-name adrianwatkins-com-preview --branch astro-rebuild --commit-dirty=true"
+    "deploy:preview": "wrangler pages deploy dist --project-name adrianwatkins-com-preview --branch astro-rebuild --commit-dirty=true",
+    "test:editorial": "node --test scripts/editorial-facts.test.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.0",
@@ -22,6 +23,7 @@
     "@cloudflare/workers-types": "^4.20260516.1",
     "rehype-external-links": "^3.0.0",
     "typescript": "^5.6.3",
-    "wrangler": "^4.0.0"
+    "wrangler": "^4.0.0",
+    "yaml": "^2.8.1"
   }
 }

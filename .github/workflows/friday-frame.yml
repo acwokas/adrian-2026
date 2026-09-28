@@ -249,6 +249,19 @@ jobs:
           echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
           echo "Target: $FILE"
 
+      - uses: actions/setup-node@v4
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
+        with:
+          node-version: '22'
+      - name: Install editorial verifier
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Require current independent whole-file factual approval
+        if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
+        env:
+          TARGET_FILE: ${{ steps.target.outputs.file }}
+        run: node scripts/check-editorial-facts.mjs --file="$TARGET_FILE"
+
       - name: Extract and gate frontmatter
         id: fm
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
