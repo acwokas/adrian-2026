@@ -9,3 +9,10 @@ test('signed draft can publish, changed summary or body cannot',()=>{const recei
 test('legacy allowance never certifies and cannot allow changes or promote original drafts',()=>{const published=raw.replace('draft: true','draft: false'),baseline={[path]:sha256(published)};assert.equal(assessFile({...common,raw:published,baseline}).disposition,'legacy_unreviewed');assert.throws(()=>assessFile({...common,raw:published+'Change',baseline}));assert.throws(()=>assessFile({...common,raw:published,baseline,requireReview:true}));});
 test('missing, forged, expired and cross-path receipts cannot approve publication',()=>{const receipt=signed(),published=raw.replace('draft: true','draft: false');for(const change of [{receipt:{...receipt,signature:'bad'}},{now:new Date(Date.now()+86400000)},{path:'src/content/writing/other.md'}])assert.throws(()=>assessFile({...common,raw:published,receipt,...change}));});
 test('ambiguous YAML and alias-based draft state do not silently skip review',()=>{for(const text of ['---\ndraft: true\n"draft": false\n---\nText','---\ndraft: yes\n---\nText','---\nbase: &a false\ndraft: *a\n---\nText'])assert.throws(()=>frontmatter(text));});
+
+
+test('text-only approvals cannot cover reference graphics or nested visual metadata',()=>{
+ const body='---\ntitle: Synthetic test\ndraft: true\n---\nFictional prose.\n';
+ for(const media of ['![chart][ref]','![chart]','<svg></svg>','<canvas></canvas>','<object data="x"></object>'])assert.throws(()=>staticDocument(body+media),/visual media/);
+ for(const metadata of ['images: ["https://example.com/x.png"]','"heroImage": "https://example.com/x.png"',"assets: {cover: 'https://example.com/x.png'}",'hero-image: "https://example.com/x.png"'])assert.throws(()=>staticDocument(body.replace('draft: true','draft: true\n'+metadata)),/image metadata/);
+});
