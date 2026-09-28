@@ -1,20 +1,20 @@
 ---
-title: "The EU AI Act started enforcing this month."
+title: "The EU AI Act needs more than one deadline."
 date: 2026-08-28
 draft: false
-summary: "On August 2, the transparency rules went live. Chatbots must disclose they're AI. Deepfakes must be labelled. The high-risk deadline got pushed to 2027, so most companies relaxed. That might be exactly the wrong response."
+summary: "A later high-risk deadline does not answer a transparency question. Start with the system, the organisation's role and the obligation, then put a date beside it."
 ---
 
-I've been reviewing the EU AI Act enforcement notices for several months now - the ones that went live on August 2 - partly because a few clients have been asking whether it affects them, and partly because I run commercial operations and governance at an AI company and wanted to see how our own house looks against it.
+I'd start an AI compliance discussion with a list of systems, rather than a date. What does each system do? Who uses it? What does the organisation provide, and what does it deploy? Those are the questions I would want answered before accepting a reassuring green box on a dashboard.
 
-The short version is that transparency obligations are now enforceable across the EU. Chatbots must identify themselves as AI. Deepfakes must be labelled. AI-generated content needs disclosure. These aren't the high-risk classification rules everyone's been watching... those got pushed to December 2027. These are the quieter ones that landed while most people were still exhaling about the deadline extension.
+The [European Commission's Article 50 guidance](https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act) separates several transparency duties. Providers of systems that interact directly with people must inform them that they are dealing with AI, unless that is obvious. Providers' machine-readable marking duties are distinct from deployers' disclosure duties for covered deepfakes and certain public-interest text. The conditions and exceptions matter. It is too broad to say that every piece of AI-assisted content needs the same label.
 
-I wonder how many SLTs have actually checked which of their tools are affected. Not in the "we'll get legal to review it" sense, but in the practical sense of listing every customer-facing AI system and asking whether it currently tells the user it's not human. In most large companies, that list is surprisingly hard to assemble, because the tools were deployed by different teams at different times and there's no central register.
+The general Article 50 application date is 2 August 2026. The Commission also describes a limited transition until 2 December 2026 for marking duties concerning systems already on the market before that general application date. That is not a postponement of every transparency obligation.
 
-Running commercial operations and governance at an AI company gives you a useful vantage point on this. You see the gap between what the technology can do and what the regulation assumes it does. You also see how quickly that gap changes shape. The OECD now tracks over 900 AI policy initiatives across more than 80 jurisdictions. That's not a single compliance exercise, it's an atmosphere.
+The [Commission's announcement that the AI Omnibus entered into force](https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force) gives different dates for high-risk systems: 2 December 2027 for Annex III and 2 August 2028 for high-risk AI embedded in regulated products. Those dates should travel with their categories. “The deadline moved” leaves too much unsaid.
 
-I'd suggest the transparency rules are actually the interesting ones, more so than the high-risk framework. High-risk compliance is expensive and complicated but it's legible - there's a classification, a process, a deadline. Transparency is harder because it requires you to know what you have. You can't disclose what you haven't inventoried.
+My practical suggestion is to give each system a short record: its purpose, the relevant role, the obligation being assessed, the evidence behind that assessment and the person responsible. If an exception is being relied on, write down why. If the answer is still uncertain, leave it visibly unresolved rather than letting it inherit the status of the rest of the programme.
 
-If you're part of an SLT, could you list every AI system that interacts with your customers, and confirm each one identifies itself? If assembling that list takes more than a day, that's the finding.
+I would also separate a notice being present from a notice being appropriate. A screenshot can show what a customer sees. It cannot, on its own, settle which legal provision applies. That is where operational evidence and legal interpretation need to meet.
 
-The regulation just formalised what was already a gap in most operating models. Worth running that audit before December 2027 turns the conversation from transparency to risk classification. The easy rules are always the ones that catch you out, precisely because they looked easy.
+For a senior leadership team, my question is simple: could you pick one customer-facing AI system and follow that record from the product through to its scope decision? If you cannot, start there. I would rather resolve one concrete uncertainty than build a calendar which hides it.
