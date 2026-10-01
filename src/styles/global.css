@@ -234,6 +234,7 @@ section.hero { padding: 72px 0 64px 0; }
   transition: transform .18s ease, box-shadow .18s ease;
 }
 .intro-card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.intro-card-mobile { display: none; }
 .intro-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(22, 18, 15, .28); }
 .intro-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .intro-dialog {
@@ -303,14 +304,46 @@ section.hero { padding: 72px 0 64px 0; }
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-media {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 24px;
     margin: 0 auto;
-    max-width: 100%;
-    width: 260px;
+    max-width: 720px;
+    width: 100%;
   }
-  .hero-photo .hero-portrait { display: block; margin: 0 auto; max-width: 260px; }
+  .hero-photo .hero-portrait { display: block; margin: 0 auto; max-width: 320px; }
   .hero-photo figcaption { text-align: center; margin-left: auto; margin-right: auto; }
-  .intro-card { width: 100%; }
+  .intro-card { width: 100%; margin: 0; }
   section.hero { padding: 48px 0 56px 0; }
+}
+@media (max-width: 600px) {
+  .hero-media { display: block; max-width: 360px; }
+  .hero-photo { width: fit-content; margin: 0 auto; }
+  .hero-photo .hero-portrait { width: clamp(180px, 55vw, 210px); }
+  .intro-card {
+    width: min(100%, 320px);
+    min-height: 72px;
+    margin: 18px auto 0;
+    border-width: 2px;
+    text-align: left;
+  }
+  .intro-card img { display: none; }
+  .intro-card-mobile { display: flex; align-items: center; gap: 14px; padding: 10px 14px; }
+  .intro-card-mobile-play {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #12254b;
+    color: #fff;
+    font-size: 17px;
+  }
+  .intro-card-mobile-copy { display: flex; flex-direction: column; line-height: 1.35; color: #12254b; }
+  .intro-card-mobile-copy strong { font-size: 16px; }
+  .intro-card-mobile-copy small { font-size: 12px; }
 }
 
 .btn {
