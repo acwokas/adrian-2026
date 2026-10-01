@@ -212,8 +212,8 @@ section.hero { padding: 72px 0 64px 0; }
   gap: 64px;
   align-items: start;
 }
-.hero-photo { margin: 0; align-self: start; position: sticky; top: 80px; }
-.hero-photo-media { position: relative; }
+.hero-media { align-self: start; }
+.hero-photo { margin: 0; }
 .hero-photo .hero-portrait {
   display: block;
   width: 100%;
@@ -223,10 +223,9 @@ section.hero { padding: 72px 0 64px 0; }
   background: #E2DAC8;
 }
 .intro-card {
-  position: absolute;
-  left: 6%;
-  bottom: 4.5%;
+  display: block;
   width: 88%;
+  margin: 24px auto 0;
   padding: 0;
   border: 6px solid #fff;
   background: #fff;
@@ -303,16 +302,14 @@ section.hero { padding: 72px 0 64px 0; }
 .hero .ctarow { margin-top: 32px; }
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hero-photo {
-    position: static;
-    order: -1;
-    display: block;
+  .hero-media {
     margin: 0 auto;
     max-width: 100%;
     width: 260px;
   }
   .hero-photo .hero-portrait { display: block; margin: 0 auto; max-width: 260px; }
   .hero-photo figcaption { text-align: center; margin-left: auto; margin-right: auto; }
+  .intro-card { width: 100%; }
   section.hero { padding: 48px 0 56px 0; }
 }
 
