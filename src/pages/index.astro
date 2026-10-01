@@ -52,12 +52,46 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
         </div>
 
         <figure class="hero-photo">
-          <img src="/images/hero-portrait.jpg" alt="Adrian Watkins. Black-and-white editorial portrait. Singapore." />
+          <div class="hero-photo-media">
+            <img class="hero-portrait" src="/images/hero-portrait.jpg" alt="Adrian Watkins. Black-and-white editorial portrait. Singapore." />
+            <button class="intro-card" type="button" aria-label="Meet Adrian Watkins. Play a 33 second introduction video">
+              <img src="/media/adrian-watkins-intro-poster.webp" alt="" width="1672" height="941" />
+            </button>
+          </div>
           <figcaption>Singapore, 2025.</figcaption>
         </figure>
       </div>
     </div>
   </section>
+
+  <dialog class="intro-dialog" aria-label="Meet Adrian Watkins, short introduction">
+    <button class="intro-dialog-close" type="button" aria-label="Close introduction video">Close</button>
+    <video controls playsinline preload="none" poster="/media/adrian-watkins-intro-poster.webp" aria-label="Adrian Watkins, short introduction video"></video>
+  </dialog>
+
+  <script>
+    const introCard = document.querySelector<HTMLButtonElement>('.intro-card');
+    const introDialog = document.querySelector<HTMLDialogElement>('.intro-dialog');
+    const introVideo = introDialog?.querySelector<HTMLVideoElement>('video');
+    const closeIntro = introDialog?.querySelector<HTMLButtonElement>('.intro-dialog-close');
+
+    introCard?.addEventListener('click', () => {
+      if (!introDialog || !introVideo) return;
+      if (!introVideo.src) introVideo.src = '/media/adrian-watkins-intro-16x9.mp4';
+      introDialog.showModal();
+      introVideo.play().catch(() => {});
+    });
+    closeIntro?.addEventListener('click', () => introDialog?.close());
+    introDialog?.addEventListener('click', (event) => {
+      if (event.target === introDialog) introDialog.close();
+    });
+    introDialog?.addEventListener('close', () => {
+      if (!introVideo) return;
+      introVideo.pause();
+      introVideo.currentTime = 0;
+      introCard?.focus();
+    });
+  </script>
 
   <section id="work" class="alt">
     <div class="container">
