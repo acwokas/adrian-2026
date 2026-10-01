@@ -48,7 +48,7 @@ name: Friday Frame (adrianwatkins.com)
 # keeps this workflow correct if the default branch is ever moved again.
 #
 # CADENCE
-# Friday 14:00 SGT. Singapore does not observe DST, so 06:00 UTC is stable
+# Friday 10:00 SGT. Singapore does not observe DST, so 02:00 UTC is stable
 # year-round.
 #
 # DESTINATION
@@ -56,7 +56,7 @@ name: Friday Frame (adrianwatkins.com)
 
 on:
   schedule:
-    - cron: '0 6 * * 5'
+    - cron: '0 2 * * 5'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -159,7 +159,7 @@ jobs:
               exit 1
             fi
           else
-            # This week Friday. The runner is UTC; 06:00 UTC Friday is the same
+            # This week Friday. The runner is UTC; 02:00 UTC Friday is the same
             # calendar day in SGT, so date -u is safe here.
             FRIDAY="$(date -u +%Y-%m-%d)"
 
