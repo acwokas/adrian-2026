@@ -32,6 +32,17 @@ export type SpeakingEntry = {
 
 export const speakingEntries: SpeakingEntry[] = [
   {
+    id: 'sdg-open-hack-sic-finale',
+    when: 'October 2026 · Preparation for the 24 October Grand Finale',
+    date: '2026-10-24',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, supporting a Social Impact Catalyst winning team.',
+    bodyHtml: 'Following my mentoring at the September Social Impact Catalyst edition, I accepted an invitation to guide one of its winning teams as they prepare for the Grand Finale on 24 October. The support will include questions, feedback and short calls over the weeks ahead, with the SIC team facilitating.',
+    homepage: {
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, supporting a team towards the Grand Finale.',
+      bodyHtml: 'Accepted an invitation to guide one of Social Impact Catalyst’s winning teams towards the 24 October Grand Finale, building on my September mentoring and invitation to judge the NUS edition.',
+    },
+  },
+  {
     id: 'sdg-open-hack-sic',
     when: '12 September 2026 · In person, Singapore',
     date: '2026-09-12',
