@@ -1,7 +1,7 @@
 ---
 title: "What changes after the training?"
 date: 2026-10-02
-draft: true
+draft: false
 summary: "Training becomes useful when people have the workflows, incentives and support to put what they learn into practice."
 ---
 
