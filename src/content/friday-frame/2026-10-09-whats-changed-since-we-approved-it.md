@@ -1,7 +1,7 @@
 ---
 title: "What’s changed since we approved it?"
 date: 2026-10-09
-draft: true
+draft: false
 summary: "Does the approval still fit the work?"
 ---
 

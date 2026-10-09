@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/friday-frame/2026-08-28-the-eu-ai-act-started-enforcing-this-month.md",
     "document_sha256": "9ca52ed5002435590ea53182953c5d403af3932ca4b5357df8236631cc4099eb",
-    "review_sha256": "716db3cd071036ad8ff403df4bd696e1e9fad75135deee06724982a002ba2a0a",
-    "source_sha256": "f9488efe6bf77b4e91627db3521b95763e4255365c7f3e4fa22e589a32da6e91",
-    "reviewed_at": "2026-09-28T06:43:23.428Z",
-    "expires_at": "2026-10-05T06:43:23.428Z"
+    "review_sha256": "aaa41878f8ac21d0e2de1068614b25cb75e698c4d2f7accb56caa9f100f964dc",
+    "source_sha256": "f7329e61d08ac8c03777c54f4f05f8b10a36c68cee763815d5f8cf56bd48d750",
+    "reviewed_at": "2026-10-09T00:51:46.841Z",
+    "expires_at": "2026-10-16T00:51:46.841Z"
   },
-  "signature": "epdA+wh8zQh8hUNIavd6vP0B7cZS44xZB0TzekERBD4dAZLAfMZ2IoINebN9u1pHYeG+6IDmVOqoBIK6G/rDBQ=="
+  "signature": "/KIBhONPAu4TyGdbgC9ycuU5HxmA+bbDVhS/oUzC36B37kzIiNUaJm3NuROTHkIUdAgLJpVrUnOb2Or9lRmhBQ=="
 }

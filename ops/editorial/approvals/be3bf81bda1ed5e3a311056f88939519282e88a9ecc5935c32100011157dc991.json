@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/friday-frame/2026-10-09-whats-changed-since-we-approved-it.md",
+    "document_sha256": "f9221eec8794f6450a9da421ec674eeb72b7aec9d14a8d93a80361a610a14bf5",
+    "review_sha256": "1702759552443aafb6e34f3400272990c7f30f57e0881f39c10a481e3c68ff81",
+    "source_sha256": "b68ff717bc9d6765e27617438e06961cbd7b9ab42a927ed50db0a5bd58cd13ac",
+    "reviewed_at": "2026-10-09T00:50:54.060Z",
+    "expires_at": "2026-10-16T00:50:54.060Z"
+  },
+  "signature": "MJknhjrxt+y1b5IyuWP8FxuV3Ji/s7FFQrpt/WiA1EkJOnnOLZiEDVoTMvTnVZRxz7zxNl3zScbtRrPVnN1iAw=="
+}
