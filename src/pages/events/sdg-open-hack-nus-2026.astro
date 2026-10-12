@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { nusEvent } from '../../data/nus-event';
+import { PERSON_ID } from '../../data/person';
+const title = 'Adrian Watkins | SDG Open Hack NUS Judge and Mentor, Singapore';
+const description = 'Adrian Watkins reflects on judging the SDG Open Hack NUS Campus Edition in Singapore on 10 October 2026, with event photographs and his ongoing mentoring work.';
+const url = `https://adrianwatkins.com${nusEvent.path}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: nusEvent.title, description, url,
+  mainEntityOfPage: url, author: { '@id': PERSON_ID },
+  datePublished: nusEvent.updated, dateModified: nusEvent.updated,
+  image: nusEvent.photos.map(photo => `https://adrianwatkins.com/images/${photo.src}`),
+  citation: nusEvent.source, contentLocation: { '@type': 'Place', name: 'Singapore' },
+};
+---
+<BaseLayout title={title} description={description} current="singapore" ogType="article" publishedTime={nusEvent.updated} modifiedTime={nusEvent.updated} ogImage="/images/sdg-nus-campus-session.jpg" ogImageAlt={nusEvent.photos[3].alt} ogImageWidth={800} ogImageHeight={1000} jsonLd={jsonLd}>
+  <section class="stub">
+    <div class="container">
+      <div class="eyebrow">Singapore · SDG Open Hack · 10 October 2026</div>
+      <h1>{nusEvent.title}</h1>
+      <p class="lede">{nusEvent.summary}</p>
+      <p class="quiet">Reflection published 12 October 2026. Event photographs: GGEF.</p>
+    </div>
+  </section>
+  <section class="container event-copy">
+    <div class="prose">
+      <p>One of the things I enjoy most about mentoring and judging is hearing how other people approach a problem. The SDG Open Hack at NUS here in Singapore gave me plenty to think about.</p>
+      <p>There were some wonderfully inventive ideas for tackling real-world challenges in a sustainable way, and the creativity and energy in the pitches made for a great afternoon.</p>
+      <p>As a mentor, you get to help teams think through their ideas. As a judge, you get the rather harder job of choosing between them! Both were a pleasure. Having called Singapore home for many years, it’s a particular honour to help the next generation here develop their thinking and confidence. There’s some brilliant future talent coming through.</p>
+      <p>The NUS Campus Edition ran on 9 and 10 October, bringing together 96 participants across 20 teams over 24 hours. Thank you to GGEF, the NUS Climate Analytics and Technology Club and NUS Social Impact Catalyst for bringing it together.</p>
+      <p>I’m also continuing to support a Social Impact Catalyst team as they prepare for the Grand Finale on 24 October. Can’t wait to see how the teams get on, and who takes the win!</p>
+      <p><a href={nusEvent.source} target="_blank" rel="noopener noreferrer">Read GGEF’s event recap and acknowledgement of the judges.</a></p>
+    </div>
+    <h2>From the NUS Campus Edition</h2>
+    <div class="event-gallery">
+      {nusEvent.photos.map(photo => (
+        <figure>
+          <a href={`/images/${photo.src}`} target="_blank" rel="noopener noreferrer" aria-label={`Open full photograph: ${photo.caption}`}>
+            <img src={`/images/${photo.src}`} alt={photo.alt} width="800" height="1000" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>{photo.caption} Photo: GGEF.</figcaption>
+        </figure>
+      ))}
+    </div>
+    <div class="prose">
+      <h2>Contributing in Singapore</h2>
+      <p>My involvement spans mentoring across SDG Open Hack’s campus and Social Impact Catalyst editions, judging at NUS, and supporting a team towards the Grand Finale. Alongside this, I mentor founders through ASEAN SOAR Together and contribute to workshops and executive conversations.</p>
+      <p>If you’re organising a student programme, founder session, panel or executive discussion, I’d be glad to hear what you have in mind.</p>
+    </div>
+    <div class="ctarow"><a class="btn btn-primary" href="/contact">Discuss a mentoring or speaking invitation</a><a class="btn btn-secondary" href="/singapore">My contribution in Singapore</a><a href="/speaking">Speaking and judging calendar</a></div>
+  </section>
+</BaseLayout>
+<style>
+  .event-copy { padding-bottom: 72px; }
+  h2 { margin: 40px 0 24px; }
+  .event-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  figure { margin: 0; }
+  img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  figcaption { font-size: 14px; line-height: 1.6; margin-top: 12px; }
+  @media (max-width: 640px) { .event-gallery { grid-template-columns: 1fr; } }
+</style>

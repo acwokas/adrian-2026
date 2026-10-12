@@ -1,0 +1,28 @@
+---
+import { nusEvent } from '../data/nus-event';
+---
+<section class="nus-feature" aria-label="Latest contribution in Singapore">
+  <div class="container nus-grid">
+    <a href={nusEvent.path} class="nus-photo" aria-label="See the NUS event reflection and photographs">
+      <img src="/images/sdg-nus-campus-session.jpg" alt={nusEvent.photos[3].alt} width="800" height="1000" loading="lazy" decoding="async" />
+    </a>
+    <div>
+      <div class="eyebrow">Singapore · 10 October 2026 · Mentor and judge</div>
+      <h2>{nusEvent.title}</h2>
+      <p>{nusEvent.summary}</p>
+      <p>Having called Singapore home for many years, it’s a particular honour to help the next generation here develop their thinking and confidence.</p>
+      <div class="ctarow">
+        <a class="btn btn-primary" href={nusEvent.path}>Reflection and event photos</a>
+        <a class="btn btn-secondary" href="/contact">Invite me to contribute</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .nus-feature { padding: 56px 0; border-top: 1px solid var(--line); }
+  .nus-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); gap: 40px; align-items: center; }
+  h2 { margin: 12px 0 20px; }
+  p { margin: 0 0 16px; }
+  .nus-photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
+  @media (max-width: 760px) { .nus-grid { grid-template-columns: 1fr; gap: 24px; } .nus-photo { max-width: 360px; } }
+</style>

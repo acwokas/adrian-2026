@@ -39,7 +39,7 @@ export const speakingEntries: SpeakingEntry[] = [
     bodyHtml: 'Following my mentoring at the September Social Impact Catalyst edition, I accepted an invitation to guide one of its winning teams as they prepare for the Grand Finale on 24 October. The support will include questions, feedback and short calls over the weeks ahead, with the SIC team facilitating.',
     homepage: {
       titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, supporting a team towards the Grand Finale.',
-      bodyHtml: 'Accepted an invitation to guide one of Social Impact Catalyst’s winning teams towards the 24 October Grand Finale, building on my September mentoring and invitation to judge the NUS edition.',
+      bodyHtml: 'Accepted an invitation to guide one of Social Impact Catalyst’s winning teams towards the 24 October Grand Finale, building on my September mentoring and judging at the NUS edition.',
     },
   },
   {
@@ -69,10 +69,10 @@ export const speakingEntries: SpeakingEntry[] = [
     when: '10 October 2026 · In person, Singapore',
     date: '2026-10-10',
     titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, National University of Singapore Edition.',
-    bodyHtml: 'Invited judge. Reviewing student team pitches and participating in questions and answers at the in-person judging session for the NUS edition.',
+    bodyHtml: 'Judge at the NUS Campus Edition in Singapore on 10 October. Reviewed creative and energetic student pitches tackling real-world sustainability challenges. The 9-10 October edition brought together 96 participants across 20 teams. <a href="/events/sdg-open-hack-nus-2026">Read my reflection and see the event photos.</a>',
     homepage: {
       titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, NUS Edition.',
-      bodyHtml: 'Invited judge for the in-person session on 10 October, reviewing student team pitches and participating in questions and answers.',
+      bodyHtml: 'Judged student pitches tackling sustainability challenges in Singapore on 10 October. <a href="/events/sdg-open-hack-nus-2026">Reflection and event photos.</a>',
     },
   },
   {
@@ -206,7 +206,11 @@ export function bucketOf(entry: SpeakingEntry, todayISO: string): SpeakingBucket
 }
 
 export function entriesByBucket(bucket: SpeakingBucket, todayISO: string): SpeakingEntry[] {
-  return speakingEntries.filter((entry) => bucketOf(entry, todayISO) === bucket);
+  return speakingEntries.filter((entry) => bucketOf(entry, todayISO) === bucket).sort((a, b) => {
+    if (a.date === null) return b.date === null ? 0 : 1;
+    if (b.date === null) return -1;
+    return bucket === 'recent' ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date);
+  });
 }
 
 export type HomepageSpeakingEntry = SpeakingEntry & {

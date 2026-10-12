@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NUSFeature from '../components/NUSFeature.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
 import { entriesByBucket } from '../data/speaking';
@@ -34,6 +35,8 @@ const speakingJsonLd = {
       </div>
     </div>
   </section>
+
+  <NUSFeature />
 
   <PhotoSlot
     src="speaking-ortus-roundtable-moderating.jpg"

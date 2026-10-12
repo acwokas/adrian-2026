@@ -1,6 +1,7 @@
 ---
 import Recommendation from '../components/Recommendation.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NUSFeature from '../components/NUSFeature.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { PERSON_ID } from '../data/person';
 import { getUpcomingMentoring } from '../data/singapore-mentoring';
@@ -74,7 +75,7 @@ const singaporeJsonLd = {
         {mentoringProgrammes.length > 0 && (
           <div class="prose">
             <aside class="callout" style="margin:0">
-              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Ongoing mentoring and upcoming judging</h3>
+              <h3 style="font-size:22px;font-weight:500;margin-bottom:16px">Ongoing mentoring and upcoming commitments</h3>
               {mentoringProgrammes.map((programme, i) => (
                 <div style={i < mentoringProgrammes.length - 1 ? 'margin-bottom:20px' : undefined}>
                   <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px">{programme.label}</div>
@@ -107,6 +108,8 @@ const singaporeJsonLd = {
     </div>
   </section>
 
+  <NUSFeature />
+
   <section style="padding:0 0 48px 0">
     <div class="container">
       <PhotoSlot
@@ -124,7 +127,7 @@ const singaporeJsonLd = {
       <h2 style="margin-bottom:24px">Helping students turn ideas into practical solutions</h2>
       <div class="prose" style="margin-bottom:32px">
         <p>In 2026, I have been volunteering as a mentor with the Global Green Economic Foundation's <a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> programme in Singapore. Students work on challenges connected to the UN Sustainable Development Goals, developing solutions and learning how to explain their value.</p>
-        <p>That involvement has grown from campus mentoring to an invitation to judge the National University of Singapore edition on 10 October 2026. I have now also accepted an invitation from Social Impact Catalyst to guide one of its winning teams towards the Grand Finale on 24 October.</p>
+        <p>That involvement has grown from campus mentoring to judging the National University of Singapore edition on 10 October 2026. I have now also accepted an invitation from Social Impact Catalyst to guide one of its winning teams towards the Grand Finale on 24 October.</p>
         <p>My contribution is to question assumptions, give constructive feedback and help teams connect an ambitious idea with a credible next step. I particularly enjoy the point where a team moves from describing a product to understanding the people who might use it.</p>
       </div>
 
@@ -135,7 +138,7 @@ const singaporeJsonLd = {
           <div class="prose">
             <p>Following my mentoring at the September Social Impact Catalyst edition, SIC invited me to guide one of its winning teams as they prepare for the Grand Finale on 24 October. I was delighted to accept.</p>
             <p>The support will continue over the weeks leading up to the finale, through questions, feedback and short calls when useful, with the SIC team helping to facilitate.</p>
-            <p>For me, this is a chance to build on the conversations we began at the hackathon and stay involved as a team develops its idea further. Alongside the invitation to judge the NUS edition, it marks a growing contribution to a programme I value.</p>
+            <p>For me, this is a chance to build on the conversations we began at the hackathon and stay involved as a team develops its idea further. Alongside judging at the NUS edition, it marks a growing contribution to a programme I value.</p>
           </div>
         </article>
 
