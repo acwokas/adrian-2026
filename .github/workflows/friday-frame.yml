@@ -7,7 +7,7 @@ name: Friday Frame (adrianwatkins.com)
 # staged frame (2026-08-15-the-last-mile, staged draft:true on 2026-08-12) sat
 # un-flipped until it was un-drafted by hand on 2026-08-15 at 10:40 SGT, a day
 # late. Nothing alerted, because nothing ever asserted that the archive had
-# grown. This workflow makes that shape impossible: see assertion 5.
+# grown. This publisher verifies output when it runs; missing runs need separate cloud supervision.
 #
 # CORRECTION TO THE RECEIVED ACCOUNT (established 2026-08-17)
 # The account this migration was commissioned under, repeated in the commit
@@ -94,10 +94,17 @@ jobs:
 
     steps:
       - name: Check out the deploy branch
+        id: checkout
         uses: actions/checkout@v4
         with:
           ref: astro-rebuild
           fetch-depth: 0
+
+      - name: Record checked out source
+        id: source
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "cohort_date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
       # DRY RUN PATH ------------------------------------------------------
       # A rehearsal that skipped verification would prove almost nothing, and
@@ -113,6 +120,7 @@ jobs:
       # exits on its first line, curl dies writing the remainder, and pipefail
       # promotes that to a false failure on a perfectly healthy site.
       - name: Rehearse verification against live site (dry run only)
+        id: rehearsal
         if: ${{ inputs.dry_run }}
         run: |
           set -euo pipefail
@@ -234,7 +242,7 @@ jobs:
                 fi
               done
               [ "$FOUND" = "1" ] || echo "  (none)"
-              echo "Re-run this workflow with dry_run unchecked and slug=<one of the above> to publish it."
+              echo "Reconcile the missing approved queue with its owner. This failure does not authorize dispatch or replay."
               exit 1
             fi
             if [ "${#CANDIDATES[@]}" -gt 1 ]; then
@@ -257,6 +265,7 @@ jobs:
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Require current independent whole-file factual approval
+        id: approval
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           TARGET_FILE: ${{ steps.target.outputs.file }}
@@ -320,6 +329,7 @@ jobs:
           fi
 
       - name: Flip draft to false and commit
+        id: publication
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           TARGET_FILE: ${{ steps.target.outputs.file }}
@@ -336,7 +346,12 @@ jobs:
           fi
           git add "$FILE"
           git commit -m "friday frame: publish ${TARGET_SLUG}"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          # Persist intent before the network call. A lost acknowledgement is
+          # uncertain and must never be reported as proof of no publication.
+          echo "push_attempted=true" >> "$GITHUB_OUTPUT"
           git push origin HEAD:${DEPLOY_BRANCH}
+          echo "push_ack=true" >> "$GITHUB_OUTPUT"
 
       # DEPLOY ------------------------------------------------------------
       # WITHOUT THIS STEP EVERY REAL PUBLISH FAILS. It is not a propagation
@@ -361,57 +376,45 @@ jobs:
       # deploy.yml's build stays the single source of truth rather than being
       # duplicated here, so the two cannot drift.
       - name: Trigger the Cloudflare Pages deploy and wait for it
+        id: deployment
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
+          PUBLICATION_SHA: ${{ steps.publication.outputs.sha }}
         run: |
           set -euo pipefail
 
-          # BOTH queries must filter on --event workflow_dispatch. Comparing a
-          # baseline taken across all events against a candidate filtered to
-          # dispatches is not like for like, and it breaks from the second week
-          # onward: any ordinary push to astro-rebuild between two Fridays
-          # becomes the newest run overall, so the newest *dispatch* run (last
-          # Friday's, long finished) differs from it on the very first poll.
-          # The loop would then latch onto that stale run, `gh run watch` would
-          # return its old success immediately, and verification would race a
-          # site that was never rebuilt.
-          PREV="$(gh run list --workflow deploy.yml --branch "${DEPLOY_BRANCH}" \
-            --event workflow_dispatch --limit 1 --json databaseId -q '.[0].databaseId // 0')"
-          echo "Most recent deploy DISPATCH before this one: ${PREV}"
+          export DEPLOY_TITLE="Friday Frame ${GITHUB_RUN_ID}/${GITHUB_RUN_ATTEMPT} ${PUBLICATION_SHA}"
+          # Exactly one dispatch. Unknown acknowledgement never triggers retry.
+          gh workflow run deploy.yml --ref "${DEPLOY_BRANCH}" \
+            -f expected_sha="$PUBLICATION_SHA" \
+            -f parent_identity="${GITHUB_RUN_ID}/${GITHUB_RUN_ATTEMPT}"
 
-          gh workflow run deploy.yml --ref "${DEPLOY_BRANCH}"
-
-          # The dispatch API returns no run id, so poll for one newer than the
-          # id recorded above rather than assuming the newest run is ours.
           RUN_ID=""
           for i in $(seq 1 20); do
             sleep 6
-            CANDIDATE="$(gh run list --workflow deploy.yml --branch "${DEPLOY_BRANCH}" \
-              --event workflow_dispatch --limit 1 --json databaseId -q '.[0].databaseId // 0')"
-            if [ "$CANDIDATE" != "0" ] && [ "$CANDIDATE" != "$PREV" ]; then
-              RUN_ID="$CANDIDATE"
-              echo "Deploy run ${RUN_ID} registered after $((i * 6))s"
+            SNAPSHOT="$(gh run list --workflow deploy.yml --branch "${DEPLOY_BRANCH}" \
+              --event workflow_dispatch --limit 30 \
+              --json databaseId,displayTitle,headSha,headBranch,event)"
+            RUN_ID="$(printf '%s' "$SNAPSHOT" | python3 .github/scripts/friday-frame-deploy-match.py)"
+            if [ -n "$RUN_ID" ]; then
+              echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+              echo "identity_bound=true" >> "$GITHUB_OUTPUT"
               break
             fi
-            echo "  attempt $i: no new deploy run yet"
           done
-          [ -n "$RUN_ID" ] || { echo "::error::Dispatched deploy.yml but no new run appeared within 120s. The frame is committed but not built."; exit 1; }
-
-          echo "Watching ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}"
-          gh run watch "$RUN_ID" --exit-status \
-            || { echo "::error::The Cloudflare Pages deploy failed. The frame is committed but not live."; exit 1; }
+          [ -n "$RUN_ID" ] || { echo "::error::Child identity unresolved. Publication status is unknown; reconcile before further action."; exit 1; }
+          gh run watch "$RUN_ID" --exit-status
 
       - name: Let the CDN settle
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         run: sleep 30
 
       # The verifier polls the post URL 6 times at 20s intervals before it
-      # gives up. That polling loop IS the automated remediation stage for the
-      # commonest real failure here, a Cloudflare Pages build that has not
-      # finished propagating yet. Only a failure that survives the full two
-      # minutes reaches the reporting step below.
+      # gives up. This is bounded read-only propagation verification, not
+      # recovery or authority for another deployment or publication attempt.
       - name: Verify published
+        id: verification
         if: ${{ !inputs.dry_run && steps.target.outputs.already != 'true' }}
         env:
           EXPECT_DELTA: '1'
@@ -425,44 +428,39 @@ jobs:
             "$TARGET_TITLE" \
             "$BASELINE_COUNT"
 
-      # FAILURE REPORTING -------------------------------------------------
-      # This step sends NOTHING. That is deliberate and it is the policy, not
-      # an omission.
-      #
-      # Resend is P0 only. Adrian's test is "if it arrives and he does nothing
-      # differently, it must not be an email", and the standing rule since
-      # 2026-08-16 is that non-P0 signal travels as a loud report plus a
-      # non-zero workflow exit. An `if: failure()` mailer inside an already
-      # failing workflow is the exact pattern that was stripped out of ~30
-      # callers across the estate, because it is a second notification of
-      # something GitHub has already notified about, for free, in a channel
-      # that cannot be filtered away.
-      #
-      # So the alert for "the Friday Frame did not publish" is this job going
-      # red. No RESEND_API_KEY, no RESEND_FROM, no repo secret to rotate, and
-      # no alert path that can itself fail silently at 401.
-      #
-      # This DOES depend on GitHub Actions failure notifications being on for
-      # Adrian's account, which is the same dependency the whole estate policy
-      # already rests on.
-      - name: Report failure loudly (no email by design)
-        if: ${{ failure() }}
+      # Terminal evidence is metadata only. Upload failure leaves acceptance
+      # incomplete; the existing failing job remains the notification channel.
+      - name: Persist terminal metadata receipt
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
         env:
-          SLUG: ${{ steps.target.outputs.slug }}
-          DRY: ${{ inputs.dry_run }}
-        run: |
-          {
-            echo "## Friday Frame FAILED"
-            echo
-            echo "Nothing was published."
-            echo
-            echo "| | |"
-            echo "|---|---|"
-            echo "| Slug | ${SLUG:-(not resolved)} |"
-            echo "| Dry run | ${DRY:-false} |"
-            echo "| Run | ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} |"
-            echo
-            echo "The verifier already retried the live site for two minutes before failing."
-            echo "This red run is the alert. Read the failing step above for the assertion that broke."
-          } >> "$GITHUB_STEP_SUMMARY"
-          echo "::error::Friday Frame did not publish. This failing run is the alert; no email is sent by design."
+          RECEIPT_PATH: ${{ runner.temp }}/friday-frame-receipt.json
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          WORKFLOW_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          COHORT_DATE: ${{ steps.source.outputs.cohort_date }}
+          CHECKOUT_SHA: ${{ steps.source.outputs.sha }}
+          PUBLICATION_SHA: ${{ steps.publication.outputs.sha }}
+          PUSH_ATTEMPTED: ${{ steps.publication.outputs.push_attempted }}
+          PUSH_ACK: ${{ steps.publication.outputs.push_ack }}
+          TARGET_SLUG: ${{ steps.target.outputs.slug }}
+          ALREADY: ${{ steps.target.outputs.already }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          JOB_STATUS: ${{ job.status }}
+          REHEARSAL_OUTCOME: ${{ steps.rehearsal.outcome }}
+          APPROVAL_OUTCOME: ${{ steps.approval.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
+          DEPLOY_RUN_ID: ${{ steps.deployment.outputs.run_id }}
+          DEPLOY_IDENTITY_BOUND: ${{ steps.deployment.outputs.identity_bound }}
+          VERIFY_OUTCOME: ${{ steps.verification.outcome }}
+        run: python3 .github/scripts/friday-frame-receipt.py
+
+      - name: Retain terminal metadata independently of the Mac
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: friday-frame-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/friday-frame-receipt.json
+          if-no-files-found: error
+          retention-days: 30
