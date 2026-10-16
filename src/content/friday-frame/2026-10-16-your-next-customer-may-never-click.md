@@ -1,7 +1,7 @@
 ---
 title: "Your next customer may never click."
 date: 2026-10-16
-draft: true
+draft: false
 summary: "The sales conversation can end before we know it’s started."
 ---
 

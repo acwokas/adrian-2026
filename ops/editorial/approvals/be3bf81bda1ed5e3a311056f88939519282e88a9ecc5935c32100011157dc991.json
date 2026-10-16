@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/friday-frame/2026-10-09-whats-changed-since-we-approved-it.md",
     "document_sha256": "f9221eec8794f6450a9da421ec674eeb72b7aec9d14a8d93a80361a610a14bf5",
-    "review_sha256": "1702759552443aafb6e34f3400272990c7f30f57e0881f39c10a481e3c68ff81",
-    "source_sha256": "b68ff717bc9d6765e27617438e06961cbd7b9ab42a927ed50db0a5bd58cd13ac",
-    "reviewed_at": "2026-10-09T00:50:54.060Z",
-    "expires_at": "2026-10-16T00:50:54.060Z"
+    "review_sha256": "e365091cc51ab29f0111a45e77e8b99801c470fea8490641d92b3347c8ba0831",
+    "source_sha256": "e8944456ac9585fc5d1fe9e4dc91e852da1f9ab0aa861043fa46614cba2617e9",
+    "reviewed_at": "2026-10-16T02:30:31.969Z",
+    "expires_at": "2026-10-23T02:30:31.969Z"
   },
-  "signature": "MJknhjrxt+y1b5IyuWP8FxuV3Ji/s7FFQrpt/WiA1EkJOnnOLZiEDVoTMvTnVZRxz7zxNl3zScbtRrPVnN1iAw=="
+  "signature": "wbRKK7Ao8b/JEa1h53BAbRFHalGzlPKtxjZlSDi25eY4PeHuNc96l95taoa64cIB4da+OgPKO5NrsmKst7ofBw=="
 }
