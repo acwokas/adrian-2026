@@ -8,8 +8,11 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - name: Friday Frame metadata and child identity contracts (offline)
+        run: python3 -m unittest discover -s .github/scripts -p "test_friday_frame_*.py" -v
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
