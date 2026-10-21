@@ -28,7 +28,7 @@ Watching someone explain an idea can create a comfortable feeling of understandi
 
 After a useful section, close the screen. Write the main idea in your own words, explain it aloud or answer a question without looking at your notes. Then check what you missed.
 
-A [2011 study by Jeffrey Karpicke and Janell Blunt](https://pubmed.ncbi.nlm.nih.gov/21252317/) found that retrieval practice improved conceptual learning from the science texts studied. That finding does not guarantee better workplace performance. It does give us a useful reason to include active recall in how we study.
+A [2011 study by Jeffrey Karpicke and Janell Blunt](https://learninglab.psych.purdue.edu/downloads/2011/2011_Karpicke_Blunt_Science.pdf) found that retrieval practice improved conceptual learning from the science texts studied. That finding does not guarantee better workplace performance. It does give us a useful reason to include active recall in how we study.
 
 Keep the exercise small enough to repeat. Three questions answered from memory can reveal more than several pages of copied notes.
 

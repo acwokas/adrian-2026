@@ -10,6 +10,8 @@ A useful way to assess leadership is to look at what happens when the leader lea
 
 These questions make leadership practical. They connect strategy to the choices people face during an ordinary working day. A team can understand the ambition and still struggle to act if every meaningful choice requires another meeting.
 
+[Google's re:Work guide on team effectiveness](https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness) identifies structure and clarity among the findings from its own team research. That is a company-specific finding, rather than a guarantee for every organisation. It is a useful prompt to examine whether people understand their responsibilities and the decisions they can make.
+
 ## Make the boundary clear
 
 "Use your judgement" sounds empowering. Its usefulness depends on the boundaries around that judgement.
