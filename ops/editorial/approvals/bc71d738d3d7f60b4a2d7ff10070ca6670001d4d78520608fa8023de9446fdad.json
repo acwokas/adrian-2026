@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/burnout-and-the-decision-to-leave.md",
-    "document_sha256": "31be3cb81f9f907cbf84701a67fff7a6f59e0d7493cee66268e7b891ba2c23c5",
-    "review_sha256": "176a4de81db5e1f5b0262366f6ec05f4bb4d3929cb55b2886c4826a622ae6683",
-    "source_sha256": "7ee2e23e214ac460ed5a1e72a21e317d760e12e519d2be7680abd16eb1b9d533",
-    "reviewed_at": "2026-10-21T04:43:27.291Z",
-    "expires_at": "2026-10-28T04:43:27.291Z"
+    "document_sha256": "ae74ae9c2bbd65a3ca21c7bc8b9f3d216c0ea47f95853188ae35e4a4df3b9dd2",
+    "review_sha256": "9ab6fe30c104c623afb3cf5b46e95b89550c0e0e2446d964032d6b3e42b10a94",
+    "source_sha256": "e140199b8b99eb8cc9cfbc3dec13a68c95f041f98e3e115d20c53098d5973a94",
+    "reviewed_at": "2026-10-21T05:22:59.381Z",
+    "expires_at": "2026-10-28T05:22:59.381Z"
   },
-  "signature": "PBaJVtp9g0giex6aRMsxxdohCK8CqL2jsPRJCD56bBFcVjuKzNGjU51AcGrNhRABv0vcPP+h38XJ8WCkvsUCAA=="
+  "signature": "fplwSpgGRGZ86IgNA1EnpZ345yXiO+nAKQp8b95tYfXUh64OoY7RlmHH83BZwtemxrh1SVKBOsr4RmSM5dfnAQ=="
 }

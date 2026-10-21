@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/amazon-financial-services-and-customer-journeys.md",
-    "document_sha256": "58a29568c8b3a1e44c037555d2afd232f8fb34b005896fb043536d8b8d688538",
-    "review_sha256": "bd62c0ea1115128d0c4023b88a3ab83529f65c28e044867227a06b1639857c61",
-    "source_sha256": "a9a040487a977ae405ec540cc3ca95cbfcb366fe66391e2a87988a5b0ed8d049",
-    "reviewed_at": "2026-10-21T04:59:41.888Z",
-    "expires_at": "2026-10-28T04:59:41.888Z"
+    "document_sha256": "f5369539a5e5bd25c4d61672074b09a298b6a7f278059d697383936447a20187",
+    "review_sha256": "f69eac22d54fafdabf12e8d1974ceb9f2556bb0b499dec46eba00b9f989936e4",
+    "source_sha256": "41d5eb18cf41b97b95da1c36fca86a692cd3ddc384b9dd3ae59cb3c25ea47155",
+    "reviewed_at": "2026-10-21T05:22:47.387Z",
+    "expires_at": "2026-10-28T05:22:47.387Z"
   },
-  "signature": "WDx+adPKtwHYS5YAiP0+EOHEHUy9mdcJJDJHlAdzTDWpvQAU03w/EjW5/+jTiU6fEORQ5BlBgFIJpnRdnrKyAw=="
+  "signature": "6J/WG/YIcuqVRFf3DJdCYfQxLOrVdJCEJJylrsuoyQpnEt1ynhHFpj36WVjeQtJgXobSQ/Kuh1vaPegfi8cbCg=="
 }

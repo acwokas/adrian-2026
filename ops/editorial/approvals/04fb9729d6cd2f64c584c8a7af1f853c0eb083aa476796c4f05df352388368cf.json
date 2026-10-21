@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/speak-clearly-and-be-heard.md",
-    "document_sha256": "0024ebc1fae0f107e841a338f7e819dea95637fd9356c4a058fa12a22eb7a73c",
-    "review_sha256": "1f50eab230ed0f5ab0377836e5fcd3c7374bcefe004d79e8aa2fc7b479dd6131",
-    "source_sha256": "7ef90b84958e929d070c911df5678d7cde00e976a06e37b295311753562f3059",
-    "reviewed_at": "2026-10-21T05:03:57.348Z",
-    "expires_at": "2026-10-28T05:03:57.348Z"
+    "document_sha256": "a1ce582030923658dfd8757933955e191577db9d3229e4054eeacc9696a38ff8",
+    "review_sha256": "7f50c8b09e78e734d47ff7efc8620c457aa025d5fcbc0343a87d18415f274afd",
+    "source_sha256": "d374bbd5b2750ef34582922850c693174e76ec69678a0d6455d8e2fd07444f90",
+    "reviewed_at": "2026-10-21T05:23:32.284Z",
+    "expires_at": "2026-10-28T05:23:32.284Z"
   },
-  "signature": "1WiAySYV2lC9tPLHAv1K3JKynZl+7UGYzc2Wu1nT4YPfp9nDf+n5Qc08L7/d9fRNlUzxMXmQeLOR4hBLEwvOCA=="
+  "signature": "KAtlPLViRfqsz1sFauSW5F88salu1ZMRYedtCv2UmFoZgdv3u5DYu45lrm32Kc5x0eOXe+x1mGte5mt4APZGAQ=="
 }

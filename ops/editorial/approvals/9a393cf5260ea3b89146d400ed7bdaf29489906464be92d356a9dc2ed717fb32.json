@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/digital-marketing-that-earns-its-budget.md",
-    "document_sha256": "1483a6a7167449ec0cd6f3ee8aad41e21fedd1f813c0b807f9b848788f2a56a9",
-    "review_sha256": "f2b8ff1e453b18b3c8847ce8a12c451563648dacb6ee459338505e0c6d471f76",
-    "source_sha256": "8ebcc13f38a185a03e309ca56d83cf9dcb9086640fcbda52d68a077a5bd0c3ab",
-    "reviewed_at": "2026-10-21T04:59:09.318Z",
-    "expires_at": "2026-10-28T04:59:09.318Z"
+    "document_sha256": "28e83460c0fe6ab5fb6e6cafaf19f2306fafc52edf57d6ca9bcc69436a725dce",
+    "review_sha256": "482837d3b070c774f2f5945bc04c6e794a9c994d2545a39ec193afdd7ff98e99",
+    "source_sha256": "ba3dec97d5bcd8113353b5ad9f84484c3c7c3f223423b58127e0699a5410b481",
+    "reviewed_at": "2026-10-21T05:23:21.838Z",
+    "expires_at": "2026-10-28T05:23:21.838Z"
   },
-  "signature": "p3qZbtGxTRmyhoOY/83p32nHd8Gs/CFmBvPp6P9ZVDg1+5oFcu3aILANr7PXMWssjlJVwEmFJMTWXC+Z2MP8Ag=="
+  "signature": "g62QxgfViD4O30S+Cc5UxNlKfzfdoTHTNd1uFpvPccJcFiO/OfaItat1pUQsGmoEmxtrLR7BtYtdK8gL/isHBw=="
 }

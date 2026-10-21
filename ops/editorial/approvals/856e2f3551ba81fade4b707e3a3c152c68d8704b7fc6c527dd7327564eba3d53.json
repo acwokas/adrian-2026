@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/understanding-chinas-technology-ecosystem.md",
-    "document_sha256": "a2baa24a1c960c9cf8082d8f9190ca84a327b5a78fc8631478ca5aac87cc9741",
-    "review_sha256": "3fe31b47dc8ef2663b88b4e28b9135d85f5a2fa174445bb2641f2e6a143d6ca4",
-    "source_sha256": "3f6999a02be30753a3fb69653eefdffe337a63d0df744f5c429183033c69fcd2",
-    "reviewed_at": "2026-10-21T04:52:55.512Z",
-    "expires_at": "2026-10-28T04:52:55.512Z"
+    "document_sha256": "cebef9ba5914e71e97996c4f65d1d38bc73804015ae1beee68d50ebaa6c6fa04",
+    "review_sha256": "1b490b4dcb995741ae94af479a293b498a465c7b7acd7827d30762f2065e0a7c",
+    "source_sha256": "993a148d1993fc18b56ac4c2643393f6a388800fc50fe8cae834a5d1604ca364",
+    "reviewed_at": "2026-10-21T05:27:04.078Z",
+    "expires_at": "2026-10-28T05:27:04.078Z"
   },
-  "signature": "l/ISegXQhIBb6ObrSAsZjUXw46DyT+Cv2Z1FnYNBeG4TsFh+ITs08uhTlM2VOcWwVXqOP8U7NUGLZKLhXX9CDg=="
+  "signature": "ZAd4SmTSYSRA/UpWVQ+402o5d6429KTdSo6i/ZfC6dM+XsdcJ4jy8mdmRgq+QRCQFdonktU1EX9IpPRqxrclDQ=="
 }
