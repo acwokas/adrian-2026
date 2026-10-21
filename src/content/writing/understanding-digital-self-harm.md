@@ -8,7 +8,7 @@ draft: true
 
 An abusive message about a young person deserves a serious response. Discovering that the young person posted it about themselves should not end that response.
 
-Researchers use the term digital self-harm to describe behaviour that includes anonymously posting hurtful material about oneself online. The [Cyberbullying Research Center's account of its research](https://cyberbullying.org/digital-self-harm-the-growing-problem-youve-never-heard-of) explains the behaviour and the different reasons young people reported for it. Those reasons are not a diagnosis of any individual child.
+Researchers use the term digital self-harm to describe behaviour that includes anonymously posting hurtful material about oneself online. The [Florida Atlantic University's account of research by Sameer Hinduja and Justin Patchin](https://www.fau.edu/newsdesk/articles/digital-self-harm-teens.php) describes the behaviour and the authors' call for support. A general description is not a diagnosis of any individual child.
 
 For adults, the useful starting point is curiosity and care. An assumption about who wrote a post can be wrong. An assumption about why they wrote it can be wrong too.
 
