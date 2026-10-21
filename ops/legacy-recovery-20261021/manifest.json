@@ -1,0 +1,193 @@
+{
+  "window": [
+    "2025-10-21",
+    "2026-10-20"
+  ],
+  "recentWindow": [
+    "2026-10-14",
+    "2026-10-20"
+  ],
+  "property": "517148315",
+  "recent404Views": 28,
+  "recentDistinctPaths": 14,
+  "articles": [
+    {
+      "legacy": "4-keys-to-making-online-learning-work",
+      "slug": "making-online-learning-work",
+      "path": "src/content/writing/making-online-learning-work.md",
+      "destination": "/writing/making-online-learning-work",
+      "redirects": [
+        "/4-keys-to-making-online-learning-work",
+        "/4-keys-to-making-online-learning-work/",
+        "/2020/08/24/4-keys-to-making-online-learning-work",
+        "/2020/08/24/4-keys-to-making-online-learning-work/"
+      ],
+      "annualViewsAllMatchedAliases": 12,
+      "recorded404Views": 4
+    },
+    {
+      "legacy": "us-mobile-ad-spending-will-manage-to-grow-in-2020",
+      "slug": "mobile-advertising-budget-decisions",
+      "path": "src/content/writing/mobile-advertising-budget-decisions.md",
+      "destination": "/writing/mobile-advertising-budget-decisions",
+      "redirects": [
+        "/us-mobile-ad-spending-will-manage-to-grow-in-2020",
+        "/us-mobile-ad-spending-will-manage-to-grow-in-2020/",
+        "/2020/08/13/us-mobile-ad-spending-will-manage-to-grow-in-2020",
+        "/2020/08/13/us-mobile-ad-spending-will-manage-to-grow-in-2020/"
+      ],
+      "annualViewsAllMatchedAliases": 8,
+      "recorded404Views": 4
+    },
+    {
+      "legacy": "everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights",
+      "slug": "amazon-financial-services-and-customer-journeys",
+      "path": "src/content/writing/amazon-financial-services-and-customer-journeys.md",
+      "destination": "/writing/amazon-financial-services-and-customer-journeys",
+      "redirects": [
+        "/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights",
+        "/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights/",
+        "/2020/02/17/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights",
+        "/2020/02/17/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights/"
+      ],
+      "annualViewsAllMatchedAliases": 7,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired",
+      "slug": "inbox-zero-and-reliable-follow-through",
+      "path": "src/content/writing/inbox-zero-and-reliable-follow-through.md",
+      "destination": "/writing/inbox-zero-and-reliable-follow-through",
+      "redirects": [
+        "/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired",
+        "/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired/",
+        "/2020/02/14/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired",
+        "/2020/02/14/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired/"
+      ],
+      "annualViewsAllMatchedAliases": 10,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "how-dlc-boosts-engagement-for-pc-and-console-games",
+      "slug": "dlc-and-player-engagement",
+      "path": "src/content/writing/dlc-and-player-engagement.md",
+      "destination": "/writing/dlc-and-player-engagement",
+      "redirects": [
+        "/how-dlc-boosts-engagement-for-pc-and-console-games",
+        "/how-dlc-boosts-engagement-for-pc-and-console-games/"
+      ],
+      "annualViewsAllMatchedAliases": 13,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "how-to-wisely-wield-the-power-of-leadership",
+      "slug": "leadership-through-clear-decisions",
+      "path": "src/content/writing/leadership-through-clear-decisions.md",
+      "destination": "/writing/leadership-through-clear-decisions",
+      "redirects": [
+        "/how-to-wisely-wield-the-power-of-leadership",
+        "/how-to-wisely-wield-the-power-of-leadership/",
+        "/2020/08/15/how-to-wisely-wield-the-power-of-leadership",
+        "/2020/08/15/how-to-wisely-wield-the-power-of-leadership/"
+      ],
+      "annualViewsAllMatchedAliases": 8,
+      "recorded404Views": 3
+    },
+    {
+      "legacy": "microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum",
+      "slug": "technology-shifts-and-business-models",
+      "path": "src/content/writing/technology-shifts-and-business-models.md",
+      "destination": "/writing/technology-shifts-and-business-models",
+      "redirects": [
+        "/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum",
+        "/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum/",
+        "/2019/03/29/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum",
+        "/2019/03/29/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum/"
+      ],
+      "annualViewsAllMatchedAliases": 11,
+      "recorded404Views": 5
+    },
+    {
+      "legacy": "take-control-of-vocal-delivery-be-yourself-and-be-heard",
+      "slug": "speak-clearly-and-be-heard",
+      "path": "src/content/writing/speak-clearly-and-be-heard.md",
+      "destination": "/writing/speak-clearly-and-be-heard",
+      "redirects": [
+        "/take-control-of-vocal-delivery-be-yourself-and-be-heard",
+        "/take-control-of-vocal-delivery-be-yourself-and-be-heard/",
+        "/2020/03/05/take-control-of-vocal-delivery-be-yourself-and-be-heard",
+        "/2020/03/05/take-control-of-vocal-delivery-be-yourself-and-be-heard/"
+      ],
+      "annualViewsAllMatchedAliases": 10,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "when-burnout-is-a-sign-you-should-leave-your-job",
+      "slug": "burnout-and-the-decision-to-leave",
+      "path": "src/content/writing/burnout-and-the-decision-to-leave.md",
+      "destination": "/writing/burnout-and-the-decision-to-leave",
+      "redirects": [
+        "/when-burnout-is-a-sign-you-should-leave-your-job",
+        "/when-burnout-is-a-sign-you-should-leave-your-job/",
+        "/2020/03/07/when-burnout-is-a-sign-you-should-leave-your-job",
+        "/2020/03/07/when-burnout-is-a-sign-you-should-leave-your-job/"
+      ],
+      "annualViewsAllMatchedAliases": 12,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "why-more-young-americans-are-cyber-bullying-themselves",
+      "slug": "understanding-digital-self-harm",
+      "path": "src/content/writing/understanding-digital-self-harm.md",
+      "destination": "/writing/understanding-digital-self-harm",
+      "redirects": [
+        "/why-more-young-americans-are-cyber-bullying-themselves",
+        "/why-more-young-americans-are-cyber-bullying-themselves/",
+        "/2020/02/23/why-more-young-americans-are-cyber-bullying-themselves",
+        "/2020/02/23/why-more-young-americans-are-cyber-bullying-themselves/"
+      ],
+      "annualViewsAllMatchedAliases": 10,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "with-the-states-help-chinese-technology-is-booming",
+      "slug": "understanding-chinas-technology-ecosystem",
+      "path": "src/content/writing/understanding-chinas-technology-ecosystem.md",
+      "destination": "/writing/understanding-chinas-technology-ecosystem",
+      "redirects": [
+        "/with-the-states-help-chinese-technology-is-booming",
+        "/with-the-states-help-chinese-technology-is-booming/",
+        "/2020/02/19/with-the-states-help-chinese-technology-is-booming",
+        "/2020/02/19/with-the-states-help-chinese-technology-is-booming/"
+      ],
+      "annualViewsAllMatchedAliases": 6,
+      "recorded404Views": 2
+    },
+    {
+      "legacy": "digital-marketing-in-2019",
+      "slug": "digital-marketing-that-earns-its-budget",
+      "path": "src/content/writing/digital-marketing-that-earns-its-budget.md",
+      "destination": "/writing/digital-marketing-that-earns-its-budget",
+      "redirects": [
+        "/digital-marketing-in-2019",
+        "/digital-marketing-in-2019/"
+      ],
+      "annualViewsAllMatchedAliases": 4,
+      "recorded404Views": 3
+    },
+    {
+      "legacy": "what-is-attribution-modelling",
+      "slug": "attribution-modelling-for-better-decisions",
+      "path": "src/content/writing/attribution-modelling-for-better-decisions.md",
+      "destination": "/writing/attribution-modelling-for-better-decisions",
+      "redirects": [
+        "/what-is-attribution-modelling",
+        "/what-is-attribution-modelling/",
+        "/2019/01/30/what-is-attribution-modelling",
+        "/2019/01/30/what-is-attribution-modelling/"
+      ],
+      "annualViewsAllMatchedAliases": 11,
+      "recorded404Views": 4
+    }
+  ]
+}
