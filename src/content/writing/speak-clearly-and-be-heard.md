@@ -3,7 +3,7 @@ title: "Speak clearly and give the room time to listen"
 date: 2026-10-21
 summary: "Make your point easier to follow with a clear structure, deliberate pauses and a room that supports your voice."
 tags: ["communication", "leadership", "public speaking"]
-draft: true
+draft: false
 ---
 
 People can struggle to follow a speaker who knows the subject extremely well. Expertise brings detail, qualifications and useful connections. It can also make it difficult to decide what the audience needs first.

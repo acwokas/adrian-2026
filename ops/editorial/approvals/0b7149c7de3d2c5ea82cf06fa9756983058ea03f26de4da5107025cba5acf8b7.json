@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/mobile-advertising-budget-decisions.md",
+    "document_sha256": "5ffdf3da3070f35eb6ce438800e701f27211b037c594d2058ef2096a989c416b",
+    "review_sha256": "39d5807dc07f5e8d7f71e478dc93b9927e9dc0a5e19de266d45d951d193eeab4",
+    "source_sha256": "c28315312b0a8cfb737b11a185cebd060dfd8476327fc60b08ff71a33fa0f370",
+    "reviewed_at": "2026-10-21T04:59:18.520Z",
+    "expires_at": "2026-10-28T04:59:18.520Z"
+  },
+  "signature": "o4x6Uxbyt5VVZz0qFlC/vAahcQOTcYVRP1RWeYLjfSCELaNJ146iJN3FeMi0QqNOPTL9nvnL1j4PpM4UD5P3Dg=="
+}

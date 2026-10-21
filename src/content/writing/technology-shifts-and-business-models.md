@@ -3,7 +3,7 @@ title: "When technology changes faster than the business model"
 date: 2026-10-21
 summary: "Technology investment needs pricing, incentives, customer expectations and operating responsibilities that fit the promised service."
 tags: ["business models", "leadership", "technology"]
-draft: true
+draft: false
 ---
 
 A business can install new technology and carry on behaving much as it did before.

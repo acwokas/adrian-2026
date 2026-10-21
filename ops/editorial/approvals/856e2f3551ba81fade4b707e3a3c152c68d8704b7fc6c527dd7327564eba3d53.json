@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/understanding-chinas-technology-ecosystem.md",
+    "document_sha256": "a2baa24a1c960c9cf8082d8f9190ca84a327b5a78fc8631478ca5aac87cc9741",
+    "review_sha256": "3fe31b47dc8ef2663b88b4e28b9135d85f5a2fa174445bb2641f2e6a143d6ca4",
+    "source_sha256": "3f6999a02be30753a3fb69653eefdffe337a63d0df744f5c429183033c69fcd2",
+    "reviewed_at": "2026-10-21T04:52:55.512Z",
+    "expires_at": "2026-10-28T04:52:55.512Z"
+  },
+  "signature": "l/ISegXQhIBb6ObrSAsZjUXw46DyT+Cv2Z1FnYNBeG4TsFh+ITs08uhTlM2VOcWwVXqOP8U7NUGLZKLhXX9CDg=="
+}

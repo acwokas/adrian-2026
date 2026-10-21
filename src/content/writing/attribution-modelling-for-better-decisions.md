@@ -3,7 +3,7 @@ title: "Attribution modelling starts with a better question"
 date: 2026-10-21
 summary: "Attribution can organise marketing evidence. Better decisions also need clear questions, commercial context and honest limits."
 tags: ["marketing", "measurement", "commercial strategy"]
-draft: true
+draft: false
 ---
 
 A customer sees a campaign, searches for the company a week later and eventually buys after receiving an email. Who gets the credit?

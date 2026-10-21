@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/making-online-learning-work.md",
+    "document_sha256": "a031b04fc46257ce8356b7b51f4de4385f4160c6a9195ce71b32d2f9646e0d6f",
+    "review_sha256": "851da16a28b0c239c04c52acf3d61b8d04dac2cf8b79cd296321c0cb8cc68fc4",
+    "source_sha256": "f76b902eb01ada50dacc85c220b07afaf6944715cd1571ac5b1a92a7cb3a3ebf",
+    "reviewed_at": "2026-10-21T04:59:07.881Z",
+    "expires_at": "2026-10-28T04:59:07.881Z"
+  },
+  "signature": "1AaSrZFu4WWmrAvUjGZd7r913n1XhS/8Qonghn2HmITeK5NgsrO/e6k/3FHvx2RUdAx+J+2TRDJV0ybN9sb1Dg=="
+}

@@ -3,7 +3,7 @@ title: "How to assess China's technology ecosystem with more care"
 date: 2026-10-21
 summary: "Evaluate technology businesses through customers, research, competition, policy and the operating conditions a decision depends on."
 tags: ["technology", "China", "business strategy"]
-draft: true
+draft: false
 ---
 
 Discussions about Chinese technology can move quickly towards a single explanation. Government support, manufacturing scale, entrepreneurial ambition or domestic demand becomes the organising story.

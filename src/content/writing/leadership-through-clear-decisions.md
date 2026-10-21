@@ -3,7 +3,7 @@ title: "Leadership is visible in the decisions people can make"
 date: 2026-10-21
 summary: "Clear decision rights help teams act with confidence, surface risk early and keep work moving."
 tags: ["leadership", "decision making", "management"]
-draft: true
+draft: false
 ---
 
 A useful way to assess leadership is to look at what happens when the leader leaves the room. Can people make a sensible decision? Do they understand what matters, where their authority ends and when to ask for help?

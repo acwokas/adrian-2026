@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/dlc-and-player-engagement.md",
+    "document_sha256": "69e1740311c67cb79d808201ba20fc76470aeb4f83ac0c6c23f38ba004252a91",
+    "review_sha256": "8913e7588ebaa7fd4d5604fc5d29c5a593272f122948c4fe3cd997cb1ede36f6",
+    "source_sha256": "5970388b289d3dc4929461365465f11450246affe42df18c2d4a21d08b590c9a",
+    "reviewed_at": "2026-10-21T04:55:02.428Z",
+    "expires_at": "2026-10-28T04:55:02.428Z"
+  },
+  "signature": "6JdHHNyt66hzqIByHfeX3iDI9zfgLpRLqKRhUgFxqYkomf4xFgzQQx/qoeRCl35cmvyY7/2qwMchmfBrnE33CQ=="
+}

@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/understanding-digital-self-harm.md",
+    "document_sha256": "b2a9c9938e27b90ba1251f77260a5d446a07632beb05f4ea74ca0b4cdd214f95",
+    "review_sha256": "3358923035793bdb3bd2e8fe9d467dddc81cb56d30830b1a207d0688c2fc8394",
+    "source_sha256": "11530d7a73a3fe8b1b878525d4aac93260df66f30bf1efeb75b14e984dc92dbd",
+    "reviewed_at": "2026-10-21T05:03:54.387Z",
+    "expires_at": "2026-10-28T05:03:54.387Z"
+  },
+  "signature": "cRsxzg6DdsX6/lZWF6XriSvqSP0nY04V+g647nyEUUizotjMUwxvZe3ah8VfvN9qtrT0y/qWzaVEFKNCYeuUCg=="
+}

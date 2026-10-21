@@ -3,7 +3,7 @@ title: "Digital marketing that earns its budget"
 date: 2026-10-21
 summary: "Connect marketing spend to customer decisions, commercial outcomes and evidence that supports the next investment."
 tags: ["marketing", "commercial strategy", "measurement"]
-draft: true
+draft: false
 ---
 
 Digital marketing earns its budget through a credible connection between the money spent, the customer response and the value created.

@@ -3,7 +3,7 @@ title: "How to decide what your mobile advertising budget should do"
 date: 2026-10-21
 summary: "Judge mobile advertising spend through customer intent, commercial contribution and the quality of the journey after the click."
 tags: ["marketing", "commercial strategy", "mobile advertising"]
-draft: true
+draft: false
 ---
 
 Mobile advertising budgets can acquire a strange kind of momentum. Last quarter's allocation becomes this quarter's starting point. A platform reports improving performance. A competitor appears to be everywhere. Spending more begins to feel like the sensible default.

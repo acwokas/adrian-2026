@@ -3,7 +3,7 @@ title: "DLC earns engagement by extending a good game"
 date: 2026-10-21
 summary: "Useful downloadable content gives players a clear reason to return and developers a better question than how much to release."
 tags: ["gaming", "product strategy", "customer experience"]
-draft: true
+draft: false
 ---
 
 Downloadable content gives a game another opportunity to earn a player's time. My view is that the commercial opportunity should follow from making that additional experience worth choosing.

@@ -3,7 +3,7 @@ title: "Burnout and the decision to leave"
 date: 2026-10-21
 summary: "Persistent work strain deserves practical support, honest changes to the job and room to consider whether staying is sustainable."
 tags: ["leadership", "work", "wellbeing"]
-draft: true
+draft: false
 ---
 
 Leaving a job can be a difficult decision, particularly when the work once mattered to you. There may be colleagues you care about, financial commitments and a professional identity tied to being dependable.

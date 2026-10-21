@@ -3,7 +3,7 @@ title: "Understanding digital self-harm without blaming the child"
 date: 2026-10-21
 summary: "What digital self-harm means, why assumptions can mislead, and where adults can find informed guidance on supporting young people."
 tags: ["digital wellbeing", "online safety", "technology"]
-draft: true
+draft: false
 ---
 
 An abusive message about a young person deserves a serious response. Discovering that the young person posted it about themselves should not end that response.

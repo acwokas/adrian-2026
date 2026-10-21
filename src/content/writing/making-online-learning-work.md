@@ -3,7 +3,7 @@ title: "Four ways to make online learning work"
 date: 2026-10-21
 summary: "Choose a useful question, practise remembering, apply one idea and give learning a place in your working week."
 tags: ["learning", "leadership", "professional development"]
-draft: true
+draft: false
 ---
 
 The easiest part of online learning is finding something to watch. The harder part is making that hour useful when you return to work.
