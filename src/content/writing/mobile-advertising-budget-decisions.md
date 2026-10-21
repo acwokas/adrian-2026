@@ -44,6 +44,4 @@ Agree the decision rule before the test. What would justify increasing the budge
 
 Then change enough to learn something, while keeping the exposure manageable.
 
-The earlier article concerned a forecast for US mobile advertising in 2020. This new piece addresses the budget decision a business needs to make today, without carrying that old forecast forward.
-
-*This is a new article revisiting a subject from the site's earlier archive.*
+The most useful mobile advertising budget has a clear purpose, a credible path to value and a reason to change when the evidence changes. Its size follows those decisions.

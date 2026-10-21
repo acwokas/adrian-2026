@@ -14,7 +14,7 @@ For adults, the useful starting point is curiosity and care. An assumption about
 
 ## Separate the message from the explanation
 
-The earlier archive headline asked why young Americans were cyberbullying themselves. That framing needs care. A finding from a particular population and period cannot tell us what every young person is experiencing today, in another country or on another platform.
+Explanations need care. A finding from a particular population and period cannot tell us what every young person is experiencing today, in another country or on another platform.
 
 I would avoid turning the discovery into a confrontation about deception. The immediate questions concern the person's wellbeing, what has happened and which responsible adult can help. Establishing those things matters more than producing a neat explanation for the post.
 
@@ -35,5 +35,3 @@ I would be cautious about public commentary that turns an individual young perso
 Where there are concerns about a young person's safety or mental health, involve appropriate safeguarding or healthcare professionals. This article cannot assess an individual situation or replace that support.
 
 A technology discussion becomes more useful when it leaves room for the person behind the account. That person still deserves to be heard, even when the available explanation is incomplete.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

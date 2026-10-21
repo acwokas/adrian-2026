@@ -45,5 +45,3 @@ The tools can remain simple. A task list, calendar and shared project board may 
 Inbox Zero is a useful working preference when it supports this wider discipline. Some people will prefer to keep a small number of actionable messages in view. The test is whether they can find their commitments and follow through.
 
 I would judge the system by a quieter set of outcomes: fewer forgotten promises, clearer ownership and less time reconstructing what was agreed.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

@@ -47,5 +47,3 @@ Decide what a successful integration should achieve. Perhaps customers complete 
 Avoid assuming a guaranteed increase in sales. Set a review point and assess what actually happened.
 
 The enduring lesson is to examine the moment when a customer is ready to commit. Give that moment the same attention as the campaign that brought them there.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

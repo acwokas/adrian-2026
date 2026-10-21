@@ -38,10 +38,8 @@ When questions arrive, listen to the whole question. A brief check of what the p
 
 Being heard also depends on the setting. Test the microphone, check the remote connection and ask whether people at the back can hear comfortably.
 
-The [US National Institute on Deafness and Other Communication Disorders](https://www.nidcd.nih.gov/health/taking-care-your-voice) recommends using a microphone when appropriate, avoiding competition with background noise and resting a hoarse voice. It also advises consulting a doctor about voice problems.
+The [US National Institute on Deafness and Other Communication Disorders](https://www.nidcd.nih.gov/sites/default/files/Documents/taking-care-of-your-voice.pdf) recommends using a microphone when appropriate, avoiding competition with background noise and resting a hoarse voice. It also advises consulting a doctor about voice problems.
 
 Those are useful reminders to check the conditions before trying to project over a difficult room. Move away from a noisy doorway if you can. Use the available equipment. Build breaks into a long session.
 
 You do not need to fill every silence or deliver every detail you know. Give the room a clear point, enough evidence to consider it and time to respond. That leaves space for a conversation worth having.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

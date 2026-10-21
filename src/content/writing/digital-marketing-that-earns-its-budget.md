@@ -43,5 +43,3 @@ This also means including the cost of follow-up and delivery. A campaign that at
 The discipline is to connect activity with the full commercial journey: attention, meaningful interest, a buying decision and value delivered to the customer.
 
 Marketing deserves room for creativity and experimentation. Clear commercial questions make that room easier to protect. They allow teams to explain what they learned, where confidence has increased and why the next pound should go to a particular activity.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

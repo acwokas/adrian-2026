@@ -45,5 +45,3 @@ Avoid turning every course into a large transformation project. One useful chang
 Tell a colleague what you tried, what happened and what remains uncertain. This makes gaps visible and gives someone else a chance to challenge your interpretation.
 
 The certificate may mark completion. Your own test can be more practical: can you explain the idea, use it appropriately and recognise its limits? That is a good place to decide what to learn next.
-
-*This is a new article revisiting a subject from the site's earlier archive.*
