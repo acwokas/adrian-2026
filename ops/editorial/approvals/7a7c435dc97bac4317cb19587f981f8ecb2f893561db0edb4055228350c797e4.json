@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/attribution-modelling-for-better-decisions.md",
+    "document_sha256": "48fb0dbdac11de1e9ff56621df3c5cdc9b7ef50731c86ccdf89787825e588132",
+    "review_sha256": "4516d6dbed25a1d7d01c21c9e784c277f6c4428b14af6312f6bc0aee07012912",
+    "source_sha256": "d4a5280d096765c2e428ebad4b39dd93f606bb847f8ba6d7a35626c7a04882c9",
+    "reviewed_at": "2026-10-21T04:53:13.138Z",
+    "expires_at": "2026-10-28T04:53:13.138Z"
+  },
+  "signature": "FYJhdtgEyPVsLCQnrdUzKLnBfQ1Gi09+c9PQ8dI01zdnUJ/qiiIA4kabs2YnrJHqr7tss45xtO3DguHDVYlxAw=="
+}

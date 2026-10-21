@@ -1,4 +1,4 @@
-# adrianwatkins.com 301 map (Cloudflare Pages free tier: 100-rule cap)
+# adrianwatkins.com redirect map (Pages: 2,000 static + 100 dynamic rules)
 # Sources audited:
 #   - GSC: Page indexing (Not-found 30, Page-with-redirect 14, Excluded-noindex 1,
 #     Crawled-not-indexed 60, Discovered-not-indexed 10)
@@ -26,8 +26,60 @@
 # Requires www.adrianwatkins.com to be bound to this Pages project in
 # Cloudflare DNS. If it still points to a WP host, see publish-seo-fix.sh
 # for the DNS step.
-https://www.adrianwatkins.com/*   https://adrianwatkins.com/:splat   301!
-http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
+# Host redirects must be configured at the Cloudflare zone, not in _redirects.
+# Pages does not support absolute source URLs or the Netlify 301! syntax.
+
+# === Legacy article replacements (GA4 review, 21 October 2026) ===
+# Exact root and observed dated permalink aliases, both slash forms.
+# Each 301 points to a substantive replacement on the same subject.
+/4-keys-to-making-online-learning-work /writing/making-online-learning-work 301
+/4-keys-to-making-online-learning-work/ /writing/making-online-learning-work 301
+/2020/08/24/4-keys-to-making-online-learning-work /writing/making-online-learning-work 301
+/2020/08/24/4-keys-to-making-online-learning-work/ /writing/making-online-learning-work 301
+/us-mobile-ad-spending-will-manage-to-grow-in-2020 /writing/mobile-advertising-budget-decisions 301
+/us-mobile-ad-spending-will-manage-to-grow-in-2020/ /writing/mobile-advertising-budget-decisions 301
+/2020/08/13/us-mobile-ad-spending-will-manage-to-grow-in-2020 /writing/mobile-advertising-budget-decisions 301
+/2020/08/13/us-mobile-ad-spending-will-manage-to-grow-in-2020/ /writing/mobile-advertising-budget-decisions 301
+/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights /writing/amazon-financial-services-and-customer-journeys 301
+/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights/ /writing/amazon-financial-services-and-customer-journeys 301
+/2020/02/17/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights /writing/amazon-financial-services-and-customer-journeys 301
+/2020/02/17/everything-you-need-to-know-about-what-amazon-is-doing-in-financial-services-cbinsights/ /writing/amazon-financial-services-and-customer-journeys 301
+/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired /writing/inbox-zero-and-reliable-follow-through 301
+/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired/ /writing/inbox-zero-and-reliable-follow-through 301
+/2020/02/14/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired /writing/inbox-zero-and-reliable-follow-through 301
+/2020/02/14/everything-you-thought-you-knew-about-inbox-zero-is-wrong-wired/ /writing/inbox-zero-and-reliable-follow-through 301
+/how-dlc-boosts-engagement-for-pc-and-console-games /writing/dlc-and-player-engagement 301
+/how-dlc-boosts-engagement-for-pc-and-console-games/ /writing/dlc-and-player-engagement 301
+/how-to-wisely-wield-the-power-of-leadership /writing/leadership-through-clear-decisions 301
+/how-to-wisely-wield-the-power-of-leadership/ /writing/leadership-through-clear-decisions 301
+/2020/08/15/how-to-wisely-wield-the-power-of-leadership /writing/leadership-through-clear-decisions 301
+/2020/08/15/how-to-wisely-wield-the-power-of-leadership/ /writing/leadership-through-clear-decisions 301
+/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum /writing/technology-shifts-and-business-models 301
+/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum/ /writing/technology-shifts-and-business-models 301
+/2019/03/29/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum /writing/technology-shifts-and-business-models 301
+/2019/03/29/microsoft-ceo-tech-shifts-are-easier-to-deal-with-than-business-model-shifts-the-drum/ /writing/technology-shifts-and-business-models 301
+/take-control-of-vocal-delivery-be-yourself-and-be-heard /writing/speak-clearly-and-be-heard 301
+/take-control-of-vocal-delivery-be-yourself-and-be-heard/ /writing/speak-clearly-and-be-heard 301
+/2020/03/05/take-control-of-vocal-delivery-be-yourself-and-be-heard /writing/speak-clearly-and-be-heard 301
+/2020/03/05/take-control-of-vocal-delivery-be-yourself-and-be-heard/ /writing/speak-clearly-and-be-heard 301
+/when-burnout-is-a-sign-you-should-leave-your-job /writing/burnout-and-the-decision-to-leave 301
+/when-burnout-is-a-sign-you-should-leave-your-job/ /writing/burnout-and-the-decision-to-leave 301
+/2020/03/07/when-burnout-is-a-sign-you-should-leave-your-job /writing/burnout-and-the-decision-to-leave 301
+/2020/03/07/when-burnout-is-a-sign-you-should-leave-your-job/ /writing/burnout-and-the-decision-to-leave 301
+/why-more-young-americans-are-cyber-bullying-themselves /writing/understanding-digital-self-harm 301
+/why-more-young-americans-are-cyber-bullying-themselves/ /writing/understanding-digital-self-harm 301
+/2020/02/23/why-more-young-americans-are-cyber-bullying-themselves /writing/understanding-digital-self-harm 301
+/2020/02/23/why-more-young-americans-are-cyber-bullying-themselves/ /writing/understanding-digital-self-harm 301
+/with-the-states-help-chinese-technology-is-booming /writing/understanding-chinas-technology-ecosystem 301
+/with-the-states-help-chinese-technology-is-booming/ /writing/understanding-chinas-technology-ecosystem 301
+/2020/02/19/with-the-states-help-chinese-technology-is-booming /writing/understanding-chinas-technology-ecosystem 301
+/2020/02/19/with-the-states-help-chinese-technology-is-booming/ /writing/understanding-chinas-technology-ecosystem 301
+/digital-marketing-in-2019 /writing/digital-marketing-that-earns-its-budget 301
+/digital-marketing-in-2019/ /writing/digital-marketing-that-earns-its-budget 301
+/what-is-attribution-modelling /writing/attribution-modelling-for-better-decisions 301
+/what-is-attribution-modelling/ /writing/attribution-modelling-for-better-decisions 301
+/2019/01/30/what-is-attribution-modelling /writing/attribution-modelling-for-better-decisions 301
+/2019/01/30/what-is-attribution-modelling/ /writing/attribution-modelling-for-better-decisions 301
 
 # === Lovable-era routes (all 26 sitemap URLs covered) ===
 /tools/elevate/prompt-engineer         https://democratising.ai/tools/prompt-engineer 301
@@ -38,7 +90,6 @@ http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 /tools/govern/maturity-assessment      https://democratising.ai/tools/maturity-assessment 301
 /tools                               /edge                                       301
 /tools/                              /edge                                       301
-/tools/*                             https://democratising.ai/tools              301
 /executive-cv                        /documents/Adrian-Watkins-Executive-CV-2026.pdf   301
 /experience                          /about                                      301
 /how-i-work                          /about                                      301
@@ -53,18 +104,15 @@ http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 # === Friday Note -> Friday Frame rename (2026-05-19) ===
 /writing/friday-note                 /writing/friday-frame                       301
 /writing/friday-note/                /writing/friday-frame                       301
-/writing/friday-note/*               /writing/friday-frame/:splat                301
 
 # === Friday Frame re-date to canonical Friday (2026-05-29) ===
 /writing/friday-frame/2026-05-28-agentic-measurement-will-reprice-the-market   /writing/friday-frame/2026-05-29-agentic-measurement-will-reprice-the-market   301
 /wp-content/uploads/2021/09/Adrian-Watkins-CV-2021_GTM.pdf  /documents/Adrian-Watkins-Executive-CV-2026.pdf  301
 /wp-content/uploads/2020/07/Adrian-Watkins-CV-August-2020_GTM.pdf  /documents/Adrian-Watkins-Executive-CV-2026.pdf  301
-/wp-content/*                        /                                           301
 /feed                                /writing/rss.xml                            301
 /feed/                               /writing/rss.xml                            301
 /comments/feed                       /writing/rss.xml                            301
 /comments/feed/                      /writing/rss.xml                            301
-/author/*                            /about                                      301
 /posts                               /writing                                    301
 /posts/                              /writing                                    301
 /index.html                          /                                           301
@@ -72,24 +120,10 @@ http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 # === WP blog index + portfolio + projects ===
 /blog                                /writing                                    301
 /blog/                               /writing                                    301
-/blog/*                              /writing                                    301
 /portfolio                           /                                           301
 /portfolio/                          /                                           301
-/portfolio/*                         /                                           301
-/project/*                           /about                                      301
 
-# === WP taxonomy ===
-/tag/*                               /writing                                    301
-/category/*                          /writing                                    301
-
-# === WP date-format permalinks ===
-/2019/*                              /writing                                    301
-/2020/*                              /writing                                    301
-/2021/*                              /writing                                    301
-/2022/*                              /writing                                    301
-/2023/*                              /writing                                    301
-/2024/*                              /writing                                    301
-/2025/*                              /writing                                    301
+# === WP year index ===
 /2019_unicorns                       /writing                                    301
 /2019_unicorns/                      /writing                                    301
 
@@ -146,3 +180,22 @@ http://www.adrianwatkins.com/*    https://adrianwatkins.com/:splat   301!
 /gravitas-is-a-quality-you-can-develop/                  /writing  301
 /the-most-interesting-and-bizarre-startups-at-ces-2019   /writing  301
 /the-most-interesting-and-bizarre-startups-at-ces-2019/  /writing  301
+
+# === Dynamic path rules, after all exact paths ===
+# Pages counts rules after the first wildcard toward its 100 dynamic-rule limit.
+/tools/*                             https://democratising.ai/tools              301
+/writing/friday-note/*               /writing/friday-frame/:splat                301
+/wp-content/*                        /                                           301
+/author/*                            /about                                      301
+/blog/*                              /writing                                    301
+/portfolio/*                         /                                           301
+/project/*                           /about                                      301
+/tag/*                               /writing                                    301
+/category/*                          /writing                                    301
+/2019/*                              /writing                                    301
+/2020/*                              /writing                                    301
+/2021/*                              /writing                                    301
+/2022/*                              /writing                                    301
+/2023/*                              /writing                                    301
+/2024/*                              /writing                                    301
+/2025/*                              /writing                                    301

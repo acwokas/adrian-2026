@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/writing/digital-marketing-that-earns-its-budget.md",
+    "document_sha256": "1483a6a7167449ec0cd6f3ee8aad41e21fedd1f813c0b807f9b848788f2a56a9",
+    "review_sha256": "f2b8ff1e453b18b3c8847ce8a12c451563648dacb6ee459338505e0c6d471f76",
+    "source_sha256": "8ebcc13f38a185a03e309ca56d83cf9dcb9086640fcbda52d68a077a5bd0c3ab",
+    "reviewed_at": "2026-10-21T04:59:09.318Z",
+    "expires_at": "2026-10-28T04:59:09.318Z"
+  },
+  "signature": "p3qZbtGxTRmyhoOY/83p32nHd8Gs/CFmBvPp6P9ZVDg1+5oFcu3aILANr7PXMWssjlJVwEmFJMTWXC+Z2MP8Ag=="
+}
