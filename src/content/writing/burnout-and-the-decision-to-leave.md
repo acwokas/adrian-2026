@@ -1,6 +1,7 @@
 ---
 title: "Burnout and the decision to leave"
-date: 2026-10-21
+date: 2026-09-29
+updatedDate: 2026-10-21
 summary: "Persistent work strain deserves practical support, honest changes to the job and room to consider whether staying is sustainable."
 tags: ["leadership", "work", "wellbeing"]
 draft: false

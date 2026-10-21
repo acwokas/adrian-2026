@@ -1,6 +1,7 @@
 ---
 title: "Speak clearly and give the room time to listen"
-date: 2026-10-21
+date: 2026-09-24
+updatedDate: 2026-10-21
 summary: "Make your point easier to follow with a clear structure, deliberate pauses and a room that supports your voice."
 tags: ["communication", "leadership", "public speaking"]
 draft: false

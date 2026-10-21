@@ -1,6 +1,7 @@
 ---
 title: "When technology changes faster than the business model"
-date: 2026-10-21
+date: 2026-09-19
+updatedDate: 2026-10-21
 summary: "Technology investment needs pricing, incentives, customer expectations and operating responsibilities that fit the promised service."
 tags: ["business models", "leadership", "technology"]
 draft: false

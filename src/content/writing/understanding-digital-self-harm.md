@@ -1,6 +1,7 @@
 ---
 title: "Understanding digital self-harm without blaming the child"
-date: 2026-10-21
+date: 2026-10-04
+updatedDate: 2026-10-21
 summary: "What digital self-harm means, why assumptions can mislead, and where adults can find informed guidance on supporting young people."
 tags: ["digital wellbeing", "online safety", "technology"]
 draft: false
