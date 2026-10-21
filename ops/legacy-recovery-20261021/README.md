@@ -19,3 +19,7 @@ The final Astro build passes, generating 62 pages with one non-empty H1 each. Ty
 A fresh Cloudflare runtime parses 148 valid redirect rules with no rejected rules. All 48 old aliases return 301 to their matching replacement; all 13 destinations load, current navigation pages remain healthy, and unknown paths retain genuine 404 responses. A campaign-query variant preserves its query string. The HTTP verification does not execute analytics. Production verification follows the deployment.
 
 Source-identity admissions were released in AI Factory PRs 1248 and 1249. No shared reviewer or publication gate was bypassed.
+
+## Editorial chronology
+
+At Adrian's request, the 13 replacement articles use staggered editorial publication dates from 19 August through 20 October 2026, spanning the preceding nine weeks. These dates are assigned editorial chronology, not evidence that the new replacement text was live on those days. The replacements were first deployed on 21 October 2026. Every replacement retains an explicit 21 October 2026 update date in its frontmatter, visible article header, Open Graph metadata and structured data. All 13 metadata changes received fresh independent whole-file signed approvals, recorded in `date-review-runs.json`. The build and built-output date checks pass. The substantive article bodies and redirects are unchanged. Two archive-history footers were removed when the fresh review could not verify those claims against its source packet.

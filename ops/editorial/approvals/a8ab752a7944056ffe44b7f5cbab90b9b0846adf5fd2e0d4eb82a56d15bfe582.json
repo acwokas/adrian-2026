@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/dlc-and-player-engagement.md",
-    "document_sha256": "69e1740311c67cb79d808201ba20fc76470aeb4f83ac0c6c23f38ba004252a91",
-    "review_sha256": "8913e7588ebaa7fd4d5604fc5d29c5a593272f122948c4fe3cd997cb1ede36f6",
-    "source_sha256": "5970388b289d3dc4929461365465f11450246affe42df18c2d4a21d08b590c9a",
-    "reviewed_at": "2026-10-21T04:55:02.428Z",
-    "expires_at": "2026-10-28T04:55:02.428Z"
+    "document_sha256": "c76317d2ead800ccb8eb6815977fe60382e53d3e5f73b7d8258c4cc52c51a0cf",
+    "review_sha256": "2ac41840daee70099e02d2fd662d9afcfe8bc2b010179119ae81b1b3a4a2c6d8",
+    "source_sha256": "16e88ed61de5f726abeee64d91fb933bfd8b37a397915dc111339e5a557fcbd9",
+    "reviewed_at": "2026-10-21T05:22:40.497Z",
+    "expires_at": "2026-10-28T05:22:40.497Z"
   },
-  "signature": "6JdHHNyt66hzqIByHfeX3iDI9zfgLpRLqKRhUgFxqYkomf4xFgzQQx/qoeRCl35cmvyY7/2qwMchmfBrnE33CQ=="
+  "signature": "cGL2lcJyUq0/ee78wtNG0YYN1dGM0tRdfM51tyn1YMRT/TlLA+ppEhfM9BJtkwvze1rvIUWKhP8HiByW5daQBA=="
 }

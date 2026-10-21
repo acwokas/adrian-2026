@@ -19,6 +19,7 @@ type Entry = {
   id: string;
   title: string;
   date: Date;
+  updatedDate?: Date;
   summary: string;
   tags: string[];
   canonical?: string;
@@ -29,6 +30,7 @@ const merged: Entry[] = [
     id: p.id,
     title: p.data.title,
     date: p.data.date,
+    updatedDate: p.data.updatedDate,
     summary: p.data.summary,
     tags: p.data.tags,
     canonical: p.data.canonical,
@@ -81,6 +83,7 @@ const writingJsonLd = {
     headline: e.title,
     url: e.canonical || `https://adrianwatkins.com${entryHref(e)}`,
     datePublished: e.date.toISOString(),
+    ...(e.updatedDate ? { dateModified: e.updatedDate.toISOString() } : {}),
     description: e.summary,
   })),
 };

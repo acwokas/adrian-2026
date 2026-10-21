@@ -1,6 +1,7 @@
 ---
 title: "Digital marketing that earns its budget"
-date: 2026-10-21
+date: 2026-10-15
+updatedDate: 2026-10-21
 summary: "Connect marketing spend to customer decisions, commercial outcomes and evidence that supports the next investment."
 tags: ["marketing", "commercial strategy", "measurement"]
 draft: false

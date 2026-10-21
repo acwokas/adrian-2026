@@ -1,6 +1,7 @@
 ---
 title: "How to assess China's technology ecosystem with more care"
-date: 2026-10-21
+date: 2026-10-10
+updatedDate: 2026-10-21
 summary: "Evaluate technology businesses through customers, research, competition, policy and the operating conditions a decision depends on."
 tags: ["technology", "China", "business strategy"]
 draft: false
@@ -51,5 +52,3 @@ For market entry, distinguish observed performance from assumptions about future
 There is value in understanding the wider ecosystem. There is greater practical value in knowing which parts of it your decision actually relies upon.
 
 That requires curiosity, specific questions and a willingness to hold a mixed view when the evidence is mixed.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

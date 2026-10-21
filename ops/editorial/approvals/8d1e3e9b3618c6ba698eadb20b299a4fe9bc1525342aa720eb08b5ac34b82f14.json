@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/leadership-through-clear-decisions.md",
-    "document_sha256": "a75aa0c711ef94a37b03b1a2da6fdd82a0ecc62d20ee55bb767abb09ba89249a",
-    "review_sha256": "5af5e498d6f86cc0c0935763e0200f865d9d2bbbba1fa287c10ca7a8372c0908",
-    "source_sha256": "3e8f9293e21b344f356f47e5e8cef296b311b6b04ef696cd426166f6df7c9b77",
-    "reviewed_at": "2026-10-21T04:52:40.283Z",
-    "expires_at": "2026-10-28T04:52:40.283Z"
+    "document_sha256": "73a54501d7b24012cd06b4b22dacb0422274e318e9ce8fff93d81f1e8f94cb75",
+    "review_sha256": "aaf8c0d89df3aac7e5699f263adb5be1b5a48254051bbae0391b547615b878d0",
+    "source_sha256": "55651088857a589b7cd92572ba96c45742e5b7e657b7366fb5db118599b49929",
+    "reviewed_at": "2026-10-21T05:22:59.419Z",
+    "expires_at": "2026-10-28T05:22:59.419Z"
   },
-  "signature": "TgdY46AsV3WQxgYeqiQaE7ili+LXX24TOKcLBAAdOYmoQ//Xe/L7QPWYgSoGSgw+MA/jJ7p5kenhFAFj6VZUBg=="
+  "signature": "fCheSIVbY6gjoGkgoaOC1PSv0wfeXOYrPUDi6gRHuUNc5ptHFJziUvFVLFMNO4r/q5MNZfQZQ+7gzJY2LtQ+Bw=="
 }

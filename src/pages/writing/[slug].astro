@@ -27,6 +27,7 @@ const articleJsonLd = {
   headline: post.data.title,
   description: post.data.summary,
   datePublished: post.data.date.toISOString(),
+  ...(post.data.updatedDate ? { dateModified: post.data.updatedDate.toISOString() } : {}),
   author: { '@id': PERSON_ID },
   keywords: post.data.tags.join(', '),
 };
@@ -40,6 +41,7 @@ const articleJsonLd = {
   ogImage="/og/site-default.png"
   ogImageAlt={`${post.data.title}. Adrian Watkins.`}
   publishedTime={post.data.date.toISOString()}
+  modifiedTime={post.data.updatedDate?.toISOString()}
   author="Adrian Watkins"
   articleSection="Writing"
   articleTags={post.data.tags}
@@ -51,6 +53,9 @@ const articleJsonLd = {
       <div class="eyebrow">Writing</div>
       <p style="font-size:13px;color:var(--muted);letter-spacing:0.04em;margin-bottom:18px">
         {post.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {post.data.updatedDate && (
+          <span> · Updated {post.data.updatedDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        )}
         {post.data.tags.length > 0 && <span style="margin-left:14px">{post.data.tags.join(' / ')}</span>}
       </p>
       <h1>{post.data.title}</h1>

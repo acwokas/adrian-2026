@@ -6,6 +6,7 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     summary: z.string(),
     tags: z.array(z.string()).default([]),
     heroImageSlot: z.string().optional(),

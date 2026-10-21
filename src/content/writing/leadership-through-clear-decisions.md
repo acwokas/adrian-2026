@@ -1,6 +1,7 @@
 ---
 title: "Leadership is visible in the decisions people can make"
-date: 2026-10-21
+date: 2026-09-14
+updatedDate: 2026-10-21
 summary: "Clear decision rights help teams act with confidence, surface risk early and keep work moving."
 tags: ["leadership", "decision making", "management"]
 draft: false

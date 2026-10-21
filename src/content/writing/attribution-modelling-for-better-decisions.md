@@ -1,6 +1,7 @@
 ---
 title: "Attribution modelling starts with a better question"
-date: 2026-10-21
+date: 2026-10-20
+updatedDate: 2026-10-21
 summary: "Attribution can organise marketing evidence. Better decisions also need clear questions, commercial context and honest limits."
 tags: ["marketing", "measurement", "commercial strategy"]
 draft: false
@@ -43,5 +44,3 @@ Agree reporting definitions with the people using the numbers. Check date ranges
 Attribution becomes useful when it helps a team make a better decision and understand the uncertainty attached to it.
 
 The strongest meeting outcome may be a bounded next step: increase a budget modestly, define what success would look like and review the evidence on an agreed date. That is something the business can act on.
-
-*This is a new article revisiting a subject from the site's earlier archive.*

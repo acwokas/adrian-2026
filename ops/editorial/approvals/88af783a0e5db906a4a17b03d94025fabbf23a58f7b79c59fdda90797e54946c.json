@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/inbox-zero-and-reliable-follow-through.md",
-    "document_sha256": "12df62da09bb6d28642013337b9b1898329aee885f66c4418a9dcb09649e82c6",
-    "review_sha256": "85992390328bbaa6f6f1ee53bfcbbbcce4d3cb8002717ef0aec906348a9e108d",
-    "source_sha256": "66887b62933f6cdff8ef5848c59f63da8dfaa63994d27264c8ab60173cd2a479",
-    "reviewed_at": "2026-10-21T04:59:00.488Z",
-    "expires_at": "2026-10-28T04:59:00.488Z"
+    "document_sha256": "6830925cf9ba1ef0b7f272464870490486bbeec932003eb54c84f20cf4e1f1f6",
+    "review_sha256": "922d067cb34e174c112b38335c3d9967a3251b5b0a1bde9212c0aab7777ec711",
+    "source_sha256": "d62cf3e1ea80e527faff5860ac159bc937de9c3f872bbb8ef40ac2913cb00f96",
+    "reviewed_at": "2026-10-21T05:22:56.858Z",
+    "expires_at": "2026-10-28T05:22:56.858Z"
   },
-  "signature": "KcuyjIs/LEJaRv5vc7LFHf6Jvb64isW1bK78Ix5fD13kGQJllwotzBRETcs906IN5Lh56T6bbNtBF3p3Blg3DA=="
+  "signature": "mZIlZLYqSbxIEDeemtQeiPSDl6c2U2A2P/gHSNTPxDAmGsd6Bh2PxsafPYIn7kT6v+xiF/Q3DwfN3/P8MT3cAg=="
 }

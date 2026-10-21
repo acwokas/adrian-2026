@@ -1,6 +1,7 @@
 ---
 title: "Inbox Zero is useful when the work stays visible"
-date: 2026-10-21
+date: 2026-09-04
+updatedDate: 2026-10-21
 summary: "An empty inbox helps only when commitments, decisions and follow-ups have a reliable home."
 tags: ["productivity", "operations", "working practices"]
 draft: false

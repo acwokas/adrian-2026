@@ -1,6 +1,7 @@
 ---
 title: "What Amazon Pay reveals about the customer journey"
-date: 2026-10-21
+date: 2026-08-29
+updatedDate: 2026-10-21
 summary: "Amazon Pay offers a lens on checkout, customer trust and the commercial decisions involved in adopting a familiar payment service."
 tags: ["customer experience", "payments", "commercial strategy"]
 draft: false

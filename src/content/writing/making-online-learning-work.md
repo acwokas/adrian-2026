@@ -1,6 +1,7 @@
 ---
 title: "Four ways to make online learning work"
-date: 2026-10-21
+date: 2026-08-19
+updatedDate: 2026-10-21
 summary: "Choose a useful question, practise remembering, apply one idea and give learning a place in your working week."
 tags: ["learning", "leadership", "professional development"]
 draft: false
