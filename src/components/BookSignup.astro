@@ -3,17 +3,17 @@ const preview = import.meta.env.DEV;
 ---
 <section id="book-updates" aria-labelledby="book-updates-heading" class="book-signup">
  <p class="eyebrow">Follow the book</p><h2 id="book-updates-heading">Hear when there’s more to read.</h2>
- <p>I’ll share short extracts as the book develops. Sign up for occasional emails about <em>Heir Presumptive</em>, including new extracts and publication news.</p>
+ <p>I’ll share short extracts as the book develops. Sign up for occasional emails about <em>Heir Presumptive</em>, including new extracts and publication news. You’ll also receive Friday Frame and my occasional writing updates. Unsubscribe at any time.</p>
  <form method="post" action="/api/book-subscribe" id="book-signup-form" data-preview={preview ? 'true' : 'false'}>
   <label for="book-email">Your email address</label>
   <input id="book-email" type="email" name="email" autocomplete="email" maxlength="320" required />
-  <label class="consent"><input type="checkbox" name="consent" required /><span>Yes, email me about Heir Presumptive only. This doesn’t subscribe me to Friday Frame or other writing updates.</span></label>
+  <label class="consent"><input type="checkbox" name="consent" required /><span>Yes, send me Heir Presumptive book updates, Friday Frame and occasional writing updates. I can unsubscribe at any time.</span></label>
   <input class="honey" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
-  <button class="btn btn-primary" type="submit">Sign up for book updates</button>
+  <button class="btn btn-primary" type="submit">Sign up for updates</button>
   <p id="book-signup-status" role="status" aria-live="polite"></p>
  </form>
- <noscript><p>Please enable JavaScript to use this form, or <a href="mailto:me@adrianwatkins.com?subject=Heir%20Presumptive%3A%20book%20updates%20only&body=Please%20email%20me%20occasional%20Heir%20Presumptive%20book%20updates%20only.">request book updates by email</a>.</p></noscript>
- <p class="fine">Book updates only. To stop receiving them, reply to an update or <a href="mailto:me@adrianwatkins.com?subject=Unsubscribe%20from%20Heir%20Presumptive%20updates">email me to unsubscribe</a>. <a href="/privacy">Privacy information</a>.</p>
+ <noscript><p>Please enable JavaScript to use this form, or <a href="mailto:me@adrianwatkins.com?subject=Book%20and%20writing%20updates&body=Please%20email%20me%20Heir%20Presumptive%20book%20updates%2C%20Friday%20Frame%20and%20occasional%20writing%20updates.">request book and writing updates by email</a>.</p></noscript>
+ <p class="fine">To stop receiving updates, reply to an update or <a href="mailto:me@adrianwatkins.com?subject=Unsubscribe%20from%20book%20and%20writing%20updates">email me to unsubscribe</a>. <a href="/privacy">Privacy information</a>.</p>
  {preview && <p class="fine">Local preview: this form won’t save your email or send any messages.</p>}
 </section>
 <script>
@@ -28,10 +28,10 @@ const preview = import.meta.env.DEV;
   const data = new FormData(form);
   button.disabled = true; status.textContent = 'Saving your book-update request…';
   try {
-   const response = await fetch('/api/book-subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:data.get('email'), consent:data.get('consent') === 'on', honeypot:data.get('company') || ''}), signal: AbortSignal.timeout(10000)});
+   const response = await fetch('/api/book-subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:data.get('email'), consent:data.get('consent') === 'on', consentVersion:'heir-presumptive-and-writing-v2', honeypot:data.get('company') || ''}), signal: AbortSignal.timeout(25000)});
    const result = await response.json() as {ok?: boolean};
    if (!response.ok || !result.ok) throw new Error('not_saved');
-   status.textContent = 'Thank you. Your request for Heir Presumptive updates has been saved. You haven’t been added to any other list.';
+   status.textContent = 'Thank you. You’re signed up for Heir Presumptive book updates, Friday Frame and occasional writing updates. You can unsubscribe at any time.';
    track('book_signup', {form_name:'heir_presumptive_book'});
    track('aw_form_success', {form_name:'heir_presumptive_book'});
    form.reset();
