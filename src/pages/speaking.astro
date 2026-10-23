@@ -9,13 +9,13 @@ const todayISO = new Date().toISOString().slice(0, 10);
 const upcomingEntries = entriesByBucket('upcoming', todayISO);
 const recentEntries = entriesByBucket('recent', todayISO);
 
-const title = 'Speaking and contribution. Adrian Watkins.';
-const description = 'Singapore-based Adrian Watkins contributes to industry conversations, executive roundtables and learning programmes on leadership, growth, governance and putting intelligence into action.';
+const title = 'Speaking, workshops and moderation. Adrian Watkins.';
+const description = 'Singapore-based Adrian Watkins offers speaking, workshops and moderation on business and AI transformation, growth, integration and governance.';
 
 const speakingJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Speaking. Adrian Watkins.',
+  name: 'Speaking, workshops and moderation. Adrian Watkins.',
   url: 'https://adrianwatkins.com/speaking',
   description,
   about: { '@id': PERSON_ID },
@@ -25,13 +25,13 @@ const speakingJsonLd = {
 <BaseLayout title={title} description={description} current="speaking" ogImage="/images/speaking-government.jpg" jsonLd={speakingJsonLd}>
   <section class="stub" style="padding-bottom:48px">
     <div class="container">
-      <div class="eyebrow">Speaking and contribution</div>
+      <div class="eyebrow">Speaking, workshops and moderation</div>
       <h1>Practical perspectives. Useful conversations.</h1>
-      <p class="lede">I speak about building and growing technology businesses, turning intelligence into action, and making governance part of how organisations move forward.</p>
+      <p class="lede">I speak about business and AI transformation, growth after an acquisition, and governance that helps teams act. My focus is on what needs to change in practice, from workflows and incentives to decisions and accountability.</p>
       <div class="prose" style="margin-top:24px">
         <p>My perspective comes from leading commercial operations across markets and building publications, data services and practical tools through <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>. Singapore is home, and my work connects local experience with regional and global commercial, regulatory and cultural contexts.</p>
         <p>Through selected industry conversations, executive roundtables and learning programmes, I aim to give people something useful to take into their next decision.</p>
-        <p><a class="btn btn-secondary" href="/documents/Adrian-Watkins-Speaker-and-Guest-Teaching-Pack.pdf" target="_blank" rel="noopener noreferrer">Download the speaker and guest-teaching pack</a></p>
+        <p><a class="btn btn-secondary" href="/documents/Adrian-Watkins-Speaking-Workshops-and-Moderation.pdf" target="_blank" rel="noopener noreferrer">Download the speaking, workshops and moderation pack</a></p>
       </div>
     </div>
   </section>
@@ -72,32 +72,26 @@ const speakingJsonLd = {
 
   <section style="padding:64px 0">
     <div class="container">
-      <h2 style="margin-bottom:32px">Some of the topics I speak about.</h2>
+      <h2 style="margin-bottom:32px">Conversations and practical sessions.</h2>
       <div class="help" style="grid-template-columns:repeat(2,1fr)">
         <div class="help-card">
-          <h4>One</h4>
-          <h3>Leading growth and integration.</h3>
-          <p>Aligning people, product, process and compliance as businesses scale. Drawing on my experience bringing three businesses together within SQREEM Technologies, improving commercial operations and supporting expansion across markets.</p>
+          <h3>Making business and AI transformation work in practice.</h3>
+          <p>For leadership and operating teams. Explore workflows, ownership, incentives and the evidence needed to judge whether an initiative is helping.</p>
+          <p><strong>Takeaway:</strong> A way to define the business outcome, the operating changes and the evidence to review before scaling.</p>
         </div>
         <div class="help-card">
-          <h4>Two</h4>
-          <h3>Governance that enables progress.</h3>
-          <p>Building accountability and privacy into commercial and operating decisions, so teams can move forward with clarity and confidence. Practical perspectives from group leadership and my expanded data protection remit (DPO).</p>
+          <h3>Growth after the deal.</h3>
+          <p>For founders and commercial and operating leaders. Discuss where common rules help when bringing businesses together, and where local teams need room to act.</p>
+          <p><strong>Takeaway:</strong> A practical set of integration questions, with clear owners and priorities.</p>
         </div>
         <div class="help-card">
-          <h4>Three</h4>
-          <h3>AI transformation and better decisions.</h3>
-          <p>Drawing on my independent AI work and wider commercial experience to discuss workflow choices, adoption and human accountability. How <a href="/edge">EDGE</a> helps people evaluate a situation, define a direction, establish accountability and put learning into practice, with AI tools supporting the process where useful.</p>
+          <h3>Governance that helps teams act.</h3>
+          <p>For executives and teams working across markets. Use <a href="/edge">EDGE</a> to connect a clear outcome with decision rights, exceptions and review triggers.</p>
+          <p><strong>Takeaway:</strong> A decision map: who owns it, what needs checking and when to revisit it.</p>
         </div>
         <div class="help-card">
-          <h4>Four</h4>
-          <h3>Building useful services.</h3>
-          <p>Lessons from DARE, the shared publishing and data platform behind <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>, and publications including <a href="https://aiinasia.com/" target="_blank" rel="noopener noreferrer">AIinASIA</a> and <a href="https://urbandogowner.com/" target="_blank" rel="noopener noreferrer">UrbanDogOwner</a>. Starting with where I call home, <a href="/singapore">Singapore</a>, and building on what we learn to serve audiences beyond it.</p>
-        </div>
-        <div class="help-card">
-          <h4>Five</h4>
-          <h3>Working across markets.</h3>
-          <p>Adapting execution to local commercial, regulatory and cultural needs while maintaining a coherent regional or global direction. What to keep consistent, where to adapt and how to give local teams the context to make sound decisions.</p>
+          <h3>From an idea to a useful service.</h3>
+          <p>For student and founder programmes. Identify an audience, clarify the value of an idea and design a practical first test. Suitable for guest sessions, workshops and mentoring.</p>
         </div>
       </div>
     </div>
@@ -153,8 +147,8 @@ const speakingJsonLd = {
     <div class="container">
       <h2 style="margin-bottom:24px">Shaped around the audience.</h2>
       <div class="prose">
-        <p>I contribute to selected industry conversations, executive roundtables and learning programmes where my experience can be useful. The format follows the audience, purpose and scope, whether that is a keynote, panel, moderated discussion or practical session.</p>
-        <p><a href="/singapore">Singapore</a> is home, and I particularly welcome opportunities to support local students and emerging business leaders through mentoring and guest teaching.</p>
+        <p>I contribute to selected industry conversations, executive roundtables and learning programmes where my experience can be useful. Suggested starting points are a 30-minute talk with discussion or a 60-minute working session. Panels and executive roundtables are shaped around the brief. Durations, scope and availability are agreed with the organiser.</p>
+        <p><a href="/singapore">Singapore</a> is home, and I particularly welcome opportunities to support local students and emerging business leaders through mentoring, guest sessions and practical workshops.</p>
       </div>
 
       <div style="margin-top:32px">
@@ -180,10 +174,10 @@ const speakingJsonLd = {
   <section class="dark" style="padding:80px 0">
     <div class="container">
       <h2 style="color:#F4ECD8;margin-bottom:20px">Start a conversation.</h2>
-      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">If my experience could be useful to your audience, get in touch with the topic, purpose and scope. We can explore the right format together.</p>
+      <p style="color:#C4B89F;max-width:680px;font-family:'Fraunces',serif;font-size:20px;line-height:1.5;margin-bottom:32px">If my experience could be useful to your audience, share the audience, desired outcome, date, location or online format, and any recording requirements. For workshops, include a business question or case with confidential information removed.</p>
       <div class="ctarow">
         <a class="btn btn-primary" href="/contact" style="background:#D89A55;flex:0 0 auto">Get in touch</a>
-        <a class="btn btn-secondary" href="/documents/Adrian-Watkins-Speaker-and-Guest-Teaching-Pack.pdf" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2">Download the speaker pack</a>
+        <a class="btn btn-secondary" href="/documents/Adrian-Watkins-Speaking-Workshops-and-Moderation.pdf" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2">Download the speaking, workshops and moderation pack</a>
         <a class="btn btn-secondary" href="https://www.linkedin.com/in/adrianwatkins/" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2;display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;min-width:auto">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06s.92-2.07 2.06-2.07 2.06.93 2.06 2.07c0 1.13-.92 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45z"/></svg>
           LinkedIn

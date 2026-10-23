@@ -31,3 +31,7 @@ Offer three principal sessions:
 Keep a separate student/founder option on turning an idea into a useful service. Add organiser essentials: audience fit, proposed duration, discussion/workshop options, contact, headshot link and preparation requirements. Retain the existing case-by-case pro bono education wording. Do not imply every engagement is free or commit to fees, availability or formal teaching credentials.
 
 Rebuild only after approval of the revised pack copy. No speaker-pack content was changed in this release.
+
+## Approved speaker-pack release, 23 October 2026
+
+Adrian approved the revised two-page pack and authorised publication plus matching site wording. Published asset uses `/documents/Adrian-Watkins-Speaking-Workshops-and-Moderation.pdf`. The old PDF address redirects to it and retains identical fallback bytes. Speaking page metadata, download labels, session descriptions and organiser guidance align with the approved pack; Contact uses guest sessions and workshops wording. Central `aw_download` tracking continues to cover PDF links. The generator is retained as `scripts/build-speaker-pack.py`. PDF text comparison confirms only the review footer changed. Both final PDF pages visually inspected; build, H1, routing/contact and CV tracking checks passed.
