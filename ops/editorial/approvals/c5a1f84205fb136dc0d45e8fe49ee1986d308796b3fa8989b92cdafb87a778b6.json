@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/friday-frame/2026-10-23-how-much-of-your-growth-plan-belongs-to-someone-else.md",
+    "document_sha256": "ada22c5e5672e0630a5d35b23370b8fbe48a4db192081c7270a905f2f3bd3d1f",
+    "review_sha256": "049be419a63614155a688e3383adfb05900f39f5b37f2b071d49288fddf5e855",
+    "source_sha256": "558fcc17fffc5f84075e8e559f4e1a2088c3eacec24c9d3555dc7133d8252f36",
+    "reviewed_at": "2026-10-23T02:20:30.990Z",
+    "expires_at": "2026-10-30T02:20:30.990Z"
+  },
+  "signature": "p14AV2O7B+jAeOjrZ6qbIfJzU+/cJtr0+AkyVnLE/e8GJHe0e3Dxs8aHAquolfPqsPGD1v/1zniDupVnF8GQAg=="
+}

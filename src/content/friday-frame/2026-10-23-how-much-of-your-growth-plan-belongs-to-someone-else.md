@@ -1,7 +1,7 @@
 ---
 title: "How much of your growth plan belongs to someone else?"
 date: 2026-10-23
-draft: true
+draft: false
 summary: "Who actually controls that decision? By what date do we need an answer? What’s Plan B?"
 ---
 
