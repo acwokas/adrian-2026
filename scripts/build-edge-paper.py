@@ -44,7 +44,7 @@ def new(title,kicker,sub=None):
  if page:c.showPage()
  page+=1;c.setFillColor(cream);c.rect(0,0,W,H,fill=1,stroke=0)
  c.setFillColor(navy);c.rect(0,H-10,W,10,fill=1,stroke=0)
- c.setFillColor(grey);c.setFont('Helvetica',8);c.drawString(48,28,'ADRIAN WATKINS  /  EDGE  /  SEPTEMBER 2026');c.drawRightString(W-48,28,f'{page:02d}')
+ c.setFillColor(grey);c.setFont('Helvetica',8);c.drawString(48,28,'ADRIAN WATKINS  /  EDGE  /  OCTOBER 2026');c.drawRightString(W-48,28,f'{page:02d}')
  c.linkURL('https://adrianwatkins.com/edge',(48,20,340,40),relative=0)
  c.bookmarkPage(f'p{page}');c.addOutlineEntry(title,f'p{page}',0,False)
  logo(483,730,64) if page==1 else logo(519,782,28)
@@ -66,8 +66,8 @@ text('A guide for leaders, teams and individuals who need to turn knowledge, exp
 text('Created by Adrian Watkins','head')
 text('I created EDGE to bring together the work of understanding a situation, choosing a direction, acting with confidence and learning from what happens. My experience across commercial operations, people, products and governance has shaped the questions in this guide.')
 callout('Start with one real decision','By the end of this guide, you should be able to explain your choice, name the person who will act, identify the conditions for proceeding and set a useful review point.')
-text('INSIDE','head');text('The method and four pillars  02-06<br/>Two worked illustrations  07-08<br/>Reusable decision worksheet  09<br/>Team use, tools and review  10-12')
-text('Practical edition 3.1  |  September 2026<br/><link href="https://adrianwatkins.com/edge" color="#14264C">adrianwatkins.com/edge</link>  •  <link href="https://democratising.ai/tools" color="#14264C">democratising.ai/tools</link>','small')
+text('INSIDE','head');text('The method and four pillars  02-06<br/>Two worked illustrations  07-08<br/>Reusable decision worksheet  09<br/>Team use, tools and review  10-12<br/>AI transformation illustration  13')
+text('Practical edition 3.2  |  October 2026<br/><link href="https://adrianwatkins.com/edge" color="#14264C">adrianwatkins.com/edge</link>  •  <link href="https://democratising.ai/tools" color="#14264C">democratising.ai/tools</link>','small')
 
 
 # Compact sequence diagram makes the cover useful as a quick reference.
@@ -166,12 +166,20 @@ new('Make the next decision better','12 / Review and continue','The value of EDG
 text('Use a few measures tied to the purpose of the decision. A communication might be assessed through clarity of follow-up and completion of the requested action. An operating change might be assessed through customer experience, rework, delivery time or commercial contribution.')
 section('Review the decision as well as the result','A good result can follow weak reasoning, and a well-reasoned choice can meet changed conditions. Ask what was known at the time, whether the boundaries were appropriate and which new information should alter the next decision. Avoid attributing every improvement to the framework.')
 bullets(['Continue when the evidence supports the chosen direction and the conditions still hold.','Adapt when the outcome matters but the approach or assumptions need to change.','Stop when the rationale no longer holds or the consequences cannot be managed within agreed boundaries.'])
-section('About the framework','EDGE was created by Adrian Watkins, a Singapore-based commercial and operating leader whose work spans growth, integration and governance across markets. The framework structures thinking and action. DARE, his shared publishing and data platform, supports the services built through <link href="https://democratising.ai" color="#14264C">democratising.ai</link>.')
+section('About the framework','EDGE was created by Adrian Watkins, a Singapore-based commercial and operating leader whose work spans business transformation, growth, integration and governance across markets. His independent portfolio applies AI transformation to publishing and data workflows, separate from his executive responsibilities. The framework structures thinking and action. DARE, his shared publishing and data platform, supports the services built through <link href="https://democratising.ai" color="#14264C">democratising.ai</link>.')
 section('Keep these links to hand','<link href="https://adrianwatkins.com/edge" color="#14264C">Framework and current guidance: adrianwatkins.com/edge</link><br/><link href="https://democratising.ai/tools" color="#14264C">Practical tools: democratising.ai/tools</link><br/><link href="https://adrianwatkins.com/contact" color="#14264C">Questions and conversations: adrianwatkins.com/contact</link>')
 text('This paper presents the author’s practical method and illustrative applications. It does not report a controlled evaluation or claim a guaranteed improvement. The timing and scope of any application should reflect the decision.','small')
-text('© 2026 Adrian Watkins. EDGE Framework. Practical edition 3.1. When referring to the framework, credit Adrian Watkins and link to <link href="https://adrianwatkins.com/edge" color="#14264C">adrianwatkins.com/edge</link>.','small')
+text('© 2026 Adrian Watkins. EDGE Framework. Practical edition 3.2. When referring to the framework, credit Adrian Watkins and link to <link href="https://adrianwatkins.com/edge" color="#14264C">adrianwatkins.com/edge</link>.','small')
+new('AI transformation in a service team','13 / Worked illustration','Improve the work before expanding the technology.')
+text('Illustrative scenario, not a reported client or employer engagement. A service team is considering AI assistance for part of its customer workflow. The aim is more reliable service, not simply more use of AI.','small')
+section('Evaluate','Understand where work stalls, what customers need and whether AI can help. Establish the current cost, turnaround time and quality before choosing a tool. Ask the people doing the work where judgement or local context matters.')
+section('Define','Choose one workflow and a measurable outcome. Agree what the team will do differently, the training it needs and the conditions for a useful pilot. Compare AI assistance with a simpler process change before committing.')
+section('Govern','Assign an accountable owner, set data and review boundaries, and agree when people must step in. Keep a workable fallback if the new process fails. Make responsibility for customer commitments explicit.')
+section('Elevate','Compare results with the starting point, listen to the team and customers, and improve the process before extending it. Adoption and reliable service matter as much as the output of the tool.')
+callout('The business question','Has the change made the work more useful and reliable, at an acceptable cost? If not, adapt the workflow or stop the pilot. A successful demonstration alone does not answer that question.')
+text('EDGE remains a broader business framework. The same sequence supports integration, market entry, team priorities and everyday decisions, whether AI is involved or not.','small')
 c.save()
-reader=PdfReader(OUT);assert len(reader.pages)==12;assert len(reader.get_fields())==6
+reader=PdfReader(OUT);assert len(reader.pages)==13;assert len(reader.get_fields())==6
 alltext='\n'.join(p.extract_text() for p in reader.pages);assert '\u2014' not in alltext
 # Extracted text is checked in memory; the public download remains a PDF.
 print('Created',OUT,'pages',len(reader.pages),'fields',len(reader.get_fields()))

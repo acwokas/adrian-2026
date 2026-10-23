@@ -67,7 +67,7 @@ export const websiteSchema = {
   url: 'https://adrianwatkins.com',
   name: 'Adrian Watkins',
   description:
-    'Commercial and operating leadership, governance, and practical perspectives from Adrian Watkins. Creator of EDGE, builder of DARE by democratising.ai, and contributor to student and founder programmes in Singapore.',
+    'Commercial and operating leadership, business and AI transformation, and practical perspectives from Adrian Watkins. Creator of EDGE, builder of DARE by democratising.ai, and contributor to student and founder programmes in Singapore.',
   publisher: { '@id': PERSON_ID },
   inLanguage: 'en-GB',
 };
