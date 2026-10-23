@@ -7,7 +7,7 @@ summary: "A later high-risk deadline does not answer a transparency question. St
 
 I'd start an AI compliance discussion with a list of systems, rather than a date. What does each system do? Who uses it? What does the organisation provide, and what does it deploy? Those are the questions I would want answered before accepting a reassuring green box on a dashboard.
 
-The [European Commission's Article 50 guidance](https://ec.europa.eu/newsroom/dae/redirection/document/131215) separates several transparency duties. Providers of systems that interact directly with people must inform them that they are dealing with AI, unless that is obvious. Providers' machine-readable marking duties are distinct from deployers' disclosure duties for covered deepfakes and certain public-interest text. The conditions and exceptions matter. It is too broad to say that every piece of AI-assisted content needs the same label.
+The [European Commission's Article 50 reference](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50) separates several transparency duties. Providers of systems that interact directly with people must inform them that they are dealing with AI, unless that is obvious. Providers' machine-readable marking duties are distinct from deployers' disclosure duties for covered deepfakes and certain public-interest text. The conditions and exceptions matter. It is too broad to say that every piece of AI-assisted content needs the same label.
 
 The general Article 50 application date is 2 August 2026. The Commission also describes a limited transition until 2 December 2026 for marking duties concerning systems already on the market before that general application date. That is not a postponement of every transparency obligation.
 
