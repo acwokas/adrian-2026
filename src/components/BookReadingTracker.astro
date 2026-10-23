@@ -1,0 +1,24 @@
+<script>
+ const extract = document.querySelector<HTMLElement>('.extract-copy');
+ if (extract && /^(www\.)?adrianwatkins\.com$/.test(location.hostname)) {
+  const track = (event: string, parameters: Record<string,number|string> = {}) => (window as Window & {awTrack?: (event:string, parameters:Record<string,number|string>)=>void}).awTrack?.(event,parameters);
+  if(document.readyState === 'complete') track('book_view');
+  else window.addEventListener('load',()=>track('book_view'),{once:true});
+  let activeSeconds=0,started=false,engaged=false;
+  const seen = new Set<number>();
+  setInterval(()=>{
+   if(document.visibilityState!=='visible') return;
+   const box=extract.getBoundingClientRect();
+   if(box.top>=innerHeight || box.bottom<=0) return;
+   activeSeconds++;
+   if(activeSeconds>=3 && !started){started=true;track('book_read_start');}
+   const depth=Math.min(100,Math.max(0,(innerHeight-box.top)/box.height*100));
+   for(const milestone of [25,50,75,90]){
+    if(depth>=milestone && activeSeconds>=milestone/5 && !seen.has(milestone)){
+     seen.add(milestone);track('book_read_progress',{percent_scrolled:milestone,engagement_time_msec:activeSeconds*1000});
+    }
+   }
+   if(activeSeconds>=30 && depth>=50 && !engaged){engaged=true;track('book_engaged_read',{engagement_time_msec:activeSeconds*1000,percent_scrolled:Math.round(depth)});}
+  },1000);
+ }
+</script>

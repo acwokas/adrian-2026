@@ -1,0 +1,17 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {onRequestPost} from '../functions/api/book-subscribe.ts';
+const env={SUPABASE_URL:'https://storage.example.test',SUPABASE_SERVICE_ROLE_KEY:'test-only'};
+const request=(body,origin='https://adrianwatkins.com')=>new Request('https://adrianwatkins.com/api/book-subscribe',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(body)});
+const valid={email:'Reader@Example.com',consent:true};
+test('requires explicit book consent, with no storage call',async()=>{assert.equal((await onRequestPost({request:request({...valid,consent:false}),env})).status,400)});
+test('rejects cross-origin requests',async()=>{assert.equal((await onRequestPost({request:request(valid,'https://other.example'),env})).status,403)});
+test('fails closed when storage is absent',async()=>{assert.equal((await onRequestPost({request:request(valid),env:{}})).status,503)});
+test('rejects malformed addresses and non-string payload fields',async()=>{for(const body of [{email:'invalid',consent:true},{email:[],consent:true},null,{email:'x'.repeat(321)+'@example.com',consent:true}]) assert.equal((await onRequestPost({request:request(body),env})).status,400)});
+test('book-only storage includes consent and supports explicit resubscription',async(t)=>{let stored; t.mock.method(globalThis,'fetch',async(url,options)=>{assert.match(url,/\/heir_presumptive_subscribers\?on_conflict=email$/);stored=JSON.parse(options.body);return new Response(null,{status:201})});assert.equal((await onRequestPost({request:request(valid),env})).status,200);assert.equal(stored.email,'reader@example.com');assert.equal(stored.consent_version,'heir-presumptive-book-only-v1');assert.equal(stored.unsubscribed_at,null);assert.equal(stored.source,'/writing/heir-presumptive');assert.ok(Date.parse(stored.consent_at));assert.equal(Object.hasOwn(stored,'ip'),false)});
+test('storage failure is never reported as subscribed',async(t)=>{t.mock.method(globalThis,'fetch',async()=>new Response(null,{status:500}));assert.equal((await onRequestPost({request:request(valid),env})).status,503)});
+test('network timeout is never reported as subscribed',async(t)=>{t.mock.method(globalThis,'fetch',async()=>{throw new Error('timeout')});assert.equal((await onRequestPost({request:request(valid),env})).status,503)});
+test('honeypot does not save data',async(t)=>{t.mock.method(globalThis,'fetch',()=>{throw new Error('must not fetch')});assert.equal((await onRequestPost({request:request({...valid,honeypot:'bot'}),env})).status,200)});
+test('extract matches source integrity receipt',()=>{const text=JSON.parse(readFileSync('src/data/books/heir-presumptive-extract.json','utf8'));const receipt=JSON.parse(readFileSync('docs/book-review/extract-integrity.json','utf8'));assert.equal(createHash('sha256').update(text).digest('hex'),receipt.sha256);assert.equal(text.length,receipt.characters)});

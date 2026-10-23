@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookReadingTracker from '../../components/BookReadingTracker.astro';
+import BookSignup from '../../components/BookSignup.astro';
+import extract from '../../data/books/heir-presumptive-extract.json';
+import notes from '../../data/books/heir-presumptive-sources.json';
+const title = 'Heir Presumptive | A book in progress by Adrian Watkins';
+const description = 'Who Gets the Final Say When Our Creations Become Creators. A non-fiction book in progress by Adrian Watkins. Read an extract from The Swallowed Mind.';
+const paragraphs = extract.split('\n');
+const movements = [
+ ['What can you command?', 'Why people imagine beings greater than themselves, and what they ask of them.'],
+ ['What must you delegate?', 'Siege engines, clocks, mills and the bomb: building greater powers, and who controlled them.'],
+ ['What do you depend on?', 'When assistance becomes dependence, and dependence becomes authority.'],
+ ['What can you no longer understand?', 'Machines that learn from our library, read our stories and begin to teach us.'],
+ ['The Undying Sovereign. Who can replace you?', 'How power is handed down, and what happens when the holder need never die.'],
+];
+const manuscriptLink = 'mailto:me@adrianwatkins.com?subject=' + encodeURIComponent('Heir Presumptive: manuscript enquiry');
+---
+<BaseLayout title={title} description={description} current="writing">
+ <div class="book-page">
+  <header class="book-header">
+   <a class="back" href="/writing">← Back to writing</a>
+   <p class="eyebrow">A non-fiction book in progress</p>
+   <h1>Heir Presumptive</h1>
+   <p class="book-subtitle">Who Gets the Final Say When Our Creations Become Creators</p>
+   <p class="byline">By Adrian Watkins</p>
+   <div class="intro">
+    <p>We’ve been telling stories about succession for centuries: the old order creates the thing that might replace it. I’m writing a book about artificial intelligence as the latest heir, and who inherits the power that comes with it.</p>
+    <p>It puts Asia at the centre, drawing on history, mythology and the systems being built today. The comparison matters, but so do the places where it breaks.</p>
+    <p>My working life has taken me through online publishing, advertising, building a business and governing technology. That’s the perspective I bring: who decides, who pays, who owns it, and how it’s actually used.</p>
+   </div>
+   <nav class="book-nav" aria-label="On this page"><a href="#extract">Read the extract ↓</a><a href="#book-updates">Book updates</a><a href="#sources">Source notes</a></nav>
+  </header>
+  <article id="extract" aria-labelledby="extract-heading" class="extract">
+   <p class="eyebrow">From the prologue</p>
+   <h2 id="extract-heading">The Swallowed Mind</h2>
+   <p class="extract-context">An extract from the manuscript in progress. <a href="#sources">Sources and context</a> follow below.</p>
+   <div class="extract-copy">{paragraphs.map(p => p === '*' ? <p class="scene-break" aria-label="Section break">*</p> : <p>{p}</p>)}</div>
+  </article>
+  <section class="book-outline" aria-labelledby="outline-heading">
+   <p class="eyebrow">Inside the book</p><h2 id="outline-heading">Five movements. One question of power.</h2>
+   <p>A prologue, eighteen chapters in five movements, and an epilogue. Each movement asks the Sovereign, whoever holds the final say, one question.</p>
+   <p class="bookend">Prologue: The Swallowed Mind</p>
+   <ol>{movements.map(([heading, text]) => <li><h3>{heading}</h3><p>{text}</p></li>)}</ol>
+   <p class="bookend">Epilogue: The Will</p>
+  </section>
+  <BookSignup />
+  <section class="enquiry" aria-labelledby="enquiry-heading"><h2 id="enquiry-heading">For agents and editors</h2><p>If you’d like to discuss the book or read more of the manuscript, I’d welcome a conversation.</p><a href={manuscriptLink}>Enquire about the manuscript →</a><p class="small">Or use my <a href="/contact">contact page</a>.</p></section>
+  <section id="sources" class="sources" aria-labelledby="sources-heading"><h2 id="sources-heading">Source notes</h2><p class="small">Sources checked on 23 October 2026. These notes distinguish the historical record, reported figures and the book’s interpretation. The extract is reproduced unchanged.</p>
+   {notes.map(n => <details><summary>{n.title}</summary><p>{n.note}</p><ul>{n.links.map(l => <li><a href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a></li>)}</ul></details>)}
+  </section>
+  <p class="closing">All views are my own.</p>
+ </div>
+ <BookReadingTracker />
+</BaseLayout>
+<style>
+ .book-page{max-width:880px;margin:0 auto;padding:68px 28px 80px}.back{font-size:14px}.book-header .eyebrow{margin-top:48px}.book-header h1{font-size:clamp(44px,7vw,78px);line-height:1.06;margin:16px 0 22px}.book-subtitle{font-family:'Fraunces',Georgia,serif;font-size:clamp(23px,3vw,34px);line-height:1.3;max-width:720px;margin:0 0 24px}.byline{font-size:14px;color:var(--muted)}.intro{max-width:680px;margin-top:36px}.intro p{margin:0 0 18px}.book-nav{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:32px;font-size:14px}.extract{border-top:1px solid var(--rule-strong);margin-top:56px;padding-top:48px;scroll-margin-top:100px}.extract h2{font-size:clamp(32px,5vw,46px);margin:12px 0 16px}.extract-context{font-size:14px;color:var(--muted);margin-bottom:36px}.extract-copy{max-width:680px;margin:auto;font-family:'Fraunces',Georgia,serif;font-size:20px;line-height:1.8}.extract-copy p{margin:0 0 25px}.extract-copy .scene-break{text-align:center;margin:42px 0}.book-outline,.enquiry,.sources{border-top:1px solid var(--rule);margin-top:60px;padding-top:36px;scroll-margin-top:100px}.book-outline h2,.enquiry h2,.sources h2{font-size:30px;line-height:1.2;margin:10px 0 20px}.book-outline ol{padding-left:26px}.book-outline li{padding:16px 0 10px 10px}.book-outline h3{font-size:23px;line-height:1.3}.book-outline li p{margin:10px 0}.bookend{font-style:italic}.small,.closing{font-size:14px;color:var(--muted)}.sources details{padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}.sources summary{cursor:pointer;font-weight:600}.sources a{overflow-wrap:anywhere}.closing{margin-top:40px}a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}@media(max-width:600px){.book-page{padding:36px 20px 56px}.book-header .eyebrow{margin-top:32px}.extract-copy{font-size:18px;line-height:1.75}.book-nav{gap:14px 22px}}
+</style>

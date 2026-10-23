@@ -4,7 +4,7 @@
   window.__awTracking = true;
   const production = /^(www\.)?adrianwatkins\.com$/.test(location.hostname);
   const bot = /bot|crawler|spider|headlesschrome|playwright|puppeteer|selenium/i.test(navigator.userAgent);
-  const allowed = new Set(['cv_download', 'aw_link_click', 'aw_download', 'aw_section_view', 'aw_scroll_depth', 'aw_engaged_read', 'aw_form_start', 'aw_form_submit', 'aw_form_error', 'aw_form_success', 'aw_booking_step', 'aw_menu_toggle', 'aw_share', 'sign_up', 'generate_lead']);
+  const allowed = new Set(['book_view', 'book_read_start', 'book_read_progress', 'book_engaged_read', 'book_signup', 'cv_download', 'aw_link_click', 'aw_download', 'aw_section_view', 'aw_scroll_depth', 'aw_engaged_read', 'aw_form_start', 'aw_form_submit', 'aw_form_error', 'aw_form_success', 'aw_booking_step', 'aw_menu_toggle', 'aw_share', 'sign_up', 'generate_lead']);
   const parameters = new Set(['link_type', 'link_domain', 'link_path', 'link_label', 'placement', 'section_name', 'percent_scrolled', 'form_name', 'error_type', 'method', 'lead_type', 'booking_step', 'action', 'engagement_time_msec']);
   const clean = value => String(value || '').replace(/[^\s@]+@[^\s@]+/g, '[redacted]').slice(0, 100);
   function track(name, values = {}) {
@@ -52,7 +52,7 @@
   document.addEventListener('click', handleClick, true);
   document.addEventListener('auxclick', handleClick, true);
   const started = new WeakSet();
-  const formName = form => form.id === 'contact-form' ? 'contact' : form.getAttribute('action') === '/api/writing-subscribe' ? 'newsletter' : null;
+  const formName = form => form.id === 'book-signup-form' ? 'heir_presumptive_book' : form.id === 'contact-form' ? 'contact' : form.getAttribute('action') === '/api/writing-subscribe' ? 'newsletter' : null;
   document.addEventListener('focusin', event => {
     const form = event.target instanceof Element ? event.target.closest('form') : null;
     if (!form || !formName(form) || started.has(form)) return;

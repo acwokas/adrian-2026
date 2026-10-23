@@ -1,0 +1,46 @@
+---
+const preview = import.meta.env.DEV;
+---
+<section id="book-updates" aria-labelledby="book-updates-heading" class="book-signup">
+ <p class="eyebrow">Follow the book</p><h2 id="book-updates-heading">Hear when there’s more to read.</h2>
+ <p>I’ll share short extracts as the book develops. Sign up for occasional emails about <em>Heir Presumptive</em>, including new extracts and publication news.</p>
+ <form method="post" action="/api/book-subscribe" id="book-signup-form" data-preview={preview ? 'true' : 'false'}>
+  <label for="book-email">Your email address</label>
+  <input id="book-email" type="email" name="email" autocomplete="email" maxlength="320" required />
+  <label class="consent"><input type="checkbox" name="consent" required /><span>Yes, email me about Heir Presumptive only. This doesn’t subscribe me to Friday Frame or other writing updates.</span></label>
+  <input class="honey" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <button class="btn btn-primary" type="submit">Sign up for book updates</button>
+  <p id="book-signup-status" role="status" aria-live="polite"></p>
+ </form>
+ <noscript><p>Please enable JavaScript to use this form, or <a href="mailto:me@adrianwatkins.com?subject=Heir%20Presumptive%3A%20book%20updates%20only&body=Please%20email%20me%20occasional%20Heir%20Presumptive%20book%20updates%20only.">request book updates by email</a>.</p></noscript>
+ <p class="fine">Book updates only. To stop receiving them, reply to an update or <a href="mailto:me@adrianwatkins.com?subject=Unsubscribe%20from%20Heir%20Presumptive%20updates">email me to unsubscribe</a>. <a href="/privacy">Privacy information</a>.</p>
+ {preview && <p class="fine">Local preview: this form won’t save your email or send any messages.</p>}
+</section>
+<script>
+ const track = (event: string, properties: Record<string,string>) => (window as Window & {awTrack?: (event: string, properties: Record<string,string>) => void}).awTrack?.(event, properties);
+ const form = document.querySelector<HTMLFormElement>('#book-signup-form');
+ form?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!form.reportValidity()) return;
+  const status = document.querySelector<HTMLElement>('#book-signup-status')!;
+  const button = form.querySelector<HTMLButtonElement>('button')!;
+  if (form.dataset.preview === 'true') { status.textContent = 'Preview only. Your email hasn’t been saved and no message has been sent.'; return; }
+  const data = new FormData(form);
+  button.disabled = true; status.textContent = 'Saving your book-update request…';
+  try {
+   const response = await fetch('/api/book-subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:data.get('email'), consent:data.get('consent') === 'on', honeypot:data.get('company') || ''}), signal: AbortSignal.timeout(10000)});
+   const result = await response.json() as {ok?: boolean};
+   if (!response.ok || !result.ok) throw new Error('not_saved');
+   status.textContent = 'Thank you. Your request for Heir Presumptive updates has been saved. You haven’t been added to any other list.';
+   track('book_signup', {form_name:'heir_presumptive_book'});
+   track('aw_form_success', {form_name:'heir_presumptive_book'});
+   form.reset();
+  } catch {
+   status.textContent = 'We couldn’t confirm your signup. Please try again or email me@adrianwatkins.com to request book updates.';
+   track('aw_form_error', {form_name:'heir_presumptive_book',error_type:'service_error'});
+  } finally { button.disabled = false; }
+ });
+</script>
+<style>
+ .book-signup{margin-top:60px;padding:32px;background:var(--bg-alt);border:1px solid var(--rule-strong);scroll-margin-top:100px}.book-signup h2{font-size:30px;line-height:1.2;margin:12px 0 20px}form{display:grid;gap:12px;position:relative}input[type=email]{width:100%;padding:12px;border:1px solid var(--rule-strong);background:white;font:inherit;border-radius:2px}.consent{display:flex;gap:12px;font-size:14px;align-items:flex-start;line-height:1.6}.consent input{margin-top:5px;flex-shrink:0;width:18px;height:18px}.fine{font-size:13px;line-height:1.6}button{justify-self:start;white-space:normal;cursor:pointer}button:disabled{opacity:.6}input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.honey{position:absolute;left:-9999px;width:1px;height:1px}#book-signup-status:empty{display:none}#book-signup-status{font-size:14px}@media(max-width:600px){.book-signup{padding:24px 20px}.book-signup h2{font-size:27px}button{width:100%}}
+</style>

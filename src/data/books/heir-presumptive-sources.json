@@ -1,0 +1,154 @@
+[
+  {
+    "title": "1. Zeus, Metis and the succession story",
+    "note": "Theogony lines 886–900 support the warning, swallowing and counsellor passage; earlier sections describe Ouranos and Kronos. Athena’s armed emergence is described more fully in Homeric Hymn 28, also in the linked volume. The text cannot establish how every ancient listener understood the story. Greek dictionaries give both indicating/telling and, in the middle voice, considering/devising: “closer to point out” is a translation judgement, not a settled correction of Evelyn-White.",
+    "links": [
+      {
+        "label": "Hesiod, translated by Hugh G. Evelyn-White (1914), Project Gutenberg",
+        "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm"
+      },
+      {
+        "label": "Theogony 886 onwards, Greek text at Perseus",
+        "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Aabo%3Atlg%2C0020%2C001%3A886"
+      },
+      {
+        "label": "Greek verb meanings, Smyth at Perseus",
+        "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0007%3Apart%3D5&force=y"
+      }
+    ]
+  },
+  {
+    "title": "2. Cunning intelligence and the Anatolian comparison",
+    "note": "Detienne and Vernant’s French study was published in 1974. The Kumarbi comparison has a substantial scholarly history, including discussion dating to Forrer in 1936. Similarities do not establish a single, undisputed route of transmission.",
+    "links": [
+      {
+        "label": "Detienne and Vernant, Les ruses de l’intelligence (bibliographic record)",
+        "url": "https://books.google.com/books/about/Les_ruses_de_l_intelligence.html?id=mfI8AAAAIAAJ"
+      },
+      {
+        "label": "Ian Rutherford, Kingship in Heaven in Anatolia, Syria and Greece",
+        "url": "https://centaur.reading.ac.uk/79653/1/Kingship%20in%20Heaven%20in%20Anatolia%20Syria%20and%20Greece.%20Patterns%20of%20Convergence%20and%20Divergence%20%281%29.pdf"
+      }
+    ]
+  },
+  {
+    "title": "3. DeepSeek and Nvidia, January 2025",
+    "note": "DeepSeek’s paper reports R1’s performance relative to o1 on benchmark tasks, rather than equivalence on every task. Reuters reported Nvidia’s approximately $593 billion market-value loss on 27 January. “The cause was a free download” compresses a market response into a narrative phrase, not a demonstration of a single cause.",
+    "links": [
+      {
+        "label": "DeepSeek-R1 research paper",
+        "url": "https://arxiv.org/abs/2501.12948"
+      },
+      {
+        "label": "Reuters report, republished by Kitco, 28 January 2025",
+        "url": "https://www.kitco.com/news/off-the-wire/2025-01-28/us-tech-stocks-dollar-rebound-after-deepseek-triggered-selloff"
+      },
+      {
+        "label": "DeepSeek release log, 20 January 2025",
+        "url": "https://api-docs.deepseek.com/updates/"
+      }
+    ]
+  },
+  {
+    "title": "4. The $725 billion spending estimate",
+    "note": "The Financial Times report of 30 April 2026, republished by The Irish Times, supports the combined $725 billion capital-expenditure plans. This is a dated forecast for capital spending, not a final audited total or a measure solely of AI research spending.",
+    "links": [
+      {
+        "label": "Financial Times reporting, The Irish Times, 30 April 2026",
+        "url": "https://www.irishtimes.com/business/2026/04/30/google-outpaces-rivals-as-big-techs-ai-spending-plans-rise-to-725bn/"
+      }
+    ]
+  },
+  {
+    "title": "5. Alibaba’s ambitions",
+    "note": "Reuters reporting from 24 September 2025 supports the increased-spending announcement. Eddie Wu’s September 2026 speech explicitly recalls the previous year’s ambition to progress beyond AGI to self-iterating ASI. These are corporate intentions, not independent evidence that ASI has been achieved.",
+    "links": [
+      {
+        "label": "Alibaba, Apsara Conference 2025",
+        "url": "https://home.alibabagroup.com/en-US/document-1911884625546838016"
+      },
+      {
+        "label": "Eddie Wu’s 2026 Apsara speech",
+        "url": "https://www.alibabagroup.com/en-US/document-2039431633571938304"
+      },
+      {
+        "label": "Reuters, 24 September 2025",
+        "url": "https://www.investing.com/news/economy-news/alibaba-launches-qwen3max-ai-model-with-more-than-a-trillion-parameters-4252359"
+      }
+    ]
+  },
+  {
+    "title": "6. OpenAI’s charter and the limits of the analogy",
+    "note": "The charter defines the organisation’s AGI ambition and intended beneficiaries. It does not establish a consensus test for achieving AGI. The extract’s comparison between company control and Zeus is an argument, not a claim that mythological and contemporary arrangements are identical. Assertions about what most researchers accept, or millions of simultaneous conversations, would need separate evidence to be read as measured facts.",
+    "links": [
+      {
+        "label": "OpenAI Charter",
+        "url": "https://openai.com/charter/"
+      }
+    ]
+  },
+  {
+    "title": "7. The Pile, Gutenberg and Books3",
+    "note": "The Pile paper documents 22 constituent datasets and an 825 GiB corpus, described approximately as 800GB in its title. The repository includes Gutenberg (PG-19) and Books3. Gutenberg’s possession of a book does not by itself prove that book was in the PG-19 subset or in a particular commercial model’s training data. The Rights Alliance documents its 2023 Books3 takedown work. Next-word prediction is a simplified description: language models normally predict tokens, which need not be whole words.",
+    "links": [
+      {
+        "label": "The Pile: An 800GB Dataset of Diverse Text for Language Modeling",
+        "url": "https://arxiv.org/abs/2101.00027"
+      },
+      {
+        "label": "The Pile dataset documentation",
+        "url": "https://github.com/EleutherAI/The-Pile/blob/master/README.md"
+      },
+      {
+        "label": "Rights Alliance: the Books3 case",
+        "url": "https://rettighedsalliancen.com/the-books3-case-highlights-the-need-for-transparency-in-the-training-of-artificial-intelligence/"
+      }
+    ]
+  },
+  {
+    "title": "8. Čapek and the word robot",
+    "note": "R.U.R. was written in 1920; the play’s ending leaves Alquist alive. Karel Čapek attributed the word to his brother Josef in his 1933 essay. The succession comparison is the author’s interpretation of these works.",
+    "links": [
+      {
+        "label": "R.U.R., Project Gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/59112"
+      },
+      {
+        "label": "Čapek, O slově robot (reproduced original essay)",
+        "url": "https://storage.bookup.cz/ebooks/preview/000/972/566/preview_9788027118014.pdf"
+      }
+    ]
+  },
+  {
+    "title": "9. What the experiments show",
+    "note": "Berglund and colleagues studied out-of-context reasoning using specially prepared training descriptions. Palisade studied resistance to shutdown during tasks. Neither establishes that reading Hesiod, Frankenstein or stories of rebellion causes real-world AI rebellion. The extract’s suggestion about inherited stories is a hypothesis. Its broad claims about “all” stories and the absence of findings across all research cannot be established by these studies.",
+    "links": [
+      {
+        "label": "Berglund et al., Taken out of context (2023)",
+        "url": "https://arxiv.org/abs/2309.00667"
+      },
+      {
+        "label": "Palisade Research, shutdown resistance",
+        "url": "https://palisaderesearch.org/research/shutdown-resistance"
+      },
+      {
+        "label": "Shutdown Resistance in Large Language Models",
+        "url": "https://arxiv.org/abs/2509.14260"
+      }
+    ]
+  },
+  {
+    "title": "10. The Roman heir",
+    "note": "Roman inheritance could include the deceased’s debts as well as assets. This varied with the kind of heir and period: under Justinian, completing an inventory could limit liability. The final sentence is a compressed introduction to the book’s next section, rather than an account of every Roman inheritance rule.",
+    "links": [
+      {
+        "label": "Oxford Classical Dictionary: inheritance, Roman",
+        "url": "https://academic.oup.com/edited-volume/61673/chapter-abstract/548207476"
+      },
+      {
+        "label": "The Institutes of Justinian, Book II, title XIX",
+        "url": "https://www.gutenberg.org/files/5983/5983-h/5983-h.htm"
+      }
+    ]
+  }
+]
