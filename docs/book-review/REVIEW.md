@@ -1,3 +1,7 @@
+## Signup scope update, 23 October 2026
+
+Adrian subsequently requested one explicit signup for book updates, Friday Frame and occasional writing updates, with unsubscribe wording. The current v2 form reflects that approval. Earlier book-only v1 consent is preserved. See combined-signup.sql for the atomic server-only transaction. This supersedes book-only release wording below, which records the original preview.
+
 # Heir Presumptive local preview, 23 October 2026
 
 Status: APPROVED FOR PUBLICATION on 23 October 2026. Adrian approved the unchanged extract, retained source notes, live signup activation, reading measurement and homepage feature. Database table activated with RLS and no public read access. Deployment and live checks are recorded separately.
