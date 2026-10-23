@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/friday-frame/2026-08-28-the-eu-ai-act-started-enforcing-this-month.md",
-    "document_sha256": "9ca52ed5002435590ea53182953c5d403af3932ca4b5357df8236631cc4099eb",
-    "review_sha256": "5ec8822191e5ab5d26e6af3dfd78cab8a2f61421b54f64f4be2d8af70fddbe5b",
-    "source_sha256": "d48a0c345a53bed492f8e6ac1612b44eadf047f168d5e471648de873b601b2b6",
-    "reviewed_at": "2026-10-16T02:30:32.604Z",
-    "expires_at": "2026-10-23T02:30:32.604Z"
+    "document_sha256": "993fecad8c47eb3be578a18c7ab0a84a4f56f1826f181d168e7dedac31f74ae5",
+    "review_sha256": "d2610dae342d9859ea0509c5f2b86f64c9399736e03e591ddfbcc08b7ba31328",
+    "source_sha256": "18955771ff4739626a01bf77bbc88ec2dd0371459328bbe91de019f1e28dc0c4",
+    "reviewed_at": "2026-10-23T06:27:09.821Z",
+    "expires_at": "2026-10-30T06:27:09.821Z"
   },
-  "signature": "i4zfdr1MXVCoMITxsD44i2M7ZYGDEhI2FUuzYhwnD8d0ortKJTzZLrg00cfj3IZuCqXTVtbXEceoVW4Fx5uPAQ=="
+  "signature": "JdhnGp39qgAQD6kwhge5+6EolzlVoHNlQTlc9x6Fbw0Fmu6D2PmGBXV10SHbBhIcfUFXdYYHiZeRq+Iv2eyLDg=="
 }

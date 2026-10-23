@@ -14,10 +14,10 @@ for (const path of ['/not-a-real-page', '/singapore-misspelt', '/missing/image.p
 const page = await onRequest({ request: new Request('https://adrianwatkins.com/singapore'), next: async () => new Response('Singapore') });
 assert.equal(page.status, 200);
 assert.equal(page.headers.get('x-robots-tag'), null);
-for (const status of [200, 304]) {
-  const cv = await onRequest({ request: new Request('https://adrianwatkins.com/documents/AdrianWatkins_Executive-CV.pdf'), next: async () => new Response(status === 304 ? null : 'PDF', { status }) });
+for (const path of ['/documents/AdrianWatkins_Executive-CV.pdf', '/documents/Adrian-Watkins-Executive-CV-2027.pdf']) for (const status of [200, 304]) {
+  const cv = await onRequest({ request: new Request(`https://adrianwatkins.com${path}`), next: async () => new Response(status === 304 ? null : 'PDF', { status }) });
   assert.equal(cv.status, status);
-  assert.match(cv.headers.get('cache-control'), /max-age=300/);
+  assert.equal(cv.headers.get('cache-control'), 'public, no-cache, must-revalidate');
 }
 const alias = await onRequest({ request: new Request('https://branch.example.pages.dev/'), next: async () => new Response('Preview') });
 assert.equal(alias.headers.get('x-robots-tag'), 'noindex, nofollow');

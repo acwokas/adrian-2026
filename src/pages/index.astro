@@ -11,8 +11,8 @@ const todayISO = new Date().toISOString().slice(0, 10);
 const homeUpcoming = homepageEntries('upcoming', todayISO);
 const homeRecent = homepageEntries('recent', todayISO);
 
-const title = 'Adrian Watkins. Operator. Builder. Governor.';
-const description = 'Adrian Watkins: Singapore-based commercial and operating leader at SQREEM Technologies. Growth, integration and governance across regional and global markets.';
+const title = 'Adrian Watkins | Business and AI transformation | Singapore';
+const description = 'Adrian Watkins: Singapore-based commercial and operating leader at SQREEM Technologies. Business and AI transformation, acquisition integration and growth across markets.';
 
 // Person + WebSite JSON-LD is emitted globally via BaseLayout
 // (src/data/person.ts). No need to duplicate here.
@@ -25,12 +25,12 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       <div class="hero-grid">
         <div class="hero-text">
           <div class="eyebrow">Singapore-based. Global perspective. Regional and local understanding.</div>
-          <h1>Operator. Builder.<br /><em>Governor.</em></h1>
-          <p class="lede">I build and lead technology businesses, connecting commercial strategy, day-to-day operations and governance across markets. My approach combines global ambition with an understanding of regional differences and local commercial, regulatory and cultural realities.</p>
+          <h1>Leading growth.<br /><em>Making change work.</em></h1>
+          <p class="lede">I’m a Singapore-based commercial and operating leader with 25 years of experience across Asia, Europe and the US. I bring people, products and operations together to turn strategy into business results, from integrating acquisitions and entering new markets to changing how teams work.</p>
           <div class="manifesto prose">
             <p>I’m SVP Commercial Operations and Governance at <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>. My work spans growth, acquisition integration and cross-functional leadership, alongside responsibilities as the Data Protection Officer (DPO). I help translate privacy obligations across jurisdictions into practical decisions about how the business operates.</p>
 
-            <p>Through <a href="https://www.democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, I build tools, frameworks and publications that help people and organisations put AI to practical use. These include my <a href="/edge">EDGE framework</a> and <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>, informed by the different markets, languages and working cultures in which technology needs to succeed.</p>
+            <p>Through <a href="https://www.democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, I put AI transformation into practice in my own portfolio, building shared workflows, tools and publications with clear checks and human accountability. These include my <a href="/edge">EDGE framework</a> and <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>, informed by the different markets, languages and working cultures in which technology needs to succeed.</p>
 
             <p><a href="/singapore">Singapore is home.</a> Alongside my executive responsibilities, I mentor students, deliver founder workshops and moderate discussions with business leaders. That contribution extends into regional mentoring programmes and speaking engagements, connecting my work here with communities across Asia.</p>
 
@@ -39,7 +39,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
 
           <div class="ctarow">
             <a class="btn btn-primary" href="/contact">Get in touch</a>
-            <a class="btn btn-secondary" href="/about">Explore my experience</a>
+            <a class="btn btn-secondary" href="/work">Explore my leadership work</a>
           </div>
 
           <div class="meta-line">
@@ -98,7 +98,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
     });
   </script>
 
-  <NUSFeature />
+
 
   <section id="work" class="alt">
     <div class="container">
@@ -150,6 +150,8 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       </div>
     </div>
   </section>
+
+  <NUSFeature />
 
   <section>
     <div class="container">
@@ -353,6 +355,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
 </BaseLayout>
 
 <style>
+  .hero h1 { font-size: clamp(42px, 4.4vw, 64px); text-wrap: balance; }
   .talk-section { padding: 64px 0; border-top: 1px solid var(--rule); }
   .talk-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
   .talk-heading h2 { margin-top: 12px; }

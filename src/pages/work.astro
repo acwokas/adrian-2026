@@ -4,11 +4,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Selected leadership work | Adrian Watkins';
 const description = 'How Adrian Watkins brings commercial operations, integration and governance together to support growth across markets. Selected leadership case studies.';
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} current="work">
   <section class="work-intro"><div class="container">
     <div class="eyebrow">Selected leadership work</div>
     <h1>Putting strategy into practice.</h1>
-    <nav class="case-nav" aria-label="Case studies"><a href="#sqreem">SQREEM Technologies</a><a href="#theparent-inc">The ParentInc</a><a href="#closeup">AdColony / Closeup</a><a href="#ign">FOX / IGN</a></nav>
+    <p class="lede">Transformation has to change how a business works. These examples bring together commercial decisions, operating models, team adoption and measurable results.</p>
+    <nav class="case-nav" aria-label="Case studies"><a href="#sqreem">SQREEM Technologies</a><a href="#theparent-inc">The ParentInc</a><a href="#closeup">AdColony / Closeup</a><a href="#ign">FOX / IGN</a><a href="#cipd">CIPD</a><a href="#ai-transformation">AI transformation</a></nav>
   </div></section>
   <article id="sqreem" class="case-study"><div class="container">
     <header class="case-header">
@@ -19,7 +20,7 @@ const description = 'How Adrian Watkins brings commercial operations, integratio
         <p class="lede">Integrating three businesses meant bringing different commercial practices into a shared approach that could support growth across markets.</p>
         <p>Reporting to the Global Group CEO, I lead commercial operations and governance across SQREEM Technologies. A central part of that work has been harmonising people, product, process and compliance, while giving regional teams the clarity to move opportunities forward.</p>
       </div>
-    </header>
+    <dl class="case-facts"><div><dt>Remit</dt><dd>Global commercial operations and governance, reporting to the Global Group CEO.</dd></div><div><dt>Scope</dt><dd>Integration of three businesses across people, products, processes and compliance.</dd></div></dl></header>
     <div class="case-grid">
       <section>
         <h3>Turning integration into everyday decisions.</h3>
@@ -40,7 +41,7 @@ const description = 'How Adrian Watkins brings commercial operations, integratio
       <div class="tag">Tickled Media, now <a href="https://theparentinc.com" target="_blank" rel="noopener noreferrer">The ParentInc</a> / Commercial transformation and market expansion</div>
       <h2>Aligning the business around Brand Solutions.</h2>
       <div class="prose"><p class="lede">As Chief Strategy Officer, I reported to the CEO and board and led approximately 100 people across presales, sales, product, delivery, studio, insights and technology. My remit connected commercial performance with the products, capabilities and delivery needed to support it.</p></div>
-    </header>
+    <dl class="case-facts"><div><dt>Remit</dt><dd>Chief Strategy Officer, reporting to the CEO and board.</dd></div><div><dt>Scale and result</dt><dd>Approximately 100 people; changes helped drive 55% year-on-year company revenue growth.</dd></div></dl></header>
     <div class="case-grid">
       <section>
         <h3>Giving teams a shared purpose.</h3>
@@ -66,7 +67,7 @@ const description = 'How Adrian Watkins brings commercial operations, integratio
         <p class="lede">As VP Marketing &amp; Growth, I helped reposition AdColony’s Asia-Pacific business around gaming marketing, creating opportunities for brands to participate in the experiences audiences already enjoyed.</p>
         <p>One example was Unilever Closeup’s campaign with Mobile Legends: Bang Bang. It launched in the Philippines and subsequently expanded across multiple Southeast Asian markets.</p>
       </div>
-    </header>
+    <dl class="case-facts"><div><dt>Remit</dt><dd>APAC marketing and growth, including commercial negotiations and campaign strategy.</dd></div><div><dt>Reach</dt><dd>A Philippines launch expanded across multiple Southeast Asian markets.</dd></div></dl></header>
     <div class="case-grid">
       <section>
         <h3>Connecting the creative idea with the commercial mechanics.</h3>
@@ -91,7 +92,7 @@ const description = 'How Adrian Watkins brings commercial operations, integratio
         <p class="lede">IGN already had a strong US business. My remit was to grow its international commercial operation outside North America and Australia, which was concentrated primarily in the UK when I joined.</p>
         <p>I developed an expansion approach combining owned operations, partnerships and franchises, matching the investment and operating model to each market.</p>
       </div>
-    </header>
+    <dl class="case-facts"><div><dt>Remit</dt><dd>International commercial development, acquisition and integration leadership.</dd></div><div><dt>Result</dt><dd>International markets outside North America and Australia grew from about 1% to 10% of global revenue within 12 months.</dd></div></dl></header>
     <div class="case-grid">
       <section>
         <h3>Creating the commercial case for expansion.</h3>
@@ -111,8 +112,22 @@ const description = 'How Adrian Watkins brings commercial operations, integratio
   <section class="case-study"><div class="container">
     <div class="ctarow"><a class="btn btn-primary" href="/contact">Start a conversation</a><a class="btn btn-secondary" href="/about">More about my experience</a></div>
   </div></section>
+  <article id="cipd" class="case-study"><div class="container">
+    <div class="tag">CIPD / Digital operating change</div>
+    <h2>A reusable platform, with the skills to use it.</h2>
+    <div class="case-grid"><section><h3>The change.</h3><p>Recruited to lead the transition to digital publishing, I commissioned a reusable content management system and trained staff across the organisation. It replaced repeated bespoke external builds for courses and the online directory.</p></section><section><h3>The result.</h3><p>The change delivered £1 million in realised annual savings. The technology mattered, but so did giving people the capability to use it as part of their everyday work.</p></section></div>
+  </div></article>
+  <article id="ai-transformation" class="case-study alt"><div class="container">
+    <div class="tag">Independent portfolio / AI transformation</div>
+    <h2>Putting AI into the operating workflow.</h2>
+    <div class="prose"><p>Through democratising.ai, I’m applying AI transformation to my own publications, data services and practical tools. DARE, the shared publishing and data platform I’m continuing to develop, brings collection, publishing, source checks and monitoring into reusable workflows.</p><p>This is hands-on work with the decisions that determine whether AI is useful: where it belongs in a process, what evidence an output needs, who checks it and what happens when something fails. Each service still needs local context and a clear purpose.</p><p><a href="/edge">EDGE</a> provides the wider business framework for evaluating a need, defining the outcome, agreeing responsibility and improving through use. These are independent projects, separate from my executive responsibilities.</p></div>
+  </div></article>
 </BaseLayout>
 <style>
+.case-facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; border-top:1px solid var(--rule); padding-top:20px; margin-top:24px; }
+.case-facts dt { font-weight:600; margin-bottom:8px; }
+.case-facts dd { margin:0; }
+@media(max-width:760px) { .case-facts { grid-template-columns:1fr; } }
 .work-intro { padding: 64px 0 40px; }
 .case-nav { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 28px; }
 .case-study { scroll-margin-top: 90px; }

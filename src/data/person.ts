@@ -25,8 +25,11 @@ export const personSchema = {
     url: 'https://sqreem.com',
   },
   description:
-    'Singapore-based commercial and operating leader at SQREEM Technologies, with data protection responsibilities (DPO). Creator of EDGE and builder of DARE by democratising.ai.',
+    'Singapore-based commercial and operating leader at SQREEM Technologies, with data protection responsibilities (DPO). Experience in business transformation and acquisition integration, alongside independent AI transformation work. Creator of EDGE and builder of DARE by democratising.ai.',
   knowsAbout: [
+    'Business transformation',
+    'AI transformation',
+    'Operating model design',
     'Product strategy',
     'Applied intelligence',
     'EDGE Framework',

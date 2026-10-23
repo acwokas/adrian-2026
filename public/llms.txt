@@ -1,8 +1,8 @@
 # Adrian Watkins
 # https://adrianwatkins.com
-# Last updated 2026-10-12
+# Last updated 2026-10-23
 
-> Adrian Watkins is a Singapore-based commercial and operating leader. He is SVP Commercial Operations and Governance at SQREEM Technologies, with additional responsibilities as the Data Protection Officer (DPO). His work spans growth, integration and governance across regional and global markets.
+> Adrian Watkins is a Singapore-based commercial and operating leader. He is SVP Commercial Operations and Governance at SQREEM Technologies, with additional responsibilities as the Data Protection Officer (DPO). His executive experience spans business transformation, acquisition integration, growth and governance. His independent work through democratising.ai applies AI transformation to shared publishing and data workflows, separate from his employer responsibilities.
 
 ## Framework and platform
 
@@ -22,7 +22,7 @@
 - [Writing](https://adrianwatkins.com/writing): essays and perspectives across Asia and globally
 - [Friday Frame](https://adrianwatkins.com/writing/friday-frame): weekly reflections
 - [Now](https://adrianwatkins.com/now): current work, reading and interests
-- [Contact](https://adrianwatkins.com/contact): executive, non-executive director and advisory conversations; pro bono mentoring and student programmes
+- [Contact](https://adrianwatkins.com/contact): business and AI transformation, growth and governance conversations; pro bono mentoring and student programmes
 
 ## Identity and attribution
 
