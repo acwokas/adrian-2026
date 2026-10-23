@@ -4,7 +4,7 @@
   window.__awTracking = true;
   const production = /^(www\.)?adrianwatkins\.com$/.test(location.hostname);
   const bot = /bot|crawler|spider|headlesschrome|playwright|puppeteer|selenium/i.test(navigator.userAgent);
-  const allowed = new Set(['aw_link_click', 'aw_download', 'aw_section_view', 'aw_scroll_depth', 'aw_engaged_read', 'aw_form_start', 'aw_form_submit', 'aw_form_error', 'aw_form_success', 'aw_booking_step', 'aw_menu_toggle', 'aw_share', 'sign_up', 'generate_lead']);
+  const allowed = new Set(['cv_download', 'aw_link_click', 'aw_download', 'aw_section_view', 'aw_scroll_depth', 'aw_engaged_read', 'aw_form_start', 'aw_form_submit', 'aw_form_error', 'aw_form_success', 'aw_booking_step', 'aw_menu_toggle', 'aw_share', 'sign_up', 'generate_lead']);
   const parameters = new Set(['link_type', 'link_domain', 'link_path', 'link_label', 'placement', 'section_name', 'percent_scrolled', 'form_name', 'error_type', 'method', 'lead_type', 'booking_step', 'action', 'engagement_time_msec']);
   const clean = value => String(value || '').replace(/[^\s@]+@[^\s@]+/g, '[redacted]').slice(0, 100);
   function track(name, values = {}) {
@@ -22,7 +22,8 @@
     const section = element.closest('section, article, aside');
     return clean(section?.querySelector('h2,h1,h3')?.textContent || section?.id || 'content');
   };
-  document.addEventListener('click', event => {
+  const handleClick = event => {
+    if (event.type === 'auxclick' && event.button !== 1) return;
     const element = event.target instanceof Element ? event.target : null;
     if (!element) return;
     const link = element.closest('a[href]');
@@ -35,7 +36,8 @@
       const download = /\.(pdf|docx?|xlsx?|zip)$/i.test(url.pathname);
       const link_type = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : download ? 'download' : internal ? (url.hash ? 'anchor' : 'internal') : 'outbound';
       if (!['http:', 'https:', 'mailto:', 'tel:'].includes(url.protocol)) return;
-      track(download ? 'aw_download' : 'aw_link_click', {
+      const cvDownload = download && /\/documents\/Adrian(?:-Watkins-Executive-CV-\d{4}|Watkins_Executive-CV)\.pdf$/i.test(url.pathname);
+      track(cvDownload ? 'cv_download' : download ? 'aw_download' : 'aw_link_click', {
         link_type, placement,
         link_domain: /^https?:$/.test(url.protocol) ? url.hostname : '',
         link_path: /^https?:$/.test(url.protocol) ? url.pathname : '',
@@ -46,7 +48,9 @@
     const button = element.closest('button');
     if (button?.matches('.nav-toggle')) track('aw_menu_toggle', {action: button.getAttribute('aria-expanded') === 'true' ? 'close' : 'open'});
     if (button?.matches('.share-copy')) track('aw_share', {method:'copy_link',placement:sectionName(button)});
-  }, true);
+  };
+  document.addEventListener('click', handleClick, true);
+  document.addEventListener('auxclick', handleClick, true);
   const started = new WeakSet();
   const formName = form => form.id === 'contact-form' ? 'contact' : form.getAttribute('action') === '/api/writing-subscribe' ? 'newsletter' : null;
   document.addEventListener('focusin', event => {

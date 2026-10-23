@@ -17,10 +17,10 @@ styles.add(ParagraphStyle(name='CVHeading',fontName='Helvetica-Bold',fontSize=11
 styles.add(ParagraphStyle(name='CVRole',parent=styles['CVBody'],fontName='Helvetica-Oblique',fontSize=9,spaceAfter=7,keepWithNext=True))
 story=[]
 for i,page in enumerate(text.split('\f')):
- if i: story.append(PageBreak())
+
  for para in page.strip().split('\n\n'):
   para=para.strip()
-  if not para:continue
+  if not para or para == '## Professional experience continued':continue
   if para=='Adrian Watkins':
    story.append(Paragraph(para,ParagraphStyle(name='Name',fontName='Helvetica-Bold',fontSize=25,leading=30,spaceAfter=9,textColor=colors.HexColor('#143344'))));continue
   st='CVBody'
@@ -32,7 +32,7 @@ def footer(c,d):
  c.setStrokeColor(colors.HexColor('#c4cbd0'));c.line(42,39,A4[0]-42,39)
  c.setFont('Helvetica',8);c.setFillColor(colors.HexColor('#536370'))
  c.drawString(42,26,'me@adrianwatkins.com | +65 8161 7961 | adrianwatkins.com')
- c.drawRightString(A4[0]-42,26,f'{d.page} of 3')
+ c.drawRightString(A4[0]-42,26,f'{d.page}')
  c.linkURL('https://adrianwatkins.com',(42,21,410,35),relative=0)
 out=root/'public/documents/Adrian-Watkins-Executive-CV-2027.pdf'
 SimpleDocTemplate(str(out),pagesize=A4,rightMargin=42,leftMargin=42,topMargin=36,bottomMargin=51,title='Adrian Watkins | Executive CV',author='Adrian Watkins').build(story,onFirstPage=footer,onLaterPages=footer)
