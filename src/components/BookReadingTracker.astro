@@ -1,4 +1,5 @@
 <script>
+ import '../scripts/book-first-party.js';
  const extract = document.querySelector<HTMLElement>('.extract-copy');
  if (extract && /^(www\.)?adrianwatkins\.com$/.test(location.hostname)) {
   const track = (event: string, parameters: Record<string,number|string> = {}) => (window as Window & {awTrack?: (event:string, parameters:Record<string,number|string>)=>void}).awTrack?.(event,parameters);

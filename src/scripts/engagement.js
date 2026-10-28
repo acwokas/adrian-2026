@@ -11,6 +11,8 @@
     if (!production || bot || !allowed.has(name)) return;
     const safe = {send_to: 'G-JSNS9WEB3N', page_path: location.pathname, page_location: location.origin + location.pathname, transport_type: 'beacon'};
     for (const [key, value] of Object.entries(values)) if (parameters.has(key)) safe[key] = typeof value === 'number' ? value : clean(value);
+    // Book-only first-party mirror, when loaded on the book page.
+    window.awBookTrack?.(name, values);
     window.dataLayer = window.dataLayer || [];
     // The Google tag is loaded by GTM. No extra config or page_view here.
     (function () { window.dataLayer.push(arguments); })('event', name, safe);

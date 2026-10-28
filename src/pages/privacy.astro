@@ -23,6 +23,11 @@ const description = 'How adrianwatkins.com handles contact enquiries, writing su
         <p>Cloudflare hosts and delivers this site. The site also loads Google Tag Manager for measurement and Google Fonts for typography. These services receive technical information when your browser connects to them. Analytics and embedded services may use cookies or similar technologies. Your browser settings can control cookies, although some third-party features may then work differently.</p>
         <p>Analytics helps me understand which pages and sections people view, which links and downloads they choose, and where enquiry or newsletter forms are started, completed or encounter errors. Form contents, names and email addresses are not included in these interaction events. New newsletter signups also generate a private email alert to me.</p>
         <p>Service providers may process information outside Singapore. Their own privacy notices describe their processing: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a>, <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a>, <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a>, <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>.</p>
+        <h2>Book-page measurement</h2>
+        <p>The Heir Presumptive page also sends limited usage events to a private Supabase table, separately from Google Analytics: page views, reading milestones and successful signup events. These records contain a random browser identifier, event time, the book page and site hostname, referrer hostname, allowlisted campaign labels and reading milestones. They do not contain names, email addresses, form contents, IP addresses or full referrer URLs. A browser identifier expires after a year without a recorded visit and does not identify a person or connect activity across devices.</p>
+        <p>This first-party measurement respects Global Privacy Control, Do Not Track and the browser opt-out below. Local previews, recognised automated browsers and marked test visits are excluded. Browser blocking and unrecognised automation can still affect counts.</p>
+        <button id="book-analytics-optout" type="button">Opt out of first-party book analytics on this browser</button>
+        <p id="book-analytics-optout-status" role="status"></p>
         <h2>How long information is kept</h2>
         <p>There is no single retention period for every enquiry. I review retained information periodically and delete it, or remove identifying details, when it is no longer needed for the original purpose or for a continuing business or legal reason. You can contact me to request deletion at any time. Some information may need to be retained to meet legal obligations or resolve an outstanding matter.</p>
         <h2>Your requests and choices</h2>
@@ -33,3 +38,15 @@ const description = 'How adrianwatkins.com handles contact enquiries, writing su
     </div>
   </section>
 </BaseLayout>
+
+<script>
+ const button = document.querySelector<HTMLButtonElement>('#book-analytics-optout');
+ button?.addEventListener('click', () => {
+  const status = document.querySelector<HTMLElement>('#book-analytics-optout-status');
+  try {
+   localStorage.setItem('aw_analytics_optout','1');
+   localStorage.removeItem('aw_book_visitor_v1');
+   if(status) status.textContent = 'First-party book analytics is disabled on this browser. This does not change Google Analytics settings.';
+  } catch { if(status) status.textContent = 'This browser could not save the preference. Global Privacy Control or Do Not Track also disables this first-party measurement.'; }
+ });
+</script>
