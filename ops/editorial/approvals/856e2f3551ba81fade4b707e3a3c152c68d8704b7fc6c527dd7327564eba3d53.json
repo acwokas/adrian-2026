@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/understanding-chinas-technology-ecosystem.md",
     "document_sha256": "cebef9ba5914e71e97996c4f65d1d38bc73804015ae1beee68d50ebaa6c6fa04",
-    "review_sha256": "1b490b4dcb995741ae94af479a293b498a465c7b7acd7827d30762f2065e0a7c",
-    "source_sha256": "993a148d1993fc18b56ac4c2643393f6a388800fc50fe8cae834a5d1604ca364",
-    "reviewed_at": "2026-10-21T05:27:04.078Z",
-    "expires_at": "2026-10-28T05:27:04.078Z"
+    "review_sha256": "df2633e07ef8b0f4b20ea6ff2bef4b1ca51ad6ead4f7d83e2e1e9a1deab2c16e",
+    "source_sha256": "812f6ee8f30ee1a26242a62e790caf2d36c8dc5b8f1a7ab01476b76df01d7abe",
+    "reviewed_at": "2026-10-30T01:21:30.290Z",
+    "expires_at": "2026-11-06T01:21:30.290Z"
   },
-  "signature": "ZAd4SmTSYSRA/UpWVQ+402o5d6429KTdSo6i/ZfC6dM+XsdcJ4jy8mdmRgq+QRCQFdonktU1EX9IpPRqxrclDQ=="
+  "signature": "yxNPPeiakWpR5IFG11OGF8B9Ay8iqrAvtZZGnxl+LPSI6I5ds/U2zVz4eFIn11mu0FoJpPqBr+BNXh8p1wj3Cw=="
 }

@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/amazon-financial-services-and-customer-journeys.md",
     "document_sha256": "f5369539a5e5bd25c4d61672074b09a298b6a7f278059d697383936447a20187",
-    "review_sha256": "f69eac22d54fafdabf12e8d1974ceb9f2556bb0b499dec46eba00b9f989936e4",
-    "source_sha256": "41d5eb18cf41b97b95da1c36fca86a692cd3ddc384b9dd3ae59cb3c25ea47155",
-    "reviewed_at": "2026-10-21T05:22:47.387Z",
-    "expires_at": "2026-10-28T05:22:47.387Z"
+    "review_sha256": "cc1b9eb70ca4c766edf7ce7bd888433f2afc9025adbee628e7b374b5718500bc",
+    "source_sha256": "6f0e85334c21a05d0f2efe95ee2d861ba95d3d12214a63e76a93cf74d324cee6",
+    "reviewed_at": "2026-10-30T01:21:55.910Z",
+    "expires_at": "2026-11-06T01:21:55.910Z"
   },
-  "signature": "6J/WG/YIcuqVRFf3DJdCYfQxLOrVdJCEJJylrsuoyQpnEt1ynhHFpj36WVjeQtJgXobSQ/Kuh1vaPegfi8cbCg=="
+  "signature": "MacSFqM22/xra4nsJtAQKR4JS7hDFGUIzQbR4Uz0DUyOpMTbVv/6M25QiWeWxC3jdMXuTa98ThnmtFzy0b7vDw=="
 }

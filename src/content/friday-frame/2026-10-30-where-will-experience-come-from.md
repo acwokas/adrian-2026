@@ -25,7 +25,7 @@ My role is often to ask fairly simple questions. Who would use this? What proble
 
 The value isn’t in giving a team my answer. It’s in giving them room to work through their own, question an assumption and decide what to do next. That takes practice. It also takes someone being willing to spend time with them.
 
-And a very big congratulations to **HydraCool**, the team I’ve been mentoring, on winning the Grand Finale! I’m delighted for them. The achievement is theirs, and it’s been a pleasure to support them along the way.
+And a very big congratulations to [**HydraCool**](https://www.linkedin.com/feed/update/urn:li:activity:7521269953598246912/), the team I’ve been mentoring, on winning the Grand Finale! I’m delighted for them. The achievement is theirs, and it’s been a pleasure to support them along the way.
 
 A student challenge and a workplace are different settings, of course. But both need opportunities for people to take responsibility, explain their thinking and learn from feedback.
 

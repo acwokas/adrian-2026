@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/making-online-learning-work.md",
     "document_sha256": "81ef82c1feb3a74ecb44ed87d3c342f8a5bf52384f95e010603d80e95af71cb9",
-    "review_sha256": "b30f1d843c5dd8b35901f3d39af0bebc94351d6fc205c1d3d1dd8903ec10f074",
-    "source_sha256": "0efae008568169d3618710399e9cf7fd78f88fc246e3f4363ce585ab4ad77d1b",
-    "reviewed_at": "2026-10-21T05:22:52.949Z",
-    "expires_at": "2026-10-28T05:22:52.949Z"
+    "review_sha256": "550ae437cd74f4ee2c356523bf111042a1225b40d1b9a659618a0e8627bfba10",
+    "source_sha256": "61ccd3cd3c010721f7dc9033fb9accb30f3e2435f7ccc6140923902b14b75661",
+    "reviewed_at": "2026-10-30T01:21:15.700Z",
+    "expires_at": "2026-11-06T01:21:15.700Z"
   },
-  "signature": "AuR17WqP1Sws+7U24ugXh49ZmWGi2npy1Ra+f8F02HLgdkSsysirECaBHDJEgfIFkW++L9ib/d2GOarmPq9YCQ=="
+  "signature": "BLZ+mI9oPLIMOgDqxdm12fxSismGXrFBsO1VhBXsi8VIarBU+WzmhzJu2lJgs2afF9lu97yYzvF8uf1TVXEgBA=="
 }

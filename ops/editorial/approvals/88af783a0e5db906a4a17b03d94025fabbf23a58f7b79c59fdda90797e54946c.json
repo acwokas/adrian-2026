@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/inbox-zero-and-reliable-follow-through.md",
     "document_sha256": "6830925cf9ba1ef0b7f272464870490486bbeec932003eb54c84f20cf4e1f1f6",
-    "review_sha256": "922d067cb34e174c112b38335c3d9967a3251b5b0a1bde9212c0aab7777ec711",
-    "source_sha256": "d62cf3e1ea80e527faff5860ac159bc937de9c3f872bbb8ef40ac2913cb00f96",
-    "reviewed_at": "2026-10-21T05:22:56.858Z",
-    "expires_at": "2026-10-28T05:22:56.858Z"
+    "review_sha256": "8b277975547199d76526706f47d99686fa336ac7ac40315d0625f9f7ba11e829",
+    "source_sha256": "06e2e66fc6bba7b415c898c2044afd92c341e466d17226977cf9fe15953320aa",
+    "reviewed_at": "2026-10-30T01:21:43.818Z",
+    "expires_at": "2026-11-06T01:21:43.818Z"
   },
-  "signature": "mZIlZLYqSbxIEDeemtQeiPSDl6c2U2A2P/gHSNTPxDAmGsd6Bh2PxsafPYIn7kT6v+xiF/Q3DwfN3/P8MT3cAg=="
+  "signature": "3cQL/tz1ElhjJTIIF456BHe7bn+J/rCF7hJAF0UUq+vEWGjFLEEEUHvUee9+qmmyZHK+JfSFjA0Mog9CWk5mBw=="
 }

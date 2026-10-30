@@ -3,11 +3,11 @@
     "version": "estate-static-editorial-v1",
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/technology-shifts-and-business-models.md",
-    "document_sha256": "18c5de019f707def2f05955bf8785660c08242ca292888c232e14d3c327cf22d",
-    "review_sha256": "4642ca5d0f36cd09e64df881769a89f6cac37a51332700d40d312364485c8dd1",
-    "source_sha256": "34738574f7e1fe0ad542d01501e96d81159873c3262600e3e1c000774a5f3b20",
-    "reviewed_at": "2026-10-21T05:22:54.228Z",
-    "expires_at": "2026-10-28T05:22:54.228Z"
+    "document_sha256": "d8bd6e5c6495a7f393f73d1503f0fdae34c3f2b4a1cb8592bbb4c949096b753b",
+    "review_sha256": "0a6682255b8976031fd82cf1bd0dc5283f4328e2b84e2651aa893cc0aaab18e3",
+    "source_sha256": "d386c693d1da85c0e066354184bf884365b25a4488cd4702926c3cc5299cd608",
+    "reviewed_at": "2026-10-30T01:27:29.602Z",
+    "expires_at": "2026-11-06T01:27:29.602Z"
   },
-  "signature": "kri++iCSB7HzZMDqDT6r4UwN21TZDHqMIUTWsjW9B0hKhT/TQ6eMabUuWQzwjCHebn38kaScIwq1LgUzu6JkAA=="
+  "signature": "/DbOOBHBOdmWieDJubhdp5K6oSaZD2Tv9b3CKjJJ4EG+z2ESGoRoxbb04ABwu6RsWiBfh9cECFh0Nc5tNuRVCQ=="
 }

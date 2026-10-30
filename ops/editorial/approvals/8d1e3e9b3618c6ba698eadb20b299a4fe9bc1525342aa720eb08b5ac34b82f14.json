@@ -4,10 +4,10 @@
     "repository": "acwokas/adrian-2026",
     "path": "src/content/writing/leadership-through-clear-decisions.md",
     "document_sha256": "73a54501d7b24012cd06b4b22dacb0422274e318e9ce8fff93d81f1e8f94cb75",
-    "review_sha256": "aaf8c0d89df3aac7e5699f263adb5be1b5a48254051bbae0391b547615b878d0",
-    "source_sha256": "55651088857a589b7cd92572ba96c45742e5b7e657b7366fb5db118599b49929",
-    "reviewed_at": "2026-10-21T05:22:59.419Z",
-    "expires_at": "2026-10-28T05:22:59.419Z"
+    "review_sha256": "11030cecdc32b66690a16c1168faa66e8ca8b8ee2512f3eb733aec4a04813def",
+    "source_sha256": "80fbac7dab3391fd4c2de35a9105989ad35cde5d1ad97707b10fdf30b7949a72",
+    "reviewed_at": "2026-10-30T01:22:09.752Z",
+    "expires_at": "2026-11-06T01:22:09.752Z"
   },
-  "signature": "fCheSIVbY6gjoGkgoaOC1PSv0wfeXOYrPUDi6gRHuUNc5ptHFJziUvFVLFMNO4r/q5MNZfQZQ+7gzJY2LtQ+Bw=="
+  "signature": "hzrNoBVzy4mGq6Sa4GpApknaYnyAeMZhgbdes/DuN+RQEoLOY/67eeqD2m6Xf78JvS+MMlM+rjbanzDMXIWVAw=="
 }
