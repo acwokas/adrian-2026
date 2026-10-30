@@ -31,6 +31,7 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+      actions: read
       deployments: write
     steps:
       - name: Validate requested publication identity
