@@ -1,7 +1,7 @@
 ---
 title: "Where will experience come from?"
 date: 2026-10-30
-draft: true
+draft: false
 summary: "If AI takes over the work people used to learn on, where will the next generation gain experience?"
 ---
 

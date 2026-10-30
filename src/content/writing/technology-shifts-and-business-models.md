@@ -51,4 +51,3 @@ Can the business serve another customer without recreating the service? Are cust
 
 Someone has to decide what the business will standardise, which promises it will stop making and where it will invest. Technology creates possibilities. Commercial progress depends on the choices that turn those possibilities into a viable way of operating.
 
-*This is a new article revisiting a subject from the site's earlier archive. It does not reproduce or attribute the quotation referenced in the older URL.*

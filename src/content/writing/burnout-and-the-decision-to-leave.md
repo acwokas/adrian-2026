@@ -45,4 +45,3 @@ You do not have to settle every part of your future at once. The next useful ste
 
 What matters is creating enough support and space to make the decision with a clearer view of your circumstances.
 
-*This is a new article revisiting a subject from the site's earlier archive.*

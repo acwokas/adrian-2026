@@ -45,4 +45,3 @@ The purpose of measurement is to understand whether the release delivered its pr
 
 DLC earns its place when players can see the value, access it easily and enjoy the experience they expected. That gives a studio a sounder basis for its next release than a calendar filled with content announcements.
 
-*This is a new article revisiting a subject from the site's earlier archive.*
