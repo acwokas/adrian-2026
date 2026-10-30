@@ -10,3 +10,11 @@ The 25 September 2026 miss occurred because approved copy remained only in conve
 6. Provide LinkedIn copy and hashtags for manual posting. Never post or send through another channel without explicit authorization.
 
 A workflow success alone is insufficient. Verify the live article title, body, archive link and draft status. The normal Friday publisher should see an already-live article and complete without duplicate publication after an early manual release.
+
+## Review expiry and existing publications
+
+The seven-day window applies to new publication and edited copy, including draft promotion. It must not block an unrelated release because an unchanged published article is older.
+
+Deployment resolves the exact commit of the most recent successful `deploy.yml` run on `astro-rebuild`. The whole-site gate may retain an expired receipt only when the current file is byte-for-byte identical to a non-draft file at that commit. Signature, repository, path, complete-document digest and valid review timing are still checked. Missing deployment history fails closed. Explicit `--file` publication checks always require a current receipt, even for unchanged files.
+
+Local builds use the fetched `origin/astro-rebuild` baseline. CI uses the successful-deployment commit, never the incoming branch head or a failed deployment. Retained receipts are reported as `published_review_retained`, not a fresh factual review. Any factual correction or updated source requires a new review.

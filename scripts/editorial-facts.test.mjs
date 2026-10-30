@@ -16,3 +16,11 @@ test('text-only approvals cannot cover reference graphics or nested visual metad
  for(const media of ['![chart][ref]','![chart]','<svg></svg>','<canvas></canvas>','<object data="x"></object>'])assert.throws(()=>staticDocument(body+media),/visual media/);
  for(const metadata of ['images: ["https://example.com/x.png"]','"heroImage": "https://example.com/x.png"',"assets: {cover: 'https://example.com/x.png'}",'hero-image: "https://example.com/x.png"'])assert.throws(()=>staticDocument(body.replace('draft: true','draft: true\n'+metadata)),/image metadata/);
 });
+
+test('expired signed approval retains only identical previously published copy',()=>{
+ const published=raw.replace('draft: true','draft: false'),receipt=signed(published),now=new Date(Date.now()+86400000);
+ assert.equal(assessFile({...common,raw:published,publishedRaw:published,receipt,now}).disposition,'published_review_retained');
+ for(const change of [{publishedRaw:null},{publishedRaw:raw},{raw:published+'Edit'},{requireReview:true},{receipt:{...receipt,signature:'bad'}}])assert.throws(()=>assessFile({...common,raw:published,publishedRaw:published,receipt,now,...change}));
+ const future={...receipt.proof,reviewed_at:new Date(now.getTime()+1000).toISOString()};
+ assert.throws(()=>assessFile({...common,raw:published,publishedRaw:published,now,receipt:{proof:future,signature:sign(null,Buffer.from(proofMessage(future)),keys.privateKey).toString('base64')}}));
+});

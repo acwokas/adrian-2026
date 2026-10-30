@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -14,13 +15,17 @@ export function frontmatter(raw) {
  if(Object.hasOwn(data,'draft')&&typeof data.draft!=='boolean')throw Error('Draft must be boolean');
  return data;
 }
-export function assessFile({raw,path,baseline,receipt,publicKey,requireReview=false,now=new Date()}) {
+export function assessFile({raw,path,baseline,receipt,publicKey,requireReview=false,publishedRaw=null,now=new Date()}) {
  if(!/^src\/content\/(writing|friday-frame)\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.mdx?$/.test(path))throw Error('Unexpected editorial path');
  const data=frontmatter(raw);
  if(data.draft===true&&!requireReview)return {disposition:'private_draft',path};
  // A receipt takes precedence over legacy status. Deleting a required receipt
  // cannot make an edited document match its frozen original hash.
- if(receipt)return {disposition:'independently_verified',path,...verifyStaticProof({raw,repository,path,receipt,publicKey,now})};
+ if(receipt){
+  const retained=!requireReview&&publishedRaw===raw&&frontmatter(publishedRaw).draft!==true;
+  const verified=verifyStaticProof({raw,repository,path,receipt,publicKey,now,retainPublished:retained});
+  return {disposition:verified.expired?'published_review_retained':'independently_verified',path,...verified};
+ }
  if(!requireReview&&baseline[path]===sha256(raw))return {disposition:'legacy_unreviewed',path};
  throw Error('Current independent whole-file approval required: '+path);
 }
@@ -30,10 +35,16 @@ export function runGate({root=process.cwd(),file=null}={}) {
  const publicKey=readFileSync(resolve(root,'ops/editorial/static-editorial-public-key.pem'),'utf8');
  const files=file?[file]:['src/content/writing','src/content/friday-frame'].flatMap(dir=>walk(resolve(root,dir)).map(f=>relative(root,f)));
  const results=[],failures=[];
+ // CI supplies the exact last successful deployment. Local builds use the
+ // fetched publishing branch; missing history never grants an exception.
+ const publishedRef=process.env.EDITORIAL_PUBLISHED_REF||(process.env.CI?'':'refs/remotes/origin/astro-rebuild');
+ if(publishedRef&&!/^(?:[a-f0-9]{40}|refs\/remotes\/origin\/astro-rebuild)$/.test(publishedRef))throw Error('Invalid publication baseline');
+ const publishedText=path=>{if(!publishedRef)return null;try{return execFileSync('git',['show',publishedRef+':'+path],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']});}catch{return null;}};
+
  for(const path of files){try{
   const receiptPath=resolve(root,'ops/editorial/approvals',sha256(path)+'.json');
   const receipt=existsSync(receiptPath)?JSON.parse(readFileSync(receiptPath,'utf8')):null;
-  results.push(assessFile({raw:readFileSync(resolve(root,path),'utf8'),path,baseline,receipt,publicKey,requireReview:!!file}));
+  results.push(assessFile({raw:readFileSync(resolve(root,path),'utf8'),path,baseline,receipt,publicKey,requireReview:!!file,publishedRaw:publishedText(path)}));
  }catch(e){failures.push({path,error:e.message});}}
  const counts=results.reduce((a,r)=>(a[r.disposition]=(a[r.disposition]||0)+1,a),{});
  console.log(JSON.stringify({counts,failures,note:'Legacy allowance is frozen unreviewed archive debt, never factual approval.'},null,2));

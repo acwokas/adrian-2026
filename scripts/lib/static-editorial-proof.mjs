@@ -31,12 +31,12 @@ export function staticIdentity(repository,path) {
 export function proofMessage(proof) {
  return JSON.stringify([proof.version,proof.repository,proof.path,proof.document_sha256,proof.review_sha256,proof.source_sha256,proof.reviewed_at,proof.expires_at]);
 }
-export function verifyStaticProof({raw,repository,path,receipt,publicKey,now=new Date()}) {
+export function verifyStaticProof({raw,repository,path,receipt,publicKey,now=new Date(),retainPublished=false}) {
  staticIdentity(repository,path);const doc=staticDocument(raw),p=receipt?.proof;
  if(!p||p.version!==STATIC_PROOF_VERSION||p.repository!==repository||p.path!==path||p.document_sha256!==doc.sha256)throw Error('Static proof does not match this complete document');
  for(const key of ['document_sha256','review_sha256','source_sha256'])if(!/^[a-f0-9]{64}$/.test(p[key]||''))throw Error('Invalid proof digest');
  const reviewed=Date.parse(p.reviewed_at),expires=Date.parse(p.expires_at),time=now.getTime();
- if(!Number.isFinite(reviewed)||!Number.isFinite(expires)||reviewed>time||expires<=time||expires-reviewed>7*86400000||expires<=reviewed)throw Error('Static factual proof expired or has invalid timing');
+ if(!Number.isFinite(reviewed)||!Number.isFinite(expires)||reviewed>time||(!retainPublished&&expires<=time)||expires-reviewed>7*86400000||expires<=reviewed)throw Error('Static factual proof expired or has invalid timing');
  if(typeof receipt.signature!=='string'||!verify(null,Buffer.from(proofMessage(p)),publicKey,Buffer.from(receipt.signature,'base64')))throw Error('Invalid independent static signature');
- return {approved:true,sha256:doc.sha256,expires_at:p.expires_at};
+ return {approved:true,sha256:doc.sha256,expires_at:p.expires_at,expired:expires<=time};
 }
