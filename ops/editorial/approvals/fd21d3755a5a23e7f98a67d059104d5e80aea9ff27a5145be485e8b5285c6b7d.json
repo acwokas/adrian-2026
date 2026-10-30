@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/friday-frame/2026-10-30-where-will-experience-come-from.md",
+    "document_sha256": "6278fe01262788aaf4bc65410877397fa2894645aefa36a6b4b72260f49043d4",
+    "review_sha256": "250a4c7d444d934aa5200414d5d6046d78960a9353f10e26a10ab6ce3a97aefd",
+    "source_sha256": "18c627f8dc79a83c93097414bf99547f16f416be5e8a3bb6ef13ee4ce33d4c41",
+    "reviewed_at": "2026-10-30T02:35:39.857Z",
+    "expires_at": "2026-11-06T02:35:39.857Z"
+  },
+  "signature": "fzcy30UxWU3LNAtBe8ugE5U2Zsp3e1IXlGJiI/64Lhfji9C/3I7cT9NYQ7C2wegUXXSwsFsYWQprh+XUD/EaCA=="
+}
