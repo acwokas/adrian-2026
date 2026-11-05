@@ -10,8 +10,8 @@ import { getPublishedComics } from '../../data/comics';
 
 const latestComic = (await getPublishedComics())[0];
 
-const title = 'Writing by Adrian Watkins. Executive essays and the Friday Frame.';
-const description = 'Essays, Friday Frame reflections and comics by Adrian Watkins on business leadership, technology and turning ideas into useful outcomes across Asia and globally.';
+const title = 'Writing by Adrian Watkins. Essays, Friday Frame and selected articles.';
+const description = 'Essays, Friday Frame reflections, comics and selected articles by Adrian Watkins on technology, work, data and everyday life in Singapore and beyond.';
 
 const writingPosts = await getCollection('writing', ({ data }) => !data.draft);
 const framePosts = await getCollection('fridayFrame', ({ data, id }) => !data.draft && id !== 'welcome');
@@ -60,20 +60,13 @@ type CrossPostEntry = {
   source: string;
   site_name: string;
   canonical_url: string;
+  topic: string;
+  author: string;
 };
 
 const crossPosts = (crossPostData.entries as CrossPostEntry[])
   .slice()
   .sort((a, b) => b.published_at.localeCompare(a.published_at));
-
-const siteBadge = (site: string) => {
-  const tone: Record<string, string> = {
-    'AI in Asia': '#0F2E4D',
-    'AI in Arabia': '#384555',
-    'AI in Europe': '#1F4A30',
-  };
-  return tone[site] || '#121B28';
-};
 
 const writingJsonLd = {
   '@context': 'https://schema.org',
@@ -91,9 +84,29 @@ const writingJsonLd = {
     description: e.summary,
   })),
 };
+const selectedWritingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': 'https://adrianwatkins.com/writing#selected-writing',
+  name: 'Selected writing across my publications',
+  itemListElement: crossPosts.map((p, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Article',
+      headline: p.title,
+      url: p.canonical_url,
+      datePublished: p.published_at,
+      description: p.excerpt,
+      author: { '@id': PERSON_ID },
+      publisher: { '@type': 'Organization', name: p.site_name, url: new URL(p.canonical_url).origin },
+    },
+  })),
+};
+
 ---
 
-<BaseLayout title={title} description={description} current="writing" jsonLd={writingJsonLd}>
+<BaseLayout title={title} description={description} current="writing" jsonLd={[writingJsonLd, selectedWritingJsonLd]}>
   <section class="stub">
     <div class="container">
       <header class="writing-intro">
@@ -109,6 +122,7 @@ const writingJsonLd = {
       </header>
 
       <nav class="writing-formats" aria-label="Browse writing">
+        <a href="#selected-writing">Across my publications</a>
         <a href="#articles">Essays and Friday Frame</a>
         <a href="/writing/comics">Friday Frame comics →</a>
       </nav>
@@ -125,6 +139,32 @@ const writingJsonLd = {
       </aside>
 
       </div>
+
+      <section id="selected-writing" class="estate-writing" aria-labelledby="selected-writing-heading">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">A wider reading list</p>
+            <h2 id="selected-writing-heading">Across my publications.</h2>
+          </div>
+          <p class="aside">Selected writing on technology, work, data and everyday life. Each piece was published under my byline and links to its original home.</p>
+        </div>
+        <ul class="estate-writing-list">
+          {crossPosts.map((p) => (
+            <li>
+              <article class="estate-article">
+                <p class="estate-topic">{p.topic}</p>
+                <div class="estate-meta">
+                  <span>{p.site_name}</span>
+                  <time datetime={p.published_at}>{new Date(p.published_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Singapore' })}</time>
+                </div>
+                <h3><a href={p.canonical_url} target="_blank" rel="noopener noreferrer">{p.title}</a></h3>
+                <p class="estate-excerpt">{p.excerpt}</p>
+                <a class="estate-read" href={p.canonical_url} target="_blank" rel="noopener noreferrer">Read on {p.site_name}<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <FridayFramePromo variant="hero" />
 
@@ -157,25 +197,6 @@ const writingJsonLd = {
         </ul>
       )}
 
-      <h2 style="margin-top:96px;margin-bottom:8px;font-size:32px">Writing across my publications.</h2>
-      <p class="aside" style="color:var(--muted);margin-bottom:32px">Selected articles from the publications I run through <a href="https://democratising.ai/" target="_blank" rel="noopener noreferrer">democratising.ai</a>. Each links to the original article.</p>
-      <ul class="writing-list" style="list-style:none;padding:0">
-        {crossPosts.map((p) => (
-          <li style="border-top:1px solid var(--rule);padding:24px 0">
-            <article>
-              <div class="eyebrow" style="margin-bottom:8px;font-size:11px">
-                {new Date(p.published_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-                <span style={`display:inline-block;margin-left:12px;font-weight:700;font-size:11px;color:#FFFFFF;background-color:${siteBadge(p.site_name)};padding:3px 10px;border-radius:3px;letter-spacing:0.06em;text-transform:uppercase`}>{p.site_name}</span>
-              </div>
-              <h3 style="font-size:24px;margin-bottom:10px">
-                <a href={p.canonical_url} target="_blank" rel="noopener noreferrer" style="text-decoration:none">{p.title}</a>
-              </h3>
-              <p style="font-family:'Manrope',sans-serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{p.excerpt}</p>
-            </article>
-          </li>
-        ))}
-      </ul>
-
       <NotifySignup variant="card" source="/writing" />
     </div>
   </section>
@@ -183,6 +204,25 @@ const writingJsonLd = {
 
 <style>
   .writing-formats { display: flex; flex-wrap: wrap; gap: 16px 28px; margin: 28px 0; font-size: 15px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  :global(body[data-site-design='writing']) .estate-writing { padding: 28px 0 56px; scroll-margin-top: 110px; }
+  .estate-writing .section-head { gap: 32px; }
+  .estate-writing .section-head .aside { max-width: 470px; margin: 0; }
+  .estate-writing-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; list-style: none; padding: 0; margin: 0; }
+  .estate-writing-list > li { min-width: 0; border-top: 1px solid var(--rule-strong); padding: 28px 0 32px; }
+  .estate-topic { margin: 0 0 12px; color: var(--accent); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 650; }
+  .estate-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: 12px; line-height: 1.7; color: var(--muted); margin-bottom: 14px; }
+  .estate-meta > span { color: var(--ink); font-weight: 650; }
+  .estate-article h3 { font-size: clamp(24px, 2.4vw, 29px); margin-bottom: 16px; }
+  .estate-article h3 a { text-decoration: none; }
+  .estate-article h3 a:hover { text-decoration: underline; }
+  .estate-excerpt { font-size: 15px; line-height: 1.8; margin: 0 0 18px; }
+  .estate-read { font-size: 13px; font-weight: 600; }
+  @media (max-width: 760px) {
+    .estate-writing .section-head { display: block; }
+    .estate-writing .section-head .aside { margin-top: 20px; }
+    .estate-writing-list { grid-template-columns: 1fr; }
+  }
   .ff-tag {
     display: inline-block;
     margin-left: 10px;
