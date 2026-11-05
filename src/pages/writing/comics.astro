@@ -1,0 +1,81 @@
+---
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedComics } from '../../data/comics';
+import { PERSON_ID } from '../../data/person';
+
+const comics = await getPublishedComics();
+const fullImages = await Promise.all(comics.map(comic => getImage({ src: comic.image, width: comic.image.width, format: 'webp', quality: 90 })));
+const title = 'Friday Frame Comics | Adrian Watkins';
+const description = 'Browse Adrian Watkins’s Friday Frame comics: visual reflections on business, technology and learning, with links to the full articles.';
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: 'Friday Frame comics', url: 'https://adrianwatkins.com/writing/comics',
+  description, author: { '@id': PERSON_ID },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: comics.map((comic, index) => ({
+      '@type': 'ListItem', position: index + 1,
+      name: comic.title, url: `https://adrianwatkins.com${comic.href}`,
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description} current="writing" jsonLd={jsonLd}
+  ogImage={fullImages[0]?.src} ogImageAlt={comics[0]?.alt}
+  ogImageWidth={comics[0]?.image.width} ogImageHeight={comics[0]?.image.height}>
+  <section class="stub">
+    <div class="container">
+      <nav class="comic-breadcrumb" aria-label="Breadcrumb"><a href="/writing">← Writing</a> / Comics</nav>
+      <div class="eyebrow">Friday Frame / Comics</div>
+      <h1>Ideas, in pictures.</h1>
+      <p class="lede">The comics that accompany my Friday Frame reflections. A visual way into the questions behind the writing.</p>
+      <p class="prose">Browse the artwork, open a comic at full size, or follow its link to read the full Friday Frame.</p>
+      <p><a href="/writing/friday-frame">Explore the Friday Frame archive →</a></p>
+
+      <div class="comics-grid">
+        {comics.map((comic, index) => (
+          <article class="comic-entry" id={comic.frameId} aria-labelledby={`${comic.frameId}-title`}>
+            <a class="comic-image" href={fullImages[index].src} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size comic in a new tab: ${comic.title}`}>
+              <Image src={comic.image} alt={comic.alt} widths={[420, 720, 1080]} sizes="(max-width: 760px) 100vw, 560px" format="webp" quality={85} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            </a>
+            <div class="comic-details">
+              <p class="eyebrow"><time datetime={comic.date.toISOString()}>{comic.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Singapore' })}</time></p>
+              <h2 id={`${comic.frameId}-title`}>{comic.title}</h2>
+              <p>{comic.summary}</p>
+              <div class="ctarow">
+                <a class="btn btn-primary" href={comic.href}>Read this Friday Frame</a>
+                <a class="btn btn-secondary" href={fullImages[index].src} target="_blank" rel="noopener noreferrer">View full-size comic</a>
+              </div>
+              <details>
+                <summary>Read a text version</summary>
+                <ol>{comic.panels.map(panel => <li>{panel}</li>)}</ol>
+                <p><a href={comic.href}>Read the full reflection and its sources.</a></p>
+              </details>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .comic-breadcrumb { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+  .comics-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 48px; }
+  .comic-entry { min-width: 0; border-top: 1px solid var(--rule-strong); padding-top: 28px; scroll-margin-top: 100px; }
+  .comic-image { display: block; }
+  .comic-image img { display: block; width: 100%; height: auto; border-radius: 4px; }
+  .comic-image:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
+  .comic-details { margin-top: 24px; }
+  h2 { margin: 12px 0 20px; font-size: clamp(28px, 3.5vw, 40px); }
+  details { margin-top: 28px; border-top: 1px solid var(--rule); padding-top: 18px; }
+  summary { cursor: pointer; color: var(--ink); }
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  ol { padding-left: 24px; }
+  li { margin: 12px 0; }
+  .comic-entry:only-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  .comic-entry:only-child .comic-details { margin-top: 0; }
+  @media (max-width: 760px) { .comics-grid, .comic-entry:only-child { grid-template-columns: 1fr; gap: 28px; } }
+</style>

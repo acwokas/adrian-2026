@@ -5,11 +5,14 @@ import WorkBrand from '../components/WorkBrand.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { digestParagraphs } from '../data/now';
 import { homepageEntries } from '../data/speaking';
+import ComicSpotlight from '../components/ComicSpotlight.astro';
+import { getPublishedComics } from '../data/comics';
 
 
 const todayISO = new Date().toISOString().slice(0, 10);
 const homeUpcoming = homepageEntries('upcoming', todayISO);
 const homeRecent = homepageEntries('recent', todayISO);
+const latestComic = (await getPublishedComics())[0];
 
 const title = 'Adrian Watkins | Business and AI transformation | Singapore';
 const description = 'Adrian Watkins: Singapore-based commercial and operating leader at SQREEM Technologies. Business and AI transformation, acquisition integration and growth across markets.';
@@ -279,6 +282,8 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       </div>
     </div>
   </section>
+
+  {latestComic && <div class="container"><ComicSpotlight comic={latestComic} /></div>}
 
   <section id="feature" class="alt">
     <div class="container">

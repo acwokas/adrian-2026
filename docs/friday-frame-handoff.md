@@ -8,6 +8,7 @@ The 25 September 2026 miss occurred because approved copy remained only in conve
 4. Record the slug, approval reference, remote commit and state (approved, staged or live) in the website automation health record. Report any unfinished step explicitly.
 5. Thursday evening and Friday morning monitoring must compare the remote queue with the approved selection. Flag missing content before Friday 10:00 Singapore publication. Monitoring does not grant permission to publish.
 6. Provide LinkedIn copy and hashtags for manual posting. Never post or send through another channel without explicit authorization.
+7. When a finished comic is approved for the website, retain the exact final artwork in `src/assets/comics/` and register its article ID, image, alt text and panel transcript in `src/data/comics.ts`. The gallery at `/writing/comics`, Writing preview and homepage feature use this shared registry. Titles, dates and summaries come from the article. Drafts and future-dated articles are hidden automatically; do not copy unapproved or early-release artwork into the published build. Verify the gallery, full-size artwork and corresponding article after release. Do not change signed article text or its draft state merely to add a comic.
 
 A workflow success alone is insufficient. Verify the live article title, body, archive link and draft status. The normal Friday publisher should see an already-live article and complete without duplicate publication after an early manual release.
 

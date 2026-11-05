@@ -5,6 +5,7 @@ import ShareButtons from '../../../components/ShareButtons.astro';
 import NotifySignup from '../../../components/NotifySignup.astro';
 import { getCollection, render } from 'astro:content';
 import { PERSON_ID } from '../../../data/person';
+import { getPublishedComics } from '../../../data/comics';
 
 export async function getStaticPaths() {
   const notes = await getCollection('fridayFrame', ({ data }) => !data.draft);
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { note } = Astro.props;
+const comic = (await getPublishedComics()).find(entry => entry.frameId === note.id);
 const { Content } = await render(note);
 
 // Strip trailing sentence punctuation so the meta title chain does not render
@@ -74,6 +76,7 @@ const articleJsonLd = {
       </p>
       {note.data.titleHtml ? <h1 set:html={note.data.titleHtml} /> : <h1>{note.data.title}</h1>}
       <p class="lede">{note.data.summary}</p>
+      {comic && <p><a href={`/writing/comics#${comic.frameId}`}>View the comic for this Friday Frame →</a></p>}
 
       <div class="prose" style="font-family:'Fraunces',serif;font-size:18px;line-height:1.7;color:var(--ink);margin-top:40px">
         <Content />
