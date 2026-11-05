@@ -18,11 +18,10 @@ export type MentoringProgramme = {
 
 const programmes: MentoringProgramme[] = [
   {
-    id: 'sdg-open-hack',
-    label: 'SDG Open Hack',
+    id: 'nus-social-impact-catalyst',
+    label: 'NUS Social Impact Catalyst',
     entries: [
-      { id: 'sdg-open-hack-nus', detail: 'Judge, National University of Singapore edition on 10 October', endDate: '2026-10-10' },
-      { id: 'sdg-open-hack-sic-finale', detail: 'Guiding one of Social Impact Catalyst’s winning teams towards the Grand Finale on 24 October', endDate: '2026-10-24' },
+      { id: 'nus-sic-guest-lecture-20261116', detail: 'Confirmed guest lecture on Monday 16 November: problem validation, product-market fit and pitching', endDate: '2026-11-16' },
     ],
   },
   {

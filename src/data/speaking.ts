@@ -32,14 +32,25 @@ export type SpeakingEntry = {
 
 export const speakingEntries: SpeakingEntry[] = [
   {
-    id: 'sdg-open-hack-sic-finale',
-    when: 'October 2026 · Preparation for the 24 October Grand Finale',
-    date: '2026-10-24',
-    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, supporting a Social Impact Catalyst winning team.',
-    bodyHtml: 'Following my mentoring at the September Social Impact Catalyst edition, I accepted an invitation to guide one of its winning teams as they prepare for the Grand Finale on 24 October. The support will include questions, feedback and short calls over the weeks ahead, with the SIC team facilitating.',
+    id: 'nus-sic-guest-lecture-20261116',
+    when: 'Monday 16 November 2026 · NUS Social Impact Catalyst',
+    date: '2026-11-16',
+    titleHtml: 'Guest lecture: problem validation and product-market fit.',
+    bodyHtml: 'Confirmed guest lecture for NUS Social Impact Catalyst. Sharing practical perspectives on understanding users, testing a problem, finding product-market fit and pitching an idea clearly. The session is in development.',
     homepage: {
-      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, supporting a team towards the Grand Finale.',
-      bodyHtml: 'Accepted an invitation to guide one of Social Impact Catalyst’s winning teams towards the 24 October Grand Finale, building on my September mentoring and judging at the NUS edition.',
+      titleHtml: 'NUS Social Impact Catalyst guest lecture.',
+      bodyHtml: 'Confirmed for Monday 16 November. A practical session on problem validation, product-market fit and pitching, with the content in development.',
+    },
+  },
+  {
+    id: 'sdg-open-hack-sic-finale',
+    when: '24 October 2026 · Grand Finale',
+    date: '2026-10-24',
+    titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, mentoring HydraCool, Grand Finale winners.',
+    bodyHtml: 'HydraCool, the Social Impact Catalyst team I mentored, won the Grand Finale on 24 October. The achievement is theirs, and it has been a pleasure to support them along the way. <a href="/singapore#sdg-open-hack-grand-finale">Award photograph and reflection.</a>',
+    homepage: {
+      titleHtml: '<a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a>, HydraCool wins the Grand Finale.',
+      bodyHtml: 'HydraCool, the team I mentored, won the Grand Finale on 24 October. The achievement is theirs. <a href="/singapore#sdg-open-hack-grand-finale">Award photograph and reflection.</a>',
     },
   },
   {
@@ -135,7 +146,7 @@ export const speakingEntries: SpeakingEntry[] = [
   },
   {
     id: 'entreboss-competitive-edge',
-    when: 'Tuesday 12 August 2026, 9pm SGT · Online',
+    when: '12 August 2026, 9pm SGT · Online',
     date: '2026-08-12',
     titleHtml:
       '<a href="https://entrebosshub.com/event/the-competitive-edge-mastering-strategy-and-executive-performance/" target="_blank" rel="noopener noreferrer">The Competitive Edge: Mastering Strategy and Executive Performance</a>. EntreBoss Hub panel.',
