@@ -69,10 +69,10 @@ const crossPosts = (crossPostData.entries as CrossPostEntry[])
 const siteBadge = (site: string) => {
   const tone: Record<string, string> = {
     'AI in Asia': '#0F2E4D',
-    'AI in Arabia': '#5C3617',
+    'AI in Arabia': '#384555',
     'AI in Europe': '#1F4A30',
   };
-  return tone[site] || '#1A1714';
+  return tone[site] || '#121B28';
 };
 
 const writingJsonLd = {
@@ -119,7 +119,7 @@ const writingJsonLd = {
       <aside aria-labelledby="book-heading" style="border:1px solid var(--rule-strong);padding:28px;margin:36px 0;max-width:760px">
         <p class="eyebrow">A book in progress</p>
         <h2 id="book-heading" style="font-size:32px;margin:12px 0">Heir Presumptive</h2>
-        <p style="font-family:Fraunces,Georgia,serif;font-size:21px">Who Gets the Final Say When Our Creations Become Creators</p>
+        <p style="font-family:'Manrope','Inter',sans-serif;font-size:21px">Who Gets the Final Say When Our Creations Become Creators</p>
         <p>A non-fiction book exploring artificial intelligence, succession and who inherits power, with Asia at the centre.</p>
         <a href="/writing/heir-presumptive">Read the prologue extract →</a>
       </aside>
@@ -150,7 +150,7 @@ const writingJsonLd = {
                 <h2 style="font-size:28px;margin-bottom:10px">
                   <a href={entryHref(e)} style="text-decoration:none">{e.title}</a>
                 </h2>
-                <p style="font-family:'Fraunces',serif;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{e.summary}</p>
+                <p style="font-family:'Manrope',sans-serif;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{e.summary}</p>
               </article>
             </li>
           ))}
@@ -170,7 +170,7 @@ const writingJsonLd = {
               <h3 style="font-size:24px;margin-bottom:10px">
                 <a href={p.canonical_url} target="_blank" rel="noopener noreferrer" style="text-decoration:none">{p.title}</a>
               </h3>
-              <p style="font-family:'Fraunces',serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{p.excerpt}</p>
+              <p style="font-family:'Manrope',sans-serif;font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin:0">{p.excerpt}</p>
             </article>
           </li>
         ))}
@@ -189,8 +189,8 @@ const writingJsonLd = {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: #1A1714;
-    background: #D89A55;
+    color: #121B28;
+    background: #214FE6;
     padding: 2px 7px;
     border-radius: 2px;
     text-transform: uppercase;

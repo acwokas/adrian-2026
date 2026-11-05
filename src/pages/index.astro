@@ -11,7 +11,6 @@ import ComicSpotlight from '../components/ComicSpotlight.astro';
 import { getPublishedComics } from '../data/comics';
 
 
-const designPreview = process.env.AW_DESIGN_PREVIEW === '1';
 const todayISO = new Date().toISOString().slice(0, 10);
 const homeUpcoming = homepageEntries('upcoming', todayISO);
 const homeRecent = homepageEntries('recent', todayISO);
@@ -34,14 +33,12 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
           <h1>Operator. Builder.<br /><em>Governor.</em></h1>
           <p class="lede">I build and lead technology businesses, connecting commercial strategy, day-to-day operations and governance to make business and AI transformation work in practice. My approach combines global ambition with an understanding of the people, markets and local realities that shape delivery.</p>
           <p class="hero-experience">Based in Singapore. More than 25 years of experience across Asia, Europe and the US.</p>
-          {!designPreview && <HomeProfile />}
 
           <div class="ctarow">
             <a class="btn btn-primary" href="/contact">Get in touch</a>
             <a class="btn btn-secondary" href="/work">Explore my leadership work</a>
           </div>
 
-          {!designPreview && <HomeRoles />}
         </div>
 
         <div class="hero-media">
@@ -61,14 +58,12 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
     </div>
   </section>
 
-  {designPreview && (
     <section class="profile-context">
       <div class="container">
         <HomeProfile />
         <HomeRoles />
       </div>
     </section>
-  )}
 
   <dialog class="intro-dialog" aria-label="Meet Adrian Watkins, short introduction">
     <button class="intro-dialog-close" type="button" aria-label="Close introduction video">Close</button>
@@ -188,8 +183,8 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
   <section id="edge" class="dark">
     <div class="container">
       <div class="section-head">
-        <h2 style="color:#F4ECD8">The EDGE Framework.</h2>
-        <p class="aside" style="color:#B7A98E">A practical framework for clearer thinking, better decisions and effective execution.</p>
+        <h2 style="color:#F4F7FC">The EDGE Framework.</h2>
+        <p class="aside" style="color:#A5B4C7">A practical framework for clearer thinking, better decisions and effective execution.</p>
       </div>
 
       <div class="edge-intro">
@@ -228,8 +223,8 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       </div>
 
       <div class="ctarow" style="margin-top:32px">
-        <a class="btn btn-primary" href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer" style="background:#D89A55;color:#1A1714">Explore the EDGE tools</a>
-        <a class="btn btn-secondary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer" style="border-color:#E9E2D2;color:#E9E2D2">Read the EDGE white paper</a>
+        <a class="btn btn-primary" href="https://democratising.ai/tools" target="_blank" rel="noopener noreferrer" style="background:#214FE6;color:#121B28">Explore the EDGE tools</a>
+        <a class="btn btn-secondary" href="/documents/EDGE-Framework-Whitepaper.pdf" target="_blank" rel="noopener noreferrer" style="border-color:#E1E8F2;color:#E1E8F2">Read the EDGE white paper</a>
       </div>
     </div>
   </section>
@@ -288,7 +283,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       <article class="case">
         <div class="tag">Non-fiction · Adrian Watkins</div>
         <h3><a href="/writing/heir-presumptive">Heir Presumptive</a></h3>
-        <p style="font-family:Fraunces,Georgia,serif;font-size:24px">Who Gets the Final Say When Our Creations Become Creators</p>
+        <p style="font-family:'Manrope','Inter',sans-serif;font-size:24px">Who Gets the Final Say When Our Creations Become Creators</p>
         <p>I’m writing about artificial intelligence as the latest heir in a long history of succession, with Asia at the centre. Read an extract from the prologue, <em>The Swallowed Mind</em>.</p>
         <div class="meta"><a class="meta-link" href="/writing/heir-presumptive">Read the extract</a> · <a class="meta-link" href="/writing/heir-presumptive#book-updates">Get book updates</a></div>
       </article>
@@ -363,15 +358,15 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
   .talk-button { display: inline-flex; width: auto; margin-top: 8px; }
   @media (max-width: 760px) { .talk-grid { grid-template-columns: 1fr; gap: 24px; } }
 
-  .edge-intro, .edge-tools-copy { max-width: 80ch; color: #F4ECD8; }
+  .edge-intro, .edge-tools-copy { max-width: 80ch; color: #F4F7FC; }
   .edge-tools-copy { margin-top: 40px; }
-  .edge-tools-copy h3 { color: #F4ECD8; }
-  .edge-tools-copy a { color: #F4ECD8; text-decoration: underline; text-underline-offset: 3px; }
-  .edge-tools-copy a:hover { color: #D89A55; }
+  .edge-tools-copy h3 { color: #F4F7FC; }
+  .edge-tools-copy a { color: #F4F7FC; text-decoration: underline; text-underline-offset: 3px; }
+  .edge-tools-copy a:hover { color: #214FE6; }
   .work-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
-  .work-feature { display: flex; flex-direction: column; border: 1px solid var(--line, #b8ad98); background: var(--bg); padding: 28px; min-width: 0; }
+  .work-feature { display: flex; flex-direction: column; border: 1px solid var(--line, #A5B4C7); background: var(--bg); padding: 28px; min-width: 0; }
   .work-feature .tag { font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--accent); }
-  .work-remit { border-left: 2px solid #D89A55; padding-left: 18px; margin: 8px 0 24px; }
+  .work-remit { border-left: 2px solid #214FE6; padding-left: 18px; margin: 8px 0 24px; }
   .work-remit h4 { margin-top: 0; }
   .work-remit p:last-child { margin-bottom: 0; }
   .work-feature h3 { margin: 10px 0 16px; }
@@ -379,7 +374,7 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
   .work-feature p { margin-bottom: 16px; }
   .work-link { display: block; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); }
   .work-services { list-style: none; padding: 0; margin: 20px 0; }
-  .work-services li { display: grid; grid-template-columns: 145px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line, #d5cbbc); }
+  .work-services li { display: grid; grid-template-columns: 145px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line, #CCD5E1); }
   .work-services span { font-size: 14px; }
   @media (max-width: 760px) {
     .work-features { grid-template-columns: 1fr; gap: 24px; }

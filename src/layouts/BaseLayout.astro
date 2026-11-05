@@ -5,12 +5,10 @@ import Footer from '../components/Footer.astro';
 import AnalyticsHead from '../components/AnalyticsHead.astro';
 import AnalyticsBody from '../components/AnalyticsBody.astro';
 import { personSchema, websiteSchema } from '../data/person';
-import designPreviewCss from '../styles/design-preview.css?inline';
+import '../styles/site-design.css';
 
-const previewMode = process.env.AW_DESIGN_PREVIEW === '1';
-const previewPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
-const previewPage = ({ '/': 'home', '/work': 'work', '/writing': 'writing' } as Record<string, string>)[previewPath];
-const showDesignPreview = previewMode && Boolean(previewPage);
+const designPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const designPage = ({ '/': 'home', '/work': 'work', '/writing': 'writing' } as Record<string, string>)[designPath] || 'page';
 
 interface Props {
   title: string;
@@ -128,7 +126,7 @@ const schemaBlocks = [...defaultSchema, ...extraSchema];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
     />
 
     <link rel="alternate" hreflang="en-GB" href={canonical} />
@@ -146,15 +144,12 @@ const schemaBlocks = [...defaultSchema, ...extraSchema];
     ))}
 
     <meta name="author" content="Adrian Watkins" />
-    <meta name="robots" content={noindex || previewMode ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1'} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1'} />
 
-    {!previewMode && <AnalyticsHead />}
-    {showDesignPreview && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />}
-    {showDesignPreview && <style is:inline set:html={designPreviewCss}></style>}
+    <AnalyticsHead />
   </head>
-  <body data-design-preview={showDesignPreview ? previewPage : undefined}>
-    {!previewMode && <AnalyticsBody />}
-    {previewMode && <div class="design-preview-note" style="background:#182331;color:#fff;font:12px/1.5 Inter,system-ui,sans-serif;padding:7px 24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap"><span>DESIGN PREVIEW</span><a href="/" style="color:#fff">Home</a><a href="/work" style="color:#fff">Leadership Work</a><a href="/writing" style="color:#fff">Writing</a><span>Not published</span></div>}
+  <body data-site-design={designPage}>
+    <AnalyticsBody />
     <Nav current={current} />
     <main id="top">
       <slot />
