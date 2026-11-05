@@ -45,7 +45,7 @@ export const personSchema = {
     { '@type': 'Organization', name: 'Tickled Media' },
     { '@type': 'Organization', name: 'PerformanceAsia' },
     { '@type': 'Organization', name: 'Virgin' },
-    { '@type': 'Organization', name: 'News Corporate' },
+    { '@type': 'Organization', name: 'FOX Interactive Media / IGN Entertainment' },
     { '@type': 'Organization', name: 'CBS' },
   ],
   sameAs: [
