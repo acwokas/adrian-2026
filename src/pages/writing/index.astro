@@ -96,6 +96,7 @@ const writingJsonLd = {
 <BaseLayout title={title} description={description} current="writing" jsonLd={writingJsonLd}>
   <section class="stub">
     <div class="container">
+      <header class="writing-intro">
       <div class="eyebrow">Writing</div>
       <h1>Ideas, observations and practical perspectives.</h1>
       <p class="lede">I write about leading and growing businesses, the changing role of technology, and the decisions that turn ideas into useful outcomes.</p>
@@ -105,11 +106,14 @@ const writingJsonLd = {
         <p>All views are my own.</p>
       </div>
 
+      </header>
+
       <nav class="writing-formats" aria-label="Browse writing">
         <a href="#articles">Essays and Friday Frame</a>
         <a href="/writing/comics">Friday Frame comics →</a>
       </nav>
 
+      <div class="writing-features">
       {latestComic && <ComicSpotlight comic={latestComic} id="writing-comic" />}
 
       <aside aria-labelledby="book-heading" style="border:1px solid var(--rule-strong);padding:28px;margin:36px 0;max-width:760px">
@@ -119,6 +123,8 @@ const writingJsonLd = {
         <p>A non-fiction book exploring artificial intelligence, succession and who inherits power, with Asia at the centre.</p>
         <a href="/writing/heir-presumptive">Read the prologue extract →</a>
       </aside>
+
+      </div>
 
       <FridayFramePromo variant="hero" />
 

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeProfile from '../components/HomeProfile.astro';
+import HomeRoles from '../components/HomeRoles.astro';
 import HydraCoolFeature from '../components/HydraCoolFeature.astro';
 import WorkBrand from '../components/WorkBrand.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
@@ -9,6 +11,7 @@ import ComicSpotlight from '../components/ComicSpotlight.astro';
 import { getPublishedComics } from '../data/comics';
 
 
+const designPreview = process.env.AW_DESIGN_PREVIEW === '1';
 const todayISO = new Date().toISOString().slice(0, 10);
 const homeUpcoming = homepageEntries('upcoming', todayISO);
 const homeRecent = homepageEntries('recent', todayISO);
@@ -31,29 +34,14 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
           <h1>Operator. Builder.<br /><em>Governor.</em></h1>
           <p class="lede">I build and lead technology businesses, connecting commercial strategy, day-to-day operations and governance to make business and AI transformation work in practice. My approach combines global ambition with an understanding of the people, markets and local realities that shape delivery.</p>
           <p class="hero-experience">Based in Singapore. More than 25 years of experience across Asia, Europe and the US.</p>
-          <div class="manifesto prose">
-            <p>I’m SVP Commercial Operations and Governance at <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a>. My work spans growth, acquisition integration and cross-functional leadership, alongside responsibilities as the Data Protection Officer (DPO). I help translate privacy obligations across jurisdictions into practical decisions about how the business operates.</p>
-
-            <p>Through <a href="https://www.democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a>, I put AI transformation into practice in my own portfolio, building shared workflows, tools and publications with clear checks and human accountability. These include my <a href="/edge">EDGE framework</a> and <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA</a>, informed by the different markets, languages and working cultures in which technology needs to succeed.</p>
-
-            <p><a href="/singapore">Singapore is home.</a> Alongside my executive responsibilities, I mentor students, deliver founder workshops and moderate discussions with business leaders. That contribution extends into regional mentoring programmes and speaking engagements, connecting my work here with communities across Asia.</p>
-
-            <p>I welcome conversations about regional and global leadership, business growth and the practical challenges of running technology organisations.</p>
-          </div>
+          {!designPreview && <HomeProfile />}
 
           <div class="ctarow">
             <a class="btn btn-primary" href="/contact">Get in touch</a>
             <a class="btn btn-secondary" href="/work">Explore my leadership work</a>
           </div>
 
-          <div class="meta-line">
-            <span>SVP Commercial Operations and Governance, <a href="https://sqreem.com" target="_blank" rel="noopener noreferrer">SQREEM Technologies</a></span>
-            <span>Founder, <a href="https://democratising.ai" target="_blank" rel="noopener noreferrer">democratising.ai</a></span>
-            <span>Publisher, <a href="https://aiinasia.com" target="_blank" rel="noopener noreferrer">AIinASIA.com</a></span>
-            <span>Mentor and judge, <a href="https://www.ggef.com/sdgopenhack" target="_blank" rel="noopener noreferrer">SDG Open Hack</a> 2026</span>
-            <span>Moderator, <a href="https://ortusclub.com" target="_blank" rel="noopener noreferrer">Ortus Club</a></span>
-            <span>Creator, <a href="/edge">EDGE Framework</a></span>
-          </div>
+          {!designPreview && <HomeRoles />}
         </div>
 
         <div class="hero-media">
@@ -72,6 +60,15 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
       </div>
     </div>
   </section>
+
+  {designPreview && (
+    <section class="profile-context">
+      <div class="container">
+        <HomeProfile />
+        <HomeRoles />
+      </div>
+    </section>
+  )}
 
   <dialog class="intro-dialog" aria-label="Meet Adrian Watkins, short introduction">
     <button class="intro-dialog-close" type="button" aria-label="Close introduction video">Close</button>
