@@ -1,7 +1,7 @@
 ---
 title: "Should you pay for how long it used to take?"
 date: 2026-11-06
-draft: true
+draft: false
 summary: "Faster production raises a commercial question: are customers getting a document faster, or getting the job done?"
 ---
 

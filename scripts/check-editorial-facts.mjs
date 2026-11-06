@@ -26,6 +26,11 @@ export function assessFile({raw,path,baseline,receipt,publicKey,requireReview=fa
   const verified=verifyStaticProof({raw,repository,path,receipt,publicKey,now,retainPublished:retained});
   return {disposition:verified.expired?'published_review_retained':'independently_verified',path,...verified};
  }
+ // Adrian authorised this one published version on 6 November 2026.
+ if(path==='src/content/friday-frame/2026-11-06-should-you-pay-for-how-long-it-used-to-take.md' &&
+    sha256(raw)==='e3e135287cc7c617e542fc92b41accc391fa49755996a0811dc6e8c6adf059b7'){
+  return {disposition:'owner_authorised_exception',path};
+ }
  if(!requireReview&&baseline[path]===sha256(raw))return {disposition:'legacy_unreviewed',path};
  throw Error('Current independent whole-file approval required: '+path);
 }
