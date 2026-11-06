@@ -49,11 +49,13 @@ const articleJsonLd = {
 ---
 
 <BaseLayout
-  title={`${cleanTitle}. Friday Frame. Adrian Watkins.`}
+  title={`${note.data.title} | Friday Frame | Adrian Watkins`}
   description={note.data.summary}
   current="writing"
   ogType="article"
-  ogImage="/og/friday-frame-default.png"
+  ogImage={note.id === '2026-11-06-should-you-pay-for-how-long-it-used-to-take'
+    ? '/og/friday-frame-pricing-202611.png'
+    : '/og/friday-frame-blue-202611.png'}
   ogImageAlt={`${cleanTitle}. Friday Frame by Adrian Watkins.`}
   publishedTime={note.data.date.toISOString()}
   author="Adrian Watkins"
