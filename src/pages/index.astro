@@ -284,12 +284,15 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
   <section id="feature" class="alt">
     <div class="container">
       <div class="section-head"><h2>A book in progress.</h2><p class="aside">History, artificial intelligence and who inherits power.</p></div>
-      <article class="case">
+      <article class="case book-feature">
+        <div class="book-feature-copy">
         <div class="tag">Non-fiction · Adrian Watkins</div>
         <h3><a href="/writing/heir-presumptive">Heir Presumptive</a></h3>
         <p style="font-family:'Manrope','Inter',sans-serif;font-size:24px">Who Gets the Final Say When Our Creations Become Creators</p>
         <p>I’m writing about artificial intelligence as the latest heir in a long history of succession, with Asia at the centre. Read an extract from the prologue, <em>The Swallowed Mind</em>.</p>
         <div class="meta"><a class="meta-link" href="/writing/heir-presumptive">Read the extract</a> · <a class="meta-link" href="/writing/heir-presumptive#book-updates">Get book updates</a></div>
+        </div>
+        <a class="book-feature-art" href="/writing/heir-presumptive" aria-label="Explore Heir Presumptive"><img src="/images/heir-presumptive-chessboard.webp" srcset="/images/heir-presumptive-chessboard-480.webp 480w, /images/heir-presumptive-chessboard.webp 800w" sizes="(max-width: 700px) 80vw, 300px" width="800" height="1200" loading="lazy" decoding="async" alt="A hand moves a pawn across a chessboard, casting the shadow of a king." /></a>
       </article>
     </div>
   </section>
@@ -351,6 +354,14 @@ const description = 'Adrian Watkins: Singapore-based commercial and operating le
 </BaseLayout>
 
 <style>
+  .book-feature {display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);gap:40px;align-items:center}
+  .book-feature-copy {min-width:0}
+  .book-feature-copy h3 {margin:20px 0}
+  .book-feature-copy p {margin:0 0 20px}
+  .book-feature-copy .meta {margin-top:24px}
+  .book-feature-art {display:block}
+  .book-feature-art img {display:block;width:100%;height:auto;border-radius:4px}
+  @media(max-width:700px){.book-feature{grid-template-columns:1fr;gap:28px}.book-feature-art{max-width:320px;margin-inline:auto}}
   @media (max-width: 1023px) {
     .hero-press { grid-column: 1 / -1; grid-row: 5; min-width: 0; }
   }
