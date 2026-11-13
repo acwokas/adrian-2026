@@ -273,7 +273,7 @@ body[data-site-design][data-site-design] .ns-submit { background: #214fe6; borde
   body[data-site-design='home'][data-site-design] .hero h1 { grid-column: 1; grid-row: 2; font-size: clamp(36px,10.8vw,44px); line-height: 1.08; margin: 0; align-self: center; }
   body[data-site-design='home'][data-site-design] .hero .lede { grid-column: 1 / -1; grid-row: 3; margin: 6px 0 0; }
   body[data-site-design='home'][data-site-design] .hero-experience { grid-column: 1 / -1; grid-row: 4; margin: 0; }
-  body[data-site-design='home'][data-site-design] .hero .ctarow { grid-column: 1 / -1; grid-row: 5; margin: 8px 0 0; width: 100%; }
+  body[data-site-design='home'][data-site-design] .hero .ctarow { grid-column: 1 / -1; grid-row: 6; margin: 8px 0 0; width: 100%; }
   body[data-site-design='home'][data-site-design] .hero .ctarow .btn { flex: 1 1 100%; }
   body[data-site-design='home'][data-site-design] .hero-media { grid-column: 2; grid-row: 2; height: 220px; max-width: none; align-self: center; }
   body[data-site-design='home'][data-site-design] .hero-photo .hero-portrait { height: 220px; width: 100%; }
@@ -299,7 +299,7 @@ body[data-site-design][data-site-design] .ns-submit { background: #214fe6; borde
   body[data-site-design='home'][data-site-design] .hero-photo figcaption { top: 12px; left: 12px; font-size: 10px; }
   body[data-site-design='home'][data-site-design] .hero .lede { grid-column: 1 / -1; grid-row: 3; max-width: 760px; margin: 8px 0 0; }
   body[data-site-design='home'][data-site-design] .hero-experience { grid-column: 1 / -1; grid-row: 4; max-width: 680px; margin: 0; }
-  body[data-site-design='home'][data-site-design] .hero .ctarow { grid-column: 1 / -1; grid-row: 5; margin: 4px 0 0; }
+  body[data-site-design='home'][data-site-design] .hero .ctarow { grid-column: 1 / -1; grid-row: 6; margin: 4px 0 0; }
   body[data-site-design='home'][data-site-design] .hero .ctarow .btn { flex: 1 1 0; }
   body[data-site-design='home'][data-site-design] .intro-card { bottom: 12px; left: 12px; width: calc(100% - 24px); min-height: 0; }
   body[data-site-design='home'][data-site-design] .intro-card-mobile { gap: 10px; padding: 12px; }
