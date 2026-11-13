@@ -1,7 +1,7 @@
 ---
 title: "Delegation needs a brief, not a blank cheque"
 date: 2026-11-13
-draft: true
+draft: false
 sourceReferences:
   - "https://isomer-user-content.by.gov.sg/36/b21d4369-83bc-4a8c-bbd7-4875c2b07e6c/Using%20Personal%20AI%20Agents%20Safely%20and%20Securely.pdf"
 summary: "Good delegation gives people the authority, support and working relationships to take ownership."
