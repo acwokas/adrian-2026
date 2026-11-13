@@ -1,3 +1,4 @@
+import delegationComic from '../assets/comics/2026-11-13-take-ownership.png';
 import { getCollection } from 'astro:content';
 import pricingComic from '../assets/comics/2026-11-06-faster-work-same-price.png';
 import experienceComic from '../assets/comics/2026-10-30-where-will-experience-come-from.png';
@@ -5,6 +6,19 @@ import experienceComic from '../assets/comics/2026-10-30-where-will-experience-c
 // Register approved final artwork here without changing the reviewed article.
 // Titles, dates, summaries and publication state come from Friday Frame.
 const comicArtwork = [
+  {
+    frameId: '2026-11-13-delegation-needs-a-brief-not-a-blank-cheque',
+    image: delegationComic,
+    alt: 'Take ownership. A six-panel comic about giving a team the authority, clarity and support to deliver.',
+    panels: [
+      'Adrian hands over a brief: “Here’s the brief. You’re in charge.”',
+      'His colleague returns with a tower of approval forms: “Apparently, so is everyone else.”',
+      'Adrian asks, “These all need my signature?” His colleague replies, “Exactly.”',
+      'Planning together, Adrian says, “Let’s agree what you can decide.” His colleague adds, “And when we need you.”',
+      'Adrian opens the door: “I’ll clear this.” The team replies, “We’ll get on with it.”',
+      'With the project delivered, Adrian asks, “You managed without me?” His colleague replies, “We followed the brief. Radical, I know.”',
+    ],
+  },
   {
     frameId: '2026-11-06-should-you-pay-for-how-long-it-used-to-take',
     image: pricingComic,

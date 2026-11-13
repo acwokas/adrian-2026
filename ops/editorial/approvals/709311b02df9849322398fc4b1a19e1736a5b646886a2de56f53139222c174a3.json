@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "version": "estate-static-editorial-v1",
+    "repository": "acwokas/adrian-2026",
+    "path": "src/content/friday-frame/2026-11-13-delegation-needs-a-brief-not-a-blank-cheque.md",
+    "document_sha256": "7f2eacb655ca4bf78218c0668bc5db7babaa898b599ed0fc7d5542ae861d6395",
+    "review_sha256": "f4985e1d6c91230f0ac6c1cbacdc55a4483a734d88e91e3b622e1ea1df666cfe",
+    "source_sha256": "ae80e36d38304f29f067e193d04d7bcc31707afe687e4aed10eb45da679b1466",
+    "reviewed_at": "2026-11-12T09:18:24.702Z",
+    "expires_at": "2026-11-19T09:18:24.702Z"
+  },
+  "signature": "B93xdyQN0klhjudTUd5OaQmrlhtkfOve9w8/jyfvgtSc9G9n2n0YYwigSIY4NIKcIKonFQkRIuO1ghnhddSRDQ=="
+}
