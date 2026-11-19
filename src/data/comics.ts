@@ -1,3 +1,4 @@
+import regionalComic from '../assets/comics/2026-11-20-one-plan-every-market.png';
 import delegationComic from '../assets/comics/2026-11-13-take-ownership.png';
 import { getCollection } from 'astro:content';
 import pricingComic from '../assets/comics/2026-11-06-faster-work-same-price.png';
@@ -6,6 +7,17 @@ import experienceComic from '../assets/comics/2026-10-30-where-will-experience-c
 // Register approved final artwork here without changing the reviewed article.
 // Titles, dates, summaries and publication state come from Friday Frame.
 const comicArtwork = [
+  {
+    frameId: '2026-11-20-your-regional-strategy-needs-a-local-version',
+    image: regionalComic,
+    alt: 'One plan. Every market? A four-panel comic about adapting a regional strategy to local needs while keeping shared standards.',
+    panels: [
+      'An executive holds a square global plan above differently shaped holes: “One plan. It fits everywhere.”',
+      'A colleague presents translated slides. “We’ve translated the slides.” Another tries the square plan in a round hole: “Lovely. Still square.”',
+      'The team builds local modules around a global backbone: “Same standards. Let’s adapt the fit.”',
+      'Adrian asks, “Shall we ask the people doing the work?” A colleague replies, “Before we finish the slides?”',
+    ],
+  },
   {
     frameId: '2026-11-13-delegation-needs-a-brief-not-a-blank-cheque',
     image: delegationComic,

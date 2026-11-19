@@ -1,9 +1,21 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {generateKeyPairSync,sign} from 'node:crypto';
 import {assessFile,frontmatter,sha256} from './check-editorial-facts.mjs';
 import {staticDocument,proofMessage,STATIC_PROOF_VERSION} from './lib/static-editorial-proof.mjs';
+import {readFileSync} from 'node:fs';
 const keys=generateKeyPairSync('ed25519'),path='src/content/friday-frame/test.md',raw='---\ntitle: Test\ndraft: true\nsummary: Test summary\n---\nHypothetical example.\n';
 function signed(text=raw){const proof={version:STATIC_PROOF_VERSION,repository:'acwokas/adrian-2026',path,document_sha256:staticDocument(text).sha256,review_sha256:'a'.repeat(64),source_sha256:'b'.repeat(64),reviewed_at:new Date(Date.now()-1000).toISOString(),expires_at:new Date(Date.now()+3600000).toISOString()};return {proof,signature:sign(null,Buffer.from(proofMessage(proof)),keys.privateKey).toString('base64')};}
 const common={path,baseline:{},publicKey:keys.publicKey};
+test('19 November owner attestation covers only the approved document and draft promotion',()=>{
+ const framePath='src/content/friday-frame/2026-11-20-your-regional-strategy-needs-a-local-version.md';
+ const draft=readFileSync(new URL('../'+framePath,import.meta.url),'utf8');
+ for(const text of [draft,draft.replace('draft: true','draft: false')]){
+  assert.equal(assessFile({...common,path:framePath,raw:text,requireReview:true}).disposition,'owner_authorised_exception');
+ }
+ for(const text of [draft+'Changed',draft.replace('National University of Singapore','Another university'),draft.replace('date: 2026-11-20','date: 2026-11-21'),draft.replace('summary: "Shared standards','summary: "Different standards')]){
+  assert.throws(()=>assessFile({...common,path:framePath,raw:text,requireReview:true}));
+ }
+ assert.throws(()=>assessFile({...common,raw:draft,requireReview:true}));
+});
 test('new draft may stage but cannot publish without independent proof',()=>{assert.equal(assessFile({...common,raw}).disposition,'private_draft');assert.throws(()=>assessFile({...common,raw,requireReview:true}));assert.throws(()=>assessFile({...common,raw:raw.replace('draft: true','draft: false')}));});
 test('signed draft can publish, changed summary or body cannot',()=>{const receipt=signed();assert.equal(assessFile({...common,raw,receipt,requireReview:true}).approved,true);const published=raw.replace('draft: true','draft: false');assert.equal(assessFile({...common,raw:published,receipt}).approved,true);for(const change of [published+'Changed',published.replace('summary: Test','summary: Unsupported')])assert.throws(()=>assessFile({...common,raw:change,receipt}));});
 test('legacy allowance never certifies and cannot allow changes or promote original drafts',()=>{const published=raw.replace('draft: true','draft: false'),baseline={[path]:sha256(published)};assert.equal(assessFile({...common,raw:published,baseline}).disposition,'legacy_unreviewed');assert.throws(()=>assessFile({...common,raw:published+'Change',baseline}));assert.throws(()=>assessFile({...common,raw:published,baseline,requireReview:true}));});

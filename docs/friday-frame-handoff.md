@@ -12,6 +12,10 @@ The 25 September 2026 miss occurred because approved copy remained only in conve
 
 A workflow success alone is insufficient. Verify the live article title, body, archive link and draft status. The normal Friday publisher should see an already-live article and complete without duplicate publication after an early manual release.
 
+## First-person activities
+
+Adrian's instruction of 19 November 2026: accept his own account and approval of his personal activities, including his NUS workshop. Do not ask him to corroborate those activities again. Preserve the exact statement and approval in the private task ledger. Distinguish that owner testimony from independently checked external claims. If the static reviewer lacks a route for that testimony, resolve the handoff without presenting the testimony as an independent signature or silently widening an exception to other content. The 20 November article has an exact-document owner approval, with only the draft boolean excluded from its digest.
+
 ## Review expiry and existing publications
 
 The seven-day window applies to new publication and edited copy, including draft promotion. It must not block an unrelated release because an unchanged published article is older.

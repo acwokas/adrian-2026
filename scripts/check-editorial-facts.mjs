@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {parseDocument} from 'yaml';
-import {verifyStaticProof} from './lib/static-editorial-proof.mjs';
+import {verifyStaticProof,staticDocument} from './lib/static-editorial-proof.mjs';
 const repository='acwokas/adrian-2026';
 export const sha256=value=>createHash('sha256').update(value).digest('hex');
 export function frontmatter(raw) {
@@ -29,6 +29,14 @@ export function assessFile({raw,path,baseline,receipt,publicKey,requireReview=fa
  // Adrian authorised this one published version on 6 November 2026.
  if(path==='src/content/friday-frame/2026-11-06-should-you-pay-for-how-long-it-used-to-take.md' &&
     sha256(raw)==='e3e135287cc7c617e542fc92b41accc391fa49755996a0811dc6e8c6adf059b7'){
+  return {disposition:'owner_authorised_exception',path};
+ }
+ // Adrian confirmed his own NUS workshop and approved this exact version on
+ // 19 November 2026 after review 44524187967 verified the external SBF claim.
+ // This is owner testimony, not a forged independent signature or a general
+ // exemption. Only the operational draft boolean may change.
+ if(path==='src/content/friday-frame/2026-11-20-your-regional-strategy-needs-a-local-version.md' &&
+    staticDocument(raw).sha256==='a73380bca3eccdcceceecdeeb5d530fd33c2def5be1794e8ce957c6b3ddffda0'){
   return {disposition:'owner_authorised_exception',path};
  }
  if(!requireReview&&baseline[path]===sha256(raw))return {disposition:'legacy_unreviewed',path};
