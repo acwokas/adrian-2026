@@ -1,7 +1,7 @@
 ---
 title: "Your regional strategy needs a local version"
 date: 2026-11-20
-draft: true
+draft: false
 sourceReferences:
   - "https://ihci.sbf.org.sg/docs/default-source/press-releases/press-release-sbf-supports-asean-bac-singapore-engagements-ahead-of-2027-chairship.pdf"
 summary: "Shared standards matter. So does understanding what customers and teams need locally."
